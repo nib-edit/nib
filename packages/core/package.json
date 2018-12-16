@@ -1,0 +1,32 @@
+{
+  "name": "@edit/core",
+  "version": "0.0.1",
+  "description": "Wysiwyg editor",
+  "main": "./index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jpuri/Edit.git"
+  },
+  "author": {
+    "name": "Jyoti Puri",
+    "email": "jyotipuri@gmail.com"
+  },
+  "license": "MIT",
+  "homepage": "https://bitbucket.org/jyotip/edit/src/master/packages/edit#Readme.md",
+  "dependencies": {
+    "@emotion/core": "^10.0.4",
+    "@emotion/styled": "^10.0.4",
+    "emotion-theming": "^10.0.4",
+    "prosemirror-commands": "^1.0.7",
+    "prosemirror-keymap": "^1.0.1",
+    "prosemirror-model": "^1.6.2",
+    "prosemirror-schema-list": "^1.0.1",
+    "prosemirror-state": "^1.2.2",
+    "prosemirror-view": "^1.6.3"
+  },
+  "devDependencies": {
+    "prop-types": "^15.6.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  }
+}

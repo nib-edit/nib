@@ -1,0 +1,51 @@
+import {
+  liftListItem,
+  wrapInList,
+  splitListItem
+} from "prosemirror-schema-list";
+
+export const toggleListCmd = (view, listTypeName) => {
+  const { state, dispatch } = view;
+  const {
+    selection: { $anchor },
+    schema: { nodes }
+  } = state;
+  const listItemTypeNode = $anchor.node($anchor.depth - 2);
+  const listItemTypeNodeName = listItemTypeNode && listItemTypeNode.type.name;
+  const listItemNode = $anchor.node($anchor.depth - 1);
+  const listItemNodeName = listItemNode && listItemNode.type.name;
+  if (listItemNodeName === nodes.listItem.name) {
+    if (listItemTypeNodeName !== listTypeName) {
+      liftListItem(nodes.listItem)(view.state, view.dispatch);
+      return wrapInList(nodes[listTypeName])(view.state, dispatch);
+    } else {
+      return liftToRoot(nodes.listItem, view);
+    }
+  }
+  return wrapInList(nodes[listTypeName])(state, dispatch);
+};
+
+export const splitListItemCmd = () => (editorState, dispatch) => {
+  const {
+    selection: { $anchor },
+    schema: { nodes }
+  } = editorState;
+  const currentNode = $anchor.node($anchor.depth - 1);
+  if (currentNode.type === nodes.listItem) {
+    if (currentNode.textContent.length > 0) {
+      return splitListItem(nodes.listItem)(editorState, dispatch);
+    } else {
+      return liftListItem(nodes.listItem)(editorState, dispatch);
+    }
+  }
+  return false;
+};
+
+const liftToRoot = (listType, view) => {
+  let selPos = view.state.selection.$from.depth;
+  while (selPos > 1) {
+    liftListItem(listType)(view.state, view.dispatch);
+    selPos = view.state.selection.$from.depth;
+  }
+  return true;
+};
