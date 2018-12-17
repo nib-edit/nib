@@ -1,16 +1,33 @@
 Editor with list option enabled.
 
 ```js
-<Lists />
+<List />
 ```
 
 Code:
 
 ```js static
-import React from "react";
-import Editor from "@edit/core";
+class EditorList extends Component {
+  state = {
+    content: {}
+  };
 
-const EditorWithLists = () => (
-  <Editor plugins="block inline list" toolbar="basic" />
-);
+  onChange = content => {
+    this.setState({ content });
+  };
+
+  render() {
+    const { content } = this.state;
+    return (
+      <div>
+        <Editor
+          plugins="block inline list"
+          toolbar="basic"
+          onChange={this.onChange}
+        />
+        <pre>{JSON.stringify(content, null, 4)}</pre>
+      </div>
+    );
+  }
+}
 ```

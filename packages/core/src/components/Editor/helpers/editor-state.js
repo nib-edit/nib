@@ -4,11 +4,22 @@ import { buildKeymap } from "./keymap";
 import { buildPlugins } from "./plugin";
 import { buildSchema } from "./schema";
 
-export const buildEditorState = plugins =>
-  EditorState.create({
-    schema: buildSchema(plugins),
-    plugins: [buildKeymap(plugins), ...buildPlugins(plugins)]
-  });
+const defaultContent = {
+  type: "doc",
+  content: [{ type: "paragraph" }]
+};
+
+export const buildEditorState = (plugins, content) =>
+  EditorState.fromJSON(
+    {
+      schema: buildSchema(plugins),
+      plugins: [buildKeymap(plugins), ...buildPlugins(plugins)]
+    },
+    {
+      doc: content || defaultContent,
+      selection: { type: "text", anchor: 1, head: 1 }
+    }
+  );
 
 export const updateEditorState = (view, tr) => {
   const editorState = view.state.apply(tr);

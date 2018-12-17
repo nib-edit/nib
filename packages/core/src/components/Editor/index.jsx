@@ -20,7 +20,9 @@ export default class Editor extends Component {
   static propTypes = {
     plugins: PropTypes.string,
     toolbar: PropTypes.string,
-    theme: PropTypes.object
+    theme: PropTypes.object,
+    defaultValue: PropTypes.object,
+    onChange: PropTypes.func
   };
 
   static defaultProps = { plugins: "" };
@@ -31,10 +33,12 @@ export default class Editor extends Component {
       state: editorState,
       dispatchTransaction: tr => {
         const { updateRef } = this.state;
+        const { onChange } = this.props;
         updateEditorState(view, tr);
         this.setState({
           updateRef: updateRef + 1
         });
+        if (onChange) onChange(view.state.toJSON().doc);
       }
     });
     this.setState({ view });
