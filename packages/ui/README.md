@@ -1,4 +1,4 @@
-# @edit/ui
+# @editr/ui
 
 ---
 
@@ -18,14 +18,14 @@
 Either `npm` or `yarn` commands can be used.
 
 ```
-npm i @edit/ui --save
+npm i @editr/ui --save
 ```
 
 ### Writing editor component:
 
 ```
 import React from "react";
-import { Button } from "@edit/ui";
+import { Button } from "@editr/ui";
 
 const MyEditor = () => (
   <Button>Click Me</Button>

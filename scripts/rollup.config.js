@@ -6,54 +6,66 @@ import { uglify } from "rollup-plugin-uglify";
 import bundleSize from "rollup-plugin-bundle-size";
 import copy from "rollup-plugin-copy";
 
-const getConfig = packageName => ({
-  input: `packages/${packageName}/index.js`,
-  output: {
-    file: `packages/${packageName}/build/index.js`,
-    format: "umd",
-    globals: {
-      react: "React",
-      "react-dom": "ReactDOM"
+const globals = {
+  react: "React",
+  "react-dom": "ReactDOM"
+};
+
+const external = ["react", "react-dom"];
+
+const getConfig = packageName => {
+  if (packageName !== "core") {
+    globals.styled = "@emotion/styled";
+    globals["emotion-theming"] = "emotion-theming";
+    external.push("styled");
+    external.push("emotion-theming");
+  }
+  return {
+    input: `packages/${packageName}/index.js`,
+    output: {
+      file: `packages/${packageName}/build/index.js`,
+      format: "umd",
+      globals,
+      name: packageName
     },
-    name: packageName
-  },
-  external: ["react", "react-dom"],
-  plugins: [
-    uglify(),
-    bundleSize(),
-    nodeResolve({
-      browser: true
-    }),
-    babel({
-      presets: ["@babel/preset-env", "@babel/preset-react"],
-      plugins: [
-        [
-          "emotion",
-          {
-            hoist: true
-          }
+    external,
+    plugins: [
+      uglify(),
+      bundleSize(),
+      nodeResolve({
+        browser: true
+      }),
+      babel({
+        presets: ["@babel/preset-env", "@babel/preset-react"],
+        plugins: [
+          [
+            "emotion",
+            {
+              hoist: true
+            }
+          ],
+          [
+            "@babel/plugin-proposal-class-properties",
+            {
+              loose: true
+            }
+          ]
         ],
-        [
-          "@babel/plugin-proposal-class-properties",
-          {
-            loose: true
-          }
-        ]
-      ],
-      exclude: "node_modules/**"
-    }),
-    includePaths({
-      extensions: [".js", ".jsx"]
-    }),
-    commonjs({
-      include: "node_modules/**"
-    }),
-    copy({
-      [`packages/${packageName}/package.json`]: `packages/${packageName}/build/package.json`,
-      verbose: true
-    })
-  ]
-});
+        exclude: "node_modules/**"
+      }),
+      includePaths({
+        extensions: [".js", ".jsx"]
+      }),
+      commonjs({
+        include: "node_modules/**"
+      }),
+      copy({
+        [`packages/${packageName}/package.json`]: `packages/${packageName}/build/package.json`,
+        verbose: true
+      })
+    ]
+  };
+};
 
 export default args => {
   return getConfig(args.name);

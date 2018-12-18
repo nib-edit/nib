@@ -8,7 +8,7 @@ Code:
 
 ```js static
 import React from "react";
-import Editor from "@edit/core";
+import Editor from "@editr/core";
 
 class EditorBlockInline extends Component {
   state = {

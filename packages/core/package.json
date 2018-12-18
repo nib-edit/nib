@@ -1,5 +1,5 @@
 {
-  "name": "@edit/core",
+  "name": "@editr/core",
   "version": "0.0.1",
   "description": "Wysiwyg editor",
   "main": "./index.js",
@@ -14,6 +14,7 @@
   "license": "MIT",
   "homepage": "https://bitbucket.org/jyotip/edit/src/master/packages/edit#Readme.md",
   "dependencies": {
+    "@editr/ui": "0.0.1",
     "@emotion/core": "^10.0.4",
     "@emotion/styled": "^10.0.4",
     "emotion-theming": "^10.0.4",

@@ -17,14 +17,14 @@ Setup of the editor is straight forward. Editor is a package on npm, and toolbar
 Either `npm` or `yarn` commands can be used.
 
 ```
-npm i @edit/core --save
+npm i @editr/core --save
 ```
 
 ### Writing editor component:
 
 ```
 import React from "react";
-import Editor from "@edit/core";
+import Editor from "@editr/core";
 
 const MyEditor = () => (
   <Editor

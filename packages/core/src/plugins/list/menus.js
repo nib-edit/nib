@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { toggleListCmd } from "./commands";
-import { Button, Icons } from "@edit/ui";
+import { Button, Icons } from "@editr/ui";
 
 import { listPluginKey } from "./plugins";
 

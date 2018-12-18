@@ -5,14 +5,14 @@ Setup of the editor is quite straight forward. Toolbar and each plugin is a pack
 Either `npm` or `yarn` commands can be used.
 
 ```js static
-npm i @edit/core --save
+npm i @editr/core --save
 ```
 
 ## Writing editor component:
 
 ```js static
 import React from "react";
-import Editor from "@edit/core";
+import Editor from "@editr/core";
 
 const MyEditor = () => <Editor plugins="block inline" toolbar="basic" />;
 ```
@@ -33,5 +33,6 @@ JAVASCRIPT:
 import React from "react";
 import ReactDOM from "react-dom";
 
+const MyEditor = () => <Editor plugins="block inline" toolbar="basic" />;
 ReactDOM.render(<MyEditor />, document.getElementById("editor"));
 ```

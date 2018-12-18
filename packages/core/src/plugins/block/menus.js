@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { Select } from "@edit/ui";
+import { Select } from "@editr/ui";
 import { setBlockType } from "prosemirror-commands";
 
 import { blockPluginKey } from "./plugins";

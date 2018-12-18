@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Editor from "@edit/core";
+import Editor from "@editr/core";
 
 class List extends Component {
   state = {

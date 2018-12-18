@@ -7,6 +7,9 @@ Themed editor.
 Code:
 
 ```js static
+import React, { Component } from "react";
+import Editor from "@editr/core";
+
 const customTheme = {
   editor: {
     borderTop: "1px solid white",

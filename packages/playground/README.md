@@ -1,0 +1,7 @@
+# Playground
+
+---
+
+Playground for editr
+
+---

@@ -7,6 +7,9 @@ Editor with list option enabled.
 Code:
 
 ```js static
+import React, { Component } from "react";
+import Editor from "@editr/core";
+
 class EditorList extends Component {
   state = {
     content: {}

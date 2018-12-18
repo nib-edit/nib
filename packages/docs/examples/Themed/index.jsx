@@ -1,5 +1,5 @@
 import React from "react";
-import Editor from "@edit/core";
+import Editor from "@editr/core";
 
 const customTheme = {
   editor: {

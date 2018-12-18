@@ -1,8 +1,8 @@
 {
-  "name": "@edit/ui",
-  "version": "1.0.0",
+  "name": "@editr/ui",
+  "version": "0.0.1",
   "description": "Components for use in edit",
-  "main": "src/index.js",
+  "main": "./index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/jpuri/Edit.git"
@@ -11,12 +11,12 @@
   "license": "MIT",
   "homepage": "https://bitbucket.org/jyotip/edit/src/master/packages/ui/#Readme.md",
   "dependencies": {
-    "emotion-theming": "^10.0.4",
-    "prop-types": "^15.6.2",
     "react-select": "^2.1.2"
   },
   "devDependencies": {
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "emotion-theming": "^10.0.4",
+    "prop-types": "^15.6.2"
   }
 }
