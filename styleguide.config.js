@@ -12,6 +12,10 @@ module.exports = {
       content: "packages/docs/Setup/Readme.md"
     },
     {
+      name: "Props",
+      content: "packages/docs/Props/Readme.md"
+    },
+    {
       name: "Examples",
       pagePerSection: true,
       sectionDepth: 1,
