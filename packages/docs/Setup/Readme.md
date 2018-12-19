@@ -14,7 +14,9 @@ npm i @editr/core --save
 import React from "react";
 import Editor from "@editr/core";
 
-const MyEditor = () => <Editor plugins="block inline" toolbar="basic" />;
+const MyEditor = () => (
+  <Editor plugins="block inline" toolbar={{ htop: "block inline" }} />
+);
 ```
 
 ## Using the editor in a non-react application:
@@ -33,6 +35,6 @@ JAVASCRIPT:
 import React from "react";
 import ReactDOM from "react-dom";
 
-const MyEditor = () => <Editor plugins="block inline" toolbar="basic" />;
+const MyEditor = () => <Editor plugins="block inline" {{ htop: "block inline" }} />;
 ReactDOM.render(<MyEditor />, document.getElementById("editor"));
 ```

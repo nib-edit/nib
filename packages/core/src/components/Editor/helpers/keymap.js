@@ -43,7 +43,7 @@ const commonKeyMap = {
 export const buildKeymap = plugins => {
   let combinedMap = {};
   plugins.forEach(plugin => {
-    if (plugin) {
+    if (plugin && plugin.keymaps) {
       combinedMap = addKeyMaps(combinedMap, plugin.keymaps);
     }
   });

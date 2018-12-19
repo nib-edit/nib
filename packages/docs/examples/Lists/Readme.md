@@ -10,7 +10,7 @@ Code:
 import React, { Component } from "react";
 import Editor from "@editr/core";
 
-class EditorList extends Component {
+class List extends Component {
   state = {
     content: {}
   };
@@ -25,7 +25,7 @@ class EditorList extends Component {
       <div>
         <Editor
           plugins="block inline list"
-          toolbar="basic"
+          toolbar={{ htop: "block inline list" }}
           onChange={this.onChange}
         />
         <pre>{JSON.stringify(content, null, 4)}</pre>

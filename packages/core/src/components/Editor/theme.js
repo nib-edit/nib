@@ -25,18 +25,34 @@ export const theme = {
     fontFamily: "inherit"
   },
   toolbar: {
-    backgroundColor: Color.white,
-    borderTop: none,
-    borderBottom: border,
-    borderRight: none,
-    borderLeft: none,
-    borderTopLeftRadius: "0px",
-    borderTopRightRadius: "0px",
-    borderBottomLeftRadius: "0px",
-    borderBottomRightRadius: "0px",
-    color: Color.grayText,
-    fontStyle: "inherit",
-    fontFamily: "inherit"
+    htop: {
+      backgroundColor: Color.white,
+      borderTop: none,
+      borderBottom: border,
+      borderRight: none,
+      borderLeft: none,
+      borderTopLeftRadius: "0px",
+      borderTopRightRadius: "0px",
+      borderBottomLeftRadius: "0px",
+      borderBottomRightRadius: "0px",
+      color: Color.grayText,
+      fontStyle: "inherit",
+      fontFamily: "inherit"
+    },
+    inline: {
+      backgroundColor: Color.white,
+      borderTop: border,
+      borderBottom: border,
+      borderRight: border,
+      borderLeft: border,
+      borderTopLeftRadius: "0px",
+      borderTopRightRadius: "0px",
+      borderBottomLeftRadius: "0px",
+      borderBottomRightRadius: "0px",
+      color: Color.grayText,
+      fontStyle: "inherit",
+      fontFamily: "inherit"
+    }
   },
   menuButton: {
     backgroundColor: Color.white,

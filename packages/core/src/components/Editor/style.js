@@ -24,6 +24,7 @@ export const StyledEditor = styled.div`
 `;
 
 export const Wrapper = styled.div`
+  position: relative;
   border-top: ${({ theme }) => theme.wrapper.borderTop};
   border-bottom: ${({ theme }) => theme.wrapper.borderBottom};
   border-left: ${({ theme }) => theme.wrapper.borderLeft};

@@ -20,7 +20,11 @@ const customTheme = {
 };
 
 const Themed = () => (
-  <Editor plugins="block inline list" toolbar="basic" theme={customTheme} />
+  <Editor
+    plugins="block inline list"
+    toolbar={{ htop: "block inline list" }}
+    theme={customTheme}
+  />
 );
 
 export default Themed;

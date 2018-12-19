@@ -1,3 +1,4 @@
-import basic from "./Basic";
+import htop from "./HTop";
+import inline from "./Inline";
 
-export default { basic };
+export default { htop, inline };

@@ -16,7 +16,7 @@ class BlockInline extends Component {
       <div>
         <Editor
           plugins="block inline"
-          toolbar="basic"
+          toolbar={{ htop: "block inline" }}
           onChange={this.onChange}
         />
         <pre>{JSON.stringify(content, null, 4)}</pre>
