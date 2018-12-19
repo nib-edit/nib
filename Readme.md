@@ -45,7 +45,7 @@ Props supported by the editor.
 | 3     | plugins      | List of plugins to be added, currently supported plugins are: **inline**, **block**, **list** |
 | 4     | toolbar      | Type of toolbar to be added to the editor, currently supported toolbar type is **basic**      |
 
----
+Editor is in initial phase of development and right now api is not stable.
 
 ## Need help
 
