@@ -37,7 +37,22 @@ export const theme = {
       borderBottomRightRadius: "0px",
       color: Color.grayText,
       fontStyle: "inherit",
-      fontFamily: "inherit"
+      fontFamily: "inherit",
+      button: {
+        backgroundColor: Color.white,
+        border: border,
+        marginLeft: "2px",
+        borderRadius: "2px",
+        color: Color.grayText,
+        height: "32px",
+        width: "32px",
+        "&:hover": `{
+            background-color: ${Color.hover} !important;
+          }`,
+        "&:selected": `{
+            background-color: ${Color.selected};
+          }`
+      }
     },
     inline: {
       backgroundColor: Color.white,
@@ -45,29 +60,29 @@ export const theme = {
       borderBottom: border,
       borderRight: border,
       borderLeft: border,
-      borderTopLeftRadius: "0px",
-      borderTopRightRadius: "0px",
-      borderBottomLeftRadius: "0px",
-      borderBottomRightRadius: "0px",
+      borderTopLeftRadius: "4px",
+      borderTopRightRadius: "4px",
+      borderBottomLeftRadius: "4px",
+      borderBottomRightRadius: "4px",
       color: Color.grayText,
       fontStyle: "inherit",
-      fontFamily: "inherit"
+      fontFamily: "inherit",
+      button: {
+        backgroundColor: Color.white,
+        borderRadius: "2px",
+        border: none,
+        marginLeft: "2px",
+        color: Color.grayText,
+        height: "26px",
+        width: "26px",
+        "&:hover": `{
+            background-color: ${Color.hover} !important;
+          }`,
+        "&:selected": `{
+            background-color: ${Color.selected};
+          }`
+      }
     }
-  },
-  menuButton: {
-    backgroundColor: Color.white,
-    border: border,
-    marginLeft: "2px",
-    borderRadius: "2px",
-    color: Color.grayText,
-    height: "32px",
-    width: "32px",
-    "&:hover": `{
-      background-color: ${Color.hover} !important;
-    }`,
-    "&:selected": `{
-      background-color: ${Color.selected};
-    }`
   },
   blockSelect: {
     backgroundColor: Color.white,

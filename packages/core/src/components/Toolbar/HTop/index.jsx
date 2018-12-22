@@ -46,4 +46,20 @@ const Wrapper = styled.div`
     theme.toolbar.htop.borderBottomLeftRadius};
 
   color: ${({ theme }) => theme.toolbar.htop.color};
+
+  & button {
+    margin-left: ${({ theme }) => theme.toolbar.htop.button.marginLeft};
+    border: ${({ theme }) => theme.toolbar.htop.button.border};
+    border-radius: ${({ theme }) => theme.toolbar.htop.button.borderRadius};
+    background-color: ${({ theme }) =>
+      theme.toolbar.htop.button.backgroundColor};
+    color: ${({ theme }) => theme.toolbar.htop.button.color};
+    height: ${({ theme }) => theme.toolbar.htop.button.height};
+    width: ${({ theme }) => theme.toolbar.htop.button.width};
+    :hover {
+      ${({ theme }) => theme.toolbar.htop.button["&:hover"]};
+    }
+    ${({ selected, theme }) =>
+      selected && theme.toolbar.htop.button["&:selected"]};
+  }
 `;
