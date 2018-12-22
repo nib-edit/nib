@@ -11,11 +11,13 @@ const customTheme = {
     color: "white"
   },
   toolbar: {
-    borderTop: "1px solid white",
-    borderLeft: "1px solid white",
-    borderRight: "1px solid white",
-    backgroundColor: "#212121",
-    color: "white"
+    htop: {
+      borderTop: "1px solid white",
+      borderLeft: "1px solid white",
+      borderRight: "1px solid white",
+      backgroundColor: "#212121",
+      color: "white"
+    }
   }
 };
 
