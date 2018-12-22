@@ -9,7 +9,8 @@ export default class FloatWrapper extends Component {
       <FloatPanel
         className="editr-float-panel"
         style={{
-          top: selMarker.offsetTop + selMarker.getBoundingClientRect().height,
+          top:
+            selMarker.offsetTop + selMarker.getBoundingClientRect().height + 6,
           left: selMarker.offsetLeft
         }}
       >
