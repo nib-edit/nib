@@ -7,10 +7,10 @@ Editor with block formatting and inline formatting options available.
 Code:
 
 ```js static
-import React from "react";
+import React, { Component } from "react";
 import Editor from "@editr/core";
 
-class EditorBlockInline extends Component {
+class BlockInline extends Component {
   state = {
     content: {}
   };
@@ -25,7 +25,7 @@ class EditorBlockInline extends Component {
       <div>
         <Editor
           plugins="block inline"
-          toolbar="basic"
+          toolbar={{ htop: "block inline" }}
           onChange={this.onChange}
         />
         <pre>{JSON.stringify(content, null, 4)}</pre>

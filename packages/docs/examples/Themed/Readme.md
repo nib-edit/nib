@@ -7,7 +7,7 @@ Themed editor.
 Code:
 
 ```js static
-import React, { Component } from "react";
+import React from "react";
 import Editor from "@editr/core";
 
 const customTheme = {
@@ -28,7 +28,11 @@ const customTheme = {
   }
 };
 
-const ThemedEditor = () => (
-  <Editor plugins="block inline list" toolbar="basic" theme={customTheme} />
+const Themed = () => (
+  <Editor
+    plugins="block inline list"
+    toolbar={{ htop: "block inline list" }}
+    theme={customTheme}
+  />
 );
 ```
