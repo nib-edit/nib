@@ -8,7 +8,7 @@ Code:
 
 ```js static
 import React from "react";
-import Editor from "@editr/core";
+import Editor from "nib-core";
 
 const customTheme = {
   editor: {

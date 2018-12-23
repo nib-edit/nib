@@ -2,6 +2,6 @@
 
 ---
 
-Playground for editr
+Playground for nib
 
 ---

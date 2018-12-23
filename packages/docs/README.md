@@ -2,4 +2,4 @@
 
 ---
 
-## Documentation about Edit. This is done using react-styleguide.
+## Documentation about Nib. This is done using react-styleguide.

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import Editor from "@editr/core";
+import Editor from "nib-core";
 
 ReactDOM.render(
   <div>

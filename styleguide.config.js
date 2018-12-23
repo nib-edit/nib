@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  title: "Edit",
+  title: "Nib",
   sections: [
     {
       name: "Introduction",

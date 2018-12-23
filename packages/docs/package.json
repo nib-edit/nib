@@ -1,18 +1,18 @@
 {
-  "name": "edit-docs",
+  "name": "nib-docs",
   "version": "1.0.0",
-  "description": "Edit documentation",
+  "description": "Nib documentation",
   "main": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jpuri/Edit.git"
+    "url": "https://github.com/jpuri/Nib.git"
   },
   "author": "Jyoti Puri",
   "license": "MIT",
-  "homepage": "https://bitbucket.org/jyotip/veditor/packages/block-plugin#readme",
+  "homepage": "https://github.com/jpuri/Nib/tree/master/packages/docs#readme",
   "dependencies": {
     "classnames": "^2.2.6",
-    "@editr/core": "0.0.1",
+    "nib-core": "0.1.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "url-loader": "^1.1.2"

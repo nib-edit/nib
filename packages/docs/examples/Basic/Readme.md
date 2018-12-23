@@ -8,7 +8,7 @@ Code:
 
 ```js static
 import React, { Component } from "react";
-import Editor from "@editr/core";
+import Editor from "nib-core";
 
 class Basic extends Component {
   state = {

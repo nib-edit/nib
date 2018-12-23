@@ -1,4 +1,4 @@
-# EDITR
+# NIB
 
 ---
 
@@ -17,14 +17,14 @@ Setup of the editor is straight forward. Editor is a package on npm, and toolbar
 Either `npm` or `yarn` commands can be used.
 
 ```
-npm i @editr/core --save
+npm i nib-core --save
 ```
 
 ### Writing editor component:
 
 ```
 import React from "react";
-import Editor from "@editr/core";
+import Editor from "nib-core";
 
 const MyEditor = () => (
   <Editor

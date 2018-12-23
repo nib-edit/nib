@@ -25,12 +25,11 @@ export default class Editor extends Component {
   static defaultProps = { plugins: "", toolbar: {} };
 
   updateView = view => {
-    const { onChange } = this.props;
     const { updateRef } = this.state;
     this.setState({
       view,
       updateRef: updateRef + 1,
-      selMarker: document.getElementsByClassName("editr-selected")
+      selMarker: document.getElementsByClassName("nib-selected")
     });
   };
 

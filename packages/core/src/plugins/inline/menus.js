@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { toggleMark } from "prosemirror-commands";
-import { Button, Icons } from "@editr/ui";
+import { Button, Icons } from "nib-ui";
 
 import { inlinePluginKey } from "./plugins";
 

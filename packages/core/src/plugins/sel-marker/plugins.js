@@ -12,7 +12,7 @@ const selMarkerPlugin = new Plugin({
       const { $from, $to } = state.selection;
       return DecorationSet.create(state.doc, [
         Decoration.inline($from.pos, $to.pos, {
-          class: "editr-selected",
+          class: "nib-selected",
           style: "position: relative;"
         })
       ]);

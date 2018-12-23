@@ -5,14 +5,14 @@ Setup of the editor is quite straight forward. Toolbar and each plugin is a pack
 Either `npm` or `yarn` commands can be used.
 
 ```js static
-npm i @editr/core --save
+npm i nib-core --save
 ```
 
 ## Writing editor component:
 
 ```js static
 import React from "react";
-import Editor from "@editr/core";
+import Editor from "nib-core";
 
 const MyEditor = () => (
   <Editor plugins="block inline" toolbar={{ htop: "block inline" }} />

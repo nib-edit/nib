@@ -7,7 +7,7 @@ export default class FloatWrapper extends Component {
     if (!selMarker) return null;
     return (
       <FloatPanel
-        className="editr-float-panel"
+        className="nib-float-panel"
         style={{
           top:
             selMarker.offsetTop + selMarker.getBoundingClientRect().height + 6,

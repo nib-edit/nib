@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { toggleListCmd } from "./commands";
-import { Button, Icons } from "@editr/ui";
+import { Button, Icons } from "nib-ui";
 
 import { listPluginKey } from "./plugins";
 
