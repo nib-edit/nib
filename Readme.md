@@ -50,9 +50,3 @@ Editor is in initial phase of development and right now api is not stable.
 ## Need help
 
 If you have any queries or require any help you can [email](mailto::jyotipuri@gmail.com) me.
-
----
-
-## License
-
-MIT

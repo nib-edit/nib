@@ -24,7 +24,7 @@ const defaultValue = {
 
 class InlineToolbar extends Component {
   state = {
-    content: {}
+    content: defaultValue
   };
 
   onChange = content => {
