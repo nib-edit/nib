@@ -10,8 +10,4 @@ const Plugins = {
   selMarker
 };
 
-//todo: refactor and replace this
-export const getPluginList = plugins =>
-  plugins.split(" ").map(key => Plugins[key]);
-
 export default Plugins;

@@ -32,13 +32,17 @@ export default class Editor extends Component {
       updateRef: updateRef + 1,
       selMarker: document.getElementsByClassName("editr-selected")
     });
-    // Todo: below should not be called for selection change alone
-    if (onChange && view.state) onChange(view.state.toJSON().doc);
   };
 
   render() {
     const { view, updateRef, selMarker } = this.state;
-    const { theme: propsTheme, toolbar, plugins, defaultValue } = this.props;
+    const {
+      theme: propsTheme,
+      toolbar,
+      plugins,
+      defaultValue,
+      onChange
+    } = this.props;
     const newTheme = updateTheme(theme, propsTheme);
 
     return (
@@ -53,6 +57,7 @@ export default class Editor extends Component {
           )}
           <InnerEditor
             defaultValue={defaultValue}
+            onChange={onChange}
             plugins={plugins}
             updateView={this.updateView}
             view={view}

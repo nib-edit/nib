@@ -3,8 +3,11 @@ import React, { Component } from "react";
 import { EditorView } from "prosemirror-view";
 
 import { StyledEditor } from "./style";
-import { buildEditorState, updateEditorState } from "./helpers";
-import { getPluginList } from "../../plugins";
+import {
+  buildEditorState,
+  updateEditorState,
+  getPluginList
+} from "../../helpers";
 
 export default class Editor extends Component {
   constructor(props) {
@@ -15,6 +18,7 @@ export default class Editor extends Component {
 
   static propTypes = {
     defaultValue: PropTypes.object,
+    onChange: PropTypes.func,
     plugins: PropTypes.string,
     updateView: PropTypes.func
   };
@@ -22,7 +26,7 @@ export default class Editor extends Component {
   static defaultProps = { plugins: "" };
 
   componentDidMount() {
-    const { updateView, defaultValue } = this.props;
+    const { updateView, defaultValue, onChange } = this.props;
     var editorState = buildEditorState(
       getPluginList(`${this.props.plugins} selMarker`),
       defaultValue
@@ -32,6 +36,7 @@ export default class Editor extends Component {
       dispatchTransaction: tr => {
         updateEditorState(view, tr);
         updateView(view);
+        if (onChange && tr.docChanged) onChange(view.state.toJSON().doc);
       }
     });
     updateView(view);

@@ -1,9 +1,7 @@
 import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
 
-// todo: refactor helpers
-import { buildMenu } from "../../Editor/helpers";
-import { getPluginList } from "../../../plugins";
+import { buildMenu, getPluginList } from "../../../helpers";
 
 export default class HTopToolbar extends PureComponent {
   render() {
