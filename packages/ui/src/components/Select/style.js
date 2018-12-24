@@ -4,11 +4,11 @@ export const getSelectStyles = themeStyle => ({
     backgroundColor: themeStyle.backgroundColor,
     borderRadius: themeStyle.borderRadius,
     display: "inline-block",
-    fontSize: themeStyle.fontSize,
-    width: themeStyle.width
+    fontSize: themeStyle.fontSize
   }),
   control: (styles, state) => ({
     ...styles,
+    width: themeStyle.buttonWidth,
     backgroundColor: themeStyle.backgroundColor,
     border: themeStyle.border,
     borderRadius: themeStyle.borderRadius,
@@ -34,5 +34,9 @@ export const getSelectStyles = themeStyle => ({
     ...(state.isSelected ? themeStyle["&:selected"] : {}),
     "&:hover": themeStyle["&:hover"]
   }),
-  menu: styles => ({ ...styles, borderRadius: themeStyle.borderRadius })
+  menu: styles => ({
+    ...styles,
+    borderRadius: themeStyle.borderRadius,
+    width: themeStyle.width
+  })
 });

@@ -35,21 +35,21 @@ class InlineMenu extends PureComponent {
         <Button
           name="strong"
           onClick={this.toggleMarkofType}
-          selected={activeMarks && activeMarks.indexOf("strong") > -1}
+          selected={activeMarks && activeMarks.includes("strong")}
         >
           <Icons.Bold />
         </Button>
         <Button
           name="em"
           onClick={this.toggleMarkofType}
-          selected={activeMarks && activeMarks.indexOf("em") > -1}
+          selected={activeMarks && activeMarks.includes("em")}
         >
           <Icons.Italic />
         </Button>
         <Button
           name="underline"
           onClick={this.toggleMarkofType}
-          selected={activeMarks && activeMarks.indexOf("underline") > -1}
+          selected={activeMarks && activeMarks.includes("underline")}
         >
           <Icons.Underline />
         </Button>

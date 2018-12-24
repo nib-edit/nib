@@ -57,7 +57,5 @@ const Wrapper = styled.div`
     :hover {
       ${({ theme }) => theme.toolbar.htop.button["&:hover"]};
     }
-    ${({ selected, theme }) =>
-      selected && theme.toolbar.htop.button["&:selected"]};
   }
 `;

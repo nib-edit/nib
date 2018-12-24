@@ -13,4 +13,7 @@ export const StyledButton = styled.button`
   justify-content: center;
   cursor: pointer;
   padding: 0;
+  ${({ selected, theme }) => selected && theme.button["&:selected"]};
 `;
+
+// todo: fix button styling

@@ -1,7 +1,7 @@
-Editor with link option enabled.
+Editor with list option enabled.
 
 ```js
-<List />
+<Link />
 ```
 
 Code:
@@ -10,7 +10,7 @@ Code:
 import React, { Component } from "react";
 import Editor from "nib-core";
 
-class List extends Component {
+class Link extends Component {
   state = {
     content: {}
   };
