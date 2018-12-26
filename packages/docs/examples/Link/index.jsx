@@ -1,16 +1,7 @@
-Editor with link option enabled.
-
-```js
-<List />
-```
-
-Code:
-
-```js static
 import React, { Component } from "react";
 import Editor from "nib-core";
 
-class List extends Component {
+class Link extends Component {
   state = {
     content: {}
   };
@@ -33,4 +24,5 @@ class List extends Component {
     );
   }
 }
-```
+
+export default Link;

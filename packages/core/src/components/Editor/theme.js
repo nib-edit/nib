@@ -1,10 +1,4 @@
-const Color = {
-  hover: "#E0E0E0",
-  border: "#9E9E9E",
-  selected: "#BDBDBD",
-  white: "#FFFFFF",
-  grayText: "#212121"
-};
+import { Color } from "../../common/color";
 
 const none = "none";
 const border = `1px solid ${Color.border}`;
@@ -48,9 +42,6 @@ export const theme = {
         width: "32px",
         "&:hover": `{
             background-color: ${Color.hover} !important;
-          }`,
-        "&:selected": `{
-            background-color: ${Color.selected};
           }`
       }
     },
@@ -77,12 +68,14 @@ export const theme = {
         width: "26px",
         "&:hover": `{
             background-color: ${Color.hover} !important;
-          }`,
-        "&:selected": `{
-            background-color: ${Color.selected};
           }`
       }
     }
+  },
+  button: {
+    "&:selected": `{
+      background-color: ${Color.selected} !important;
+    }`
   },
   blockSelect: {
     backgroundColor: Color.white,
@@ -93,6 +86,7 @@ export const theme = {
     fontSize: "16px",
     height: "32px",
     optionHeight: "48px",
+    buttonWidth: "120px",
     width: "164px",
     "&:hover": { backgroundColor: Color.hover },
     "&:selected": { backgroundColor: Color.selected }

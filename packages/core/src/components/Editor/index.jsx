@@ -7,6 +7,7 @@ import InnerEditor from "./editor";
 import Toolbar from "../Toolbar";
 import { Wrapper } from "./style";
 import { theme, updateTheme } from "./theme";
+import LinkModal from "../../plugins/link/linkModal";
 
 export default class Editor extends Component {
   constructor(props) {
@@ -43,6 +44,7 @@ export default class Editor extends Component {
       onChange
     } = this.props;
     const newTheme = updateTheme(theme, propsTheme);
+    const linkMarker = document.getElementsByClassName("nib-link-marker");
 
     return (
       <ThemeProvider theme={newTheme}>
@@ -61,8 +63,9 @@ export default class Editor extends Component {
             updateView={this.updateView}
             view={view}
           />
+          {/* create handlar for modals */}
           <FloatWrapper
-            selMarker={selMarker && selMarker.item && selMarker.item(0)}
+            marker={selMarker && selMarker.item && selMarker.item(0)}
           >
             {toolbar.inline && (
               <Toolbar.inline
@@ -71,6 +74,11 @@ export default class Editor extends Component {
                 view={view}
               />
             )}
+          </FloatWrapper>
+          <FloatWrapper
+            marker={linkMarker && linkMarker.item && linkMarker.item(0)}
+          >
+            <LinkModal view={view} />
           </FloatWrapper>
         </Wrapper>
       </ThemeProvider>

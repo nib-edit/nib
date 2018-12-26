@@ -3,15 +3,14 @@ import styled from "@emotion/styled";
 
 export default class FloatWrapper extends Component {
   render() {
-    const { selMarker, children } = this.props;
-    if (!selMarker) return null;
+    const { marker, children } = this.props;
+    if (!marker) return null;
     return (
       <FloatPanel
         className="nib-float-panel"
         style={{
-          top:
-            selMarker.offsetTop + selMarker.getBoundingClientRect().height + 6,
-          left: selMarker.offsetLeft
+          top: marker.offsetTop + marker.getBoundingClientRect().height + 6,
+          left: marker.offsetLeft
         }}
       >
         {children}
