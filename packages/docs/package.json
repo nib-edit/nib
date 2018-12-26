@@ -16,5 +16,8 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "url-loader": "^1.1.2"
+  },
+  "devDependencies": {
+    "url-loader": "^1.1.2"
   }
 }

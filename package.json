@@ -43,6 +43,8 @@
     "build": "rollup -c scripts/rollup.config.js --name"
   },
   "dependencies": {
-    "rollup-copy-plugin": "^0.1.0"
+    "prosemirror-history": "^1.0.3",
+    "rollup-copy-plugin": "^0.1.0",
+    "url-loader": "^1.1.2"
   }
 }
