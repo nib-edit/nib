@@ -8,6 +8,7 @@ import Toolbar from "../Toolbar";
 import { Wrapper } from "./style";
 import { theme, updateTheme } from "./theme";
 import LinkModal from "../../plugins/link/linkModal";
+import Modal from "../../plugins/link/modal";
 
 export default class Editor extends Component {
   constructor(props) {
@@ -80,6 +81,7 @@ export default class Editor extends Component {
           >
             <LinkModal view={view} />
           </FloatWrapper>
+          <Modal view={view} updateRef={updateRef} />
         </Wrapper>
       </ThemeProvider>
     );

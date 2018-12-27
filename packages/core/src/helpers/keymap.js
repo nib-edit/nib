@@ -18,11 +18,14 @@ const combineKeyMaps = keyMaps => {
   const map = {};
   Object.keys(keyMaps).forEach(key => {
     map[key] = (editorState, dispatch) => {
+      let result = false;
       for (let i = 0; i < keyMaps[key].length; i++) {
         if (keyMaps[key][i](editorState, dispatch)) {
+          result = true;
           break;
         }
       }
+      return result;
     };
   });
   return map;
@@ -50,7 +53,7 @@ export const buildKeymap = plugins => {
   combinedMap = addKeyMaps(combinedMap, commonKeyMap);
   combinedMap = addKeyMaps(combinedMap, baseKeymap);
   combinedMap = combineKeyMaps(combinedMap);
-  return new keymap(combinedMap);
+  return new keymap(baseKeymap);
 };
 
 // future: in plugins add priority to keymaps

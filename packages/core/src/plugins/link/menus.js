@@ -13,24 +13,18 @@ class LinkMenu extends PureComponent {
     const { view: { state: editorState } = {} } = this.props;
     if (!editorState) return;
     const pluginState = linkPluginKey.getState(editorState);
-    return pluginState && pluginState.linkMarkActive;
+    return pluginState && !!pluginState.link;
   };
 
   render() {
-    const { view = {} } = this.props;
-    const { state: editorState } = view;
-    const pluginState = editorState && linkPluginKey.getState(editorState);
-    const linkMarker = document.getElementsByClassName("nib-link-marker");
     return (
-      <>
-        <Button
-          name="link"
-          onClick={this.showLinkToolbar}
-          selected={this.isLinkMarkActive()}
-        >
-          <Icons.Link />
-        </Button>
-      </>
+      <Button
+        name="link"
+        onClick={this.showLinkToolbar}
+        selected={this.isLinkMarkActive()}
+      >
+        <Icons.Link />
+      </Button>
     );
   }
 }
