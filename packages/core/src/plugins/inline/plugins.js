@@ -9,7 +9,7 @@ const getActiveMarks = editorState => {
   if (storedMarks) {
     activeMarks = storedMarks.map(mark => mark.type.name);
   }
-  editorState.doc.nodesBetween($from.pos - 1, $to.pos, node => {
+  editorState.doc.nodesBetween($from.pos, $to.pos, node => {
     if (node.marks) {
       activeMarks = [...activeMarks, ...node.marks.map(mark => mark.type.name)];
     }

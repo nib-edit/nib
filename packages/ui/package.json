@@ -1,7 +1,7 @@
 {
   "name": "nib-ui",
   "version": "0.1.0",
-  "description": "Components for use in nib",
+  "description": "Components for use in Nib",
   "main": "./index.js",
   "repository": {
     "type": "git",

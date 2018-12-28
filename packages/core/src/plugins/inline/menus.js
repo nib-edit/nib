@@ -23,7 +23,7 @@ class InlineMenu extends PureComponent {
 
   getActiveMarks = () => {
     const { view: { state: editorState } = {} } = this.props;
-    if (!editorState) return;
+    if (!editorState) return [];
     const pluginState = inlinePluginKey.getState(editorState);
     return pluginState && pluginState.activeMarks;
   };
@@ -35,21 +35,21 @@ class InlineMenu extends PureComponent {
         <Button
           name="strong"
           onClick={this.toggleMarkofType}
-          selected={activeMarks && activeMarks.includes("strong")}
+          selected={activeMarks.includes("strong")}
         >
           <Icons.Bold />
         </Button>
         <Button
           name="em"
           onClick={this.toggleMarkofType}
-          selected={activeMarks && activeMarks.includes("em")}
+          selected={activeMarks.includes("em")}
         >
           <Icons.Italic />
         </Button>
         <Button
           name="underline"
           onClick={this.toggleMarkofType}
-          selected={activeMarks && activeMarks.includes("underline")}
+          selected={activeMarks.includes("underline")}
         >
           <Icons.Underline />
         </Button>

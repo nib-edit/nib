@@ -1,42 +1,58 @@
+const getStyles = (customStyles, stateStyles) => {
+  return (style, state) => {
+    return {
+      ...style,
+      ...customStyles,
+      ...(stateStyles ? stateStyles(state) : {})
+    };
+  };
+};
+
 export const getSelectStyles = themeStyle => ({
-  container: styles => ({
-    ...styles,
-    backgroundColor: themeStyle.backgroundColor,
-    borderRadius: themeStyle.borderRadius,
+  container: getStyles({
     display: "inline-block",
-    fontSize: themeStyle.fontSize
-  }),
-  control: (styles, state) => ({
-    ...styles,
-    width: themeStyle.buttonWidth,
     backgroundColor: themeStyle.backgroundColor,
-    border: themeStyle.border,
     borderRadius: themeStyle.borderRadius,
-    boxShadow: themeStyle.boxShadow,
-    height: themeStyle.height,
-    minHeight: themeStyle.height,
-    ...(state.isSelected ? themeStyle["&:selected"] : {}),
-    "&:hover": themeStyle["&:hover"]
+    fontSize: themeStyle.fontSize,
+    fontWeight: "600"
   }),
-  dropdownIndicator: styles => ({
-    ...styles,
+  control: getStyles(
+    {
+      backgroundColor: themeStyle.backgroundColor,
+      border: themeStyle.border,
+      borderRadius: themeStyle.borderRadius,
+      boxShadow: themeStyle.boxShadow,
+      height: themeStyle.height,
+      minHeight: themeStyle.height,
+      width: themeStyle.selectWidth,
+      "&:hover": themeStyle["&:hover"]
+    },
+    state => ({
+      ...(state.isSelected ? themeStyle["&:selected"] : {})
+    })
+  ),
+  dropdownIndicator: getStyles({
+    padding: "4px",
     "& svg": { fill: themeStyle.color }
   }),
-  indicatorSeparator: () => ({ display: "none" }),
-  option: (styles, state) => ({
-    ...styles,
-    alignItems: "center",
-    display: "flex",
-    padding: "0 8px",
-    color: themeStyle.color,
-    height: themeStyle.optionHeight,
-    minHeight: themeStyle.height,
-    ...(state.isSelected ? themeStyle["&:selected"] : {}),
-    "&:hover": themeStyle["&:hover"]
+  indicatorSeparator: getStyles({
+    display: "none"
   }),
-  menu: styles => ({
-    ...styles,
-    borderRadius: themeStyle.borderRadius,
-    width: themeStyle.width
+  option: getStyles(
+    {
+      alignItems: "center",
+      display: "flex",
+      padding: "0 8px",
+      color: themeStyle.color,
+      height: themeStyle.optionHeight,
+      minHeight: themeStyle.optionHeight,
+      "&:hover": themeStyle["&:hover"]
+    },
+    state => ({
+      ...(state.isSelected ? themeStyle["&:selected"] : {})
+    })
+  ),
+  menu: getStyles({
+    width: themeStyle.dropdownWidth
   })
 });

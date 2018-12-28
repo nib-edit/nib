@@ -13,6 +13,7 @@ export const StyledEditor = styled.div`
     theme.editor.borderBottomRightRadius};
   background-color: ${({ theme }) => theme.editor.backgroundColor};
   color: ${({ theme }) => theme.editor.color};
+  font-size: ${({ theme }) => theme.editor.fontSize};
   font-style: ${({ theme }) => theme.editor.fontStyle};
   font-family: ${({ theme }) => theme.editor.fontFamily};
   padding: 0 4px;
