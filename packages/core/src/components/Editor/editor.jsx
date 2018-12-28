@@ -50,3 +50,5 @@ export default class Editor extends Component {
     return <StyledEditor ref={this.editorRef} />;
   }
 }
+
+// todo: history plugin should always be included

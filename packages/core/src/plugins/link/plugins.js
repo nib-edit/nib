@@ -3,38 +3,40 @@ import { DecorationSet, Decoration } from "prosemirror-view";
 
 export const linkPluginKey = new PluginKey("link");
 
-const isLinkPresent = editorState => {
+const getLink = editorState => {
   const {
     selection: { $from, $to },
     schema: { marks }
   } = editorState;
-  let linkPresent = false;
-  editorState.doc.nodesBetween($from.pos - 1, $to.pos, node => {
-    if (node.marks && node.marks.some(mark => mark.type === marks.link)) {
-      linkPresent = true;
+  let link;
+  editorState.doc.nodesBetween($from.pos, $to.pos, (node, from) => {
+    if (node.marks) {
+      const linkMark = node.marks.find(mark => mark.type === marks.link);
+      if (linkMark) {
+        link = { from, to: from + node.nodeSize, href: linkMark.attrs.href };
+      }
     }
   });
-  return linkPresent;
+  return link;
 };
 
 const linkPlugin = new Plugin({
   key: linkPluginKey,
-  view: undefined,
 
   state: {
     init: (_, state) => {
-      return { linkMarkActive: isLinkPresent(state) };
+      return { link: getLink(state) };
     },
     apply(tr, value, _, newState) {
-      let { linkMarkActive, showLinkToolbar } = value;
-      linkMarkActive = isLinkPresent(newState);
+      let { link, showLinkToolbar } = value;
+      link = getLink(newState);
       if (tr.getMeta(linkPluginKey) === "SHOW_LINK_TOOLBAR") {
         showLinkToolbar = true;
       }
       if (tr.getMeta(linkPluginKey) === "HIDE_LINK_TOOLBAR") {
         showLinkToolbar = false;
       }
-      return { linkMarkActive, showLinkToolbar };
+      return { link, showLinkToolbar };
     }
   },
 

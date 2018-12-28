@@ -33,7 +33,8 @@ class LinkModal extends PureComponent {
   addLink = () => {
     const { title, href } = this.state;
     if (!title || !title.length) return;
-    const { state, dispatch } = this.props.view;
+    const { view } = this.props;
+    const { state, dispatch } = view;
     const {
       tr,
       selection: { $from, $to }
@@ -48,6 +49,7 @@ class LinkModal extends PureComponent {
         )
         .setMeta(linkPluginKey, "HIDE_LINK_TOOLBAR")
     );
+    view.focus();
   };
 
   hideModal = evt => {
@@ -66,6 +68,12 @@ class LinkModal extends PureComponent {
     return state.doc.textBetween($from.pos, $to.pos);
   };
 
+  handleKeyDown = evt => {
+    if (evt.key === "Enter") {
+      this.addLink();
+    }
+  };
+
   render() {
     const { title, href } = this.state;
     return (
@@ -78,11 +86,17 @@ class LinkModal extends PureComponent {
               onChange={this.updateValue}
               autoFocus
               value={title}
+              onKeyPress={this.handleKeyDown}
             />
           </InputWrapper>
           <InputWrapper>
             <label htmlFor="href">Href</label>
-            <LinkInput name="href" onChange={this.updateValue} value={href} />
+            <LinkInput
+              name="href"
+              onChange={this.updateValue}
+              value={href}
+              onKeyPress={this.handleKeyDown}
+            />
           </InputWrapper>
         </div>
         <LinkButton onClick={this.addLink}>Apply</LinkButton>
