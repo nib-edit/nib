@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "@emotion/styled";
 
-export default class FloatWrapper extends Component {
+export default class Modal extends Component {
   render() {
     const { marker, children } = this.props;
     if (!marker) return null;
@@ -21,4 +21,5 @@ export default class FloatWrapper extends Component {
 
 const FloatPanel = styled.div`
   position: absolute;
+  font-weight: 600;
 `;

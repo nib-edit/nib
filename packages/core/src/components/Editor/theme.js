@@ -1,4 +1,4 @@
-import { Color } from "../../common/color";
+import { Color, FontSize } from "../../common/style_constants";
 
 const none = "none";
 const border = `1px solid ${Color.border}`;
@@ -14,7 +14,8 @@ export const theme = {
     borderTopRightRadius: "0px",
     borderBottomLeftRadius: "0px",
     borderBottomRightRadius: "0px",
-    color: Color.grayText,
+    color: Color.text,
+    fontSize: "14px",
     fontStyle: "inherit",
     fontFamily: "inherit"
   },
@@ -29,21 +30,9 @@ export const theme = {
       borderTopRightRadius: "0px",
       borderBottomLeftRadius: "0px",
       borderBottomRightRadius: "0px",
-      color: Color.grayText,
-      fontStyle: "inherit",
-      fontFamily: "inherit",
-      button: {
-        backgroundColor: Color.white,
-        border: border,
-        marginLeft: "2px",
-        borderRadius: "2px",
-        color: Color.grayText,
-        height: "32px",
-        width: "32px",
-        "&:hover": `{
-            background-color: ${Color.hover} !important;
-          }`
-      }
+      color: Color.text,
+      fontStyle: FontSize.medium,
+      fontFamily: "inherit"
     },
     inline: {
       backgroundColor: Color.white,
@@ -55,7 +44,7 @@ export const theme = {
       borderTopRightRadius: "4px",
       borderBottomLeftRadius: "4px",
       borderBottomRightRadius: "4px",
-      color: Color.grayText,
+      color: Color.text,
       fontStyle: "inherit",
       fontFamily: "inherit",
       button: {
@@ -63,7 +52,7 @@ export const theme = {
         borderRadius: "2px",
         border: none,
         marginLeft: "2px",
-        color: Color.grayText,
+        color: Color.text,
         height: "26px",
         width: "26px",
         "&:hover": `{
@@ -73,27 +62,41 @@ export const theme = {
     }
   },
   button: {
+    backgroundColor: Color.white,
+    border: "none",
+    marginLeft: "2px",
+    marginRight: "0px",
+    marginTop: "0px",
+    marginBottom: "0px",
+    padding: 0,
+    borderRadius: "2px",
+    color: Color.text,
+    height: "28px",
+    width: "28px",
+    "&:hover": `{
+      background-color: ${Color.hover} !important;
+    }`,
     "&:selected": `{
       background-color: ${Color.selected} !important;
     }`
   },
   blockSelect: {
     backgroundColor: Color.white,
-    color: Color.grayText,
-    border: border,
+    color: Color.text,
+    border: none,
     borderRadius: "2px",
     boxShadow: "none",
-    fontSize: "16px",
-    height: "32px",
-    optionHeight: "48px",
-    buttonWidth: "120px",
-    width: "164px",
+    fontSize: FontSize.medium,
+    height: "28px",
+    optionHeight: "44px",
+    selectWidth: "112px",
+    dropdownWidth: "164px",
     "&:hover": { backgroundColor: Color.hover },
     "&:selected": { backgroundColor: Color.selected }
   },
   wrapper: {
     backgroundColor: Color.white,
-    color: Color.grayText,
+    color: Color.text,
     borderTop: border,
     borderBottom: border,
     borderRight: border,
@@ -120,6 +123,35 @@ export const theme = {
     marginInlineStart: "0px",
     marginInlinEnd: "0px",
     fontWeight: "bold"
+  },
+  icon: { fill: Color.text },
+  link: {
+    fontSize: FontSize.medium,
+    backgroundColor: Color.white,
+    color: Color.highlight,
+    "&:hover": `{
+      text-decoration: underline;
+    }`
+  },
+  input: {
+    border,
+    height: "20px",
+    margin: "4px 12px",
+    padding: "2px",
+    width: "180px",
+    backgroundColor: Color.white,
+    color: Color.text,
+    fontSize: FontSize.medium,
+    "&:focus": `{
+      border: 1px solid ${Color.highlight};
+      outline: none;
+      padding: ${({ theme }) => theme.input.padding};
+    }`
+  },
+  separator: {
+    backgroundColor: Color.lightBorder,
+    margin: "0px 4px;",
+    height: "24px;"
   }
 };
 

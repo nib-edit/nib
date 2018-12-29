@@ -36,8 +36,8 @@ class InlineToolbar extends Component {
     return (
       <div spellCheck={false}>
         <Editor
-          plugins="block inline"
-          toolbar={{ inline: "inline" }}
+          plugins="block inline link"
+          toolbar={{ inline: "inline link" }}
           onChange={this.onChange}
           defaultValue={defaultValue}
           theme={{

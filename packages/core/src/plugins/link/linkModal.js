@@ -1,9 +1,9 @@
 import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
 
-import { Button } from "nib-ui";
+import { Link, Input } from "nib-ui";
 import { linkPluginKey } from "./plugins";
-import { Color } from "../../common/color";
+import { Color } from "../../common/style_constants";
 
 class LinkModal extends PureComponent {
   constructor(props) {
@@ -61,7 +61,9 @@ class LinkModal extends PureComponent {
   };
 
   getSelectedText = () => {
-    const { state } = this.props.view;
+    const { view } = this.props;
+    if (!view) return "";
+    const { state } = view;
     const {
       selection: { $from, $to }
     } = state;
@@ -79,27 +81,23 @@ class LinkModal extends PureComponent {
     return (
       <LinkPopup ref={this.linkModalWrapper}>
         <div>
-          <InputWrapper>
-            <label htmlFor="title">Title</label>
-            <LinkInput
-              name="title"
-              onChange={this.updateValue}
-              autoFocus
-              value={title}
-              onKeyPress={this.handleKeyDown}
-            />
-          </InputWrapper>
-          <InputWrapper>
-            <label htmlFor="href">Href</label>
-            <LinkInput
-              name="href"
-              onChange={this.updateValue}
-              value={href}
-              onKeyPress={this.handleKeyDown}
-            />
-          </InputWrapper>
+          <Input
+            autoFocus
+            label="Title"
+            name="title"
+            onChange={this.updateValue}
+            onKeyPress={this.handleKeyDown}
+            value={title}
+          />
+          <Input
+            label="Href"
+            name="href"
+            onChange={this.updateValue}
+            onKeyPress={this.handleKeyDown}
+            value={href}
+          />
         </div>
-        <LinkButton onClick={this.addLink}>Apply</LinkButton>
+        <Link onClick={this.addLink}>Apply</Link>
       </LinkPopup>
     );
   }
@@ -115,27 +113,5 @@ const LinkPopup = styled.div`
   display: flex;
   padding: 5px 10px;
   position: absolute;
-`;
-
-const InputWrapper = styled.div`
-  align-items: center;
-  display: flex;
-`;
-
-const LinkInput = styled.input`
-  height: 20px;
-  margin: 4px 12px;
-  padding: 2px;
-  width: 180px;
-  &:focus {
-    outline: none;
-    border: 2px solid ${Color.inputFocus};
-  }
-`;
-
-const LinkButton = styled(Button)`
-  border-radius: 2px;
-  padding: 4px 8px;
-  font-size: 16px;
-  margin-bottom: 4px;
+  font-size: 14px;
 `;

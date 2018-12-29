@@ -6,11 +6,12 @@ import { blockPluginKey } from "./plugins";
 import { blockData as options } from "./blockData";
 
 class BlockMenu extends PureComponent {
-  changeBlockType = value => {
+  changeBlockType = option => {
     let attrs;
-    let blockName = value;
-    if (value !== "paragraph") {
-      attrs = { level: value.split("-")[1] };
+    const value = option.value;
+    let blockName = value.blockType;
+    if (value.blockType !== "paragraph") {
+      attrs = { level: value.blockType.split("-")[1] };
       blockName = "heading";
     }
     const { view: { state: editorState, dispatch } = {} } = this.props;

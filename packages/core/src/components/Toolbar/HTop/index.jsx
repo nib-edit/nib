@@ -1,20 +1,25 @@
 import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
 
+import { Separator } from "nib-ui";
 import { buildMenu, getPluginList } from "../../../helpers";
 
 export default class HTopToolbar extends PureComponent {
   render() {
     const { plugins, view, updateRef } = this.props;
     const options = buildMenu(getPluginList(plugins));
+    const optionSize = options.length;
     return (
       <Wrapper onMouseDown={e => e.preventDefault()}>
         {options.map((Option, index) => (
-          <Option
-            key={`menu-option-${index}`}
-            view={view}
-            updateRef={updateRef}
-          />
+          <React.Fragment key={`toolbar-option-${index}`}>
+            <Option
+              key={`menu-option-${index}`}
+              view={view}
+              updateRef={updateRef}
+            />
+            {index < optionSize - 1 && <Separator />}
+          </React.Fragment>
         ))}
       </Wrapper>
     );
@@ -44,18 +49,6 @@ const Wrapper = styled.div`
     theme.toolbar.htop.borderBottomLeftRadius};
 
   color: ${({ theme }) => theme.toolbar.htop.color};
-
-  & button {
-    margin-left: ${({ theme }) => theme.toolbar.htop.button.marginLeft};
-    border: ${({ theme }) => theme.toolbar.htop.button.border};
-    border-radius: ${({ theme }) => theme.toolbar.htop.button.borderRadius};
-    background-color: ${({ theme }) =>
-      theme.toolbar.htop.button.backgroundColor};
-    color: ${({ theme }) => theme.toolbar.htop.button.color};
-    height: ${({ theme }) => theme.toolbar.htop.button.height};
-    width: ${({ theme }) => theme.toolbar.htop.button.width};
-    :hover {
-      ${({ theme }) => theme.toolbar.htop.button["&:hover"]};
-    }
-  }
 `;
+
+// TODO: OPTION OF SHOWING LOGIC CAN BE REFACTORED
