@@ -21,3 +21,5 @@ const selMarkerPlugin = new Plugin({
 });
 
 export default [selMarkerPlugin];
+
+// todo: remove modal when editor blurs

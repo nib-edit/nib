@@ -109,9 +109,7 @@ const LinkPopup = styled.div`
   align-items: flex-end;
   background: white;
   border-radius: 4px;
-  border: 1px solid ${Color.border};
   display: flex;
   padding: 5px 10px;
-  position: absolute;
   font-size: 14px;
 `;

@@ -152,6 +152,20 @@ export const theme = {
     backgroundColor: Color.lightBorder,
     margin: "0px 4px;",
     height: "24px;"
+  },
+  modal: {
+    backgroundColor: Color.white,
+    borderBottom: border,
+    borderBottomLeftRadius: "2px",
+    borderBottomRightRadius: "2px",
+    borderColor: Color.border,
+    borderLeft: border,
+    borderRight: border,
+    borderTop: border,
+    borderTopLeftRadius: "2px",
+    borderTopRightRadius: "2px",
+    color: Color.text,
+    fontWeight: "600"
   }
 };
 
