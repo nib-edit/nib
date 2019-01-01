@@ -22,7 +22,8 @@ const StyledButton = styled.button`
   font-size: ${({ theme }) => theme.button.fontSize};
 
   :hover {
-    ${({ theme }) => theme.button["&:hover"]};
+    ${({ disabled, theme }) => (!disabled ? theme.button["&:hover"] : "")};
   }
   ${({ selected, theme }) => selected && theme.button["&:selected"]};
+  ${({ disabled, theme }) => disabled && theme.button["&:disabled"]};
 `;

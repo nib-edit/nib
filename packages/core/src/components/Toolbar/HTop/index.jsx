@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
 
 import { ToolbarSeparator } from "nib-ui";
-import { buildMenu, getPluginList } from "../../../helpers";
+import { buildMenu, getPluginList } from "../../../common";
 
 export default class HTopToolbar extends PureComponent {
   render() {

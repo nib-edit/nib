@@ -1,5 +1,6 @@
-import { Color, FontSize } from "../../common/style_constants";
+import { StyleConstants } from "../../common";
 
+const { Color, FontSize } = StyleConstants;
 const border = `1px solid ${Color.border}`;
 const inherit = "inherit";
 const none = "none";
@@ -19,7 +20,7 @@ export const theme = {
     borderTopRightRadius: "2px",
     height: "auto",
     width: "auto",
-    padding: "4px",
+    padding: zero,
     fontFamily: inherit,
     fontSize: FontSize.medium,
     fontStyle: inherit
@@ -35,9 +36,9 @@ export const theme = {
     borderBottomRightRadius: zero,
     borderTopLeftRadius: zero,
     borderTopRightRadius: zero,
-    height: "100%",
-    width: "100%",
-    padding: none,
+    height: "auto",
+    width: "auto",
+    padding: "4px",
     fontFamily: inherit,
     fontSize: FontSize.medium,
     fontStyle: inherit
@@ -57,6 +58,9 @@ export const theme = {
     }`,
     "&:selected": `{
       background-color: ${Color.selected};
+    }`,
+    "&:disabled": `{
+      opacity: ${StyleConstants.DisabledStyle.opacity};
     }`
   },
   blockSelect: {
@@ -168,4 +172,3 @@ export const updateTheme = (theme1, theme2) => {
 };
 
 // todo: user should be able to pass additional fields for styling
-// todo: check fields added in all components

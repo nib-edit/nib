@@ -5,14 +5,16 @@ import { linkPluginKey } from "./plugins";
 
 class LinkMenu extends PureComponent {
   showLinkToolbar = () => {
-    const { view: { state: editorState, dispatch } = {} } = this.props;
-    dispatch(editorState.tr.setMeta(linkPluginKey, "SHOW_LINK_TOOLBAR"));
+    const { view = {} } = this.props;
+    const { state, dispatch } = view;
+    if (!view.hasFocus) view.focus();
+    dispatch(state.tr.setMeta("SHOW_LINK_TOOLBAR", true));
   };
 
   isLinkMarkActive = () => {
-    const { view: { state: editorState } = {} } = this.props;
-    if (!editorState) return;
-    const pluginState = linkPluginKey.getState(editorState);
+    const { view: { state } = {} } = this.props;
+    if (!state) return;
+    const pluginState = linkPluginKey.getState(state);
     return pluginState && !!pluginState.link;
   };
 
@@ -21,7 +23,7 @@ class LinkMenu extends PureComponent {
       <Button
         name="link"
         onClick={this.showLinkToolbar}
-        selected={this.isLinkMarkActive()}
+        disabled={this.isLinkMarkActive()}
       >
         <Icons.Link />
       </Button>
@@ -29,4 +31,4 @@ class LinkMenu extends PureComponent {
   }
 }
 
-export default [LinkMenu];
+export default LinkMenu;

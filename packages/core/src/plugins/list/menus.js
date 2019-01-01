@@ -12,9 +12,9 @@ class ListMenu extends PureComponent {
   };
 
   getSelectedListType = () => {
-    const { view: { state: editorState } = {} } = this.props;
-    if (!editorState) return;
-    const pluginState = listPluginKey.getState(editorState);
+    const { view: { state } = {} } = this.props;
+    if (!state) return;
+    const pluginState = listPluginKey.getState(state);
     const selectedListType = pluginState && pluginState.selectedListType;
     return selectedListType && selectedListType.name;
   };
@@ -43,4 +43,4 @@ class ListMenu extends PureComponent {
   }
 }
 
-export default [ListMenu];
+export default ListMenu;

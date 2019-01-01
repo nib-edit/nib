@@ -1,12 +1,13 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { ThemeProvider } from "emotion-theming";
-
 import { Modal } from "nib-ui";
-import InnerEditor from "./editor";
+
 import Toolbar from "../Toolbar";
+import InnerEditor from "./editor";
 import { Wrapper } from "./style";
 import { theme, updateTheme } from "./theme";
+
 import LinkModal from "../../plugins/link/linkModal";
 import LinkEditModal from "../../plugins/link/modal";
 
@@ -45,11 +46,10 @@ export default class Editor extends Component {
       onChange
     } = this.props;
     const newTheme = updateTheme(theme, propsTheme);
-    const linkMarker = document.getElementsByClassName("nib-link-marker");
 
     return (
       <ThemeProvider theme={newTheme}>
-        <Wrapper>
+        <Wrapper id="nib-wrapper">
           {toolbar.htop && (
             <Toolbar.htop
               plugins={toolbar.htop}
@@ -74,9 +74,7 @@ export default class Editor extends Component {
               />
             </Modal>
           )}
-          <Modal marker={linkMarker && linkMarker.item && linkMarker.item(0)}>
-            <LinkModal view={view} />
-          </Modal>
+          <LinkModal view={view} updateRef={updateRef} />
           <LinkEditModal view={view} updateRef={updateRef} />
         </Wrapper>
       </ThemeProvider>

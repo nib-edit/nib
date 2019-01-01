@@ -29,4 +29,4 @@ class HistoryMenu extends PureComponent {
   }
 }
 
-export default [HistoryMenu];
+export default HistoryMenu;

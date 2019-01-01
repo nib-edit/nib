@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
 
-import { buildMenu, getPluginList } from "../../../helpers";
+import { buildMenu, getPluginList } from "../../../common";
 
 export default class InlineToolbar extends PureComponent {
   render() {
@@ -21,22 +21,6 @@ export default class InlineToolbar extends PureComponent {
   }
 }
 
-/**
- *       backgroundColor: Color.white,
-      color: Color.text,
-      borderBottom: border,
-      borderLeft: border,
-      borderRight: border,
-      borderTop: border,
-      borderBottomLeftRadius: "4px",
-      borderBottomRightRadius: "4px",
-      borderTopLeftRadius: "4px",
-      borderTopRightRadius: "4px",
-      fontFamily: inherit,
-      fontSize: FontSize.medium,
-      fontStyle: inherit
-
- */
 const Wrapper = styled.div`
   align-items: center;
   display: flex;

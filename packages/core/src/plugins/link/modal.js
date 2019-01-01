@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 import { TextSelection } from "prosemirror-state";
 import { Link, Input, Modal } from "nib-ui";
 import { linkPluginKey } from "./plugins";
-import { Color } from "../../common/style_constants";
 
 class LinkEditModal extends PureComponent {
   constructor(props) {
@@ -21,9 +20,9 @@ class LinkEditModal extends PureComponent {
   };
 
   getLink = () => {
-    const { view: { state: editorState } = {} } = this.props;
-    if (!editorState) return;
-    const pluginState = linkPluginKey.getState(editorState);
+    const { view: { state } = {} } = this.props;
+    if (!state) return;
+    const pluginState = linkPluginKey.getState(state);
     return pluginState && pluginState.link;
   };
 

@@ -1,7 +1,7 @@
 import { EditorState } from "prosemirror-state";
 
 import { buildKeymap } from "./keymap";
-import { buildPlugins } from "./plugin";
+import { getProsemirrorPlugins } from "./plugin";
 import { buildSchema } from "./schema";
 
 const defaultContent = {
@@ -13,7 +13,7 @@ export const buildEditorState = (plugins, content) =>
   EditorState.fromJSON(
     {
       schema: buildSchema(plugins),
-      plugins: [buildKeymap(plugins), ...buildPlugins(plugins)]
+      plugins: [buildKeymap(plugins), ...getProsemirrorPlugins(plugins)]
     },
     {
       doc: content || defaultContent,

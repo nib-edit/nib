@@ -1,4 +1,4 @@
-export const Color = {
+const Color = {
   border: "#9E9E9E",
   focusHighlight: "#1C62B9",
   hover: "#E0E0E0",
@@ -8,6 +8,11 @@ export const Color = {
   white: "#FFFFFF"
 };
 
-export const FontSize = {
+const FontSize = {
   medium: "14px"
 };
+
+const DisabledStyle = {
+  opacity: 0.5
+};
+export default { Color, FontSize, DisabledStyle };

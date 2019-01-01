@@ -2,14 +2,14 @@ import { Plugin, PluginKey } from "prosemirror-state";
 
 export const inlinePluginKey = new PluginKey("inline");
 
-const getActiveMarks = editorState => {
-  const { $from, $to } = editorState.selection;
+const getActiveMarks = state => {
+  const { $from, $to } = state.selection;
   let activeMarks = [];
-  const storedMarks = editorState.storedMarks;
+  const storedMarks = state.storedMarks;
   if (storedMarks) {
     activeMarks = storedMarks.map(mark => mark.type.name);
   }
-  editorState.doc.nodesBetween($from.pos, $to.pos, node => {
+  state.doc.nodesBetween($from.pos, $to.pos, node => {
     if (node.marks) {
       activeMarks = [...activeMarks, ...node.marks.map(mark => mark.type.name)];
     }
@@ -43,4 +43,4 @@ const inlinePlugin = new Plugin({
   }
 });
 
-export default [inlinePlugin];
+export default inlinePlugin;

@@ -57,12 +57,33 @@ export default class Modal extends Component {
     });
   }
 
+  onMouseDown = () => {
+    this.active = true;
+  };
+
+  onKeyDown = e => {
+    if (e.key === "Tab") this.active = true;
+  };
+
+  onBlur = () => {
+    if (this.active) this.active = false;
+    else this.props.onBlur();
+  };
+
   render() {
-    const { marker, children } = this.props;
+    const { marker, children, onBlur } = this.props;
     const { position } = this.state;
     if (!marker) return null;
     return (
-      <Wrapper ref={this.wrapperRef} marker={marker} style={position}>
+      <Wrapper
+        marker={marker}
+        onBlur={this.onBlur}
+        onKeyDown={this.onKeyDown}
+        onMouseDown={this.onMouseDown}
+        ref={this.wrapperRef}
+        style={position}
+        tabIndex={-1}
+      >
         <Arrow />
         {children}
       </Wrapper>
@@ -89,6 +110,10 @@ const Wrapper = styled.div`
   border-top-right-radius: ${({ theme }) => theme.modal.borderTopLeftRadius};
 
   font-weight: ${({ theme }) => theme.modal.fontWeight};
+
+  :focus {
+    outline: none;
+  }
 `;
 
 const Arrow = styled.div`

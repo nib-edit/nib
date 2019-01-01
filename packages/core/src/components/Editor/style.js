@@ -14,9 +14,9 @@ export const Wrapper = styled.div`
     theme.wrapper.borderBottomRightRadius};
   border-top-left-radius: ${({ theme }) => theme.wrapper.borderTopLeftRadius};
   border-top-right-radius: ${({ theme }) => theme.wrapper.borderTopRightRadius};
-  height: ${({ theme }) => theme.editor.height};
-  width: ${({ theme }) => theme.editor.width};
-  padding: ${({ theme }) => theme.editor.padding};
+  height: ${({ theme }) => theme.wrapper.height};
+  width: ${({ theme }) => theme.wrapper.width};
+  padding: ${({ theme }) => theme.wrapper.padding};
   font-style: ${({ theme }) => theme.wrapper.fontStyle};
   font-family: ${({ theme }) => theme.wrapper.fontFamily};
 `;

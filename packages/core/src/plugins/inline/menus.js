@@ -7,24 +7,24 @@ import { inlinePluginKey } from "./plugins";
 class InlineMenu extends PureComponent {
   toggleMarkofType = evt => {
     const markName = evt.currentTarget.getAttribute("name");
-    const { view: { state: editorState, dispatch } = {} } = this.props;
-    const markType = editorState.schema.marks[markName];
-    if (editorState.selection.empty) {
-      const marks = editorState.selection.$to.marks();
+    const { view: { state, dispatch } = {} } = this.props;
+    const markType = state.schema.marks[markName];
+    if (state.selection.empty) {
+      const marks = state.selection.$to.marks();
       if (marks && marks.some(mark => mark.type === markType)) {
-        dispatch(editorState.tr.removeStoredMark(markType));
+        dispatch(state.tr.removeStoredMark(markType));
       } else {
-        dispatch(editorState.tr.addStoredMark(markType.create()));
+        dispatch(state.tr.addStoredMark(markType.create()));
       }
     } else {
-      toggleMark(markType)(editorState, dispatch);
+      toggleMark(markType)(state, dispatch);
     }
   };
 
   getActiveMarks = () => {
-    const { view: { state: editorState } = {} } = this.props;
-    if (!editorState) return [];
-    const pluginState = inlinePluginKey.getState(editorState);
+    const { view: { state } = {} } = this.props;
+    if (!state) return [];
+    const pluginState = inlinePluginKey.getState(state);
     return pluginState && pluginState.activeMarks;
   };
 
@@ -60,4 +60,4 @@ class InlineMenu extends PureComponent {
   }
 }
 
-export default [InlineMenu];
+export default InlineMenu;
