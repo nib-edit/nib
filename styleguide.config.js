@@ -34,7 +34,7 @@ module.exports = {
   ],
   exampleMode: "hide",
   template: {
-    favicon: "/pen.png"
+    favicon: "/Nib/pen.png"
   },
   pagePerSection: true,
   theme: {
