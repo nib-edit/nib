@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { toggleMark } from "prosemirror-commands";
-import { Button, Icons } from "nib-ui";
+import { Button, Icons, ButtonSeparator } from "nib-ui";
 
 import { inlinePluginKey } from "./plugins";
 
@@ -39,6 +39,7 @@ class InlineMenu extends PureComponent {
         >
           <Icons.Bold />
         </Button>
+        <ButtonSeparator />
         <Button
           name="em"
           onClick={this.toggleMarkofType}
@@ -46,6 +47,7 @@ class InlineMenu extends PureComponent {
         >
           <Icons.Italic />
         </Button>
+        <ButtonSeparator />
         <Button
           name="underline"
           onClick={this.toggleMarkofType}

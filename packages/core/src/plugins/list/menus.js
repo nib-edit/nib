@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { toggleListCmd } from "./commands";
-import { Button, Icons } from "nib-ui";
+import { Button, Icons, ButtonSeparator } from "nib-ui";
 
 import { listPluginKey } from "./plugins";
 
@@ -30,6 +30,7 @@ class ListMenu extends PureComponent {
         >
           <Icons.ListBulleted />
         </Button>
+        <ButtonSeparator />
         <Button
           name="orderedList"
           onClick={this.toggleList}
