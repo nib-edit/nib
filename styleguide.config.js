@@ -2,6 +2,7 @@ const path = require("path");
 
 module.exports = {
   title: "Nib",
+  assetsDir: "packages/docs/styleguide",
   sections: [
     {
       name: "Introduction",
@@ -33,7 +34,7 @@ module.exports = {
   ],
   exampleMode: "hide",
   template: {
-    favicon: "packages/docs/styleguide/pen.png"
+    favicon: "/pen.png"
   },
   pagePerSection: true,
   theme: {
