@@ -4,4 +4,7 @@ export const getProsemirrorPlugins = plugins =>
   plugins.map(p => p && p.plugins);
 
 export const getPluginList = plugins =>
-  plugins.split(" ").map(key => Plugins[key]);
+  plugins
+    .trim()
+    .split(" ")
+    .map(key => Plugins[key]);
