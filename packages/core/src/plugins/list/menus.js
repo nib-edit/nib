@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { toggleListCmd } from "./commands";
-import { Button, Icons } from "nib-ui";
+import { Button, Icons, ButtonSeparator } from "nib-ui";
 
 import { listPluginKey } from "./plugins";
 
@@ -12,9 +12,9 @@ class ListMenu extends PureComponent {
   };
 
   getSelectedListType = () => {
-    const { view: { state: editorState } = {} } = this.props;
-    if (!editorState) return;
-    const pluginState = listPluginKey.getState(editorState);
+    const { view: { state } = {} } = this.props;
+    if (!state) return;
+    const pluginState = listPluginKey.getState(state);
     const selectedListType = pluginState && pluginState.selectedListType;
     return selectedListType && selectedListType.name;
   };
@@ -30,6 +30,7 @@ class ListMenu extends PureComponent {
         >
           <Icons.ListBulleted />
         </Button>
+        <ButtonSeparator />
         <Button
           name="orderedList"
           onClick={this.toggleList}
@@ -42,4 +43,4 @@ class ListMenu extends PureComponent {
   }
 }
 
-export default [ListMenu];
+export default ListMenu;

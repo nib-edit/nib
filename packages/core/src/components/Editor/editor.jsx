@@ -2,12 +2,12 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { EditorView } from "prosemirror-view";
 
-import { StyledEditor } from "./style";
 import {
   buildEditorState,
   updateEditorState,
   getPluginList
-} from "../../helpers";
+} from "../../common";
+import { StyledEditor } from "./style";
 
 export default class Editor extends Component {
   constructor(props) {
@@ -27,12 +27,12 @@ export default class Editor extends Component {
 
   componentDidMount() {
     const { updateView, defaultValue, onChange } = this.props;
-    var editorState = buildEditorState(
-      getPluginList(`${this.props.plugins} selMarker`),
+    var state = buildEditorState(
+      getPluginList(`${this.props.plugins} selMarker common`),
       defaultValue
     );
     const view = new EditorView(this.editorRef.current, {
-      state: editorState,
+      state,
       dispatchTransaction: tr => {
         updateEditorState(view, tr);
         updateView(view);

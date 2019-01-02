@@ -14,15 +14,15 @@ class BlockMenu extends PureComponent {
       attrs = { level: value.blockType.split("-")[1] };
       blockName = "heading";
     }
-    const { view: { state: editorState, dispatch } = {} } = this.props;
-    const nodeType = editorState.schema.nodes[blockName];
-    setBlockType(nodeType, attrs)(editorState, dispatch);
+    const { view: { state, dispatch } = {} } = this.props;
+    const nodeType = state.schema.nodes[blockName];
+    setBlockType(nodeType, attrs)(state, dispatch);
   };
 
   getSelectedBlock = () => {
-    const { view: { state: editorState } = {} } = this.props;
-    if (!editorState) return;
-    const pluginState = blockPluginKey.getState(editorState);
+    const { view: { state } = {} } = this.props;
+    if (!state) return;
+    const pluginState = blockPluginKey.getState(state);
     const selectedBlock = pluginState && pluginState.selectedBlock;
     if (selectedBlock) {
       const { type, attrs } = selectedBlock;
@@ -49,6 +49,6 @@ class BlockMenu extends PureComponent {
   }
 }
 
-export default [BlockMenu];
+export default BlockMenu;
 
-// future: add option for display of options in buttons and not dropdown
+// todo: add option for display of options in buttons and not dropdown

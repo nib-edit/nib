@@ -47,4 +47,4 @@ const blockPlugin = new Plugin({
   }
 });
 
-export default [blockPlugin];
+export default blockPlugin;

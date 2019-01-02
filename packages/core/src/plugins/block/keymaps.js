@@ -1,23 +1,23 @@
 import { setBlockType } from "prosemirror-commands";
 
-const changeBlockType = (blockTypeName, attrs) => (editorState, dispatch) => {
-  const blockType = editorState.schema.nodes[blockTypeName];
-  return setBlockType(blockType, attrs)(editorState, dispatch);
+const changeBlockType = (blockTypeName, attrs) => (state, dispatch) => {
+  const blockType = state.schema.nodes[blockTypeName];
+  return setBlockType(blockType, attrs)(state, dispatch);
 };
 
 export default {
-  "mod-alt-0": (editorState, dispatch) =>
-    changeBlockType("paragraph")(editorState, dispatch),
-  "mod-alt-1": (editorState, dispatch) =>
-    changeBlockType("heading", { level: 1 })(editorState, dispatch),
-  "mod-alt-2": (editorState, dispatch) =>
-    changeBlockType("heading", { level: 2 })(editorState, dispatch),
-  "mod-alt-3": (editorState, dispatch) =>
-    changeBlockType("heading", { level: 3 })(editorState, dispatch),
-  "mod-alt-4": (editorState, dispatch) =>
-    changeBlockType("heading", { level: 4 })(editorState, dispatch),
-  "mod-alt-5": (editorState, dispatch) =>
-    changeBlockType("heading", { level: 5 })(editorState, dispatch),
-  "mod-alt-6": (editorState, dispatch) =>
-    changeBlockType("heading", { level: 6 })(editorState, dispatch)
+  "mod-alt-0": (state, dispatch) =>
+    changeBlockType("paragraph")(state, dispatch),
+  "mod-alt-1": (state, dispatch) =>
+    changeBlockType("heading", { level: 1 })(state, dispatch),
+  "mod-alt-2": (state, dispatch) =>
+    changeBlockType("heading", { level: 2 })(state, dispatch),
+  "mod-alt-3": (state, dispatch) =>
+    changeBlockType("heading", { level: 3 })(state, dispatch),
+  "mod-alt-4": (state, dispatch) =>
+    changeBlockType("heading", { level: 4 })(state, dispatch),
+  "mod-alt-5": (state, dispatch) =>
+    changeBlockType("heading", { level: 5 })(state, dispatch),
+  "mod-alt-6": (state, dispatch) =>
+    changeBlockType("heading", { level: 6 })(state, dispatch)
 };

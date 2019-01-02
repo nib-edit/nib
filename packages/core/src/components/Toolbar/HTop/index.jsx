@@ -1,8 +1,8 @@
 import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
 
-import { Separator } from "nib-ui";
-import { buildMenu, getPluginList } from "../../../helpers";
+import { ToolbarSeparator } from "nib-ui";
+import { buildMenu, getPluginList } from "../../../common";
 
 export default class HTopToolbar extends PureComponent {
   render() {
@@ -18,7 +18,7 @@ export default class HTopToolbar extends PureComponent {
               view={view}
               updateRef={updateRef}
             />
-            {index < optionSize - 1 && <Separator />}
+            {index < optionSize - 1 && <ToolbarSeparator />}
           </React.Fragment>
         ))}
       </Wrapper>
@@ -31,24 +31,25 @@ const Wrapper = styled.div`
   display: flex;
   padding: 4px;
   background-color: ${({ theme }) => theme.toolbar.htop.backgroundColor};
-  font-style: ${({ theme }) => theme.toolbar.htop.fontStyle};
-  font-family: ${({ theme }) => theme.toolbar.htop.fontFamily};
+  color: ${({ theme }) => theme.toolbar.htop.color};
 
   border-bottom: ${({ theme }) => theme.toolbar.htop.borderBottom};
   border-left: ${({ theme }) => theme.toolbar.htop.borderLeft};
   border-right: ${({ theme }) => theme.toolbar.htop.borderRight};
   border-top: ${({ theme }) => theme.toolbar.htop.borderTop};
 
-  border-top-left-radius: ${({ theme }) =>
-    theme.toolbar.htop.borderTopLeftRadius};
-  border-top-right-radius: ${({ theme }) =>
-    theme.toolbar.htop.borderTopLeftRadius};
   border-bottom-left-radius: ${({ theme }) =>
     theme.toolbar.htop.borderBottomLeftRadius};
   border-bottom-right-radius: ${({ theme }) =>
     theme.toolbar.htop.borderBottomLeftRadius};
+  border-top-left-radius: ${({ theme }) =>
+    theme.toolbar.htop.borderTopLeftRadius};
+  border-top-right-radius: ${({ theme }) =>
+    theme.toolbar.htop.borderTopLeftRadius};
 
-  color: ${({ theme }) => theme.toolbar.htop.color};
+  font-size: ${({ theme }) => theme.toolbar.htop.fontSize};
+  font-style: ${({ theme }) => theme.toolbar.htop.fontStyle};
+  font-family: ${({ theme }) => theme.toolbar.htop.fontFamily};
 `;
 
 // TODO: OPTION OF SHOWING LOGIC CAN BE REFACTORED

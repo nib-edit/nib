@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
 
-import { buildMenu, getPluginList } from "../../../helpers";
+import { buildMenu, getPluginList } from "../../../common";
 
 export default class InlineToolbar extends PureComponent {
   render() {
@@ -24,13 +24,28 @@ export default class InlineToolbar extends PureComponent {
 const Wrapper = styled.div`
   align-items: center;
   display: flex;
-  padding: 2px;
   position: relative;
-  border-radius: 2px;
 
   background-color: ${({ theme }) => theme.toolbar.inline.backgroundColor};
+  color: ${({ theme }) => theme.toolbar.inline.color};
+
+  border-bottom: ${({ theme }) => theme.toolbar.inline.borderBottom};
+  border-left: ${({ theme }) => theme.toolbar.inline.borderLeft};
+  border-right: ${({ theme }) => theme.toolbar.inline.borderRight};
+  border-top: ${({ theme }) => theme.toolbar.inline.borderTop};
+
+  border-bottom-left-radius: ${({ theme }) =>
+    theme.toolbar.inline.borderBottomLeftRadius};
+  border-bottom-right-radius: ${({ theme }) =>
+    theme.toolbar.inline.borderBottomLeftRadius};
+  border-top-left-radius: ${({ theme }) =>
+    theme.toolbar.inline.borderTopLeftRadius};
+  border-top-right-radius: ${({ theme }) =>
+    theme.toolbar.inline.borderTopLeftRadius};
+
+  padding: ${({ theme }) => theme.toolbar.inline.padding};
+
+  font-size: ${({ theme }) => theme.toolbar.inline.fontSize};
   font-style: ${({ theme }) => theme.toolbar.inline.fontStyle};
   font-family: ${({ theme }) => theme.toolbar.inline.fontFamily};
-
-  color: ${({ theme }) => theme.toolbar.inline.color};
 `;

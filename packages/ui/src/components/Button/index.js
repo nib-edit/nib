@@ -5,25 +5,25 @@ export default props => <StyledButton {...props} />;
 
 const StyledButton = styled.button`
   align-items: center;
+  cursor: pointer;
   display: flex;
   justify-content: center;
 
-  border-radius: ${({ theme }) => theme.button.borderRadius};
-  border: ${({ theme }) => theme.button.border};
-  height: ${({ theme }) => theme.button.height};
-  margin-bottom: ${({ theme }) => theme.button.marginLeft};
-  margin-left: ${({ theme }) => theme.button.marginLeft};
-  margin-right: ${({ theme }) => theme.button.marginLeft};
-  margin-top: ${({ theme }) => theme.button.marginLeft};
-  padding: ${({ theme }) => theme.button.padding};
-  width: ${({ theme }) => theme.button.width};
-
   background-color: ${({ theme }) => theme.button.backgroundColor};
   color: ${({ theme }) => theme.button.color};
-  cursor: pointer;
+
+  border: ${({ theme }) => theme.button.border};
+  border-radius: ${({ theme }) => theme.button.borderRadius};
+  height: ${({ theme }) => theme.button.height};
+  width: ${({ theme }) => theme.button.width};
+  margin: ${({ theme }) => theme.button.margin};
+  padding: ${({ theme }) => theme.button.padding};
+
+  font-size: ${({ theme }) => theme.button.fontSize};
 
   :hover {
-    ${({ theme }) => theme.button["&:hover"]};
+    ${({ disabled, theme }) => (!disabled ? theme.button["&:hover"] : "")};
   }
   ${({ selected, theme }) => selected && theme.button["&:selected"]};
+  ${({ disabled, theme }) => disabled && theme.button["&:disabled"]};
 `;

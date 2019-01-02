@@ -28,4 +28,4 @@ const listPlugin = new Plugin({
   }
 });
 
-export default [listPlugin];
+export default listPlugin;

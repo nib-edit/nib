@@ -1,6 +1,8 @@
 import { Plugin, PluginKey } from "prosemirror-state";
 import { DecorationSet, Decoration } from "prosemirror-view";
 
+import { commonPluginKey } from "../common/plugins";
+
 export const selMarkerPluginKey = new PluginKey("sel-marker");
 
 const selMarkerPlugin = new Plugin({
@@ -8,7 +10,8 @@ const selMarkerPlugin = new Plugin({
 
   props: {
     decorations(state) {
-      if (state.selection.empty) return;
+      const { editorHasFocus } = state && commonPluginKey.getState(state);
+      if (state.selection.empty || !editorHasFocus) return;
       const { $from, $to } = state.selection;
       return DecorationSet.create(state.doc, [
         Decoration.inline($from.pos, $to.pos, {
@@ -20,6 +23,4 @@ const selMarkerPlugin = new Plugin({
   }
 });
 
-export default [selMarkerPlugin];
-
-// todo: remove modal when editor blurs
+export default selMarkerPlugin;

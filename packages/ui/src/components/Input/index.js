@@ -18,13 +18,13 @@ const InputWrapper = styled.div`
 
 const StyledInput = styled.input`
   background-color: ${({ theme }) => theme.input.backgroundColor};
-  border: ${({ theme }) => theme.input.border};
   color: ${({ theme }) => theme.input.color};
-  font-size: ${({ theme }) => theme.input.fontSize};
+  border: ${({ theme }) => theme.input.border};
   height: ${({ theme }) => theme.input.height};
+  width: ${({ theme }) => theme.input.width};
   margin: ${({ theme }) => theme.input.margin};
   padding: ${({ theme }) => theme.input.padding};
-  width: ${({ theme }) => theme.input.width};
+  font-size: ${({ theme }) => theme.input.fontSize};
   &:focus {
     ${({ theme }) => theme.input["&:focus"]};
   }

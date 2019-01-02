@@ -25,17 +25,17 @@ export const toggleListCmd = (view, listTypeName) => {
   return wrapInList(nodes[listTypeName])(state, dispatch);
 };
 
-export const splitListItemCmd = () => (editorState, dispatch) => {
+export const splitListItemCmd = () => (state, dispatch) => {
   const {
     selection: { $anchor },
     schema: { nodes }
-  } = editorState;
+  } = state;
   const currentNode = $anchor.node($anchor.depth - 1);
   if (currentNode.type === nodes.listItem) {
     if (currentNode.textContent.length > 0) {
-      return splitListItem(nodes.listItem)(editorState, dispatch);
+      return splitListItem(nodes.listItem)(state, dispatch);
     } else {
-      return liftListItem(nodes.listItem)(editorState, dispatch);
+      return liftListItem(nodes.listItem)(state, dispatch);
     }
   }
   return false;

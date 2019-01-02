@@ -1,9 +1,7 @@
 import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
 
-import { Link, Input } from "nib-ui";
-import { linkPluginKey } from "./plugins";
-import { Color } from "../../common/style_constants";
+import { Link, Input, Modal } from "nib-ui";
 
 class LinkModal extends PureComponent {
   constructor(props) {
@@ -15,14 +13,6 @@ class LinkModal extends PureComponent {
     };
     this.linkModalWrapper = React.createRef();
   }
-
-  componentWillMount = () => {
-    window.addEventListener("mousedown", this.hideModal);
-  };
-
-  componentWillUnmount = () => {
-    window.removeEventListener("mousedown", this.hideModal);
-  };
 
   updateValue = evt => {
     this.setState({
@@ -47,17 +37,9 @@ class LinkModal extends PureComponent {
           $from.pos + title.length,
           state.schema.marks.link.create({ href })
         )
-        .setMeta(linkPluginKey, "HIDE_LINK_TOOLBAR")
+        .setMeta("SHOW_LINK_TOOLBAR", false)
     );
     view.focus();
-  };
-
-  hideModal = evt => {
-    const node = this.linkModalWrapper.current;
-    if (!node.contains(evt.target)) {
-      const { state, dispatch } = this.props.view;
-      dispatch(state.tr.setMeta(linkPluginKey, "HIDE_LINK_TOOLBAR"));
-    }
   };
 
   getSelectedText = () => {
@@ -76,29 +58,41 @@ class LinkModal extends PureComponent {
     }
   };
 
+  hideModal = () => {
+    const { view } = this.props;
+    const { state, dispatch } = view;
+    dispatch(state.tr.setMeta("SHOW_LINK_TOOLBAR", false));
+  };
+
   render() {
+    const linkMarker = document.getElementsByClassName("nib-link-marker");
     const { title, href } = this.state;
     return (
-      <LinkPopup ref={this.linkModalWrapper}>
-        <div>
-          <Input
-            autoFocus
-            label="Title"
-            name="title"
-            onChange={this.updateValue}
-            onKeyPress={this.handleKeyDown}
-            value={title}
-          />
-          <Input
-            label="Href"
-            name="href"
-            onChange={this.updateValue}
-            onKeyPress={this.handleKeyDown}
-            value={href}
-          />
-        </div>
-        <Link onClick={this.addLink}>Apply</Link>
-      </LinkPopup>
+      <Modal
+        marker={linkMarker && linkMarker.item && linkMarker.item(0)}
+        onBlur={this.hideModal}
+      >
+        <LinkPopup ref={this.linkModalWrapper}>
+          <div>
+            <Input
+              autoFocus
+              label="Title"
+              name="title"
+              onChange={this.updateValue}
+              onKeyPress={this.handleKeyDown}
+              value={title}
+            />
+            <Input
+              label="Href"
+              name="href"
+              onChange={this.updateValue}
+              onKeyPress={this.handleKeyDown}
+              value={href}
+            />
+          </div>
+          <Link onClick={this.addLink}>Apply</Link>
+        </LinkPopup>
+      </Modal>
     );
   }
 }
@@ -113,3 +107,5 @@ const LinkPopup = styled.div`
   padding: 5px 10px;
   font-size: 14px;
 `;
+
+// todo: apply link above should be tab-able

@@ -57,12 +57,33 @@ export default class Modal extends Component {
     });
   }
 
+  onMouseDown = () => {
+    this.active = true;
+  };
+
+  onKeyDown = e => {
+    if (e.key === "Tab") this.active = true;
+  };
+
+  onBlur = () => {
+    if (this.active) this.active = false;
+    else this.props.onBlur();
+  };
+
   render() {
-    const { marker, children } = this.props;
+    const { marker, children, onBlur } = this.props;
     const { position } = this.state;
     if (!marker) return null;
     return (
-      <Wrapper ref={this.wrapperRef} marker={marker} style={position}>
+      <Wrapper
+        marker={marker}
+        onBlur={this.onBlur}
+        onKeyDown={this.onKeyDown}
+        onMouseDown={this.onMouseDown}
+        ref={this.wrapperRef}
+        style={position}
+        tabIndex={-1}
+      >
         <Arrow />
         {children}
       </Wrapper>
@@ -72,19 +93,27 @@ export default class Modal extends Component {
 
 const Wrapper = styled.div`
   position: absolute;
-  font-weight: ${({ theme }) => theme.modal.fontWeight};
+
+  background-color: ${({ theme }) => theme.modal.backgroundColor};
+  color: ${({ theme }) => theme.modal.color};
 
   border-bottom: ${({ theme }) => theme.modal.borderBottom};
   border-left: ${({ theme }) => theme.modal.borderLeft};
   border-right: ${({ theme }) => theme.modal.borderRight};
   border-top: ${({ theme }) => theme.modal.borderTop};
 
-  border-top-left-radius: ${({ theme }) => theme.modal.borderTopLeftRadius};
-  border-top-right-radius: ${({ theme }) => theme.modal.borderTopLeftRadius};
   border-bottom-left-radius: ${({ theme }) =>
     theme.modal.borderBottomLeftRadius};
   border-bottom-right-radius: ${({ theme }) =>
     theme.modal.borderBottomLeftRadius};
+  border-top-left-radius: ${({ theme }) => theme.modal.borderTopLeftRadius};
+  border-top-right-radius: ${({ theme }) => theme.modal.borderTopLeftRadius};
+
+  font-weight: ${({ theme }) => theme.modal.fontWeight};
+
+  :focus {
+    outline: none;
+  }
 `;
 
 const Arrow = styled.div`
@@ -93,7 +122,7 @@ const Arrow = styled.div`
   left: calc(50% - 4px);
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
-  border-bottom: 6px solid ${({ theme }) => theme.modal.borderColor};
+  border-bottom: 6px solid ${({ theme }) => theme.modal.arrowBorderColor};
   &:after,
   &:before {
     border: solid transparent;
@@ -101,7 +130,7 @@ const Arrow = styled.div`
     position: absolute;
   }
   &:after {
-    border-bottom-color: ${({ theme }) => theme.modal.backgroundColor};
+    border-bottom-color: ${({ theme }) => theme.modal.arrowBackgroundColor};
     border-width: 6px;
     margin-top: -5px;
     left: -6px;

@@ -1,9 +1,7 @@
-import { linkPluginKey } from "./plugins";
-
-const showLinkToolbar = () => (editorState, dispatch) => {
-  dispatch(editorState.tr.setMeta(linkPluginKey, "SHOW_LINK_TOOLBAR"));
+const showLinkToolbar = () => (state, dispatch) => {
+  dispatch(state.tr.setMeta("SHOW_LINK_TOOLBAR", true));
 };
 
 export default {
-  "mod-k": (editorState, dispatch) => showLinkToolbar()(editorState, dispatch)
+  "mod-k": (state, dispatch) => showLinkToolbar()(state, dispatch)
 };

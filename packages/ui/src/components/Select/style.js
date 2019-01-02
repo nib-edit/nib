@@ -21,10 +21,10 @@ export const getSelectStyles = themeStyle => ({
       backgroundColor: themeStyle.backgroundColor,
       border: themeStyle.border,
       borderRadius: themeStyle.borderRadius,
-      boxShadow: themeStyle.boxShadow,
+      boxShadow: "none",
       height: themeStyle.height,
       minHeight: themeStyle.height,
-      width: themeStyle.selectWidth,
+      width: themeStyle.width,
       "&:hover": themeStyle["&:hover"]
     },
     state => ({
@@ -42,17 +42,15 @@ export const getSelectStyles = themeStyle => ({
     {
       alignItems: "center",
       display: "flex",
-      padding: "0 8px",
       color: themeStyle.color,
       height: themeStyle.optionHeight,
       minHeight: themeStyle.optionHeight,
+      padding: "0 8px",
       "&:hover": themeStyle["&:hover"]
     },
     state => ({
       ...(state.isSelected ? themeStyle["&:selected"] : {})
     })
   ),
-  menu: getStyles({
-    width: themeStyle.dropdownWidth
-  })
+  menu: getStyles({ width: themeStyle.dropdownWidth })
 });
