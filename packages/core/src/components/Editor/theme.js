@@ -80,7 +80,7 @@ export const theme = {
   link: {
     backgroundColor: Color.white,
     color: Color.highlight,
-    fontSize: FontSize.medium,
+    fontSize: FontSize.small,
     "&:hover": `{
       text-decoration: underline;
     }`
@@ -89,7 +89,7 @@ export const theme = {
     backgroundColor: Color.white,
     color: Color.text,
     border,
-    margin: "4px 12px",
+    margin: "4px 8px",
     padding: "2px",
     height: "20px",
     width: "180px",

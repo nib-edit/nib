@@ -31,8 +31,11 @@ const getPosition = (marker, modalElm) => {
   if (left < 0) left = 0;
   else if (left + modalWidth > markerParentDim.width)
     left = markerParentDim.width - modalWidth;
-
-  let top = marker.offsetTop + markerDim.height + ARROW_HEIGHT;
+  console.log("***", marker.clientHeight, marker.parentElement.clientHeight);
+  let top =
+    marker.offsetTop +
+    (marker.clientHeight || marker.parentElement.clientHeight) +
+    ARROW_HEIGHT;
 
   return { top, left };
 };
@@ -40,6 +43,22 @@ const getPosition = (marker, modalElm) => {
 export default class Modal extends Component {
   wrapperRef = React.createRef();
   state = { position: {} };
+
+  componentDidMount = () => {
+    window.addEventListener("mousedown", this.handleMouseDown);
+  };
+
+  handleMouseDown = () => {
+    if (
+      this.wrapperRef.current &&
+      !this.wrapperRef.current.contains(event.target)
+    )
+      this.props.closeModal();
+  };
+
+  componentWillUnmount = () => {
+    window.removeEventListener("mousedown", this.handleMouseDown);
+  };
 
   componentDidUpdate() {
     const { marker } = this.props;
@@ -65,18 +84,24 @@ export default class Modal extends Component {
     if (e.key === "Tab") this.active = true;
   };
 
+  onFocus = () => {
+    if (this.active) this.active = false;
+  };
+
   onBlur = () => {
     if (this.active) this.active = false;
-    else this.props.onBlur();
+    else this.props.closeModal();
   };
 
   render() {
-    const { marker, children, onBlur } = this.props;
+    const { marker, children } = this.props;
     const { position } = this.state;
     if (!marker) return null;
+
     return (
       <Wrapper
         marker={marker}
+        onFocus={this.onFocus}
         onBlur={this.onBlur}
         onKeyDown={this.onKeyDown}
         onMouseDown={this.onMouseDown}

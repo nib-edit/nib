@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
 import { TextSelection } from "prosemirror-state";
-import { Link, Input, Modal } from "nib-ui";
+import { Link, Input, Modal, Separator } from "nib-ui";
 import { linkPluginKey } from "./plugins";
 
 class LinkEditModal extends PureComponent {
@@ -57,13 +57,28 @@ class LinkEditModal extends PureComponent {
     const { state, dispatch } = view;
     dispatch(state.tr.removeMark(link.from, link.to, state.schema.marks.link));
     view.focus();
+    this.closeModal();
+  };
+
+  closeModal = () => {
+    const { view } = this.props;
+    const { state, dispatch } = view;
+    dispatch(state.tr.setMeta("SHOW_EDIT_LINK_TOOLBAR", false));
+    this.setState({
+      href: ""
+    });
   };
 
   render() {
     const link = this.getLink();
     if (!link) return null;
+    const linkMarker = document.getElementsByClassName("nib-edit-link-marker");
+
     return (
-      <Modal marker={this.getActiveLinkMark()}>
+      <Modal
+        marker={linkMarker && linkMarker.item && linkMarker.item(0)}
+        closeModal={this.closeModal}
+      >
         <LinkPopup>
           <label htmlFor="href">Href</label>
           <Input
@@ -72,6 +87,7 @@ class LinkEditModal extends PureComponent {
             defaultValue={link.href}
           />
           <Link onClick={this.updateLink}>Apply</Link>
+          <Separator />
           <Link onClick={this.unLink}>Unlink</Link>
         </LinkPopup>
       </Modal>
@@ -89,3 +105,5 @@ const LinkPopup = styled.div`
   padding: 5px 10px;
   font-size: 14px;
 `;
+
+// todo: reset inputs as modals close
