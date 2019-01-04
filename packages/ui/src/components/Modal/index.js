@@ -50,7 +50,8 @@ export default class Modal extends Component {
   handleMouseDown = () => {
     if (
       this.wrapperRef.current &&
-      !this.wrapperRef.current.contains(event.target)
+      !this.wrapperRef.current.contains(event.target) &&
+      this.props.closeModal
     )
       this.props.closeModal();
   };
