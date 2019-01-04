@@ -31,10 +31,9 @@ const getPosition = (marker, modalElm) => {
   if (left < 0) left = 0;
   else if (left + modalWidth > markerParentDim.width)
     left = markerParentDim.width - modalWidth;
-  console.log("***", marker.clientHeight, marker.parentElement.clientHeight);
   let top =
     marker.offsetTop +
-    (marker.clientHeight || marker.parentElement.clientHeight) +
+    (markerDim.height || markerParentDim.height) +
     ARROW_HEIGHT;
 
   return { top, left };

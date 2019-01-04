@@ -118,5 +118,5 @@ const StyledLink = styled(Link)`
   margin: 4px 0;
 `;
 // todo: apply link above should be tab-able
-// todo: inputs to show selected value
+// todo: inputs to show selected value always
 // rendering logic should not unnecessary run if there is no marker
