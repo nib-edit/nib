@@ -29,20 +29,51 @@ const linkPlugin = new Plugin({
       return { link: getLink(state), decoration: undefined };
     },
     apply(tr, value, _, newState) {
-      let { link, decoration } = value;
-      link = getLink(newState);
-      const showLinkToolbar = tr.getMeta("SHOW_LINK_TOOLBAR");
-      if (!link && showLinkToolbar === true) {
-        const { $from } = newState.selection;
-        const node = document.createElement("span");
-        node.className = "nib-link-marker";
-        decoration = DecorationSet.create(newState.doc, [
-          Decoration.widget($from.pos, node)
-        ]);
-      } else if (showLinkToolbar === false) {
-        decoration = undefined;
+      const { link: oldLink } = value;
+      const link = getLink(newState);
+
+      const showEditLinkToolbar = tr.getMeta("SHOW_EDIT_LINK_TOOLBAR");
+      if (showEditLinkToolbar === false) {
+        return { link, decoration: undefined };
       }
-      return { link, decoration };
+      if (link) {
+        if (
+          !value.decoration ||
+          oldLink.from !== link.from ||
+          oldLink.to !== link.to
+        ) {
+          const decoration = DecorationSet.create(newState.doc, [
+            Decoration.inline(link.from, link.to, {
+              class: "nib-edit-link-marker"
+            })
+          ]);
+          return { link, decoration };
+        }
+        return value;
+      }
+
+      const showLinkToolbar = tr.getMeta("SHOW_LINK_TOOLBAR");
+      if (showLinkToolbar === true) {
+        const { $from, $to } = newState.selection;
+        let decor;
+        if ($from.pos === $to.pos) {
+          const node = document.createElement("span");
+          node.className = "nib-link-marker";
+          decor = Decoration.widget($from.pos, node);
+        } else {
+          decor = Decoration.inline($from.pos, $to.pos, {
+            class: "nib-link-marker"
+          });
+        }
+        const decoration = DecorationSet.create(newState.doc, [decor]);
+        return { link, decoration };
+      }
+
+      if (showLinkToolbar === false) {
+        return { link, decoration: undefined };
+      }
+
+      return value;
     }
   },
 

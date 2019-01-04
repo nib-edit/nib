@@ -1,5 +1,5 @@
 export { default as Button } from "./components/Button";
-export { default as ButtonSeparator } from "./components/ButtonSeparator";
+export { default as Separator } from "./components/Separator";
 export { default as Icons } from "./icons";
 export { default as Input } from "./components/Input";
 export { default as Link } from "./components/Link";

@@ -7,6 +7,7 @@ class LinkModal extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      // todo: title to reset when modal opens
       title: this.getSelectedText(),
       href: "",
       isMouseDown: false
@@ -40,6 +41,7 @@ class LinkModal extends PureComponent {
         .setMeta("SHOW_LINK_TOOLBAR", false)
     );
     view.focus();
+    this.closeModal();
   };
 
   getSelectedText = () => {
@@ -58,10 +60,14 @@ class LinkModal extends PureComponent {
     }
   };
 
-  hideModal = () => {
+  closeModal = () => {
     const { view } = this.props;
     const { state, dispatch } = view;
     dispatch(state.tr.setMeta("SHOW_LINK_TOOLBAR", false));
+    this.setState({
+      title: "",
+      href: ""
+    });
   };
 
   render() {
@@ -70,7 +76,7 @@ class LinkModal extends PureComponent {
     return (
       <Modal
         marker={linkMarker && linkMarker.item && linkMarker.item(0)}
-        onBlur={this.hideModal}
+        closeModal={this.closeModal}
       >
         <LinkPopup ref={this.linkModalWrapper}>
           <div>
@@ -90,7 +96,7 @@ class LinkModal extends PureComponent {
               value={href}
             />
           </div>
-          <Link onClick={this.addLink}>Apply</Link>
+          <StyledLink onClick={this.addLink}>Apply</StyledLink>
         </LinkPopup>
       </Modal>
     );
@@ -108,4 +114,9 @@ const LinkPopup = styled.div`
   font-size: 14px;
 `;
 
+const StyledLink = styled(Link)`
+  margin: 4px 0;
+`;
 // todo: apply link above should be tab-able
+// todo: inputs to show selected value
+// rendering logic should not unnecessary run if there is no marker
