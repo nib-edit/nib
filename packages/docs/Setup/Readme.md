@@ -15,7 +15,10 @@ import React from "react";
 import Editor from "nib-core";
 
 const MyEditor = () => (
-  <Editor plugins="block inline" toolbar={{ htop: "block inline" }} />
+  <Editor
+    plugins="block inline"
+    toolbar={{ htop: { options: "block inline" } }}
+  />
 );
 ```
 
@@ -35,6 +38,6 @@ JAVASCRIPT:
 import React from "react";
 import ReactDOM from "react-dom";
 
-const MyEditor = () => <Editor plugins="block inline" {{ htop: "block inline" }} />;
+const MyEditor = () => <Editor plugins="block inline" {{ htop:  { options: "block inline"} }} />;
 ReactDOM.render(<MyEditor />, document.getElementById("editor"));
 ```

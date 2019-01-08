@@ -1,20 +1,26 @@
 import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
 
-import { buildMenu, getPluginList } from "../../../common";
+import { ToolbarSeparator } from "nib-ui";
+import { buildMenu } from "../../../common";
 
 export default class InlineToolbar extends PureComponent {
   render() {
-    const { plugins, view, updateRef } = this.props;
-    const options = buildMenu(getPluginList(plugins));
+    const { config, view, updateRef } = this.props;
+    const options = buildMenu(config.options);
+    const optionSize = options.length;
     return (
       <Wrapper onMouseDown={e => e.preventDefault()}>
         {options.map((Option, index) => (
-          <Option
-            key={`menu-option-${index}`}
-            view={view}
-            updateRef={updateRef}
-          />
+          <React.Fragment key={`toolbar-option-${index}`}>
+            <Option.menuComponent
+              key={`menu-option-${index}`}
+              config={config[Option.name]}
+              view={view}
+              updateRef={updateRef}
+            />
+            {index < optionSize - 1 && <ToolbarSeparator />}
+          </React.Fragment>
         ))}
       </Wrapper>
     );

@@ -1,27 +1,33 @@
-export const blockData = {
-  paragraph: { value: { blockType: "paragraph", tag: "p" }, label: "Normal" },
-  "heading-1": {
+export const blockData = [
+  { value: { blockType: "paragraph", tag: "p" }, label: "Normal", name: "p" },
+  {
     value: { blockType: "heading-1", tag: "h1" },
-    label: "Heading 1"
+    label: "Heading 1",
+    name: "h1"
   },
-  "heading-2": {
+  {
     value: { blockType: "heading-2", tag: "h2" },
-    label: "Heading 2"
+    label: "Heading 2",
+    name: "h2"
   },
-  "heading-3": {
+  {
     value: { blockType: "heading-3", tag: "h3" },
-    label: "Heading 3"
+    label: "Heading 3",
+    name: "h3"
   },
-  "heading-4": {
+  {
     value: { blockType: "heading-4", tag: "h4" },
-    label: "Heading 4"
+    label: "Heading 4",
+    name: "h4"
   },
-  "heading-5": {
+  {
     value: { blockType: "heading-5", tag: "h5" },
-    label: "Heading 5"
+    label: "Heading 5",
+    name: "h5"
   },
-  "heading-6": {
+  {
     value: { blockType: "heading-6", tag: "h6" },
-    label: "Heading 6"
+    label: "Heading 6",
+    name: "h6"
   }
-};
+];

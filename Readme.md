@@ -29,7 +29,7 @@ import Editor from "nib-core";
 const MyEditor = () => (
   <Editor
     plugins="block inline"
-    toolbar={{ htop: "block inline" }}
+    toolbar={{ htop:  { options: "block inline" } }}
   />
 );
 ```

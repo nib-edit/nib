@@ -2,19 +2,20 @@ import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
 
 import { ToolbarSeparator } from "nib-ui";
-import { buildMenu, getPluginList } from "../../../common";
+import { buildMenu } from "../../../common";
 
 export default class HTopToolbar extends PureComponent {
   render() {
-    const { plugins, view, updateRef } = this.props;
-    const options = buildMenu(getPluginList(plugins));
+    const { config, view, updateRef } = this.props;
+    const options = buildMenu(config.options);
     const optionSize = options.length;
     return (
       <Wrapper onMouseDown={e => e.preventDefault()}>
         {options.map((Option, index) => (
           <React.Fragment key={`toolbar-option-${index}`}>
-            <Option
+            <Option.menuComponent
               key={`menu-option-${index}`}
+              config={config[Option.name]}
               view={view}
               updateRef={updateRef}
             />

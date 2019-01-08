@@ -24,7 +24,7 @@ const customTheme = {
 const Themed = () => (
   <Editor
     plugins="block inline list link history"
-    toolbar={{ htop: "block inline list link history" }}
+    toolbar={{ htop: { options: "block inline list link history" } }}
     theme={customTheme}
   />
 );
