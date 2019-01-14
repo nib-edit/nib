@@ -52,5 +52,7 @@ export const getSelectStyles = themeStyle => ({
       ...(state.isSelected ? themeStyle["&:selected"] : {})
     })
   ),
-  menu: getStyles({ width: themeStyle.dropdownWidth })
+  menu: getStyles({
+    width: themeStyle.dropdownWidth
+  })
 });

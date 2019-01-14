@@ -16,7 +16,7 @@ class History extends Component {
       <div>
         <Editor
           plugins="block inline history"
-          toolbar={{ htop: "block inline history" }}
+          toolbar={{ htop: { options: "block inline history" } }}
           onChange={this.onChange}
         />
         <pre>{JSON.stringify(content, null, 4)}</pre>

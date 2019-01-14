@@ -16,7 +16,7 @@ class List extends Component {
       <div>
         <Editor
           plugins="block inline list"
-          toolbar={{ htop: "block inline list" }}
+          toolbar={{ htop: { options: "block inline list" } }}
           onChange={this.onChange}
         />
         <pre>{JSON.stringify(content, null, 4)}</pre>

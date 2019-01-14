@@ -31,7 +31,7 @@ const customTheme = {
 const Themed = () => (
   <Editor
     plugins="block inline list"
-    toolbar={{ htop: "block inline list" }}
+    toolbar={{ htop: { options: "block inline list" } }}
     theme={customTheme}
   />
 );

@@ -52,7 +52,7 @@ export default class Editor extends Component {
         <Wrapper id="nib-wrapper">
           {toolbar.htop && (
             <Toolbar.htop
-              plugins={toolbar.htop}
+              config={toolbar.htop}
               updateRef={updateRef}
               view={view}
             />
@@ -68,7 +68,7 @@ export default class Editor extends Component {
           {toolbar.inline && (
             <Modal marker={selMarker && selMarker.item && selMarker.item(0)}>
               <Toolbar.inline
-                plugins={toolbar.inline}
+                config={toolbar.inline}
                 updateRef={updateRef}
                 view={view}
               />
