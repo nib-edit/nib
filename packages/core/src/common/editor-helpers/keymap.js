@@ -53,7 +53,7 @@ export const buildKeymap = plugins => {
   combinedMap = addKeyMaps(combinedMap, commonKeyMap);
   combinedMap = addKeyMaps(combinedMap, baseKeymap);
   combinedMap = combineKeyMaps(combinedMap);
-  return new keymap(baseKeymap);
+  return new keymap(combinedMap);
 };
 
 // future: in plugins add priority to keymaps
