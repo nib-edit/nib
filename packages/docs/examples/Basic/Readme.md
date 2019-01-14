@@ -23,10 +23,18 @@ class Basic extends Component {
     const { content } = this.state;
     return (
       <div>
-        <Editor onChange={this.onChange} />
+        <Editor
+          onChange={this.onChange}
+          config={{
+            plugins: { options: "" },
+            toolbar: { options: "" }
+          }}
+        />
         <pre>{JSON.stringify(content, null, 4)}</pre>
       </div>
     );
   }
 }
+
+export default Basic;
 ```

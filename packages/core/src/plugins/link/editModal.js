@@ -4,7 +4,7 @@ import { TextSelection } from "prosemirror-state";
 import { Link, Input, Modal, Separator } from "nib-ui";
 import { linkPluginKey } from "./plugins";
 
-class LinkEditModal extends PureComponent {
+class EditModal extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -73,12 +73,8 @@ class LinkEditModal extends PureComponent {
     const link = this.getLink();
     if (!link) return null;
     const linkMarker = document.getElementsByClassName("nib-edit-link-marker");
-
     return (
-      <Modal
-        marker={linkMarker && linkMarker.item && linkMarker.item(0)}
-        closeModal={this.closeModal}
-      >
+      <Modal marker={linkMarker[0]} closeModal={this.closeModal}>
         <LinkPopup>
           <label htmlFor="href">Href</label>
           <Input
@@ -95,7 +91,7 @@ class LinkEditModal extends PureComponent {
   }
 }
 
-export default LinkEditModal;
+export default EditModal;
 
 const LinkPopup = styled.div`
   align-items: center;

@@ -31,6 +31,7 @@ const combineKeyMaps = keyMaps => {
   return map;
 };
 
+//todo: merge this to common plugin
 const commonKeyMap = {
   "Mod-a": (editorState, dispatch) => {
     const { tr, doc } = editorState;

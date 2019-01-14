@@ -10,7 +10,7 @@ const getSelectedListType = state => {
 
 export const listPluginKey = new PluginKey("list");
 
-const listPlugin = new Plugin({
+export default new Plugin({
   key: listPluginKey,
 
   state: {
@@ -27,5 +27,3 @@ const listPlugin = new Plugin({
     }
   }
 });
-
-export default listPlugin;

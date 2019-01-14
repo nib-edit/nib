@@ -24,8 +24,16 @@ class BlockInline extends Component {
     return (
       <div>
         <Editor
-          plugins="block inline"
-          toolbar={{ htop: "block inline" }}
+          config={{
+            plugins: { options: "block inline history" },
+            toolbar: {
+              options: "top",
+              top: {
+                options: "block inline",
+                block: { options: "p h1 h2 h3 h4 h5 h6", grouped: true }
+              }
+            }
+          }}
           onChange={this.onChange}
         />
         <pre>{JSON.stringify(content, null, 4)}</pre>
@@ -33,4 +41,6 @@ class BlockInline extends Component {
     );
   }
 }
+
+export default BlockInline;
 ```

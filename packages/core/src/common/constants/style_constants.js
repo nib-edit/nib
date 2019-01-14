@@ -16,4 +16,5 @@ const FontSize = {
 const DisabledStyle = {
   opacity: 0.5
 };
+
 export default { Color, FontSize, DisabledStyle };

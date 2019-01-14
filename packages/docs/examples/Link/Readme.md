@@ -24,8 +24,16 @@ class Link extends Component {
     return (
       <div>
         <Editor
-          plugins="block inline link"
-          toolbar={{ htop: { options: "block inline link" } }}
+          config={{
+            plugins: { options: "block inline link history" },
+            toolbar: {
+              options: "top inline",
+              top: {
+                options: "block inline link",
+                block: { options: "p h1 h2 h3 h4 h5 h6", grouped: true }
+              }
+            }
+          }}
           onChange={this.onChange}
         />
         <pre>{JSON.stringify(content, null, 4)}</pre>
@@ -33,4 +41,6 @@ class Link extends Component {
     );
   }
 }
+
+export default Link;
 ```

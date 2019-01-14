@@ -19,8 +19,8 @@ export default class Grouped extends PureComponent {
     return (
       <Select
         onChange={this.handleChange}
-        selectedOption={selectedOption}
         options={options}
+        selectedOption={selectedOption}
       />
     );
   }

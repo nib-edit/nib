@@ -29,7 +29,7 @@ const getSelectedBlock = state => {
   return multipleBlock ? undefined : block;
 };
 
-const blockPlugin = new Plugin({
+export default new Plugin({
   key: blockPluginKey,
 
   state: {
@@ -46,5 +46,3 @@ const blockPlugin = new Plugin({
     }
   }
 });
-
-export default blockPlugin;

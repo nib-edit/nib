@@ -7,6 +7,9 @@ Editor with block formatting and inline formatting options available.
 Code:
 
 ```js static
+import React, { Component } from "react";
+import Editor from "nib-core";
+
 class History extends Component {
   state = {
     content: {}
@@ -21,8 +24,16 @@ class History extends Component {
     return (
       <div>
         <Editor
-          plugins="block inline history"
-          toolbar={{ htop: { options: "block inline history" } }}
+          config={{
+            plugins: { options: "block inline history" },
+            toolbar: {
+              options: "top",
+              top: {
+                options: "block inline history",
+                block: { options: "p h1 h2 h3 h4 h5 h6", grouped: true }
+              }
+            }
+          }}
           onChange={this.onChange}
         />
         <pre>{JSON.stringify(content, null, 4)}</pre>

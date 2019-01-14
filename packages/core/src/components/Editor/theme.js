@@ -120,7 +120,7 @@ export const theme = {
     fontWeight: "600"
   },
   toolbar: {
-    htop: {
+    top: {
       backgroundColor: Color.white,
       color: Color.text,
       borderBottom: border,

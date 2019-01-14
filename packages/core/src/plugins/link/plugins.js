@@ -21,7 +21,7 @@ const getLink = state => {
   return link;
 };
 
-const linkPlugin = new Plugin({
+export default new Plugin({
   key: linkPluginKey,
 
   state: {
@@ -84,5 +84,3 @@ const linkPlugin = new Plugin({
     }
   }
 });
-
-export default linkPlugin;

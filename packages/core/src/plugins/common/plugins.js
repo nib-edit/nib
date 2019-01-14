@@ -2,7 +2,7 @@ import { Plugin, PluginKey } from "prosemirror-state";
 
 export const commonPluginKey = new PluginKey("common");
 
-const commonPlugin = new Plugin({
+export default new Plugin({
   key: commonPluginKey,
 
   state: {
@@ -31,5 +31,3 @@ const commonPlugin = new Plugin({
     }
   }
 });
-
-export default commonPlugin;

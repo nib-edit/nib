@@ -1,10 +1,10 @@
 import React, { PureComponent } from "react";
-import { toggleListCmd } from "./commands";
 import { Button, Icons, Separator } from "nib-ui";
+import { toggleListCmd } from "./commands";
 
 import { listPluginKey } from "./plugins";
 
-class ListMenu extends PureComponent {
+export default class ListMenu extends PureComponent {
   toggleList = evt => {
     const listType = evt.currentTarget.getAttribute("name");
     const { view } = this.props;
@@ -42,5 +42,3 @@ class ListMenu extends PureComponent {
     );
   }
 }
-
-export default ListMenu;
