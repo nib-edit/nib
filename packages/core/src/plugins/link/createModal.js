@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 import { Link, Input, Modal } from "nib-ui";
 
-class LinkModal extends PureComponent {
+export default class CreateModal extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,7 +12,7 @@ class LinkModal extends PureComponent {
       href: "",
       isMouseDown: false
     };
-    this.linkModalWrapper = React.createRef();
+    this.modalWrapper = React.createRef();
   }
 
   updateValue = evt => {
@@ -74,11 +74,8 @@ class LinkModal extends PureComponent {
     const linkMarker = document.getElementsByClassName("nib-link-marker");
     const { title, href } = this.state;
     return (
-      <Modal
-        marker={linkMarker && linkMarker.item && linkMarker.item(0)}
-        closeModal={this.closeModal}
-      >
-        <LinkPopup ref={this.linkModalWrapper}>
+      <Modal marker={linkMarker[0]} closeModal={this.closeModal}>
+        <LinkPopup ref={this.modalWrapper}>
           <div>
             <Input
               autoFocus
@@ -102,8 +99,6 @@ class LinkModal extends PureComponent {
     );
   }
 }
-
-export default LinkModal;
 
 const LinkPopup = styled.div`
   align-items: flex-end;

@@ -1,10 +1,10 @@
 import React, { PureComponent } from "react";
-import { toggleMark } from "prosemirror-commands";
 import { Button, Icons, Separator } from "nib-ui";
+import { toggleMark } from "prosemirror-commands";
 
 import { inlinePluginKey } from "./plugins";
 
-class InlineMenu extends PureComponent {
+export default class InlineMenu extends PureComponent {
   toggleMarkofType = evt => {
     const markName = evt.currentTarget.getAttribute("name");
     const { view: { state, dispatch } = {} } = this.props;
@@ -29,35 +29,43 @@ class InlineMenu extends PureComponent {
   };
 
   render() {
+    const { options } = this.props.config;
     const activeMarks = this.getActiveMarks();
+    const strongEnable = options.indexOf("strong") >= 0;
+    const emEnable = options.indexOf("em") >= 0;
+    const underlineEnable = options.indexOf("underline") >= 0;
     return (
       <>
-        <Button
-          name="strong"
-          onClick={this.toggleMarkofType}
-          selected={activeMarks.includes("strong")}
-        >
-          <Icons.Bold />
-        </Button>
+        {strongEnable && (
+          <Button
+            name="strong"
+            onClick={this.toggleMarkofType}
+            selected={activeMarks.includes("strong")}
+          >
+            <Icons.Bold />
+          </Button>
+        )}
         <Separator />
-        <Button
-          name="em"
-          onClick={this.toggleMarkofType}
-          selected={activeMarks.includes("em")}
-        >
-          <Icons.Italic />
-        </Button>
+        {emEnable && (
+          <Button
+            name="em"
+            onClick={this.toggleMarkofType}
+            selected={activeMarks.includes("em")}
+          >
+            <Icons.Italic />
+          </Button>
+        )}
         <Separator />
-        <Button
-          name="underline"
-          onClick={this.toggleMarkofType}
-          selected={activeMarks.includes("underline")}
-        >
-          <Icons.Underline />
-        </Button>
+        {underlineEnable && (
+          <Button
+            name="underline"
+            onClick={this.toggleMarkofType}
+            selected={activeMarks.includes("underline")}
+          >
+            <Icons.Underline />
+          </Button>
+        )}
       </>
     );
   }
 }
-
-export default InlineMenu;

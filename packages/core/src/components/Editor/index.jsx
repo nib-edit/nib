@@ -1,58 +1,51 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { ThemeProvider } from "emotion-theming";
-import { Modal } from "nib-ui";
 
-import Toolbar from "../Toolbar";
 import InnerEditor from "./editor";
+import Toolbar from "../Toolbar";
 import { Wrapper } from "./style";
-import { theme, updateTheme } from "./theme";
+import { theme } from "./theme";
 
-import LinkModal from "../../plugins/link/linkModal";
-import LinkEditModal from "../../plugins/link/modal";
+import LinkEditModal from "../../plugins/link/editModal";
+import LinkCreateModal from "../../plugins/link/createModal";
+import { defaultConfig, deepMerge } from "../../common";
 
 export default class Editor extends Component {
   constructor(props) {
     super(props);
-    this.state = { view: undefined, updateRef: 0, selMarker: undefined };
+    this.state = { view: undefined, updateRef: 0 };
+    this.config = deepMerge(defaultConfig, props.config);
+    this.theme = deepMerge(theme, props.theme);
   }
 
   static propTypes = {
+    config: PropTypes.object,
     defaultValue: PropTypes.object,
     onChange: PropTypes.func,
-    plugins: PropTypes.string,
-    theme: PropTypes.object,
-    toolbar: PropTypes.object
+    theme: PropTypes.object
   };
-
-  static defaultProps = { plugins: "", toolbar: {} };
 
   updateView = view => {
     const { updateRef } = this.state;
     this.setState({
-      view,
       updateRef: updateRef + 1,
-      selMarker: document.getElementsByClassName("nib-selected")
+      view
     });
   };
 
   render() {
-    const { view, updateRef, selMarker } = this.state;
-    const {
-      theme: propsTheme,
-      toolbar,
-      plugins,
-      defaultValue,
-      onChange
-    } = this.props;
-    const newTheme = updateTheme(theme, propsTheme);
-
+    const { view, updateRef } = this.state;
+    const { defaultValue, onChange } = this.props;
+    const { toolbar } = this.config;
+    const inlineToolbarPresent = toolbar.options.indexOf("inline") >= 0;
+    const topToolbarPresent = toolbar.options.indexOf("top") >= 0;
     return (
-      <ThemeProvider theme={newTheme}>
+      <ThemeProvider theme={this.theme}>
         <Wrapper id="nib-wrapper">
-          {toolbar.htop && (
-            <Toolbar.htop
-              config={toolbar.htop}
+          {topToolbarPresent && (
+            <Toolbar.top
+              config={toolbar.top}
               updateRef={updateRef}
               view={view}
             />
@@ -60,21 +53,19 @@ export default class Editor extends Component {
           <InnerEditor
             defaultValue={defaultValue}
             onChange={onChange}
-            plugins={plugins}
+            config={this.config.plugins}
             updateView={this.updateView}
             view={view}
           />
-          {/* create handlar for modals */}
-          {toolbar.inline && (
-            <Modal marker={selMarker && selMarker.item && selMarker.item(0)}>
-              <Toolbar.inline
-                config={toolbar.inline}
-                updateRef={updateRef}
-                view={view}
-              />
-            </Modal>
+          {/* todo: create handlar for modals */}
+          {inlineToolbarPresent && (
+            <Toolbar.inline
+              config={toolbar.inline}
+              updateRef={updateRef}
+              view={view}
+            />
           )}
-          <LinkModal view={view} updateRef={updateRef} />
+          <LinkCreateModal view={view} updateRef={updateRef} />
           <LinkEditModal view={view} updateRef={updateRef} />
         </Wrapper>
       </ThemeProvider>

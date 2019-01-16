@@ -6,7 +6,7 @@ import { blockData as options } from "../blockData";
 import Grouped from "./Grouped";
 import Ungrouped from "./Ungrouped";
 
-class BlockMenu extends PureComponent {
+export default class BlockMenu extends PureComponent {
   changeBlockType = blockType => {
     let attrs;
     let blockName;
@@ -41,9 +41,9 @@ class BlockMenu extends PureComponent {
         opt => menuOptions.indexOf(opt.name) >= 0
       );
     }
-    if (grouped == false) {
+    if (grouped) {
       return (
-        <Ungrouped
+        <Grouped
           onChange={this.changeBlockType}
           selectedBlockType={this.getSelectedBlock()}
           options={filteredOptions}
@@ -51,7 +51,7 @@ class BlockMenu extends PureComponent {
       );
     }
     return (
-      <Grouped
+      <Ungrouped
         onChange={this.changeBlockType}
         selectedBlockType={this.getSelectedBlock()}
         options={filteredOptions}
@@ -59,5 +59,3 @@ class BlockMenu extends PureComponent {
     );
   }
 }
-
-export default BlockMenu;

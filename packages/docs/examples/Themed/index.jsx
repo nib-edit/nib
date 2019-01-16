@@ -11,7 +11,7 @@ const customTheme = {
     color: "white"
   },
   toolbar: {
-    htop: {
+    top: {
       borderTop: "1px solid white",
       borderLeft: "1px solid white",
       borderRight: "1px solid white",
@@ -21,12 +21,6 @@ const customTheme = {
   }
 };
 
-const Themed = () => (
-  <Editor
-    plugins="block inline list link history"
-    toolbar={{ htop: { options: "block inline list link history" } }}
-    theme={customTheme}
-  />
-);
+const Themed = () => <Editor theme={customTheme} />;
 
 export default Themed;

@@ -1,7 +1,7 @@
 import {
   liftListItem,
-  wrapInList,
-  splitListItem
+  splitListItem,
+  wrapInList
 } from "prosemirror-schema-list";
 
 export const toggleListCmd = (view, listTypeName) => {

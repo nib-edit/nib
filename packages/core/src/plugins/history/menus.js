@@ -3,7 +3,7 @@ import { undo, redo } from "prosemirror-history";
 
 import { Button, Icons, Separator } from "nib-ui";
 
-class HistoryMenu extends PureComponent {
+export default class HistoryMenu extends PureComponent {
   undo = () => {
     const { state, dispatch } = this.props.view;
     undo(state, dispatch);
@@ -28,5 +28,3 @@ class HistoryMenu extends PureComponent {
     );
   }
 }
-
-export default HistoryMenu;

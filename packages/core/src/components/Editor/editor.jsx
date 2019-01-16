@@ -4,8 +4,8 @@ import { EditorView } from "prosemirror-view";
 
 import {
   buildEditorState,
-  updateEditorState,
-  getPluginList
+  getPluginList,
+  updateEditorState
 } from "../../common";
 import { StyledEditor } from "./style";
 
@@ -17,18 +17,16 @@ export default class Editor extends Component {
   }
 
   static propTypes = {
+    config: PropTypes.object,
     defaultValue: PropTypes.object,
     onChange: PropTypes.func,
-    plugins: PropTypes.string,
     updateView: PropTypes.func
   };
 
-  static defaultProps = { plugins: "" };
-
   componentDidMount() {
-    const { updateView, defaultValue, onChange } = this.props;
+    const { config, defaultValue, onChange, updateView } = this.props;
     var state = buildEditorState(
-      getPluginList(`${this.props.plugins} selMarker common`),
+      getPluginList(`${config.options} selMarker common`),
       defaultValue
     );
     const view = new EditorView(this.editorRef.current, {
@@ -50,5 +48,3 @@ export default class Editor extends Component {
     return <StyledEditor ref={this.editorRef} />;
   }
 }
-
-// todo: history plugin should always be included

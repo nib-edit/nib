@@ -1,31 +1,32 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import styled from "@emotion/styled";
+import { Modal } from "nib-ui";
 
 import { ToolbarSeparator } from "nib-ui";
 import { buildMenu } from "../../../common";
 
-export default class InlineToolbar extends PureComponent {
-  render() {
-    const { config, view, updateRef } = this.props;
-    const options = buildMenu(config.options);
-    const optionSize = options.length;
-    return (
+export default ({ config, view, updateRef }) => {
+  const options = buildMenu(config.options);
+  const optionSize = options.length;
+  const selMarker = document.getElementsByClassName("nib-selected");
+  return (
+    <Modal marker={selMarker[0]}>
       <Wrapper onMouseDown={e => e.preventDefault()}>
         {options.map((Option, index) => (
-          <React.Fragment key={`toolbar-option-${index}`}>
+          <React.Fragment key={`inline-toolbar-option-${Option.name}`}>
             <Option.menuComponent
-              key={`menu-option-${index}`}
               config={config[Option.name]}
-              view={view}
+              key={`inline-menu-option-${Option.name}`}
               updateRef={updateRef}
+              view={view}
             />
             {index < optionSize - 1 && <ToolbarSeparator />}
           </React.Fragment>
         ))}
       </Wrapper>
-    );
-  }
-}
+    </Modal>
+  );
+};
 
 const Wrapper = styled.div`
   align-items: center;
