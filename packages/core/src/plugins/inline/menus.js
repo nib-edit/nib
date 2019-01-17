@@ -7,7 +7,7 @@ import { inlinePluginKey } from "./plugins";
 export default class InlineMenu extends PureComponent {
   toggleMarkofType = evt => {
     const markName = evt.currentTarget.getAttribute("name");
-    const { view: { state, dispatch } = {} } = this.props;
+    const { view: { state, dispatch } = {} } = this.props.app_params;
     const markType = state.schema.marks[markName];
     if (state.selection.empty) {
       const marks = state.selection.$to.marks();
@@ -22,7 +22,7 @@ export default class InlineMenu extends PureComponent {
   };
 
   getActiveMarks = () => {
-    const { view: { state } = {} } = this.props;
+    const { view: { state } = {} } = this.props.app_params;
     if (!state) return [];
     const pluginState = inlinePluginKey.getState(state);
     return pluginState && pluginState.activeMarks;

@@ -1,9 +1,10 @@
 import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
-
 import { Link, Input, Modal } from "nib-ui";
 
-export default class CreateModal extends PureComponent {
+import { AppStateWrapper } from "../../common";
+
+class CreateModal extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,7 +25,7 @@ export default class CreateModal extends PureComponent {
   addLink = () => {
     const { title, href } = this.state;
     if (!title || !title.length) return;
-    const { view } = this.props;
+    const { view } = this.props.app_params;
     const { state, dispatch } = view;
     const {
       tr,
@@ -45,7 +46,7 @@ export default class CreateModal extends PureComponent {
   };
 
   getSelectedText = () => {
-    const { view } = this.props;
+    const { view } = this.props.app_params;
     if (!view) return "";
     const { state } = view;
     const {
@@ -61,7 +62,7 @@ export default class CreateModal extends PureComponent {
   };
 
   closeModal = () => {
-    const { view } = this.props;
+    const { view } = this.props.app_params;
     const { state, dispatch } = view;
     dispatch(state.tr.setMeta("SHOW_LINK_TOOLBAR", false));
     this.setState({
@@ -99,6 +100,12 @@ export default class CreateModal extends PureComponent {
     );
   }
 }
+
+export default () => (
+  <AppStateWrapper
+    render={app_params => <CreateModal app_params={app_params} />}
+  />
+);
 
 const LinkPopup = styled.div`
   align-items: flex-end;

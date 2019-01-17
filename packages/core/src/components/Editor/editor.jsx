@@ -5,7 +5,8 @@ import { EditorView } from "prosemirror-view";
 import {
   buildEditorState,
   getPluginList,
-  updateEditorState
+  updateEditorState,
+  Dispatcher
 } from "../../common";
 import { StyledEditor } from "./style";
 
@@ -33,11 +34,11 @@ export default class Editor extends Component {
       state,
       dispatchTransaction: tr => {
         updateEditorState(view, tr);
-        updateView(view);
+        Dispatcher.dispatch(view);
         if (onChange && tr.docChanged) onChange(view.state.toJSON().doc);
       }
     });
-    updateView(view);
+    Dispatcher.dispatch(view);
   }
 
   componentWillUnmount() {

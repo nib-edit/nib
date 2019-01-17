@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { TextSelection } from "prosemirror-state";
 import { Link, Input, Modal, Separator } from "nib-ui";
 import { linkPluginKey } from "./plugins";
+import { AppStateWrapper } from "../../common";
 
 class EditModal extends PureComponent {
   constructor(props) {
@@ -20,14 +21,14 @@ class EditModal extends PureComponent {
   };
 
   getLink = () => {
-    const { view: { state } = {} } = this.props;
+    const { view: { state } = {} } = this.props.app_params;
     if (!state) return;
     const pluginState = linkPluginKey.getState(state);
     return pluginState && pluginState.link;
   };
 
   getActiveLinkMark = () => {
-    const { view } = this.props;
+    const { view } = this.props.app_params;
     if (!view) return;
     const link = this.getLink();
     if (!link) return;
@@ -38,7 +39,7 @@ class EditModal extends PureComponent {
     const link = this.getLink();
     const {
       view: { state, dispatch }
-    } = this.props;
+    } = this.props.app_params;
     dispatch(
       state.tr
         .removeMark(link.from, link.to, state.schema.marks.link)
@@ -53,7 +54,7 @@ class EditModal extends PureComponent {
 
   unLink = () => {
     const link = this.getLink();
-    const { view } = this.props;
+    const { view } = this.props.app_params;
     const { state, dispatch } = view;
     dispatch(state.tr.removeMark(link.from, link.to, state.schema.marks.link));
     view.focus();
@@ -61,7 +62,7 @@ class EditModal extends PureComponent {
   };
 
   closeModal = () => {
-    const { view } = this.props;
+    const { view } = this.props.app_params;
     const { state, dispatch } = view;
     dispatch(state.tr.setMeta("SHOW_EDIT_LINK_TOOLBAR", false));
     this.setState({
@@ -91,7 +92,11 @@ class EditModal extends PureComponent {
   }
 }
 
-export default EditModal;
+export default () => (
+  <AppStateWrapper
+    render={app_params => <EditModal app_params={app_params} />}
+  />
+);
 
 const LinkPopup = styled.div`
   align-items: center;

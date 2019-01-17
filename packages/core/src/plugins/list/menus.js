@@ -7,12 +7,12 @@ import { listPluginKey } from "./plugins";
 export default class ListMenu extends PureComponent {
   toggleList = evt => {
     const listType = evt.currentTarget.getAttribute("name");
-    const { view } = this.props;
+    const { view } = this.props.app_params;
     toggleListCmd(view, listType);
   };
 
   getSelectedListType = () => {
-    const { view: { state } = {} } = this.props;
+    const { view: { state } = {} } = this.props.app_params;
     if (!state) return;
     const pluginState = listPluginKey.getState(state);
     const selectedListType = pluginState && pluginState.selectedListType;

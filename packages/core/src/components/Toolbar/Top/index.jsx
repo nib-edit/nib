@@ -2,25 +2,28 @@ import React from "react";
 import styled from "@emotion/styled";
 
 import { ToolbarSeparator } from "nib-ui";
-import { buildMenu } from "../../../common";
+import { buildMenu, AppStateWrapper } from "../../../common";
 
-export default ({ config, view, updateRef }) => {
+export default ({ config }) => {
   const options = buildMenu(config.options);
   const optionSize = options.length;
   return (
-    <Wrapper onMouseDown={e => e.preventDefault()}>
-      {options.map((Option, index) => (
-        <React.Fragment key={`top-toolbar-option-${Option.name}`}>
-          <Option.menuComponent
-            config={config[Option.name]}
-            key={`top-menu-option-${Option.name}`}
-            updateRef={updateRef}
-            view={view}
-          />
-          {index < optionSize - 1 && <ToolbarSeparator />}
-        </React.Fragment>
-      ))}
-    </Wrapper>
+    <AppStateWrapper
+      render={app_params => (
+        <Wrapper onMouseDown={e => e.preventDefault()}>
+          {options.map((Option, index) => (
+            <React.Fragment key={`top-toolbar-option-${Option.name}`}>
+              <Option.menuComponent
+                config={config[Option.name]}
+                key={`top-menu-option-${Option.name}`}
+                app_params={app_params}
+              />
+              {index < optionSize - 1 && <ToolbarSeparator />}
+            </React.Fragment>
+          ))}
+        </Wrapper>
+      )}
+    />
   );
 };
 

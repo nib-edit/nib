@@ -16,13 +16,13 @@ export default class BlockMenu extends PureComponent {
       attrs = { level: blockType.split("-")[1] };
       blockName = "heading";
     }
-    const { view: { state, dispatch } = {} } = this.props;
+    const { view: { state, dispatch } = {} } = this.props.app_params;
     const nodeType = state.schema.nodes[blockName];
     setBlockType(nodeType, attrs)(state, dispatch);
   };
 
   getSelectedBlock = () => {
-    const { view: { state } = {} } = this.props;
+    const { view: { state } = {} } = this.props.app_params;
     if (!state) return;
     const pluginState = blockPluginKey.getState(state);
     const selectedBlock = pluginState && pluginState.selectedBlock;
@@ -33,6 +33,7 @@ export default class BlockMenu extends PureComponent {
     }
   };
 
+  componentWillReceiveProps(props) {}
   render() {
     const { config: { grouped, options: menuOptions } = {} } = this.props;
     let filteredOptions = options;
