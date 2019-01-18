@@ -5,27 +5,31 @@ import { Modal } from "nib-ui";
 import { ToolbarSeparator } from "nib-ui";
 import { buildMenu, AppStateWrapper } from "../../../common";
 
-export default ({ config }) => {
+export default ({ config, editorWrapper }) => {
   const options = buildMenu(config.options);
   const optionSize = options.length;
   const selMarker = document.getElementsByClassName("nib-selected");
   return (
     <AppStateWrapper
       render={app_params => (
-        <Modal marker={selMarker[0]}>
-          <Wrapper onMouseDown={e => e.preventDefault()}>
-            {options.map((Option, index) => (
-              <React.Fragment key={`inline-toolbar-option-${Option.name}`}>
-                <Option.menuComponent
-                  config={config[Option.name]}
-                  key={`inline-menu-option-${Option.name}`}
-                  app_params={app_params}
-                />
-                {index < optionSize - 1 && <ToolbarSeparator />}
-              </React.Fragment>
-            ))}
-          </Wrapper>
-        </Modal>
+        <div>
+          {selMarker[0] ? (
+            <Modal marker={selMarker[0]} editorWrapper={editorWrapper}>
+              <Wrapper onMouseDown={e => e.preventDefault()}>
+                {options.map((Option, index) => (
+                  <React.Fragment key={`inline-toolbar-option-${Option.name}`}>
+                    <Option.menuComponent
+                      config={config[Option.name]}
+                      key={`inline-menu-option-${Option.name}`}
+                      app_params={app_params}
+                    />
+                    {index < optionSize - 1 && <ToolbarSeparator />}
+                  </React.Fragment>
+                ))}
+              </Wrapper>
+            </Modal>
+          ) : null}
+        </div>
       )}
     />
   );

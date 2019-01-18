@@ -16,6 +16,7 @@ class Editor extends Component {
     super(props);
     this.config = deepMerge(defaultConfig, props.config);
     this.theme = deepMerge(theme, props.theme);
+    this.editorWrapper = React.createRef();
   }
 
   static propTypes = {
@@ -32,7 +33,7 @@ class Editor extends Component {
     const topToolbarPresent = toolbar.options.indexOf("top") >= 0;
     return (
       <ThemeProvider theme={this.theme}>
-        <Wrapper id="nib-wrapper">
+        <Wrapper id="nib-wrapper" ref={this.editorWrapper}>
           {topToolbarPresent && <Toolbar.top config={toolbar.top} />}
           <InnerEditor
             defaultValue={defaultValue}
@@ -40,9 +41,14 @@ class Editor extends Component {
             config={this.config.plugins}
           />
           {/* todo: create handlar for modals */}
-          {inlineToolbarPresent && <Toolbar.inline config={toolbar.inline} />}
-          <LinkCreateModal />
-          <LinkEditModal />
+          {inlineToolbarPresent && (
+            <Toolbar.inline
+              config={toolbar.inline}
+              editorWrapper={this.editorWrapper}
+            />
+          )}
+          <LinkCreateModal editorWrapper={this.editorWrapper} />
+          <LinkEditModal editorWrapper={this.editorWrapper} />
         </Wrapper>
       </ThemeProvider>
     );

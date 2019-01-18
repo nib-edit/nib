@@ -16,35 +16,54 @@ const isSamePos = (oldPos, newPos) => {
 
 // Note: current left alignment does not take care of padding of section,
 // this can be improved in future.
-const getPosition = (marker, modalElm) => {
+const getPosition = (marker, modalElm, editorWrapper) => {
   const markerDim = marker.getBoundingClientRect();
-  const markerParentDim = marker.offsetParent.getBoundingClientRect();
+  // todo: calculate offsets from editor x, y positions
+  const wrapperRefDim = editorWrapper.getBoundingClientRect();
   const modalWidth = modalElm ? modalElm.getBoundingClientRect().width : 0;
 
   // Line below will find offsetLeft of editor.
-  let left = -(markerParentDim.left - markerDim.left);
-
+  let left = -(wrapperRefDim.left - markerDim.left);
   // Line below will align the modal in middle of the editor.
   left += (markerDim.width - modalWidth) / 2;
 
+  let arrowLeft;
   // Lines below will align modal to left or right of editor if there is a overflow.
-  if (left < 0) left = 0;
-  else if (left + modalWidth > markerParentDim.width)
-    left = markerParentDim.width - modalWidth;
-  let top =
-    marker.offsetTop +
-    (markerDim.height || markerParentDim.height) +
-    ARROW_HEIGHT;
+  if (left < 0) {
+    arrowLeft = Math.abs(left) > modalWidth / 2 - 10 ? left + 5 : left;
+    left = -1;
+  } else if (left + modalWidth > wrapperRefDim.width) {
+    arrowLeft = left + modalWidth - wrapperRefDim.width;
+    left = wrapperRefDim.width - modalWidth - 1;
+  }
+  let top = markerDim.y - wrapperRefDim.y + markerDim.height + ARROW_HEIGHT;
 
-  return { top, left };
+  return { modalPosition: { top, left }, arrowPosition: { left: arrowLeft } };
 };
 
 export default class Modal extends Component {
   wrapperRef = React.createRef();
-  state = { position: {} };
+  state = { position: { modalPosition: undefined, arrowPosition: undefined } };
 
-  componentDidMount = () => {
+  componentDidMount() {
     window.addEventListener("mousedown", this.handleMouseDown);
+    const { marker, wrapperRef } = this.props;
+    if (!marker) return;
+    const oldPos = this.markerPos;
+    const markerDim = marker.getBoundingClientRect();
+    this.markerPos = {
+      height: markerDim.height,
+      left: markerDim.left,
+      offsetTop: marker.offsetTop
+    };
+    if (isSamePos(oldPos, this.markerPos) && this.state.position) return;
+    this.setState({
+      ...getPosition(marker, this.wrapperRef.current, editorWrapper.current)
+    });
+  }
+
+  componentWillUnmount = () => {
+    window.removeEventListener("mousedown", this.handleMouseDown);
   };
 
   handleMouseDown = () => {
@@ -55,26 +74,6 @@ export default class Modal extends Component {
     )
       this.props.closeModal();
   };
-
-  componentWillUnmount = () => {
-    window.removeEventListener("mousedown", this.handleMouseDown);
-  };
-
-  componentDidUpdate() {
-    const { marker } = this.props;
-    if (!marker) return;
-    const oldPos = this.markerPos;
-    const markerDim = marker.getBoundingClientRect();
-    this.markerPos = {
-      height: markerDim.height,
-      left: markerDim.left,
-      offsetTop: marker.offsetTop
-    };
-    if (isSamePos(oldPos, this.markerPos)) return;
-    this.setState({
-      position: getPosition(marker, this.wrapperRef.current)
-    });
-  }
 
   onMouseDown = () => {
     this.active = true;
@@ -95,8 +94,8 @@ export default class Modal extends Component {
 
   render() {
     const { marker, children } = this.props;
-    const { position } = this.state;
     if (!marker) return null;
+    const { modalPosition = {}, arrowPosition = {} } = this.state;
 
     return (
       <Wrapper
@@ -106,10 +105,10 @@ export default class Modal extends Component {
         onKeyDown={this.onKeyDown}
         onMouseDown={this.onMouseDown}
         ref={this.wrapperRef}
-        style={position}
+        style={modalPosition}
         tabIndex={-1}
       >
-        <Arrow />
+        <Arrow left={arrowPosition.left} />
         {children}
       </Wrapper>
     );
@@ -144,7 +143,7 @@ const Wrapper = styled.div`
 const Arrow = styled.div`
   position: absolute;
   top: -6px;
-  left: calc(50% - 4px);
+  left: ${({ left = 0 }) => `calc(50% + ${left - 6}px)`};
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-bottom: 6px solid ${({ theme }) => theme.modal.arrowBorderColor};
@@ -165,3 +164,5 @@ const Arrow = styled.div`
 // Improvements:
 // 1. Fix arrow positioning when left is changed to take care of overflow.
 // 2. Fix positioning when toolbar is at extreme bottom.
+
+// toto: re-position modal on update

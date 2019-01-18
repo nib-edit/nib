@@ -29,7 +29,7 @@ export default new Plugin({
       return { link: getLink(state), decoration: undefined };
     },
     apply(tr, value, _, newState) {
-      const { link: oldLink } = value;
+      const { link: oldLink = {} } = value;
       const link = getLink(newState);
 
       const showEditLinkToolbar = tr.getMeta("SHOW_EDIT_LINK_TOOLBAR");
@@ -59,6 +59,7 @@ export default new Plugin({
         if ($from.pos === $to.pos) {
           const node = document.createElement("span");
           node.className = "nib-link-marker";
+          node.style.display = "inline-block";
           decor = Decoration.widget($from.pos, node);
         } else {
           decor = Decoration.inline($from.pos, $to.pos, {

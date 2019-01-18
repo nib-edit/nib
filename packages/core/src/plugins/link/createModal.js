@@ -16,6 +16,8 @@ class CreateModal extends PureComponent {
     this.modalWrapper = React.createRef();
   }
 
+  componentDidUpdate(prevProps) {}
+
   updateValue = evt => {
     this.setState({
       [`${evt.target.name}`]: evt.target.value
@@ -74,8 +76,14 @@ class CreateModal extends PureComponent {
   render() {
     const linkMarker = document.getElementsByClassName("nib-link-marker");
     const { title, href } = this.state;
+    const { editorWrapper } = this.props;
+    if (!linkMarker[0]) return null;
     return (
-      <Modal marker={linkMarker[0]} closeModal={this.closeModal}>
+      <Modal
+        marker={linkMarker[0]}
+        closeModal={this.closeModal}
+        editorWrapper={editorWrapper}
+      >
         <LinkPopup ref={this.modalWrapper}>
           <div>
             <Input
@@ -101,9 +109,9 @@ class CreateModal extends PureComponent {
   }
 }
 
-export default () => (
+export default props => (
   <AppStateWrapper
-    render={app_params => <CreateModal app_params={app_params} />}
+    render={app_params => <CreateModal app_params={app_params} {...props} />}
   />
 );
 

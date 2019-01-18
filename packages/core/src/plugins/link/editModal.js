@@ -74,8 +74,14 @@ class EditModal extends PureComponent {
     const link = this.getLink();
     if (!link) return null;
     const linkMarker = document.getElementsByClassName("nib-edit-link-marker");
+    if (!linkMarker[0]) return null;
+    const { editorWrapper } = this.props;
     return (
-      <Modal marker={linkMarker[0]} closeModal={this.closeModal}>
+      <Modal
+        marker={linkMarker[0]}
+        closeModal={this.closeModal}
+        editorWrapper={editorWrapper}
+      >
         <LinkPopup>
           <label htmlFor="href">Href</label>
           <Input
@@ -92,9 +98,9 @@ class EditModal extends PureComponent {
   }
 }
 
-export default () => (
+export default props => (
   <AppStateWrapper
-    render={app_params => <EditModal app_params={app_params} />}
+    render={app_params => <EditModal app_params={app_params} {...props} />}
   />
 );
 
