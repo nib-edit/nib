@@ -49,7 +49,7 @@ export default new Plugin({
           ]);
           return { link, decoration };
         }
-        return value;
+        return { ...value, link };
       }
 
       const showLinkToolbar = tr.getMeta("SHOW_LINK_TOOLBAR");
@@ -74,7 +74,7 @@ export default new Plugin({
         return { link, decoration: undefined };
       }
 
-      return value;
+      return { ...value, link };
     }
   },
 

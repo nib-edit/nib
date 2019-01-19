@@ -9,6 +9,7 @@ const Color = {
 };
 
 const FontSize = {
+  large: "16px",
   medium: "14px",
   small: "12px"
 };

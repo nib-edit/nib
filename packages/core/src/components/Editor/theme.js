@@ -115,6 +115,8 @@ export const theme = {
     borderBottomRightRadius: "2px",
     borderTopLeftRadius: "2px",
     borderTopRightRadius: "2px",
+    boxShadow:
+      "rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,rgba(9, 30, 66, 0.31) 0px 0px 1px",
     arrowBorderColor: Color.border,
     arrowBackgroundColor: Color.white,
     fontWeight: "600"

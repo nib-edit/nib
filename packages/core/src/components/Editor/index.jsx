@@ -9,7 +9,7 @@ import { theme } from "./theme";
 
 import LinkCreateModal from "../../plugins/link/createModal";
 import LinkEditModal from "../../plugins/link/editModal";
-import { deepMerge, defaultConfig } from "../../common";
+import { deepMerge, defaultConfig, AppStateWrapper } from "../../common";
 
 class Editor extends Component {
   constructor(props) {
@@ -31,29 +31,50 @@ class Editor extends Component {
     const { toolbar } = this.config;
     const inlineToolbarPresent = toolbar.options.indexOf("inline") >= 0;
     const topToolbarPresent = toolbar.options.indexOf("top") >= 0;
+    const linkMarker = document.getElementsByClassName("nib-link-marker");
+    const editLinkMarker = document.getElementsByClassName(
+      "nib-edit-link-marker"
+    );
     return (
-      <ThemeProvider theme={this.theme}>
-        <Wrapper id="nib-wrapper" ref={this.editorWrapper}>
-          {topToolbarPresent && <Toolbar.top config={toolbar.top} />}
-          <InnerEditor
-            defaultValue={defaultValue}
-            onChange={onChange}
-            config={this.config.plugins}
-          />
-          {/* todo: create handlar for modals */}
-          {inlineToolbarPresent && (
-            <Toolbar.inline
-              config={toolbar.inline}
-              editorWrapper={this.editorWrapper}
-            />
-          )}
-          <LinkCreateModal editorWrapper={this.editorWrapper} />
-          <LinkEditModal editorWrapper={this.editorWrapper} />
-        </Wrapper>
-      </ThemeProvider>
+      <AppStateWrapper
+        render={app_params => (
+          <ThemeProvider theme={this.theme}>
+            <Wrapper id="nib-wrapper" ref={this.editorWrapper}>
+              {topToolbarPresent && <Toolbar.top config={toolbar.top} />}
+              <InnerEditor
+                defaultValue={defaultValue}
+                onChange={onChange}
+                config={this.config.plugins}
+              />
+              {/* todo: create handlar for modals */}
+              {inlineToolbarPresent && (
+                <Toolbar.inline
+                  config={toolbar.inline}
+                  editorWrapper={this.editorWrapper}
+                />
+              )}
+              {linkMarker[0] && (
+                <LinkCreateModal
+                  editorWrapper={this.editorWrapper}
+                  linkMarker={linkMarker[0]}
+                  view={app_params.view}
+                />
+              )}
+              {editLinkMarker[0] && (
+                <LinkEditModal
+                  editorWrapper={this.editorWrapper}
+                  editLinkMarker={editLinkMarker[0]}
+                  view={app_params.view}
+                />
+              )}
+            </Wrapper>
+          </ThemeProvider>
+        )}
+      />
     );
   }
 }
 
 export default Editor;
 //todo: put config in context
+// todo: put modal into plugin api

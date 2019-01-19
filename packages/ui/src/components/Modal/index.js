@@ -18,17 +18,13 @@ const isSamePos = (oldPos, newPos) => {
 // this can be improved in future.
 const getPosition = (marker, modalElm, editorWrapper) => {
   const markerDim = marker.getBoundingClientRect();
-  // todo: calculate offsets from editor x, y positions
   const wrapperRefDim = editorWrapper.getBoundingClientRect();
   const modalWidth = modalElm ? modalElm.getBoundingClientRect().width : 0;
 
-  // Line below will find offsetLeft of editor.
   let left = -(wrapperRefDim.left - markerDim.left);
-  // Line below will align the modal in middle of the editor.
   left += (markerDim.width - modalWidth) / 2;
 
   let arrowLeft;
-  // Lines below will align modal to left or right of editor if there is a overflow.
   if (left < 0) {
     arrowLeft = Math.abs(left) > modalWidth / 2 - 10 ? left + 5 : left;
     left = -1;
@@ -47,7 +43,7 @@ export default class Modal extends Component {
 
   componentDidMount() {
     window.addEventListener("mousedown", this.handleMouseDown);
-    const { marker, wrapperRef } = this.props;
+    const { marker, editorWrapper } = this.props;
     if (!marker) return;
     const oldPos = this.markerPos;
     const markerDim = marker.getBoundingClientRect();
@@ -133,6 +129,8 @@ const Wrapper = styled.div`
   border-top-left-radius: ${({ theme }) => theme.modal.borderTopLeftRadius};
   border-top-right-radius: ${({ theme }) => theme.modal.borderTopLeftRadius};
 
+  box-shadow: ${({ theme }) => theme.modal.boxShadow};
+
   font-weight: ${({ theme }) => theme.modal.fontWeight};
 
   :focus {
@@ -165,4 +163,6 @@ const Arrow = styled.div`
 // 1. Fix arrow positioning when left is changed to take care of overflow.
 // 2. Fix positioning when toolbar is at extreme bottom.
 
-// toto: re-position modal on update
+// todo: re-position modal on update
+// todo: esc to close modals
+// todo: fix warnings

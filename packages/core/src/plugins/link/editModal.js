@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 import { TextSelection } from "prosemirror-state";
 import { Link, Input, Modal, Separator } from "nib-ui";
 import { linkPluginKey } from "./plugins";
-import { AppStateWrapper } from "../../common";
 
 class EditModal extends PureComponent {
   constructor(props) {
@@ -21,14 +20,14 @@ class EditModal extends PureComponent {
   };
 
   getLink = () => {
-    const { view: { state } = {} } = this.props.app_params;
+    const { view: { state } = {} } = this.props;
     if (!state) return;
     const pluginState = linkPluginKey.getState(state);
     return pluginState && pluginState.link;
   };
 
   getActiveLinkMark = () => {
-    const { view } = this.props.app_params;
+    const { view } = this.props;
     if (!view) return;
     const link = this.getLink();
     if (!link) return;
@@ -39,7 +38,7 @@ class EditModal extends PureComponent {
     const link = this.getLink();
     const {
       view: { state, dispatch }
-    } = this.props.app_params;
+    } = this.props;
     dispatch(
       state.tr
         .removeMark(link.from, link.to, state.schema.marks.link)
@@ -54,7 +53,7 @@ class EditModal extends PureComponent {
 
   unLink = () => {
     const link = this.getLink();
-    const { view } = this.props.app_params;
+    const { view } = this.props;
     const { state, dispatch } = view;
     dispatch(state.tr.removeMark(link.from, link.to, state.schema.marks.link));
     view.focus();
@@ -62,7 +61,7 @@ class EditModal extends PureComponent {
   };
 
   closeModal = () => {
-    const { view } = this.props.app_params;
+    const { view } = this.props;
     const { state, dispatch } = view;
     dispatch(state.tr.setMeta("SHOW_EDIT_LINK_TOOLBAR", false));
     this.setState({
@@ -73,12 +72,10 @@ class EditModal extends PureComponent {
   render() {
     const link = this.getLink();
     if (!link) return null;
-    const linkMarker = document.getElementsByClassName("nib-edit-link-marker");
-    if (!linkMarker[0]) return null;
-    const { editorWrapper } = this.props;
+    const { editorWrapper, editLinkMarker } = this.props;
     return (
       <Modal
-        marker={linkMarker[0]}
+        marker={editLinkMarker}
         closeModal={this.closeModal}
         editorWrapper={editorWrapper}
       >
@@ -98,11 +95,7 @@ class EditModal extends PureComponent {
   }
 }
 
-export default props => (
-  <AppStateWrapper
-    render={app_params => <EditModal app_params={app_params} {...props} />}
-  />
-);
+export default EditModal;
 
 const LinkPopup = styled.div`
   align-items: center;
@@ -112,5 +105,3 @@ const LinkPopup = styled.div`
   padding: 5px 10px;
   font-size: 14px;
 `;
-
-// todo: reset inputs as modals close
