@@ -2,8 +2,6 @@ import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
 import { Link, Input, Modal } from "nib-ui";
 
-import { AppStateWrapper } from "../../common";
-
 class CreateModal extends PureComponent {
   constructor(props) {
     super(props);
@@ -25,7 +23,7 @@ class CreateModal extends PureComponent {
   addLink = () => {
     const { title, href } = this.state;
     if (!title || !title.length) return;
-    const { view } = this.props.app_params;
+    const { view } = this.props;
     const { state, dispatch } = view;
     const {
       tr,
@@ -46,7 +44,7 @@ class CreateModal extends PureComponent {
   };
 
   getSelectedText = () => {
-    const { view } = this.props.app_params;
+    const { view } = this.props;
     if (!view) return "";
     const { state } = view;
     const {
@@ -62,7 +60,7 @@ class CreateModal extends PureComponent {
   };
 
   closeModal = () => {
-    const { view } = this.props.app_params;
+    const { view } = this.props;
     const { state, dispatch } = view;
     dispatch(state.tr.setMeta("SHOW_LINK_TOOLBAR", false));
     this.setState({
@@ -72,10 +70,14 @@ class CreateModal extends PureComponent {
   };
 
   render() {
-    const linkMarker = document.getElementsByClassName("nib-link-marker");
     const { title, href } = this.state;
+    const { editorWrapper, linkMarker } = this.props;
     return (
-      <Modal marker={linkMarker[0]} closeModal={this.closeModal}>
+      <Modal
+        marker={linkMarker}
+        closeModal={this.closeModal}
+        editorWrapper={editorWrapper}
+      >
         <LinkPopup ref={this.modalWrapper}>
           <div>
             <Input
@@ -101,11 +103,7 @@ class CreateModal extends PureComponent {
   }
 }
 
-export default () => (
-  <AppStateWrapper
-    render={app_params => <CreateModal app_params={app_params} />}
-  />
-);
+export default CreateModal;
 
 const LinkPopup = styled.div`
   align-items: flex-end;

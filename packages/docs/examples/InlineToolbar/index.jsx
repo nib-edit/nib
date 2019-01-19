@@ -37,11 +37,11 @@ class InlineToolbar extends Component {
       <div spellCheck={false}>
         <Editor
           config={{
-            plugins: { options: "block inline history" },
+            plugins: { options: "block inline history link" },
             toolbar: {
               options: "inline",
               inline: {
-                options: "block inline",
+                options: "block inline link",
                 block: { options: "p h1 h2", grouped: false }
               }
             }

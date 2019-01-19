@@ -24,6 +24,7 @@ module.exports = {
       components: [
         "packages/docs/examples/Basic/index.jsx",
         "packages/docs/examples/BlockInline/index.jsx",
+        "packages/docs/examples/FullFeatured/index.jsx",
         "packages/docs/examples/History/index.jsx",
         "packages/docs/examples/Link/index.jsx",
         "packages/docs/examples/Lists/index.jsx",
@@ -40,7 +41,7 @@ module.exports = {
   theme: {
     color: {
       base: "#304957",
-      link: "#304957",
+      link: "#89a6b7",
       linkHover: "#89a6b7",
       sidebarBackground: "#304957"
     }

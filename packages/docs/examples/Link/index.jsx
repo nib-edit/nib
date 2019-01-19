@@ -18,7 +18,7 @@ class Link extends Component {
           config={{
             plugins: { options: "block inline link history" },
             toolbar: {
-              options: "top inline",
+              options: "top",
               top: {
                 options: "block inline link",
                 block: { options: "p h1 h2 h3 h4 h5 h6", grouped: true }
