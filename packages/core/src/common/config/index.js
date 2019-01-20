@@ -1,5 +1,5 @@
 export const defaultConfig = {
-  plugins: { options: "block inline link list history" },
+  plugins: { options: "block inline link list" },
   toolbar: {
     options: "top inline",
     top: {

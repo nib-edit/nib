@@ -1,4 +1,4 @@
-Editor with block formatting and inline formatting options available.
+Editor with history options available.
 
 ```js
 <History />
@@ -25,7 +25,7 @@ class History extends Component {
       <div>
         <Editor
           config={{
-            plugins: { options: "block inline history" },
+            plugins: { options: "block inline" },
             toolbar: {
               options: "top",
               top: {

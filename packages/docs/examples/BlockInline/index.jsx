@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import Editor from "nib-core";
 
+/**
+ * @visibleName 2. BlockInline
+ */
 class BlockInline extends Component {
   state = {
     content: {}
@@ -16,12 +19,11 @@ class BlockInline extends Component {
       <div>
         <Editor
           config={{
-            plugins: { options: "block inline history" },
+            plugins: { options: "block inline" },
             toolbar: {
               options: "top",
               top: {
-                options: "block inline",
-                block: { options: "p h1 h2 h3 h4 h5 h6", grouped: true }
+                options: "block inline"
               }
             }
           }}

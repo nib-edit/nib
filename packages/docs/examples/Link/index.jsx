@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import Editor from "nib-core";
 
+/**
+ * @visibleName 3. Link
+ */
 class Link extends Component {
   state = {
     content: {}
@@ -16,12 +19,11 @@ class Link extends Component {
       <div>
         <Editor
           config={{
-            plugins: { options: "block inline link history" },
+            plugins: { options: "block inline link" },
             toolbar: {
               options: "top",
               top: {
-                options: "block inline link",
-                block: { options: "p h1 h2 h3 h4 h5 h6", grouped: true }
+                options: "block inline link"
               }
             }
           }}
@@ -34,3 +36,5 @@ class Link extends Component {
 }
 
 export default Link;
+
+// todo: command for link to be added

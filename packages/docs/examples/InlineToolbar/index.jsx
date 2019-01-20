@@ -22,6 +22,9 @@ const defaultValue = {
   ]
 };
 
+/**
+ * @visibleName 9. Inline toolbar
+ */
 class InlineToolbar extends Component {
   state = {
     content: defaultValue
@@ -37,7 +40,7 @@ class InlineToolbar extends Component {
       <div spellCheck={false}>
         <Editor
           config={{
-            plugins: { options: "block inline history link" },
+            plugins: { options: "block inline link" },
             toolbar: {
               options: "inline",
               inline: {

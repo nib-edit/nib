@@ -105,3 +105,5 @@ const LinkPopup = styled.div`
   padding: 5px 10px;
   font-size: 14px;
 `;
+
+// todo: mention material for icons

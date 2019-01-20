@@ -1,5 +1,5 @@
 const Color = {
-  border: "#9E9E9E",
+  border: "rgba(158, 158, 158, 0.75)",
   highlight: "#1C62B9",
   hover: "#E0E0E0",
   lightBorder: "#EbBCF0",
@@ -18,4 +18,8 @@ const DisabledStyle = {
   opacity: 0.5
 };
 
-export default { Color, FontSize, DisabledStyle };
+const BoxShadow = `${Color.border} 0px 4px 8px -2px,${
+  Color.border
+} 0px 0px 1px`;
+
+export default { Color, FontSize, DisabledStyle, BoxShadow };

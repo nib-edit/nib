@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import Editor from "nib-core";
 
+/**
+ * @visibleName 5. List
+ */
 class List extends Component {
   state = {
     content: {}
@@ -16,12 +19,11 @@ class List extends Component {
       <div>
         <Editor
           config={{
-            plugins: { options: "block inline list history" },
+            plugins: { options: "block inline list" },
             toolbar: {
-              options: "top inline",
+              options: "top",
               top: {
-                options: "block inline list",
-                block: { options: "p h1 h2 h3 h4 h5 h6", grouped: true }
+                options: "block inline list"
               }
             }
           }}

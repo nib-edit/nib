@@ -1,4 +1,4 @@
-Editor with link option enabled.
+Editor with list option enabled.
 
 ```js
 <List />
@@ -25,12 +25,11 @@ class List extends Component {
       <div>
         <Editor
           config={{
-            plugins: { options: "block inline list history" },
+            plugins: { options: "block inline list" },
             toolbar: {
               options: "top inline",
               top: {
-                options: "block inline list",
-                block: { options: "p h1 h2 h3 h4 h5 h6", grouped: true }
+                options: "block inline list"
               }
             }
           }}

@@ -1,4 +1,4 @@
-Very basic editor with just text editing option enabled.
+Basic editor with only text editing enabled.
 
 ```js
 <Basic />

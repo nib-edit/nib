@@ -31,17 +31,19 @@ const combineKeyMaps = keyMaps => {
   return map;
 };
 
+const selectAll = () => (state, dispatch) => {
+  const { tr, doc } = state;
+  dispatch(
+    tr.setSelection(
+      new TextSelection(doc.resolve(0), doc.resolve(doc.content.size))
+    )
+  );
+  return true;
+};
+
 //todo: merge this to common plugin
 const commonKeyMap = {
-  "Mod-a": (editorState, dispatch) => {
-    const { tr, doc } = editorState;
-    dispatch(
-      tr.setSelection(
-        new TextSelection(doc.resolve(0), doc.resolve(doc.content.size))
-      )
-    );
-    return true;
-  }
+  "Mod-a": (editorState, dispatch) => selectAll()(editorState, dispatch)
 };
 
 export const buildKeymap = plugins => {

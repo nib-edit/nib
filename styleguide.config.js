@@ -24,12 +24,12 @@ module.exports = {
       components: [
         "packages/docs/examples/Basic/index.jsx",
         "packages/docs/examples/BlockInline/index.jsx",
-        "packages/docs/examples/FullFeatured/index.jsx",
-        "packages/docs/examples/History/index.jsx",
         "packages/docs/examples/Link/index.jsx",
         "packages/docs/examples/Lists/index.jsx",
-        "packages/docs/examples/InlineToolbar/index.jsx",
-        "packages/docs/examples/Themed/index.jsx"
+        "packages/docs/examples/History/index.jsx",
+        "packages/docs/examples/FullFeatured/index.jsx",
+        "packages/docs/examples/Themed/index.jsx",
+        "packages/docs/examples/InlineToolbar/index.jsx"
       ]
     }
   ],

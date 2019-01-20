@@ -1,4 +1,4 @@
-Editor with all options enabled.
+Editor with all top toolbar options enabled.
 
 ```js
 <FullFeatured />

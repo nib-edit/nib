@@ -1,6 +1,6 @@
 import { StyleConstants } from "../../common";
 
-const { Color, FontSize } = StyleConstants;
+const { Color, FontSize, BoxShadow } = StyleConstants;
 const border = `1px solid ${Color.border}`;
 const inherit = "inherit";
 const none = "none";
@@ -107,17 +107,16 @@ export const theme = {
   modal: {
     backgroundColor: Color.white,
     color: Color.text,
-    borderBottom: border,
-    borderLeft: border,
-    borderRight: border,
-    borderTop: border,
+    borderBottom: none,
+    borderLeft: none,
+    borderRight: none,
+    borderTop: none,
     borderBottomLeftRadius: "2px",
     borderBottomRightRadius: "2px",
     borderTopLeftRadius: "2px",
     borderTopRightRadius: "2px",
-    boxShadow:
-      "rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,rgba(9, 30, 66, 0.31) 0px 0px 1px",
-    arrowBorderColor: Color.border,
+    boxShadow: BoxShadow,
+    arrowBorderColor: "rgba(9, 30, 66, 0.1)",
     arrowBackgroundColor: Color.white,
     fontWeight: "600"
   },

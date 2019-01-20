@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import Editor from "nib-core";
 
+/**
+ * @visibleName 6. History
+ */
 class History extends Component {
   state = {
     content: {}
@@ -16,7 +19,7 @@ class History extends Component {
       <div>
         <Editor
           config={{
-            plugins: { options: "block inline history" },
+            plugins: { options: "block inline" },
             toolbar: {
               options: "top",
               top: {

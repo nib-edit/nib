@@ -1,6 +1,9 @@
 import React, { PureComponent } from "react";
 import Editor from "nib-core";
 
+/**
+ * @visibleName 7. All
+ */
 class FullFeatured extends PureComponent {
   render() {
     return (

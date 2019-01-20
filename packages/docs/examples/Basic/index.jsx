@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import Editor from "nib-core";
 
+/**
+ * @visibleName 1. Basic
+ */
 class Basic extends Component {
   state = {
     content: {}

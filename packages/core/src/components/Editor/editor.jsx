@@ -26,7 +26,7 @@ export default class Editor extends Component {
   componentDidMount() {
     const { config, defaultValue, onChange } = this.props;
     var state = buildEditorState(
-      getPluginList(`${config.options} selMarker common`),
+      getPluginList(`${config.options} history selMarker common`),
       defaultValue
     );
     this.view = new EditorView(this.editorRef.current, {

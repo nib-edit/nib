@@ -46,7 +46,7 @@ class InlineToolbar extends Component {
       <div spellCheck={false}>
         <Editor
           config={{
-            plugins: { options: "block inline history" },
+            plugins: { options: "block inline" },
             toolbar: {
               options: "inline",
               inline: {
