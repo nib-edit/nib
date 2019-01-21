@@ -31,3 +31,5 @@ class Basic extends Component {
 }
 
 export default Basic;
+
+//todo: details to be added for each plugin

@@ -4,8 +4,7 @@ const olDOM = ["ol", 0],
 
 const nodes = {
   listItem: {
-    content:
-      "(paragraph | heading){1} (paragraph | heading | orderedList | bulletList)*",
+    content: "(paragraph){1} (paragraph | orderedList | bulletList)*",
     parseDOM: [{ tag: "li" }],
     toDOM() {
       return liDOM;

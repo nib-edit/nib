@@ -23,7 +23,7 @@ const defaultValue = {
 };
 
 /**
- * @visibleName 9. Inline toolbar
+ * @visibleName 5. Inline toolbar
  */
 class InlineToolbar extends Component {
   state = {

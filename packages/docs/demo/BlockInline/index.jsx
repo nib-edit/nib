@@ -1,16 +1,10 @@
-Editor with history options available.
-
-```js
-<History />
-```
-
-Code:
-
-```js static
 import React, { Component } from "react";
 import Editor from "nib-core";
 
-class History extends Component {
+/**
+ * @visibleName 2. BlockInline
+ */
+class BlockInline extends Component {
   state = {
     content: {}
   };
@@ -25,14 +19,8 @@ class History extends Component {
       <div>
         <Editor
           config={{
-            plugins: { options: "block inline" },
-            toolbar: {
-              options: "top",
-              top: {
-                options: "block inline history",
-                block: { options: "p h1 h2 h3 h4 h5 h6", grouped: true }
-              }
-            }
+            plugins: { options: "block inline list" },
+            toolbar: { options: "top", top: { options: "block inline list" } }
           }}
           onChange={this.onChange}
         />
@@ -42,5 +30,4 @@ class History extends Component {
   }
 }
 
-export default History;
-```
+export default BlockInline;

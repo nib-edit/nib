@@ -17,19 +17,29 @@ module.exports = {
       content: "packages/docs/Props/Readme.md"
     },
     {
-      name: "Examples",
+      name: "Plugins",
       pagePerSection: true,
       sectionDepth: 1,
-      content: "packages/docs/examples/Readme.md",
+      content: "packages/docs/plugins/Readme.md",
       components: [
-        "packages/docs/examples/Basic/index.jsx",
-        "packages/docs/examples/BlockInline/index.jsx",
-        "packages/docs/examples/Link/index.jsx",
-        "packages/docs/examples/Lists/index.jsx",
-        "packages/docs/examples/History/index.jsx",
-        "packages/docs/examples/FullFeatured/index.jsx",
-        "packages/docs/examples/Themed/index.jsx",
-        "packages/docs/examples/InlineToolbar/index.jsx"
+        "packages/docs/plugins/Block/index.jsx",
+        "packages/docs/plugins/Inline/index.jsx",
+        "packages/docs/plugins/History/index.jsx",
+        "packages/docs/plugins/Link/index.jsx",
+        "packages/docs/plugins/List/index.jsx"
+      ]
+    },
+    {
+      name: "Demo",
+      pagePerSection: true,
+      sectionDepth: 1,
+      content: "packages/docs/demo/Readme.md",
+      components: [
+        "packages/docs/demo/Basic/index.jsx",
+        "packages/docs/demo/BlockInline/index.jsx",
+        "packages/docs/demo/FullFeatured/index.jsx",
+        "packages/docs/demo/Themed/index.jsx",
+        "packages/docs/demo/InlineToolbar/index.jsx"
       ]
     }
   ],

@@ -41,7 +41,7 @@ const customTheme = {
 };
 
 /**
- * @visibleName 8. Themed
+ * @visibleName 4. Themed
  */
 const Themed = () => (
   <Editor
