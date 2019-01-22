@@ -1,7 +1,0 @@
-# Playground
-
----
-
-Playground for nib
-
----

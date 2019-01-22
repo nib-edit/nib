@@ -17,7 +17,10 @@ class Editor extends Component {
     super(props);
     this.config = deepMerge(defaultConfig, props.config);
     this.theme = deepMerge(theme, props.theme);
-    this.theme.blockStyles = deepMerge(blockStyles, props.blockStyles);
+    this.theme = {
+      ...this.theme,
+      blockStyles: deepMerge(blockStyles, props.blockStyles)
+    };
     this.editorWrapper = React.createRef();
   }
 

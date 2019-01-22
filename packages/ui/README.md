@@ -1,7 +1,3 @@
-# nib-ui
+# UI
 
----
-
-## These are reusable UI components for Nib library.
-
----
+## These are reusable UI components built for Nib library.

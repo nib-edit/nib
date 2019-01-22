@@ -1,4 +1,4 @@
-Setup of the editor is quite straight forward. Toolbar and each plugin is a package of its own and is required to be installed from `npm`.
+Setup of the editor is quite straight forward. It is required to be installed from `npm`.
 
 ### Installing packages:
 
