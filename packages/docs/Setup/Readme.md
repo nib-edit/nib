@@ -1,6 +1,6 @@
 Setup of the editor is quite straight forward. Toolbar and each plugin is a package of its own and is required to be installed from `npm`.
 
-## Installing packages:
+### Installing packages:
 
 Either `npm` or `yarn` commands can be used.
 
@@ -8,7 +8,9 @@ Either `npm` or `yarn` commands can be used.
 npm i nib-core --save
 ```
 
-## Writing editor component:
+---
+
+### Writing editor component:
 
 ```js static
 import React from "react";
@@ -17,7 +19,9 @@ import Editor from "nib-core";
 const MyEditor = () => <Editor />;
 ```
 
-## Using the editor in a non-react application:
+---
+
+### Using the editor in a non-react application:
 
 The above written react editor component can be used in non-react code as below:
 
