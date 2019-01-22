@@ -6,6 +6,7 @@ import InnerEditor from "./editor";
 import Toolbar from "../Toolbar";
 import { Wrapper } from "./style";
 import { theme } from "./theme";
+import { blockStyles } from "./blockStyles";
 
 import LinkCreateModal from "../../plugins/link/createModal";
 import LinkEditModal from "../../plugins/link/editModal";
@@ -16,10 +17,13 @@ class Editor extends Component {
     super(props);
     this.config = deepMerge(defaultConfig, props.config);
     this.theme = deepMerge(theme, props.theme);
+    this.theme.blockStyles = deepMerge(blockStyles, props.blockStyles);
     this.editorWrapper = React.createRef();
   }
 
   static propTypes = {
+    autofocus: PropTypes.bool,
+    blockStyles: PropTypes.object,
     config: PropTypes.object,
     defaultValue: PropTypes.object,
     onChange: PropTypes.func,
@@ -27,7 +31,7 @@ class Editor extends Component {
   };
 
   render() {
-    const { defaultValue, onChange } = this.props;
+    const { defaultValue, onChange, autofocus } = this.props;
     const { toolbar } = this.config;
     const inlineToolbarPresent = toolbar.options.indexOf("inline") >= 0;
     const topToolbarPresent = toolbar.options.indexOf("top") >= 0;
@@ -42,6 +46,7 @@ class Editor extends Component {
             <Wrapper id="nib-wrapper" ref={this.editorWrapper}>
               {topToolbarPresent && <Toolbar.top config={toolbar.top} />}
               <InnerEditor
+                autofocus={autofocus}
                 defaultValue={defaultValue}
                 onChange={onChange}
                 config={this.config.plugins}

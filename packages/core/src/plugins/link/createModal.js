@@ -81,7 +81,7 @@ class CreateModal extends PureComponent {
         <LinkPopup ref={this.modalWrapper}>
           <div>
             <Input
-              autoFocus
+              autofocus
               label="Title"
               name="title"
               onChange={this.updateValue}

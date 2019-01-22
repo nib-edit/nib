@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
 
+import { getBlockStyles } from "./blockStyles";
+
 export const Wrapper = styled.div`
   position: relative;
   background-color: ${({ theme }) => theme.wrapper.backgroundColor};
@@ -19,6 +21,7 @@ export const Wrapper = styled.div`
   padding: ${({ theme }) => theme.wrapper.padding};
   font-style: ${({ theme }) => theme.wrapper.fontStyle};
   font-family: ${({ theme }) => theme.wrapper.fontFamily};
+  ${({ theme }) => getBlockStyles(theme.blockStyles)};
 `;
 
 export const StyledEditor = styled.div`

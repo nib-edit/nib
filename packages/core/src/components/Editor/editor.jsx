@@ -24,7 +24,7 @@ export default class Editor extends Component {
   };
 
   componentDidMount() {
-    const { config, defaultValue, onChange } = this.props;
+    const { config, defaultValue, onChange, autofocus } = this.props;
     var state = buildEditorState(
       getPluginList(`${config.options} history selMarker common`),
       defaultValue
@@ -37,6 +37,7 @@ export default class Editor extends Component {
         if (onChange && tr.docChanged) onChange(this.view.state.toJSON().doc);
       }
     });
+    if (autofocus) this.view.focus();
     Dispatcher.dispatch(this.view);
   }
 
