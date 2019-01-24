@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { ToolbarSeparator } from "nib-ui";
 
 import { AppStateWrapper } from "../../../common/app-state";
-import { ToolbarSeparator } from "nib-ui";
 import { buildMenu } from "../../../common/editor-helpers";
 
 export default ({ config }) => {
