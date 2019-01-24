@@ -8,6 +8,7 @@ import {
   updateEditorState
 } from "../../common/editor-helpers";
 import { Dispatcher } from "../../common/app-state";
+import { ConfigContext } from "../../common/config";
 
 import { StyledEditor } from "./style";
 
@@ -17,6 +18,8 @@ export default class Editor extends Component {
     this.editorRef = React.createRef();
   }
 
+  static contextType = ConfigContext;
+
   static propTypes = {
     config: PropTypes.object,
     defaultValue: PropTypes.object,
@@ -25,9 +28,10 @@ export default class Editor extends Component {
   };
 
   componentDidMount() {
-    const { config, defaultValue, onChange, autofocus } = this.props;
+    const { plugins } = this.context.config;
+    const { defaultValue, onChange, autofocus } = this.props;
     var state = buildEditorState(
-      getPluginList(`${config.options} history selMarker common`),
+      getPluginList(`${plugins.options} history selMarker common`),
       defaultValue
     );
     this.view = new EditorView(this.editorRef.current, {

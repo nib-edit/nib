@@ -1,3 +1,5 @@
+import React from "react";
+
 export const defaultConfig = {
   plugins: { options: "block inline link list" },
   toolbar: {
@@ -14,3 +16,5 @@ export const defaultConfig = {
     }
   }
 };
+
+export const ConfigContext = React.createContext(defaultConfig);

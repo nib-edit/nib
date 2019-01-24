@@ -1,32 +1,38 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "@emotion/styled";
 import { ToolbarSeparator } from "nib-ui";
 
 import { AppStateWrapper } from "../../../common/app-state";
 import { buildMenu } from "../../../common/editor-helpers";
+import { ConfigContext } from "../../../common/config";
 
-export default ({ config }) => {
-  const options = buildMenu(config.options);
-  const optionSize = options.length;
-  return (
-    <AppStateWrapper
-      render={app_params => (
-        <Wrapper onMouseDown={e => e.preventDefault()}>
-          {options.map((Option, index) => (
-            <React.Fragment key={`top-toolbar-option-${Option.name}`}>
-              <Option.menuComponent
-                config={config[Option.name]}
-                key={`top-menu-option-${Option.name}`}
-                app_params={app_params}
-              />
-              {index < optionSize - 1 && <ToolbarSeparator />}
-            </React.Fragment>
-          ))}
-        </Wrapper>
-      )}
-    />
-  );
-};
+class Top extends Component {
+  static contextType = ConfigContext;
+
+  render() {
+    const { top: topConfig } = this.context.config.toolbar;
+    const options = buildMenu(topConfig.options);
+    const optionSize = options.length;
+    return (
+      <AppStateWrapper
+        render={app_params => (
+          <Wrapper onMouseDown={e => e.preventDefault()}>
+            {options.map((Option, index) => (
+              <React.Fragment key={`top-toolbar-option-${Option.name}`}>
+                <Option.menuComponent
+                  config={topConfig[Option.name]}
+                  key={`top-menu-option-${Option.name}`}
+                  app_params={app_params}
+                />
+                {index < optionSize - 1 && <ToolbarSeparator />}
+              </React.Fragment>
+            ))}
+          </Wrapper>
+        )}
+      />
+    );
+  }
+}
 
 const Wrapper = styled.div`
   align-items: center;
@@ -53,3 +59,5 @@ const Wrapper = styled.div`
   font-style: ${({ theme }) => theme.toolbar.top.fontStyle};
   font-family: ${({ theme }) => theme.toolbar.top.fontFamily};
 `;
+
+export default Top;

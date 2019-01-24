@@ -1,39 +1,48 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "@emotion/styled";
 import { Modal, ToolbarSeparator } from "nib-ui";
 
 import { AppStateWrapper } from "../../../common/app-state";
 import { buildMenu } from "../../../common/editor-helpers";
+import { ConfigContext } from "../../../common/config";
 
-export default ({ config, editorWrapper }) => {
-  const options = buildMenu(config.options);
-  const optionSize = options.length;
-  const selMarker = document.getElementsByClassName("nib-selected");
-  return (
-    <AppStateWrapper
-      render={app_params => (
-        <div>
-          {selMarker[0] ? (
-            <Modal marker={selMarker[0]} editorWrapper={editorWrapper}>
-              <Wrapper onMouseDown={e => e.preventDefault()}>
-                {options.map((Option, index) => (
-                  <React.Fragment key={`inline-toolbar-option-${Option.name}`}>
-                    <Option.menuComponent
-                      config={config[Option.name]}
-                      key={`inline-menu-option-${Option.name}`}
-                      app_params={app_params}
-                    />
-                    {index < optionSize - 1 && <ToolbarSeparator />}
-                  </React.Fragment>
-                ))}
-              </Wrapper>
-            </Modal>
-          ) : null}
-        </div>
-      )}
-    />
-  );
-};
+class Inline extends Component {
+  static contextType = ConfigContext;
+
+  render() {
+    const { editorWrapper } = this.props;
+    const { inline: inlineConfig } = this.context.config.toolbar;
+    const options = buildMenu(inlineConfig.options);
+    const optionSize = options.length;
+    const selMarker = document.getElementsByClassName("nib-selected");
+    return (
+      <AppStateWrapper
+        render={app_params => (
+          <div>
+            {selMarker[0] ? (
+              <Modal marker={selMarker[0]} editorWrapper={editorWrapper}>
+                <Wrapper onMouseDown={e => e.preventDefault()}>
+                  {options.map((Option, index) => (
+                    <React.Fragment
+                      key={`inline-toolbar-option-${Option.name}`}
+                    >
+                      <Option.menuComponent
+                        config={inlineConfig[Option.name]}
+                        key={`inline-menu-option-${Option.name}`}
+                        app_params={app_params}
+                      />
+                      {index < optionSize - 1 && <ToolbarSeparator />}
+                    </React.Fragment>
+                  ))}
+                </Wrapper>
+              </Modal>
+            ) : null}
+          </div>
+        )}
+      />
+    );
+  }
+}
 
 const Wrapper = styled.div`
   align-items: center;
@@ -63,3 +72,5 @@ const Wrapper = styled.div`
   font-style: ${({ theme }) => theme.toolbar.inline.fontStyle};
   font-family: ${({ theme }) => theme.toolbar.inline.fontFamily};
 `;
+
+export default Inline;

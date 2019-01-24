@@ -6,7 +6,7 @@ import LinkCreateModal from "../../plugins/link/createModal";
 import LinkEditModal from "../../plugins/link/editModal";
 import { AppStateWrapper } from "../../common/app-state";
 import { deepMerge } from "../../common/utils";
-import { defaultConfig } from "../../common/config";
+import { defaultConfig, ConfigContext } from "../../common/config";
 
 import InnerEditor from "./editor";
 import Toolbar from "../Toolbar";
@@ -47,38 +47,36 @@ class Editor extends Component {
     return (
       <AppStateWrapper
         render={app_params => (
-          <ThemeProvider theme={this.theme}>
-            <Wrapper id="nib-wrapper" ref={this.editorWrapper}>
-              {topToolbarPresent && <Toolbar.top config={toolbar.top} />}
-              <InnerEditor
-                autofocus={autofocus}
-                defaultValue={defaultValue}
-                onChange={onChange}
-                config={this.config.plugins}
-              />
-              {/* todo: create handlar for modals */}
-              {inlineToolbarPresent && (
-                <Toolbar.inline
-                  config={toolbar.inline}
-                  editorWrapper={this.editorWrapper}
+          <ConfigContext.Provider value={{ config: this.config }}>
+            <ThemeProvider theme={this.theme}>
+              <Wrapper id="nib-wrapper" ref={this.editorWrapper}>
+                {topToolbarPresent && <Toolbar.top />}
+                <InnerEditor
+                  autofocus={autofocus}
+                  defaultValue={defaultValue}
+                  onChange={onChange}
                 />
-              )}
-              {linkMarker[0] && (
-                <LinkCreateModal
-                  editorWrapper={this.editorWrapper}
-                  linkMarker={linkMarker[0]}
-                  view={app_params.view}
-                />
-              )}
-              {editLinkMarker[0] && (
-                <LinkEditModal
-                  editorWrapper={this.editorWrapper}
-                  editLinkMarker={editLinkMarker[0]}
-                  view={app_params.view}
-                />
-              )}
-            </Wrapper>
-          </ThemeProvider>
+                {/* todo: create handlar for modals */}
+                {inlineToolbarPresent && (
+                  <Toolbar.inline editorWrapper={this.editorWrapper} />
+                )}
+                {linkMarker[0] && (
+                  <LinkCreateModal
+                    editorWrapper={this.editorWrapper}
+                    linkMarker={linkMarker[0]}
+                    view={app_params.view}
+                  />
+                )}
+                {editLinkMarker[0] && (
+                  <LinkEditModal
+                    editorWrapper={this.editorWrapper}
+                    editLinkMarker={editLinkMarker[0]}
+                    view={app_params.view}
+                  />
+                )}
+              </Wrapper>
+            </ThemeProvider>
+          </ConfigContext.Provider>
         )}
       />
     );
