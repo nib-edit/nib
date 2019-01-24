@@ -1,4 +1,4 @@
-import { StyleConstants } from "../../common";
+import { StyleConstants } from "../../common/constants";
 
 const { Color, FontSize, BoxShadow } = StyleConstants;
 const border = `1px solid ${Color.border}`;
@@ -154,22 +154,3 @@ export const theme = {
     }
   }
 };
-
-// The function will merge user's theme on top of above theme
-export const updateTheme = (theme1, theme2) => {
-  if (theme2 === undefined) return theme1;
-  if (typeof theme1 === "object") {
-    const result = {};
-    Object.keys(theme1).forEach(key => {
-      if (typeof theme1[key] === "object") {
-        result[key] = updateTheme(theme1[key], theme2[key]);
-      } else {
-        result[key] = theme2[key] === undefined ? theme1[key] : theme2[key];
-      }
-    });
-    return result;
-  }
-  return theme2 === undefined ? theme1 : theme2;
-};
-
-// todo: user should be able to pass additional fields for styling

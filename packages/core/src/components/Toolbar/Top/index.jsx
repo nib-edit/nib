@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "@emotion/styled";
 
+import { AppStateWrapper } from "../../../common/app-state";
 import { ToolbarSeparator } from "nib-ui";
-import { buildMenu, AppStateWrapper } from "../../../common";
+import { buildMenu } from "../../../common/editor-helpers";
 
 export default ({ config }) => {
   const options = buildMenu(config.options);

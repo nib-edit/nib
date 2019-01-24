@@ -5,9 +5,10 @@ import { EditorView } from "prosemirror-view";
 import {
   buildEditorState,
   getPluginList,
-  updateEditorState,
-  Dispatcher
-} from "../../common";
+  updateEditorState
+} from "../../common/editor-helpers";
+import { Dispatcher } from "../../common/app-state";
+
 import { StyledEditor } from "./style";
 
 export default class Editor extends Component {

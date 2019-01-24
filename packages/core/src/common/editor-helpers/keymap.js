@@ -1,4 +1,3 @@
-import { TextSelection } from "prosemirror-state";
 import { baseKeymap } from "prosemirror-commands";
 import { keymap } from "prosemirror-keymap";
 
@@ -31,21 +30,6 @@ const combineKeyMaps = keyMaps => {
   return map;
 };
 
-const selectAll = () => (state, dispatch) => {
-  const { tr, doc } = state;
-  dispatch(
-    tr.setSelection(
-      new TextSelection(doc.resolve(0), doc.resolve(doc.content.size))
-    )
-  );
-  return true;
-};
-
-//todo: merge this to common plugin
-const commonKeyMap = {
-  "Mod-a": (editorState, dispatch) => selectAll()(editorState, dispatch)
-};
-
 export const buildKeymap = plugins => {
   let combinedMap = {};
   plugins.forEach(plugin => {
@@ -53,7 +37,6 @@ export const buildKeymap = plugins => {
       combinedMap = addKeyMaps(combinedMap, plugin.keymaps);
     }
   });
-  combinedMap = addKeyMaps(combinedMap, commonKeyMap);
   combinedMap = addKeyMaps(combinedMap, baseKeymap);
   combinedMap = combineKeyMaps(combinedMap);
   return new keymap(combinedMap);

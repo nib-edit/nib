@@ -2,15 +2,17 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { ThemeProvider } from "emotion-theming";
 
+import LinkCreateModal from "../../plugins/link/createModal";
+import LinkEditModal from "../../plugins/link/editModal";
+import { AppStateWrapper } from "../../common/app-state";
+import { deepMerge } from "../../common/utils";
+import { defaultConfig } from "../../common/config";
+
 import InnerEditor from "./editor";
 import Toolbar from "../Toolbar";
 import { Wrapper } from "./style";
-import { theme } from "./theme";
 import { blockStyles } from "./blockStyles";
-
-import LinkCreateModal from "../../plugins/link/createModal";
-import LinkEditModal from "../../plugins/link/editModal";
-import { deepMerge, defaultConfig, AppStateWrapper } from "../../common";
+import { theme } from "./theme";
 
 class Editor extends Component {
   constructor(props) {
