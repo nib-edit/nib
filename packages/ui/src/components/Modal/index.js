@@ -165,4 +165,3 @@ const Arrow = styled.div`
 
 // todo: re-position modal on update
 // todo: esc to close modals
-// todo: fix warnings

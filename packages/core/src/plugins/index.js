@@ -4,7 +4,6 @@ import history from "./history";
 import inline from "./inline";
 import link from "./link";
 import list from "./list";
-import selMarker from "./sel-marker";
 
 const Plugins = {
   block,
@@ -12,8 +11,7 @@ const Plugins = {
   history,
   inline,
   link,
-  list,
-  selMarker
+  list
 };
 
 export default Plugins;

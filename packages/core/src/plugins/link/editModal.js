@@ -34,7 +34,7 @@ class EditModal extends PureComponent {
     return view.domAtPos(link.from).node.querySelector("a");
   };
 
-  unLink = () => {
+  updateLink = () => {
     const link = this.getLink();
     const {
       view: { state, dispatch }
@@ -49,6 +49,7 @@ class EditModal extends PureComponent {
         )
         .setSelection(new TextSelection(state.doc.resolve(link.to)))
     );
+    this.closeModal();
   };
 
   unLink = () => {
@@ -64,9 +65,6 @@ class EditModal extends PureComponent {
     const { view } = this.props;
     const { state, dispatch } = view;
     dispatch(state.tr.setMeta("SHOW_EDIT_LINK_TOOLBAR", false));
-    this.setState({
-      href: ""
-    });
   };
 
   render() {
@@ -105,5 +103,3 @@ const LinkPopup = styled.div`
   padding: 5px 10px;
   font-size: 14px;
 `;
-
-// todo: mention material for icons

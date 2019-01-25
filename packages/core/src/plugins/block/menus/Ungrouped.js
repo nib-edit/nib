@@ -31,5 +31,3 @@ export default class Ungrouped extends PureComponent {
     );
   }
 }
-
-// todo: redo editor config

@@ -11,4 +11,5 @@ If you have any further queries or require any help you can [email](mailto::jyot
 <FullFeatured />
 ```
 
+Icons used in the editor have been takes from [Material Design](https://material.io/tools/icons/?style=sharp).
 <br>

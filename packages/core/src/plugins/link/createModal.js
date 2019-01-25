@@ -6,7 +6,6 @@ class CreateModal extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      // todo: title to reset when modal opens
       title: this.getSelectedText(),
       href: "",
       isMouseDown: false
@@ -63,10 +62,6 @@ class CreateModal extends PureComponent {
     const { view } = this.props;
     const { state, dispatch } = view;
     dispatch(state.tr.setMeta("SHOW_LINK_TOOLBAR", false));
-    this.setState({
-      title: "",
-      href: ""
-    });
   };
 
   render() {
@@ -81,7 +76,7 @@ class CreateModal extends PureComponent {
         <LinkPopup ref={this.modalWrapper}>
           <div>
             <Input
-              autofocus
+              autoFocus
               label="Title"
               name="title"
               onChange={this.updateValue}
@@ -119,5 +114,3 @@ const StyledLink = styled(Link)`
 `;
 
 // todo: apply link above should be tab-able
-// todo: inputs to show selected value always
-// rendering logic should not unnecessary run if there is no marker

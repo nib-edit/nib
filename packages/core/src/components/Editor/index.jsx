@@ -52,7 +52,7 @@ class Editor extends Component {
               <Wrapper id="nib-wrapper" ref={this.editorWrapper}>
                 {topToolbarPresent && <Toolbar.top />}
                 <InnerEditor
-                  autofocus={autofocus}
+                  autoFocus={autofocus}
                   defaultValue={defaultValue}
                   onChange={onChange}
                 />
@@ -84,5 +84,4 @@ class Editor extends Component {
 }
 
 export default Editor;
-//todo: put config in context
 // todo: put modal into plugin api

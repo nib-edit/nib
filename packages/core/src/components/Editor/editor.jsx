@@ -31,7 +31,7 @@ export default class Editor extends Component {
     const { plugins } = this.context.config;
     const { defaultValue, onChange, autofocus } = this.props;
     var state = buildEditorState(
-      getPluginList(`${plugins.options} history selMarker common`),
+      getPluginList(`${plugins.options} history common`),
       defaultValue
     );
     this.view = new EditorView(this.editorRef.current, {
