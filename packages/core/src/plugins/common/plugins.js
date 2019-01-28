@@ -36,7 +36,7 @@ export default new Plugin({
     decorations(state) {
       const { editorHasFocus, hideInlineMenu } =
         state && commonPluginKey.getState(state);
-      // if (state.selection.empty || !editorHasFocus || hideInlineMenu) return;
+      if (state.selection.empty || !editorHasFocus || hideInlineMenu) return;
       const { $from, $to } = state.selection;
       return DecorationSet.create(state.doc, [
         Decoration.inline($from.pos, $to.pos, {

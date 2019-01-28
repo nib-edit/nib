@@ -36,12 +36,15 @@ const getPosition = (marker, modalElm, editorWrapper) => {
     arrowLeft = left + modalWidth - wrapperRefDim.width;
     left = wrapperRefDim.width - modalWidth - 1;
   }
+  if (left < 1) left = 1;
 
   let top = markerDim.y - wrapperRefDim.y + markerDim.height + ARROW_HEIGHT;
   if (top + modalHeight > wrapperRefDim.height) {
     arrowDir = "BOTTOM";
     top = markerDim.y - wrapperRefDim.y - ARROW_HEIGHT - modalHeight;
   }
+  if (top < 1) top = 1;
+
   return {
     modalPosition: { top, left },
     arrowPosition: { left: arrowLeft, dir: arrowDir }
@@ -53,7 +56,6 @@ export default class Modal extends Component {
   state = { modalPosition: {}, arrowPosition: { dir: "TOP" } };
 
   componentDidMount() {
-    window.addEventListener("mousedown", this.handleMouseDown);
     window.addEventListener("keydown", this.handleKeyPress);
     const { marker, editorWrapper } = this.props;
     if (marker) {
@@ -64,12 +66,10 @@ export default class Modal extends Component {
   }
 
   componentWillUnmount = () => {
-    window.removeEventListener("mousedown", this.handleMouseDown);
     window.removeEventListener("keydown", this.handleKeyPress);
   };
 
   componentDidUpdate() {
-    window.addEventListener("mousedown", this.handleMouseDown);
     const { marker, editorWrapper } = this.props;
     if (!marker) return;
     const oldPos = this.markerPos;
@@ -85,15 +85,6 @@ export default class Modal extends Component {
       ...getPosition(marker, this.wrapperRef.current, editorWrapper.current)
     });
   }
-
-  handleMouseDown = () => {
-    if (
-      this.wrapperRef.current &&
-      !this.wrapperRef.current.contains(event.target) &&
-      this.props.closeModal
-    )
-      this.props.closeModal();
-  };
 
   handleKeyPress = evt => {
     if (evt.key === "Escape") this.props.closeModal();

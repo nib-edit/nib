@@ -26,15 +26,15 @@ export default new Plugin({
 
   state: {
     init: (_, state) => {
-      return { link: getLink(state), decoration: undefined };
+      return { link: getLink(state), decoration: {} };
     },
     apply(tr, value, _, newState) {
-      const { link: oldLink = {} } = value;
+      const { link: oldLink = {}, decoration: oldDecoration = {} } = value;
       const link = getLink(newState);
 
       const showEditLinkToolbar = tr.getMeta("SHOW_EDIT_LINK_TOOLBAR");
       if (showEditLinkToolbar === false) {
-        return { link, decoration: undefined };
+        return { link, decoration: {} };
       }
       if (link) {
         if (
@@ -42,14 +42,18 @@ export default new Plugin({
           oldLink.from !== link.from ||
           oldLink.to !== link.to
         ) {
-          const decoration = DecorationSet.create(newState.doc, [
-            Decoration.inline(link.from, link.to, {
-              class: "nib-edit-link-marker"
-            })
-          ]);
+          const decoration = {
+            edit_link: DecorationSet.create(newState.doc, [
+              Decoration.inline(link.from, link.to, {
+                class: "nib-edit-link-marker"
+              })
+            ])
+          };
           return { link, decoration };
         }
-        return { ...value, link };
+        return { link, decoration: oldDecoration };
+      } else {
+        oldDecoration.edit_link = undefined;
       }
 
       const showLinkToolbar = tr.getMeta("SHOW_LINK_TOOLBAR");
@@ -66,22 +70,24 @@ export default new Plugin({
             class: "nib-link-marker"
           });
         }
-        const decoration = DecorationSet.create(newState.doc, [decor]);
+        const decoration = {
+          create_link: DecorationSet.create(newState.doc, [decor])
+        };
         return { link, decoration };
       }
 
       if (showLinkToolbar === false) {
-        return { link, decoration: undefined };
+        return { link, decoration: {} };
       }
 
-      return { ...value, link };
+      return { link, decoration: oldDecoration };
     }
   },
 
   props: {
     decorations(state) {
       const linkPluginState = state && linkPluginKey.getState(state);
-      return linkPluginState.decoration;
+      return Object.values(linkPluginState.decoration)[0];
     }
   }
 });

@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 import { getBlockStyles } from "./blockStyles";
 
 export const Wrapper = styled.div`
-  overflow: hidden;
   position: relative;
   background-color: ${({ theme }) => theme.wrapper.backgroundColor};
   color: ${({ theme }) => theme.wrapper.color};
