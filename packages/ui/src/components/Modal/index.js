@@ -20,8 +20,11 @@ const isSamePos = (oldPos, newPos) => {
 const getPosition = (marker, modalElm, editorWrapper) => {
   const markerDim = marker.getBoundingClientRect();
   const wrapperRefDim = editorWrapper.getBoundingClientRect();
-  const modalWidth = modalElm ? modalElm.getBoundingClientRect().width : 0;
+  const { width: modalWidth = 0, height: modalHeight = 0 } = modalElm
+    ? modalElm.getBoundingClientRect()
+    : {};
 
+  let arrowDir = "TOP";
   let left = -(wrapperRefDim.left - markerDim.left);
   left += (markerDim.width - modalWidth) / 2;
 
@@ -33,14 +36,21 @@ const getPosition = (marker, modalElm, editorWrapper) => {
     arrowLeft = left + modalWidth - wrapperRefDim.width;
     left = wrapperRefDim.width - modalWidth - 1;
   }
-  let top = markerDim.y - wrapperRefDim.y + markerDim.height + ARROW_HEIGHT;
 
-  return { modalPosition: { top, left }, arrowPosition: { left: arrowLeft } };
+  let top = markerDim.y - wrapperRefDim.y + markerDim.height + ARROW_HEIGHT;
+  if (top + modalHeight > wrapperRefDim.height) {
+    arrowDir = "BOTTOM";
+    top = markerDim.y - wrapperRefDim.y - ARROW_HEIGHT - modalHeight;
+  }
+  return {
+    modalPosition: { top, left },
+    arrowPosition: { left: arrowLeft, dir: arrowDir }
+  };
 };
 
 export default class Modal extends Component {
   wrapperRef = React.createRef();
-  state = { position: { modalPosition: undefined, arrowPosition: undefined } };
+  state = { modalPosition: {}, arrowPosition: { dir: "TOP" } };
 
   componentDidMount() {
     window.addEventListener("mousedown", this.handleMouseDown);
@@ -70,7 +80,7 @@ export default class Modal extends Component {
       offsetTop: marker.offsetTop,
       width: markerDim.width
     };
-    if (isSamePos(oldPos, this.markerPos) && this.state.position) return;
+    if (isSamePos(oldPos, this.markerPos) && this.state.modalPosition) return;
     this.setState({
       ...getPosition(marker, this.wrapperRef.current, editorWrapper.current)
     });
@@ -109,7 +119,7 @@ export default class Modal extends Component {
   render() {
     const { marker, children } = this.props;
     if (!marker) return null;
-    const { modalPosition = {}, arrowPosition = {} } = this.state;
+    const { modalPosition, arrowPosition } = this.state;
 
     return (
       <Wrapper
@@ -122,7 +132,11 @@ export default class Modal extends Component {
         style={modalPosition}
         tabIndex={-1}
       >
-        <Arrow left={arrowPosition.left} />
+        {arrowPosition.dir === "TOP" ? (
+          <ArrowTop left={arrowPosition.left} />
+        ) : (
+          <ArrowBottom left={arrowPosition.left} />
+        )}
         {children}
       </Wrapper>
     );
@@ -156,7 +170,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Arrow = styled.div`
+const ArrowTop = styled.div`
   position: absolute;
   top: -6px;
   left: ${({ left = 0 }) => `calc(50% + ${left - 6}px)`};
@@ -177,5 +191,23 @@ const Arrow = styled.div`
   }
 `;
 
-// todo: Improvements:
-// 2. Fix positioning when toolbar is at extreme bottom.
+const ArrowBottom = styled.div`
+  position: absolute;
+  bottom: -6px;
+  left: ${({ left = 0 }) => `calc(50% + ${left - 6}px)`};
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid ${({ theme }) => theme.modal.arrowBorderColor};
+  &:after,
+  &:before {
+    border: solid transparent;
+    content: " ";
+    position: absolute;
+  }
+  &:after {
+    border-top-color: ${({ theme }) => theme.modal.arrowBackgroundColor};
+    border-width: 6px;
+    margin-top: -6px;
+    left: -6px;
+  }
+`;
