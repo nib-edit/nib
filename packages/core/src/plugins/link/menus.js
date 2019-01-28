@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { Button, Icons } from "nib-ui";
+import { MenuButton, Icons } from "nib-ui";
 
 import { linkPluginKey } from "./plugins";
 
@@ -20,13 +20,13 @@ class LinkMenu extends PureComponent {
 
   render() {
     return (
-      <Button
+      <MenuButton
         name="link"
         onClick={this.showLinkToolbar}
         disabled={this.isLinkMarkActive()}
       >
         <Icons.Link />
-      </Button>
+      </MenuButton>
     );
   }
 }

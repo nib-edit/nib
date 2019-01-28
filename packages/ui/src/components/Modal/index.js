@@ -8,7 +8,8 @@ const isSamePos = (oldPos, newPos) => {
   if (
     oldPos.height !== newPos.height ||
     oldPos.left !== newPos.left ||
-    oldPos.offsetTop !== newPos.offsetTop
+    oldPos.offsetTop !== newPos.offsetTop ||
+    oldPos.width !== newPos.width
   )
     return false;
   return true;
@@ -43,6 +44,22 @@ export default class Modal extends Component {
 
   componentDidMount() {
     window.addEventListener("mousedown", this.handleMouseDown);
+    window.addEventListener("keydown", this.handleKeyPress);
+    const { marker, editorWrapper } = this.props;
+    if (marker) {
+      this.setState({
+        ...getPosition(marker, this.wrapperRef.current, editorWrapper.current)
+      });
+    }
+  }
+
+  componentWillUnmount = () => {
+    window.removeEventListener("mousedown", this.handleMouseDown);
+    window.removeEventListener("keydown", this.handleKeyPress);
+  };
+
+  componentDidUpdate() {
+    window.addEventListener("mousedown", this.handleMouseDown);
     const { marker, editorWrapper } = this.props;
     if (!marker) return;
     const oldPos = this.markerPos;
@@ -50,17 +67,14 @@ export default class Modal extends Component {
     this.markerPos = {
       height: markerDim.height,
       left: markerDim.left,
-      offsetTop: marker.offsetTop
+      offsetTop: marker.offsetTop,
+      width: markerDim.width
     };
     if (isSamePos(oldPos, this.markerPos) && this.state.position) return;
     this.setState({
       ...getPosition(marker, this.wrapperRef.current, editorWrapper.current)
     });
   }
-
-  componentWillUnmount = () => {
-    window.removeEventListener("mousedown", this.handleMouseDown);
-  };
 
   handleMouseDown = () => {
     if (
@@ -69,6 +83,10 @@ export default class Modal extends Component {
       this.props.closeModal
     )
       this.props.closeModal();
+  };
+
+  handleKeyPress = evt => {
+    if (evt.key === "Escape") this.props.closeModal();
   };
 
   onMouseDown = () => {
@@ -159,9 +177,5 @@ const Arrow = styled.div`
   }
 `;
 
-// Improvements:
-// 1. Fix arrow positioning when left is changed to take care of overflow.
+// todo: Improvements:
 // 2. Fix positioning when toolbar is at extreme bottom.
-
-// todo: re-position modal on update
-// todo: esc to close modals

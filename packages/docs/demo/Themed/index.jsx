@@ -31,12 +31,14 @@ const customTheme = {
     "&:selected": { backgroundColor: "#E0E0E0" }
   },
   button: {
-    "&:hover": `{
+    menu: {
+      "&:hover": `{
       background-color: #EEEEEE;
     }`,
-    "&:selected": `{
+      "&:selected": `{
       background-color: #E0E0E0;
     }`
+    }
   }
 };
 

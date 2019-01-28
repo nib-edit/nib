@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { undo, redo } from "prosemirror-history";
 
-import { Button, Icons, Separator } from "nib-ui";
+import { MenuButton, Icons, Separator } from "nib-ui";
 
 export default class HistoryMenu extends PureComponent {
   undo = () => {
@@ -17,13 +17,13 @@ export default class HistoryMenu extends PureComponent {
   render() {
     return (
       <>
-        <Button onClick={this.undo}>
+        <MenuButton onClick={this.undo}>
           <Icons.Undo />
-        </Button>
+        </MenuButton>
         <Separator />
-        <Button onClick={this.redo}>
+        <MenuButton onClick={this.redo}>
           <Icons.Redo />
-        </Button>
+        </MenuButton>
       </>
     );
   }

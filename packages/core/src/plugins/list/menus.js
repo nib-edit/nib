@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { Button, Icons, Separator } from "nib-ui";
+import { MenuButton, Icons, Separator } from "nib-ui";
 import { toggleListCmd } from "./commands";
 
 import { listPluginKey } from "./plugins";
@@ -23,21 +23,21 @@ export default class ListMenu extends PureComponent {
     const selectedListType = this.getSelectedListType();
     return (
       <>
-        <Button
+        <MenuButton
           name="bulletList"
           onClick={this.toggleList}
           selected={selectedListType === "bulletList"}
         >
           <Icons.ListBulleted />
-        </Button>
+        </MenuButton>
         <Separator />
-        <Button
+        <MenuButton
           name="orderedList"
           onClick={this.toggleList}
           selected={selectedListType === "orderedList"}
         >
           <Icons.ListNumbered />
-        </Button>
+        </MenuButton>
       </>
     );
   }

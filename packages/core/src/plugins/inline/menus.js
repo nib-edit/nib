@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { Button, Icons, Separator } from "nib-ui";
+import { MenuButton, Icons, Separator } from "nib-ui";
 import { toggleMark } from "prosemirror-commands";
 
 import { inlinePluginKey } from "./plugins";
@@ -37,33 +37,33 @@ export default class InlineMenu extends PureComponent {
     return (
       <>
         {strongEnable && (
-          <Button
+          <MenuButton
             name="strong"
             onClick={this.toggleMarkofType}
             selected={activeMarks.includes("strong")}
           >
             <Icons.Bold />
-          </Button>
+          </MenuButton>
         )}
         <Separator />
         {emEnable && (
-          <Button
+          <MenuButton
             name="em"
             onClick={this.toggleMarkofType}
             selected={activeMarks.includes("em")}
           >
             <Icons.Italic />
-          </Button>
+          </MenuButton>
         )}
         <Separator />
         {underlineEnable && (
-          <Button
+          <MenuButton
             name="underline"
             onClick={this.toggleMarkofType}
             selected={activeMarks.includes("underline")}
           >
             <Icons.Underline />
-          </Button>
+          </MenuButton>
         )}
       </>
     );

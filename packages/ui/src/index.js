@@ -1,4 +1,4 @@
-export { default as Button } from "./components/Button";
+export * from "./components/Button";
 export { default as Separator } from "./components/Separator";
 export { default as Icons } from "./icons";
 export { default as Input } from "./components/Input";

@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
 import { TextSelection } from "prosemirror-state";
-import { Link, Input, Modal, Separator } from "nib-ui";
+import { BasicButton, Input, Modal, Separator } from "nib-ui";
 import { linkPluginKey } from "./plugins";
 
 class EditModal extends PureComponent {
@@ -84,9 +84,9 @@ class EditModal extends PureComponent {
             onChange={this.updateHref}
             defaultValue={link.href}
           />
-          <Link onClick={this.updateLink}>Apply</Link>
+          <BasicButton onClick={this.updateLink}>Apply</BasicButton>
           <Separator />
-          <Link onClick={this.unLink}>Unlink</Link>
+          <BasicButton onClick={this.unLink}>Unlink</BasicButton>
         </LinkPopup>
       </Modal>
     );

@@ -44,24 +44,46 @@ export const theme = {
     fontStyle: inherit
   },
   button: {
-    backgroundColor: Color.white,
-    color: Color.text,
-    border: none,
-    borderRadius: "2px",
-    margin: zero,
-    padding: zero,
-    height: "28px",
-    width: "28px",
-    fontSize: FontSize.medium,
-    "&:hover": `{
-      background-color: ${Color.hover};
-    }`,
-    "&:selected": `{
-      background-color: ${Color.selected};
-    }`,
-    "&:disabled": `{
-      opacity: ${StyleConstants.DisabledStyle.opacity};
-    }`
+    menu: {
+      backgroundColor: Color.white,
+      color: Color.text,
+      border: none,
+      borderRadius: "2px",
+      margin: zero,
+      padding: zero,
+      height: "28px",
+      width: "28px",
+      fontSize: FontSize.medium,
+      "&:hover": `{
+        background-color: ${Color.hover};
+      }`,
+      "&:selected": `{
+        background-color: ${Color.selected};
+      }`,
+      "&:disabled": `{
+        opacity: ${StyleConstants.DisabledStyle.opacity};
+      }`
+    },
+    basic: {
+      color: Color.text,
+      border: none,
+      borderRadius: zero,
+      margin: zero,
+      padding: zero,
+      height: "auto",
+      width: "auto",
+      fontSize: FontSize.medium,
+      "&:hover": `{
+        text-decoration: underline;
+      }`,
+      "&:focus": `{
+        outline: none;
+        text-decoration: underline;
+      }`,
+      "&:disabled": `{
+        opacity: ${StyleConstants.DisabledStyle.opacity};
+      }`
+    }
   },
   blockSelect: {
     backgroundColor: Color.white,

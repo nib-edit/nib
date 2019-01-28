@@ -7,9 +7,9 @@ import LinkEditModal from "../../plugins/link/editModal";
 import { AppStateWrapper } from "../../common/app-state";
 import { deepMerge } from "../../common/utils";
 import { defaultConfig, ConfigContext } from "../../common/config";
+import Toolbar from "../Toolbar";
 
 import InnerEditor from "./editor";
-import Toolbar from "../Toolbar";
 import { Wrapper } from "./style";
 import { blockStyles } from "./blockStyles";
 import { theme } from "./theme";

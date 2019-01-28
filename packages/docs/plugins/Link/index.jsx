@@ -17,5 +17,3 @@ const LinkPlugin = () => (
 );
 
 export default LinkPlugin;
-
-// todo: shortcut to unlink to be added

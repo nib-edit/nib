@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
-import { Link, Input, Modal } from "nib-ui";
+import { BasicButton, Input, Modal } from "nib-ui";
 
 class CreateModal extends PureComponent {
   constructor(props) {
@@ -91,7 +91,7 @@ class CreateModal extends PureComponent {
               value={href}
             />
           </div>
-          <StyledLink onClick={this.addLink}>Apply</StyledLink>
+          <StyledBasicButton onClick={this.addLink}>Apply</StyledBasicButton>
         </LinkPopup>
       </Modal>
     );
@@ -109,8 +109,6 @@ const LinkPopup = styled.div`
   font-size: 14px;
 `;
 
-const StyledLink = styled(Link)`
+const StyledBasicButton = styled(BasicButton)`
   margin: 4px 0;
 `;
-
-// todo: apply link above should be tab-able

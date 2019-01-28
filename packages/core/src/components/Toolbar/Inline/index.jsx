@@ -20,7 +20,11 @@ class Inline extends Component {
         render={app_params => (
           <div>
             {selMarker[0] ? (
-              <Modal marker={selMarker[0]} editorWrapper={editorWrapper}>
+              <Modal
+                marker={selMarker[0]}
+                editorWrapper={editorWrapper}
+                closeModal={() => {}}
+              >
                 <Wrapper onMouseDown={e => e.preventDefault()}>
                   {options.map((Option, index) => (
                     <React.Fragment
@@ -74,3 +78,5 @@ const Wrapper = styled.div`
 `;
 
 export default Inline;
+
+//todo: implement closeModal here
