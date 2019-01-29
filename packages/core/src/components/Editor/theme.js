@@ -44,7 +44,7 @@ export const theme = {
     fontStyle: inherit
   },
   button: {
-    menu: {
+    toolbar: {
       backgroundColor: Color.white,
       color: Color.text,
       border: none,

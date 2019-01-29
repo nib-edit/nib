@@ -1,9 +1,9 @@
 import React, { PureComponent } from "react";
 import { undo, redo } from "prosemirror-history";
 
-import { MenuButton, Icons, Separator } from "nib-ui";
+import { ToolbarButton, Icons, Separator } from "nib-ui";
 
-export default class HistoryMenu extends PureComponent {
+class HistoryToolbarComponent extends PureComponent {
   undo = () => {
     const { state, dispatch } = this.props.app_params.view;
     undo(state, dispatch);
@@ -17,14 +17,16 @@ export default class HistoryMenu extends PureComponent {
   render() {
     return (
       <>
-        <MenuButton onClick={this.undo}>
+        <ToolbarButton onClick={this.undo}>
           <Icons.Undo />
-        </MenuButton>
+        </ToolbarButton>
         <Separator />
-        <MenuButton onClick={this.redo}>
+        <ToolbarButton onClick={this.redo}>
           <Icons.Redo />
-        </MenuButton>
+        </ToolbarButton>
       </>
     );
   }
 }
+
+export default HistoryToolbarComponent;

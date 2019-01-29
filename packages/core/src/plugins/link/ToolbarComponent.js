@@ -1,9 +1,9 @@
 import React, { PureComponent } from "react";
-import { MenuButton, Icons } from "nib-ui";
+import { ToolbarButton, Icons } from "nib-ui";
 
 import { linkPluginKey } from "./plugins";
 
-class LinkMenu extends PureComponent {
+class LinkToolbarComponent extends PureComponent {
   showLinkToolbar = () => {
     const { view = {} } = this.props.app_params;
     const { state, dispatch } = view;
@@ -20,15 +20,15 @@ class LinkMenu extends PureComponent {
 
   render() {
     return (
-      <MenuButton
+      <ToolbarButton
         name="link"
         onClick={this.showLinkToolbar}
         disabled={this.isLinkMarkActive()}
       >
         <Icons.Link />
-      </MenuButton>
+      </ToolbarButton>
     );
   }
 }
 
-export default LinkMenu;
+export default LinkToolbarComponent;

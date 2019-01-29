@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { ToolbarSeparator } from "nib-ui";
 
 import { AppStateWrapper } from "../../../common/app-state";
-import { buildMenu } from "../../../common/editor-helpers";
+import { buildToolbar } from "../../../common/editor-helpers";
 import { ConfigContext } from "../../../common/config";
 
 class Top extends Component {
@@ -11,7 +11,7 @@ class Top extends Component {
 
   render() {
     const { top: topConfig } = this.context.config.toolbar;
-    const options = buildMenu(topConfig.options);
+    const options = buildToolbar(topConfig.options);
     const optionSize = options.length;
     return (
       <AppStateWrapper
@@ -19,9 +19,9 @@ class Top extends Component {
           <Wrapper onMouseDown={e => e.preventDefault()}>
             {options.map((Option, index) => (
               <React.Fragment key={`top-toolbar-option-${Option.name}`}>
-                <Option.menuComponent
+                <Option.toolbarComponent
                   config={topConfig[Option.name]}
-                  key={`top-menu-option-${Option.name}`}
+                  key={`top-toolbar-option-${Option.name}`}
                   app_params={app_params}
                 />
                 {index < optionSize - 1 && <ToolbarSeparator />}

@@ -1,10 +1,10 @@
 import React, { PureComponent } from "react";
-import { MenuButton, Icons, Separator } from "nib-ui";
+import { ToolbarButton, Icons, Separator } from "nib-ui";
 import { toggleMark } from "prosemirror-commands";
 
 import { inlinePluginKey } from "./plugins";
 
-export default class InlineMenu extends PureComponent {
+class InlineToolbarComponent extends PureComponent {
   toggleMarkofType = evt => {
     const markName = evt.currentTarget.getAttribute("name");
     const { view: { state, dispatch } = {} } = this.props.app_params;
@@ -37,35 +37,37 @@ export default class InlineMenu extends PureComponent {
     return (
       <>
         {strongEnable && (
-          <MenuButton
+          <ToolbarButton
             name="strong"
             onClick={this.toggleMarkofType}
             selected={activeMarks.includes("strong")}
           >
             <Icons.Bold />
-          </MenuButton>
+          </ToolbarButton>
         )}
         <Separator />
         {emEnable && (
-          <MenuButton
+          <ToolbarButton
             name="em"
             onClick={this.toggleMarkofType}
             selected={activeMarks.includes("em")}
           >
             <Icons.Italic />
-          </MenuButton>
+          </ToolbarButton>
         )}
         <Separator />
         {underlineEnable && (
-          <MenuButton
+          <ToolbarButton
             name="underline"
             onClick={this.toggleMarkofType}
             selected={activeMarks.includes("underline")}
           >
             <Icons.Underline />
-          </MenuButton>
+          </ToolbarButton>
         )}
       </>
     );
   }
 }
+
+export default InlineToolbarComponent;

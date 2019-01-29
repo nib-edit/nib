@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 
-import { MenuButton, Icons, Separator } from "nib-ui";
+import { ToolbarButton, Icons, Separator } from "nib-ui";
 
 export default class Ungrouped extends PureComponent {
   handleChange = evt => {
@@ -16,13 +16,13 @@ export default class Ungrouped extends PureComponent {
           const IconComponent = Icons[opt.name.toUpperCase()];
           return (
             <React.Fragment key={`block-btn-${opt.name}`}>
-              <MenuButton
+              <ToolbarButton
                 name={opt.value.blockType}
                 onClick={this.handleChange}
                 selected={opt.name === selectedBlockType}
               >
                 <IconComponent />
-              </MenuButton>
+              </ToolbarButton>
               {index < options.length - 1 && <Separator />}
             </React.Fragment>
           );

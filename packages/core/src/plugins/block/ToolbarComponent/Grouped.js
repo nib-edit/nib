@@ -25,5 +25,3 @@ export default class Grouped extends PureComponent {
     );
   }
 }
-
-// todo: rename menus in plugins to menu component

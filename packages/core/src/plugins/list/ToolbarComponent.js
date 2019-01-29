@@ -1,10 +1,10 @@
 import React, { PureComponent } from "react";
-import { MenuButton, Icons, Separator } from "nib-ui";
+import { ToolbarButton, Icons, Separator } from "nib-ui";
 import { toggleListCmd } from "./commands";
 
 import { listPluginKey } from "./plugins";
 
-export default class ListMenu extends PureComponent {
+class ListToolbarComponent extends PureComponent {
   toggleList = evt => {
     const listType = evt.currentTarget.getAttribute("name");
     const { view } = this.props.app_params;
@@ -23,22 +23,24 @@ export default class ListMenu extends PureComponent {
     const selectedListType = this.getSelectedListType();
     return (
       <>
-        <MenuButton
+        <ToolbarButton
           name="bulletList"
           onClick={this.toggleList}
           selected={selectedListType === "bulletList"}
         >
           <Icons.ListBulleted />
-        </MenuButton>
+        </ToolbarButton>
         <Separator />
-        <MenuButton
+        <ToolbarButton
           name="orderedList"
           onClick={this.toggleList}
           selected={selectedListType === "orderedList"}
         >
           <Icons.ListNumbered />
-        </MenuButton>
+        </ToolbarButton>
       </>
     );
   }
 }
+
+export default ListToolbarComponent;

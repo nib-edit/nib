@@ -1,2 +1,2 @@
-export { default as MenuButton } from "./menu";
-export { default as BasicButton } from "./basic";
+export { default as ToolbarButton } from "./Toolbar";
+export { default as BasicButton } from "./Basic";

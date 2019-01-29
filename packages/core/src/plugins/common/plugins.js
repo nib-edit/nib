@@ -8,14 +8,14 @@ export default new Plugin({
 
   state: {
     init: () => {
-      return { editorHasFocus: false, hideInlineMenu: false };
+      return { editorHasFocus: false, hideInlineToolbar: false };
     },
     apply(tr, value) {
       const newValue = { ...value };
       let editorHasFocus = tr.getMeta("EDITOR_FOCUSED");
       if (editorHasFocus !== undefined)
         newValue.editorHasFocus = editorHasFocus;
-      newValue.hideInlineMenu = tr.getMeta("HIDE_MENUS");
+      newValue.hideInlineToolbar = tr.getMeta("HIDE_MODALS");
       return newValue;
     }
   },
@@ -34,9 +34,9 @@ export default new Plugin({
       }
     },
     decorations(state) {
-      const { editorHasFocus, hideInlineMenu } =
+      const { editorHasFocus, hideInlineToolbar } =
         state && commonPluginKey.getState(state);
-      if (state.selection.empty || !editorHasFocus || hideInlineMenu) return;
+      if (state.selection.empty || !editorHasFocus || hideInlineToolbar) return;
       const { $from, $to } = state.selection;
       return DecorationSet.create(state.doc, [
         Decoration.inline($from.pos, $to.pos, {

@@ -31,13 +31,13 @@ const customTheme = {
     "&:selected": { backgroundColor: "#E0E0E0" }
   },
   button: {
-    menu: {
+    toolbar: {
       "&:hover": `{
-      background-color: #EEEEEE;
-    }`,
+        background-color: #EEEEEE;
+      }`,
       "&:selected": `{
-      background-color: #E0E0E0;
-    }`
+        background-color: #E0E0E0;
+      }`
     }
   }
 };

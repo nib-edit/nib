@@ -1,7 +1,7 @@
 import { getPluginList } from "./plugin";
 
-export const buildMenu = plugins =>
+export const buildToolbar = plugins =>
   getPluginList(plugins).map(plugin => ({
     name: plugin.name,
-    menuComponent: plugin.menus
+    toolbarComponent: plugin.toolbarComponent
   }));

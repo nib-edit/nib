@@ -1,5 +1,5 @@
 export { buildEditorState, updateEditorState } from "./editor-state";
 export { buildKeymap } from "./keymap";
-export { buildMenu } from "./menu";
+export { buildToolbar } from "./toolbar-builder";
 export { buildSchema } from "./schema";
 export { getProsemirrorPlugins, getPluginList } from "./plugin";

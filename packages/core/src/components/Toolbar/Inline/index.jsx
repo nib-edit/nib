@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { Modal, ToolbarSeparator } from "nib-ui";
 
 import { AppStateWrapper } from "../../../common/app-state";
-import { buildMenu } from "../../../common/editor-helpers";
+import { buildToolbar } from "../../../common/editor-helpers";
 import { ConfigContext } from "../../../common/config";
 
 class Inline extends Component {
@@ -12,13 +12,13 @@ class Inline extends Component {
   closeModal = () => {
     const { view } = this.props.app_params;
     const { state, dispatch } = view;
-    dispatch(state.tr.setMeta("HIDE_MENUS", true));
+    dispatch(state.tr.setMeta("HIDE_MODALS", true));
   };
 
   render() {
     const { editorWrapper, app_params } = this.props;
     const { inline: inlineConfig } = this.context.config.toolbar;
-    const options = buildMenu(inlineConfig.options);
+    const options = buildToolbar(inlineConfig.options);
     const optionSize = options.length;
     const selMarker = document.getElementsByClassName("nib-selected");
     return (
@@ -32,9 +32,9 @@ class Inline extends Component {
             <Wrapper onMouseDown={e => e.preventDefault()}>
               {options.map((Option, index) => (
                 <React.Fragment key={`inline-toolbar-option-${Option.name}`}>
-                  <Option.menuComponent
+                  <Option.toolbarComponent
                     config={inlineConfig[Option.name]}
-                    key={`inline-menu-option-${Option.name}`}
+                    key={`inline-toolbar-option-${Option.name}`}
                     app_params={app_params}
                   />
                   {index < optionSize - 1 && <ToolbarSeparator />}

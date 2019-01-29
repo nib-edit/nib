@@ -6,7 +6,7 @@ import { blockData as options } from "../blockData";
 import Grouped from "./Grouped";
 import Ungrouped from "./Ungrouped";
 
-export default class BlockMenu extends PureComponent {
+export default class BlockToolbarComponent extends PureComponent {
   changeBlockType = blockType => {
     let attrs;
     let blockName;
@@ -35,11 +35,11 @@ export default class BlockMenu extends PureComponent {
 
   componentWillReceiveProps(props) {}
   render() {
-    const { config: { grouped, options: menuOptions } = {} } = this.props;
+    const { config: { grouped, options: toolbarOptions } = {} } = this.props;
     let filteredOptions = options;
-    if (menuOptions) {
+    if (toolbarOptions) {
       filteredOptions = options.filter(
-        opt => menuOptions.indexOf(opt.name) >= 0
+        opt => toolbarOptions.indexOf(opt.name) >= 0
       );
     }
     if (grouped) {
