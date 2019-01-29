@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { ToolbarSeparator } from "nib-ui";
 
 import { AppStateWrapper } from "../../../common/app-state";
-import { buildToolbar } from "../../../common/editor-helpers";
+import { getToolbarOptions } from "../../../common/editor-helpers";
 import { ConfigContext } from "../../../common/config";
 
 class Top extends Component {
@@ -11,7 +11,7 @@ class Top extends Component {
 
   render() {
     const { top: topConfig } = this.context.config.toolbar;
-    const options = buildToolbar(topConfig.options);
+    const options = getToolbarOptions(topConfig.options);
     const optionSize = options.length;
     return (
       <AppStateWrapper

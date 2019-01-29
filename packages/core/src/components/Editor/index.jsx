@@ -2,12 +2,12 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { ThemeProvider } from "emotion-theming";
 
-import LinkCreateModal from "../../plugins/link/createModal";
-import LinkEditModal from "../../plugins/link/editModal";
+import ModalHandler from "../ModalHandler";
+import Toolbar from "../Toolbar";
 import { AppStateWrapper } from "../../common/app-state";
 import { deepMerge } from "../../common/utils";
 import { defaultConfig, ConfigContext } from "../../common/config";
-import Toolbar from "../Toolbar";
+import { getModals } from "../../common/editor-helpers";
 
 import InnerEditor from "./editor";
 import { Wrapper } from "./style";
@@ -37,13 +37,10 @@ class Editor extends Component {
 
   render() {
     const { defaultValue, onChange, autofocus } = this.props;
-    const { toolbar } = this.config;
+    const { toolbar, plugins } = this.config;
     const inlineToolbarPresent = toolbar.options.indexOf("inline") >= 0;
     const topToolbarPresent = toolbar.options.indexOf("top") >= 0;
-    const linkMarker = document.getElementsByClassName("nib-link-marker");
-    const editLinkMarker = document.getElementsByClassName(
-      "nib-edit-link-marker"
-    );
+    const modals = getModals(plugins.options);
     return (
       <AppStateWrapper
         render={app_params => (
@@ -56,24 +53,14 @@ class Editor extends Component {
                   defaultValue={defaultValue}
                   onChange={onChange}
                 />
-                {/* todo: create handlar for modals */}
                 {inlineToolbarPresent && (
                   <Toolbar.inline editorWrapper={this.editorWrapper} />
                 )}
-                {linkMarker[0] && (
-                  <LinkCreateModal
-                    editorWrapper={this.editorWrapper}
-                    linkMarker={linkMarker[0]}
-                    view={app_params.view}
-                  />
-                )}
-                {editLinkMarker[0] && (
-                  <LinkEditModal
-                    editorWrapper={this.editorWrapper}
-                    editLinkMarker={editLinkMarker[0]}
-                    view={app_params.view}
-                  />
-                )}
+                <ModalHandler
+                  editorWrapper={this.editorWrapper}
+                  modals={modals}
+                  view={app_params.view}
+                />
               </Wrapper>
             </ThemeProvider>
           </ConfigContext.Provider>
@@ -84,4 +71,3 @@ class Editor extends Component {
 }
 
 export default Editor;
-// todo: put modal into plugin api

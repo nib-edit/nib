@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
 import { TextSelection } from "prosemirror-state";
 import { BasicButton, Input, Modal, Separator } from "nib-ui";
-import { linkPluginKey } from "./plugins";
+import { linkPluginKey } from "../plugins";
 
 class EditModal extends PureComponent {
   constructor(props) {
@@ -70,10 +70,10 @@ class EditModal extends PureComponent {
   render() {
     const link = this.getLink();
     if (!link) return null;
-    const { editorWrapper, editLinkMarker } = this.props;
+    const { editorWrapper, marker } = this.props;
     return (
       <Modal
-        marker={editLinkMarker}
+        marker={marker}
         closeModal={this.closeModal}
         editorWrapper={editorWrapper}
       >

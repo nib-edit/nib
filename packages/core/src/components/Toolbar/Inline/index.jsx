@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { Modal, ToolbarSeparator } from "nib-ui";
 
 import { AppStateWrapper } from "../../../common/app-state";
-import { buildToolbar } from "../../../common/editor-helpers";
+import { getToolbarOptions } from "../../../common/editor-helpers";
 import { ConfigContext } from "../../../common/config";
 
 class Inline extends Component {
@@ -18,7 +18,7 @@ class Inline extends Component {
   render() {
     const { editorWrapper, app_params } = this.props;
     const { inline: inlineConfig } = this.context.config.toolbar;
-    const options = buildToolbar(inlineConfig.options);
+    const options = getToolbarOptions(inlineConfig.options);
     const optionSize = options.length;
     const selMarker = document.getElementsByClassName("nib-selected");
     return (

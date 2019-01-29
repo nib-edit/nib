@@ -66,10 +66,10 @@ class CreateModal extends PureComponent {
 
   render() {
     const { title, href } = this.state;
-    const { editorWrapper, linkMarker } = this.props;
+    const { editorWrapper, marker } = this.props;
     return (
       <Modal
-        marker={linkMarker}
+        marker={marker}
         closeModal={this.closeModal}
         editorWrapper={editorWrapper}
       >
