@@ -6,7 +6,13 @@ Despite various options available for rich text editing in html, it continues to
 
 Making an editor ground up from a framework is still much work, the project aims at building components for rich text editing using prosemirror. These components can be quickly integrated into react or even ron-react applications.
 
+### Toolbar at top
+
 ![Nib Editor](https://i.imgur.com/V522Vb1.png)
+
+### Inline toolbar
+
+![Nib Inline Editor](https://i.imgur.com/Gt0IT2R.png)
 
 ## Setup
 
