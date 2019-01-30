@@ -14,17 +14,22 @@ const globals = {
 
 const external = ["react", "react-dom"];
 
-const copyConf = {
+const getCopyConf = packageName => ({
   [`packages/${packageName}/package.json`]: `packages/${packageName}/build/package.json`,
   verbose: true
-};
+});
 
 const getConfig = packageName => {
+  const copyConf = getCopyConf(packageName);
   if (packageName !== "core") {
     globals.styled = "@emotion/styled";
     globals["emotion-theming"] = "emotion-theming";
     external.push("styled");
     external.push("emotion-theming");
+    copyConf[
+      `packages/${packageName}/readme.md`
+    ] = `packages/${packageName}/build/readme.md`;
+  } else {
     copyConf["readme.md"] = `packages/${packageName}/build/readme.md`;
   }
   return {
