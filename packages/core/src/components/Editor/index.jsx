@@ -32,11 +32,12 @@ class Editor extends Component {
     config: PropTypes.object,
     defaultValue: PropTypes.object,
     onChange: PropTypes.func,
+    spellcheck: PropTypes.bool,
     theme: PropTypes.object
   };
 
   render() {
-    const { defaultValue, onChange, autofocus } = this.props;
+    const { defaultValue, onChange, autofocus, spellcheck } = this.props;
     const { toolbar, plugins } = this.config;
     const inlineToolbarPresent = toolbar.options.indexOf("inline") >= 0;
     const topToolbarPresent = toolbar.options.indexOf("top") >= 0;
@@ -52,6 +53,7 @@ class Editor extends Component {
                   autoFocus={autofocus}
                   defaultValue={defaultValue}
                   onChange={onChange}
+                  spellcheck={spellcheck}
                 />
                 {inlineToolbarPresent && (
                   <Toolbar.inline editorWrapper={this.editorWrapper} />

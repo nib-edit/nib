@@ -1,7 +1,8 @@
+import PropTypes from "prop-types";
 import React from "react";
 import styled from "@emotion/styled";
 
-export default props => {
+const Input = props => {
   const { label, name } = props;
   return (
     <InputWrapper>
@@ -10,6 +11,13 @@ export default props => {
     </InputWrapper>
   );
 };
+
+Input.propTypes = {
+  label: PropTypes.string,
+  name: PropTypes.string
+};
+
+export default Input;
 
 const InputWrapper = styled.div`
   align-items: center;

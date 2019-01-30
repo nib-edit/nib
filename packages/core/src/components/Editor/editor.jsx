@@ -51,6 +51,7 @@ export default class Editor extends Component {
   }
 
   render() {
-    return <StyledEditor ref={this.editorRef} />;
+    const { spellcheck } = this.props;
+    return <StyledEditor ref={this.editorRef} spellcheck={spellcheck} />;
   }
 }

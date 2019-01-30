@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 import styled from "@emotion/styled";
 
@@ -54,6 +55,13 @@ const getPosition = (marker, modalElm, editorWrapper) => {
 export default class Modal extends Component {
   wrapperRef = React.createRef();
   state = { modalPosition: {}, arrowPosition: { dir: "TOP" } };
+
+  static propTypes = {
+    children: PropTypes.Object,
+    closeModal: PropTypes.func,
+    editorWrapper: PropTypes.Object,
+    marker: PropTypes.Object
+  };
 
   componentDidMount() {
     window.addEventListener("keydown", this.handleKeyPress);

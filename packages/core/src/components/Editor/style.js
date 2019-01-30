@@ -21,6 +21,7 @@ export const Wrapper = styled.div`
   padding: ${({ theme }) => theme.wrapper.padding};
   font-style: ${({ theme }) => theme.wrapper.fontStyle};
   font-family: ${({ theme }) => theme.wrapper.fontFamily};
+  text-align: ${({ theme }) => theme.wrapper.textAlign};
   ${({ theme }) => getBlockStyles(theme.blockStyles)};
 `;
 

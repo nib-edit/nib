@@ -23,7 +23,8 @@ export const theme = {
     padding: zero,
     fontFamily: inherit,
     fontSize: FontSize.medium,
-    fontStyle: inherit
+    fontStyle: inherit,
+    textAlign: "left"
   },
   editor: {
     backgroundColor: Color.white,

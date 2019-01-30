@@ -5381,6 +5381,13 @@ rollup-plugin-node-resolve@^3.4.0:
     is-module "^1.0.0"
     resolve "^1.1.6"
 
+rollup-plugin-sourcemaps@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-sourcemaps/-/rollup-plugin-sourcemaps-0.4.2.tgz#62125aa94087aadf7b83ef4dfaf629b473135e87"
+  dependencies:
+    rollup-pluginutils "^2.0.1"
+    source-map-resolve "^0.5.0"
+
 rollup-plugin-uglify@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/rollup-plugin-uglify/-/rollup-plugin-uglify-6.0.0.tgz#15aa8919e5cdc63b7cfc9319c781788b40084ce4"
@@ -5390,7 +5397,7 @@ rollup-plugin-uglify@^6.0.0:
     serialize-javascript "^1.5.0"
     uglify-js "^3.4.9"
 
-rollup-pluginutils@^2.3.0, rollup-pluginutils@^2.3.3:
+rollup-pluginutils@^2.0.1, rollup-pluginutils@^2.3.0, rollup-pluginutils@^2.3.3:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/rollup-pluginutils/-/rollup-pluginutils-2.3.3.tgz#3aad9b1eb3e7fe8262820818840bf091e5ae6794"
   dependencies:

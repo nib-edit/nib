@@ -2,6 +2,7 @@ const path = require("path");
 
 module.exports = {
   title: "Nib",
+  serverPort: 6003,
   assetsDir: "packages/docs/styleguide",
   sections: [
     {
