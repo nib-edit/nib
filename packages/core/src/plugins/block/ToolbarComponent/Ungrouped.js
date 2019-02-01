@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent, Fragment } from "react";
 
 import { ToolbarButton, Icons, Separator } from "nib-ui";
 
@@ -15,7 +15,7 @@ export default class Ungrouped extends PureComponent {
         {options.map((opt, index) => {
           const IconComponent = Icons[opt.name.toUpperCase()];
           return (
-            <React.Fragment key={`block-btn-${opt.name}`}>
+            <Fragment key={`block-btn-${opt.name}`}>
               <ToolbarButton
                 name={opt.value.blockType}
                 onClick={this.handleChange}
@@ -24,7 +24,7 @@ export default class Ungrouped extends PureComponent {
                 <IconComponent />
               </ToolbarButton>
               {index < options.length - 1 && <Separator />}
-            </React.Fragment>
+            </Fragment>
           );
         })}
       </>

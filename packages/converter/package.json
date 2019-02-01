@@ -1,0 +1,25 @@
+{
+  "name": "nib-converter",
+  "version": "0.1.0",
+  "description": "Converter for nib-editor to HTML",
+  "main": "./index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jpuri/Nib.git"
+  },
+  "author": {
+    "name": "Jyoti Puri",
+    "email": "jyotipuri@gmail.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/jpuri/Nib/tree/master/packages/core#Readme.md",
+  "dependencies": {
+    "prosemirror-model": "^1.0.0",
+    "nib-schema": "^0.1.0"
+  },
+  "devDependencies": {
+    "prop-types": "^15.6.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  }
+}

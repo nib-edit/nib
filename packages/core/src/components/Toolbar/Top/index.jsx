@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import styled from "@emotion/styled";
 import { ToolbarSeparator } from "nib-ui";
 
@@ -18,14 +18,14 @@ class Top extends Component {
         render={app_params => (
           <Wrapper onMouseDown={e => e.preventDefault()}>
             {options.map((Option, index) => (
-              <React.Fragment key={`top-toolbar-option-${Option.name}`}>
+              <Fragment key={`top-toolbar-option-${Option.name}`}>
                 <Option.toolbarComponent
                   config={topConfig[Option.name]}
                   key={`top-toolbar-option-${Option.name}`}
                   app_params={app_params}
                 />
                 {index < optionSize - 1 && <ToolbarSeparator />}
-              </React.Fragment>
+              </Fragment>
             ))}
           </Wrapper>
         )}
