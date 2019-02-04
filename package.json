@@ -10,8 +10,10 @@
   ],
   "main": ".",
   "workspaces": [
-    "packages/docs",
+    "packages/converter",
     "packages/core",
+    "packages/docs",
+    "packages/schema",
     "packages/ui"
   ],
   "repository": {

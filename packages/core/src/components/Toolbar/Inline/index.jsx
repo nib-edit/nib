@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import styled from "@emotion/styled";
 import { Modal, ToolbarSeparator } from "nib-ui";
 
@@ -31,14 +31,14 @@ class Inline extends Component {
           >
             <Wrapper onMouseDown={e => e.preventDefault()}>
               {options.map((Option, index) => (
-                <React.Fragment key={`inline-toolbar-option-${Option.name}`}>
+                <Fragment key={`inline-toolbar-option-${Option.name}`}>
                   <Option.toolbarComponent
                     config={inlineConfig[Option.name]}
                     key={`inline-toolbar-option-${Option.name}`}
                     app_params={app_params}
                   />
                   {index < optionSize - 1 && <ToolbarSeparator />}
-                </React.Fragment>
+                </Fragment>
               ))}
             </Wrapper>
           </Modal>
