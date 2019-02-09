@@ -4,7 +4,7 @@ import Editor from "nib-core";
 /**
  * @visibleName 1. Block
  */
-const BlockPlugin = ({ grouped }) => (
+const BlockPluginDemo = ({ grouped }) => (
   <Editor
     config={{
       plugins: { options: "block" },
@@ -19,4 +19,4 @@ const BlockPlugin = ({ grouped }) => (
   />
 );
 
-export default BlockPlugin;
+export default BlockPluginDemo;

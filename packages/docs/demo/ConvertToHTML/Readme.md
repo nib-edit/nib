@@ -7,6 +7,10 @@ Convert content to HTML string.
 Code:
 
 ```js static
+import Editor from "nib-core";
+import React, { Component } from "react";
+import { convertToHTML } from "nib-converter";
+
 class ConvertToHTMLDemo extends Component {
   state = {
     content: {}
