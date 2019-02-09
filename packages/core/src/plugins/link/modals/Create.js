@@ -6,7 +6,7 @@ class CreateModal extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      title: this.getSelectedText(),
+      linkText: this.getSelectedText(),
       href: "",
       isMouseDown: false
     };
@@ -20,8 +20,8 @@ class CreateModal extends PureComponent {
   };
 
   addLink = () => {
-    const { title, href } = this.state;
-    if (!title || !title.length) return;
+    const { linkText, href } = this.state;
+    if (!linkText || !linkText.length) return;
     const { view } = this.props;
     const { state, dispatch } = view;
     const {
@@ -30,10 +30,10 @@ class CreateModal extends PureComponent {
     } = state;
     dispatch(
       tr
-        .insertText(title, $from.pos, $to.pos)
+        .insertText(linkText, $from.pos, $to.pos)
         .addMark(
           $from.pos,
-          $from.pos + title.length,
+          $from.pos + linkText.length,
           state.schema.marks.link.create({ href })
         )
         .setMeta("SHOW_LINK_TOOLBAR", false)
@@ -65,7 +65,7 @@ class CreateModal extends PureComponent {
   };
 
   render() {
-    const { title, href } = this.state;
+    const { linkText, href } = this.state;
     const { editorWrapper, marker } = this.props;
     return (
       <Modal
@@ -77,11 +77,11 @@ class CreateModal extends PureComponent {
           <div>
             <Input
               autoFocus
-              label="Title"
-              name="title"
+              label="Text"
+              name="linkText"
               onChange={this.updateValue}
               onKeyPress={this.handleKeyDown}
-              value={title}
+              value={linkText}
             />
             <Input
               label="Href"

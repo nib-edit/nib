@@ -66,6 +66,7 @@ export const theme = {
       }`
     },
     basic: {
+      backgroundColor: Color.white,
       color: Color.text,
       border: none,
       borderRadius: zero,

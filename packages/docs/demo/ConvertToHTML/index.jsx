@@ -20,10 +20,10 @@ class ConvertToHTMLDemo extends Component {
       <div>
         <Editor
           config={{
-            plugins: { options: "block inline list" },
+            plugins: { options: "block inline list link" },
             toolbar: {
               options: "top",
-              top: { options: "block inline list" }
+              top: { options: "block inline list link" }
             }
           }}
           onChange={this.onChange}

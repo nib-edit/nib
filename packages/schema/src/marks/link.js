@@ -1,7 +1,6 @@
 const link = {
   attrs: {
-    href: {},
-    title: { default: null }
+    href: {}
   },
   inclusive: false,
   parseDOM: [
@@ -9,8 +8,7 @@ const link = {
       tag: "a[href]",
       getAttrs(dom) {
         return {
-          href: dom.getAttribute("href"),
-          title: dom.getAttribute("title")
+          href: dom.getAttribute("href")
         };
       }
     }

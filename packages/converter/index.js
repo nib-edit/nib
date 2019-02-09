@@ -2,16 +2,31 @@ import { Schema } from "prosemirror-model";
 import { marks, nodes } from "nib-schema";
 
 const getHTMLString = node => {
+  const { type, text } = node;
+  if (text) {
+    let strContent = text;
+    for (let i = 0; i < node.marks.length; i++) {
+      const mark = node.marks[i];
+      const { type } = mark;
+      const domDetails = type.spec.toDOM(mark);
+      const htmlAttrs = Object.keys(domDetails[1]).reduce(
+        (str, key) => `${str} ${key}="${domDetails[1][key]}"`,
+        ""
+      );
+      const htmlTag = domDetails[0];
+      console.log("*****", htmlAttrs);
+      strContent = `<${htmlTag} ${htmlAttrs}>${strContent}</${htmlTag}>`;
+    }
+    return strContent;
+  }
   let strContent = "";
   for (let i = 0; i < node.childCount; i++) {
-    const child = node.child(i);
-    strContent += getHTMLString(child);
+    const childNode = node.child(i);
+    strContent += getHTMLString(childNode);
   }
-  if (node.type.spec.toDOM) {
-    const tag = node.type.spec.toDOM(node)[0];
-    return `<${tag}>${strContent}</${tag}>`;
-  } else if (node.text) {
-    return node.text;
+  if (type.spec.toDOM) {
+    const htmlTag = type.spec.toDOM(node)[0];
+    strContent = `<${htmlTag}>${strContent}</${htmlTag}>`;
   }
   return strContent;
 };
