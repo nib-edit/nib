@@ -1,1 +1,1 @@
-export default { nodes: ["bulletList", "listItem", "orderedList"] };
+export default { nodes: ["heading", "bulletList", "listItem", "orderedList"] };

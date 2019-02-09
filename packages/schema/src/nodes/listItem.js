@@ -1,7 +1,8 @@
 const liDOM = ["li", 0];
 
 const listItem = {
-  content: "(paragraph){1} (paragraph | orderedList | bulletList)*",
+  content:
+    "(paragraph | heading){1} (paragraph | heading | orderedList | bulletList)*",
   group: "block",
   parseDOM: [{ tag: "li" }],
   toDOM() {
