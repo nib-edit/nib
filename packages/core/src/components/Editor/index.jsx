@@ -7,12 +7,13 @@ import Toolbar from "../Toolbar";
 import { AppStateWrapper } from "../../common/app-state";
 import { deepMerge } from "../../common/utils";
 import { defaultConfig, ConfigContext } from "../../common/config";
-import { getModals } from "../../common/editor-helpers";
+import { getPropertyFromPliguns } from "../../common/editor-helpers";
 
 import InnerEditor from "./editor";
 import { Wrapper } from "./style";
 import { blockStyles } from "./blockStyles";
 import { theme } from "./theme";
+import OverlayHandler from "../OverlayHandler";
 
 class Editor extends Component {
   constructor(props) {
@@ -41,7 +42,8 @@ class Editor extends Component {
     const { toolbar, plugins } = this.config;
     const inlineToolbarPresent = toolbar.options.indexOf("inline") >= 0;
     const topToolbarPresent = toolbar.options.indexOf("top") >= 0;
-    const modals = getModals(plugins.options);
+    const modals = getPropertyFromPliguns(plugins.options, "modals");
+    const overlays = getPropertyFromPliguns(plugins.options, "overlays");
     return (
       <AppStateWrapper
         render={app_params => (
@@ -61,6 +63,11 @@ class Editor extends Component {
                 <ModalHandler
                   editorWrapper={this.editorWrapper}
                   modals={modals}
+                  view={app_params.view}
+                />
+                <OverlayHandler
+                  editorWrapper={this.editorWrapper}
+                  overlays={overlays}
                   view={app_params.view}
                 />
               </Wrapper>

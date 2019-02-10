@@ -14,7 +14,6 @@ const getHTMLString = node => {
         ""
       );
       const htmlTag = domDetails[0];
-      console.log("*****", htmlAttrs);
       strContent = `<${htmlTag} ${htmlAttrs}>${strContent}</${htmlTag}>`;
     }
     return strContent;

@@ -5,6 +5,7 @@ import schema from "./schema";
 import CreateModal from "./modals/Create";
 import EditModal from "./modals/Edit";
 
+//todo: move this code to folder modals
 const modals = [
   {
     elmClassName: "nib-link-marker",
@@ -24,3 +25,5 @@ export default {
   schema,
   modals
 };
+
+// rename plugins above to plugin

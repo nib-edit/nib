@@ -19,7 +19,7 @@ Plugin that adds block support.
 Grouped in dropdown
 
 ```js
-<BlockPlugin />
+<BlockPluginDemo />
 ```
 
 ```js static

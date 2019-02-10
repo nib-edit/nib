@@ -1,11 +1,16 @@
 import React from "react";
 
 export const defaultConfig = {
-  plugins: { options: "block inline link list" },
+  plugins: {
+    options: "block inline link list image",
+    image: {
+      uploadCallback: _ => {}
+    }
+  },
   toolbar: {
     options: "top inline",
     top: {
-      options: "block inline link list history",
+      options: "block inline link list history image",
       block: { options: "p h1 h2 h3 h4 h5 h6", grouped: true },
       inline: { options: "strong em underline" }
     },

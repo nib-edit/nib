@@ -1,0 +1,1 @@
+export default { nodes: ["image"] };
