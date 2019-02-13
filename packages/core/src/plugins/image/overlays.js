@@ -62,8 +62,8 @@ class UploadImage extends PureComponent {
 
   render() {
     return (
-      <Root>
-        <Wrapper>
+      <Root onClick={this.hideImageOverlay}>
+        <Wrapper onClick={evt => evt.stopPropagation()}>
           <UploadSection
             onDragEnter={this.stopDefault}
             onDragOver={this.stopDefault}
