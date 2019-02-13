@@ -1,12 +1,12 @@
-import toolbarComponent from "./ToolbarComponent";
+import overlays from "./overlays";
 import plugins from "./plugins";
 import schema from "./schema";
-import overlays from "./overlays";
+import toolbarComponent from "./ToolbarComponent";
 
 export default {
   name: "image",
-  toolbarComponent,
+  overlays,
   plugins,
   schema,
-  overlays
+  toolbarComponent
 };

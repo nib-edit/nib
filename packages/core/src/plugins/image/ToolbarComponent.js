@@ -3,8 +3,7 @@ import { ToolbarButton, Icons } from "nib-ui";
 
 class ImageToolbarComponent extends PureComponent {
   showImageOverlay = () => {
-    const { view = {} } = this.props.app_params;
-    const { state, dispatch } = view;
+    const { state, dispatch } = this.props.app_params.view;
     dispatch(state.tr.setMeta("SHOW_IMAGE_TOOLBAR", true));
   };
 

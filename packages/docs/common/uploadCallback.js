@@ -7,8 +7,8 @@ const uploadCallback = file => {
     data.append("image", file);
     xhr.send(data);
     xhr.addEventListener("load", () => {
-      const response = JSON.parse(xhr.responseText);
-      resolve(response);
+      const { data } = JSON.parse(xhr.responseText);
+      resolve(data);
     });
     xhr.addEventListener("error", () => {
       const error = JSON.parse(xhr.responseText);

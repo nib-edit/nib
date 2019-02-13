@@ -65,6 +65,26 @@ export const theme = {
         opacity: ${StyleConstants.DisabledStyle.opacity};
       }`
     },
+    primary: {
+      backgroundColor: "#0C14C3",
+      border: none,
+      borderRadius: "2px",
+      color: "white",
+      margin: zero,
+      padding: zero,
+      height: "32px",
+      width: "124px",
+      fontSize: FontSize.medium,
+      "&:hover": `{
+        background-color: ${Color.hover};
+      }`,
+      "&:selected": `{
+        background-color: ${Color.selected};
+      }`,
+      "&:disabled": `{
+        opacity: ${StyleConstants.DisabledStyle.opacity};
+      }`
+    },
     basic: {
       backgroundColor: Color.white,
       color: Color.text,
