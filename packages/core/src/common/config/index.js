@@ -10,7 +10,7 @@ export const defaultConfig = {
   toolbar: {
     options: "top inline",
     top: {
-      options: "block inline link list history image",
+      options: "block inline link list image history",
       block: { options: "p h1 h2 h3 h4 h5 h6", grouped: true },
       inline: { options: "strong em underline" }
     },

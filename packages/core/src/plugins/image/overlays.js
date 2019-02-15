@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
+import { Spinner } from "nib-ui";
 
 import { ConfigContext } from "../../common/config";
 import { imagePluginKey } from "./plugins";
@@ -7,15 +8,19 @@ import { imagePluginKey } from "./plugins";
 class UploadImage extends PureComponent {
   static contextType = ConfigContext;
 
-  handleImageInputChangeinsertImage = event => {
+  state = { uploading: false };
+
+  handleImageInputChange = event => {
     const { files } = event.target;
-    insertImage(files[0]);
+    this.insertImage(files[0]);
   };
 
   insertImage = file => {
+    this.setState({ uploading: true });
     const { uploadCallback } = this.context.config.plugins.image;
     uploadCallback(file)
       .then(({ link }) => {
+        this.setState({ uploading: false });
         if (!link) return;
         const { state, dispatch } = this.props.view;
         const { $from, $to } = state.selection;
@@ -37,6 +42,8 @@ class UploadImage extends PureComponent {
     evt.preventDefault();
     evt.stopPropagation();
   };
+
+  stopPropagation = evt => evt.stopPropagation();
 
   // Check if property name is files or items, IE uses 'files' instead of 'items'
   onImageDrop = evt => {
@@ -61,23 +68,28 @@ class UploadImage extends PureComponent {
   };
 
   render() {
+    const { uploading } = this.state;
     return (
       <Root onClick={this.hideImageOverlay}>
-        <Wrapper onClick={evt => evt.stopPropagation()}>
-          <UploadSection
-            onDragEnter={this.stopDefault}
-            onDragOver={this.stopDefault}
-            onDrop={this.onImageDrop}
-          >
-            <span>Drag and Drop the Image</span>
-            <span>or</span>
-            <ButtonLabel htmlFor="file">Click to Upload</ButtonLabel>
+        <Wrapper onClick={this.stopPropagation}>
+          <label htmlFor="file">
             <FileUploadInput
               type="file"
               id="file"
               onChange={this.handleImageInputChange}
             />
-          </UploadSection>
+            <UploadSection
+              onDragEnter={this.stopDefault}
+              onDragOver={this.stopDefault}
+              onDrop={this.onImageDrop}
+              uploading={uploading}
+            >
+              <UploadLabel>
+                Drag and Drop the Image <br /> or <br /> Click to Upload
+              </UploadLabel>
+              <StyledSpinner uploading={uploading} />
+            </UploadSection>
+          </label>
         </Wrapper>
       </Root>
     );
@@ -100,42 +112,17 @@ const Root = styled.div`
 const Wrapper = styled.div`
   background-color: white;
   border-radius: 2px;
+  box-shadow: "rgba(158, 158, 158, 0.75) 0px 4px 8px - 2px, rgba(158, 158, 158, 0.75) 0px 0px 1px";
   height: 30%;
-  min-height: 200px;
-  min-width: 500px;
-  width: 50%;
-`;
-
-const ButtonLabel = styled.label`
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-
-  background-color: ${({ theme }) => theme.button.primary.backgroundColor};
-  color: ${({ theme }) => theme.button.primary.color};
-
-  border: ${({ theme }) => theme.button.primary.border};
-  border-radius: ${({ theme }) => theme.button.primary.borderRadius};
-  height: ${({ theme }) => theme.button.primary.height};
-  width: ${({ theme }) => theme.button.primary.width};
-  margin: ${({ theme }) => theme.button.primary.margin};
-  padding: ${({ theme }) => theme.button.primary.padding};
-
-  font-size: ${({ theme }) => theme.button.primary.fontSize};
-
-  :hover {
-    ${({ disabled, theme }) =>
-      !disabled ? theme.button.primary["&:hover"] : ""};
-  }
-  ${({ selected, theme }) => selected && theme.button.primary["&:selected"]};
-  ${({ disabled, theme }) => disabled && theme.button.primary["&:disabled"]};
+  min-height: 250px;
+  min-width: 300px;
+  width: 30%;
 `;
 
 const UploadSection = styled.div`
   align-items: center;
   background: #eaeaea;
-  border: 1px dashed #535353;
+  border: 1px dashed ${({ uploading }) => (uploading ? "#0000e4" : "#535353")};
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -147,8 +134,18 @@ const UploadSection = styled.div`
   }
 `;
 
+const UploadLabel = styled.span`
+  margin-top: 50px;
+  text-align: center;
+`;
+
 const FileUploadInput = styled.input`
   display: none;
+`;
+
+const StyledSpinner = styled(Spinner)`
+  margin-top: 10px;
+  visibility: ${({ uploading }) => (uploading ? "visible" : "hidden")};
 `;
 
 export default [
@@ -162,5 +159,6 @@ export default [
 ];
 
 /**
- * Extract an overlay component out to UI module, it should close on esc and click outside.
+ * Todo: Extract an overlay component out to UI module, it should close on esc and click outside.
+ * Todo: Make styles for image uploader and spinner configurable.
  */
