@@ -16,6 +16,7 @@ const isSamePos = (oldPos, newPos) => {
   return true;
 };
 
+// todo: refactor to put constants, code cleanup
 // Note: current left alignment does not take care of padding of section,
 // this can be improved in future.
 const getPosition = (marker, modalElm, editorWrapper) => {
@@ -31,20 +32,24 @@ const getPosition = (marker, modalElm, editorWrapper) => {
 
   let arrowLeft;
   if (left < 0) {
-    arrowLeft = Math.abs(left) > modalWidth / 2 - 10 ? left + 5 : left;
+    arrowLeft = Math.abs(left) > modalWidth / 2 - 10 ? left + 10 : left;
     left = -1;
   } else if (left + modalWidth > wrapperRefDim.width) {
     arrowLeft = left + modalWidth - wrapperRefDim.width;
     left = wrapperRefDim.width - modalWidth - 1;
   }
-  if (left < 1) left = 1;
+  if (left < 2) left = 2;
 
-  let top = markerDim.y - wrapperRefDim.y + markerDim.height + ARROW_HEIGHT;
+  let top =
+    markerDim.y - wrapperRefDim.y + (markerDim.height || 20) + 4 + ARROW_HEIGHT;
   if (top + modalHeight > wrapperRefDim.height) {
-    arrowDir = "BOTTOM";
-    top = markerDim.y - wrapperRefDim.y - ARROW_HEIGHT - modalHeight;
+    const newTop =
+      markerDim.y - wrapperRefDim.y - ARROW_HEIGHT - modalHeight - 4;
+    if (newTop > 0) {
+      arrowDir = "BOTTOM";
+      top = newTop;
+    }
   }
-  if (top < 1) top = 1;
 
   return {
     modalPosition: { top, left },
@@ -152,7 +157,6 @@ const Wrapper = styled.div`
   border-left: ${({ theme }) => theme.modal.borderLeft};
   border-right: ${({ theme }) => theme.modal.borderRight};
   border-top: ${({ theme }) => theme.modal.borderTop};
-
   border-bottom-left-radius: ${({ theme }) =>
     theme.modal.borderBottomLeftRadius};
   border-bottom-right-radius: ${({ theme }) =>
@@ -170,45 +174,27 @@ const Wrapper = styled.div`
 `;
 
 const ArrowTop = styled.div`
-  position: absolute;
-  top: -6px;
+  background: ${({ theme }) => theme.modal.backgroundColor};
+  border-left: 1px solid ${({ theme }) => theme.modal.arrowBorderColor};
+  border-top: 1px solid ${({ theme }) => theme.modal.arrowBorderColor};
+  height: 10px;
   left: ${({ left = 0 }) => `calc(50% + ${left - 6}px)`};
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-bottom: 6px solid ${({ theme }) => theme.modal.arrowBorderColor};
-  &:after,
-  &:before {
-    border: solid transparent;
-    content: " ";
-    position: absolute;
-  }
-  &:after {
-    border-bottom-color: ${({ theme }) => theme.modal.arrowBackgroundColor};
-    border-width: 6px;
-    margin-top: -5px;
-    left: -6px;
-  }
+  position: absolute;
+  top: -7px;
+  transform: rotate(45deg);
+  width: 10px;
 `;
 
 const ArrowBottom = styled.div`
-  position: absolute;
-  bottom: -6px;
+  background: ${({ theme }) => theme.modal.backgroundColor};
+  border-right: 1px solid ${({ theme }) => theme.modal.arrowBorderColor};
+  border-bottom: 1px solid ${({ theme }) => theme.modal.arrowBorderColor};
+  height: 10px;
   left: ${({ left = 0 }) => `calc(50% + ${left - 6}px)`};
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 6px solid ${({ theme }) => theme.modal.arrowBorderColor};
-  &:after,
-  &:before {
-    border: solid transparent;
-    content: " ";
-    position: absolute;
-  }
-  &:after {
-    border-top-color: ${({ theme }) => theme.modal.arrowBackgroundColor};
-    border-width: 6px;
-    margin-top: -6px;
-    left: -6px;
-  }
+  position: absolute;
+  bottom: -7px;
+  transform: rotate(45deg);
+  width: 10px;
 `;
 
 // todo: instead of children use render prop here.

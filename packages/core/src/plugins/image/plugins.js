@@ -9,9 +9,13 @@ export default new Plugin({
     init: () => {
       return { showImageToolbar: false };
     },
-    apply(tr) {
+    apply(tr, value) {
       const showImageToolbar = tr.getMeta("SHOW_IMAGE_TOOLBAR");
-      return { showImageToolbar };
+      if (showImageToolbar) return { showImageToolbar: true };
+      if (showImageToolbar === false) return { showImageToolbar: false };
+      return value;
     }
   }
 });
+
+// todo: for all meta SHOW_... add corresponding HIDE...

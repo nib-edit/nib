@@ -63,7 +63,6 @@ export default new Plugin({
         if ($from.pos === $to.pos) {
           const node = document.createElement("span");
           node.className = "nib-link-marker";
-          node.style.display = "inline-block";
           decor = Decoration.widget($from.pos, node);
         } else {
           decor = Decoration.inline($from.pos, $to.pos, {

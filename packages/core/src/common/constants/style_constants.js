@@ -1,8 +1,10 @@
 const Color = {
+  active: "#9E9E9E",
   border: "rgba(158, 158, 158, 0.75)",
-  highlight: "#1C62B9",
-  hover: "#E0E0E0",
+  highlight: "#065FD4",
+  hover: "#F5F5F5",
   lightBorder: "#EbBCF0",
+  modalBorder: "#FCFCFCBF",
   selected: "#BDBDBD",
   text: "#212121",
   white: "#FFFFFF"
@@ -18,7 +20,7 @@ const DisabledStyle = {
   opacity: 0.5
 };
 
-const BoxShadow = `${Color.border} 0px 4px 8px -2px,${
+const BoxShadow = `${Color.border} 0px 2px 8px -2px,${
   Color.border
 } 0px 0px 1px`;
 

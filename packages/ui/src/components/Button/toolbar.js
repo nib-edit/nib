@@ -21,9 +21,14 @@ const StyledButton = styled.button`
 
   font-size: ${({ theme }) => theme.button.toolbar.fontSize};
 
+  :active {
+    ${({ disabled, theme }) => !disabled && theme.button.toolbar["&:active"]};
+  }
+  :focus {
+    ${({ disabled, theme }) => !disabled && theme.button.toolbar["&:hover"]};
+  }
   :hover {
-    ${({ disabled, theme }) =>
-      !disabled ? theme.button.toolbar["&:hover"] : ""};
+    ${({ disabled, theme }) => !disabled && theme.button.toolbar["&:hover"]};
   }
   ${({ selected, theme }) => selected && theme.button.toolbar["&:selected"]};
   ${({ disabled, theme }) => disabled && theme.button.toolbar["&:disabled"]};

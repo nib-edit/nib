@@ -22,6 +22,7 @@ export default Input;
 const InputWrapper = styled.div`
   align-items: center;
   display: flex;
+  line-height: 1;
 `;
 
 const StyledInput = styled.input`

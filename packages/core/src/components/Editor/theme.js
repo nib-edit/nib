@@ -55,14 +55,21 @@ export const theme = {
       height: "28px",
       width: "28px",
       fontSize: FontSize.medium,
+      "&:active": `
+        background-color: ${Color.active} !important;
+      `,
+      "&:disabled": `{
+        opacity: ${StyleConstants.DisabledStyle.opacity};
+      }`,
+      "&:focus": `{
+        outline: none;
+        background-color: ${Color.hover};
+      }`,
       "&:hover": `{
         background-color: ${Color.hover};
       }`,
       "&:selected": `{
-        background-color: ${Color.selected};
-      }`,
-      "&:disabled": `{
-        opacity: ${StyleConstants.DisabledStyle.opacity};
+        background-color: ${Color.selected} !important;
       }`
     },
     primary: {
@@ -75,14 +82,22 @@ export const theme = {
       height: "32px",
       width: "124px",
       fontSize: FontSize.medium,
+      "&:active": `
+        border-radius: 3px !important;
+        background-color: ${Color.active} !important;
+      `,
+      "&:disabled": `{
+        opacity: ${StyleConstants.DisabledStyle.opacity};
+      }`,
+      "&:focus": `{
+        outline: none;
+        background-color: ${Color.hover};
+      }`,
       "&:hover": `{
         background-color: ${Color.hover};
       }`,
       "&:selected": `{
-        background-color: ${Color.selected};
-      }`,
-      "&:disabled": `{
-        opacity: ${StyleConstants.DisabledStyle.opacity};
+        background-color: ${Color.selected} !important;
       }`
     },
     basic: {
@@ -95,15 +110,19 @@ export const theme = {
       height: "auto",
       width: "auto",
       fontSize: FontSize.medium,
-      "&:hover": `{
-        text-decoration: underline;
-      }`,
-      "&:focus": `{
-        outline: none;
-        text-decoration: underline;
+      "&:active": `{
+        color: ${Color.highlight};
       }`,
       "&:disabled": `{
         opacity: ${StyleConstants.DisabledStyle.opacity};
+      }`,
+      "&:focus": `{
+        color: ${Color.highlight};
+        outline: none;
+        text-decoration: underline;
+      }`,
+      "&:hover": `{
+        text-decoration: underline;
       }`
     }
   },
@@ -118,6 +137,9 @@ export const theme = {
     dropdownWidth: "164px",
     fontSize: FontSize.medium,
     "&:hover": { backgroundColor: Color.hover },
+    "&:active": {
+      backgroundColor: `${Color.active} !important`
+    },
     "&:selected": { backgroundColor: Color.selected }
   },
   icon: { fill: Color.text },
@@ -151,17 +173,17 @@ export const theme = {
   modal: {
     backgroundColor: Color.white,
     color: Color.text,
-    borderBottom: none,
-    borderLeft: none,
-    borderRight: none,
-    borderTop: none,
+    borderBottom: `1px solid ${Color.modalBorder}`,
+    borderLeft: `1px solid ${Color.modalBorder}`,
+    borderRight: `1px solid ${Color.modalBorder}`,
+    borderTop: `1px solid ${Color.modalBorder}`,
     borderBottomLeftRadius: "2px",
     borderBottomRightRadius: "2px",
     borderTopLeftRadius: "2px",
     borderTopRightRadius: "2px",
     boxShadow: BoxShadow,
     arrowBorderColor: "rgba(9, 30, 66, 0.1)",
-    arrowBackgroundColor: Color.white,
+    arrowBackgroundColor: Color.modalBorder,
     fontWeight: "600"
   },
   toolbar: {

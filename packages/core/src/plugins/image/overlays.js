@@ -10,6 +10,14 @@ class UploadImage extends PureComponent {
 
   state = { uploading: false };
 
+  componentDidMount() {
+    window.addEventListener("keydown", this.handleKeyPress);
+  }
+
+  componentWillUnmount = () => {
+    window.removeEventListener("keydown", this.handleKeyPress);
+  };
+
   handleImageInputChange = event => {
     const { files } = event.target;
     this.insertImage(files[0]);
@@ -34,7 +42,7 @@ class UploadImage extends PureComponent {
         );
       })
       .finally(() => {
-        this.hideImageOverlay();
+        this.closeImageOverlay();
       });
   };
 
@@ -62,7 +70,12 @@ class UploadImage extends PureComponent {
     }
   };
 
-  hideImageOverlay = () => {
+  handleKeyPress = evt => {
+    if (evt.key === "Escape") this.closeImageOverlay();
+  };
+
+  closeImageOverlay = () => {
+    console.log("into closeImageOverlay");
     const { state, dispatch } = this.props.view;
     dispatch(state.tr.setMeta("SHOW_IMAGE_TOOLBAR", false));
   };
@@ -70,7 +83,7 @@ class UploadImage extends PureComponent {
   render() {
     const { uploading } = this.state;
     return (
-      <Root onClick={this.hideImageOverlay}>
+      <Root onClick={this.closeImageOverlay}>
         <Wrapper onClick={this.stopPropagation}>
           <label htmlFor="file">
             <FileUploadInput
@@ -112,7 +125,8 @@ const Root = styled.div`
 const Wrapper = styled.div`
   background-color: white;
   border-radius: 2px;
-  box-shadow: "rgba(158, 158, 158, 0.75) 0px 4px 8px - 2px, rgba(158, 158, 158, 0.75) 0px 0px 1px";
+  box-shadow: rgba(158, 158, 158, 0.75) 0px 2px 8px -2px,
+    rgba(158, 158, 158, 0.75) 0px 0px 1px;
   height: 30%;
   min-height: 250px;
   min-width: 300px;

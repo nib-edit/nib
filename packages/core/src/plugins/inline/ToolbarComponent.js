@@ -7,18 +7,10 @@ import { inlinePluginKey } from "./plugins";
 class InlineToolbarComponent extends PureComponent {
   toggleMarkofType = evt => {
     const markName = evt.currentTarget.getAttribute("name");
-    const { view: { state, dispatch } = {} } = this.props.app_params;
+    const { view } = this.props.app_params;
+    const { state, dispatch } = view;
     const markType = state.schema.marks[markName];
-    if (state.selection.empty) {
-      const marks = state.selection.$to.marks();
-      if (marks && marks.some(mark => mark.type === markType)) {
-        dispatch(state.tr.removeStoredMark(markType.create()));
-      } else {
-        dispatch(state.tr.addStoredMark(markType.create()));
-      }
-    } else {
-      toggleMark(markType)(state, dispatch);
-    }
+    toggleMark(markType)(state, dispatch);
   };
 
   getActiveMarks = () => {
