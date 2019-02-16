@@ -14,7 +14,8 @@ export const getSelectStyles = themeStyle => ({
     backgroundColor: themeStyle.backgroundColor,
     borderRadius: themeStyle.borderRadius,
     fontSize: themeStyle.fontSize,
-    fontWeight: "600"
+    fontWeight: "600",
+    lineHeight: 1
   }),
   control: getStyles(
     {

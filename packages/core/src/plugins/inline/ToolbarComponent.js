@@ -12,7 +12,7 @@ class InlineToolbarComponent extends PureComponent {
     if (state.selection.empty) {
       const marks = state.selection.$to.marks();
       if (marks && marks.some(mark => mark.type === markType)) {
-        dispatch(state.tr.removeStoredMark(markType));
+        dispatch(state.tr.removeStoredMark(markType.create()));
       } else {
         dispatch(state.tr.addStoredMark(markType.create()));
       }

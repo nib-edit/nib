@@ -122,7 +122,8 @@ const Wrapper = styled.div`
 const UploadSection = styled.div`
   align-items: center;
   background: #eaeaea;
-  border: 1px dashed ${({ uploading }) => (uploading ? "#0000e4" : "#535353")};
+  border: 1px dashed
+    ${({ uploading }) => (uploading ? "rgb(6, 95, 212)" : "#535353")};
   display: flex;
   flex-direction: column;
   height: 100%;
