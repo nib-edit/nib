@@ -1,6 +1,6 @@
 {
   "name": "nib-ui",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Components for use in Nib",
   "main": "./index.js",
   "repository": {
