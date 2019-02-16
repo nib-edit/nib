@@ -19,3 +19,4 @@ export default new Plugin({
 });
 
 // todo: for all meta SHOW_... add corresponding HIDE...
+// todo: add keywords to all package.json

@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import Editor from "nib-core";
+
 import uploadCallback from "../../common/uploadCallback";
 
 /**

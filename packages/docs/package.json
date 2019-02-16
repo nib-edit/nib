@@ -13,7 +13,7 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "nib-core": "0.1.6",
-    "nib-converter": "0.1.0",
+    "nib-converter": "0.1.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "url-loader": "^1.1.2"

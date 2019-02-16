@@ -62,6 +62,7 @@ export default class Modal extends Component {
   state = { modalPosition: {}, arrowPosition: { dir: "TOP" } };
 
   static propTypes = {
+    className: PropTypes.string,
     children: PropTypes.object,
     closeModal: PropTypes.func,
     editorWrapper: PropTypes.object,
@@ -121,15 +122,16 @@ export default class Modal extends Component {
   };
 
   render() {
-    const { marker, children } = this.props;
+    const { className, children, marker } = this.props;
     if (!marker) return null;
     const { modalPosition, arrowPosition } = this.state;
 
     return (
       <Wrapper
+        className={className}
         marker={marker}
-        onFocus={this.onFocus}
         onBlur={this.onBlur}
+        onFocus={this.onFocus}
         onKeyDown={this.onKeyDown}
         onMouseDown={this.onMouseDown}
         ref={this.wrapperRef}
@@ -198,3 +200,5 @@ const ArrowBottom = styled.div`
 `;
 
 // todo: instead of children use render prop here.
+// todo: modals to close on mouse down at other places on the page
+// todo: check complexity that heading styles can create

@@ -8,6 +8,7 @@ import { getSelectStyles } from "./style";
 
 const Select = props => {
   const {
+    className,
     onChange,
     options,
     selectedOption,
@@ -15,6 +16,7 @@ const Select = props => {
   } = props;
   return (
     <ReactSelect
+      className={className}
       components={{ Option }}
       onChange={onChange}
       options={options}

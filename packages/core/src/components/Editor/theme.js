@@ -73,10 +73,10 @@ export const theme = {
       }`
     },
     primary: {
-      backgroundColor: "#0C14C3",
+      backgroundColor: Color.highlight,
       border: none,
       borderRadius: "2px",
-      color: "white",
+      color: Color.white,
       margin: zero,
       padding: zero,
       height: "32px",
@@ -137,9 +137,6 @@ export const theme = {
     dropdownWidth: "164px",
     fontSize: FontSize.medium,
     "&:hover": { backgroundColor: Color.hover },
-    "&:active": {
-      backgroundColor: `${Color.active} !important`
-    },
     "&:selected": { backgroundColor: Color.selected }
   },
   icon: { fill: Color.text },
@@ -173,17 +170,16 @@ export const theme = {
   modal: {
     backgroundColor: Color.white,
     color: Color.text,
-    borderBottom: `1px solid ${Color.modalBorder}`,
-    borderLeft: `1px solid ${Color.modalBorder}`,
-    borderRight: `1px solid ${Color.modalBorder}`,
-    borderTop: `1px solid ${Color.modalBorder}`,
+    borderBottom: `1px solid ${Color.border}`,
+    borderLeft: `1px solid ${Color.border}`,
+    borderRight: `1px solid ${Color.border}`,
+    borderTop: `1px solid ${Color.border}`,
     borderBottomLeftRadius: "2px",
     borderBottomRightRadius: "2px",
     borderTopLeftRadius: "2px",
     borderTopRightRadius: "2px",
     boxShadow: BoxShadow,
-    arrowBorderColor: "rgba(9, 30, 66, 0.1)",
-    arrowBackgroundColor: Color.modalBorder,
+    arrowBorderColor: Color.border,
     fontWeight: "600"
   },
   toolbar: {
@@ -220,3 +216,5 @@ export const theme = {
     }
   }
 };
+
+// todo: check to ensure use of constants

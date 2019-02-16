@@ -98,7 +98,10 @@ class CreateModal extends PureComponent {
   }
 }
 
-export default CreateModal;
+export default {
+  elmClassName: "nib-link-marker",
+  component: CreateModal
+};
 
 const LinkPopup = styled.div`
   align-items: flex-end;

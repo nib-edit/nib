@@ -1,2 +1,4 @@
-export { default as CreateModal } from "./Create";
-export { default as EditModal } from "./edit";
+import CreateModal from "./Create";
+import EditModal from "./edit";
+
+export default [CreateModal, EditModal];

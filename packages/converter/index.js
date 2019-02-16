@@ -10,11 +10,11 @@ const getHTMLString = node => {
       const { type } = mark;
       const domDetails = type.spec.toDOM(mark);
       const htmlAttrs = Object.keys(domDetails[1]).reduce(
-        (str, key) => `${str} ${key}="${domDetails[1][key]}"`,
+        (str, key) => `${str}${key}="${domDetails[1][key]}"`,
         ""
       );
       const htmlTag = domDetails[0];
-      strContent = `<${htmlTag} ${htmlAttrs}>${strContent}</${htmlTag}>`;
+      strContent = `<${htmlTag}${htmlAttrs}>${strContent}</${htmlTag}>`;
     }
     return strContent;
   }
@@ -24,8 +24,13 @@ const getHTMLString = node => {
     strContent += getHTMLString(childNode);
   }
   if (type.spec.toDOM) {
-    const htmlTag = type.spec.toDOM(node)[0];
-    strContent = `<${htmlTag}>${strContent}</${htmlTag}>`;
+    const domDetails = type.spec.toDOM(node);
+    const htmlAttrs = Object.keys(domDetails[1]).reduce(
+      (str, key) => `${str} ${key}="${domDetails[1][key]}"`,
+      ""
+    );
+    const htmlTag = domDetails[0];
+    strContent = `<${htmlTag}${htmlAttrs}>${strContent}</${htmlTag}>`;
   }
   return strContent;
 };

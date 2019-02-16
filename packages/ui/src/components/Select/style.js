@@ -29,8 +29,7 @@ export const getSelectStyles = themeStyle => ({
       "&:hover": themeStyle["&:hover"]
     },
     state => ({
-      ...(state.isSelected ? themeStyle["&:selected"] : {}),
-      ...(state.isFocused ? themeStyle["&:active"] : {})
+      ...(state.isSelected ? themeStyle["&:selected"] : {})
     })
   ),
   dropdownIndicator: getStyles({

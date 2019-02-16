@@ -93,7 +93,10 @@ class EditModal extends PureComponent {
   }
 }
 
-export default EditModal;
+export default {
+  elmClassName: "nib-edit-link-marker",
+  component: EditModal
+};
 
 const LinkPopup = styled.div`
   align-items: center;

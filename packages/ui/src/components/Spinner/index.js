@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/core";
 
-export default ({ className }) => <StyledSpinner className={className} />;
+export default props => <StyledSpinner {...props} />;
 
 const Spin = keyframes`
   0% { transform: rotate(0deg); }
@@ -17,5 +17,3 @@ const StyledSpinner = styled.div`
   height: 24px;
   width: 24px;
 `;
-
-// todo: all UI components should take className props

@@ -3,9 +3,9 @@ import React from "react";
 import styled from "@emotion/styled";
 
 const Input = props => {
-  const { label, name } = props;
+  const { className, label, name } = props;
   return (
-    <InputWrapper>
+    <InputWrapper className={className}>
       {label && <label htmlFor={name}>{label}</label>}
       <StyledInput {...props} />
     </InputWrapper>
@@ -13,6 +13,7 @@ const Input = props => {
 };
 
 Input.propTypes = {
+  className: PropTypes.string,
   label: PropTypes.string,
   name: PropTypes.string
 };

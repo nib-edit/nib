@@ -75,7 +75,6 @@ class UploadImage extends PureComponent {
   };
 
   closeImageOverlay = () => {
-    console.log("into closeImageOverlay");
     const { state, dispatch } = this.props.view;
     dispatch(state.tr.setMeta("SHOW_IMAGE_TOOLBAR", false));
   };
@@ -135,9 +134,9 @@ const Wrapper = styled.div`
 
 const UploadSection = styled.div`
   align-items: center;
-  background: #eaeaea;
+  background: #e0e0e0;
   border: 1px dashed
-    ${({ uploading }) => (uploading ? "rgb(6, 95, 212)" : "#535353")};
+    ${({ uploading }) => (uploading ? "rgb(6, 95, 212)" : "#212121")};
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -176,4 +175,5 @@ export default [
 /**
  * Todo: Extract an overlay component out to UI module, it should close on esc and click outside.
  * Todo: Make styles for image uploader and spinner configurable.
+ * Todo: new heading styles in example.
  */

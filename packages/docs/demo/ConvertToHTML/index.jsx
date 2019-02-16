@@ -2,6 +2,8 @@ import Editor from "nib-core";
 import React, { Component } from "react";
 import { convertToHTML } from "nib-converter";
 
+import uploadCallback from "../../common/uploadCallback";
+
 /**
  * @visibleName 6. ConvertToHTML
  */
@@ -20,10 +22,13 @@ class ConvertToHTMLDemo extends Component {
       <div>
         <Editor
           config={{
-            plugins: { options: "block inline list link" },
+            plugins: {
+              image: {
+                uploadCallback
+              }
+            },
             toolbar: {
-              options: "top",
-              top: { options: "block inline list link" }
+              options: "top"
             }
           }}
           onChange={this.onChange}
