@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { ToolbarButton, Icons, Separator } from "nib-ui";
 import { toggleMark } from "prosemirror-commands";
 
-import { inlinePluginKey } from "./plugins";
+import { inlinePluginKey } from "./plugin";
 
 class InlineToolbarComponent extends PureComponent {
   toggleMarkofType = evt => {

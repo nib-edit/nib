@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
-import { BasicButton, Input, Modal } from "nib-ui";
+import { LinkButton, Input, Modal } from "nib-ui";
 
 class CreateModal extends PureComponent {
   constructor(props) {
@@ -61,7 +61,7 @@ class CreateModal extends PureComponent {
   closeModal = () => {
     const { view } = this.props;
     const { state, dispatch } = view;
-    dispatch(state.tr.setMeta("SHOW_LINK_TOOLBAR", false));
+    dispatch(state.tr.setMeta("HIDE_LINK_TOOLBAR", true));
   };
 
   render() {
@@ -91,7 +91,7 @@ class CreateModal extends PureComponent {
               value={href}
             />
           </div>
-          <StyledBasicButton onClick={this.addLink}>Apply</StyledBasicButton>
+          <StyledLinkButton onClick={this.addLink}>Apply</StyledLinkButton>
         </LinkPopup>
       </Modal>
     );
@@ -112,6 +112,6 @@ const LinkPopup = styled.div`
   font-size: 14px;
 `;
 
-const StyledBasicButton = styled(BasicButton)`
+const StyledLinkButton = styled(LinkButton)`
   margin: 4px 0;
 `;

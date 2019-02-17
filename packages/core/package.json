@@ -8,9 +8,9 @@
     "url": "https://github.com/jpuri/Nib.git"
   },
   "keywords": [
-    "wysiwyg",
+    "prosemirror",
     "reactjs",
-    "prosemirror"
+    "wysiwyg"
   ],
   "author": {
     "name": "Jyoti Puri",

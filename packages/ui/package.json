@@ -7,6 +7,10 @@
     "type": "git",
     "url": "https://github.com/jpuri/Nib.git"
   },
+  "keywords": [
+    "components",
+    "reactjs"
+  ],
   "author": "Jyoti Puri",
   "license": "MIT",
   "homepage": "https://github.com/jpuri/Nib/tree/master/packages/ui/#Readme.md",

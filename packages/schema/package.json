@@ -7,6 +7,10 @@
     "type": "git",
     "url": "https://github.com/jpuri/Nib.git"
   },
+  "keywords": [
+    "prosemirror",
+    "wysiwyg"
+  ],
   "author": {
     "name": "Jyoti Puri",
     "email": "jyotipuri@gmail.com"

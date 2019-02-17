@@ -4,9 +4,9 @@
   "private": true,
   "description": "Wysiwyg editor",
   "keywords": [
-    "wysiwyg",
+    "prosemirror",
     "reactjs",
-    "prosemirror"
+    "wysiwyg"
   ],
   "main": ".",
   "workspaces": [

@@ -1,5 +1,5 @@
 import keymaps from "./keymaps";
 import toolbarComponent from "./ToolbarComponent";
-import plugins from "./plugins";
+import plugin from "./plugin";
 
-export default { name: "history", keymaps, toolbarComponent, plugins };
+export default { name: "history", keymaps, toolbarComponent, plugin };

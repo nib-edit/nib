@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { ToolbarButton, Icons } from "nib-ui";
 
-import { linkPluginKey } from "./plugins";
+import { linkPluginKey } from "./plugin";
 
 class LinkToolbarComponent extends PureComponent {
   showLinkToolbar = () => {

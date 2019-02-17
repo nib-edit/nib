@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { setBlockType } from "prosemirror-commands";
 
-import { blockPluginKey } from "../plugins";
+import { blockPluginKey } from "../plugin";
 import { blockData as options } from "../blockData";
 import Grouped from "./Grouped";
 import Ungrouped from "./Ungrouped";

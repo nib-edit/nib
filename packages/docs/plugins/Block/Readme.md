@@ -39,7 +39,7 @@ Grouped in dropdown
 Ungrouped
 
 ```js
-<BlockPlugin grouped={false} />
+<BlockPluginDemo grouped={false} />
 ```
 
 ```js static

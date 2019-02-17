@@ -1,8 +1,8 @@
 import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
 import { TextSelection } from "prosemirror-state";
-import { BasicButton, Input, Modal, Separator } from "nib-ui";
-import { linkPluginKey } from "../plugins";
+import { LinkButton, Input, Modal, Separator } from "nib-ui";
+import { linkPluginKey } from "../plugin";
 
 class EditModal extends PureComponent {
   constructor(props) {
@@ -64,7 +64,7 @@ class EditModal extends PureComponent {
   closeModal = () => {
     const { view } = this.props;
     const { state, dispatch } = view;
-    dispatch(state.tr.setMeta("SHOW_EDIT_LINK_TOOLBAR", false));
+    dispatch(state.tr.setMeta("HIDE_EDIT_LINK_TOOLBAR", true));
   };
 
   render() {
@@ -84,9 +84,9 @@ class EditModal extends PureComponent {
             onChange={this.updateHref}
             defaultValue={link.href}
           />
-          <BasicButton onClick={this.updateLink}>Apply</BasicButton>
+          <LinkButton onClick={this.updateLink}>Apply</LinkButton>
           <Separator />
-          <BasicButton onClick={this.unLink}>Unlink</BasicButton>
+          <LinkButton onClick={this.unLink}>Unlink</LinkButton>
         </LinkPopup>
       </Modal>
     );

@@ -20,8 +20,10 @@ const DisabledStyle = {
   opacity: 0.5
 };
 
+const Border = `1px solid ${Color.border}`;
+
 const BoxShadow = `${Color.boxShadow} 0px 2px 8px -2px,${
   Color.boxShadow
 } 0px 0px 1px`;
 
-export default { Color, FontSize, DisabledStyle, BoxShadow };
+export default { Color, FontSize, DisabledStyle, Border, BoxShadow };

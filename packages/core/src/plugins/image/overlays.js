@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { Spinner } from "nib-ui";
 
 import { ConfigContext } from "../../common/config";
-import { imagePluginKey } from "./plugins";
+import { imagePluginKey } from "./plugin";
 
 class UploadImage extends PureComponent {
   static contextType = ConfigContext;
@@ -42,7 +42,7 @@ class UploadImage extends PureComponent {
         );
       })
       .finally(() => {
-        this.closeImageOverlay();
+        this.hideImageOverlay();
       });
   };
 
@@ -71,18 +71,18 @@ class UploadImage extends PureComponent {
   };
 
   handleKeyPress = evt => {
-    if (evt.key === "Escape") this.closeImageOverlay();
+    if (evt.key === "Escape") this.hideImageOverlay();
   };
 
-  closeImageOverlay = () => {
+  hideImageOverlay = () => {
     const { state, dispatch } = this.props.view;
-    dispatch(state.tr.setMeta("SHOW_IMAGE_TOOLBAR", false));
+    dispatch(state.tr.setMeta("HIDE_IMAGE_TOOLBAR", true));
   };
 
   render() {
     const { uploading } = this.state;
     return (
-      <Root onClick={this.closeImageOverlay}>
+      <Root onClick={this.hideImageOverlay}>
         <Wrapper onClick={this.stopPropagation}>
           <label htmlFor="file">
             <FileUploadInput
@@ -166,14 +166,15 @@ export default [
   {
     condition: state => {
       const pluginState = imagePluginKey.getState(state);
-      return pluginState && pluginState.showImageToolbar;
+      return pluginState && pluginState.imageToolbarVisible;
     },
     component: UploadImage
   }
 ];
 
 /**
- * Todo: Extract an overlay component out to UI module, it should close on esc and click outside.
+ * Todo: Extract an overlay component out to UI module,
+ * todo: it should close on click outside.
  * Todo: Make styles for image uploader and spinner configurable.
  * Todo: new heading styles in example.
  */

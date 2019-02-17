@@ -1,7 +1,7 @@
 import { StyleConstants } from "../../common/constants";
 
-const { Color, FontSize, BoxShadow } = StyleConstants;
-const border = `1px solid ${Color.border}`;
+const { Color, FontSize, BoxShadow, Border } = StyleConstants;
+const auto = "auto";
 const inherit = "inherit";
 const none = "none";
 const zero = "0px";
@@ -9,52 +9,52 @@ const zero = "0px";
 export const theme = {
   wrapper: {
     backgroundColor: Color.white,
-    color: Color.text,
-    borderBottom: border,
-    borderLeft: border,
-    borderRight: border,
-    borderTop: border,
+    borderBottom: Border,
     borderBottomLeftRadius: "2px",
     borderBottomRightRadius: "2px",
+    borderLeft: Border,
+    borderRight: Border,
+    borderTop: Border,
     borderTopLeftRadius: "2px",
     borderTopRightRadius: "2px",
-    height: "auto",
-    width: "auto",
-    padding: zero,
+    color: Color.text,
     fontFamily: inherit,
     fontSize: FontSize.medium,
     fontStyle: inherit,
-    textAlign: "left"
+    height: auto,
+    padding: zero,
+    textAlign: "left",
+    width: auto
   },
   editor: {
     backgroundColor: Color.white,
-    color: Color.text,
     borderBottom: none,
+    borderBottomLeftRadius: zero,
+    borderBottomRightRadius: zero,
     borderLeft: none,
     borderRight: none,
     borderTop: none,
-    borderBottomLeftRadius: zero,
-    borderBottomRightRadius: zero,
     borderTopLeftRadius: zero,
     borderTopRightRadius: zero,
-    height: "auto",
-    width: "auto",
-    padding: "4px",
+    color: Color.text,
     fontFamily: inherit,
     fontSize: FontSize.medium,
-    fontStyle: inherit
+    fontStyle: inherit,
+    height: auto,
+    padding: "4px",
+    width: auto
   },
   button: {
     toolbar: {
       backgroundColor: Color.white,
-      color: Color.text,
       border: none,
       borderRadius: "2px",
+      color: Color.text,
+      fontSize: FontSize.medium,
+      height: "28px",
       margin: zero,
       padding: zero,
-      height: "28px",
       width: "28px",
-      fontSize: FontSize.medium,
       "&:active": `
         background-color: ${Color.active} !important;
       `,
@@ -77,11 +77,11 @@ export const theme = {
       border: none,
       borderRadius: "2px",
       color: Color.white,
+      fontSize: FontSize.medium,
+      height: "32px",
       margin: zero,
       padding: zero,
-      height: "32px",
       width: "124px",
-      fontSize: FontSize.medium,
       "&:active": `
         border-radius: 3px !important;
         background-color: ${Color.active} !important;
@@ -100,16 +100,16 @@ export const theme = {
         background-color: ${Color.selected} !important;
       }`
     },
-    basic: {
+    link: {
       backgroundColor: Color.white,
-      color: Color.text,
       border: none,
       borderRadius: zero,
+      color: Color.text,
+      fontSize: FontSize.medium,
+      height: auto,
       margin: zero,
       padding: zero,
-      height: "auto",
-      width: "auto",
-      fontSize: FontSize.medium,
+      width: auto,
       "&:active": `{
         color: ${Color.highlight};
       }`,
@@ -128,14 +128,14 @@ export const theme = {
   },
   blockSelect: {
     backgroundColor: Color.white,
-    color: Color.text,
     border: none,
     borderRadius: "2px",
+    color: Color.text,
+    dropdownWidth: "164px",
+    fontSize: FontSize.medium,
     height: "28px",
     optionHeight: "44px",
     width: "112px",
-    dropdownWidth: "164px",
-    fontSize: FontSize.medium,
     "&:hover": { backgroundColor: Color.hover },
     "&:selected": { backgroundColor: Color.selected }
   },
@@ -150,13 +150,13 @@ export const theme = {
   },
   input: {
     backgroundColor: Color.white,
+    border: Border,
     color: Color.text,
-    border,
+    fontSize: FontSize.medium,
+    height: "20px",
     margin: "4px 8px",
     padding: "2px",
-    height: "20px",
     width: "180px",
-    fontSize: FontSize.medium,
     "&:focus": `{
       border: 1px solid ${Color.highlight};
       outline: none;
@@ -164,57 +164,55 @@ export const theme = {
   },
   toolbarSeparator: {
     backgroundColor: Color.lightBorder,
-    margin: "0px 4px",
-    height: "24px"
+    height: "24px",
+    margin: "0px 4px"
   },
   modal: {
+    arrowBorderColor: Color.border,
     backgroundColor: Color.white,
-    color: Color.text,
     borderBottom: `1px solid ${Color.border}`,
+    borderBottomLeftRadius: "2px",
+    borderBottomRightRadius: "2px",
     borderLeft: `1px solid ${Color.border}`,
     borderRight: `1px solid ${Color.border}`,
     borderTop: `1px solid ${Color.border}`,
-    borderBottomLeftRadius: "2px",
-    borderBottomRightRadius: "2px",
     borderTopLeftRadius: "2px",
     borderTopRightRadius: "2px",
     boxShadow: BoxShadow,
-    arrowBorderColor: Color.border,
+    color: Color.text,
     fontWeight: "600"
   },
   toolbar: {
     top: {
       backgroundColor: Color.white,
-      color: Color.text,
-      borderBottom: border,
+      borderBottom: Border,
+      borderBottomLeftRadius: zero,
+      borderBottomRightRadius: zero,
       borderLeft: none,
       borderRight: none,
       borderTop: none,
-      borderBottomLeftRadius: zero,
-      borderBottomRightRadius: zero,
       borderTopLeftRadius: zero,
       borderTopRightRadius: zero,
+      color: Color.text,
       fontFamily: inherit,
       fontSize: FontSize.medium,
       fontStyle: inherit
     },
     inline: {
       backgroundColor: Color.white,
-      color: Color.text,
       borderBottom: none,
+      borderBottomLeftRadius: "4px",
+      borderBottomRightRadius: "4px",
       borderLeft: none,
       borderRight: none,
       borderTop: none,
-      borderBottomLeftRadius: "4px",
-      borderBottomRightRadius: "4px",
       borderTopLeftRadius: "4px",
       borderTopRightRadius: "4px",
-      padding: "2px",
+      color: Color.text,
       fontFamily: inherit,
       fontSize: FontSize.medium,
-      fontStyle: inherit
+      fontStyle: inherit,
+      padding: "2px"
     }
   }
 };
-
-// todo: check to ensure use of constants

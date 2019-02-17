@@ -32,8 +32,7 @@ export default new Plugin({
       const { link: oldLink = {}, decoration: oldDecoration = {} } = value;
       const link = getLink(newState);
 
-      const showEditLinkToolbar = tr.getMeta("SHOW_EDIT_LINK_TOOLBAR");
-      if (showEditLinkToolbar === false) {
+      if (tr.getMeta("HIDE_EDIT_LINK_TOOLBAR")) {
         return { link, decoration: {} };
       }
       if (link) {
@@ -56,8 +55,7 @@ export default new Plugin({
         oldDecoration.edit_link = undefined;
       }
 
-      const showLinkToolbar = tr.getMeta("SHOW_LINK_TOOLBAR");
-      if (showLinkToolbar === true) {
+      if (tr.getMeta("SHOW_LINK_TOOLBAR")) {
         const { $from, $to } = newState.selection;
         let decor;
         if ($from.pos === $to.pos) {
@@ -75,7 +73,7 @@ export default new Plugin({
         return { link, decoration };
       }
 
-      if (showLinkToolbar === false) {
+      if (tr.getMeta("HIDE_LINK_TOOLBAR")) {
         return { link, decoration: {} };
       }
 
@@ -90,3 +88,5 @@ export default new Plugin({
     }
   }
 });
+
+// todo: simplify show/hide logic above.

@@ -1,6 +1,6 @@
 import keymaps from "./keymaps";
 import toolbarComponent from "./ToolbarComponent";
-import plugins from "./plugins";
+import plugin from "./plugin";
 import schema from "./schema";
 
-export default { name: "list", keymaps, toolbarComponent, plugins, schema };
+export default { name: "list", keymaps, toolbarComponent, plugin, schema };

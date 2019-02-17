@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { ToolbarButton, Icons, Separator } from "nib-ui";
 import { toggleListCmd } from "./commands";
 
-import { listPluginKey } from "./plugins";
+import { listPluginKey } from "./plugin";
 
 class ListToolbarComponent extends PureComponent {
   toggleList = evt => {
