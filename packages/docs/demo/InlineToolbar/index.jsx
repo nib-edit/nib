@@ -49,8 +49,8 @@ class InlineToolbar extends Component {
               }
             }
           }}
-          onChange={this.onChange}
           defaultValue={defaultValue}
+          onChange={this.onChange}
           theme={{
             wrapper: {
               borderTop: "none",

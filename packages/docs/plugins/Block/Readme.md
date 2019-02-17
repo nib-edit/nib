@@ -49,8 +49,8 @@ Ungrouped
     toolbar: {
       options: "top",
       top: {
-        options: "block",
         block: { grouped: false }
+        options: "block",
       }
     }
   }}

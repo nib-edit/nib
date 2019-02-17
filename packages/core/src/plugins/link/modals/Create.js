@@ -69,31 +69,32 @@ class CreateModal extends PureComponent {
     const { editorWrapper, marker } = this.props;
     return (
       <Modal
-        marker={marker}
         closeModal={this.closeModal}
         editorWrapper={editorWrapper}
-      >
-        <LinkPopup ref={this.modalWrapper}>
-          <div>
-            <Input
-              autoFocus
-              label="Text"
-              name="linkText"
-              onChange={this.updateValue}
-              onKeyPress={this.handleKeyDown}
-              value={linkText}
-            />
-            <Input
-              label="Href"
-              name="href"
-              onChange={this.updateValue}
-              onKeyPress={this.handleKeyDown}
-              value={href}
-            />
-          </div>
-          <StyledLinkButton onClick={this.addLink}>Apply</StyledLinkButton>
-        </LinkPopup>
-      </Modal>
+        marker={marker}
+        render={() => (
+          <LinkPopup ref={this.modalWrapper}>
+            <div>
+              <Input
+                autoFocus
+                label="Text"
+                name="linkText"
+                onChange={this.updateValue}
+                onKeyPress={this.handleKeyDown}
+                value={linkText}
+              />
+              <Input
+                label="Href"
+                name="href"
+                onChange={this.updateValue}
+                onKeyPress={this.handleKeyDown}
+                value={href}
+              />
+            </div>
+            <StyledLinkButton onClick={this.addLink}>Apply</StyledLinkButton>
+          </LinkPopup>
+        )}
+      />
     );
   }
 }

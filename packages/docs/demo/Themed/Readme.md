@@ -10,6 +10,8 @@ Code:
 import React from "react";
 import Editor from "nib-core";
 
+import uploadCallback from "../../common/uploadCallback";
+
 const customTheme = {
   editor: {
     borderTop: "1px solid white",
@@ -30,7 +32,21 @@ const customTheme = {
   }
 };
 
-const Themed = () => <Editor theme={customTheme} />;
+const Themed = () => (
+  <Editor
+    config={{
+      plugins: {
+        image: {
+          uploadCallback
+        }
+      },
+      toolbar: {
+        options: "top"
+      }
+    }}
+    theme={customTheme}
+  />
+);
 
 export default Themed;
 ```

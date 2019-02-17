@@ -73,22 +73,23 @@ class EditModal extends PureComponent {
     const { editorWrapper, marker } = this.props;
     return (
       <Modal
-        marker={marker}
         closeModal={this.closeModal}
         editorWrapper={editorWrapper}
-      >
-        <LinkPopup>
-          <label htmlFor="href">Href</label>
-          <Input
-            name="href"
-            onChange={this.updateHref}
-            defaultValue={link.href}
-          />
-          <LinkButton onClick={this.updateLink}>Apply</LinkButton>
-          <Separator />
-          <LinkButton onClick={this.unLink}>Unlink</LinkButton>
-        </LinkPopup>
-      </Modal>
+        marker={marker}
+        render={() => (
+          <LinkPopup>
+            <label htmlFor="href">Href</label>
+            <Input
+              name="href"
+              onChange={this.updateHref}
+              defaultValue={link.href}
+            />
+            <LinkButton onClick={this.updateLink}>Apply</LinkButton>
+            <Separator />
+            <LinkButton onClick={this.unLink}>Unlink</LinkButton>
+          </LinkPopup>
+        )}
+      />
     );
   }
 }

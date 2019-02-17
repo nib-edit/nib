@@ -2,8 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import Styled from "rsg-components/Styled";
 import GithubImg from "./github.png";
+import "./styles.css";
 
 const styles = ({ space, color, fontFamily, fontSize, borderRadius }) => ({
+  pre: {
+    whiteSpace: "pre-wrap"
+  },
   wrapper: {
     display: "flex",
     flexDirection: "column",

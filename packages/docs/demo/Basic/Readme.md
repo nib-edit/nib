@@ -24,11 +24,11 @@ class Basic extends Component {
     return (
       <div>
         <Editor
-          onChange={this.onChange}
           config={{
             plugins: { options: "" },
             toolbar: { options: "" }
           }}
+          onChange={this.onChange}
         />
         <pre>{JSON.stringify(content, null, 4)}</pre>
       </div>

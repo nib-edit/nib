@@ -11,8 +11,8 @@ const BlockPluginDemo = ({ grouped }) => (
       toolbar: {
         options: "top",
         top: {
-          options: "block",
-          block: { grouped }
+          block: { grouped },
+          options: "block"
         }
       }
     }}

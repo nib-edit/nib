@@ -1,13 +1,14 @@
 const Color = {
-  active: "#9E9E9E",
   border: "rgba(158, 158, 158, 0.75)",
   boxShadow: "#cdcdcdbf",
   highlight: "#065FD4",
-  hover: "#E0E0E0",
+  gray1: "#E0E0E0",
+  gray2: "#9E9E9E",
+  gray3: "#BDBDBD",
   lightBorder: "#EbBCF0",
-  selected: "#BDBDBD",
   text: "#212121",
-  white: "#FFFFFF"
+  white: "#FFFFFF",
+  opaque: "rgba(0, 0, 0, 0.25)"
 };
 
 const FontSize = {

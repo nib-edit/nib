@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import styled from "@emotion/styled";
 
-const ARROW_HEIGHT = 6;
+const ARROW_DIMENSION = 6;
 
 const isSamePos = (oldPos, newPos) => {
   if (!oldPos) return false;
@@ -41,10 +41,14 @@ const getPosition = (marker, modalElm, editorWrapper) => {
   if (left < 2) left = 2;
 
   let top =
-    markerDim.y - wrapperRefDim.y + (markerDim.height || 20) + 4 + ARROW_HEIGHT;
+    markerDim.y -
+    wrapperRefDim.y +
+    (markerDim.height || 20) +
+    4 +
+    ARROW_DIMENSION;
   if (top + modalHeight > wrapperRefDim.height) {
     const newTop =
-      markerDim.y - wrapperRefDim.y - ARROW_HEIGHT - modalHeight - 4;
+      markerDim.y - wrapperRefDim.y - ARROW_DIMENSION - modalHeight - 4;
     if (newTop > 0) {
       arrowDir = "BOTTOM";
       top = newTop;
@@ -63,14 +67,15 @@ export default class Modal extends Component {
 
   static propTypes = {
     className: PropTypes.string,
-    children: PropTypes.object,
     closeModal: PropTypes.func,
     editorWrapper: PropTypes.object,
-    marker: PropTypes.object
+    marker: PropTypes.object,
+    render: PropTypes.func
   };
 
   componentDidMount() {
     window.addEventListener("keydown", this.handleKeyPress);
+    window.addEventListener("mousedown", this.handleWindowMouseDown);
     const { marker, editorWrapper } = this.props;
     if (marker) {
       this.setState({
@@ -81,6 +86,7 @@ export default class Modal extends Component {
 
   componentWillUnmount = () => {
     window.removeEventListener("keydown", this.handleKeyPress);
+    window.removeEventListener("mousedown", this.handleWindowMouseDown);
   };
 
   componentDidUpdate() {
@@ -104,25 +110,25 @@ export default class Modal extends Component {
     if (evt.key === "Escape") this.props.closeModal();
   };
 
-  onMouseDown = () => {
+  handleMouseDown = () => {
     this.active = true;
   };
 
-  onKeyDown = e => {
+  handleKeyDown = e => {
     if (e.key === "Tab") this.active = true;
   };
 
-  onFocus = () => {
+  handleFocus = () => {
     if (this.active) this.active = false;
   };
 
-  onBlur = () => {
+  handleBlur = () => {
     if (this.active) this.active = false;
     else this.props.closeModal();
   };
 
   render() {
-    const { className, children, marker } = this.props;
+    const { className, marker, render } = this.props;
     if (!marker) return null;
     const { modalPosition, arrowPosition } = this.state;
 
@@ -130,10 +136,10 @@ export default class Modal extends Component {
       <Wrapper
         className={className}
         marker={marker}
-        onBlur={this.onBlur}
-        onFocus={this.onFocus}
-        onKeyDown={this.onKeyDown}
-        onMouseDown={this.onMouseDown}
+        handleBlur={this.handleBlur}
+        handleFocus={this.handleFocus}
+        handleKeyDown={this.handleKeyDown}
+        handleMouseDown={this.handleMouseDown}
         ref={this.wrapperRef}
         style={modalPosition}
         tabIndex={-1}
@@ -143,7 +149,7 @@ export default class Modal extends Component {
         ) : (
           <ArrowBottom left={arrowPosition.left} />
         )}
-        {children}
+        {render()}
       </Wrapper>
     );
   }
@@ -180,7 +186,7 @@ const ArrowTop = styled.div`
   border-left: 1px solid ${({ theme }) => theme.modal.arrowBorderColor};
   border-top: 1px solid ${({ theme }) => theme.modal.arrowBorderColor};
   height: 10px;
-  left: ${({ left = 0 }) => `calc(50% + ${left - 6}px)`};
+  left: ${({ left = 0 }) => `calc(50% + ${left - ARROW_DIMENSION}px)`};
   position: absolute;
   top: -7px;
   transform: rotate(45deg);
@@ -192,13 +198,12 @@ const ArrowBottom = styled.div`
   border-right: 1px solid ${({ theme }) => theme.modal.arrowBorderColor};
   border-bottom: 1px solid ${({ theme }) => theme.modal.arrowBorderColor};
   height: 10px;
-  left: ${({ left = 0 }) => `calc(50% + ${left - 6}px)`};
+  left: ${({ left = 0 }) => `calc(50% + ${left - ARROW_DIMENSION}px)`};
   position: absolute;
   bottom: -7px;
   transform: rotate(45deg);
   width: 10px;
 `;
 
-// todo: instead of children use render prop here.
 // todo: modals to close on mouse down at other places on the page
 // todo: check complexity that heading styles can create

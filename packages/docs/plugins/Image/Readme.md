@@ -30,3 +30,5 @@ Plugin that adds support for images in the editor.
   }}
 />
 ```
+
+`uploadCallback` above is a function that returns a promise which resolves to give and object with an attribute `link` which is used as `src` for the image.

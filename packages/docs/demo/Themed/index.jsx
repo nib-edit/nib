@@ -1,6 +1,8 @@
 import React from "react";
 import Editor from "nib-core";
 
+import uploadCallback from "../../common/uploadCallback";
+
 const customTheme = {
   wrapper: {
     backgroundColor: "#BDBDBD",
@@ -47,12 +49,17 @@ const customTheme = {
  */
 const Themed = () => (
   <Editor
-    theme={customTheme}
     config={{
+      plugins: {
+        image: {
+          uploadCallback
+        }
+      },
       toolbar: {
         options: "top"
       }
     }}
+    theme={customTheme}
   />
 );
 

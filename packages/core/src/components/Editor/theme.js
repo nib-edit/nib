@@ -56,20 +56,20 @@ export const theme = {
       padding: zero,
       width: "28px",
       "&:active": `
-        background-color: ${Color.active} !important;
+        background-color: ${Color.gray2} !important;
       `,
       "&:disabled": `{
         opacity: ${StyleConstants.DisabledStyle.opacity};
       }`,
       "&:focus": `{
         outline: none;
-        background-color: ${Color.hover};
+        background-color: ${Color.gray1};
       }`,
       "&:hover": `{
-        background-color: ${Color.hover};
+        background-color: ${Color.gray1};
       }`,
       "&:selected": `{
-        background-color: ${Color.selected} !important;
+        background-color: ${Color.gray3} !important;
       }`
     },
     primary: {
@@ -84,20 +84,20 @@ export const theme = {
       width: "124px",
       "&:active": `
         border-radius: 3px !important;
-        background-color: ${Color.active} !important;
+        background-color: ${Color.gray2} !important;
       `,
       "&:disabled": `{
         opacity: ${StyleConstants.DisabledStyle.opacity};
       }`,
       "&:focus": `{
         outline: none;
-        background-color: ${Color.hover};
+        background-color: ${Color.gray1};
       }`,
       "&:hover": `{
-        background-color: ${Color.hover};
+        background-color: ${Color.gray1};
       }`,
       "&:selected": `{
-        background-color: ${Color.selected} !important;
+        background-color: ${Color.gray3} !important;
       }`
     },
     link: {
@@ -136,8 +136,8 @@ export const theme = {
     height: "28px",
     optionHeight: "44px",
     width: "112px",
-    "&:hover": { backgroundColor: Color.hover },
-    "&:selected": { backgroundColor: Color.selected }
+    "&:hover": { backgroundColor: Color.gray1 },
+    "&:selected": { backgroundColor: Color.gray3 }
   },
   icon: { fill: Color.text },
   link: {
@@ -182,6 +182,18 @@ export const theme = {
     color: Color.text,
     fontWeight: "600"
   },
+  overlay: {
+    backgroundColor: Color.opaque,
+    contentBoxShadow: BoxShadow,
+    contentBorderRadius: "2px"
+  },
+  spinner: {
+    borderColor: Color.white,
+    borderTopColor: Color.highlight,
+    borderWidth: "5px",
+    height: "24px",
+    width: "24px"
+  },
   toolbar: {
     top: {
       backgroundColor: Color.white,
@@ -214,5 +226,12 @@ export const theme = {
       fontStyle: inherit,
       padding: "2px"
     }
+  },
+  imageUploadOverlay: {
+    backgroundColor: Color.gray1,
+    borderActiveColor: Color.highlight,
+    borderColor: Color.text,
+    height: "240px",
+    wdith: "320px"
   }
 };
