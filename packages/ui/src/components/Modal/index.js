@@ -219,5 +219,3 @@ const ArrowBottom = styled.div`
   transform: rotate(45deg);
   width: 10px;
 `;
-
-// todo: check complexity that heading styles can create
