@@ -1,6 +1,6 @@
 {
   "name": "nib-core",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Wysiwyg editor",
   "main": "./index.js",
   "repository": {
@@ -19,7 +19,7 @@
   "license": "MIT",
   "homepage": "https://github.com/jpuri/Nib/tree/master/packages/core#Readme.md",
   "dependencies": {
-    "nib-ui": "0.1.7",
+    "nib-ui": "0.1.8",
     "nib-schema": "0.1.1",
     "@emotion/core": "^10.0.4",
     "@emotion/styled": "^10.0.4",
