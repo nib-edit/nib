@@ -26,67 +26,60 @@ export default new Plugin({
 
   state: {
     init: (_, state) => {
-      return { link: getLink(state), decoration: {} };
+      return { link: getLink(state) };
     },
     apply(tr, value, _, newState) {
-      const { link: oldLink = {}, decoration: oldDecoration = {} } = value;
       const link = getLink(newState);
 
-      if (tr.getMeta("HIDE_EDIT_LINK_TOOLBAR")) {
-        return { link, decoration: {} };
-      }
-      if (link) {
-        if (
-          !value.decoration ||
-          oldLink.from !== link.from ||
-          oldLink.to !== link.to
-        ) {
-          const decoration = {
-            edit_link: DecorationSet.create(newState.doc, [
-              Decoration.inline(link.from, link.to, {
-                class: "nib-edit-link-marker"
-              })
-            ])
-          };
-          return { link, decoration };
-        }
-        return { link, decoration: oldDecoration };
-      } else {
-        oldDecoration.edit_link = undefined;
+      if (
+        tr.getMeta("HIDE_EDIT_LINK_TOOLBAR") ||
+        tr.getMeta("HIDE_LINK_TOOLBAR")
+      ) {
+        return { link };
       }
 
+      let { decoration } = value;
       if (tr.getMeta("SHOW_LINK_TOOLBAR")) {
         const { $from, $to } = newState.selection;
-        let decor;
         if ($from.pos === $to.pos) {
           const node = document.createElement("span");
           node.className = "nib-link-marker";
-          decor = Decoration.widget($from.pos, node);
+          decoration = DecorationSet.create(newState.doc, [
+            Decoration.widget($from.pos, node)
+          ]);
         } else {
-          decor = Decoration.inline($from.pos, $to.pos, {
-            class: "nib-link-marker"
-          });
+          decoration = DecorationSet.create(newState.doc, [
+            Decoration.inline($from.pos, $to.pos, {
+              class: "nib-link-marker"
+            })
+          ]);
         }
-        const decoration = {
-          create_link: DecorationSet.create(newState.doc, [decor])
-        };
         return { link, decoration };
       }
 
-      if (tr.getMeta("HIDE_LINK_TOOLBAR")) {
-        return { link, decoration: {} };
+      if (link) {
+        if (
+          !decoration ||
+          (value.link &&
+            (value.link.from !== link.from || value.link.to !== link.to))
+        ) {
+          decoration = DecorationSet.create(newState.doc, [
+            Decoration.inline(link.from, link.to, {
+              class: "nib-edit-link-marker"
+            })
+          ]);
+        }
+        return { link, decoration };
       }
 
-      return { link, decoration: oldDecoration };
+      return { decoration };
     }
   },
 
   props: {
     decorations(state) {
       const linkPluginState = state && linkPluginKey.getState(state);
-      return Object.values(linkPluginState.decoration)[0];
+      return linkPluginState.decoration;
     }
   }
 });
-
-// todo: simplify show/hide logic above.

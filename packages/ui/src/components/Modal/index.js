@@ -1,8 +1,13 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import styled from "@emotion/styled";
+import { EFAULT } from "constants";
 
-const ARROW_DIMENSION = 6;
+const ARROW_HEIGHT = 6;
+const ARROW_MIN_DISTANCE = 10;
+const BLOCK_HEIGHT = 20;
+const MODAL_DISTANCE_FROM_BLOCK = 4;
+const MIN_LEFT = 2;
 
 const isSamePos = (oldPos, newPos) => {
   if (!oldPos) return false;
@@ -16,39 +21,44 @@ const isSamePos = (oldPos, newPos) => {
   return true;
 };
 
-// todo: refactor to put constants, code cleanup
 // Note: current left alignment does not take care of padding of section,
 // this can be improved in future.
 const getPosition = (marker, modalElm, editorWrapper) => {
   const markerDim = marker.getBoundingClientRect();
-  const wrapperRefDim = editorWrapper.getBoundingClientRect();
+  const wrapperDim = editorWrapper.getBoundingClientRect();
   const { width: modalWidth = 0, height: modalHeight = 0 } = modalElm
     ? modalElm.getBoundingClientRect()
     : {};
 
   let arrowDir = "TOP";
-  let left = -(wrapperRefDim.left - markerDim.left);
+  // Finding left offset of modal
+  let left = markerDim.left - wrapperDim.left;
+  // Center aligning modal on marker element
   left += (markerDim.width - modalWidth) / 2;
 
   let arrowLeft;
-  if (left < 0) {
-    arrowLeft = Math.abs(left) > modalWidth / 2 - 10 ? left + 10 : left;
-    left = -1;
-  } else if (left + modalWidth > wrapperRefDim.width) {
-    arrowLeft = left + modalWidth - wrapperRefDim.width;
-    left = wrapperRefDim.width - modalWidth - 1;
+  if (left < 3) {
+    arrowLeft = left + ARROW_MIN_DISTANCE;
+    left = MIN_LEFT;
+  } else if (left + modalWidth > wrapperDim.width) {
+    arrowLeft = left + modalWidth - wrapperDim.width;
+    left = wrapperDim.width - modalWidth;
+    if (left < MIN_LEFT) left = MIN_LEFT;
   }
-  if (left < 2) left = 2;
 
   let top =
     markerDim.y -
-    wrapperRefDim.y +
-    (markerDim.height || 20) +
-    4 +
-    ARROW_DIMENSION;
-  if (top + modalHeight > wrapperRefDim.height) {
+    wrapperDim.y +
+    (markerDim.height || BLOCK_HEIGHT) +
+    MODAL_DISTANCE_FROM_BLOCK +
+    ARROW_HEIGHT;
+  if (top + modalHeight > wrapperDim.height) {
     const newTop =
-      markerDim.y - wrapperRefDim.y - ARROW_DIMENSION - modalHeight - 4;
+      markerDim.y -
+      wrapperDim.y -
+      ARROW_HEIGHT -
+      modalHeight -
+      MODAL_DISTANCE_FROM_BLOCK;
     if (newTop > 0) {
       arrowDir = "BOTTOM";
       top = newTop;
@@ -108,6 +118,11 @@ export default class Modal extends Component {
 
   handleKeyPress = evt => {
     if (evt.key === "Escape") this.props.closeModal();
+  };
+
+  handleWindowMouseDown = evt => {
+    const wrapper = this.wrapperRef.current;
+    if (!wrapper.contains(evt.target)) this.props.closeModal();
   };
 
   handleMouseDown = () => {
@@ -186,7 +201,7 @@ const ArrowTop = styled.div`
   border-left: 1px solid ${({ theme }) => theme.modal.arrowBorderColor};
   border-top: 1px solid ${({ theme }) => theme.modal.arrowBorderColor};
   height: 10px;
-  left: ${({ left = 0 }) => `calc(50% + ${left - ARROW_DIMENSION}px)`};
+  left: ${({ left = 0 }) => `calc(50% + ${left - ARROW_HEIGHT}px)`};
   position: absolute;
   top: -7px;
   transform: rotate(45deg);
@@ -198,12 +213,11 @@ const ArrowBottom = styled.div`
   border-right: 1px solid ${({ theme }) => theme.modal.arrowBorderColor};
   border-bottom: 1px solid ${({ theme }) => theme.modal.arrowBorderColor};
   height: 10px;
-  left: ${({ left = 0 }) => `calc(50% + ${left - ARROW_DIMENSION}px)`};
+  left: ${({ left = 0 }) => `calc(50% + ${left - ARROW_HEIGHT}px)`};
   position: absolute;
   bottom: -7px;
   transform: rotate(45deg);
   width: 10px;
 `;
 
-// todo: modals to close on mouse down at other places on the page
 // todo: check complexity that heading styles can create
