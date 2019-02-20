@@ -1,6 +1,6 @@
 {
   "name": "nib-schema",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Schema declaration for Nib editor",
   "main": "./index.js",
   "repository": {

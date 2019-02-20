@@ -12,7 +12,7 @@ export const defaultConfig = {
     top: {
       options: "block inline link list image history",
       block: { options: "p h1 h2 h3 h4 h5 h6", grouped: true },
-      inline: { options: "strong em underline" }
+      inline: { options: "strong em underline strike" }
     },
     inline: {
       options: "block inline",

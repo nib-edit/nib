@@ -12,6 +12,7 @@ import Link from "./Link";
 import ListBulleted from "./ListBulleted";
 import ListNumbered from "./ListNumbered";
 import Redo from "./Redo";
+import Strike from "./Strike";
 import Underline from "./Underline";
 import Undo from "./Undo";
 
@@ -30,6 +31,7 @@ export default {
   ListNumbered,
   P,
   Redo,
+  Strike,
   Underline,
   Undo
 };

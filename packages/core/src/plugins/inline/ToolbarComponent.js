@@ -23,8 +23,9 @@ class InlineToolbarComponent extends PureComponent {
   render() {
     const { options } = this.props.config;
     const activeMarks = this.getActiveMarks();
-    const strongEnable = options.indexOf("strong") >= 0;
     const emEnable = options.indexOf("em") >= 0;
+    const strongEnable = options.indexOf("strong") >= 0;
+    const strikeEnable = options.indexOf("strike") >= 0;
     const underlineEnable = options.indexOf("underline") >= 0;
     return (
       <>
@@ -55,6 +56,16 @@ class InlineToolbarComponent extends PureComponent {
             selected={activeMarks.includes("underline")}
           >
             <Icons.Underline />
+          </ToolbarButton>
+        )}
+        <Separator />
+        {strikeEnable && (
+          <ToolbarButton
+            name="strike"
+            onClick={this.toggleMarkofType}
+            selected={activeMarks.includes("strike")}
+          >
+            <Icons.Strike />
           </ToolbarButton>
         )}
       </>
