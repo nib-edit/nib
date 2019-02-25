@@ -4,7 +4,28 @@ import { toggleMark } from "prosemirror-commands";
 
 import { inlinePluginKey } from "./plugin";
 
+const MarkIcons = {
+  strong: "Bold",
+  em: "Italic",
+  underline: "Underline",
+  strike: "Strike"
+};
+
 class InlineToolbarComponent extends PureComponent {
+  getActiveMarks = () => {
+    const { view } = this.props.app_params;
+    const { state } = view;
+    const pluginState = inlinePluginKey.getState(state);
+    return pluginState && pluginState.activeMarks;
+  };
+
+  isSubsupMarkActive = (activeMarks, type) => {
+    const { marks } = this.props.app_params.view.state.schema;
+    return activeMarks.find(
+      mark => mark.type === marks.subsup && mark.attrs.type === type
+    );
+  };
+
   toggleMarkofType = evt => {
     const markName = evt.currentTarget.getAttribute("name");
     const { view } = this.props.app_params;
@@ -13,60 +34,79 @@ class InlineToolbarComponent extends PureComponent {
     toggleMark(markType)(state, dispatch);
   };
 
-  getActiveMarks = () => {
-    const { view: { state } = {} } = this.props.app_params;
-    if (!state) return [];
-    const pluginState = inlinePluginKey.getState(state);
-    return pluginState && pluginState.activeMarks;
+  toggleSupSubMark = (addMark, removeMark) => {
+    const { view } = this.props.app_params;
+    const { state, dispatch } = view;
+    const { schema, selection, tr } = state;
+    const { $from, $to } = selection;
+    const { subsup } = schema.marks;
+    if (this.isSubsupMarkActive(this.getActiveMarks(), addMark)) {
+      dispatch(tr.removeMark($from.pos, $to.pos, state.schema.marks.subsup));
+      return;
+    }
+    if (this.isSubsupMarkActive(this.getActiveMarks(), removeMark)) {
+      tr.removeMark($from.pos, $to.pos, state.schema.marks.subsup);
+    }
+    tr.addMark($from.pos, $to.pos, subsup.create({ type: addMark }));
+    dispatch(tr);
+  };
+
+  toggleSupMark = () => {
+    this.toggleSupSubMark("sup", "sub");
+  };
+
+  toggleSubMark = evt => {
+    this.toggleSupSubMark("sub", "sup");
   };
 
   render() {
-    const { options } = this.props.config;
+    if (!this.props.app_params.view) return null;
     const activeMarks = this.getActiveMarks();
-    const emEnable = options.indexOf("em") >= 0;
-    const strongEnable = options.indexOf("strong") >= 0;
-    const strikeEnable = options.indexOf("strike") >= 0;
-    const underlineEnable = options.indexOf("underline") >= 0;
+    const { marks } = this.props.app_params.view.state.schema;
+    const { options } = this.props.config;
+
     return (
       <>
-        {strongEnable && (
-          <ToolbarButton
-            name="strong"
-            onClick={this.toggleMarkofType}
-            selected={activeMarks.includes("strong")}
-          >
-            <Icons.Bold />
-          </ToolbarButton>
+        {["strong", "em", "underline", "strike"].reduce(
+          (result, mark, index) => {
+            if (options.indexOf(mark) >= 0) {
+              if (!result.length)
+                result.push(<Separator key="inlinestyle-separator" />);
+              const Icon = Icons[MarkIcons[mark]];
+              result.push(
+                <ToolbarButton
+                  key={`inlinestyle-${index}`}
+                  name={mark}
+                  onClick={this.toggleMarkofType}
+                  selected={marks[mark].isInSet(activeMarks)}
+                >
+                  <Icon />
+                </ToolbarButton>
+              );
+            }
+            return result;
+          },
+          []
         )}
-        <Separator />
-        {emEnable && (
-          <ToolbarButton
-            name="em"
-            onClick={this.toggleMarkofType}
-            selected={activeMarks.includes("em")}
-          >
-            <Icons.Italic />
-          </ToolbarButton>
-        )}
-        <Separator />
-        {underlineEnable && (
-          <ToolbarButton
-            name="underline"
-            onClick={this.toggleMarkofType}
-            selected={activeMarks.includes("underline")}
-          >
-            <Icons.Underline />
-          </ToolbarButton>
-        )}
-        <Separator />
-        {strikeEnable && (
-          <ToolbarButton
-            name="strike"
-            onClick={this.toggleMarkofType}
-            selected={activeMarks.includes("strike")}
-          >
-            <Icons.Strike />
-          </ToolbarButton>
+        {options.indexOf("subsup") >= 0 && (
+          <>
+            <Separator />
+            <ToolbarButton
+              name="sup"
+              onClick={this.toggleSupMark}
+              selected={this.isSubsupMarkActive(activeMarks, "sup")}
+            >
+              <Icons.Sup />
+            </ToolbarButton>
+            <Separator />
+            <ToolbarButton
+              name="sub"
+              onClick={this.toggleSubMark}
+              selected={this.isSubsupMarkActive(activeMarks, "sub")}
+            >
+              <Icons.Sub />
+            </ToolbarButton>
+          </>
         )}
       </>
     );

@@ -7,13 +7,11 @@ const getActiveMarks = state => {
   const { $from, $to } = selection;
   let activeMarks = [];
   if (selection.empty) {
-    activeMarks = [...(state.storedMarks || $to.marks())].map(
-      mark => mark.type.name
-    );
+    activeMarks = [...(state.storedMarks || $to.marks())];
   }
   state.doc.nodesBetween($from.pos, $to.pos, node => {
     if (node.marks) {
-      activeMarks = [...activeMarks, ...node.marks.map(mark => mark.type.name)];
+      activeMarks = [...activeMarks, ...node.marks];
     }
   });
   return activeMarks;

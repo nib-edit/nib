@@ -1,1 +1,3 @@
-export default { marks: ["em", "strike", "strong", "underline"] };
+export default {
+  marks: ["em", "strike", "strong", "subsup", "underline"]
+};

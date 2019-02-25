@@ -5,5 +5,5 @@ export default props => <Separator {...props} />;
 
 export const Separator = styled.span`
   display: inline-block;
-  width: 4px;
+  width: 2px;
 `;
