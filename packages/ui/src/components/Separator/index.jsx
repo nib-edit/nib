@@ -5,5 +5,5 @@ export default props => <Separator {...props} />;
 
 export const Separator = styled.span`
   display: inline-block;
-  width: 2px;
+  width: ${({ type }) => (type === "toolbar" ? 2 : 4)}px;
 `;

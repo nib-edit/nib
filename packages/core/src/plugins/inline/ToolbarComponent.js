@@ -71,7 +71,9 @@ class InlineToolbarComponent extends PureComponent {
           (result, mark, index) => {
             if (options.indexOf(mark) >= 0) {
               if (!result.length)
-                result.push(<Separator key="inlinestyle-separator" />);
+                result.push(
+                  <Separator key="inlinestyle-separator" type="toolbar" />
+                );
               const Icon = Icons[MarkIcons[mark]];
               result.push(
                 <ToolbarButton
@@ -90,7 +92,7 @@ class InlineToolbarComponent extends PureComponent {
         )}
         {options.indexOf("subsup") >= 0 && (
           <>
-            <Separator />
+            <Separator type="toolbar" />
             <ToolbarButton
               name="sup"
               onClick={this.toggleSupMark}
@@ -98,7 +100,7 @@ class InlineToolbarComponent extends PureComponent {
             >
               <Icons.Sup />
             </ToolbarButton>
-            <Separator />
+            <Separator type="toolbar" />
             <ToolbarButton
               name="sub"
               onClick={this.toggleSubMark}

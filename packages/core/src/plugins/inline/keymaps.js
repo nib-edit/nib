@@ -10,5 +10,7 @@ export default {
   "mod-i": (state, dispatch) =>
     toggleMarkofType("em", { level: 1 })(state, dispatch),
   "mod-u": (state, dispatch) =>
-    toggleMarkofType("underline", { level: 2 })(state, dispatch)
+    toggleMarkofType("underline", { level: 2 })(state, dispatch),
+  "mod-shift-s": (state, dispatch) =>
+    toggleMarkofType("strike", { level: 2 })(state, dispatch)
 };

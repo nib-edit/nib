@@ -20,7 +20,7 @@ class HistoryToolbarComponent extends PureComponent {
         <ToolbarButton onClick={this.undo}>
           <Icons.Undo />
         </ToolbarButton>
-        <Separator />
+        <Separator type="toolbar" />
         <ToolbarButton onClick={this.redo}>
           <Icons.Redo />
         </ToolbarButton>

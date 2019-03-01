@@ -23,7 +23,7 @@ export default class Ungrouped extends PureComponent {
               >
                 <IconComponent />
               </ToolbarButton>
-              {index < options.length - 1 && <Separator />}
+              {index < options.length - 1 && <Separator type="toolbar" />}
             </Fragment>
           );
         })}

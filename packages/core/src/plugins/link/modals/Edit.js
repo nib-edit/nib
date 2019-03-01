@@ -107,5 +107,3 @@ const LinkPopup = styled.div`
   padding: 5px 10px;
   font-size: 14px;
 `;
-
-// todo: separator should be 4px, may be add type prop to separator.

@@ -30,7 +30,7 @@ class ListToolbarComponent extends PureComponent {
         >
           <Icons.ListBulleted />
         </ToolbarButton>
-        <Separator />
+        <Separator type="toolbar" />
         <ToolbarButton
           name="orderedList"
           onClick={this.toggleList}
