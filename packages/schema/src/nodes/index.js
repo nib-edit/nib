@@ -6,6 +6,7 @@ import listItem from "./listItem";
 import orderedList from "./orderedList";
 import paragraph from "./paragraph";
 import text from "./text";
+import { table, table_row, table_cell, table_header } from "./table";
 
 export default {
   bulletList,
@@ -15,5 +16,9 @@ export default {
   listItem,
   orderedList,
   paragraph,
+  table,
+  table_cell,
+  table_header,
+  table_row,
   text
 };

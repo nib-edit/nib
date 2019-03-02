@@ -15,6 +15,7 @@ import Redo from "./Redo";
 import Strike from "./Strike";
 import Sub from "./Sub";
 import Sup from "./Sup";
+import Table from "./Table";
 import Underline from "./Underline";
 import Undo from "./Undo";
 
@@ -36,6 +37,7 @@ export default {
   Strike,
   Sub,
   Sup,
+  Table,
   Underline,
   Undo
 };

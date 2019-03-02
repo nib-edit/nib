@@ -2,7 +2,7 @@ import React from "react";
 
 export const defaultConfig = {
   plugins: {
-    options: "block inline link list image",
+    options: "block inline link list image table",
     image: {
       uploadCallback: _ => {}
     }
@@ -10,7 +10,7 @@ export const defaultConfig = {
   toolbar: {
     options: "top inline",
     top: {
-      options: "block inline link list image history",
+      options: "block inline link list image table history",
       block: { options: "p h1 h2 h3 h4 h5 h6", grouped: true },
       inline: { options: "strong em underline strike subsup" }
     },
