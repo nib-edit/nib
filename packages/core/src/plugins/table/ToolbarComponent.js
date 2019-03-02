@@ -1,8 +1,14 @@
 import React, { PureComponent } from "react";
 import { ToolbarButton, Icons } from "nib-ui";
 
+import { createTable } from "./commands";
+
 class TableToolbarComponent extends PureComponent {
-  insertTable = () => {};
+  insertTable = () => {
+    const { view } = this.props.app_params;
+    const { state, dispatch } = view;
+    createTable(state, dispatch);
+  };
 
   render() {
     return (

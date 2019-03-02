@@ -100,4 +100,7 @@ export const StyledEditor = styled.div`
     border: 2px solid #8cf;
     pointer-events: none;
   }
+
+  ${({ theme }) => getBlockStyles(theme.blockStyles)};
+  ${({ pluginStyles }) => pluginStyles}
 `;

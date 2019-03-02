@@ -5,6 +5,7 @@ import { EditorView } from "prosemirror-view";
 import {
   buildEditorState,
   getPluginList,
+  getPluginStyles,
   updateEditorState
 } from "../../common/editor-helpers";
 import { Dispatcher } from "../../common/app-state";
@@ -52,6 +53,14 @@ export default class Editor extends Component {
 
   render() {
     const { spellcheck } = this.props;
-    return <StyledEditor ref={this.editorRef} spellcheck={spellcheck} />;
+    const { plugins } = this.context.config;
+
+    return (
+      <StyledEditor
+        ref={this.editorRef}
+        spellcheck={spellcheck}
+        pluginStyles={getPluginStyles(plugins.options)}
+      />
+    );
   }
 }
