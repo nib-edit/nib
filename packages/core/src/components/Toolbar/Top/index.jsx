@@ -37,6 +37,7 @@ class Top extends Component {
 const Wrapper = styled.div`
   align-items: center;
   display: flex;
+  flex-wrap: wrap;
   padding: 4px;
   background-color: ${({ theme }) => theme.toolbar.top.backgroundColor};
   color: ${({ theme }) => theme.toolbar.top.color};
