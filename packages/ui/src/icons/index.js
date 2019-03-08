@@ -1,3 +1,4 @@
+import ArrowDown from "./ArrowDown";
 import Bold from "./Bold";
 import H1 from "./H1";
 import H2 from "./H2";
@@ -20,6 +21,7 @@ import Underline from "./Underline";
 import Undo from "./Undo";
 
 export default {
+  ArrowDown,
   Bold,
   H1,
   H2,
