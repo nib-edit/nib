@@ -49,8 +49,13 @@ class CellMenu extends Component {
               onMouseDown={e => e.preventDefault()}
               style={{ top, left }}
             >
-              <Icons.ArrowDown onClick={this.toggleMenuVisible} />
-              {menuVisible && <Menu view={this.props.view} />}
+              <StyledArrowDownIcon onClick={this.toggleMenuVisible} />
+              {menuVisible && (
+                <Menu
+                  view={this.props.view}
+                  updateMenuPosition={this.updateStatePosition}
+                />
+              )}
             </Wrapper>
           );
         }}
@@ -61,17 +66,24 @@ class CellMenu extends Component {
 
 const Wrapper = styled.div`
   position: absolute;
-  svg {
-    height: 20px;
-    width: 20px;
+`;
+
+const StyledArrowDownIcon = styled(Icons.ArrowDown)`
+  fill: #9e9e9e;
+  height: 20px;
+  width: 20px;
+  &:hover {
+    fill: #212121;
   }
 `;
 
 class Menu extends Component {
   updateTable = evt => {
     const cmd = evt.target.getAttribute("name");
-    const { state, dispatch } = this.props.view;
+    const { view, updateMenuPosition } = this.props;
+    const { state, dispatch } = view;
     TableCommands[cmd](state, dispatch);
+    updateMenuPosition();
   };
 
   render() {
@@ -92,7 +104,7 @@ class Menu extends Component {
         <MenuOption name="deleteRow" onClick={this.updateTable}>
           Delete Row
         </MenuOption>
-        <MenuOption name="deleteColumn" onClick={this.updateTable}>
+        <MenuOption name="deleteColumn" onClick={this.updateTable} lastOption>
           Delete Column
         </MenuOption>
       </MenuWrapper>
@@ -104,20 +116,30 @@ const MenuWrapper = styled.div`
   border: 1px solid rgba(158, 158, 158, 0.75);
   background: white;
   cursor: pointer;
-  left: -142px;
+  left: -155px;
   position: absolute;
-  font-size: 14px;
+  font-size: 12px;
   border-radius: 2px;
-  top: 20px;
+  top: 16px;
+  box-shadow: #cdcdcdbf 0px 2px 8px -2px, #cdcdcdbf 0px 0px 1px;
 `;
 
 const MenuOption = styled.div`
-  border-bottom: 1px solid rgba(158, 158, 158, 0.75);
+  border-bottom: ${({ lastOption }) =>
+    lastOption ? "" : "1px solid rgba(158, 158, 158, 0.75)"};
   padding: 5px;
   width: 150px;
+  text-align: center;
+  &:hover {
+    background-color: #e0e0e0;
+  }
 `;
 
 export default {
   elmClassName: "nib-table-cell-marker",
   component: CellMenu
 };
+
+// todo: make styles customizeable
+// todo: fix topbar icon colors
+// todo: refactor and cleanup component
