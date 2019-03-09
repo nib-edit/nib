@@ -76,14 +76,17 @@ class InlineToolbarComponent extends PureComponent {
                 );
               const Icon = Icons[MarkIcons[mark]];
               result.push(
-                <ToolbarButton
-                  key={`inlinestyle-${index}`}
-                  name={mark}
-                  onClick={this.toggleMarkofType}
-                  selected={marks[mark].isInSet(activeMarks)}
-                >
-                  <Icon />
-                </ToolbarButton>
+                <>
+                  <ToolbarButton
+                    key={`inlinestyle-${index}`}
+                    name={mark}
+                    onClick={this.toggleMarkofType}
+                    selected={marks[mark].isInSet(activeMarks)}
+                  >
+                    <Icon />
+                  </ToolbarButton>
+                  <Separator type="toolbar" />
+                </>
               );
             }
             return result;
@@ -92,7 +95,6 @@ class InlineToolbarComponent extends PureComponent {
         )}
         {options.indexOf("subsup") >= 0 && (
           <>
-            <Separator type="toolbar" />
             <ToolbarButton
               name="sup"
               onClick={this.toggleSupMark}
