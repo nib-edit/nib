@@ -1,7 +1,9 @@
 import React from "react";
+import { withTheme } from "emotion-theming";
+
 import { StyledSVG } from "./style";
 
-export default () => (
+export default withTheme(({ theme }) => (
   <StyledSVG width="23px" height="15px" viewBox="0 0 23 15">
     <g
       id="Page-1"
@@ -13,11 +15,11 @@ export default () => (
       fontSize="15"
       fontWeight="600"
     >
-      <text id="H2" fill="#000000">
+      <text id="H2" fill={theme.icon.fill}>
         <tspan x="-0.0048828125" y="13">
           H2
         </tspan>
       </text>
     </g>
   </StyledSVG>
-);
+));

@@ -1,7 +1,9 @@
 import React from "react";
+import { withTheme } from "emotion-theming";
+
 import { StyledSVG } from "./style";
 
-export default () => (
+export default withTheme(({ theme }) => (
   <StyledSVG
     width="15px"
     height="15px"
@@ -11,7 +13,7 @@ export default () => (
     <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g
         id="superscript-x-elevated-to-the-power-of-two"
-        fill="#000000"
+        fill={theme.icon.fill}
         fillRule="nonzero"
       >
         <path
@@ -21,4 +23,4 @@ export default () => (
       </g>
     </g>
   </StyledSVG>
-);
+));

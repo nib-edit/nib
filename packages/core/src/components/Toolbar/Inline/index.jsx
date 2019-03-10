@@ -34,7 +34,6 @@ class Inline extends Component {
                   <Fragment key={`inline-toolbar-option-${Option.name}`}>
                     <Option.toolbarComponent
                       config={inlineConfig[Option.name]}
-                      key={`inline-toolbar-option-${Option.name}`}
                       app_params={app_params}
                     />
                     {index < optionSize - 1 && <ToolbarSeparator />}

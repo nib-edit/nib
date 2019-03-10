@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { Fragment, PureComponent } from "react";
 import { ToolbarButton, Icons, Separator } from "nib-ui";
 import { toggleMark } from "prosemirror-commands";
 
@@ -76,9 +76,8 @@ class InlineToolbarComponent extends PureComponent {
                 );
               const Icon = Icons[MarkIcons[mark]];
               result.push(
-                <>
+                <Fragment key={`inlinestyle-${index}`}>
                   <ToolbarButton
-                    key={`inlinestyle-${index}`}
                     name={mark}
                     onClick={this.toggleMarkofType}
                     selected={marks[mark].isInSet(activeMarks)}
@@ -86,7 +85,7 @@ class InlineToolbarComponent extends PureComponent {
                     <Icon />
                   </ToolbarButton>
                   <Separator type="toolbar" />
-                </>
+                </Fragment>
               );
             }
             return result;

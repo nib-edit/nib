@@ -21,7 +21,6 @@ class Top extends Component {
               <Fragment key={`top-toolbar-option-${Option.name}`}>
                 <Option.toolbarComponent
                   config={topConfig[Option.name]}
-                  key={`top-toolbar-option-${Option.name}`}
                   app_params={app_params}
                 />
                 {index < optionSize - 1 && <ToolbarSeparator />}
