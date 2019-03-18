@@ -2,6 +2,8 @@ import React, { PureComponent, Fragment } from "react";
 
 import { ToolbarButton, Icons, Separator } from "nib-ui";
 
+import { formatKeymap } from "../../../common/utils/key-format";
+
 export default class Ungrouped extends PureComponent {
   handleChange = evt => {
     this.props.onChange(evt.currentTarget.name);
@@ -9,7 +11,6 @@ export default class Ungrouped extends PureComponent {
 
   render() {
     const { options, selectedBlockType } = this.props;
-
     return (
       <>
         {options.map((opt, index) => {
@@ -20,6 +21,7 @@ export default class Ungrouped extends PureComponent {
                 name={opt.value.blockType}
                 onClick={this.handleChange}
                 selected={opt.name === selectedBlockType}
+                title={formatKeymap(opt.value.keymap)}
               >
                 <IconComponent />
               </ToolbarButton>

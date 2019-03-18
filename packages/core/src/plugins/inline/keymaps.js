@@ -14,3 +14,10 @@ export default {
   "mod-shift-s": (state, dispatch) =>
     toggleMarkofType("strike", { level: 2 })(state, dispatch)
 };
+
+export const keyMaps = {
+  strong: "Bold mod-B",
+  em: "Italic mod-I",
+  underline: "Underline mod-U",
+  strike: "Strikethrough mod-shift-S"
+};

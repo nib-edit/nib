@@ -2,6 +2,8 @@ import React, { PureComponent } from "react";
 import { ToolbarButton, Icons, Separator } from "nib-ui";
 import { toggleListCmd } from "./commands";
 
+import { formatKeymap } from "../../common/utils/key-format";
+import { keyMaps } from "./keymaps";
 import { listPluginKey } from "./plugin";
 
 class ListToolbarComponent extends PureComponent {
@@ -27,6 +29,7 @@ class ListToolbarComponent extends PureComponent {
           name="bulletList"
           onClick={this.toggleList}
           selected={selectedListType === "bulletList"}
+          title={formatKeymap(keyMaps.bulletList)}
         >
           <Icons.ListBulleted />
         </ToolbarButton>
@@ -35,6 +38,7 @@ class ListToolbarComponent extends PureComponent {
           name="orderedList"
           onClick={this.toggleList}
           selected={selectedListType === "orderedList"}
+          title={formatKeymap(keyMaps.orderedList)}
         >
           <Icons.ListNumbered />
         </ToolbarButton>

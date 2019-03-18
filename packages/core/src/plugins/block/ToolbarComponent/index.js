@@ -33,7 +33,6 @@ export default class BlockToolbarComponent extends PureComponent {
     }
   };
 
-  componentWillReceiveProps(props) {}
   render() {
     const { config: { grouped, options: toolbarOptions } = {} } = this.props;
     let filteredOptions = options;

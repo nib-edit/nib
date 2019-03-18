@@ -21,3 +21,13 @@ export default {
   "mod-alt-6": (state, dispatch) =>
     changeBlockType("heading", { level: 6 })(state, dispatch)
 };
+
+export const keyMaps = {
+  p: "mod-alt-0",
+  h1: "mod-alt-1",
+  h2: "mod-alt-2",
+  h3: "mod-alt-3",
+  h4: "mod-alt-4",
+  h5: "mod-alt-5",
+  h6: "mod-alt-6"
+};

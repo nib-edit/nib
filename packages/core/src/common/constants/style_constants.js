@@ -5,6 +5,7 @@ const Color = {
   gray1: "#E0E0E0",
   gray2: "#9E9E9E",
   gray3: "#BDBDBD",
+  grayText: "#616161",
   lightBorder: "#EbBCF0",
   text: "#212121",
   white: "#FFFFFF",

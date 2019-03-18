@@ -2,6 +2,8 @@ import React, { Fragment, PureComponent } from "react";
 import { ToolbarButton, Icons, Separator } from "nib-ui";
 import { toggleMark } from "prosemirror-commands";
 
+import { formatKeymap } from "../../common/utils/key-format";
+import { keyMaps } from "./keymaps";
 import { inlinePluginKey } from "./plugin";
 
 const MarkIcons = {
@@ -81,6 +83,7 @@ class InlineToolbarComponent extends PureComponent {
                     name={mark}
                     onClick={this.toggleMarkofType}
                     selected={marks[mark].isInSet(activeMarks)}
+                    title={formatKeymap(keyMaps[mark])}
                   >
                     <Icon />
                   </ToolbarButton>

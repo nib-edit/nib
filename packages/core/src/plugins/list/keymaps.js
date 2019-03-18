@@ -18,3 +18,8 @@ export default {
     return liftListItem(state.schema.nodes.listItem)(state, dispatch);
   }
 };
+
+export const keyMaps = {
+  orderedList: "Numbered List mod-shift-7",
+  bulletList: "Bullet List mod-shift-8"
+};
