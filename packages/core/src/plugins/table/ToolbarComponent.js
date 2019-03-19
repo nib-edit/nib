@@ -12,7 +12,7 @@ class TableToolbarComponent extends PureComponent {
 
   render() {
     return (
-      <ToolbarButton name="table" onClick={this.insertTable}>
+      <ToolbarButton name="table" onClick={this.insertTable} title="Table">
         <Icons.Table />
       </ToolbarButton>
     );

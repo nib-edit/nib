@@ -15,9 +15,9 @@ export default {
     toggleMarkofType("strike", { level: 2 })(state, dispatch)
 };
 
-export const keyMaps = {
-  strong: "Bold mod-B",
-  em: "Italic mod-I",
-  underline: "Underline mod-U",
-  strike: "Strikethrough mod-shift-S"
+export const KeymapInfo = {
+  strong: { key: "mod-B", label: "Bold" },
+  em: { key: "mod-I", label: "Italic" },
+  underline: { key: "mod-U", label: "Underline" },
+  strike: { key: "mod-shift-S", label: "Strikethrough" }
 };

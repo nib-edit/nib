@@ -19,7 +19,7 @@ export default {
   }
 };
 
-export const keyMaps = {
-  orderedList: "Numbered List mod-shift-7",
-  bulletList: "Bullet List mod-shift-8"
+export const KeymapInfo = {
+  orderedList: { key: "mod-shift-7", label: "Numbered List" },
+  bulletList: { key: "mod-shift-8", label: "Bullet List" }
 };

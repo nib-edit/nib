@@ -9,7 +9,7 @@ class ImageToolbarComponent extends PureComponent {
 
   render() {
     return (
-      <ToolbarButton name="image" onClick={this.showImageOverlay}>
+      <ToolbarButton onClick={this.showImageOverlay} title="Image">
         <Icons.Image />
       </ToolbarButton>
     );

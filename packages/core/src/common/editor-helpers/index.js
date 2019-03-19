@@ -5,3 +5,4 @@ export { getPluginStyles } from "./styles";
 export { getPropertyFromPliguns } from "./plugin-reducer";
 export { getProsemirrorPlugins, getPluginList } from "./plugin";
 export { getToolbarOptions } from "./toolbar-builder";
+export { getKeymapInfo } from "./keymap-info";

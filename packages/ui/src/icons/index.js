@@ -1,5 +1,6 @@
 import ArrowDown from "./ArrowDown";
 import Bold from "./Bold";
+import Cross from "./Cross";
 import H1 from "./H1";
 import H2 from "./H2";
 import H3 from "./H3";
@@ -12,6 +13,7 @@ import Italic from "./Italic";
 import Link from "./Link";
 import ListBulleted from "./ListBulleted";
 import ListNumbered from "./ListNumbered";
+import Question from "./Question";
 import Redo from "./Redo";
 import Strike from "./Strike";
 import Sub from "./Sub";
@@ -23,6 +25,7 @@ import Undo from "./Undo";
 export default {
   ArrowDown,
   Bold,
+  Cross,
   H1,
   H2,
   H3,
@@ -35,6 +38,7 @@ export default {
   ListBulleted,
   ListNumbered,
   P,
+  Question,
   Redo,
   Strike,
   Sub,

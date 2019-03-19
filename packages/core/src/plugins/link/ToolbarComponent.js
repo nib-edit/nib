@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { ToolbarButton, Icons } from "nib-ui";
 
 import { formatKeymap } from "../../common/utils/key-format";
-import { keyMaps } from "./keymaps";
+import { KeymapInfo } from "./keymaps";
 import { linkPluginKey } from "./plugin";
 
 class LinkToolbarComponent extends PureComponent {
@@ -26,7 +26,7 @@ class LinkToolbarComponent extends PureComponent {
         name="link"
         onClick={this.showLinkToolbar}
         disabled={this.isLinkMarkActive()}
-        title={formatKeymap(keyMaps.link)}
+        title={formatKeymap(KeymapInfo.link)}
       >
         <Icons.Link />
       </ToolbarButton>

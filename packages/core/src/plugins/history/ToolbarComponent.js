@@ -4,7 +4,7 @@ import { undo, redo } from "prosemirror-history";
 import { ToolbarButton, Icons, Separator } from "nib-ui";
 
 import { formatKeymap } from "../../common/utils/key-format";
-import { keyMaps } from "./keymaps";
+import { KeymapInfo } from "./keymaps";
 
 class HistoryToolbarComponent extends PureComponent {
   undo = () => {
@@ -20,11 +20,17 @@ class HistoryToolbarComponent extends PureComponent {
   render() {
     return (
       <>
-        <ToolbarButton onClick={this.undo} title={formatKeymap(keyMaps.undo)}>
+        <ToolbarButton
+          onClick={this.undo}
+          title={formatKeymap(KeymapInfo.undo)}
+        >
           <Icons.Undo />
         </ToolbarButton>
         <Separator type="toolbar" />
-        <ToolbarButton onClick={this.redo} title={formatKeymap(keyMaps.redo)}>
+        <ToolbarButton
+          onClick={this.redo}
+          title={formatKeymap(KeymapInfo.redo)}
+        >
           <Icons.Redo />
         </ToolbarButton>
       </>
