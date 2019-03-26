@@ -37,11 +37,12 @@ class HelpOverlay extends PureComponent {
         render={() => (
           <Wrapper onClick={this.stopPropagation}>
             <Header>
-              <Title>KEYBOARD SHORTCUTS</Title>
+              <Title>Help</Title>
               <StyledCross onClick={this.hideHelpOverlay} />
             </Header>
             <MainSection>
               <OptionWrapper>
+                <SubTitle>Keyboard Shortcuts</SubTitle>
                 {pluginKeymaps.map(({ name, keymaps }) => (
                   <Fragment key={`plugin-keymap-${name}`}>
                     {keymaps.map(({ key, label }) => (
@@ -66,34 +67,32 @@ const Wrapper = styled.div`
   color: #212121;
   font-size: 16px;
   min-width: 372px;
+  border-radius: 2px;
 `;
 
 const Header = styled.div`
-  border-bottom: 1px solid rgba(158, 158, 158, 0.75);
+  box-shadow: rgb(235, 236, 240) 0px 2px 0px;
   padding: 12px 24px;
-  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const Title = styled.div`
   font-size: 20px;
-  text-align: center;
-  width: 100%;
+`;
+
+const SubTitle = styled.div`
+  font-weight: bold;
+  padding: 0px 24px 10px;
 `;
 
 const StyledCross = styled(Icons.Cross)`
   cursor: pointer;
-  position: absolute;
-  right: -10px;
-  top: -6px;
-  background-color: #212121;
-  fill: white;
-  border-radius: 50%;
-  height: 20px;
-  width: 20px;
 `;
 
 const MainSection = styled.div`
-  padding: 20px;
+  padding: 20px 0;
 `;
 
 const OptionWrapper = styled.div`
@@ -102,7 +101,7 @@ const OptionWrapper = styled.div`
 `;
 
 const Option = styled.div`
-  padding: 4px 16px;
+  padding: 4px 24px;
   display: flex;
   justify-content: space-between;
 `;

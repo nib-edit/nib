@@ -29,7 +29,8 @@ module.exports = {
         "packages/docs/plugins/Link/index.jsx",
         "packages/docs/plugins/List/index.jsx",
         "packages/docs/plugins/Image/index.jsx",
-        "packages/docs/plugins/Table/index.jsx"
+        "packages/docs/plugins/Table/index.jsx",
+        "packages/docs/plugins/Help/index.jsx"
       ]
     },
     {
