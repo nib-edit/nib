@@ -1,4 +1,5 @@
 import { Plugin, PluginKey } from "prosemirror-state";
+import ImageView from "./nodeView";
 
 export const imagePluginKey = new PluginKey("image");
 
@@ -15,6 +16,14 @@ export default new Plugin({
       if (tr.getMeta("HIDE_IMAGE_TOOLBAR"))
         return { imageToolbarVisible: false };
       return value;
+    }
+  },
+
+  props: {
+    nodeViews: {
+      image(node, view) {
+        return new ImageView(node, view);
+      }
     }
   }
 });

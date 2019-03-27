@@ -24,10 +24,10 @@ export default {
 
 export const KeymapInfo = {
   p: { key: "mod-alt-0", label: "Paragraph" },
-  h1: { key: "mod-alt-1", label: "Heading 1" },
-  h2: { key: "mod-alt-2", label: "Heading 2" },
-  h3: { key: "mod-alt-3", label: "Heading 3" },
-  h4: { key: "mod-alt-4", label: "Heading 4" },
-  h5: { key: "mod-alt-5", label: "Heading 5" },
-  h6: { key: "mod-alt-6", label: "Heading 6" }
+  h1: { key: "mod-alt-1", label: "Heading1" },
+  h2: { key: "mod-alt-2", label: "Heading2" },
+  h3: { key: "mod-alt-3", label: "Heading3" },
+  h4: { key: "mod-alt-4", label: "Heading4" },
+  h5: { key: "mod-alt-5", label: "Heading5" },
+  h6: { key: "mod-alt-6", label: "Heading6" }
 };

@@ -2,7 +2,8 @@ export const image = {
   group: "inline",
   inline: true,
   attrs: {
-    src: { default: "" }
+    src: { default: "" },
+    style: { default: { height: "auto", width: "auto" } }
   },
   draggable: true,
   parseDOM: [
@@ -14,7 +15,8 @@ export const image = {
       tag: "img[src]",
       getAttrs(domNode) {
         return {
-          src: domNode.getAttribute("src")
+          src: domNode.getAttribute("src"),
+          style: domNode.getAttribute("style")
         };
       }
     }

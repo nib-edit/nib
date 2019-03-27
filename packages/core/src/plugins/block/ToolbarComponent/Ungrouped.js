@@ -2,6 +2,7 @@ import React, { PureComponent, Fragment } from "react";
 
 import { ToolbarButton, Icons, Separator } from "nib-ui";
 
+import { KeymapInfo } from "../keymaps";
 import { formatKeymap } from "../../../common/utils/key-format";
 
 export default class Ungrouped extends PureComponent {
@@ -21,7 +22,7 @@ export default class Ungrouped extends PureComponent {
                 name={opt.value.blockType}
                 onClick={this.handleChange}
                 selected={opt.name === selectedBlockType}
-                title={formatKeymap(opt.value.keymap)}
+                title={formatKeymap(KeymapInfo[opt.name])}
               >
                 <IconComponent />
               </ToolbarButton>
