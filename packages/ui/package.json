@@ -12,7 +12,6 @@
     "reactjs"
   ],
   "author": "Jyoti Puri",
-  "license": "MIT",
   "homepage": "https://github.com/jpuri/Nib/tree/master/packages/ui/#Readme.md",
   "dependencies": {
     "react-select": "^2.1.2"

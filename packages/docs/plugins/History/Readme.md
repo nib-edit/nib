@@ -9,10 +9,10 @@ Plugin that adds history support to the editor. It is by default added to all ed
 ```js static
 <Editor
   config={{
-    plugins: { options: "" },
+    plugins: {options: ""},
     toolbar: {
       options: "top",
-      top: { options: "history" }
+      top: {options: "history"}
     }
   }}
 />
@@ -25,4 +25,4 @@ Plugin that adds history support to the editor. It is by default added to all ed
 | S.No. | Keyboard Shortcut          | Description |
 | ----- | -------------------------- | ----------- |
 | 1     | cmd-z / ctrl-z             | undo        |
-| 2     | cmd-shift-z / ctrl-shift-i | redo        |
+| 2     | cmd-shift-z / ctrl-shift-z | redo        |

@@ -2,15 +2,15 @@ import React from "react";
 import Editor from "nib-core";
 
 /**
- * @visibleName 5. List
+ * @visibleName 7. List
  */
 const ListPlugin = () => (
   <Editor
     config={{
-      plugins: { options: "list" },
+      plugins: {options: "list"},
       toolbar: {
         options: "top",
-        top: { options: "list" }
+        top: {options: "list"}
       }
     }}
   />

@@ -1,18 +1,18 @@
 import PropTypes from "prop-types";
-import React, { Component } from "react";
-import { ThemeProvider } from "emotion-theming";
+import React, {Component} from "react";
+import {ThemeProvider} from "emotion-theming";
 
 import ModalHandler from "../ModalHandler";
 import Toolbar from "../Toolbar";
-import { AppStateWrapper } from "../../common/app-state";
-import { deepMerge } from "../../common/utils";
-import { defaultConfig, ConfigContext } from "../../common/config";
-import { getPropertyFromPliguns } from "../../common/editor-helpers";
+import {AppStateWrapper} from "../../common/app-state";
+import {deepMerge} from "../../common/utils/deep-merge";
+import {defaultConfig, ConfigContext} from "../../common/config";
+import {getPropertyFromPliguns} from "../../common/editor-helpers";
 
 import InnerEditor from "./editor";
-import { Wrapper } from "./style";
-import { blockStyles } from "./blockStyles";
-import { theme } from "./theme";
+import {Wrapper} from "./style";
+import {blockStyles} from "./blockStyles";
+import {theme} from "./theme";
 import OverlayHandler from "../OverlayHandler";
 
 class Editor extends Component {
@@ -38,8 +38,8 @@ class Editor extends Component {
   };
 
   render() {
-    const { defaultValue, onChange, autofocus, spellcheck } = this.props;
-    const { toolbar, plugins } = this.config;
+    const {defaultValue, onChange, autofocus, spellcheck} = this.props;
+    const {toolbar, plugins} = this.config;
     const inlineToolbarPresent = toolbar.options.indexOf("inline") >= 0;
     const topToolbarPresent = toolbar.options.indexOf("top") >= 0;
     const modals = getPropertyFromPliguns(plugins.options, "modals");
@@ -47,7 +47,7 @@ class Editor extends Component {
     return (
       <AppStateWrapper
         render={app_params => (
-          <ConfigContext.Provider value={{ config: this.config }}>
+          <ConfigContext.Provider value={{config: this.config}}>
             <ThemeProvider theme={this.theme}>
               <Wrapper id="nib-wrapper" ref={this.editorWrapper}>
                 {topToolbarPresent && <Toolbar.top />}

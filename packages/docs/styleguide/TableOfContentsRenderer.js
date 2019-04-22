@@ -4,7 +4,7 @@ import Styled from "rsg-components/Styled";
 import GithubImg from "./github.png";
 import "./styles.css";
 
-const styles = ({ space, color, fontFamily, fontSize, borderRadius }) => ({
+const styles = ({space, color, fontFamily, fontSize, borderRadius}) => ({
   pre: {
     whiteSpace: "pre-wrap"
   },
@@ -102,16 +102,24 @@ export function TableOfContentsRenderer({
         </div>
         <nav>{children}</nav>
         <nav className={classes.github}>
-          <a href="https://github.com/jpuri/Nib" target="blank">
+          <a
+            href="https://github.com/jpuri/Nib"
+            target="blank"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              marginBottom: 10
+            }}
+          >
             <img className={classes.githubImg} src={GithubImg} />
             <span>Github</span>
           </a>
         </nav>
       </div>
       <div className={classes.bottom}>
-        Made with ♥️ by{" "}
+        Made with <span style={{color: "red"}}>♥️</span> by{" "}
         <a
-          style={{ textDecoration: "underline" }}
+          style={{textDecoration: "underline"}}
           target="blank"
           href="https://twitter.com/jyopur"
         >

@@ -23,14 +23,15 @@ module.exports = {
       sectionDepth: 1,
       content: "packages/docs/plugins/Readme.md",
       components: [
+        "packages/docs/plugins/Basic/index.jsx",
         "packages/docs/plugins/Block/index.jsx",
-        "packages/docs/plugins/Inline/index.jsx",
+        "packages/docs/plugins/Help/index.jsx",
         "packages/docs/plugins/History/index.jsx",
+        "packages/docs/plugins/Image/index.jsx",
+        "packages/docs/plugins/Inline/index.jsx",
         "packages/docs/plugins/Link/index.jsx",
         "packages/docs/plugins/List/index.jsx",
-        "packages/docs/plugins/Image/index.jsx",
-        "packages/docs/plugins/Table/index.jsx",
-        "packages/docs/plugins/Help/index.jsx"
+        "packages/docs/plugins/Table/index.jsx"
       ]
     },
     {
@@ -39,12 +40,12 @@ module.exports = {
       sectionDepth: 1,
       content: "packages/docs/demo/Readme.md",
       components: [
+        "packages/docs/demo/FullFeatured/index.jsx",
         "packages/docs/demo/Basic/index.jsx",
         "packages/docs/demo/BlockInline/index.jsx",
-        "packages/docs/demo/FullFeatured/index.jsx",
-        "packages/docs/demo/Themed/index.jsx",
+        "packages/docs/demo/ConvertToHTML/index.jsx",
         "packages/docs/demo/InlineToolbar/index.jsx",
-        "packages/docs/demo/ConvertToHTML/index.jsx"
+        "packages/docs/demo/Themed/index.jsx"
       ]
     }
   ],
@@ -94,7 +95,7 @@ module.exports = {
           test: /\.css$/,
           use: ["style-loader", "css-loader"]
         },
-        { test: /\.svg$|\.png$/, loader: "url-loader" }
+        {test: /\.svg$|\.png$/, loader: "url-loader"}
       ]
     }
   }

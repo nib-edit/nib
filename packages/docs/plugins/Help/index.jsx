@@ -2,15 +2,15 @@ import React from "react";
 import Editor from "nib-core";
 
 /**
- * @visibleName 8. Help
+ * @visibleName 2. Help
  */
 const HelpPlugin = () => (
   <Editor
     config={{
-      plugins: { options: "help" },
+      plugins: {options: "help"},
       toolbar: {
         options: "top",
-        top: { options: "help" }
+        top: {options: "help"}
       }
     }}
   />

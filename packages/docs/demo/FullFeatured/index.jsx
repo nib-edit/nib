@@ -1,10 +1,10 @@
-import React, { PureComponent } from "react";
+import React, {PureComponent} from "react";
 import Editor from "nib-core";
 
 import uploadCallback from "../../common/uploadCallback";
 
 /**
- * @visibleName 3. All
+ * @visibleName 1. All
  */
 class FullFeatured extends PureComponent {
   state = {
@@ -12,11 +12,11 @@ class FullFeatured extends PureComponent {
   };
 
   onChange = content => {
-    this.setState({ content });
+    this.setState({content});
   };
 
   render() {
-    const { content } = this.state;
+    const {content} = this.state;
     return (
       <div>
         <Editor

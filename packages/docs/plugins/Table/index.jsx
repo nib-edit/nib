@@ -2,12 +2,12 @@ import React from "react";
 import Editor from "nib-core";
 
 /**
- * @visibleName 7. Table
+ * @visibleName 8. Table
  */
-const TablePluginDemo = ({ grouped }) => (
+const TablePluginDemo = ({grouped}) => (
   <Editor
     config={{
-      plugins: { options: "table" },
+      plugins: {options: "table"},
       toolbar: {
         options: "top",
         top: {

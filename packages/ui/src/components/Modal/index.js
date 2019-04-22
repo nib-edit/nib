@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
-import React, { Component } from "react";
+import React, {Component} from "react";
 import styled from "@emotion/styled";
-import { EFAULT } from "constants";
 
 const ARROW_HEIGHT = 6;
 const ARROW_MIN_DISTANCE = 10;
@@ -26,7 +25,7 @@ const isSamePos = (oldPos, newPos) => {
 const getPosition = (marker, modalElm, editorWrapper) => {
   const markerDim = marker.getBoundingClientRect();
   const wrapperDim = editorWrapper.getBoundingClientRect();
-  const { width: modalWidth = 0, height: modalHeight = 0 } = modalElm
+  const {width: modalWidth = 0, height: modalHeight = 0} = modalElm
     ? modalElm.getBoundingClientRect()
     : {};
 
@@ -66,14 +65,14 @@ const getPosition = (marker, modalElm, editorWrapper) => {
   }
 
   return {
-    modalPosition: { top, left },
-    arrowPosition: { left: arrowLeft, dir: arrowDir }
+    modalPosition: {top, left},
+    arrowPosition: {left: arrowLeft, dir: arrowDir}
   };
 };
 
 export default class Modal extends Component {
   wrapperRef = React.createRef();
-  state = { modalPosition: {}, arrowPosition: { dir: "TOP" } };
+  state = {modalPosition: {}, arrowPosition: {dir: "TOP"}};
 
   static propTypes = {
     className: PropTypes.string,
@@ -86,7 +85,7 @@ export default class Modal extends Component {
   componentDidMount() {
     window.addEventListener("keydown", this.handleKeyPress);
     window.addEventListener("mousedown", this.handleWindowMouseDown);
-    const { marker, editorWrapper } = this.props;
+    const {marker, editorWrapper} = this.props;
     if (marker) {
       this.setState({
         ...getPosition(marker, this.wrapperRef.current, editorWrapper.current)
@@ -100,7 +99,7 @@ export default class Modal extends Component {
   };
 
   componentDidUpdate() {
-    const { marker, editorWrapper } = this.props;
+    const {marker, editorWrapper} = this.props;
     if (!marker) return;
     const oldPos = this.markerPos;
     const markerDim = marker.getBoundingClientRect();
@@ -143,9 +142,9 @@ export default class Modal extends Component {
   };
 
   render() {
-    const { className, marker, render } = this.props;
+    const {className, marker, render} = this.props;
     if (!marker) return null;
-    const { modalPosition, arrowPosition } = this.state;
+    const {modalPosition, arrowPosition} = this.state;
 
     return (
       <Wrapper
@@ -173,23 +172,22 @@ export default class Modal extends Component {
 const Wrapper = styled.div`
   position: absolute;
 
-  background-color: ${({ theme }) => theme.modal.backgroundColor};
-  color: ${({ theme }) => theme.modal.color};
+  background-color: ${({theme}) => theme.modal.backgroundColor};
+  color: ${({theme}) => theme.modal.color};
 
-  border-bottom: ${({ theme }) => theme.modal.borderBottom};
-  border-left: ${({ theme }) => theme.modal.borderLeft};
-  border-right: ${({ theme }) => theme.modal.borderRight};
-  border-top: ${({ theme }) => theme.modal.borderTop};
-  border-bottom-left-radius: ${({ theme }) =>
+  border-bottom: ${({theme}) => theme.modal.borderBottom};
+  border-left: ${({theme}) => theme.modal.borderLeft};
+  border-right: ${({theme}) => theme.modal.borderRight};
+  border-top: ${({theme}) => theme.modal.borderTop};
+  border-bottom-left-radius: ${({theme}) => theme.modal.borderBottomLeftRadius};
+  border-bottom-right-radius: ${({theme}) =>
     theme.modal.borderBottomLeftRadius};
-  border-bottom-right-radius: ${({ theme }) =>
-    theme.modal.borderBottomLeftRadius};
-  border-top-left-radius: ${({ theme }) => theme.modal.borderTopLeftRadius};
-  border-top-right-radius: ${({ theme }) => theme.modal.borderTopLeftRadius};
+  border-top-left-radius: ${({theme}) => theme.modal.borderTopLeftRadius};
+  border-top-right-radius: ${({theme}) => theme.modal.borderTopLeftRadius};
 
-  box-shadow: ${({ theme }) => theme.modal.boxShadow};
+  box-shadow: ${({theme}) => theme.modal.boxShadow};
 
-  font-weight: ${({ theme }) => theme.modal.fontWeight};
+  font-weight: ${({theme}) => theme.modal.fontWeight};
 
   :focus {
     outline: none;
@@ -197,25 +195,28 @@ const Wrapper = styled.div`
 `;
 
 const ArrowTop = styled.div`
-  background: ${({ theme }) => theme.modal.backgroundColor};
-  border-left: 1px solid ${({ theme }) => theme.modal.arrowBorderColor};
-  border-top: 1px solid ${({ theme }) => theme.modal.arrowBorderColor};
+  background: ${({theme}) => theme.modal.backgroundColor};
+  border-left: 1px solid ${({theme}) => theme.modal.arrowBorderColor};
+  border-top: 1px solid ${({theme}) => theme.modal.arrowBorderColor};
   height: 10px;
-  left: ${({ left = 0 }) => `calc(50% + ${left - ARROW_HEIGHT}px)`};
+  left: ${({left = 0}) => `calc(50% + ${left - ARROW_HEIGHT}px)`};
   position: absolute;
-  top: -7px;
+  top: -6px;
   transform: rotate(45deg);
   width: 10px;
 `;
 
 const ArrowBottom = styled.div`
-  background: ${({ theme }) => theme.modal.backgroundColor};
-  border-right: 1px solid ${({ theme }) => theme.modal.arrowBorderColor};
-  border-bottom: 1px solid ${({ theme }) => theme.modal.arrowBorderColor};
+  background: ${({theme}) => theme.modal.backgroundColor};
+  border-right: 1px solid ${({theme}) => theme.modal.arrowBorderColor};
+  border-bottom: 1px solid ${({theme}) => theme.modal.arrowBorderColor};
   height: 10px;
-  left: ${({ left = 0 }) => `calc(50% + ${left - ARROW_HEIGHT}px)`};
+  left: ${({left = 0}) => `calc(50% + ${left - ARROW_HEIGHT}px)`};
   position: absolute;
-  bottom: -7px;
+  bottom: -6px;
   transform: rotate(45deg);
   width: 10px;
 `;
+
+// todo: use nice icons in place of text buttons on link modals,
+// Buttons are kind of misleading and do not look clikable.

@@ -24,7 +24,6 @@
     "name": "Jyoti Puri",
     "email": "jyotipuri@gmail.com"
   },
-  "license": "MIT",
   "homepage": "https://github.com/jpuri/Nib#readme",
   "devDependencies": {
     "@babel/core": "^7.1.2",

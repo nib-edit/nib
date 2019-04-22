@@ -22,7 +22,7 @@ export default class Ungrouped extends PureComponent {
                 name={opt.value.blockType}
                 onClick={this.handleChange}
                 selected={opt.value.tag === selectedBlockType}
-                title={opt.value.keymap}
+                title={formatKeymap(KeymapInfo[opt.value.tag])}
               >
                 <IconComponent />
               </ToolbarButton>

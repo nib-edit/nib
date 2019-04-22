@@ -15,7 +15,6 @@
     "name": "Jyoti Puri",
     "email": "jyotipuri@gmail.com"
   },
-  "license": "MIT",
   "homepage": "https://github.com/jpuri/Nib/tree/master/packages/core#Readme.md",
   "dependencies": {
     "prosemirror-tables": "^0.7.10"
