@@ -34,7 +34,7 @@ export const getSelectStyles = themeStyle => ({
   ),
   dropdownIndicator: getStyles({
     padding: "4px",
-    "& svg": { fill: themeStyle.color }
+    "& svg": {fill: themeStyle.color}
   }),
   indicatorSeparator: getStyles({
     display: "none"

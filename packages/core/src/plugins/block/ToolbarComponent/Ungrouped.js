@@ -1,9 +1,9 @@
-import React, { PureComponent, Fragment } from "react";
+import React, {PureComponent, Fragment} from "react";
 
-import { ToolbarButton, Icons, Separator } from "nib-ui";
+import {ToolbarButton, Icons, Separator} from "nib-ui";
 
-import { KeymapInfo } from "../keymaps";
-import { formatKeymap } from "../../../common/utils/key-format";
+import {KeymapInfo} from "../keymaps";
+import {formatKeymap} from "../../../common/utils/key-format";
 
 export default class Ungrouped extends PureComponent {
   handleChange = evt => {
@@ -11,18 +11,18 @@ export default class Ungrouped extends PureComponent {
   };
 
   render() {
-    const { options, selectedBlockType } = this.props;
+    const {options, selectedBlockType} = this.props;
     return (
       <>
         {options.map((opt, index) => {
-          const IconComponent = Icons[opt.name.toUpperCase()];
+          const IconComponent = Icons[opt.value.tag.toUpperCase()];
           return (
-            <Fragment key={`block-btn-${opt.name}`}>
+            <Fragment key={`block-btn-${opt.value.tag}`}>
               <ToolbarButton
                 name={opt.value.blockType}
                 onClick={this.handleChange}
-                selected={opt.name === selectedBlockType}
-                title={formatKeymap(KeymapInfo[opt.name])}
+                selected={opt.value.tag === selectedBlockType}
+                title={opt.value.keymap}
               >
                 <IconComponent />
               </ToolbarButton>

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { components } from "react-select";
+import {components} from "react-select";
 
 export default props => {
   return (
@@ -21,6 +21,6 @@ const wrapperStyle = {
 };
 
 const Keymap = styled.span`
-  color: ${({ theme }) => theme.blockSelect.keymapColor};
+  color: ${({theme}) => theme.blockSelect.keymapColor};
   font-size: 10px;
 `;

@@ -1,4 +1,4 @@
-import { setBlockType } from "prosemirror-commands";
+import {setBlockType} from "prosemirror-commands";
 
 const changeBlockType = (blockTypeName, attrs) => (state, dispatch) => {
   const blockType = state.schema.nodes[blockTypeName];
@@ -9,25 +9,15 @@ export default {
   "mod-alt-0": (state, dispatch) =>
     changeBlockType("paragraph")(state, dispatch),
   "mod-alt-1": (state, dispatch) =>
-    changeBlockType("heading", { level: 1 })(state, dispatch),
+    changeBlockType("heading", {level: 1})(state, dispatch),
   "mod-alt-2": (state, dispatch) =>
-    changeBlockType("heading", { level: 2 })(state, dispatch),
+    changeBlockType("heading", {level: 2})(state, dispatch),
   "mod-alt-3": (state, dispatch) =>
-    changeBlockType("heading", { level: 3 })(state, dispatch),
+    changeBlockType("heading", {level: 3})(state, dispatch),
   "mod-alt-4": (state, dispatch) =>
-    changeBlockType("heading", { level: 4 })(state, dispatch),
+    changeBlockType("heading", {level: 4})(state, dispatch),
   "mod-alt-5": (state, dispatch) =>
-    changeBlockType("heading", { level: 5 })(state, dispatch),
+    changeBlockType("heading", {level: 5})(state, dispatch),
   "mod-alt-6": (state, dispatch) =>
-    changeBlockType("heading", { level: 6 })(state, dispatch)
-};
-
-export const KeymapInfo = {
-  p: { key: "mod-alt-0", label: "Paragraph" },
-  h1: { key: "mod-alt-1", label: "Heading1" },
-  h2: { key: "mod-alt-2", label: "Heading2" },
-  h3: { key: "mod-alt-3", label: "Heading3" },
-  h4: { key: "mod-alt-4", label: "Heading4" },
-  h5: { key: "mod-alt-5", label: "Heading5" },
-  h6: { key: "mod-alt-6", label: "Heading6" }
+    changeBlockType("heading", {level: 6})(state, dispatch)
 };
