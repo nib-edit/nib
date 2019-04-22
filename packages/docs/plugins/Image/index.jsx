@@ -3,7 +3,7 @@ import Editor from "nib-core";
 import uploadCallback from "../../common/uploadCallback";
 
 /**
- * @visibleName 6. Image
+ * @visibleName 4. Image
  */
 const ImagePlugin = () => (
   <Editor
@@ -16,7 +16,7 @@ const ImagePlugin = () => (
       },
       toolbar: {
         options: "top",
-        top: { options: "image" }
+        top: {options: "image"}
       }
     }}
   />

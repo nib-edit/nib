@@ -1,6 +1,7 @@
-import { StyleConstants } from "../../common/constants";
+import {StyleConstants} from "../../common/constants";
+import underline from "nib-schema/src/marks/underline";
 
-const { Color, FontSize, BoxShadow, Border } = StyleConstants;
+const {Color, FontSize, BoxShadow, Border} = StyleConstants;
 const auto = "auto";
 const inherit = "inherit";
 const none = "none";
@@ -105,6 +106,7 @@ export const theme = {
       border: none,
       borderRadius: zero,
       color: Color.text,
+      textDecoration: "underline",
       fontSize: FontSize.medium,
       height: auto,
       margin: zero,
@@ -137,10 +139,10 @@ export const theme = {
     keymapColor: Color.grayText,
     optionHeight: "44px",
     width: "112px",
-    "&:hover": { backgroundColor: Color.gray1 },
-    "&:selected": { backgroundColor: Color.gray3 }
+    "&:hover": {backgroundColor: Color.gray1},
+    "&:selected": {backgroundColor: Color.gray3}
   },
-  icon: { fill: Color.text },
+  icon: {fill: Color.text},
   link: {
     backgroundColor: Color.white,
     color: Color.highlight,

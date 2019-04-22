@@ -1,11 +1,11 @@
-import React, { PureComponent, Fragment } from "react";
+import React, {PureComponent, Fragment} from "react";
 import styled from "@emotion/styled";
-import { Icons, Overlay } from "nib-ui";
+import {Icons, Overlay} from "nib-ui";
 
-import { ConfigContext } from "../../common/config";
-import { getKeymapInfo } from "../../common/editor-helpers";
-import { getOS } from "../../common/utils/device";
-import { helpPluginKey } from "./plugin";
+import {ConfigContext} from "../../common/config";
+import {getKeymapInfo} from "../../common/editor-helpers";
+import {getOS} from "../../common/utils/device";
+import {helpPluginKey} from "./plugin";
 
 const formatKey = key => {
   const os = getOS();
@@ -24,12 +24,12 @@ class HelpOverlay extends PureComponent {
   static contextType = ConfigContext;
 
   hideHelpOverlay = () => {
-    const { state, dispatch } = this.props.view;
+    const {state, dispatch} = this.props.view;
     dispatch(state.tr.setMeta("HIDE_HELP_OVERLAY", true));
   };
 
   render() {
-    const { plugins } = this.context.config;
+    const {plugins} = this.context.config;
     const pluginKeymaps = getKeymapInfo(plugins.options);
     return (
       <Overlay
@@ -43,9 +43,9 @@ class HelpOverlay extends PureComponent {
             <MainSection>
               <OptionWrapper>
                 <SubTitle>Keyboard Shortcuts</SubTitle>
-                {pluginKeymaps.map(({ name, keymaps }) => (
+                {pluginKeymaps.map(({name, keymaps}) => (
                   <Fragment key={`plugin-keymap-${name}`}>
-                    {keymaps.map(({ key, label }) => (
+                    {keymaps.map(({key, label}) => (
                       <Option key={`option-key-${key}`}>
                         <span>{label}</span>
                         <span>{formatKey(key)}</span>

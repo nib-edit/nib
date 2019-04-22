@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import Editor from "nib-core";
 
 /**
- * @visibleName 1. Basic
+ * @visibleName 2. Basic
  */
 class Basic extends Component {
   state = {
@@ -10,17 +10,17 @@ class Basic extends Component {
   };
 
   onChange = content => {
-    this.setState({ content });
+    this.setState({content});
   };
 
   render() {
-    const { content } = this.state;
+    const {content} = this.state;
     return (
       <div>
         <Editor
           config={{
-            plugins: { options: "" },
-            toolbar: { options: "" }
+            plugins: {options: ""},
+            toolbar: {options: ""}
           }}
           onChange={this.onChange}
         />

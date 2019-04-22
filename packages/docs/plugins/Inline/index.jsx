@@ -2,15 +2,15 @@ import React from "react";
 import Editor from "nib-core";
 
 /**
- * @visibleName 2. Inline
+ * @visibleName 5. Inline
  */
 const InlinePlugin = () => (
   <Editor
     config={{
-      plugins: { options: "inline" },
+      plugins: {options: "inline"},
       toolbar: {
         options: "top",
-        top: { options: "inline" }
+        top: {options: "inline"}
       }
     }}
   />

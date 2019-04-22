@@ -29,8 +29,8 @@ const customTheme = {
     backgroundColor: "#757575"
   },
   blockSelect: {
-    "&:hover": { backgroundColor: "#EEEEEE" },
-    "&:selected": { backgroundColor: "#E0E0E0" }
+    "&:hover": {backgroundColor: "#EEEEEE"},
+    "&:selected": {backgroundColor: "#E0E0E0"}
   },
   button: {
     toolbar: {
@@ -45,7 +45,7 @@ const customTheme = {
 };
 
 /**
- * @visibleName 4. Themed
+ * @visibleName 6. Themed
  */
 const Themed = () => (
   <Editor

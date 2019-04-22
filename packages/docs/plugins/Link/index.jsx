@@ -2,15 +2,15 @@ import React from "react";
 import Editor from "nib-core";
 
 /**
- * @visibleName 4. Link
+ * @visibleName 6. Link
  */
 const LinkPlugin = () => (
   <Editor
     config={{
-      plugins: { options: "link" },
+      plugins: {options: "link"},
       toolbar: {
         options: "top",
-        top: { options: "link" }
+        top: {options: "link"}
       }
     }}
   />

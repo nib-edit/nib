@@ -16,7 +16,6 @@
     "name": "Jyoti Puri",
     "email": "jyotipuri@gmail.com"
   },
-  "license": "MIT",
   "homepage": "https://github.com/jpuri/Nib/tree/master/packages/core#Readme.md",
   "dependencies": {
     "@emotion/core": "^10.0.4",

@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import Editor from "nib-core";
 
 /**
- * @visibleName 2. BlockInline
+ * @visibleName 3. Block inline
  */
 class BlockInline extends Component {
   state = {
@@ -10,17 +10,17 @@ class BlockInline extends Component {
   };
 
   onChange = content => {
-    this.setState({ content });
+    this.setState({content});
   };
 
   render() {
-    const { content } = this.state;
+    const {content} = this.state;
     return (
       <div>
         <Editor
           config={{
-            plugins: { options: "block inline list" },
-            toolbar: { options: "top", top: { options: "block inline list" } }
+            plugins: {options: "block inline list"},
+            toolbar: {options: "top", top: {options: "block inline list"}}
           }}
           onChange={this.onChange}
         />

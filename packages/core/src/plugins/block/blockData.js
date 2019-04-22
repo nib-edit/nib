@@ -6,7 +6,7 @@ export const blockData = [
     value: {
       blockType: "paragraph",
       tag: "p",
-      keymap: formatKeymap({key: "mod-alt-0"})
+      keymap: formatKeymap({key: KeymapInfo.p.key})
     },
     label: "Normal"
   },
@@ -14,7 +14,7 @@ export const blockData = [
     value: {
       blockType: "heading-1",
       tag: "h1",
-      keymap: formatKeymap({key: "mod-alt-1"})
+      keymap: formatKeymap({key: KeymapInfo.h1.key})
     },
     label: "Heading 1"
   },
@@ -22,7 +22,7 @@ export const blockData = [
     value: {
       blockType: "heading-2",
       tag: "h2",
-      keymap: formatKeymap({key: "mod-alt-2"})
+      keymap: formatKeymap({key: KeymapInfo.h2.key})
     },
     label: "Heading 2"
   },
@@ -30,7 +30,7 @@ export const blockData = [
     value: {
       blockType: "heading-3",
       tag: "h3",
-      keymap: formatKeymap({key: "mod-alt-3"})
+      keymap: formatKeymap({key: KeymapInfo.h3.key})
     },
     label: "Heading 3"
   },
@@ -38,7 +38,7 @@ export const blockData = [
     value: {
       blockType: "heading-4",
       tag: "h4",
-      keymap: formatKeymap({key: "mod-alt-4"})
+      keymap: formatKeymap({key: KeymapInfo.h4.key})
     },
     label: "Heading 4"
   },
@@ -46,7 +46,7 @@ export const blockData = [
     value: {
       blockType: "heading-5",
       tag: "h5",
-      keymap: formatKeymap({key: "mod-alt-5"})
+      keymap: formatKeymap({key: KeymapInfo.h5.key})
     },
     label: "Heading 5"
   },
@@ -54,7 +54,7 @@ export const blockData = [
     value: {
       blockType: "heading-6",
       tag: "h6",
-      keymap: formatKeymap({key: "mod-alt-6"})
+      keymap: formatKeymap({key: KeymapInfo.h6.key})
     },
     label: "Heading 6"
   }
