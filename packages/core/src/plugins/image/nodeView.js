@@ -16,10 +16,10 @@ export default class ImageView {
       this.div2.style = `height: 10px; width: 10px; position: absolute;right: 0px;top: 0px; background-color: #065FD4;`;
       this.dom.appendChild(this.div2);
       this.div3 = document.createElement("div");
-      this.div3.style = `height: 10px; width: 10px; position: absolute;left: 0px;bottom: 0px; background-color: #065FD4;`;
+      this.div3.style = `height: 10px; width: 10px; position: absolute;left: 0px;bottom: 5px; background-color: #065FD4;`;
       this.dom.appendChild(this.div3);
       this.div4 = document.createElement("div");
-      this.div4.style = `height: 10px; width: 10px; position: absolute;right: 0px;bottom: 0px; background-color: #065FD4;`;
+      this.div4.style = `height: 10px; width: 10px; position: absolute;right: 0px;bottom: 5px; background-color: #065FD4;`;
       this.dom.appendChild(this.div4);
       e.stopPropagation();
     });
