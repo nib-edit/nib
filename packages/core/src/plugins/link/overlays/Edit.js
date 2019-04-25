@@ -1,10 +1,10 @@
-import React, { PureComponent } from "react";
+import React, {PureComponent} from "react";
 import styled from "@emotion/styled";
-import { TextSelection } from "prosemirror-state";
-import { LinkButton, Input, Modal, Separator } from "nib-ui";
-import { linkPluginKey } from "../plugin";
+import {TextSelection} from "prosemirror-state";
+import {LinkButton, Input, Overlay, Separator} from "nib-ui";
+import {linkPluginKey} from "../plugin";
 
-class EditModal extends PureComponent {
+class EditOverlay extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,14 +20,14 @@ class EditModal extends PureComponent {
   };
 
   getLink = () => {
-    const { view: { state } = {} } = this.props;
+    const {view: {state} = {}} = this.props;
     if (!state) return;
     const pluginState = linkPluginKey.getState(state);
     return pluginState && pluginState.link;
   };
 
   getActiveLinkMark = () => {
-    const { view } = this.props;
+    const {view} = this.props;
     if (!view) return;
     const link = this.getLink();
     if (!link) return;
@@ -37,7 +37,7 @@ class EditModal extends PureComponent {
   updateLink = () => {
     const link = this.getLink();
     const {
-      view: { state, dispatch }
+      view: {state, dispatch}
     } = this.props;
     dispatch(
       state.tr
@@ -45,35 +45,35 @@ class EditModal extends PureComponent {
         .addMark(
           link.from,
           link.to,
-          state.schema.marks.link.create({ href: this.state.href })
+          state.schema.marks.link.create({href: this.state.href})
         )
         .setSelection(new TextSelection(state.doc.resolve(link.to)))
     );
-    this.closeModal();
+    this.closeOverlay();
   };
 
   unLink = () => {
     const link = this.getLink();
-    const { view } = this.props;
-    const { state, dispatch } = view;
+    const {view} = this.props;
+    const {state, dispatch} = view;
     dispatch(state.tr.removeMark(link.from, link.to, state.schema.marks.link));
     view.focus();
-    this.closeModal();
+    this.closeOverlay();
   };
 
-  closeModal = () => {
-    const { view } = this.props;
-    const { state, dispatch } = view;
+  closeOverlay = () => {
+    const {view} = this.props;
+    const {state, dispatch} = view;
     dispatch(state.tr.setMeta("HIDE_EDIT_LINK_TOOLBAR", true));
   };
 
   render() {
     const link = this.getLink();
     if (!link) return null;
-    const { editorWrapper, marker } = this.props;
+    const {editorWrapper, marker} = this.props;
     return (
-      <Modal
-        closeModal={this.closeModal}
+      <Overlay
+        closeOverlay={this.closeOverlay}
         editorWrapper={editorWrapper}
         marker={marker}
         render={() => (
@@ -96,7 +96,7 @@ class EditModal extends PureComponent {
 
 export default {
   elmClassName: "nib-edit-link-marker",
-  component: EditModal
+  component: EditOverlay
 };
 
 const LinkPopup = styled.div`

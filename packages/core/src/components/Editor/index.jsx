@@ -3,6 +3,7 @@ import React, {Component} from "react";
 import {ThemeProvider} from "emotion-theming";
 
 import ModalHandler from "../ModalHandler";
+import OverlayHandler from "../OverlayHandler";
 import Toolbar from "../Toolbar";
 import {AppStateWrapper} from "../../common/app-state";
 import {deepMerge} from "../../common/utils/deep-merge";
@@ -13,7 +14,6 @@ import InnerEditor from "./editor";
 import {Wrapper} from "./style";
 import {blockStyles} from "./blockStyles";
 import {theme} from "./theme";
-import OverlayHandler from "../OverlayHandler";
 
 class Editor extends Component {
   constructor(props) {
@@ -42,8 +42,8 @@ class Editor extends Component {
     const {toolbar, plugins} = this.config;
     const inlineToolbarPresent = toolbar.options.indexOf("inline") >= 0;
     const topToolbarPresent = toolbar.options.indexOf("top") >= 0;
-    const modals = getPropertyFromPliguns(plugins.options, "modals");
     const overlays = getPropertyFromPliguns(plugins.options, "overlays");
+    const modals = getPropertyFromPliguns(plugins.options, "modals");
     return (
       <AppStateWrapper
         render={app_params => (
@@ -60,14 +60,14 @@ class Editor extends Component {
                 {inlineToolbarPresent && (
                   <Toolbar.inline editorWrapper={this.editorWrapper} />
                 )}
-                <ModalHandler
-                  editorWrapper={this.editorWrapper}
-                  modals={modals}
-                  view={app_params.view}
-                />
                 <OverlayHandler
                   editorWrapper={this.editorWrapper}
                   overlays={overlays}
+                  view={app_params.view}
+                />
+                <ModalHandler
+                  editorWrapper={this.editorWrapper}
+                  modals={modals}
                   view={app_params.view}
                 />
               </Wrapper>

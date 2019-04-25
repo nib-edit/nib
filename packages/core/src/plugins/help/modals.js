@@ -1,6 +1,6 @@
 import React, {PureComponent, Fragment} from "react";
 import styled from "@emotion/styled";
-import {Icons, Overlay} from "nib-ui";
+import {Icons, Modal} from "nib-ui";
 
 import {ConfigContext} from "../../common/config";
 import {getKeymapInfo} from "../../common/editor-helpers";
@@ -20,25 +20,25 @@ const formatKey = key => {
   return formattedKey;
 };
 
-class HelpOverlay extends PureComponent {
+class HelpModal extends PureComponent {
   static contextType = ConfigContext;
 
-  hideHelpOverlay = () => {
+  hideHelpModal = () => {
     const {state, dispatch} = this.props.view;
-    dispatch(state.tr.setMeta("HIDE_HELP_OVERLAY", true));
+    dispatch(state.tr.setMeta("HIDE_HELP_MODAL", true));
   };
 
   render() {
     const {plugins} = this.context.config;
     const pluginKeymaps = getKeymapInfo(plugins.options);
     return (
-      <Overlay
-        hideOverlay={this.hideHelpOverlay}
+      <Modal
+        hideModal={this.hideHelpModal}
         render={() => (
           <Wrapper onClick={this.stopPropagation}>
             <Header>
               <Title>Help</Title>
-              <StyledCross onClick={this.hideHelpOverlay} />
+              <StyledCross onClick={this.hideHelpModal} />
             </Header>
             <MainSection>
               <OptionWrapper>
@@ -112,7 +112,7 @@ export default [
       const pluginState = helpPluginKey.getState(state);
       return pluginState && pluginState.helpVisible;
     },
-    component: HelpOverlay
+    component: HelpModal
   }
 ];
 

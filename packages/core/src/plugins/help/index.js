@@ -1,5 +1,5 @@
-import keymaps, { KeymapInfo } from "./keymaps";
-import overlays from "./overlays";
+import keymaps, {KeymapInfo} from "./keymaps";
+import modals from "./modals";
 import plugin from "./plugin";
 import toolbarComponent from "./ToolbarComponent";
 
@@ -7,7 +7,7 @@ export default {
   name: "help",
   KeymapInfo,
   keymaps,
-  overlays,
+  modals,
   plugin,
   toolbarComponent
 };

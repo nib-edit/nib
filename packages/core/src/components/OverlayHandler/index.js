@@ -1,22 +1,32 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 
 class OverlayHandler extends Component {
   getVisibleOverlay = () => {
-    const { overlays, view } = this.props;
+    const {overlays} = this.props;
     for (let i = 0; i < overlays.length; i++) {
       const overlay = overlays[i];
-      if (overlay.condition(view.state)) {
-        return overlay.component;
+      const marker = document.getElementsByClassName(overlay.elmClassName);
+      if (marker[0]) {
+        return {
+          marker: marker[0],
+          OverlayComponent: overlay.component
+        };
       }
     }
   };
 
   render() {
-    const { view } = this.props;
-    if (!view) return null;
-    const VisibleOverlay = this.getVisibleOverlay();
-    if (!VisibleOverlay) return null;
-    return <VisibleOverlay view={view} />;
+    const visibleOverlay = this.getVisibleOverlay();
+    if (!visibleOverlay) return null;
+    const {view, editorWrapper} = this.props;
+    const {OverlayComponent, marker} = visibleOverlay;
+    return (
+      <OverlayComponent
+        view={view}
+        editorWrapper={editorWrapper}
+        marker={marker}
+      />
+    );
   }
 }
 

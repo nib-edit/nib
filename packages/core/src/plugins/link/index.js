@@ -1,8 +1,8 @@
-import keymaps, { KeymapInfo } from "./keymaps";
+import keymaps, {KeymapInfo} from "./keymaps";
 import toolbarComponent from "./ToolbarComponent";
 import plugin from "./plugin";
 import schema from "./schema";
-import modals from "./modals";
+import overlays from "./overlays";
 
 export default {
   name: "link",
@@ -11,5 +11,5 @@ export default {
   toolbarComponent,
   plugin,
   schema,
-  modals
+  overlays
 };

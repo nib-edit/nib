@@ -1,31 +1,31 @@
-import React, { Component, Fragment } from "react";
+import React, {Component, Fragment} from "react";
 import styled from "@emotion/styled";
-import { Modal, ToolbarSeparator } from "nib-ui";
+import {Overlay, ToolbarSeparator} from "nib-ui";
 
-import { AppStateWrapper } from "../../../common/app-state";
-import { getToolbarOptions } from "../../../common/editor-helpers";
-import { ConfigContext } from "../../../common/config";
+import {AppStateWrapper} from "../../../common/app-state";
+import {getToolbarOptions} from "../../../common/editor-helpers";
+import {ConfigContext} from "../../../common/config";
 
 class Inline extends Component {
   static contextType = ConfigContext;
 
-  closeModal = () => {
-    const { view } = this.props.app_params;
-    const { state, dispatch } = view;
-    dispatch(state.tr.setMeta("HIDE_MODALS", true));
+  closeOverlay = () => {
+    const {view} = this.props.app_params;
+    const {state, dispatch} = view;
+    dispatch(state.tr.setMeta("HIDE_OVERLAYS", true));
   };
 
   render() {
-    const { editorWrapper, app_params } = this.props;
-    const { inline: inlineConfig } = this.context.config.toolbar;
+    const {editorWrapper, app_params} = this.props;
+    const {inline: inlineConfig} = this.context.config.toolbar;
     const options = getToolbarOptions(inlineConfig.options);
     const optionSize = options.length;
     const selMarker = document.getElementsByClassName("nib-selected");
     return (
       <div>
         {selMarker[0] ? (
-          <Modal
-            closeModal={this.closeModal}
+          <Overlay
+            closeOverlay={this.closeOverlay}
             editorWrapper={editorWrapper}
             marker={selMarker[0]}
             render={() => (
@@ -59,26 +59,26 @@ const Wrapper = styled.div`
   display: flex;
   position: relative;
 
-  background-color: ${({ theme }) => theme.toolbar.inline.backgroundColor};
-  color: ${({ theme }) => theme.toolbar.inline.color};
+  background-color: ${({theme}) => theme.toolbar.inline.backgroundColor};
+  color: ${({theme}) => theme.toolbar.inline.color};
 
-  border-bottom: ${({ theme }) => theme.toolbar.inline.borderBottom};
-  border-left: ${({ theme }) => theme.toolbar.inline.borderLeft};
-  border-right: ${({ theme }) => theme.toolbar.inline.borderRight};
-  border-top: ${({ theme }) => theme.toolbar.inline.borderTop};
+  border-bottom: ${({theme}) => theme.toolbar.inline.borderBottom};
+  border-left: ${({theme}) => theme.toolbar.inline.borderLeft};
+  border-right: ${({theme}) => theme.toolbar.inline.borderRight};
+  border-top: ${({theme}) => theme.toolbar.inline.borderTop};
 
-  border-bottom-left-radius: ${({ theme }) =>
+  border-bottom-left-radius: ${({theme}) =>
     theme.toolbar.inline.borderBottomLeftRadius};
-  border-bottom-right-radius: ${({ theme }) =>
+  border-bottom-right-radius: ${({theme}) =>
     theme.toolbar.inline.borderBottomLeftRadius};
-  border-top-left-radius: ${({ theme }) =>
+  border-top-left-radius: ${({theme}) =>
     theme.toolbar.inline.borderTopLeftRadius};
-  border-top-right-radius: ${({ theme }) =>
+  border-top-right-radius: ${({theme}) =>
     theme.toolbar.inline.borderTopLeftRadius};
 
-  padding: ${({ theme }) => theme.toolbar.inline.padding};
+  padding: ${({theme}) => theme.toolbar.inline.padding};
 
-  font-size: ${({ theme }) => theme.toolbar.inline.fontSize};
-  font-style: ${({ theme }) => theme.toolbar.inline.fontStyle};
-  font-family: ${({ theme }) => theme.toolbar.inline.fontFamily};
+  font-size: ${({theme}) => theme.toolbar.inline.fontSize};
+  font-style: ${({theme}) => theme.toolbar.inline.fontStyle};
+  font-family: ${({theme}) => theme.toolbar.inline.fontFamily};
 `;

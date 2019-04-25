@@ -169,7 +169,7 @@ export const theme = {
     height: "24px",
     margin: "0px 4px"
   },
-  modal: {
+  overlay: {
     arrowBorderColor: Color.border,
     backgroundColor: Color.white,
     borderBottom: `1px solid ${Color.border}`,
@@ -184,7 +184,7 @@ export const theme = {
     color: Color.text,
     fontWeight: "600"
   },
-  overlay: {
+  modal: {
     backgroundColor: Color.opaque,
     contentBoxShadow: BoxShadow,
     contentBorderRadius: "2px"
@@ -229,7 +229,7 @@ export const theme = {
       padding: "2px"
     }
   },
-  imageUploadOverlay: {
+  imageUploadModal: {
     backgroundColor: Color.gray1,
     borderActiveColor: Color.highlight,
     borderColor: Color.text,

@@ -1,40 +1,40 @@
-import React, { PureComponent } from "react";
+import React, {PureComponent} from "react";
 import styled from "@emotion/styled";
-import { Spinner, Overlay } from "nib-ui";
+import {Spinner, Modal} from "nib-ui";
 
-import { ConfigContext } from "../../common/config";
-import { imagePluginKey } from "./plugin";
+import {ConfigContext} from "../../common/config";
+import {imagePluginKey} from "./plugin";
 
 class UploadImage extends PureComponent {
   static contextType = ConfigContext;
 
-  state = { uploading: false };
+  state = {uploading: false};
 
   handleImageInputChange = event => {
-    const { files } = event.target;
+    const {files} = event.target;
     this.insertImage(files[0]);
   };
 
   insertImage = file => {
-    this.setState({ uploading: true });
-    const { uploadCallback } = this.context.config.plugins.image;
+    this.setState({uploading: true});
+    const {uploadCallback} = this.context.config.plugins.image;
     uploadCallback(file)
-      .then(({ link }) => {
-        this.setState({ uploading: false });
+      .then(({link}) => {
+        this.setState({uploading: false});
         if (!link) return;
-        const { state, dispatch } = this.props.view;
-        const { $from, $to } = state.selection;
-        const { image } = state.schema.nodes;
+        const {state, dispatch} = this.props.view;
+        const {$from, $to} = state.selection;
+        const {image} = state.schema.nodes;
         dispatch(
           state.tr.replaceRangeWith(
             $from.pos,
             $to.pos,
-            image.create({ src: link })
+            image.create({src: link})
           )
         );
       })
       .finally(() => {
-        this.hideImageOverlay();
+        this.hideImageModal();
       });
   };
 
@@ -46,7 +46,7 @@ class UploadImage extends PureComponent {
   // Check if property name is files or items, IE uses 'files' instead of 'items'
   onImageDrop = evt => {
     this.stopDefault(evt);
-    const { items, files } = evt.dataTransfer;
+    const {items, files} = evt.dataTransfer;
     let data = items || files;
     let dataIsItems = !!items;
     for (let i = 0; i < data.length; i++) {
@@ -60,16 +60,16 @@ class UploadImage extends PureComponent {
     }
   };
 
-  hideImageOverlay = () => {
-    const { state, dispatch } = this.props.view;
+  hideImageModal = () => {
+    const {state, dispatch} = this.props.view;
     dispatch(state.tr.setMeta("HIDE_IMAGE_TOOLBAR", true));
   };
 
   render() {
-    const { uploading } = this.state;
+    const {uploading} = this.state;
     return (
-      <Overlay
-        hideOverlay={this.hideImageOverlay}
+      <Modal
+        hideModal={this.hideImageModal}
         render={() => (
           <Wrapper onClick={this.stopPropagation}>
             <label htmlFor="file">
@@ -106,17 +106,17 @@ const Wrapper = styled.div`
 
 const UploadSection = styled.div`
   align-items: center;
-  background: ${({ theme }) => theme.imageUploadOverlay.backgroundColor};
+  background: ${({theme}) => theme.imageUploadModal.backgroundColor};
   border: 1px dashed
-    ${({ theme, uploading }) =>
+    ${({theme, uploading}) =>
       uploading
-        ? theme.imageUploadOverlay.backgroundColor.borderActiveColor
-        : theme.imageUploadOverlay.backgroundColor.borderColor};
+        ? theme.imageUploadModal.backgroundColor.borderActiveColor
+        : theme.imageUploadModal.backgroundColor.borderColor};
   display: flex;
   flex-direction: column;
-  height: ${({ theme }) => theme.imageUploadOverlay.height};
+  height: ${({theme}) => theme.imageUploadModal.height};
   justify-content: center;
-  width: ${({ theme }) => theme.imageUploadOverlay.width};
+  width: ${({theme}) => theme.imageUploadModal.width};
   > span {
     margin-bottom: 10px;
   }
@@ -133,7 +133,7 @@ const FileUploadInput = styled.input`
 
 const StyledSpinner = styled(Spinner)`
   margin-top: 10px;
-  visibility: ${({ uploading }) => (uploading ? "visible" : "hidden")};
+  visibility: ${({uploading}) => (uploading ? "visible" : "hidden")};
 `;
 
 export default [
