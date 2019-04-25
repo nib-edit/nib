@@ -1,5 +1,3 @@
-import * as test from "prosemirror-tables";
-
 const createCell = (cellType, cellContent) => {
   if (cellContent) return cellType.createChecked(null, cellContent);
   return cellType.createAndFill();
@@ -27,8 +25,8 @@ export const createTable = (state, dispatch) => {
   }
 
   const newTable = table.createChecked(null, rows);
-  const { selection, tr } = state;
-  const { $from, $to } = selection;
+  const {selection, tr} = state;
+  const {$from, $to} = selection;
   dispatch(tr.replaceWith($from.pos, $to.pos, newTable).scrollIntoView());
   return true;
 };

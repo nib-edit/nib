@@ -1,6 +1,6 @@
-import { DecorationSet, Decoration } from "prosemirror-view";
-import { Plugin, PluginKey } from "prosemirror-state";
-import { findParentNode } from "prosemirror-utils";
+import {DecorationSet, Decoration} from "prosemirror-view";
+import {Plugin, PluginKey} from "prosemirror-state";
+import {findParentNode} from "prosemirror-utils";
 
 export const tablePluginKey = new PluginKey("table");
 
@@ -13,10 +13,10 @@ export default new Plugin({
     },
     apply(_1, _2, _3, newState) {
       let decoration;
-      const { schema, selection } = newState;
-      const { table_cell, table_header } = schema.nodes;
+      const {schema, selection} = newState;
+      const {table_cell, table_header} = schema.nodes;
       const tableCell = findParentNode(
-        ({ type }) => type === table_cell || type === table_header
+        ({type}) => type === table_cell || type === table_header
       )(selection);
       if (tableCell) {
         decoration = DecorationSet.create(newState.doc, [
@@ -30,7 +30,7 @@ export default new Plugin({
           )
         ]);
       }
-      return { decoration };
+      return {decoration};
     }
   },
 
@@ -41,5 +41,3 @@ export default new Plugin({
     }
   }
 });
-
-// todo: fix undefined in theme styles

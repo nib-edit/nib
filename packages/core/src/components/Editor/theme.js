@@ -1,5 +1,4 @@
 import {StyleConstants} from "../../common/constants";
-import underline from "nib-schema/src/marks/underline";
 
 const {Color, FontSize, BoxShadow, Border} = StyleConstants;
 const auto = "auto";
@@ -236,5 +235,32 @@ export const theme = {
     borderColor: Color.text,
     height: "240px",
     wdith: "320px"
+  },
+  table: {
+    cell: {
+      menuIcon: {
+        color: Color.gray2,
+        height: 20,
+        width: 20,
+        "&:hover": `{
+          fill: ${Color.text}
+        }`
+      },
+      menuWrapper: {
+        border: Border,
+        backgroundColor: Color.white,
+        fontSize: FontSize.small,
+        borderRadius: "2px",
+        boxShadow: BoxShadow
+      },
+      menuOption: {
+        borderBottom: Border,
+        padding: "5px",
+        width: "150px",
+        "&:hover": `{
+          background-color: ${Color.gray1};
+        }`
+      }
+    }
   }
 };

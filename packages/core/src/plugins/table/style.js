@@ -41,3 +41,5 @@ export default `
     border: 1px solid rgba(158, 158, 158, 0.75)
   }
 `;
+
+// todo: make style configurable
