@@ -5,10 +5,10 @@ import {ThemeProvider} from "emotion-theming";
 import ModalHandler from "../ModalHandler";
 import OverlayHandler from "../OverlayHandler";
 import Toolbar from "../Toolbar";
-import {AppStateWrapper} from "../../common/app-state";
+import AppStateWrapper from "../../common/app-state/AppStateWrapper";
 import {deepMerge} from "../../common/utils/deep-merge";
 import {defaultConfig, ConfigContext} from "../../common/config";
-import {getPropertyFromPliguns} from "../../common/editor-helpers";
+import {getPropertyFromPliguns} from "../../common/editor-helpers/plugin-reducer";
 
 import InnerEditor from "./editor";
 import {Wrapper} from "./style";

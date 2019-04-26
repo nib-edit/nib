@@ -2,8 +2,8 @@ import React, {Component, Fragment} from "react";
 import styled from "@emotion/styled";
 import {Overlay, ToolbarSeparator} from "nib-ui";
 
-import {AppStateWrapper} from "../../../common/app-state";
-import {getToolbarOptions} from "../../../common/editor-helpers";
+import AppStateWrapper from "../../../common/app-state/AppStateWrapper";
+import {getToolbarOptions} from "../../../common/editor-helpers/toolbar-builder";
 import {ConfigContext} from "../../../common/config";
 
 class Inline extends Component {

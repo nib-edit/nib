@@ -1,4 +1,4 @@
-import {StyleConstants} from "../../common/constants";
+import StyleConstants from "../../common/constants/style_constants";
 
 const {Color, FontSize, BoxShadow, Border} = StyleConstants;
 const auto = "auto";

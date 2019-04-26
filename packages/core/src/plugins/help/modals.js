@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import {Icons, Modal} from "nib-ui";
 
 import {ConfigContext} from "../../common/config";
-import {getKeymapInfo} from "../../common/editor-helpers";
+import {getKeymapInfo} from "../../common/editor-helpers/keymap-info";
 import {getOS} from "../../common/utils/device";
 import {helpPluginKey} from "./plugin";
 

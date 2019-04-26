@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 import {Icons} from "nib-ui";
 
-import {AppStateWrapper} from "../../../common/app-state";
+import AppStateWrapper from "../../../common/app-state/AppStateWrapper";
 import MenuDropdown from "./CellMenuDropdown";
 
 class CellMenu extends Component {
