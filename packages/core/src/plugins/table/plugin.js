@@ -11,7 +11,9 @@ export default new Plugin({
     init: () => {
       return {};
     },
-    apply(_1, _2, _3, newState) {
+    apply(tr, _2, _3, newState) {
+      let editorHasFocus = tr.getMeta("EDITOR_FOCUSED");
+      if (editorHasFocus === false) return {};
       let decoration;
       const {schema, selection} = newState;
       const {table_cell, table_header} = schema.nodes;

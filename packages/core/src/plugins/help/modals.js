@@ -115,5 +115,3 @@ export default [
     component: HelpModal
   }
 ];
-
-// todo: table cell menu to go away on editor blur.

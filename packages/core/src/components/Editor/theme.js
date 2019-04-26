@@ -261,6 +261,7 @@ export const theme = {
           background-color: ${Color.gray1};
         }`
       }
-    }
+    },
+    border: Border
   }
 };
