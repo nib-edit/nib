@@ -1,8 +1,9 @@
 const pDOM = ["br", 0];
 
 const hard_break = {
-  content: "",
-  group: "block",
+  inline: true,
+  group: "inline",
+  selectable: false,
   parseDOM: [{ tag: "br" }],
   toDOM() {
     return pDOM;
