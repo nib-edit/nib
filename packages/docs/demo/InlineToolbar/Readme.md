@@ -7,7 +7,7 @@ Editor with inline toolbar which is visible only when there is selection.
 Code:
 
 ```js static
-import React, { Component } from "react";
+import React from "react";
 import Editor from "nib-core";
 
 const defaultValue = {
@@ -31,48 +31,31 @@ const defaultValue = {
   ]
 };
 
-class InlineToolbar extends Component {
-  state = {
-    content: defaultValue
-  };
-
-  onChange = content => {
-    this.setState({ content });
-  };
-
-  render() {
-    const { content } = this.state;
-    return (
-      <div spellCheck={false}>
-        <Editor
-          config={{
-            plugins: { options: "block inline link" },
-            toolbar: {
-              options: "inline",
-              inline: {
-                options: "block inline link",
-                block: { options: "p h1 h2", grouped: false }
-              }
+const InlineToolbar = () => {
+  return (
+    <div spellCheck={false}>
+      <Editor
+        config={{
+          plugins: {options: "block inline link"},
+          toolbar: {
+            options: "inline",
+            inline: {
+              options: "block inline link",
+              block: {options: "p h1 h2", grouped: false}
             }
-          }}
-          defaultValue={defaultValue}
-          onChange={this.onChange}
-          theme={{
-            wrapper: {
-              borderTop: "none",
-              borderBottom: "none",
-              borderLeft: "none",
-              borderRight: "none"
-            }
-          }}
-        />
-        <pre style={{ whiteSpace: "pre-wrap" }}>
-          {JSON.stringify(content, null, 4)}
-        </pre>
-      </div>
-    );
-  }
-}
-
-export default InlineToolbar;
+          }
+        }}
+        defaultValue={defaultValue}
+        theme={{
+          wrapper: {
+            borderTop: "none",
+            borderBottom: "none",
+            borderLeft: "none",
+            borderRight: "none"
+          }
+        }}
+      />
+    </div>
+  );
+};
 ```

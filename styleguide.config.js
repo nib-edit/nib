@@ -31,9 +31,7 @@ module.exports = {
         "packages/docs/plugins/Inline/index.jsx",
         "packages/docs/plugins/Link/index.jsx",
         "packages/docs/plugins/List/index.jsx",
-        "packages/docs/plugins/Table/index.jsx",
-        "packages/docs/Introduction/TopBar.jsx",
-        "packages/docs/Introduction/Inline.jsx"
+        "packages/docs/plugins/Table/index.jsx"
       ]
     },
     {
@@ -42,13 +40,16 @@ module.exports = {
       sectionDepth: 1,
       content: "packages/docs/demo/Readme.md",
       components: [
-        "packages/docs/demo/FullFeatured/index.jsx",
         "packages/docs/demo/Basic/index.jsx",
         "packages/docs/demo/BlockInline/index.jsx",
+        "packages/docs/demo/FullFeatured/index.jsx",
         "packages/docs/demo/ConvertToHTML/index.jsx",
         "packages/docs/demo/InlineToolbar/index.jsx",
         "packages/docs/demo/Themed/index.jsx"
       ]
+    },
+    {
+      components: ["packages/docs/Introduction/TopBar.jsx"]
     }
   ],
   exampleMode: "hide",
@@ -60,7 +61,7 @@ module.exports = {
     color: {
       base: "#212121",
       link: "#880061",
-      linkHover: "#89a6b7",
+      linkHover: "#eceff1",
       sidebarBackground: "#880061"
     },
     fontFamily: {

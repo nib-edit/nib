@@ -16,7 +16,7 @@ const styles = ({color, fontFamily, fontSize}) => ({
   },
   heading2: {
     fontSize: "36px",
-    margin: "16px 0"
+    marginTop: 16
   },
   heading3: {
     fontSize: fontSize.h3

@@ -1,33 +1,23 @@
-import React, {Component} from "react";
+import React, {useState} from "react";
 import Editor from "nib-core";
 
 /**
- * @visibleName 2. Basic
+ * @visibleName 1. Basic
  */
-class Basic extends Component {
-  state = {
-    content: {}
-  };
-
-  onChange = content => {
-    this.setState({content});
-  };
-
-  render() {
-    const {content} = this.state;
-    return (
-      <div>
-        <Editor
-          config={{
-            plugins: {options: ""},
-            toolbar: {options: ""}
-          }}
-          onChange={this.onChange}
-        />
-        <pre>{JSON.stringify(content, null, 4)}</pre>
-      </div>
-    );
-  }
-}
+const Basic = () => {
+  const [content, setContent] = useState({});
+  return (
+    <div>
+      <Editor
+        config={{
+          plugins: {options: ""},
+          toolbar: {options: ""}
+        }}
+        onChange={setContent}
+      />
+      <pre>{JSON.stringify(content, null, 4)}</pre>
+    </div>
+  );
+};
 
 export default Basic;

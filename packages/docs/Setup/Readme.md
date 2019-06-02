@@ -1,16 +1,20 @@
-Setup of the editor is quite straight forward. It is required to be installed from `npm`.
+### Installing package
 
-### Installing packages:
+<br />
+<br />
 
-Either `npm` or `yarn` commands can be used.
+Package can be installed from npm or yarn
 
 ```js static
 npm i nib-core --save
+yarn add nib-core
 ```
 
----
+<br />
+<br />
+<br />
 
-### Writing editor component:
+### Writing editor component
 
 ```js static
 import React from "react";
@@ -19,17 +23,23 @@ import Editor from "nib-core";
 const MyEditor = () => <Editor />;
 ```
 
----
+<br />
+<br />
+<br />
 
-### Using the editor in a non-react application:
+### Using nib editor in a non-react application
 
-The above written react editor component can be used in non-react code as below:
+Nib editor component can be used in non-react code as below:
+
+<br />
 
 HTML:
 
 ```html static
 <div id="editor" />
 ```
+
+<br />
 
 JAVASCRIPT:
 
@@ -40,3 +50,5 @@ import ReactDOM from "react-dom";
 const MyEditor = () => <Editor />;
 ReactDOM.render(<MyEditor />, document.getElementById("editor"));
 ```
+
+<br />

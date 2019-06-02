@@ -76,15 +76,7 @@ export function StyleGuideRenderer({
 }) {
   return (
     <div className={cx(classes.root, hasSidebar && classes.hasSidebar)}>
-      <main className={classes.content}>
-        {children}
-        <footer className={classes.footer}>
-          <Markdown
-            text={`Icons used in the editor have been takes from [Material Design](https://material.io/tools/icons/?style=sharp).
-              Document created with [React Styleguidist](${homepageUrl})`}
-          />
-        </footer>
-      </main>
+      <main className={classes.content}>{children}</main>
       {hasSidebar && (
         <div className={classes.sidebar}>
           <header className={classes.logo}>

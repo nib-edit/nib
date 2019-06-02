@@ -17,8 +17,8 @@
     "react-select": "^2.1.2"
   },
   "devDependencies": {
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
+    "react": "next",
+    "react-dom": "next",
     "emotion-theming": "^10.0.4",
     "prop-types": "^15.6.2"
   }

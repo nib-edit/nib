@@ -19,7 +19,7 @@ const styles = ({color, fontFamily, fontSize}) => ({
     "& a": {
       color: "white !important",
       "&:hover": {
-        color: "#89a6b7 !important",
+        color: "#eceff1 !important",
         cursor: "pointer"
       }
     }
@@ -59,7 +59,7 @@ const styles = ({color, fontFamily, fontSize}) => ({
 export function TableOfContentsRenderer({classes, children}) {
   return (
     <div className={classes.wrapper}>
-      <div style={{margin: "20px 0"}}>
+      <div style={{margin: "12px 0"}}>
         <nav>{children}</nav>
         <nav className={classes.github}>
           <a

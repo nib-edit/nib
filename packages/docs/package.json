@@ -13,8 +13,8 @@
     "classnames": "^2.2.6",
     "nib-core": "0.3.2",
     "nib-converter": "0.1.1",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
+    "react": "next",
+    "react-dom": "next",
     "url-loader": "^1.1.2"
   },
   "devDependencies": {

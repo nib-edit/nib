@@ -7,34 +7,22 @@ Basic editor with only text editing enabled.
 Code:
 
 ```js static
-import React, { Component } from "react";
+import React, {useState} from "react";
 import Editor from "nib-core";
 
-class Basic extends Component {
-  state = {
-    content: {}
-  };
-
-  onChange = content => {
-    this.setState({ content });
-  };
-
-  render() {
-    const { content } = this.state;
-    return (
-      <div>
-        <Editor
-          config={{
-            plugins: { options: "" },
-            toolbar: { options: "" }
-          }}
-          onChange={this.onChange}
-        />
-        <pre>{JSON.stringify(content, null, 4)}</pre>
-      </div>
-    );
-  }
-}
-
-export default Basic;
+const Basic = () => {
+  const [content, setContent] = useState({});
+  return (
+    <div>
+      <Editor
+        config={{
+          plugins: {options: ""},
+          toolbar: {options: ""}
+        }}
+        onChange={setContent}
+      />
+      <pre>{JSON.stringify(content, null, 4)}</pre>
+    </div>
+  );
+};
 ```

@@ -7,30 +7,27 @@ Editor with all top toolbar options enabled.
 Code:
 
 ```js static
-import React, { PureComponent } from "react";
+import React, {useState} from "react";
 import Editor from "nib-core";
 
 import uploadCallback from "../../common/uploadCallback";
 
-class FullFeatured extends PureComponent {
-  render() {
-    return (
+const FullFeatured = () => {
+  const [content, setContent] = useState({});
+  return (
+    <div>
       <Editor
         config={{
           plugins: {
             image: {
               uploadCallback
             }
-          },
-          toolbar: {
-            options: "top"
           }
         }}
-        onChange={this.onChange}
+        onChange={setContent}
       />
-    );
-  }
-}
-
-export default FullFeatured;
+      <pre>{JSON.stringify(content, null, 4)}</pre>
+    </div>
+  );
+};
 ```

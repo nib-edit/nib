@@ -8,16 +8,16 @@ export const defaultConfig = {
     }
   },
   toolbar: {
-    options: "top inline",
+    options: "top",
     top: {
       options: "block inline link list image table history help",
-      block: { options: "p h1 h2 h3 h4 h5 h6", grouped: true },
-      inline: { options: "strong em underline strike subsup" }
+      block: {options: "p h1 h2 h3 h4 h5 h6", grouped: true},
+      inline: {options: "strong em underline strike subsup"}
     },
     inline: {
-      options: "block inline",
-      block: { options: "p h1 h2", grouped: false },
-      inline: { options: "strong em underline" }
+      options: "block inline link list image",
+      block: {options: "p h1 h2 h3"},
+      inline: {options: "strong em underline"}
     }
   }
 };

@@ -16,3 +16,9 @@ Some distinguishing features of the editor are:
 - Support for inline toolbar [demo](https://jpuri.github.io/Nib/#/Demo/InlineToolbar)
 - Support to convert prosemirror JSON to HTML
 - Support of theming [demo](https://jpuri.github.io/Nib/#/Demo/Themed)
+
+<br>
+
+<span style="font-size: 12px;">
+  Icons used in the editor have been takes from [Material Design](https://material.io/tools/icons/?style=sharp).Document created with [React Styleguidist](https://react-styleguidist.js.org/).
+</span>
