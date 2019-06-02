@@ -56,10 +56,14 @@ module.exports = {
   pagePerSection: true,
   theme: {
     color: {
-      base: "#304957",
-      link: "#89a6b7",
+      base: "#212121",
+      link: "#880061",
       linkHover: "#89a6b7",
-      sidebarBackground: "#304957"
+      sidebarBackground: "#880061"
+    },
+    fontFamily: {
+      base: ['"Roboto"', "sans-serif"],
+      monospace: ["Consolas", '"Liberation Mono"', "Menlo", "monospace"]
     }
   },
   getComponentPathLine() {
@@ -70,6 +74,10 @@ module.exports = {
     TableOfContentsRenderer: path.join(
       __dirname,
       "packages/docs/styleguide/TableOfContentsRenderer"
+    ),
+    HeadingRenderer: path.join(
+      __dirname,
+      "packages/docs/styleguide/HeadingRenderer"
     )
   },
   webpackConfig: {

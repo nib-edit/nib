@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Styled from "rsg-components/Styled";
 import pen from "./pen.svg";
 
-const styles = ({ fontFamily, color }) => ({
+const styles = ({fontFamily, color}) => ({
   logo: {
     margin: 0,
     fontFamily: fontFamily.base,
@@ -22,12 +22,12 @@ const styles = ({ fontFamily, color }) => ({
     cursor: "pointer"
   }
 });
-export function LogoRenderer({ classes }) {
+export function LogoRenderer({classes}) {
   return (
     <h1 className={classes.logo}>
       <a className={classes.link} href="">
         <img className={classes.image} src={pen} />
-        <span>Nib</span>
+        <span style={{fontSize: 24, marginLeft: 8}}>Nib</span>
       </a>
     </h1>
   );
