@@ -6,7 +6,7 @@ const Color = {
   gray2: "#9E9E9E",
   gray3: "#BDBDBD",
   grayText: "#616161",
-  lightBorder: "#EbBCF0",
+  lightBorder: "rgba(201,201,201,0.75)",
   text: "#212121",
   white: "#FFFFFF",
   opaque: "rgba(0, 0, 0, 0.25)"
@@ -28,4 +28,4 @@ const BoxShadow = `${Color.boxShadow} 0px 2px 8px -2px,${
   Color.boxShadow
 } 0px 0px 1px`;
 
-export default { Color, FontSize, DisabledStyle, Border, BoxShadow };
+export default {Color, FontSize, DisabledStyle, Border, BoxShadow};

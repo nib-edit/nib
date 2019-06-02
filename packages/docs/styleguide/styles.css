@@ -94,3 +94,6 @@ html,
 body {
   font-family: "Roboto", sans-serif;
 }
+header {
+  margin-bottom: 0 !important;
+}

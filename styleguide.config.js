@@ -31,7 +31,9 @@ module.exports = {
         "packages/docs/plugins/Inline/index.jsx",
         "packages/docs/plugins/Link/index.jsx",
         "packages/docs/plugins/List/index.jsx",
-        "packages/docs/plugins/Table/index.jsx"
+        "packages/docs/plugins/Table/index.jsx",
+        "packages/docs/Introduction/TopBar.jsx",
+        "packages/docs/Introduction/Inline.jsx"
       ]
     },
     {
@@ -78,6 +80,10 @@ module.exports = {
     HeadingRenderer: path.join(
       __dirname,
       "packages/docs/styleguide/HeadingRenderer"
+    ),
+    StyleGuideRenderer: path.join(
+      __dirname,
+      "packages/docs/styleguide/StyleGuideRenderer"
     )
   },
   webpackConfig: {

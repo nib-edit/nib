@@ -1,15 +1,18 @@
-Despite various options available for rich text editing in html, it continues to be extremely challenging area. I found [prosemirror](http://prosemirror.net) to be one of the best available solutions for the problem. It is great work by author [Marijn Haverbeke](http://marijnhaverbeke.nl/).
-
-Making an editor ground up from a framework is still much work, the project aims at building components for rich text editing using prosemirror. These components can be quickly integrated into react or even ron-react applications.
-
-If you have any further queries or require any help you can [email](mailto::jyotipuri@gmail.com) me.
-
-<br>
-<br>
+Nib is an elegant, simple and light-weight text editor.
 
 ```js
-<FullFeatured />
+<TopBar />
 ```
 
-Icons used in the editor have been takes from [Material Design](https://material.io/tools/icons/?style=sharp).
+Nib is built on top of [prosemirror](http://prosemirror.net), a framework for text editor. It is great work by author [Marijn Haverbeke](http://marijnhaverbeke.nl/).
+
 <br>
+
+Some distinguishing features of the editor are:
+
+- Many rich text styling options
+- Support for images
+- Support for tables
+- Support for inline toolbar [demo](https://jpuri.github.io/Nib/#/Demo/InlineToolbar)
+- Support to convert prosemirror JSON to HTML
+- Support of theming [demo](https://jpuri.github.io/Nib/#/Demo/Themed)
