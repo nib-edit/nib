@@ -13,9 +13,9 @@ Some distinguishing features of the editor are:
 - Many rich text styling options
 - Support for images
 - Support for tables
-- Support for inline toolbar [demo](https://jpuri.github.io/Nib/#/Demo/InlineToolbar)
+- Support for inline toolbar [demo](/Demo/InlineToolbar)
 - Support to convert prosemirror JSON to HTML
-- Support of theming [demo](https://jpuri.github.io/Nib/#/Demo/Themed)
+- Support of theming [demo](/Demo/Themed)
 
 <br>
 
