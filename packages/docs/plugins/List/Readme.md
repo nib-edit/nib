@@ -1,13 +1,6 @@
 Plugin that adds support for lists.
 
-### Schema support
-
-| S.No. | Name         | Tag    |
-| ----- | ------------ | ------ |
-| 1     | ordered list | `<ol>` |
-| 2     | bullet list  | `<ul>` |
-
----
+<br />
 
 ### Toolbar support
 
@@ -18,22 +11,22 @@ Plugin that adds support for lists.
 ```js static
 <Editor
   config={{
-    plugins: { options: "list" },
+    plugins: {options: "list"},
     toolbar: {
       options: "top",
-      top: { options: "list" }
+      top: {options: "list"}
     }
   }}
 />
 ```
 
----
+<br />
 
 ### Keyboard shortcuts support
 
-| S.No. | Keyboard Shortcut      | Description         |
-| ----- | ---------------------- | ------------------- |
-| 1     | cmd-alt-7 / ctrl-alt-7 | create ordered list |
-| 2     | cmd-alt-8 / ctrl-alt-8 | create bullet list  |
-| 3     | tab                    | indent              |
-| 4     | shift+tab              | outdent             |
+| S.No. | Keyboard Shortcut      | Description  |
+| ----- | ---------------------- | ------------ |
+| 1     | cmd-alt-7 / ctrl-alt-7 | ordered list |
+| 2     | cmd-alt-8 / ctrl-alt-8 | bullet list  |
+| 3     | tab                    | indent       |
+| 4     | shift+tab              | outdent      |

@@ -19,18 +19,14 @@ class UploadImage extends PureComponent {
     this.setState({uploading: true});
     const {uploadCallback} = this.context.config.plugins.image;
     uploadCallback(file)
-      .then(({link}) => {
+      .then(({src}) => {
         this.setState({uploading: false});
-        if (!link) return;
+        if (!src) return;
         const {state, dispatch} = this.props.view;
         const {$from, $to} = state.selection;
         const {image} = state.schema.nodes;
         dispatch(
-          state.tr.replaceRangeWith(
-            $from.pos,
-            $to.pos,
-            image.create({src: link})
-          )
+          state.tr.replaceRangeWith($from.pos, $to.pos, image.create({src}))
         );
       })
       .finally(() => {

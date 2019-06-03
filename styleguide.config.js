@@ -61,7 +61,7 @@ module.exports = {
     color: {
       base: "#212121",
       link: "#880061",
-      linkHover: "#eceff1",
+      linkHover: "#90a4ae",
       sidebarBackground: "#880061"
     },
     fontFamily: {

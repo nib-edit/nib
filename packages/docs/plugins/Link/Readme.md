@@ -1,12 +1,6 @@
 Plugin that adds support for links.
 
-### Schema support
-
-| S.No. | Name | Tag   |
-| ----- | ---- | ----- |
-| 1     | link | `<a>` |
-
----
+<br />
 
 ### Toolbar support
 
@@ -17,16 +11,16 @@ Plugin that adds support for links.
 ```js static
 <Editor
   config={{
-    plugins: { options: "link" },
+    plugins: {options: "link"},
     toolbar: {
       options: "top",
-      top: { options: "link" }
+      top: {options: "link"}
     }
   }}
 />
 ```
 
----
+<br />
 
 ### Keyboard shortcuts support
 

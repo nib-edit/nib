@@ -19,7 +19,7 @@ const styles = ({color, fontFamily, fontSize}) => ({
     "& a": {
       color: "white !important",
       "&:hover": {
-        color: "#eceff1 !important",
+        color: "#90a4ae !important",
         cursor: "pointer"
       }
     }

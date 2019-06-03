@@ -1,5 +1,7 @@
 Plugin that adds history support to the editor. It is by default added to all editors, thus the keyboard support is available in all editors. But it is required to be explicitly added to the toolbar.
 
+<br />
+
 ### Toolbar support
 
 ```js
@@ -18,7 +20,7 @@ Plugin that adds history support to the editor. It is by default added to all ed
 />
 ```
 
----
+<br />
 
 ### Keyboard shortcuts support
 

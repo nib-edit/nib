@@ -1,12 +1,6 @@
 Plugin that adds support for images in the editor.
 
-### Schema support
-
-| S.No. | Name  | Tag     |
-| ----- | ----- | ------- |
-| 1     | image | `<img>` |
-
----
+<br />
 
 ### Toolbar support
 
@@ -25,10 +19,12 @@ Plugin that adds support for images in the editor.
     },
     toolbar: {
       options: "top",
-      top: { options: "image" }
+      top: {options: "image"}
     }
   }}
 />
 ```
 
-`uploadCallback` above is a function that returns a promise which resolves to give and object with an attribute `link` which is used as `src` for the image.
+<br />
+
+`uploadCallback` above is a function that returns a promise which resolves to give and object with an attribute `src` which is used as `src` for the image.

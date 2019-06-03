@@ -100,15 +100,14 @@ header {
 tr {
   height: 40px;
 }
-th {
+thead th {
   font-weight: bold !important;
-  background-color: #eceff1 !important;
   margin: 20px;
   line-height: 2.5 !important;
 }
 th:nth-child(1) {
-  width: 75px;
+  min-width: 75px;
 }
 th:nth-child(2) {
-  width: 150px;
+  min-width: 150px;
 }
