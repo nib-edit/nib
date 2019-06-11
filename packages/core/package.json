@@ -1,5 +1,5 @@
 {
-  "name": "nib-core",
+  "name": "@logicroom/nib-core",
   "version": "0.3.2",
   "description": "Wysiwyg editor",
   "main": "./index.js",

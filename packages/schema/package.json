@@ -1,5 +1,5 @@
 {
-  "name": "nib-schema",
+  "name": "@logicroom/nib-schema",
   "version": "0.1.5",
   "description": "Schema declaration for Nib editor",
   "main": "./index.js",
