@@ -1,6 +1,6 @@
 {
   "name": "@logicroom/nib-core",
-  "version": "0.3.2",
+  "version": "0.3.3-alpha1",
   "description": "Wysiwyg editor",
   "main": "./index.js",
   "repository": {
