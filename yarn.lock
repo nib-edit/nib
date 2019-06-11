@@ -3944,6 +3944,39 @@ neo-async@^2.5.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.0.tgz#b9d15e4d71c6762908654b5183ed38b753340835"
 
+nib-core@0.2.6:
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/nib-core/-/nib-core-0.2.6.tgz#266719aafac342dac571fe299b709cc3e598ac5a"
+  integrity sha512-C/zqhMiS+sBd+bwDGPH5VDqQlYJJ9QkrDgBsQKAtSMJcSxKwmavMQALS6/pJDWBm5AHLqrSKePICT4PKAGQckQ==
+  dependencies:
+    "@emotion/core" "^10.0.4"
+    "@emotion/styled" "^10.0.4"
+    emotion-theming "^10.0.4"
+    nib-schema "0.1.4"
+    nib-ui "0.2.2"
+    prosemirror-commands "^1.0.7"
+    prosemirror-keymap "^1.0.1"
+    prosemirror-model "^1.6.2"
+    prosemirror-schema-list "^1.0.1"
+    prosemirror-state "^1.2.2"
+    prosemirror-tables "^0.7.10"
+    prosemirror-utils "^0.7.6"
+    prosemirror-view "^1.6.3"
+
+nib-schema@0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/nib-schema/-/nib-schema-0.1.4.tgz#ad41a4be311ece87950696b72bae620da255fc64"
+  integrity sha512-1MXikv0SwxItKCLk1gv6DtHiojmgcOa56TgnDTm+AVbDKnptnfoQAY7svQOgfYVkArBLXd8AwxCgJH/9FV03JA==
+  dependencies:
+    prosemirror-tables "^0.7.10"
+
+nib-ui@0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/nib-ui/-/nib-ui-0.2.2.tgz#f76acd520cfd2165fc59dcb65113ade37c473ed6"
+  integrity sha512-Llzzwk/SieNTKUny7O/UrAFap9IL28CtBsBlj30yHPp/FDOzMM35JC8QSkTxSGJO9ldq1pxUzmUD2GFTSo0aOg==
+  dependencies:
+    react-select "^2.1.2"
+
 node-dir@^0.1.10:
   version "0.1.17"
   resolved "https://registry.yarnpkg.com/node-dir/-/node-dir-0.1.17.tgz#5f5665d93351335caabef8f1c554516cf5f1e4e5"
