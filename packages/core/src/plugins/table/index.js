@@ -1,13 +1,15 @@
+import keymaps from "./keymaps";
 import overlays from "./overlays";
-import plugin from "./plugin";
+import plugins from "./plugins";
 import schema from "./schema";
 import style from "./style";
 import toolbarComponent from "./ToolbarComponent";
 
 export default {
-  overlays,
+  keymaps,
   name: "table",
-  plugin,
+  overlays,
+  plugins,
   schema,
   style,
   toolbarComponent

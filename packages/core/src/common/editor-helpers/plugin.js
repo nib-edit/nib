@@ -1,6 +1,18 @@
 import Plugins from "../../plugins";
 
-export const getProsemirrorPlugins = plugins => plugins.map(p => p && p.plugin);
+export const getProsemirrorPlugins = plugins => {
+  let pluginList = [];
+  plugins.forEach(p => {
+    if (p) {
+      if (p.plugins) {
+        pluginList = [...pluginList, ...p.plugins];
+      } else if (p.plugin) {
+        pluginList = [...pluginList, p.plugin];
+      }
+    }
+  });
+  return pluginList;
+};
 
 export const getPluginList = plugins =>
   plugins

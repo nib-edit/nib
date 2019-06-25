@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/jpuri/Nib/tree/master/packages/core#Readme.md",
   "dependencies": {
-    "prosemirror-tables": "^0.7.10"
+    "prosemirror-tables": "^0.8.1"
   }
 }
