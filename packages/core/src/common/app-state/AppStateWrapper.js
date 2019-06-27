@@ -1,19 +1,21 @@
-import { PureComponent } from "react";
-import Dispatcher from "./dispatcher";
+import {PureComponent} from "react";
+import {AppContext} from "../app-context";
 
 class AppStateWrapper extends PureComponent {
-  state = { app_params: {} };
+  static contextType = AppContext;
+
+  state = {app_params: {}};
 
   updateView = view => {
-    this.setState({ app_params: { view } });
+    this.setState({app_params: {view}});
   };
 
   componentWillMount() {
-    Dispatcher.addListener(this.updateView);
+    this.context.dispatcher.addListener(this.updateView);
   }
 
   componentWillUnmount() {
-    Dispatcher.removeListener(this.updateView);
+    this.context.dispatcher.removeListener(this.updateView);
   }
 
   render() {

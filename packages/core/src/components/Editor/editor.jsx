@@ -9,7 +9,7 @@ import {
   updateEditorState
 } from "../../common/editor-helpers/editor-state";
 import Dispatcher from "../../common/app-state/dispatcher";
-import {ConfigContext} from "../../common/config";
+import {AppContext} from "../../common/app-context";
 
 import {StyledEditor} from "./style";
 
@@ -19,7 +19,7 @@ export default class Editor extends Component {
     this.editorRef = React.createRef();
   }
 
-  static contextType = ConfigContext;
+  static contextType = AppContext;
 
   static propTypes = {
     config: PropTypes.object,
@@ -39,12 +39,12 @@ export default class Editor extends Component {
       state,
       dispatchTransaction: tr => {
         updateEditorState(this.view, tr);
-        Dispatcher.dispatch(this.view);
+        this.context.dispatcher.dispatch(this.view);
         if (onChange && tr.docChanged) onChange(this.view.state.toJSON().doc);
       }
     });
     if (autofocus) this.view.focus();
-    Dispatcher.dispatch(this.view);
+    this.context.dispatcher.dispatch(this.view);
   }
 
   componentWillUnmount() {

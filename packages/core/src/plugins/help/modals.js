@@ -2,7 +2,7 @@ import React, {PureComponent, Fragment} from "react";
 import styled from "@emotion/styled";
 import {Icons, Modal} from "nib-ui";
 
-import {ConfigContext} from "../../common/config";
+import {AppContext} from "../../common/app-context";
 import {getKeymapInfo} from "../../common/editor-helpers/keymap-info";
 import {getOS} from "../../common/utils/device";
 import {helpPluginKey} from "./plugin";
@@ -21,7 +21,7 @@ const formatKey = key => {
 };
 
 class HelpModal extends PureComponent {
-  static contextType = ConfigContext;
+  static contextType = AppContext;
 
   hideHelpModal = () => {
     const {state, dispatch} = this.props.view;

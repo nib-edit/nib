@@ -7,18 +7,20 @@ import OverlayHandler from "../OverlayHandler";
 import Toolbar from "../Toolbar";
 import AppStateWrapper from "../../common/app-state/AppStateWrapper";
 import {deepMerge} from "../../common/utils/deep-merge";
-import {defaultConfig, ConfigContext} from "../../common/config";
+import {defaultConfig, AppContext} from "../../common/app-context";
 import {getPropertyFromPliguns} from "../../common/editor-helpers/plugin-reducer";
 
 import InnerEditor from "./editor";
 import {Wrapper} from "./style";
 import {blockStyles} from "./blockStyles";
 import {theme} from "./theme";
+import {getDispatcher} from "../../common/app-state/dispatcher";
 
 class Editor extends Component {
   constructor(props) {
     super(props);
-    this.config = deepMerge(defaultConfig, props.config);
+    this.config = deepMerge(defaultConfig.config, props.config);
+    this.dispatcher = getDispatcher();
     this.theme = deepMerge(theme, props.theme);
     this.theme = {
       ...this.theme,
@@ -40,14 +42,15 @@ class Editor extends Component {
   render() {
     const {defaultValue, onChange, autofocus, spellcheck} = this.props;
     const {toolbar, plugins} = this.config;
+    const {config, dispatcher} = this;
     const inlineToolbarPresent = toolbar.options.indexOf("inline") >= 0;
     const topToolbarPresent = toolbar.options.indexOf("top") >= 0;
     const overlays = getPropertyFromPliguns(plugins.options, "overlays");
     const modals = getPropertyFromPliguns(plugins.options, "modals");
     return (
-      <AppStateWrapper
-        render={app_params => (
-          <ConfigContext.Provider value={{config: this.config}}>
+      <AppContext.Provider value={{config, dispatcher}}>
+        <AppStateWrapper
+          render={app_params => (
             <ThemeProvider theme={this.theme}>
               <Wrapper id="nib-wrapper" ref={this.editorWrapper}>
                 {topToolbarPresent && <Toolbar.top />}
@@ -72,9 +75,9 @@ class Editor extends Component {
                 />
               </Wrapper>
             </ThemeProvider>
-          </ConfigContext.Provider>
-        )}
-      />
+          )}
+        />
+      </AppContext.Provider>
     );
   }
 }

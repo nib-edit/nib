@@ -4,7 +4,7 @@ import {ToolbarSeparator} from "nib-ui";
 
 import AppStateWrapper from "../../../common/app-state/AppStateWrapper";
 import {getToolbarOptions} from "../../../common/editor-helpers/toolbar-builder";
-import {ConfigContext} from "../../../common/config";
+import {AppContext} from "../../../common/app-context";
 
 const HelpOption = ({options, app_params}) => {
   const helpOption = options.filter(opt => opt.name === "help");
@@ -14,7 +14,7 @@ const HelpOption = ({options, app_params}) => {
 };
 
 class Top extends Component {
-  static contextType = ConfigContext;
+  static contextType = AppContext;
 
   render() {
     const {top: topConfig} = this.context.config.toolbar;

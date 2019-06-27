@@ -1,4 +1,4 @@
-const Dispatcher = {
+export const getDispatcher = () => ({
   listeners: [],
 
   addListener: function(listener) {
@@ -17,6 +17,4 @@ const Dispatcher = {
       listener(app_params);
     });
   }
-};
-
-export default Dispatcher;
+});

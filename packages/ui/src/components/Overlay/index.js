@@ -190,6 +190,8 @@ const Wrapper = styled.div`
 
   font-weight: ${({theme}) => theme.overlay.fontWeight};
 
+  z-index: 1;
+
   :focus {
     outline: none;
   }

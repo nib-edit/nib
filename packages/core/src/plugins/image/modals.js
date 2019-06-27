@@ -2,11 +2,11 @@ import React, {PureComponent} from "react";
 import styled from "@emotion/styled";
 import {Spinner, Modal} from "nib-ui";
 
-import {ConfigContext} from "../../common/config";
+import {AppContext} from "../../common/app-context";
 import {imagePluginKey} from "./plugin";
 
 class UploadImage extends PureComponent {
-  static contextType = ConfigContext;
+  static contextType = AppContext;
 
   state = {uploading: false};
 
