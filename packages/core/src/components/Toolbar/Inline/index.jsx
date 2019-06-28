@@ -17,7 +17,7 @@ class Inline extends Component {
 
   render() {
     const {editorWrapper, app_params} = this.props;
-    const {plugins, toolbar} = this.context.config.toolbar;
+    const {plugins, toolbar} = this.context.config;
     const options = getToolbarOptions(plugins.options, toolbar.inline.options);
     const optionSize = options.length;
     const selMarker = document.getElementsByClassName("nib-selected");
@@ -33,7 +33,7 @@ class Inline extends Component {
                 {options.map((Option, index) => (
                   <Fragment key={`inline-toolbar-option-${Option.name}`}>
                     <Option.toolbarComponent
-                      config={inlineConfig[Option.name]}
+                      config={toolbar.inline[Option.name]}
                       app_params={app_params}
                     />
                     {index < optionSize - 1 && <ToolbarSeparator />}
