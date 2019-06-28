@@ -17,8 +17,8 @@ class Inline extends Component {
 
   render() {
     const {editorWrapper, app_params} = this.props;
-    const {inline: inlineConfig} = this.context.config.toolbar;
-    const options = getToolbarOptions(inlineConfig.options);
+    const {plugins, toolbar} = this.context.config.toolbar;
+    const options = getToolbarOptions(plugins.options, toolbar.inline.options);
     const optionSize = options.length;
     const selMarker = document.getElementsByClassName("nib-selected");
     return (

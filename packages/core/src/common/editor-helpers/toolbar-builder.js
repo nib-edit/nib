@@ -1,7 +1,14 @@
-import { getPluginList } from "./plugin";
+import {getPluginListArr} from "./plugin";
 
-export const getToolbarOptions = plugins =>
-  getPluginList(plugins).map(plugin => ({
+export const getToolbarOptions = (pluginOption, toolbarOptions) => {
+  const pluginOpt = pluginOption.trim().split(" ");
+  const toolbarOpt = toolbarOptions.trim().split(" ");
+  const supportedOptions = toolbarOpt.filter(
+    opt => pluginOpt.indexOf(opt) >= 0
+  );
+
+  return getPluginListArr(supportedOptions).map(plugin => ({
     name: plugin.name,
     toolbarComponent: plugin.toolbarComponent
   }));
+};

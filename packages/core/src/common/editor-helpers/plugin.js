@@ -19,3 +19,5 @@ export const getPluginList = plugins =>
     .trim()
     .split(" ")
     .map(key => Plugins[key]);
+
+export const getPluginListArr = plugins => plugins.map(key => Plugins[key]);

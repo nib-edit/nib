@@ -17,10 +17,11 @@ class Top extends Component {
   static contextType = AppContext;
 
   render() {
-    const {top: topConfig} = this.context.config.toolbar;
-    const options = getToolbarOptions(topConfig.options);
+    const {plugins, toolbar} = this.context.config;
+    const options = getToolbarOptions(plugins.options, toolbar.top.options);
     const formattingOption = options.filter(opt => opt.name !== "help");
     const optionSize = formattingOption.length;
+
     return (
       <AppStateWrapper
         render={app_params => (
@@ -29,7 +30,7 @@ class Top extends Component {
               {formattingOption.map((Option, index) => (
                 <Fragment key={`top-toolbar-option-${Option.name}`}>
                   <Option.toolbarComponent
-                    config={topConfig[Option.name]}
+                    config={toolbar.top[Option.name]}
                     app_params={app_params}
                   />
                   {index < optionSize - 1 && <ToolbarSeparator />}
