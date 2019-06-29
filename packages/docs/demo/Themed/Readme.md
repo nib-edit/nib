@@ -14,11 +14,16 @@ import uploadCallback from "../../common/uploadCallback";
 
 const customTheme = {
   wrapper: {
-    backgroundColor: "#BDBDBD",
+    backgroundColor: "#212121",
+    borderBottom: "none",
+    borderLeft: "none",
+    borderRight: "none",
+    borderTop: "none",
     padding: "2px"
   },
   editor: {
-    backgroundColor: "#BDBDBD",
+    backgroundColor: "#212121",
+    color: "#ffffff",
     borderBottom: "none",
     borderLeft: "none",
     borderRight: "none",
@@ -26,8 +31,8 @@ const customTheme = {
   },
   toolbar: {
     top: {
-      backgroundColor: "#BDBDBD",
-      borderBottom: "1px solid #757575",
+      backgroundColor: "#212121",
+      borderBottom: "1px solid #ffffff",
       borderLeft: "none",
       borderRight: "none",
       borderTop: "none",
@@ -35,7 +40,7 @@ const customTheme = {
     }
   },
   toolbarSeparator: {
-    backgroundColor: "#757575"
+    backgroundColor: "#ffffff"
   },
   blockSelect: {
     "&:hover": {backgroundColor: "#EEEEEE"},
@@ -43,6 +48,7 @@ const customTheme = {
   },
   button: {
     toolbar: {
+      margin: "0 2px",
       "&:hover": `{
         background-color: #EEEEEE;
       }`,
