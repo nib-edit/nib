@@ -39,7 +39,9 @@ export default class MenuDropdown extends Component {
 
 const MenuWrapper = styled.div`
   border: ${({theme}) => theme.table.cell.menuWrapper.border};
-  background: ${({theme}) => theme.table.cell.menuWrapper.backgroundColor};
+  background-color: ${({theme}) =>
+    theme.table.cell.menuWrapper.backgroundColor};
+  color: ${({theme}) => theme.table.cell.menuWrapper.color};
   cursor: pointer;
   left: -155px;
   position: absolute;

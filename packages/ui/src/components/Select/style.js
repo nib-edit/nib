@@ -54,6 +54,13 @@ export const getSelectStyles = themeStyle => ({
     })
   ),
   menu: getStyles({
-    width: themeStyle.dropdownWidth
+    width: themeStyle.dropdownWidth,
+    color: themeStyle.color,
+    backgroundColor: themeStyle.backgroundColor
+  }),
+  singleValue: getStyles({
+    overflow: "visible",
+    color: themeStyle.color,
+    "&:hover": themeStyle["&:hover"]
   })
 });

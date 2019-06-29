@@ -42,7 +42,7 @@ class Modal extends PureComponent {
 
 const Wrapper = styled.div`
   align-items: center;
-  background-color: ${({theme}) => theme.modal.backgroundColor};
+  background-color: ${({theme}) => theme.modal.modalBackgroundColor};
   display: flex;
   height: 100%;
   justify-content: center;
@@ -54,6 +54,8 @@ const Wrapper = styled.div`
 `;
 
 const InnerWrapper = styled.div`
+  background-color: ${({theme}) => theme.modal.backgroundColor};
+  color: ${({theme}) => theme.modal.color};
   border-radius: ${({theme}) => theme.modal.contentBorderRadius};
   box-shadow: ${({theme}) => theme.modal.contentBoxShadow};
 `;

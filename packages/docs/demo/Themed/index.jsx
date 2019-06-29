@@ -33,21 +33,41 @@ const customTheme = {
   toolbarSeparator: {
     backgroundColor: "#ffffff"
   },
-  blockSelect: {
-    "&:hover": {backgroundColor: "#EEEEEE"},
-    "&:selected": {
-      backgroundColor: "#bdbdbd"
-    }
-  },
   button: {
     toolbar: {
+      backgroundColor: "#212121",
       margin: "0 2px",
       "&:hover": `{
-        background-color: #EEEEEE;
+        color: #212121;
+        background-color: #bdbdbd;
       }`,
       "&:selected": `{
-        background-color: #bdbdbd;
+        color: #212121;
+        background-color: #757575;
       }`
+    }
+  },
+  modal: {
+    backgroundColor: "#212121",
+    color: "#ffffff"
+  },
+  overlay: {
+    backgroundColor: "#212121",
+    color: "#ffffff"
+  },
+  icon: {fill: "#ffffff"},
+  blockSelect: {
+    backgroundColor: "#212121",
+    color: "#ffffff",
+    "&:hover": {backgroundColor: "#bdbdbd", color: "#ffffff"},
+    "&:selected": {backgroundColor: "#757575"}
+  },
+  table: {
+    cell: {
+      menuWrapper: {
+        backgroundColor: "#212121",
+        color: "#ffffff"
+      }
     }
   }
 };

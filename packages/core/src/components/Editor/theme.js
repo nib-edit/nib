@@ -138,7 +138,7 @@ export const theme = {
     keymapColor: Color.grayText,
     optionHeight: "44px",
     width: "112px",
-    "&:hover": {backgroundColor: Color.gray1},
+    "&:hover": {backgroundColor: Color.gray1, color: Color.text},
     "&:selected": {backgroundColor: Color.gray3}
   },
   icon: {fill: Color.text},
@@ -185,7 +185,9 @@ export const theme = {
     fontWeight: "600"
   },
   modal: {
-    backgroundColor: Color.opaque,
+    modalBackgroundColor: Color.opaque,
+    backgroundColor: Color.white,
+    color: Color.text,
     contentBoxShadow: BoxShadow,
     contentBorderRadius: "2px"
   },
@@ -249,6 +251,7 @@ export const theme = {
       menuWrapper: {
         border: Border,
         backgroundColor: Color.white,
+        color: Color.text,
         fontSize: FontSize.small,
         borderRadius: "2px",
         boxShadow: BoxShadow

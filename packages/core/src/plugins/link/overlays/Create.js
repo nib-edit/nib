@@ -106,7 +106,6 @@ export default {
 
 const LinkPopup = styled.div`
   align-items: flex-end;
-  background: white;
   border-radius: 4px;
   display: flex;
   padding: 5px 10px;
@@ -115,4 +114,6 @@ const LinkPopup = styled.div`
 
 const StyledLinkButton = styled(LinkButton)`
   margin: 4px 0;
+  background: ${({theme}) => theme.overlay.backgroundColor};
+  color: ${({theme}) => theme.overlay.color};
 `;

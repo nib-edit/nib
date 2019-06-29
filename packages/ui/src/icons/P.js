@@ -1,9 +1,9 @@
 import React from "react";
-import { withTheme } from "emotion-theming";
+import {withTheme} from "emotion-theming";
 
-import { StyledSVG } from "./style";
+import {StyledSVG} from "./style";
 
-export default withTheme(({ theme }) => (
+export default withTheme(({theme}) => (
   <StyledSVG width="11px" height="14px" viewBox="0 0 11 14">
     <g
       id="Page-1"

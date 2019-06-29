@@ -63,15 +63,13 @@ class HelpModal extends PureComponent {
 }
 
 const Wrapper = styled.div`
-  background-color: white;
-  color: #212121;
   font-size: 16px;
   min-width: 372px;
   border-radius: 2px;
 `;
 
 const Header = styled.div`
-  box-shadow: rgb(235, 236, 240) 0px 2px 0px;
+  box-shadow: rgb(235, 236, 240) 0px 1px 0px;
   padding: 12px 24px;
   display: flex;
   justify-content: space-between;
