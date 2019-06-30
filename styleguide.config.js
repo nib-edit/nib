@@ -49,13 +49,13 @@ module.exports = {
       ]
     },
     // {
-    //   name: "Licence",
-    //   content: "packages/docs/Licence/Readme.md"
+    //   name: "License",
+    //   content: "packages/docs/License/Readme.md"
     // },
     {
       components: [
         "packages/docs/Introduction/TopBar.jsx",
-        "packages/docs/Licence/index.jsx"
+        "packages/docs/License/index.jsx"
       ]
     }
   ],

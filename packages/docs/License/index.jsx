@@ -1,6 +1,6 @@
-import React, {PureComponent} from "react";
+import React, {PureComponent} from "./node_modules/react";
 
-class Licence extends PureComponent {
+class License extends PureComponent {
   render() {
     return (
       <div
@@ -13,7 +13,7 @@ class Licence extends PureComponent {
       >
         <h2 style={{marginTop: 25}}>Commercial Use: </h2>
         <div>
-          Licence for commercial use of Nib 1.0 can be bought for $99 anually.
+          License for commercial use of Nib 1.0 can be bought for $99 anually.
           This includes:
         </div>
         <ol>
@@ -30,7 +30,7 @@ class Licence extends PureComponent {
           <a href="https://creativecommons.org/licenses/by-nc/3.0/">
             creativecommons
           </a>{" "}
-          licence.
+          license.
         </div>
         <div style={{marginTop: 15}}>
           <a href="mailto:contact@nibedit.com">Contact</a> to get it.
@@ -40,4 +40,4 @@ class Licence extends PureComponent {
   }
 }
 
-export default Licence;
+export default License;
