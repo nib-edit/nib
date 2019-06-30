@@ -111,3 +111,6 @@ th:nth-child(1) {
 th:nth-child(2) {
   min-width: 150px;
 }
+h2 {
+  margin: 5px 0;
+}

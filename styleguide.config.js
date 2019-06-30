@@ -49,7 +49,14 @@ module.exports = {
       ]
     },
     {
-      components: ["packages/docs/Introduction/TopBar.jsx"]
+      name: "Licence",
+      content: "packages/docs/Licence/Readme.md"
+    },
+    {
+      components: [
+        "packages/docs/Introduction/TopBar.jsx",
+        "packages/docs/Licence/index.jsx"
+      ]
     }
   ],
   exampleMode: "hide",

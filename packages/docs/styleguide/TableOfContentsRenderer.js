@@ -30,13 +30,11 @@ const styles = ({color, fontFamily, fontSize}) => ({
     display: "flex",
     alignItems: "center",
     cursor: "pointer",
+    marginTop: "20px",
     "&:hover": {
-      fontSize: fontSize.base,
-      paddingLeft: 16,
-      display: "flex",
-      alignItems: "center",
-      cursor: "pointer",
-      color: color.linkHover
+      color: color.linkHover,
+      marginTop: "20px",
+      marginLeft: "15px"
     }
   },
   githubImg: {
