@@ -11,16 +11,14 @@
   "homepage": "https://github.com/jpuri/Nib/tree/master/packages/docs#readme",
   "dependencies": {
     "classnames": "^2.2.6",
-    "css-loader": "^3.0.0",
+    "nib-core": "0.3.2",
     "nib-converter": "0.1.1",
-    "nib-core": "0.3.3",
     "react": "next",
     "react-dom": "next",
-    "style-loader": "^0.23.1",
-    "url-loader": "^2.0.1"
+    "url-loader": "^1.1.2"
   },
   "devDependencies": {
-    "clsx": "^1.0.4",
-    "url-loader": "^2.0.1"
+    "url-loader": "^1.1.2",
+    "clsx": "^1.0.4"
   }
 }
