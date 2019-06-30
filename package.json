@@ -26,23 +26,23 @@
   },
   "homepage": "https://github.com/jpuri/Nib#readme",
   "devDependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/helper-replace-supers": "^7.1.0",
-    "@babel/plugin-proposal-class-properties": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
+    "@babel/core": "^7.4.5",
+    "@babel/helper-replace-supers": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.4",
-    "babel-plugin-emotion": "^9.2.11",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-emotion": "^10.0.14",
     "react-styleguidist": "^7.3.10",
-    "rollup-plugin-babel": "^4.0.3",
-    "rollup-plugin-bundle-size": "^1.0.2",
-    "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-copy": "^0.2.3",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-bundle-size": "^1.0.3",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-copy": "^3.0.0",
     "rollup-plugin-includepaths": "^0.2.3",
-    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-node-resolve": "^5.1.0",
     "rollup-plugin-sourcemaps": "^0.4.2",
-    "rollup-plugin-uglify": "^6.0.0",
-    "webpack": "^4.20.2"
+    "rollup-plugin-uglify": "^6.0.2",
+    "webpack": "^4.35.0"
   },
   "scripts": {
     "start": "npx styleguidist server",
@@ -50,8 +50,7 @@
     "build": "rollup -c scripts/rollup.config.js --name"
   },
   "dependencies": {
-    "prosemirror-history": "^1.0.3",
     "rollup-copy-plugin": "^0.1.0",
-    "url-loader": "^1.1.2"
+    "url-loader": "^2.0.1"
   }
 }

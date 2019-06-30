@@ -15,7 +15,12 @@ const globals = {
 const external = ["react", "react-dom"];
 
 const getCopyConf = packageName => ({
-  [`packages/${packageName}/package.json`]: `packages/${packageName}/build/package.json`,
+  targets: [
+    {
+      src: `packages/${packageName}/package.json`,
+      dest: `packages/${packageName}/build`
+    }
+  ],
   verbose: true
 });
 
@@ -26,11 +31,15 @@ const getConfig = packageName => {
     globals["emotion-theming"] = "emotion-theming";
     external.push("styled");
     external.push("emotion-theming");
-    copyConf[
-      `packages/${packageName}/readme.md`
-    ] = `packages/${packageName}/build/readme.md`;
+    copyConf.targets.push({
+      src: `packages/${packageName}/readme.md`,
+      dest: `packages/${packageName}/build`
+    });
   } else {
-    copyConf["readme.md"] = `packages/${packageName}/build/readme.md`;
+    copyConf.targets.push({
+      src: "readme.md",
+      dest: `packages/${packageName}/build`
+    });
   }
   return {
     input: `packages/${packageName}/index.js`,
