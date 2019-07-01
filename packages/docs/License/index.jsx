@@ -1,4 +1,4 @@
-import React, {PureComponent} from "./node_modules/react";
+import React, {PureComponent} from "react";
 
 class License extends PureComponent {
   render() {

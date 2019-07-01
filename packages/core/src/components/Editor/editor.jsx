@@ -8,7 +8,6 @@ import {
   buildEditorState,
   updateEditorState
 } from "../../common/editor-helpers/editor-state";
-import Dispatcher from "../../common/app-state/dispatcher";
 import {AppContext} from "../../common/app-context";
 
 import {StyledEditor} from "./style";

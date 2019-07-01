@@ -12,8 +12,8 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "css-loader": "^3.0.0",
-    "nib-converter": "0.1.1",
-    "nib-core": "0.3.3",
+    "nib-converter": "0.1.4",
+    "nib-core": "0.4.1",
     "react": "next",
     "react-dom": "next",
     "style-loader": "^0.23.1",
