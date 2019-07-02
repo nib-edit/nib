@@ -48,10 +48,10 @@ module.exports = {
         "packages/docs/demo/Themed/index.jsx"
       ]
     },
-    // {
-    //   name: "License",
-    //   content: "packages/docs/License/Readme.md"
-    // },
+    {
+      name: "License",
+      content: "packages/docs/License/Readme.md"
+    },
     {
       components: [
         "packages/docs/Introduction/TopBar.jsx",

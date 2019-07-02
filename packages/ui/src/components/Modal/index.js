@@ -26,13 +26,23 @@ class Modal extends PureComponent {
     }
   };
 
+  handleTouchStart = evt => {
+    if (evt.targetTouches.length === 1) this.props.hideModal();
+  };
+
   stopPropagation = evt => evt.stopPropagation();
 
   render() {
     const {render} = this.props;
     return (
-      <Wrapper onMouseDown={this.handleMouseDown}>
-        <InnerWrapper onMouseDown={this.stopPropagation}>
+      <Wrapper
+        onMouseDown={this.handleMouseDown}
+        onTouchStart={this.handleTouchStart}
+      >
+        <InnerWrapper
+          onMouseDown={this.stopPropagation}
+          onTouchStart={this.stopPropagation}
+        >
           {render()}
         </InnerWrapper>
       </Wrapper>
