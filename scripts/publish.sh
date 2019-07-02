@@ -4,6 +4,9 @@ rm .gitignore
 
 npm run build-docs
 
+touch styleguide/index.php
+echo "<?php header( 'Location: /index.html' ) ;  ?>" >> styleguide/index.php
+
 git add styleguide
 git commit -am 'deploying docs'
 
