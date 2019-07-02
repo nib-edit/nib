@@ -3,9 +3,16 @@ import styled from "@emotion/styled";
 import {Icons, Modal} from "nib-ui";
 
 import {AppContext} from "../../common/app-context";
-import {getKeymapInfo} from "../../common/editor-helpers/keymap-info";
 import {getOS} from "../../common/utils/device";
 import {helpPluginKey} from "./plugin";
+
+const getKeymapInfo = plugins =>
+  getPluginList(plugins)
+    .filter(plugin => plugin.KeymapInfo)
+    .map(plugin => ({
+      name: plugin.name,
+      keymaps: Object.values(plugin.KeymapInfo)
+    }));
 
 const formatKey = key => {
   const os = getOS();

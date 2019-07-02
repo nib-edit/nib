@@ -1,6 +1,6 @@
 # NIB
 
-## [Demo](https://jpuri.github.io/Nib/)
+## [Demo](http://www.nibedit.com)
 
 Despite various options available for rich text editing in html, it continues to be extremely challenging area. I found [prosemirror](http://prosemirror.net) to be the best available solution for the problem. It is great work by author [Marijn Haverbeke](http://marijnhaverbeke.nl/).
 
@@ -42,6 +42,10 @@ Props supported by the editor.
 
 Editor is in initial phase of development and right now api is not stable.
 
+## License
+
+Nib is available under different licenses for commercial and non-commercial purposes [details](http://www.nibedit.com/index.html#/License).
+
 ## Need help
 
-If you have any queries or require any help you can [email](mailto::jyotipuri@gmail.com) me.
+If you have any queries or require any help you can [email](mailto::support@nibedit.com).
