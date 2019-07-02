@@ -28,7 +28,7 @@ class License extends PureComponent {
         <div>
           For non-profiltable or personal use, nib is avilable under{" "}
           <a href="https://creativecommons.org/licenses/by-nc/3.0/">
-            creativecommons
+            creative commons
           </a>{" "}
           license.
         </div>
