@@ -45,7 +45,3 @@ Editor is in initial phase of development and right now api is not stable.
 ## License
 
 Nib is available under different licenses for commercial and non-commercial purposes [details](http://www.nibedit.com/index.html#/License).
-
-## Need help
-
-If you have any queries or require any help you can [email](mailto::support@nibedit.com).

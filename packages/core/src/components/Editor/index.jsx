@@ -52,7 +52,11 @@ class Editor extends Component {
         <AppStateWrapper
           render={app_params => (
             <ThemeProvider theme={this.theme}>
-              <Wrapper id="nib-wrapper" ref={this.editorWrapper}>
+              <Wrapper
+                id="nib-wrapper"
+                ref={this.editorWrapper}
+                onClick={() => app_params.view.focus()}
+              >
                 {topToolbarPresent && <Toolbar.top />}
                 <InnerEditor
                   autoFocus={autofocus}

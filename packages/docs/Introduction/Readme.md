@@ -1,4 +1,4 @@
-Nib is an simple, elegant and light-weight text editor.
+Nib is a simple, elegant and light-weight text editor.
 
 ```js
 <TopBar />

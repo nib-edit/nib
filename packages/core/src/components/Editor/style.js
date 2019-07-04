@@ -3,25 +3,29 @@ import styled from "@emotion/styled";
 import {getBlockStyles} from "./blockStyles";
 
 export const Wrapper = styled.div`
-  position: relative;
   background-color: ${({theme}) => theme.wrapper.backgroundColor};
-  color: ${({theme}) => theme.wrapper.color};
-  border-bottom: ${({theme}) => theme.wrapper.borderBottom};
-  border-left: ${({theme}) => theme.wrapper.borderLeft};
-  border-right: ${({theme}) => theme.wrapper.borderRight};
-  border-top: ${({theme}) => theme.wrapper.borderTop};
   border-bottom-left-radius: ${({theme}) =>
     theme.wrapper.borderBottomLeftRadius};
   border-bottom-right-radius: ${({theme}) =>
     theme.wrapper.borderBottomRightRadius};
+  border-bottom: ${({theme}) => theme.wrapper.borderBottom};
+  border-left: ${({theme}) => theme.wrapper.borderLeft};
+  border-right: ${({theme}) => theme.wrapper.borderRight};
   border-top-left-radius: ${({theme}) => theme.wrapper.borderTopLeftRadius};
   border-top-right-radius: ${({theme}) => theme.wrapper.borderTopRightRadius};
-  height: ${({theme}) => theme.wrapper.height};
-  width: ${({theme}) => theme.wrapper.width};
-  padding: ${({theme}) => theme.wrapper.padding};
-  font-style: ${({theme}) => theme.wrapper.fontStyle};
+  border-top: ${({theme}) => theme.wrapper.borderTop};
+  bottom: ${({theme}) => theme.wrapper.bottom};
+  color: ${({theme}) => theme.wrapper.color};
   font-family: ${({theme}) => theme.wrapper.fontFamily};
+  font-style: ${({theme}) => theme.wrapper.fontStyle};
+  height: ${({theme}) => theme.wrapper.height};
+  left: ${({theme}) => theme.wrapper.left};
+  padding: ${({theme}) => theme.wrapper.padding};
+  position: ${({theme}) => theme.wrapper.position};
+  right: ${({theme}) => theme.wrapper.right};
   text-align: ${({theme}) => theme.wrapper.textAlign};
+  top: ${({theme}) => theme.wrapper.top};
+  width: ${({theme}) => theme.wrapper.width};
   ${({theme}) => getBlockStyles(theme.blockStyles)};
 `;
 

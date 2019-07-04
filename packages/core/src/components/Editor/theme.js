@@ -17,13 +17,18 @@ export const theme = {
     borderTop: Border,
     borderTopLeftRadius: "2px",
     borderTopRightRadius: "2px",
+    bottom: auto,
     color: Color.text,
     fontFamily: inherit,
     fontSize: FontSize.medium,
     fontStyle: inherit,
     height: auto,
+    left: auto,
     padding: zero,
+    position: "relative",
+    right: auto,
     textAlign: "left",
+    top: auto,
     width: auto
   },
   editor: {

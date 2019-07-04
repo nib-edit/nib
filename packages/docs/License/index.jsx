@@ -32,6 +32,11 @@ class License extends PureComponent {
           </a>{" "}
           license.
         </div>
+        <ol>
+          <li>Unlimited use in web applications.</li>
+          <li>All new releases and upgrades in the duration.</li>
+          <li>Customer support.</li>
+        </ol>
         <div style={{marginTop: 15}}>
           <a href="mailto:contact@nibedit.com">Contact</a> to get it.
         </div>
