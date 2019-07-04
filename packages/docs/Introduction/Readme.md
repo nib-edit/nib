@@ -20,5 +20,5 @@ Some distinguishing features of the editor are:
 <br>
 
 <span style="font-size: 12px;">
-  Icons used in the editor have been takes from <a href="https://material.io/tools/icons/?style=sharp" target="_blank">Material Design</a>.Document created with <a href="https://react-styleguidist.js.org/" target="_blank">React Styleguidist</a>.
+  Icons used in the editor have been taken from <a href="https://material.io/tools/icons/?style=sharp" target="_blank">Material Design</a>.Document created with <a href="https://react-styleguidist.js.org/" target="_blank">React Styleguidist</a>.
 </span>
