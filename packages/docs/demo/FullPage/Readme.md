@@ -1,4 +1,4 @@
-Editor with all top toolbar options enabled.
+The editor can be used as full page editor with some style changes.
 
 ```js
 <FullPage />
