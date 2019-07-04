@@ -24,6 +24,7 @@ export const theme = {
     fontStyle: inherit,
     height: auto,
     left: auto,
+    minHeight: auto,
     padding: zero,
     position: "relative",
     right: auto,

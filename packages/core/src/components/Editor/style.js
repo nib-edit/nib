@@ -20,6 +20,7 @@ export const Wrapper = styled.div`
   font-style: ${({theme}) => theme.wrapper.fontStyle};
   height: ${({theme}) => theme.wrapper.height};
   left: ${({theme}) => theme.wrapper.left};
+  min-height: ${({theme}) => theme.wrapper.minHeight};
   padding: ${({theme}) => theme.wrapper.padding};
   position: ${({theme}) => theme.wrapper.position};
   right: ${({theme}) => theme.wrapper.right};

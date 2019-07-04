@@ -114,3 +114,22 @@ th:nth-child(2) {
 h2 {
   margin: 5px 0;
 }
+.close-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+  width: 50px;
+  background: lightgray;
+  border-radius: 50%;
+  opacity: 0.4;
+}
+.docs_btn {
+  background-color: #880061;
+  color: white;
+  height: 36px;
+  border: none;
+  border-radius: 2px;
+  padding: 0 20px;
+  font-size: 12px;
+}

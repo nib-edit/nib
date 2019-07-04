@@ -14,14 +14,12 @@ import uploadCallback from "../../common/uploadCallback";
 
 const theme = {
   wrapper: {
-    height: "500px",
-    left: "199px",
-    position: "absolute",
-    top: "153px",
-    width: "calc(100% - 200px)"
+    height: "100%",
+    width: "100%"
   }
 };
 
+// Wrap FullPage in a component occupying whole screen.
 const FullPage = () => {
   const [content, setContent] = useState({});
   return (

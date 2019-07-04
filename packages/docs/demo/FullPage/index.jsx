@@ -1,37 +1,63 @@
 import React, {useState} from "react";
 import Editor from "nib-core";
+import Cross from "../../styleguide/cross.svg";
 
 import uploadCallback from "../../common/uploadCallback";
 
 const theme = {
   wrapper: {
-    height: "500px",
-    left: "199px",
-    position: "absolute",
-    top: "153px",
-    width: "calc(100% - 200px)"
+    minHeight: "100%",
+    width: "100%"
   }
+};
+
+const FullPageEditor = ({setContent}) => {
+  return (
+    <Editor
+      config={{
+        plugins: {
+          image: {
+            uploadCallback
+          }
+        }
+      }}
+      onChange={setContent}
+      theme={theme}
+    />
+  );
 };
 
 /**
  * @visibleName 7. Full Page
  */
 const FullPage = () => {
+  const [fullPageVisible, showFullPage] = useState(false);
   const [content, setContent] = useState({});
+
   return (
     <div>
-      <div style={{height: 500}} />
-      <Editor
-        config={{
-          plugins: {
-            image: {
-              uploadCallback
-            }
-          }
-        }}
-        onChange={setContent}
-        theme={theme}
-      />
+      <button className="docs_btn" onClick={() => showFullPage(true)}>
+        Show Editor
+      </button>
+      {fullPageVisible && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            zIndex: 10
+          }}
+        >
+          <img
+            src={Cross}
+            className="close-icon"
+            onClick={() => showFullPage(false)}
+          />
+          <FullPageEditor setContent={setContent} />
+        </div>
+      )}
       <pre>{JSON.stringify(content, null, 4)}</pre>
     </div>
   );
