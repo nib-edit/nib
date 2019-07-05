@@ -3,6 +3,12 @@ import Editor from "nib-core";
 
 import uploadCallback from "../common/uploadCallback";
 
+const theme = {
+  editor: {
+    height: "200px"
+  }
+};
+
 class TopBar extends PureComponent {
   render() {
     return (
@@ -26,6 +32,7 @@ class TopBar extends PureComponent {
                 options: "top"
               }
             }}
+            theme={theme}
           />
         </div>
       </div>

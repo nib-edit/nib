@@ -115,7 +115,7 @@ h2 {
   margin: 5px 0;
 }
 .close-editor {
-  position: absolute;
+  position: fixed;
   top: 50px;
   right: 40px;
   z-index: 10;

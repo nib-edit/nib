@@ -6,12 +6,11 @@ import uploadCallback from "../../common/uploadCallback";
 
 const theme = {
   wrapper: {
-    minHeight: "100%",
+    height: "100%",
     width: "100%"
   },
   editor: {
-    height: "100%",
-    minHeight: "100%",
+    height: "calc(100% - 46px)",
     width: "100%"
   }
 };

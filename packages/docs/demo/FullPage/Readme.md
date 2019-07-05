@@ -16,6 +16,10 @@ const theme = {
   wrapper: {
     height: "100%",
     width: "100%"
+  },
+  editor: {
+    height: "calc(100% - 46px)",
+    width: "100%"
   }
 };
 
