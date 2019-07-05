@@ -54,7 +54,10 @@ const FullPage = () => {
     <div>
       {fullPageEditorVisible && (
         <div className="editor_wrapper">
-          <img src={Cross} className="close-icon" onClick={hideEditor} />
+          {/* <img src={Cross} className="close-icon" onClick={hideEditor} /> */}
+          <button className="docs_btn close-editor" onClick={hideEditor}>
+            Hide Editor
+          </button>
           <FullPageEditor setContent={setContent} />
         </div>
       )}

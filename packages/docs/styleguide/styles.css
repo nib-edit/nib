@@ -114,16 +114,11 @@ th:nth-child(2) {
 h2 {
   margin: 5px 0;
 }
-.close-icon {
+.close-editor {
   position: absolute;
   top: 50px;
   right: 40px;
   z-index: 10;
-  width: 22px;
-  background: #212121;
-  border-radius: 50%;
-  padding: 8px;
-  cursor: pointer;
 }
 .docs_btn {
   background-color: #880061;
@@ -133,6 +128,7 @@ h2 {
   border-radius: 2px;
   padding: 0 20px;
   font-size: 12px;
+  cursor: pointer;
 }
 .editor_wrapper {
   position: fixed;
