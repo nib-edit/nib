@@ -46,6 +46,7 @@ export const theme = {
     fontFamily: inherit,
     fontSize: FontSize.medium,
     fontStyle: inherit,
+    minHeight: auto,
     height: auto,
     padding: "4px",
     width: auto

@@ -21,7 +21,6 @@ export const Wrapper = styled.div`
   height: ${({theme}) => theme.wrapper.height};
   left: ${({theme}) => theme.wrapper.left};
   min-height: ${({theme}) => theme.wrapper.minHeight};
-  overflow: scroll;
   padding: ${({theme}) => theme.wrapper.padding};
   position: ${({theme}) => theme.wrapper.position};
   right: ${({theme}) => theme.wrapper.right};
@@ -44,6 +43,7 @@ export const StyledEditor = styled.div`
     theme.editor.borderBottomRightRadius};
   border-top-left-radius: ${({theme}) => theme.editor.borderTopLeftRadius};
   border-top-right-radius: ${({theme}) => theme.editor.borderTopRightRadius};
+  min-height: ${({theme}) => theme.editor.minHeight};
   height: ${({theme}) => theme.editor.height};
   width: ${({theme}) => theme.editor.width};
   padding: ${({theme}) => theme.editor.padding};

@@ -51,14 +51,15 @@ export default class Editor extends Component {
   }
 
   render() {
-    const {spellcheck} = this.props;
+    const {spellcheck, view} = this.props;
     const {plugins} = this.context.config;
 
     return (
       <StyledEditor
+        onClick={() => view.focus()}
+        pluginStyles={getPluginStyles(plugins.options)}
         ref={this.editorRef}
         spellcheck={spellcheck}
-        pluginStyles={getPluginStyles(plugins.options)}
       />
     );
   }
