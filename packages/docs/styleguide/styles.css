@@ -119,10 +119,10 @@ h2 {
   top: 50px;
   right: 40px;
   z-index: 10;
-  width: 50px;
-  background: lightgray;
+  width: 22px;
+  background: #212121;
   border-radius: 50%;
-  opacity: 0.4;
+  padding: 8px;
   cursor: pointer;
 }
 .docs_btn {
