@@ -4,6 +4,7 @@ import {Icons, Modal} from "nib-ui";
 
 import {AppContext} from "../../common/app-context";
 import {getOS} from "../../common/utils/device";
+import {getPluginList} from "../../common/editor-helpers/plugin";
 import {helpPluginKey} from "./plugin";
 
 const getKeymapInfo = plugins =>
