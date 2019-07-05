@@ -21,6 +21,7 @@ export const Wrapper = styled.div`
   height: ${({theme}) => theme.wrapper.height};
   left: ${({theme}) => theme.wrapper.left};
   min-height: ${({theme}) => theme.wrapper.minHeight};
+  overflow: scroll;
   padding: ${({theme}) => theme.wrapper.padding};
   position: ${({theme}) => theme.wrapper.position};
   right: ${({theme}) => theme.wrapper.right};

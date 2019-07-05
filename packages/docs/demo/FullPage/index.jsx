@@ -31,33 +31,31 @@ const FullPageEditor = ({setContent}) => {
  * @visibleName 7. Full Page
  */
 const FullPage = () => {
-  const [fullPageVisible, showFullPage] = useState(false);
+  const [fullPageEditorVisible, showFullPageEditor] = useState(false);
   const [content, setContent] = useState({});
+
+  const showEditor = () => {
+    document.body.style.overflow = "hidden";
+    showFullPageEditor(true);
+  };
+
+  const hideEditor = () => {
+    document.body.style.overflow = "scroll";
+    showFullPageEditor(false);
+  };
 
   return (
     <div>
-      <button className="docs_btn" onClick={() => showFullPage(true)}>
-        Show Editor
-      </button>
-      {fullPageVisible && (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            zIndex: 10
-          }}
-        >
-          <img
-            src={Cross}
-            className="close-icon"
-            onClick={() => showFullPage(false)}
-          />
+      {fullPageEditorVisible && (
+        <div className="editor_wrapper">
+          <img src={Cross} className="close-icon" onClick={hideEditor} />
           <FullPageEditor setContent={setContent} />
         </div>
       )}
+      <button className="docs_btn" onClick={showEditor}>
+        Show Editor
+      </button>
+
       <pre>{JSON.stringify(content, null, 4)}</pre>
     </div>
   );
