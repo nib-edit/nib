@@ -6,7 +6,6 @@ import uploadCallback from "../../common/uploadCallback";
 
 const theme = {
   wrapper: {
-    height: "100%",
     minHeight: "100%",
     width: "100%"
   },
