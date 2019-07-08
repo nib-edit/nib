@@ -13,7 +13,7 @@
     "classnames": "^2.2.6",
     "css-loader": "^3.0.0",
     "nib-converter": "1.0.0",
-    "nib-core": "1.0.1",
+    "nib-core": "1.0.5",
     "nib-ui": "1.0.0",
     "react": "next",
     "react-dom": "next",

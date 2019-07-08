@@ -23,6 +23,7 @@
     "emotion-theming": "^10.0.14",
     "nib-schema": "1.0.0",
     "nib-ui": "1.0.0",
+    "nib-upload": "0.0.1",
     "prosemirror-history": "^1.0.3",
     "prosemirror-commands": "^1.0.7",
     "prosemirror-keymap": "^1.0.1",

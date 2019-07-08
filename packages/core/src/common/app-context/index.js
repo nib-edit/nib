@@ -5,7 +5,7 @@ export const defaultConfig = {
     plugins: {
       options: "block inline link list image table help",
       image: {
-        uploadCallback: _ => {}
+        uploadCallback: undefined
       }
     },
     toolbar: {
@@ -22,7 +22,8 @@ export const defaultConfig = {
       }
     }
   },
-  dispatch: undefined
+  dispatch: undefined,
+  licenseKey: undefined
 };
 
 export const AppContext = React.createContext(defaultConfig);
