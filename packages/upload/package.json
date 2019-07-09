@@ -1,7 +1,7 @@
 {
   "name": "nib-upload",
-  "version": "0.0.1",
-  "description": "Uploading Nib assets to AWS s3",
+  "version": "1.0.0",
+  "description": "Uploading Nib assets to AWS S3",
   "main": "./index.js",
   "repository": {
     "type": "git",
