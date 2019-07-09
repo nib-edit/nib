@@ -41,3 +41,8 @@ class TopBar extends PureComponent {
 }
 
 export default TopBar;
+
+/**
+ * todo:
+ * 1. props link to open in new window.
+ */

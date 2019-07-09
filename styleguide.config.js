@@ -50,13 +50,17 @@ module.exports = {
       ]
     },
     {
-      name: "License",
-      content: "packages/docs/License/Readme.md"
+      name: "Nib Drive",
+      content: "packages/docs/NibDrive/Readme.md"
+    },
+    {
+      name: "Licence",
+      content: "packages/docs/Licence/Readme.md"
     },
     {
       components: [
         "packages/docs/Introduction/TopBar.jsx",
-        "packages/docs/License/index.jsx"
+        "packages/docs/Licence/index.jsx"
       ]
     }
   ],

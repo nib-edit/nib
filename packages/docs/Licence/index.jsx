@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 
-class License extends PureComponent {
+class Licence extends PureComponent {
   render() {
     return (
       <div
@@ -13,12 +13,13 @@ class License extends PureComponent {
       >
         <h2 style={{marginTop: 25}}>Commercial Use: </h2>
         <div>
-          License for commercial use of Nib 1.0 can be bought for $99 anually.
+          Licence for commercial use of Nib 1.0 can be bought for $99 anually.
           This includes:
         </div>
         <ol>
           <li>Unlimited use in web applications.</li>
           <li>All new releases and upgrades in the duration.</li>
+          <li>Access to Nib's AWS S3 bucket to upload images.</li>
           <li>Customer support.</li>
         </ol>
         <div>
@@ -30,7 +31,7 @@ class License extends PureComponent {
           <a href="https://creativecommons.org/licenses/by-nc/3.0/">
             creative commons
           </a>{" "}
-          license.
+          licence.
         </div>
         <ol>
           <li>Unlimited use in web applications.</li>
@@ -45,4 +46,4 @@ class License extends PureComponent {
   }
 }
 
-export default License;
+export default Licence;
