@@ -14,7 +14,8 @@
     "packages/core",
     "packages/docs",
     "packages/schema",
-    "packages/ui"
+    "packages/ui",
+    "packages/upload"
   ],
   "repository": {
     "type": "git",

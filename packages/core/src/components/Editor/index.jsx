@@ -40,15 +40,22 @@ class Editor extends Component {
   };
 
   render() {
-    const {defaultValue, onChange, autofocus, spellcheck} = this.props;
+    const {
+      defaultValue,
+      onChange,
+      autofocus,
+      spellcheck,
+      licenseKey
+    } = this.props;
     const {toolbar, plugins} = this.config;
     const {config, dispatcher} = this;
     const inlineToolbarPresent = toolbar.options.indexOf("inline") >= 0;
     const topToolbarPresent = toolbar.options.indexOf("top") >= 0;
     const overlays = getPropertyFromPliguns(plugins.options, "overlays");
     const modals = getPropertyFromPliguns(plugins.options, "modals");
+
     return (
-      <AppContext.Provider value={{config, dispatcher}}>
+      <AppContext.Provider value={{config, dispatcher, licenseKey}}>
         <AppStateWrapper
           render={app_params => (
             <ThemeProvider theme={this.theme}>

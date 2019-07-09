@@ -1,0 +1,29 @@
+{
+  "name": "nib-upload",
+  "version": "0.0.1",
+  "description": "Uploading Nib assets to AWS s3",
+  "main": "./index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jpuri/Nib.git"
+  },
+  "keywords": [
+    "AWS",
+    "image",
+    "assets"
+  ],
+  "author": {
+    "name": "Jyoti Puri",
+    "email": "jyotipuri@gmail.com"
+  },
+  "homepage": "https://github.com/jpuri/Nib/tree/master/packages/upload#Readme.md",
+  "dependencies": {
+    "nib-schema": "^1.0.0",
+    "prosemirror-model": "^1.0.0"
+  },
+  "devDependencies": {
+    "prop-types": "^15.6.2",
+    "react": "next",
+    "react-dom": "next"
+  }
+}

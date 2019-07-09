@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import styled from "@emotion/styled";
 import {Spinner, Modal} from "nib-ui";
+import {uploadImage} from "nib-upload";
 
 import {AppContext} from "../../common/app-context";
 import {imagePluginKey} from "./plugin";
@@ -17,21 +18,27 @@ class UploadImage extends PureComponent {
 
   insertImage = file => {
     this.setState({uploading: true});
-    const {uploadCallback} = this.context.config.plugins.image;
-    uploadCallback(file)
-      .then(({src}) => {
-        this.setState({uploading: false});
-        if (!src) return;
-        const {state, dispatch} = this.props.view;
-        const {$from, $to} = state.selection;
-        const {image} = state.schema.nodes;
-        dispatch(
-          state.tr.replaceRangeWith($from.pos, $to.pos, image.create({src}))
-        );
-      })
-      .finally(() => {
-        this.hideImageModal();
-      });
+    const {config, licenseKey} = this.context;
+    const uploadFn =
+      (config.plugins &&
+        config.plugins.image &&
+        config.plugins.image.uploadCallback) ||
+      (licenseKey && uploadImage);
+    if (uploadFn)
+      uploadFn(file, licenseKey)
+        .then(({src}) => {
+          this.setState({uploading: false});
+          if (!src) return;
+          const {state, dispatch} = this.props.view;
+          const {$from, $to} = state.selection;
+          const {image} = state.schema.nodes;
+          dispatch(
+            state.tr.replaceRangeWith($from.pos, $to.pos, image.create({src}))
+          );
+        })
+        .finally(() => {
+          this.hideImageModal();
+        });
   };
 
   stopDefault = evt => {
