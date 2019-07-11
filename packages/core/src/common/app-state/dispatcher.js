@@ -1,20 +1,20 @@
 export const getDispatcher = () => ({
   listeners: [],
 
-  addListener: function(listener) {
+  addListener(listener) {
     this.listeners.push(listener);
   },
 
-  removeListener: function(listener) {
-    var index = this.listeners.indexOf(listener);
+  removeListener(listener) {
+    const index = this.listeners.indexOf(listener);
     if (index > -1) {
       this.listeners.splice(index, 1);
     }
   },
 
-  dispatch: function(app_params) {
+  dispatch(appParams) {
     this.listeners.forEach(listener => {
-      listener(app_params);
+      listener(appParams);
     });
   }
 });

@@ -8,12 +8,12 @@ import { KeymapInfo } from "./keymaps";
 
 class HistoryToolbarComponent extends PureComponent {
   undo = () => {
-    const { state, dispatch } = this.props.app_params.view;
+    const { state, dispatch } = this.props.appParams.view;
     undo(state, dispatch);
   };
 
   redo = () => {
-    const { state, dispatch } = this.props.app_params.view;
+    const { state, dispatch } = this.props.appParams.view;
     redo(state, dispatch);
   };
 

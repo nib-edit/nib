@@ -1,12 +1,12 @@
-import React, {PureComponent} from "react";
-import {ToolbarButton, Icons} from "nib-ui";
+import React, { PureComponent } from "react";
+import { ToolbarButton, Icons } from "nib-ui";
 
-import {formatKeymap} from "../../common/utils/key-format";
-import {KeymapInfo} from "./keymaps";
+import { formatKeymap } from "../../common/utils/key-format";
+import { KeymapInfo } from "./keymaps";
 
 class HelpToolbarComponent extends PureComponent {
   showHelpModal = () => {
-    const {state, dispatch} = this.props.app_params.view;
+    const { state, dispatch } = this.props.appParams.view;
     dispatch(state.tr.setMeta("SHOW_HELP_MODAL", true));
   };
 

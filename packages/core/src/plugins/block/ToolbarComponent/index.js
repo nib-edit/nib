@@ -1,8 +1,8 @@
-import React, {PureComponent} from "react";
-import {setBlockType} from "prosemirror-commands";
+import React, { PureComponent } from "react";
+import { setBlockType } from "prosemirror-commands";
 
-import {blockPluginKey} from "../plugin";
-import {blockData as options} from "../blockData";
+import { blockPluginKey } from "../plugin";
+import { blockData as options } from "../blockData";
 import Grouped from "./Grouped";
 import Ungrouped from "./Ungrouped";
 
@@ -13,28 +13,28 @@ export default class BlockToolbarComponent extends PureComponent {
     if (blockType === "paragraph") {
       blockName = blockType;
     } else {
-      attrs = {level: blockType.split("-")[1]};
+      attrs = { level: blockType.split("-")[1] };
       blockName = "heading";
     }
-    const {view: {state, dispatch} = {}} = this.props.app_params;
+    const { view: { state, dispatch } = {} } = this.props.appParams;
     const nodeType = state.schema.nodes[blockName];
     setBlockType(nodeType, attrs)(state, dispatch);
   };
 
   getSelectedBlock = () => {
-    const {view: {state} = {}} = this.props.app_params;
+    const { view: { state } = {} } = this.props.appParams;
     if (!state) return;
     const pluginState = blockPluginKey.getState(state);
     const selectedBlock = pluginState && pluginState.selectedBlock;
     if (selectedBlock) {
-      const {type, attrs} = selectedBlock;
+      const { type, attrs } = selectedBlock;
       if (attrs && attrs.level) return `${type}-${attrs.level}`;
       return type;
     }
   };
 
   render() {
-    const {config: {grouped, options: toolbarOptions} = {}} = this.props;
+    const { config: { grouped, options: toolbarOptions } = {} } = this.props;
     let filteredOptions = options;
     if (toolbarOptions) {
       filteredOptions = options.filter(

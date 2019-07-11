@@ -1,21 +1,24 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Editor from "nib-core";
+
+import defaultValue from "./sampleData";
 
 /**
  * @visibleName 1. Basic
  */
 const Basic = () => {
-  const [content, setContent] = useState({});
+  const [content, setContent] = useState();
   return (
     <div>
       <Editor
         config={{
-          plugins: {options: ""},
-          toolbar: {options: ""}
+          plugins: { options: "" },
+          toolbar: { options: "" }
         }}
         onChange={setContent}
+        defaultValue={defaultValue}
       />
-      <pre>{JSON.stringify(content, null, 4)}</pre>
+      <pre>{JSON.stringify(content || defaultValue, null, 4)}</pre>
     </div>
   );
 };

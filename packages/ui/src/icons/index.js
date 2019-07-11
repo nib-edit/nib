@@ -21,6 +21,7 @@ import Sup from "./Sup";
 import Table from "./Table";
 import Underline from "./Underline";
 import Undo from "./Undo";
+import Video from "./Video";
 
 export default {
   ArrowDown,
@@ -45,5 +46,6 @@ export default {
   Sup,
   Table,
   Underline,
-  Undo
+  Undo,
+  Video
 };

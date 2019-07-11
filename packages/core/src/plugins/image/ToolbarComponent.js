@@ -1,9 +1,9 @@
-import React, {PureComponent} from "react";
-import {ToolbarButton, Icons} from "nib-ui";
+import React, { PureComponent } from "react";
+import { ToolbarButton, Icons } from "nib-ui";
 
 class ImageToolbarComponent extends PureComponent {
   showImageModal = () => {
-    const {state, dispatch} = this.props.app_params.view;
+    const { state, dispatch } = this.props.appParams.view;
     dispatch(state.tr.setMeta("SHOW_IMAGE_TOOLBAR", true));
   };
 

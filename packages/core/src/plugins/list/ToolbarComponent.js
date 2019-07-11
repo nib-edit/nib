@@ -9,12 +9,12 @@ import { listPluginKey } from "./plugin";
 class ListToolbarComponent extends PureComponent {
   toggleList = evt => {
     const listType = evt.currentTarget.getAttribute("name");
-    const { view } = this.props.app_params;
+    const { view } = this.props.appParams;
     toggleListCmd(view, listType);
   };
 
   getSelectedListType = () => {
-    const { view: { state } = {} } = this.props.app_params;
+    const { view: { state } = {} } = this.props.appParams;
     if (!state) return;
     const pluginState = listPluginKey.getState(state);
     const selectedListType = pluginState && pluginState.selectedListType;

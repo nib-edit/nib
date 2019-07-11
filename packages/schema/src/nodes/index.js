@@ -1,5 +1,6 @@
 import bulletList from "./bulletList";
 import doc from "./doc";
+import embed from "./embed";
 import heading from "./heading";
 import image from "./image";
 import listItem from "./listItem";
@@ -11,6 +12,7 @@ import { table, table_row, table_cell, table_header } from "./table";
 export default {
   bulletList,
   doc,
+  embed,
   heading,
   image,
   listItem,
