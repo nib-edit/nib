@@ -62,7 +62,7 @@ export function TableOfContentsRenderer({ classes, children }) {
         <nav className={classes.github}>
           <a
             href="https://github.com/nib-edit"
-            target="blank"
+            target="_blank"
             style={{
               display: "flex",
               alignItems: "center",
@@ -83,7 +83,7 @@ by
 {" "}
         <a
           style={{ textDecoration: "underline" }}
-          target="blank"
+          target="_blank"
           href="https://twitter.com/jyopur"
         >
           Jyoti.
