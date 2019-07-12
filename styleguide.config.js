@@ -72,18 +72,16 @@ module.exports = {
   theme: {
     color: {
       base: "#212121",
-      link: "#880061",
+      link: "#0000e4",
       linkHover: "#90a4ae",
-      sidebarBackground: "#880061"
+      sidebarBackground: "#0000e4"
     },
     fontFamily: {
       base: ['"Roboto"', "sans-serif"],
       monospace: ["Consolas", '"Liberation Mono"', "Menlo", "monospace"]
     }
   },
-  getComponentPathLine() {
-    return;
-  },
+  getComponentPathLine() {},
   styleguideComponents: {
     LogoRenderer: path.join(__dirname, "packages/docs/styleguide/Logo"),
     TableOfContentsRenderer: path.join(
@@ -122,7 +120,7 @@ module.exports = {
           test: /\.css$/,
           use: ["style-loader", "css-loader"]
         },
-        {test: /\.svg$|\.png$/, loader: "url-loader"}
+        { test: /\.svg$|\.png$/, loader: "url-loader" }
       ]
     }
   }

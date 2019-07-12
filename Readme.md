@@ -44,6 +44,10 @@ Props supported by the editor.
 
 Editor is in initial phase of development and right now api is not stable.
 
+## Community
+
+For any discussion around Nib join [![Gitter](https://badges.gitter.im/nib-edit/community.svg)](https://gitter.im/nib-edit/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
 ## Licence
 
 Nib is available under different licences for commercial and non-commercial purposes [details](http://www.nibedit.com/index.html#/Licence).

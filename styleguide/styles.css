@@ -84,7 +84,7 @@ pre {
   white-space: pre-wrap !important;
 }
 p code {
-  color: #880061 !important;
+  color: #0000e4 !important;
   white-space: pre !important;
   background-color: #f5f5f5 !important;
   border: 1px #e8e8e8 solid !important;
@@ -121,7 +121,7 @@ h2 {
   z-index: 10;
 }
 .docs_btn {
-  background-color: #880061;
+  background-color: ;
   color: white;
   height: 36px;
   border: none;
