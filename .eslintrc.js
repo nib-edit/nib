@@ -15,6 +15,7 @@ module.exports = {
   plugins: ["babel", "react"],
   rules: {
     "import/no-unresolved": 0,
-    "import/no-extraneous-dependencies": 0
+    "import/no-extraneous-dependencies": 0,
+    "react/jsx-filename-extension": 0
   }
 };

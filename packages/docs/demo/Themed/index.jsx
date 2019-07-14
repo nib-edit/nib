@@ -2,6 +2,7 @@ import React from "react";
 import Editor from "nib-core";
 
 import uploadCallback from "../../common/uploadCallback";
+import defaultValue from "./sampleData";
 
 const customTheme = {
   wrapper: {
@@ -55,12 +56,12 @@ const customTheme = {
     backgroundColor: "#212121",
     color: "#ffffff"
   },
-  icon: {fill: "#ffffff"},
+  icon: { fill: "#ffffff" },
   blockSelect: {
     backgroundColor: "#212121",
     color: "#ffffff",
-    "&:hover": {backgroundColor: "#bdbdbd", color: "#ffffff"},
-    "&:selected": {backgroundColor: "#757575"}
+    "&:hover": { backgroundColor: "#bdbdbd", color: "#ffffff" },
+    "&:selected": { backgroundColor: "#757575" }
   },
   table: {
     cell: {
@@ -88,6 +89,7 @@ const Themed = () => (
       }
     }}
     theme={customTheme}
+    defaultValue={defaultValue}
   />
 );
 

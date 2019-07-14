@@ -1,3 +1,3 @@
-# Converter
+# Upload
 
-## This package has code to convert editor content to HTML.
+## Uploading images to Nib's AWS S3 bucket.

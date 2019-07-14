@@ -1,13 +1,13 @@
-import {PureComponent} from "react";
-import {AppContext} from "../app-context";
+import { PureComponent } from "react";
+import { AppContext } from "../app-context";
 
 class AppStateWrapper extends PureComponent {
   static contextType = AppContext;
 
-  state = {app_params: {}};
+  state = { appParams: {} };
 
   updateView = view => {
-    this.setState({app_params: {view}});
+    this.setState({ appParams: { view } });
   };
 
   componentWillMount() {
@@ -19,7 +19,7 @@ class AppStateWrapper extends PureComponent {
   }
 
   render() {
-    return this.props.render(this.state.app_params);
+    return this.props.render(this.state.appParams);
   }
 }
 

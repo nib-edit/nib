@@ -15,14 +15,14 @@ const MarkIcons = {
 
 class InlineToolbarComponent extends PureComponent {
   getActiveMarks = () => {
-    const { view } = this.props.app_params;
+    const { view } = this.props.appParams;
     const { state } = view;
     const pluginState = inlinePluginKey.getState(state);
     return pluginState && pluginState.activeMarks;
   };
 
   isSubsupMarkActive = (activeMarks, type) => {
-    const { marks } = this.props.app_params.view.state.schema;
+    const { marks } = this.props.appParams.view.state.schema;
     return activeMarks.find(
       mark => mark.type === marks.subsup && mark.attrs.type === type
     );
@@ -30,14 +30,14 @@ class InlineToolbarComponent extends PureComponent {
 
   toggleMarkofType = evt => {
     const markName = evt.currentTarget.getAttribute("name");
-    const { view } = this.props.app_params;
+    const { view } = this.props.appParams;
     const { state, dispatch } = view;
     const markType = state.schema.marks[markName];
     toggleMark(markType)(state, dispatch);
   };
 
   toggleSupSubMark = (addMark, removeMark) => {
-    const { view } = this.props.app_params;
+    const { view } = this.props.appParams;
     const { state, dispatch } = view;
     const { schema, selection, tr } = state;
     const { $from, $to } = selection;
@@ -62,9 +62,9 @@ class InlineToolbarComponent extends PureComponent {
   };
 
   render() {
-    if (!this.props.app_params.view) return null;
+    if (!this.props.appParams.view) return null;
     const activeMarks = this.getActiveMarks();
-    const { marks } = this.props.app_params.view.state.schema;
+    const { marks } = this.props.appParams.view.state.schema;
     const { options } = this.props.config;
 
     return (

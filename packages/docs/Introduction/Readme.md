@@ -12,8 +12,10 @@ Some distinguishing features of the editor are:
 
 - Multiple rich text styling options
 - Support for images
+- Support for videos
 - Support for tables
 - Support for inline toolbar [demo](#/Demo/InlineToolbar)
+- Support for full page editor [demo](#/Demo/FullPage)
 - Support to convert prosemirror JSON to HTML
 - Support of theming [demo](#/Demo/Themed)
 

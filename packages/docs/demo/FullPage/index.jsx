@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Editor from "nib-core";
-import Cross from "../../styleguide/cross.svg";
 
 import uploadCallback from "../../common/uploadCallback";
+import defaultValue from "./sampleData";
 
 const theme = {
   wrapper: {
@@ -15,7 +15,7 @@ const theme = {
   }
 };
 
-const FullPageEditor = ({setContent}) => {
+const FullPageEditor = ({ setContent }) => {
   return (
     <Editor
       config={{
@@ -25,6 +25,7 @@ const FullPageEditor = ({setContent}) => {
           }
         }
       }}
+      defaultValue={defaultValue}
       onChange={setContent}
       theme={theme}
     />
@@ -36,7 +37,7 @@ const FullPageEditor = ({setContent}) => {
  */
 const FullPage = () => {
   const [fullPageEditorVisible, showFullPageEditor] = useState(false);
-  const [content, setContent] = useState({});
+  const [content, setContent] = useState();
 
   const showEditor = () => {
     document.body.style.overflow = "hidden";
@@ -63,7 +64,7 @@ const FullPage = () => {
         Show Editor
       </button>
 
-      <pre>{JSON.stringify(content, null, 4)}</pre>
+      <pre>{JSON.stringify(content || defaultValue, null, 4)}</pre>
     </div>
   );
 };

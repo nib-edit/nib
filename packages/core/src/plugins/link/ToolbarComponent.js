@@ -7,14 +7,14 @@ import { linkPluginKey } from "./plugin";
 
 class LinkToolbarComponent extends PureComponent {
   showLinkToolbar = () => {
-    const { view = {} } = this.props.app_params;
+    const { view = {} } = this.props.appParams;
     const { state, dispatch } = view;
     if (!view.hasFocus) view.focus();
     dispatch(state.tr.setMeta("SHOW_LINK_TOOLBAR", true));
   };
 
   isLinkMarkActive = () => {
-    const { view: { state } = {} } = this.props.app_params;
+    const { view: { state } = {} } = this.props.appParams;
     if (!state) return;
     const pluginState = linkPluginKey.getState(state);
     return pluginState && !!pluginState.link;

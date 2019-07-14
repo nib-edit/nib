@@ -1,5 +1,6 @@
 import block from "./block";
 import common from "./common";
+import video from "./video";
 import help from "./help";
 import history from "./history";
 import image from "./image";
@@ -11,6 +12,7 @@ import table from "./table";
 const Plugins = {
   block,
   common,
+  video,
   help,
   history,
   image,

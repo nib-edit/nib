@@ -5,7 +5,7 @@ import { createTable } from "./commands";
 
 class TableToolbarComponent extends PureComponent {
   insertTable = () => {
-    const { view } = this.props.app_params;
+    const { view } = this.props.appParams;
     const { state, dispatch } = view;
     createTable(state, dispatch);
   };

@@ -1,43 +1,43 @@
-import React, {Component, Fragment} from "react";
+import React, { Component, Fragment } from "react";
 import styled from "@emotion/styled";
-import {ToolbarSeparator} from "nib-ui";
+import { ToolbarSeparator } from "nib-ui";
 
 import AppStateWrapper from "../../../common/app-state/AppStateWrapper";
-import {getToolbarOptions} from "../../../common/editor-helpers/toolbar-builder";
-import {AppContext} from "../../../common/app-context";
+import { getToolbarOptions } from "../../../common/editor-helpers/toolbar-builder";
+import { AppContext } from "../../../common/app-context";
 
-const HelpOption = ({options, app_params}) => {
+const HelpOption = ({ options, appParams }) => {
   const helpOption = options.filter(opt => opt.name === "help");
   if (!helpOption.length) return null;
   const HelpComponent = helpOption[0].toolbarComponent;
-  return <HelpComponent app_params={app_params} />;
+  return <HelpComponent appParams={appParams} />;
 };
 
 class Top extends Component {
   static contextType = AppContext;
 
   render() {
-    const {plugins, toolbar} = this.context.config;
+    const { plugins, toolbar } = this.context.config;
     const options = getToolbarOptions(plugins.options, toolbar.top.options);
     const formattingOption = options.filter(opt => opt.name !== "help");
     const optionSize = formattingOption.length;
 
     return (
       <AppStateWrapper
-        render={app_params => (
+        render={appParams => (
           <Wrapper onMouseDown={e => e.preventDefault()}>
             <ToolbarSection>
               {formattingOption.map((Option, index) => (
                 <Fragment key={`top-toolbar-option-${Option.name}`}>
                   <Option.toolbarComponent
                     config={toolbar.top[Option.name]}
-                    app_params={app_params}
+                    appParams={appParams}
                   />
                   {index < optionSize - 1 && <ToolbarSeparator />}
                 </Fragment>
               ))}
             </ToolbarSection>
-            <HelpOption options={options} app_params={app_params} />
+            <HelpOption options={options} appParams={appParams} />
           </Wrapper>
         )}
       />
@@ -51,25 +51,26 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 4px;
-  background-color: ${({theme}) => theme.toolbar.top.backgroundColor};
-  color: ${({theme}) => theme.toolbar.top.color};
+  background-color: ${({ theme }) => theme.toolbar.top.backgroundColor};
+  color: ${({ theme }) => theme.toolbar.top.color};
 
-  border-bottom: ${({theme}) => theme.toolbar.top.borderBottom};
-  border-left: ${({theme}) => theme.toolbar.top.borderLeft};
-  border-right: ${({theme}) => theme.toolbar.top.borderRight};
-  border-top: ${({theme}) => theme.toolbar.top.borderTop};
+  border-bottom: ${({ theme }) => theme.toolbar.top.borderBottom};
+  border-left: ${({ theme }) => theme.toolbar.top.borderLeft};
+  border-right: ${({ theme }) => theme.toolbar.top.borderRight};
+  border-top: ${({ theme }) => theme.toolbar.top.borderTop};
 
-  border-bottom-left-radius: ${({theme}) =>
+  border-bottom-left-radius: ${({ theme }) =>
     theme.toolbar.top.borderBottomLeftRadius};
-  border-bottom-right-radius: ${({theme}) =>
+  border-bottom-right-radius: ${({ theme }) =>
     theme.toolbar.top.borderBottomLeftRadius};
-  border-top-left-radius: ${({theme}) => theme.toolbar.top.borderTopLeftRadius};
-  border-top-right-radius: ${({theme}) =>
+  border-top-left-radius: ${({ theme }) =>
+    theme.toolbar.top.borderTopLeftRadius};
+  border-top-right-radius: ${({ theme }) =>
     theme.toolbar.top.borderTopLeftRadius};
 
-  font-size: ${({theme}) => theme.toolbar.top.fontSize};
-  font-style: ${({theme}) => theme.toolbar.top.fontStyle};
-  font-family: ${({theme}) => theme.toolbar.top.fontFamily};
+  font-size: ${({ theme }) => theme.toolbar.top.fontSize};
+  font-style: ${({ theme }) => theme.toolbar.top.fontStyle};
+  font-family: ${({ theme }) => theme.toolbar.top.fontFamily};
 `;
 
 const ToolbarSection = styled.div`

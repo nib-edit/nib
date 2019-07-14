@@ -1,23 +1,23 @@
-import React, {Component, Fragment} from "react";
+import React, { Component, Fragment } from "react";
 import styled from "@emotion/styled";
-import {Overlay, ToolbarSeparator} from "nib-ui";
+import { Overlay, ToolbarSeparator } from "nib-ui";
 
 import AppStateWrapper from "../../../common/app-state/AppStateWrapper";
-import {getToolbarOptions} from "../../../common/editor-helpers/toolbar-builder";
-import {AppContext} from "../../../common/app-context";
+import { getToolbarOptions } from "../../../common/editor-helpers/toolbar-builder";
+import { AppContext } from "../../../common/app-context";
 
 class Inline extends Component {
   static contextType = AppContext;
 
   closeOverlay = () => {
-    const {view} = this.props.app_params;
-    const {state, dispatch} = view;
+    const { view } = this.props.appParams;
+    const { state, dispatch } = view;
     dispatch(state.tr.setMeta("HIDE_OVERLAYS", true));
   };
 
   render() {
-    const {editorWrapper, app_params} = this.props;
-    const {plugins, toolbar} = this.context.config;
+    const { editorWrapper, appParams } = this.props;
+    const { plugins, toolbar } = this.context.config;
     const options = getToolbarOptions(plugins.options, toolbar.inline.options);
     const optionSize = options.length;
     const selMarker = document.getElementsByClassName("nib-selected");
@@ -34,7 +34,7 @@ class Inline extends Component {
                   <Fragment key={`inline-toolbar-option-${Option.name}`}>
                     <Option.toolbarComponent
                       config={toolbar.inline[Option.name]}
-                      app_params={app_params}
+                      appParams={appParams}
                     />
                     {index < optionSize - 1 && <ToolbarSeparator />}
                   </Fragment>
@@ -50,7 +50,7 @@ class Inline extends Component {
 
 export default props => (
   <AppStateWrapper
-    render={app_params => <Inline app_params={app_params} {...props} />}
+    render={appParams => <Inline appParams={appParams} {...props} />}
   />
 );
 
@@ -59,26 +59,26 @@ const Wrapper = styled.div`
   display: flex;
   position: relative;
 
-  background-color: ${({theme}) => theme.toolbar.inline.backgroundColor};
-  color: ${({theme}) => theme.toolbar.inline.color};
+  background-color: ${({ theme }) => theme.toolbar.inline.backgroundColor};
+  color: ${({ theme }) => theme.toolbar.inline.color};
 
-  border-bottom: ${({theme}) => theme.toolbar.inline.borderBottom};
-  border-left: ${({theme}) => theme.toolbar.inline.borderLeft};
-  border-right: ${({theme}) => theme.toolbar.inline.borderRight};
-  border-top: ${({theme}) => theme.toolbar.inline.borderTop};
+  border-bottom: ${({ theme }) => theme.toolbar.inline.borderBottom};
+  border-left: ${({ theme }) => theme.toolbar.inline.borderLeft};
+  border-right: ${({ theme }) => theme.toolbar.inline.borderRight};
+  border-top: ${({ theme }) => theme.toolbar.inline.borderTop};
 
-  border-bottom-left-radius: ${({theme}) =>
+  border-bottom-left-radius: ${({ theme }) =>
     theme.toolbar.inline.borderBottomLeftRadius};
-  border-bottom-right-radius: ${({theme}) =>
+  border-bottom-right-radius: ${({ theme }) =>
     theme.toolbar.inline.borderBottomLeftRadius};
-  border-top-left-radius: ${({theme}) =>
+  border-top-left-radius: ${({ theme }) =>
     theme.toolbar.inline.borderTopLeftRadius};
-  border-top-right-radius: ${({theme}) =>
+  border-top-right-radius: ${({ theme }) =>
     theme.toolbar.inline.borderTopLeftRadius};
 
-  padding: ${({theme}) => theme.toolbar.inline.padding};
+  padding: ${({ theme }) => theme.toolbar.inline.padding};
 
-  font-size: ${({theme}) => theme.toolbar.inline.fontSize};
-  font-style: ${({theme}) => theme.toolbar.inline.fontStyle};
-  font-family: ${({theme}) => theme.toolbar.inline.fontFamily};
+  font-size: ${({ theme }) => theme.toolbar.inline.fontSize};
+  font-style: ${({ theme }) => theme.toolbar.inline.fontStyle};
+  font-family: ${({ theme }) => theme.toolbar.inline.fontFamily};
 `;
