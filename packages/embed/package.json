@@ -1,6 +1,6 @@
 {
   "name": "nib-embed",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Getting oEmbed from embeddable link",
   "main": "./index.js",
   "repository": {

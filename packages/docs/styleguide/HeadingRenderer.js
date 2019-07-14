@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import cx from "clsx";
 import Styled from "rsg-components/Styled";
 
-const styles = ({color, fontFamily, fontSize}) => ({
+const styles = ({ color, fontFamily, fontSize }) => ({
   heading: {
     margin: 0,
     color: color.base,
@@ -34,7 +34,7 @@ const styles = ({color, fontFamily, fontSize}) => ({
   }
 });
 
-function HeadingRenderer({classes, level, children, ...props}) {
+function HeadingRenderer({ classes, level, children, ...props }) {
   const Tag = `h${level}`;
   const headingClasses = cx(classes.heading, classes[`heading${level}`]);
 

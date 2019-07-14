@@ -1,16 +1,16 @@
 import PropTypes from "prop-types";
-import React, {Component} from "react";
-import {EditorView} from "prosemirror-view";
+import React, { Component } from "react";
+import { EditorView } from "prosemirror-view";
 
-import {getPluginStyles} from "../../common/editor-helpers/styles";
-import {getPluginList} from "../../common/editor-helpers/plugin";
+import { getPluginStyles } from "../../common/editor-helpers/styles";
+import { getPluginList } from "../../common/editor-helpers/plugin";
 import {
   buildEditorState,
   updateEditorState
 } from "../../common/editor-helpers/editor-state";
-import {AppContext} from "../../common/app-context";
+import { AppContext } from "../../common/app-context";
 
-import {StyledEditor} from "./style";
+import { StyledEditor } from "./style";
 
 export default class Editor extends Component {
   constructor(props) {
@@ -28,9 +28,9 @@ export default class Editor extends Component {
   };
 
   componentDidMount() {
-    const {plugins} = this.context.config;
-    const {defaultValue, onChange, autofocus} = this.props;
-    var state = buildEditorState(
+    const { plugins } = this.context.config;
+    const { defaultValue, onChange, autofocus } = this.props;
+    const state = buildEditorState(
       getPluginList(`${plugins.options} history common`),
       defaultValue
     );
@@ -51,8 +51,8 @@ export default class Editor extends Component {
   }
 
   render() {
-    const {spellcheck, view} = this.props;
-    const {plugins} = this.context.config;
+    const { spellcheck, view } = this.props;
+    const { plugins } = this.context.config;
 
     return (
       <StyledEditor
