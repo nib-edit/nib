@@ -27,25 +27,29 @@ const defaultValue = {
  */
 const InlineToolbar = () => {
   return (
-    <div spellCheck={false}>
+    <div spellCheck={false} style={{ color: "#0000e4" }}>
       <Editor
         config={{
-          plugins: {options: "block inline link"},
+          plugins: { options: "block inline link" },
           toolbar: {
             options: "inline",
             inline: {
               options: "block inline link",
-              block: {options: "p h1 h2", grouped: false}
+              block: { options: "p h1 h2", grouped: false }
             }
           }
         }}
         defaultValue={defaultValue}
         theme={{
           wrapper: {
+            color: "#0000e4",
             borderTop: "none",
             borderBottom: "none",
             borderLeft: "none",
             borderRight: "none"
+          },
+          editor: {
+            color: "#0000e4"
           }
         }}
       />

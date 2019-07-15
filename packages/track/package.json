@@ -1,7 +1,7 @@
 {
-  "name": "nib-embed",
-  "version": "1.0.0",
-  "description": "Getting oEmbed from embeddable link",
+  "name": "nib-track",
+  "version": "0.0.1",
+  "description": "Tracking changes in Nib editor",
   "main": "./index.js",
   "repository": {
     "type": "git",
@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/jpuri/Nib/tree/master/packages/embed#Readme.md",
   "dependencies": {
-    "axios": "^0.19.0"
+    "prosemirror-transform": "^1.0.0"
   },
   "devDependencies": {}
 }

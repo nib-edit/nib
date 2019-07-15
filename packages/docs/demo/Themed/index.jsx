@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Editor from "nib-core";
 
 import uploadCallback from "../../common/uploadCallback";
@@ -76,21 +76,28 @@ const customTheme = {
 /**
  * @visibleName 6. Themed
  */
-const Themed = () => (
-  <Editor
-    config={{
-      plugins: {
-        image: {
-          uploadCallback
-        }
-      },
-      toolbar: {
-        options: "top"
-      }
-    }}
-    theme={customTheme}
-    defaultValue={defaultValue}
-  />
-);
+const Themed = () => {
+  const [content, setContent] = useState();
+  return (
+    <div>
+      <Editor
+        config={{
+          plugins: {
+            image: {
+              uploadCallback
+            }
+          },
+          toolbar: {
+            options: "top"
+          }
+        }}
+        onChange={setContent}
+        theme={customTheme}
+        defaultValue={defaultValue}
+      />
+      <pre>{JSON.stringify(content || defaultValue, null, 4)}</pre>
+    </div>
+  );
+};
 
 export default Themed;

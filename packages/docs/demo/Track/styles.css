@@ -1,0 +1,51 @@
+.nib-track_save_wraper {
+  margin-top: 10px;
+}
+
+.nib-track_save {
+  margin-left: 10px;
+  background-color: #0000e4;
+  color: white;
+  height: 32px;
+  border: none;
+  border-radius: 2px;
+  padding: 0 20px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.nib-track_msg {
+  width: 150px;
+  height: 26px;
+}
+
+.nib-track_save:focus,
+.nib-track_msg:focus {
+  outline: none;
+}
+
+.nib-track_commits {
+  margin-top: 10px;
+}
+
+.nib-track_commit_list {
+  margin: 10px 0 20px;
+  padding: 0 32px;
+  font-size: 14px;
+}
+
+.nib-track_commits_message {
+  width: 125px;
+  display: inline-block;
+}
+
+.nib-track_revert_btn {
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.nib-track_save[disabled] {
+  background: #c1c1c1;
+  cursor: not-allowed;
+}

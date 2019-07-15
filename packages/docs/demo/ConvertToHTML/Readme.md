@@ -1,38 +1,5 @@
-Convert content to HTML string.
+Convert content to HTML string. <a target="_blank" href="https://github.com/nib-edit/Nib/blob/master/packages/docs/demo/ConvertToHTML/index.jsx">Code</a>
 
 ```js
 <ConvertToHTMLDemo />
-```
-
-Code:
-
-```js static
-import Editor from "nib-core";
-import React, {useState} from "react";
-import {convertToHTML} from "nib-converter";
-
-import uploadCallback from "../../common/uploadCallback";
-
-const ConvertToHTMLDemo = () => {
-  const [content, setContent] = useState({});
-  return (
-    <div>
-      <Editor
-        config={{
-          plugins: {
-            image: {
-              uploadCallback
-            }
-          },
-          toolbar: {
-            options: "top"
-          }
-        }}
-        onChange={setContent}
-      />
-      <div style={{marginTop: 20}}>HTML String Content:</div>
-      <pre style={{whiteSpace: "inherit"}}>{convertToHTML(content)}</pre>
-    </div>
-  );
-};
 ```

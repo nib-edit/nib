@@ -8,7 +8,7 @@ import defaultValue from "./sampleData";
  * @visibleName 3. Full Featured
  */
 const FullFeatured = () => {
-  const [content, setContent] = useState({});
+  const [content, setContent] = useState();
   return (
     <div>
       <Editor
@@ -22,7 +22,7 @@ const FullFeatured = () => {
         onChange={setContent}
         defaultValue={defaultValue}
       />
-      <pre>{JSON.stringify(content, null, 4)}</pre>
+      <pre>{JSON.stringify(content || defaultValue, null, 4)}</pre>
     </div>
   );
 };
