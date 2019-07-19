@@ -25,7 +25,14 @@ class Editor extends Component {
     onChange: PropTypes.func,
     spellcheck: PropTypes.bool,
     theme: PropTypes.object,
-    licenseKey: PropTypes.string
+    licenseKey: PropTypes.string,
+    addons: PropTypes.array
+  };
+
+  static defaultProps = {
+    autofocus: true,
+    spellcheck: false,
+    addons: []
   };
 
   constructor(props) {
@@ -46,7 +53,8 @@ class Editor extends Component {
       onChange,
       autofocus,
       spellcheck,
-      licenseKey
+      licenseKey,
+      addons
     } = this.props;
     const { toolbar, plugins } = this.config;
     const { config, dispatcher } = this;
@@ -68,6 +76,7 @@ class Editor extends Component {
                   defaultValue={defaultValue}
                   onChange={onChange}
                   spellcheck={spellcheck}
+                  addons={addons}
                 />
                 {inlineToolbarPresent && (
                   <Toolbar.inline editorWrapper={this.editorWrapper} />

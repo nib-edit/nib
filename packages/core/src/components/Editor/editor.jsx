@@ -29,26 +29,37 @@ export default class Editor extends Component {
 
   componentDidMount() {
     const { plugins } = this.context.config;
-    const { defaultValue, onChange, autofocus } = this.props;
+    const { defaultValue, onChange, autofocus, addons } = this.props;
     const state = buildEditorState(
-      getPluginList(`${plugins.options} history common`),
+      getPluginList(`${plugins.options} history common`).concat(
+        addons.map(addon => addon.plugin)
+      ),
       defaultValue
     );
     this.view = new EditorView(this.editorRef.current, {
       state,
       dispatchTransaction: tr => {
         updateEditorState(this.view, tr);
-        this.context.dispatcher.dispatch(this.view);
+        this.updateViewListeners();
         if (onChange && tr.docChanged) onChange(this.view.state.toJSON().doc);
       }
     });
     if (autofocus) this.view.focus();
-    this.context.dispatcher.dispatch(this.view);
+    this.updateViewListeners();
   }
 
   componentWillUnmount() {
     this.view.destroy();
   }
+
+  updateViewListeners = () => {
+    const { addons } = this.props;
+    const { dispatcher } = this.context;
+    dispatcher.dispatch(this.view);
+    addons.forEach(addon => {
+      addon.listener(this.view);
+    });
+  };
 
   render() {
     const { spellcheck, view } = this.props;

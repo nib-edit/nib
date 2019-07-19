@@ -1,28 +1,5 @@
-Basic editor with only text editing enabled.
+Basic editor with only text editing enabled. <a target="_blank" href="https://github.com/nib-edit/Nib/blob/master/packages/docs/demo/Basic/index.jsx">Code</a>
 
 ```js
 <Basic />
-```
-
-Code:
-
-```js static
-import React, {useState} from "react";
-import Editor from "nib-core";
-
-const Basic = () => {
-  const [content, setContent] = useState({});
-  return (
-    <div>
-      <Editor
-        config={{
-          plugins: {options: ""},
-          toolbar: {options: ""}
-        }}
-        onChange={setContent}
-      />
-      <pre>{JSON.stringify(content, null, 4)}</pre>
-    </div>
-  );
-};
 ```

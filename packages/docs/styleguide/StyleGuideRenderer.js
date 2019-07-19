@@ -54,7 +54,8 @@ const styles = ({
     }
   },
   logo: {
-    padding: space[2],
+    padding: space[1],
+    margin: 0,
     borderBottom: [[1, color.border, "solid"]]
   },
   footer: {
@@ -62,6 +63,9 @@ const styles = ({
     color: color.light,
     fontFamily: fontFamily.base,
     fontSize: fontSize.small
+  },
+  header: {
+    margin: "10px 16px"
   }
 });
 

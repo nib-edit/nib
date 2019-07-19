@@ -47,7 +47,8 @@ module.exports = {
         "packages/docs/demo/ConvertToHTML/index.jsx",
         "packages/docs/demo/InlineToolbar/index.jsx",
         "packages/docs/demo/Themed/index.jsx",
-        "packages/docs/demo/FullPage/index.jsx"
+        "packages/docs/demo/FullPage/index.jsx",
+        "packages/docs/demo/Track/index.jsx"
       ]
     },
     {

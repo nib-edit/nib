@@ -5,7 +5,7 @@
   "main": "./index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jpuri/Nib.git"
+    "url": "https://github.com/nib-edit/Nib.git"
   },
   "keywords": [
     "AWS",
@@ -14,7 +14,7 @@
   ],
   "author": {
     "name": "Jyoti Puri",
-    "email": "jyotipuri@gmail.com"
+    "email": "contact@nibedit.com"
   },
   "homepage": "https://github.com/jpuri/Nib/tree/master/packages/upload#Readme.md",
   "dependencies": {
