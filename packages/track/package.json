@@ -1,6 +1,6 @@
 {
   "name": "nib-track",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Tracking changes in Nib editor",
   "main": "./index.js",
   "repository": {
