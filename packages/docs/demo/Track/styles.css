@@ -17,10 +17,22 @@
 .nib-track_msg {
   width: 150px;
   height: 26px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #9e9e9ebf;
+}
+
+.nib-track_msg_err {
+  width: 150px;
+  height: 26px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: red;
 }
 
 .nib-track_save:focus,
-.nib-track_msg:focus {
+.nib-track_msg:focus,
+.nib-track_revert_btn:focus {
   outline: none;
 }
 
@@ -43,9 +55,19 @@
   border: none;
   text-decoration: underline;
   cursor: pointer;
+  background: transparent;
 }
 
 .nib-track_save[disabled] {
   background: #c1c1c1;
   cursor: not-allowed;
+}
+
+.blame-marker {
+  background-color: #ffff5f;
+}
+
+.nib-highlighted_commit {
+  background-color: #ffff5f;
+  width: 35%;
 }

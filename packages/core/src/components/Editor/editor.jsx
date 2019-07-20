@@ -31,9 +31,7 @@ export default class Editor extends Component {
     const { plugins } = this.context.config;
     const { defaultValue, onChange, autofocus, addons } = this.props;
     const state = buildEditorState(
-      getPluginList(`${plugins.options} history common`).concat(
-        addons.map(addon => addon.plugin)
-      ),
+      getPluginList(`${plugins.options} history common`).concat(addons),
       defaultValue
     );
     this.view = new EditorView(this.editorRef.current, {
@@ -57,7 +55,7 @@ export default class Editor extends Component {
     const { dispatcher } = this.context;
     dispatcher.dispatch(this.view);
     addons.forEach(addon => {
-      addon.listener(this.view);
+      addon.viewListener(this.view);
     });
   };
 

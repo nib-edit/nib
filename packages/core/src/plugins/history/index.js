@@ -1,11 +1,11 @@
 import keymaps, { KeymapInfo } from "./keymaps";
 import toolbarComponent from "./ToolbarComponent";
-import plugin from "./plugin";
+import pmPlugin from "./plugin";
 
 export default {
   name: "history",
   keymaps,
   KeymapInfo,
   toolbarComponent,
-  plugin
+  pmPlugin
 };

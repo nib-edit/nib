@@ -10,6 +10,7 @@ Nib is built on top of <a href="http://prosemirror.net" target="_blank">prosemir
 
 Some distinguishing features of the editor are:
 
+- Extensible plugin system
 - Multiple rich text styling options
 - Support for images
 - Support for videos
@@ -18,6 +19,7 @@ Some distinguishing features of the editor are:
 - Support for full page editor [demo](#/Demo/FullPage)
 - Support to convert prosemirror JSON to HTML
 - Support of theming [demo](#/Demo/Themed)
+- Support of tracking changes
 
 <br>
 

@@ -4,10 +4,10 @@ export const getProsemirrorPlugins = plugins => {
   let pluginList = [];
   plugins.forEach(p => {
     if (p) {
-      if (p.plugins) {
-        pluginList = [...pluginList, ...p.plugins];
-      } else if (p.plugin) {
-        pluginList = [...pluginList, p.plugin];
+      if (p.pmPlugins) {
+        pluginList = [...pluginList, ...p.pmPlugins];
+      } else if (p.pmPlugin) {
+        pluginList = [...pluginList, p.pmPlugin];
       }
     }
   });

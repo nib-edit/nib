@@ -1,12 +1,5 @@
-class Commit {
-  constructor(message, time, steps, maps, hidden) {
-    this.message = message;
-    this.time = time;
-    this.steps = steps;
-    this.maps = maps;
-    this.hidden = hidden;
-  }
-}
+import { updateBlameMap } from "./utils/blameMap";
+import { Commit } from "./helpers";
 
 export default class TrackState {
   constructor(blameMap, commits, uncommittedSteps, uncommittedMaps) {
@@ -20,17 +13,24 @@ export default class TrackState {
     const inverted = transform.steps.map((step, i) =>
       step.invert(transform.docs[i])
     );
-    return new TrackState(
+    const newBlame = updateBlameMap(
       this.blameMap,
+      transform,
+      this.commits.length
+    );
+
+    return new TrackState(
+      newBlame,
       this.commits,
       this.uncommittedSteps.concat(inverted),
       this.uncommittedMaps.concat(transform.mapping.maps)
     );
   };
 
-  applyCommit = (message, time) => {
+  applyCommit = (id, message, time) => {
     if (this.uncommittedSteps.length === 0) return undefined;
     const commit = new Commit(
+      id,
       message,
       time,
       this.uncommittedSteps,
