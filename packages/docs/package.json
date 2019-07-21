@@ -12,9 +12,9 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "css-loader": "^3.0.0",
-    "nib-track": "1.0.0",
+    "nib-track": "1.1.0",
     "nib-converter": "1.0.0",
-    "nib-core": "1.1.1",
+    "nib-core": "1.1.2",
     "nib-ui": "1.0.1",
     "react": "next",
     "react-dom": "next",
