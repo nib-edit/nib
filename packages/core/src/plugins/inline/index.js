@@ -1,6 +1,6 @@
 import keymaps, { KeymapInfo } from "./keymaps";
 import toolbarComponent from "./ToolbarComponent";
-import plugin from "./plugin";
+import pmPlugin from "./plugin";
 import schema from "./schema";
 
 export default {
@@ -8,6 +8,6 @@ export default {
   keymaps,
   KeymapInfo,
   toolbarComponent,
-  plugin,
+  pmPlugin,
   schema
 };

@@ -1,6 +1,6 @@
 {
   "name": "nib-track",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Tracking changes in Nib editor",
   "main": "./index.js",
   "repository": {
@@ -8,15 +8,15 @@
     "url": "https://github.com/nib-edit/Nib.git"
   },
   "keywords": [
-    "oEmbed"
+    "wysiwyg",
+    "editor",
+    "tracking"
   ],
   "author": {
     "name": "Jyoti Puri",
     "email": "contact@nibedit.com"
   },
-  "homepage": "https://github.com/jpuri/Nib/tree/master/packages/embed#Readme.md",
   "dependencies": {
     "prosemirror-transform": "^1.0.0"
-  },
-  "devDependencies": {}
+  }
 }

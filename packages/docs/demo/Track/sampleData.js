@@ -6,7 +6,7 @@ export default {
       content: [
         {
           type: "text",
-          text: "This editor support only plain text with no formatting."
+          text: "This editor support tracking changes."
         }
       ]
     }

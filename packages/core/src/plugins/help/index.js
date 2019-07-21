@@ -1,6 +1,6 @@
-import keymaps, {KeymapInfo} from "./keymaps";
+import keymaps, { KeymapInfo } from "./keymaps";
 import modals from "./modals";
-import plugin from "./plugin";
+import pmPlugin from "./plugin";
 import toolbarComponent from "./ToolbarComponent";
 
 export default {
@@ -8,6 +8,6 @@ export default {
   KeymapInfo,
   keymaps,
   modals,
-  plugin,
+  pmPlugin,
   toolbarComponent
 };

@@ -1,3 +1,0 @@
-export conat insertIntoBlameMap = () => {
-  
-}
