@@ -984,6 +984,7 @@ p code {
 html,
 body {
   font-family: "Roboto", sans-serif;
+  font-weight: normal;
 }
 header {
   margin-bottom: 0 !important;

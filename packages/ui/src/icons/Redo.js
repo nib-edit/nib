@@ -1,9 +1,27 @@
 import React from "react";
+import { withTheme } from "emotion-theming";
+
 import { StyledSVG } from "./style";
 
-export default () => (
-  <StyledSVG width="20" height="20" viewBox="0 0 24 24">
-    <path d="M0 0h24v24H0z" fill="none" />
-    <path d="M18.4 10.6C16.55 8.99 14.15 8 11.5 8c-4.65 0-8.58 3.03-9.96 7.22L3.9 16c1.05-3.19 4.05-5.5 7.6-5.5 1.95 0 3.73.72 5.12 1.88L13 16h9V7l-3.6 3.6z" />
+export default withTheme(({ theme }) => (
+  <StyledSVG width="20px" height="20px" viewBox="0 0 20 20" version="1.1">
+    <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+      <g
+        id="Desktop-HD"
+        transform="translate(-992.000000, -548.000000)"
+        stroke={theme.icon.fill}
+      >
+        <polygon
+          id="Path-6-Copy"
+          fill={theme.icon.fill}
+          transform="translate(1008.327460, 559.792086) rotate(-90.000000) translate(-1008.327460, -559.792086) "
+          points="1005.32746 562.789863 1005.32746 556.794308 1011.32746 562.789863"
+        />
+        <path
+          d="M992.25,559.497778 C994.85552,556.165554 997.522187,554.499628 1000.25,554.5 C1002.97781,554.500372 1005.74558,556.167039 1008.5533,559.5"
+          id="Path-5-Copy-2"
+        />
+      </g>
+    </g>
   </StyledSVG>
-);
+));
