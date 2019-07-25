@@ -1,6 +1,6 @@
 import StyleConstants from "../../common/constants/style_constants";
 
-const {Color, FontSize, BoxShadow, Border} = StyleConstants;
+const { Color, FontSize, BoxShadow, Border } = StyleConstants;
 const auto = "auto";
 const inherit = "inherit";
 const none = "none";
@@ -58,7 +58,7 @@ export const theme = {
       color: Color.text,
       fontSize: FontSize.medium,
       height: "28px",
-      margin: zero,
+      margin: "0 2px",
       padding: zero,
       width: "28px",
       "&:active": `
@@ -144,10 +144,10 @@ export const theme = {
     keymapColor: Color.grayText,
     optionHeight: "44px",
     width: "112px",
-    "&:hover": {backgroundColor: Color.gray1, color: Color.text},
-    "&:selected": {backgroundColor: Color.gray3}
+    "&:hover": { backgroundColor: Color.gray1, color: Color.text },
+    "&:selected": { backgroundColor: Color.gray3 }
   },
-  icon: {fill: Color.text},
+  icon: { fill: Color.text },
   link: {
     backgroundColor: Color.white,
     color: Color.highlight,

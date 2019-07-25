@@ -13,8 +13,6 @@ export const getSelectStyles = themeStyle => ({
     display: "inline-block",
     backgroundColor: themeStyle.backgroundColor,
     borderRadius: themeStyle.borderRadius,
-    fontSize: themeStyle.fontSize,
-    fontWeight: "600",
     lineHeight: 1
   }),
   control: getStyles(
@@ -34,7 +32,7 @@ export const getSelectStyles = themeStyle => ({
   ),
   dropdownIndicator: getStyles({
     padding: "4px",
-    "& svg": {fill: themeStyle.color}
+    "& svg": { fill: themeStyle.color }
   }),
   indicatorSeparator: getStyles({
     display: "none"
@@ -61,6 +59,8 @@ export const getSelectStyles = themeStyle => ({
   singleValue: getStyles({
     overflow: "visible",
     color: themeStyle.color,
-    "&:hover": themeStyle["&:hover"]
+    "&:hover": themeStyle["&:hover"],
+    fontSize: 16,
+    fontWeight: "300"
   })
 });

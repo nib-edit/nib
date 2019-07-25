@@ -1,10 +1,19 @@
 import PropTypes from "prop-types";
 import React from "react";
-import ReactSelect from "react-select";
+import ReactSelect, { components } from "react-select";
 import { withTheme } from "emotion-theming";
 
+import ChevronDown from "../../icons/ChevronDown";
 import Option from "./Option";
 import { getSelectStyles } from "./style";
+
+const DropdownIndicator = props => {
+  return (
+    <components.DropdownIndicator {...props}>
+      <ChevronDown />
+    </components.DropdownIndicator>
+  );
+};
 
 const Select = props => {
   const {
@@ -17,7 +26,7 @@ const Select = props => {
   return (
     <ReactSelect
       className={className}
-      components={{ Option }}
+      components={{ Option, DropdownIndicator }}
       onChange={onChange}
       options={options}
       styles={getSelectStyles(themeStyle)}

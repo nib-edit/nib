@@ -1,9 +1,23 @@
 import React from "react";
+import { withTheme } from "emotion-theming";
+
 import { StyledSVG } from "./style";
 
-export default () => (
-  <StyledSVG width="20" height="20" viewBox="0 0 24 24">
-    <path d="M4 10.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm0-6c-.83 0-1.5.67-1.5 1.5S3.17 7.5 4 7.5 5.5 6.83 5.5 6 4.83 4.5 4 4.5zm0 12c-.83 0-1.5.68-1.5 1.5s.68 1.5 1.5 1.5 1.5-.68 1.5-1.5-.67-1.5-1.5-1.5zM7 19h14v-2H7v2zm0-6h14v-2H7v2zm0-8v2h14V5H7z" />
-    <path fill="none" d="M0 0h24v24H0V0z" />
+export default withTheme(({ theme }) => (
+  <StyledSVG width="20px" height="20px" viewBox="0 0 20 20" version="1.1">
+    <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+      <g
+        id="Desktop-HD"
+        transform="translate(-897.000000, -378.000000)"
+        fill={theme.icon.fill}
+      >
+        <circle id="Oval" cx="900" cy="383" r="1" />
+        <circle id="Oval" cx="900" cy="388" r="1" />
+        <circle id="Oval-Copy" cx="900" cy="393" r="1" />
+        <rect id="Rectangle" x="903" y="382" width="12" height="1.5" />
+        <rect id="Rectangle-Copy-3" x="903" y="387" width="12" height="1.5" />
+        <rect id="Rectangle-Copy-4" x="903" y="392" width="12" height="1.5" />
+      </g>
+    </g>
   </StyledSVG>
-);
+));

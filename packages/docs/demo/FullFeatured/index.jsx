@@ -17,6 +17,12 @@ const FullFeatured = () => {
             image: {
               uploadCallback
             }
+          },
+          toolbar: {
+            options: "top",
+            top: {
+              block: { grouped: true }
+            }
           }
         }}
         onChange={setContent}
