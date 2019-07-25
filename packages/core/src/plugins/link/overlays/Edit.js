@@ -1,8 +1,8 @@
-import React, {PureComponent} from "react";
+import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
-import {TextSelection} from "prosemirror-state";
-import {LinkButton, Input, Overlay, Separator} from "nib-ui";
-import {linkPluginKey} from "../plugin";
+import { TextSelection } from "prosemirror-state";
+import { LinkButton, Input, Overlay, Separator } from "nib-ui";
+import { linkPluginKey } from "../plugin";
 
 class EditOverlay extends PureComponent {
   constructor(props) {
@@ -20,14 +20,14 @@ class EditOverlay extends PureComponent {
   };
 
   getLink = () => {
-    const {view: {state} = {}} = this.props;
+    const { view: { state } = {} } = this.props;
     if (!state) return;
     const pluginState = linkPluginKey.getState(state);
     return pluginState && pluginState.link;
   };
 
   getActiveLinkMark = () => {
-    const {view} = this.props;
+    const { view } = this.props;
     if (!view) return;
     const link = this.getLink();
     if (!link) return;
@@ -37,7 +37,7 @@ class EditOverlay extends PureComponent {
   updateLink = () => {
     const link = this.getLink();
     const {
-      view: {state, dispatch}
+      view: { state, dispatch }
     } = this.props;
     dispatch(
       state.tr
@@ -45,7 +45,7 @@ class EditOverlay extends PureComponent {
         .addMark(
           link.from,
           link.to,
-          state.schema.marks.link.create({href: this.state.href})
+          state.schema.marks.link.create({ href: this.state.href })
         )
         .setSelection(new TextSelection(state.doc.resolve(link.to)))
     );
@@ -54,23 +54,23 @@ class EditOverlay extends PureComponent {
 
   unLink = () => {
     const link = this.getLink();
-    const {view} = this.props;
-    const {state, dispatch} = view;
+    const { view } = this.props;
+    const { state, dispatch } = view;
     dispatch(state.tr.removeMark(link.from, link.to, state.schema.marks.link));
     view.focus();
     this.closeOverlay();
   };
 
   closeOverlay = () => {
-    const {view} = this.props;
-    const {state, dispatch} = view;
+    const { view } = this.props;
+    const { state, dispatch } = view;
     dispatch(state.tr.setMeta("HIDE_EDIT_LINK_TOOLBAR", true));
   };
 
   render() {
     const link = this.getLink();
     if (!link) return null;
-    const {editorWrapper, marker} = this.props;
+    const { editorWrapper, marker } = this.props;
     return (
       <Overlay
         closeOverlay={this.closeOverlay}
@@ -78,15 +78,17 @@ class EditOverlay extends PureComponent {
         marker={marker}
         render={() => (
           <LinkPopup>
-            <label htmlFor="href">Href</label>
             <Input
+              placeholder="Url"
               name="href"
               onChange={this.updateHref}
               defaultValue={link.href}
             />
-            <LinkButton onClick={this.updateLink}>Apply</LinkButton>
+            <StyledLinkButton onClick={this.updateLink}>
+              Update
+            </StyledLinkButton>
             <Separator />
-            <LinkButton onClick={this.unLink}>Unlink</LinkButton>
+            <StyledLinkButton onClick={this.unLink}>Unlink</StyledLinkButton>
           </LinkPopup>
         )}
       />
@@ -106,4 +108,11 @@ const LinkPopup = styled.div`
   display: flex;
   padding: 5px 10px;
   font-size: 14px;
+`;
+
+const StyledLinkButton = styled(LinkButton)`
+  &:first-of-type {
+    margin-right: 4px;
+  }
+  color: ${({ theme }) => theme.overlay.highlight};
 `;

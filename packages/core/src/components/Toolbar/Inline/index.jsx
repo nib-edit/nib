@@ -24,7 +24,7 @@ class Inline extends Component {
     return (
       <div>
         {selMarker[0] ? (
-          <Overlay
+          <StyledOverlay
             closeOverlay={this.closeOverlay}
             editorWrapper={editorWrapper}
             marker={selMarker[0]}
@@ -81,4 +81,8 @@ const Wrapper = styled.div`
   font-size: ${({ theme }) => theme.toolbar.inline.fontSize};
   font-style: ${({ theme }) => theme.toolbar.inline.fontStyle};
   font-family: ${({ theme }) => theme.toolbar.inline.fontFamily};
+`;
+
+const StyledOverlay = styled(Overlay)`
+  padding: 2px !important;
 `;

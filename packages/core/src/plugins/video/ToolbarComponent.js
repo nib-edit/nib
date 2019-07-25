@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
+import styled from "@emotion/styled";
 import { ToolbarButton, Icons } from "nib-ui";
 
 class VideoToolbarComponent extends PureComponent {
@@ -17,15 +18,21 @@ class VideoToolbarComponent extends PureComponent {
 
   render() {
     return (
-      <ToolbarButton
-        className="video_toolbar_component"
-        onClick={this.showVideoOverlay}
-        title="Video"
-      >
-        <Icons.Video />
+      <ToolbarButton onClick={this.showVideoOverlay} title="Video">
+        <IconWrapper
+          style={{ height: 20, width: 20 }}
+          className="video_toolbar_component"
+        >
+          <Icons.Video />
+        </IconWrapper>
       </ToolbarButton>
     );
   }
 }
+
+const IconWrapper = styled.span`
+  height: 20px;
+  width: 20px;
+`;
 
 export default VideoToolbarComponent;

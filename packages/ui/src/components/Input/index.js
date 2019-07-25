@@ -29,7 +29,8 @@ const InputWrapper = styled.div`
 const StyledInput = styled.input`
   background-color: ${({ theme }) => theme.input.backgroundColor};
   color: ${({ theme }) => theme.input.color};
-  border: ${({ theme }) => theme.input.border};
+  border: 1px solid #757575;
+  border-radius: 2px;
   height: ${({ theme }) => theme.input.height};
   width: ${({ theme }) => theme.input.width};
   margin: ${({ theme }) => theme.input.margin};
@@ -37,5 +38,8 @@ const StyledInput = styled.input`
   font-size: ${({ theme }) => theme.input.fontSize};
   &:focus {
     ${({ theme }) => theme.input["&:focus"]};
+  }
+  &::placeholder {
+    font-size: ${({ theme }) => theme.input.fontSize};
   }
 `;
