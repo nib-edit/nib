@@ -115,10 +115,6 @@ export default new Plugin({
       onBlur(view) {
         const { state, dispatch } = view;
         dispatch(state.tr.setMeta("HIDE_EDIT_LINK_TOOLBAR", true));
-      },
-      onFocus(view) {
-        const { state, dispatch } = view;
-        dispatch(state.tr.setMeta("HOW_EDIT_LINK_TOOLBAR", true));
       }
     },
     handleClickOn(view) {

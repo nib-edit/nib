@@ -4739,9 +4739,36 @@ neo-async@^2.5.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.0.tgz#b9d15e4d71c6762908654b5183ed38b753340835"
 
+nib-core@1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/nib-core/-/nib-core-1.1.2.tgz#3a63c8ab9f832be6fc72bebd5c4a1ae4a1bd9f54"
+  dependencies:
+    "@emotion/core" "^10.0.14"
+    "@emotion/styled" "^10.0.14"
+    emotion-theming "^10.0.14"
+    nib-embed "1.0.0"
+    nib-schema "1.0.1"
+    nib-ui "1.0.2"
+    nib-upload "1.0.0"
+    prosemirror-commands "^1.0.7"
+    prosemirror-history "^1.0.3"
+    prosemirror-keymap "^1.0.1"
+    prosemirror-model "^1.6.2"
+    prosemirror-schema-list "^1.0.1"
+    prosemirror-state "^1.2.2"
+    prosemirror-tables "^0.8.1"
+    prosemirror-utils "^0.7.6"
+    prosemirror-view "^1.6.3"
+
 nib-ui@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/nib-ui/-/nib-ui-1.0.1.tgz#ca7d6259b4a8e0178dc912ef9ba949de5e23ca41"
+  dependencies:
+    react-select "^3.0.4"
+
+nib-ui@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/nib-ui/-/nib-ui-1.0.2.tgz#41c715174d0eb5423a1c65309d074eeb5ca96c86"
   dependencies:
     react-select "^3.0.4"
 
