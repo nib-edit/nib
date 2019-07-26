@@ -68,7 +68,7 @@ class VideoOverlay extends PureComponent {
           <LinkPopup ref={this.overlayWrapper}>
             <Input
               autoFocus
-              label="Url"
+              placeholder="Url"
               onChange={this.updateUrl}
               onKeyPress={this.handleKeyDown}
               value={url}
@@ -103,5 +103,5 @@ const LinkPopup = styled.div`
 const StyledLinkButton = styled(LinkButton)`
   margin: 4px 0;
   background: ${({ theme }) => theme.overlay.backgroundColor};
-  color: ${({ theme }) => theme.overlay.color};
+  color: ${({ theme }) => theme.overlay.highlight};
 `;

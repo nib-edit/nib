@@ -1,5 +1,6 @@
-import {Plugin, PluginKey} from "prosemirror-state";
-import {DecorationSet, Decoration} from "prosemirror-view";
+import { Plugin, PluginKey } from "prosemirror-state";
+import { DecorationSet, Decoration } from "prosemirror-view";
+import { linkPluginKey } from "../link/plugin";
 
 export const commonPluginKey = new PluginKey("common");
 
@@ -8,11 +9,11 @@ export default new Plugin({
 
   state: {
     init: () => {
-      return {editorHasFocus: false, hideInlineToolbar: false};
+      return { editorHasFocus: false, hideInlineToolbar: false };
     },
     apply(tr, value) {
-      const newValue = {...value};
-      let editorHasFocus = tr.getMeta("EDITOR_FOCUSED");
+      const newValue = { ...value };
+      const editorHasFocus = tr.getMeta("EDITOR_FOCUSED");
       if (editorHasFocus !== undefined)
         newValue.editorHasFocus = editorHasFocus;
       newValue.hideInlineToolbar = tr.getMeta("HIDE_OVERLAYS");
@@ -23,21 +24,23 @@ export default new Plugin({
   props: {
     handleDOMEvents: {
       focus: view => {
-        const {state, dispatch} = view;
+        const { state, dispatch } = view;
         dispatch(state.tr.setMeta("EDITOR_FOCUSED", true));
         return false;
       },
       blur: view => {
-        const {state, dispatch} = view;
+        const { state, dispatch } = view;
         dispatch(state.tr.setMeta("EDITOR_FOCUSED", false));
         return false;
       }
     },
     decorations(state) {
-      const {editorHasFocus, hideInlineToolbar} =
+      const { editorHasFocus, hideInlineToolbar } =
         state && commonPluginKey.getState(state);
       if (state.selection.empty || !editorHasFocus || hideInlineToolbar) return;
-      const {$from, $to} = state.selection;
+      const { $from, $to } = state.selection;
+      const pluginState = linkPluginKey.getState(state);
+      if (pluginState.link) return;
       return DecorationSet.create(state.doc, [
         Decoration.inline($from.pos, $to.pos, {
           class: "nib-selected",

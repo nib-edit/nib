@@ -162,8 +162,8 @@ export const theme = {
     color: Color.text,
     fontSize: FontSize.medium,
     height: "20px",
-    margin: "4px 8px",
-    padding: "2px",
+    margin: "0 12px 0 0",
+    padding: "4px",
     width: "180px",
     "&:focus": `{
       border: 1px solid ${Color.highlight};
@@ -187,8 +187,10 @@ export const theme = {
     borderTopLeftRadius: "2px",
     borderTopRightRadius: "2px",
     boxShadow: BoxShadow,
+    padding: "8px 4px",
     color: Color.text,
-    fontWeight: "600"
+    fontWeight: "600",
+    highlight: Color.highlight
   },
   modal: {
     modalBackgroundColor: Color.opaque,

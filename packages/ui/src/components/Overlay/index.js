@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
-import React, {Component} from "react";
+import React, { Component } from "react";
 import styled from "@emotion/styled";
 
 const ARROW_HEIGHT = 6;
 const ARROW_MIN_DISTANCE = 10;
 const BLOCK_HEIGHT = 20;
-const OVERLAY_DISTANCE_FROM_BLOCK = 4;
+const OVERLAY_DISTANCE_FROM_BLOCK = 1;
 const MIN_LEFT = 2;
 
 const isSamePos = (oldPos, newPos) => {
@@ -25,7 +25,7 @@ const isSamePos = (oldPos, newPos) => {
 const getPosition = (marker, overlayElm, editorWrapper) => {
   const markerDim = marker.getBoundingClientRect();
   const wrapperDim = editorWrapper.getBoundingClientRect();
-  const {width: overlayWidth = 0, height: overlayHeight = 0} = overlayElm
+  const { width: overlayWidth = 0, height: overlayHeight = 0 } = overlayElm
     ? overlayElm.getBoundingClientRect()
     : {};
 
@@ -65,14 +65,15 @@ const getPosition = (marker, overlayElm, editorWrapper) => {
   }
 
   return {
-    overlayPosition: {top, left},
-    arrowPosition: {left: arrowLeft, dir: arrowDir}
+    overlayPosition: { top, left },
+    arrowPosition: { left: arrowLeft, dir: arrowDir }
   };
 };
 
 export default class Overlay extends Component {
   wrapperRef = React.createRef();
-  state = {overlayPosition: {}, arrowPosition: {dir: "TOP"}};
+
+  state = { overlayPosition: { top: 0 }, arrowPosition: { dir: "TOP" } };
 
   static propTypes = {
     className: PropTypes.string,
@@ -85,7 +86,7 @@ export default class Overlay extends Component {
   componentDidMount() {
     window.addEventListener("keydown", this.handleKeyPress);
     window.addEventListener("mousedown", this.handleWindowMouseDown);
-    const {marker, editorWrapper} = this.props;
+    const { marker, editorWrapper } = this.props;
     if (marker) {
       this.setState({
         ...getPosition(marker, this.wrapperRef.current, editorWrapper.current)
@@ -99,7 +100,7 @@ export default class Overlay extends Component {
   };
 
   componentDidUpdate() {
-    const {marker, editorWrapper} = this.props;
+    const { marker, editorWrapper } = this.props;
     if (!marker) return;
     const oldPos = this.markerPos;
     const markerDim = marker.getBoundingClientRect();
@@ -142,9 +143,9 @@ export default class Overlay extends Component {
   };
 
   render() {
-    const {className, marker, render} = this.props;
+    const { className, marker, render } = this.props;
     if (!marker) return null;
-    const {overlayPosition, arrowPosition} = this.state;
+    const { overlayPosition, arrowPosition } = this.state;
 
     return (
       <Wrapper
@@ -172,23 +173,25 @@ export default class Overlay extends Component {
 const Wrapper = styled.div`
   position: absolute;
 
-  background-color: ${({theme}) => theme.overlay.backgroundColor};
-  color: ${({theme}) => theme.overlay.color};
+  background-color: ${({ theme }) => theme.overlay.backgroundColor};
+  color: ${({ theme }) => theme.overlay.color};
 
-  border-bottom: ${({theme}) => theme.overlay.borderBottom};
-  border-left: ${({theme}) => theme.overlay.borderLeft};
-  border-right: ${({theme}) => theme.overlay.borderRight};
-  border-top: ${({theme}) => theme.overlay.borderTop};
-  border-bottom-left-radius: ${({theme}) =>
+  border-bottom: ${({ theme }) => theme.overlay.borderBottom};
+  border-left: ${({ theme }) => theme.overlay.borderLeft};
+  border-right: ${({ theme }) => theme.overlay.borderRight};
+  border-top: ${({ theme }) => theme.overlay.borderTop};
+  border-bottom-left-radius: ${({ theme }) =>
     theme.overlay.borderBottomLeftRadius};
-  border-bottom-right-radius: ${({theme}) =>
+  border-bottom-right-radius: ${({ theme }) =>
     theme.overlay.borderBottomLeftRadius};
-  border-top-left-radius: ${({theme}) => theme.overlay.borderTopLeftRadius};
-  border-top-right-radius: ${({theme}) => theme.overlay.borderTopLeftRadius};
+  border-top-left-radius: ${({ theme }) => theme.overlay.borderTopLeftRadius};
+  border-top-right-radius: ${({ theme }) => theme.overlay.borderTopLeftRadius};
 
-  box-shadow: ${({theme}) => theme.overlay.boxShadow};
+  box-shadow: ${({ theme }) => theme.overlay.boxShadow};
 
-  font-weight: ${({theme}) => theme.overlay.fontWeight};
+  font-weight: ${({ theme }) => theme.overlay.fontWeight};
+
+  padding: ${({ theme }) => theme.overlay.padding};
 
   z-index: 1;
 
@@ -198,11 +201,11 @@ const Wrapper = styled.div`
 `;
 
 const ArrowTop = styled.div`
-  background: ${({theme}) => theme.overlay.backgroundColor};
-  border-left: 1px solid ${({theme}) => theme.overlay.arrowBorderColor};
-  border-top: 1px solid ${({theme}) => theme.overlay.arrowBorderColor};
+  background: ${({ theme }) => theme.overlay.backgroundColor};
+  border-left: 1px solid ${({ theme }) => theme.overlay.arrowBorderColor};
+  border-top: 1px solid ${({ theme }) => theme.overlay.arrowBorderColor};
   height: 10px;
-  left: ${({left = 0}) => `calc(50% + ${left - ARROW_HEIGHT}px)`};
+  left: ${({ left = 0 }) => `calc(50% + ${left - ARROW_HEIGHT}px)`};
   position: absolute;
   top: -6px;
   transform: rotate(45deg);
@@ -210,11 +213,11 @@ const ArrowTop = styled.div`
 `;
 
 const ArrowBottom = styled.div`
-  background: ${({theme}) => theme.overlay.backgroundColor};
-  border-right: 1px solid ${({theme}) => theme.overlay.arrowBorderColor};
-  border-bottom: 1px solid ${({theme}) => theme.overlay.arrowBorderColor};
+  background: ${({ theme }) => theme.overlay.backgroundColor};
+  border-right: 1px solid ${({ theme }) => theme.overlay.arrowBorderColor};
+  border-bottom: 1px solid ${({ theme }) => theme.overlay.arrowBorderColor};
   height: 10px;
-  left: ${({left = 0}) => `calc(50% + ${left - ARROW_HEIGHT}px)`};
+  left: ${({ left = 0 }) => `calc(50% + ${left - ARROW_HEIGHT}px)`};
   position: absolute;
   bottom: -6px;
   transform: rotate(45deg);

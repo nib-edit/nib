@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { ToolbarButton, Icons } from "nib-ui";
 
+import styled from "@emotion/styled";
 import { formatKeymap } from "../../common/utils/key-format";
 import { KeymapInfo } from "./keymaps";
 import { linkPluginKey } from "./plugin";
@@ -28,10 +29,17 @@ class LinkToolbarComponent extends PureComponent {
         disabled={this.isLinkMarkActive()}
         title={formatKeymap(KeymapInfo.link)}
       >
-        <Icons.Link />
+        <IconWrapper className="nib-link-marker">
+          <Icons.Link />
+        </IconWrapper>
       </ToolbarButton>
     );
   }
 }
+
+const IconWrapper = styled.span`
+  height: 20px;
+  width: 20px;
+`;
 
 export default LinkToolbarComponent;

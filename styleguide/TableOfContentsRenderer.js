@@ -74,21 +74,6 @@ export function TableOfContentsRenderer({ classes, children }) {
           </a>
         </nav>
       </div>
-      <div className={classes.bottom}>
-        Made with 
-{' '}
-<span style={{ color: "red" }}>♥️</span>
-{' '}
-by
-{" "}
-        <a
-          style={{ textDecoration: "underline" }}
-          target="_blank"
-          href="https://twitter.com/jyopur"
-        >
-          Jyoti.
-        </a>
-      </div>
     </div>
   );
 }
