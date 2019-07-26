@@ -13,7 +13,6 @@ const styles = ({ fontFamily, color }) => ({
   },
   image: {
     width: "2.5em",
-    marginLeft: "-0.5em",
     marginRight: 25
   },
   link: {

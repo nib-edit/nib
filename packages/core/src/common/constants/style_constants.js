@@ -1,7 +1,8 @@
 const Color = {
   border: "#e0e0e0",
   boxShadow: "#cdcdcdbf",
-  highlight: "#304ffe",
+  highlight: "#2962ff",
+  lowHighlight: "rgba(41, 98, 255, 0.1)",
   gray1: "#E0E0E0",
   gray2: "#9E9E9E",
   gray3: "#BDBDBD",
@@ -9,7 +10,7 @@ const Color = {
   lightBorder: "rgba(201,201,201,0.75)",
   text: "#212121",
   white: "#FFFFFF",
-  opaque: "rgba(0, 0, 0, 0.25)"
+  opaque: "rgba(0, 0, 0, 0.5)"
 };
 
 const FontSize = {

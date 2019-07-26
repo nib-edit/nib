@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { ToolbarButton, Icons } from "nib-ui";
+import { ToolbarButton, Icon } from "nib-ui";
 
 import { createTable } from "./commands";
 
@@ -13,7 +13,7 @@ class TableToolbarComponent extends PureComponent {
   render() {
     return (
       <ToolbarButton name="table" onClick={this.insertTable} title="Table">
-        <Icons.Table />
+        <Icon name="Table" />
       </ToolbarButton>
     );
   }

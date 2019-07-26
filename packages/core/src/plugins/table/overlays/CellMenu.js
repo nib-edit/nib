@@ -1,14 +1,14 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import styled from "@emotion/styled";
 
-import {Icons} from "nib-ui";
+import { Icon } from "nib-ui";
 
 import AppStateWrapper from "../../../common/app-state/AppStateWrapper";
 import MenuDropdown from "./CellMenuDropdown";
 
 class CellMenu extends Component {
   state = {
-    menuPosition: {left: 0, top: 0},
+    menuPosition: { left: 0, top: 0 },
     menuVisible: false
   };
 
@@ -21,12 +21,12 @@ class CellMenu extends Component {
   };
 
   updateStatePosition = () => {
-    const {editorWrapper, marker} = this.props;
+    const { editorWrapper, marker } = this.props;
     const {
       top: wrapperTop,
       left: wrapperLeft
     } = editorWrapper.current.getBoundingClientRect();
-    const {top, left, width} = marker.getBoundingClientRect();
+    const { top, left, width } = marker.getBoundingClientRect();
     this.setState({
       top: top - wrapperTop,
       left: left + width - wrapperLeft - 20,
@@ -35,17 +35,17 @@ class CellMenu extends Component {
   };
 
   toggleMenuVisible = () => {
-    this.setState({menuVisible: !this.state.menuVisible});
+    this.setState({ menuVisible: !this.state.menuVisible });
   };
 
   render() {
     if (!this.props.marker) return;
-    const {top, left, menuVisible} = this.state;
+    const { top, left, menuVisible } = this.state;
     return (
       <AppStateWrapper
         render={() => (
-          <Wrapper onMouseDown={e => e.preventDefault()} style={{top, left}}>
-            <StyledArrowDownIcon onClick={this.toggleMenuVisible} />
+          <Wrapper onMouseDown={e => e.preventDefault()} style={{ top, left }}>
+            <StyledIcon name="ArrowDown" onClick={this.toggleMenuVisible} />
             {menuVisible && (
               <MenuDropdown
                 view={this.props.view}
@@ -63,12 +63,12 @@ const Wrapper = styled.div`
   position: absolute;
 `;
 
-const StyledArrowDownIcon = styled(Icons.ArrowDown)`
-  fill: ${({theme}) => theme.table.cell.menuIcon.color};
-  height: ${({theme}) => theme.table.cell.menuIcon.height}px;
-  width: ${({theme}) => theme.table.cell.menuIcon.width}px;
+const StyledIcon = styled(Icon)`
+  fill: ${({ theme }) => theme.table.cell.menuIcon.color};
+  height: ${({ theme }) => theme.table.cell.menuIcon.height}px;
+  width: ${({ theme }) => theme.table.cell.menuIcon.width}px;
   &: hover {
-    ${({theme}) => theme.table.cell.menuIcon["&:hover"]};
+    ${({ theme }) => theme.table.cell.menuIcon["&:hover"]};
   }
 `;
 

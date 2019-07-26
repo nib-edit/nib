@@ -20,6 +20,7 @@ const StyledButton = styled.button`
   padding: ${({ theme }) => theme.button.primary.padding};
 
   font-size: ${({ theme }) => theme.button.primary.fontSize};
+  transition: all 0.2s ease;
 
   :hover {
     ${({ disabled, theme }) =>

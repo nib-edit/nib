@@ -1,3 +1,4 @@
+import { ConnectableObservable } from "rxjs";
 import StyleConstants from "../../common/constants/style_constants";
 
 const { Color, FontSize, BoxShadow, Border } = StyleConstants;
@@ -6,7 +7,7 @@ const inherit = "inherit";
 const none = "none";
 const zero = "0px";
 
-export const theme = {
+export default {
   wrapper: {
     backgroundColor: Color.white,
     borderBottom: Border,
@@ -62,20 +63,16 @@ export const theme = {
       padding: zero,
       width: "28px",
       "&:active": `
-        background-color: ${Color.gray2} !important;
       `,
       "&:disabled": `{
         opacity: ${StyleConstants.DisabledStyle.opacity};
       }`,
       "&:focus": `{
         outline: none;
-        background-color: ${Color.gray1};
       }`,
       "&:hover": `{
-        background-color: ${Color.gray1};
       }`,
       "&:selected": `{
-        background-color: ${Color.gray3} !important;
       }`
     },
     primary: {
@@ -107,14 +104,14 @@ export const theme = {
       }`
     },
     link: {
-      backgroundColor: Color.white,
+      backgroundColor: none,
       border: none,
       borderRadius: zero,
       color: Color.text,
       textDecoration: "underline",
       fontSize: FontSize.medium,
       height: auto,
-      margin: zero,
+      margin: "4px 0",
       padding: zero,
       width: auto,
       "&:active": `{
@@ -126,10 +123,9 @@ export const theme = {
       "&:focus": `{
         color: ${Color.highlight};
         outline: none;
-        text-decoration: underline;
       }`,
       "&:hover": `{
-        text-decoration: underline;
+        color: ${Color.highlight};
       }`
     }
   },
@@ -141,13 +137,18 @@ export const theme = {
     dropdownWidth: "188px",
     fontSize: FontSize.medium,
     height: "28px",
-    keymapColor: Color.grayText,
+    keymapColor: Color.gray2,
     optionHeight: "44px",
     width: "112px",
-    "&:hover": { backgroundColor: Color.gray1, color: Color.text },
-    "&:selected": { backgroundColor: Color.gray3 }
+    "&:focus": {
+      backgroundColor: Color.lowHighlight
+    },
+    "&:selected": { backgroundColor: Color.white, color: Color.highlight }
   },
-  icon: { fill: Color.text },
+  icon: {
+    fill: Color.text,
+    selectedFill: Color.highlight
+  },
   link: {
     backgroundColor: Color.white,
     color: Color.highlight,
@@ -158,7 +159,10 @@ export const theme = {
   },
   input: {
     backgroundColor: Color.white,
-    border: Border,
+    borderTop: none,
+    borderLeft: none,
+    borderRight: none,
+    borderBottom: "1px solid #757575",
     color: Color.text,
     fontSize: FontSize.medium,
     height: "20px",
@@ -166,7 +170,10 @@ export const theme = {
     padding: "4px",
     width: "180px",
     "&:focus": `{
-      border: 1px solid ${Color.highlight};
+      borderTop: none;
+      borderLeft: none;
+      borderRight: none;
+      borderBottom: 1px solid ${Color.highlight};
       outline: none;
     }`
   },
@@ -187,7 +194,7 @@ export const theme = {
     borderTopLeftRadius: "2px",
     borderTopRightRadius: "2px",
     boxShadow: BoxShadow,
-    padding: "8px 4px",
+    padding: "4px 4px 6px 4px;",
     color: Color.text,
     fontWeight: "600",
     highlight: Color.highlight
@@ -239,7 +246,7 @@ export const theme = {
       padding: "2px"
     }
   },
-  imageUploadModal: {
+  uploadModal: {
     backgroundColor: Color.gray1,
     borderActiveColor: Color.highlight,
     borderColor: Color.text,
@@ -269,10 +276,11 @@ export const theme = {
         padding: "5px",
         width: "150px",
         "&:hover": `{
-          background-color: ${Color.gray1};
+          background-color: ${Color.lowHighlight};
         }`
       }
     },
-    border: Border
+    border: Border,
+    resizeHandle: Color.highlight
   }
 };

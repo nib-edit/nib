@@ -1,4 +1,4 @@
-import React, {PureComponent} from "react";
+import React, { PureComponent } from "react";
 import Editor from "nib-core";
 
 import uploadCallback from "../common/uploadCallback";
@@ -20,7 +20,7 @@ class TopBar extends PureComponent {
           margin: "32px 0"
         }}
       >
-        <div style={{width: "75%"}}>
+        <div>
           <Editor
             config={{
               plugins: {

@@ -1,15 +1,12 @@
 import React from "react";
-import { withTheme } from "emotion-theming";
 
-import { StyledSVG } from "./style";
-
-export default withTheme(({ theme }) => (
-  <StyledSVG width="20px" height="20px" viewBox="0 0 20 20" version="1.1">
+export default ({ fill, ...rest }) => (
+  <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" {...rest}>
     <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g
         id="Desktop-HD"
         transform="translate(-717.000000, -401.000000)"
-        fill={theme.icon.fill}
+        fill={fill}
       >
         <g id="Group" transform="translate(720.750000, 404.000000)">
           <rect
@@ -25,5 +22,5 @@ export default withTheme(({ theme }) => (
         </g>
       </g>
     </g>
-  </StyledSVG>
-));
+  </svg>
+);

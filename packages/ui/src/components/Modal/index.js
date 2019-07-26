@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
-import React, {PureComponent} from "react";
+import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
+
+import Icon from "../Icon";
 
 class Modal extends PureComponent {
   static propTypes = {
@@ -33,7 +35,7 @@ class Modal extends PureComponent {
   stopPropagation = evt => evt.stopPropagation();
 
   render() {
-    const {render} = this.props;
+    const { render, title, hideModal } = this.props;
     return (
       <Wrapper
         onMouseDown={this.handleMouseDown}
@@ -42,8 +44,13 @@ class Modal extends PureComponent {
         <InnerWrapper
           onMouseDown={this.stopPropagation}
           onTouchStart={this.stopPropagation}
+          onClick={this.stopPropagation}
         >
-          {render()}
+          <Header>
+            <Title>{title}</Title>
+            <StyledIcon name="Cross" onClick={hideModal} />
+          </Header>
+          <MainSection>{render()}</MainSection>
         </InnerWrapper>
       </Wrapper>
     );
@@ -52,7 +59,7 @@ class Modal extends PureComponent {
 
 const Wrapper = styled.div`
   align-items: center;
-  background-color: ${({theme}) => theme.modal.modalBackgroundColor};
+  background-color: ${({ theme }) => theme.modal.modalBackgroundColor};
   display: flex;
   height: 100%;
   justify-content: center;
@@ -64,10 +71,42 @@ const Wrapper = styled.div`
 `;
 
 const InnerWrapper = styled.div`
-  background-color: ${({theme}) => theme.modal.backgroundColor};
-  color: ${({theme}) => theme.modal.color};
-  border-radius: ${({theme}) => theme.modal.contentBorderRadius};
-  box-shadow: ${({theme}) => theme.modal.contentBoxShadow};
+  width: 75%;
+  height: 75%;
+  max-height: 750px;
+  max-width: 750px;
+  background-color: ${({ theme }) => theme.modal.backgroundColor};
+  color: ${({ theme }) => theme.modal.color};
+  border-radius: ${({ theme }) => theme.modal.contentBorderRadius};
+  box-shadow: ${({ theme }) => theme.modal.contentBoxShadow};
+  font-size: 16px;
+  border-radius: 2px;
+`;
+
+const Header = styled.div`
+  box-shadow: rgb(235, 236, 240) 0px 1px 0px;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Title = styled.div`
+  font-size: 20px;
+`;
+
+const SubTitle = styled.div`
+  font-size: 18px;
+  padding: 0px 24px 10px;
+`;
+
+const StyledIcon = styled(Icon)`
+  cursor: pointer;
+`;
+
+const MainSection = styled.div`
+  height: calc(100% - 102px);
+  padding: 24px 0;
 `;
 
 export default Modal;

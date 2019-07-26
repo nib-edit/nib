@@ -20,6 +20,7 @@ const StyledButton = styled.button`
   padding: ${({ theme }) => theme.button.toolbar.padding};
 
   font-size: ${({ theme }) => theme.button.toolbar.fontSize};
+  transition: all 0.2s ease;
 
   :active {
     ${({ disabled, theme }) => !disabled && theme.button.toolbar["&:active"]};

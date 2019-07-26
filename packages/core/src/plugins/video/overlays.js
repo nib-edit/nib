@@ -73,7 +73,7 @@ class VideoOverlay extends PureComponent {
               onKeyPress={this.handleKeyDown}
               value={url}
             />
-            <StyledLinkButton onClick={this.addEmbed}>Add</StyledLinkButton>
+            <LinkButton onClick={this.addEmbed}>Add</LinkButton>
           </LinkPopup>
         )}
       />
@@ -96,12 +96,6 @@ const LinkPopup = styled.div`
   align-items: flex-end;
   border-radius: 4px;
   display: flex;
-  padding: 5px 10px;
+  padding: 4px;
   font-size: 14px;
-`;
-
-const StyledLinkButton = styled(LinkButton)`
-  margin: 4px 0;
-  background: ${({ theme }) => theme.overlay.backgroundColor};
-  color: ${({ theme }) => theme.overlay.highlight};
 `;

@@ -106,7 +106,7 @@ const LinkPopup = styled.div`
   background: white;
   border-radius: 4px;
   display: flex;
-  padding: 5px 10px;
+  padding: 4px;
   font-size: 14px;
 `;
 
@@ -114,5 +114,4 @@ const StyledLinkButton = styled(LinkButton)`
   &:first-of-type {
     margin-right: 4px;
   }
-  color: ${({ theme }) => theme.overlay.highlight};
 `;

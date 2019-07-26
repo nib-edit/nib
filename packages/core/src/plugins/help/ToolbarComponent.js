@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
-import { ToolbarButton, Icons } from "nib-ui";
+import { ToolbarButton, Icon } from "nib-ui";
 
+import styled from "@emotion/styled";
 import { formatKeymap } from "../../common/utils/key-format";
 import { KeymapInfo } from "./keymaps";
 
@@ -11,15 +12,21 @@ class HelpToolbarComponent extends PureComponent {
   };
 
   render() {
+    const { className } = this.props;
     return (
-      <ToolbarButton
+      <StyledButton
+        className={className}
         onClick={this.showHelpModal}
         title={formatKeymap(KeymapInfo.help)}
       >
-        <Icons.Question />
-      </ToolbarButton>
+        <Icon name="Question" />
+      </StyledButton>
     );
   }
 }
+
+const StyledButton = styled(ToolbarButton)`
+  margin-left: 8px;
+`;
 
 export default HelpToolbarComponent;

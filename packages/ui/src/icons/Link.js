@@ -1,10 +1,7 @@
 import React from "react";
-import { withTheme } from "emotion-theming";
 
-import { StyledSVG } from "./style";
-
-export default withTheme(({ theme }) => (
-  <StyledSVG width="20px" height="20px" viewBox="0 0 20 20" version="1.1">
+export default ({ fill, ...rest }) => (
+  <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" {...rest}>
     <defs>
       <rect id="path-1" x="961" y="491" width="9" height="13" />
       <rect id="path-3" x="972" y="491" width="9" height="12" />
@@ -14,7 +11,7 @@ export default withTheme(({ theme }) => (
         <path
           d="M967,497 L975,497"
           id="Line-Copy-9"
-          stroke={theme.icon.fill}
+          stroke={fill}
           strokeLinecap="square"
         />
         <mask id="mask-2" fill="white">
@@ -23,7 +20,7 @@ export default withTheme(({ theme }) => (
         <g id="Rectangle" />
         <rect
           id="Rectangle-Copy-7"
-          stroke={theme.icon.fill}
+          stroke={fill}
           strokeWidth="1.25"
           mask="url(#mask-2)"
           x="961.625"
@@ -38,7 +35,7 @@ export default withTheme(({ theme }) => (
         <g id="Rectangle" />
         <rect
           id="Rectangle"
-          stroke={theme.icon.fill}
+          stroke={fill}
           strokeWidth="1.25"
           mask="url(#mask-4)"
           x="962.625"
@@ -49,5 +46,5 @@ export default withTheme(({ theme }) => (
         />
       </g>
     </g>
-  </StyledSVG>
-));
+  </svg>
+);

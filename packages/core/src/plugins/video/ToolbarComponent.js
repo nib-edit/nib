@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import styled from "@emotion/styled";
-import { ToolbarButton, Icons } from "nib-ui";
+import { ToolbarButton, Icon } from "nib-ui";
 
 class VideoToolbarComponent extends PureComponent {
   static propTypes = {
@@ -23,7 +23,7 @@ class VideoToolbarComponent extends PureComponent {
           style={{ height: 20, width: 20 }}
           className="video_toolbar_component"
         >
-          <Icons.Video />
+          <Icon name="Video" />
         </IconWrapper>
       </ToolbarButton>
     );

@@ -13,7 +13,7 @@ import { getPropertyFromPliguns } from "../../common/editor-helpers/plugin-reduc
 import InnerEditor from "./editor";
 import { Wrapper } from "./style";
 import { blockStyles } from "./blockStyles";
-import { theme } from "./theme";
+import theme from "./theme";
 import { getDispatcher } from "../../common/app-state/dispatcher";
 
 class Editor extends Component {
