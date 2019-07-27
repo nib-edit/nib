@@ -1,5 +1,5 @@
 import React, { Fragment, PureComponent } from "react";
-import { ToolbarButton, Icons, Separator } from "nib-ui";
+import { ToolbarButton, Icon, Separator } from "nib-ui";
 import { toggleMark } from "prosemirror-commands";
 
 import { formatKeymap } from "../../common/utils/key-format";
@@ -66,26 +66,28 @@ class InlineToolbarComponent extends PureComponent {
     const activeMarks = this.getActiveMarks();
     const { marks } = this.props.appParams.view.state.schema;
     const { options } = this.props.config;
+    const isSupMarkActive = this.isSubsupMarkActive(activeMarks, "sup");
+    const isSubMarkActive = this.isSubsupMarkActive(activeMarks, "sub");
 
     return (
       <>
         {["strong", "em", "underline", "strike"].reduce(
           (result, mark, index) => {
             if (options.indexOf(mark) >= 0) {
+              const isSelected = marks[mark].isInSet(activeMarks);
               if (!result.length)
                 result.push(
                   <Separator key="inlinestyle-separator" type="toolbar" />
                 );
-              const Icon = Icons[MarkIcons[mark]];
               result.push(
                 <Fragment key={`inlinestyle-${index}`}>
                   <ToolbarButton
                     name={mark}
                     onClick={this.toggleMarkofType}
-                    selected={marks[mark].isInSet(activeMarks)}
+                    selected={isSelected}
                     title={formatKeymap(KeymapInfo[mark])}
                   >
-                    <Icon />
+                    <Icon name={MarkIcons[mark]} selected={isSelected} />
                   </ToolbarButton>
                   <Separator type="toolbar" />
                 </Fragment>
@@ -100,19 +102,19 @@ class InlineToolbarComponent extends PureComponent {
             <ToolbarButton
               name="sup"
               onClick={this.toggleSupMark}
-              selected={this.isSubsupMarkActive(activeMarks, "sup")}
+              selected={isSupMarkActive}
               title="Superscript"
             >
-              <Icons.Sup />
+              <Icon name="Sup" selected={isSupMarkActive} />
             </ToolbarButton>
             <Separator type="toolbar" />
             <ToolbarButton
               name="sub"
               onClick={this.toggleSubMark}
-              selected={this.isSubsupMarkActive(activeMarks, "sub")}
+              selected={isSubMarkActive}
               title="Subscript"
             >
-              <Icons.Sub />
+              <Icon name="Sub" selected={isSubMarkActive} />
             </ToolbarButton>
           </>
         )}

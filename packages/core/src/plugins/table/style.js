@@ -18,7 +18,7 @@ const styleFn = theme => `
     right: -2px; top: 0; bottom: 0;
     width: 4px;
     z-index: 20;
-    background-color: #adf;
+    background-color: ${theme.table.resizeHandle};
     pointer-events: none;
   }
   .ProseMirror.resize-cursor {

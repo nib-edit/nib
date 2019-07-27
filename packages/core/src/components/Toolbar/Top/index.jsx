@@ -53,7 +53,8 @@ const Wrapper = styled.div`
   padding: 4px;
   background-color: ${({ theme }) => theme.toolbar.top.backgroundColor};
   color: ${({ theme }) => theme.toolbar.top.color};
-
+  flex-wrap: nowrap;
+  align-items: flex-start;
   border-bottom: ${({ theme }) => theme.toolbar.top.borderBottom};
   border-left: ${({ theme }) => theme.toolbar.top.borderLeft};
   border-right: ${({ theme }) => theme.toolbar.top.borderRight};

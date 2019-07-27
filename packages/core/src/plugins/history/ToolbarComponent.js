@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { undo, redo } from "prosemirror-history";
 
-import { ToolbarButton, Icons, Separator } from "nib-ui";
+import { ToolbarButton, Icon, Separator } from "nib-ui";
 
 import { formatKeymap } from "../../common/utils/key-format";
 import { KeymapInfo } from "./keymaps";
@@ -24,14 +24,14 @@ class HistoryToolbarComponent extends PureComponent {
           onClick={this.undo}
           title={formatKeymap(KeymapInfo.undo)}
         >
-          <Icons.Undo />
+          <Icon name="Undo" />
         </ToolbarButton>
         <Separator type="toolbar" />
         <ToolbarButton
           onClick={this.redo}
           title={formatKeymap(KeymapInfo.redo)}
         >
-          <Icons.Redo />
+          <Icon name="Redo" />
         </ToolbarButton>
       </>
     );

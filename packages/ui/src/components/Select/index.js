@@ -3,14 +3,14 @@ import React from "react";
 import ReactSelect, { components } from "react-select";
 import { withTheme } from "emotion-theming";
 
-import ChevronDown from "../../icons/ChevronDown";
+import Icon from "../Icon";
 import Option from "./Option";
-import { getSelectStyles } from "./style";
+import getSelectStyles from "./style";
 
 const DropdownIndicator = props => {
   return (
     <components.DropdownIndicator {...props}>
-      <ChevronDown />
+      <Icon name="ChevronDown" />
     </components.DropdownIndicator>
   );
 };

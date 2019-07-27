@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { ToolbarButton, Icons } from "nib-ui";
+import { ToolbarButton, Icon } from "nib-ui";
 
 class ImageToolbarComponent extends PureComponent {
   showImageModal = () => {
@@ -10,7 +10,7 @@ class ImageToolbarComponent extends PureComponent {
   render() {
     return (
       <ToolbarButton onClick={this.showImageModal} title="Image">
-        <Icons.Image />
+        <Icon name="Image" />
       </ToolbarButton>
     );
   }

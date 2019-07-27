@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { ToolbarButton, Icons, Separator } from "nib-ui";
+import { ToolbarButton, Icon, Separator } from "nib-ui";
 import { toggleListCmd } from "./commands";
 
 import { formatKeymap } from "../../common/utils/key-format";
@@ -23,24 +23,26 @@ class ListToolbarComponent extends PureComponent {
 
   render() {
     const selectedListType = this.getSelectedListType();
+    const bulletListActive = selectedListType === "bulletList";
+    const orderedListActive = selectedListType === "orderedList";
     return (
       <>
         <ToolbarButton
           name="bulletList"
           onClick={this.toggleList}
-          selected={selectedListType === "bulletList"}
+          selected={bulletListActive}
           title={formatKeymap(KeymapInfo.bulletList)}
         >
-          <Icons.ListBulleted />
+          <Icon name="ListBulleted" selected={bulletListActive} />
         </ToolbarButton>
         <Separator type="toolbar" />
         <ToolbarButton
           name="orderedList"
           onClick={this.toggleList}
-          selected={selectedListType === "orderedList"}
+          selected={orderedListActive}
           title={formatKeymap(KeymapInfo.orderedList)}
         >
-          <Icons.ListNumbered />
+          <Icon name="ListNumbered" selected={orderedListActive} />
         </ToolbarButton>
       </>
     );

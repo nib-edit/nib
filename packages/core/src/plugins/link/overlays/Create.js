@@ -114,7 +114,7 @@ const LinkPopup = styled.div`
   align-items: center;
   border-radius: 4px;
   display: flex;
-  padding: 5px 10px;
+  padding: 4px;
   font-size: 14px;
 `;
 
@@ -127,5 +127,7 @@ const InputWrapper = styled.div`
 const StyledLinkButton = styled(LinkButton)`
   margin: 4px 0;
   background: ${({ theme }) => theme.overlay.backgroundColor};
-  color: ${({ theme }) => theme.overlay.highlight};
+  :hover {
+    color: ${({ theme }) => theme.overlay.highlight};
+  }
 `;

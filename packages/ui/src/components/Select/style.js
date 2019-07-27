@@ -8,7 +8,7 @@ const getStyles = (customStyles, stateStyles) => {
   };
 };
 
-export const getSelectStyles = themeStyle => ({
+export default themeStyle => ({
   container: getStyles({
     display: "inline-block",
     backgroundColor: themeStyle.backgroundColor,
@@ -23,8 +23,7 @@ export const getSelectStyles = themeStyle => ({
       boxShadow: "none",
       height: themeStyle.height,
       minHeight: themeStyle.height,
-      width: themeStyle.width,
-      "&:hover": themeStyle["&:hover"]
+      width: themeStyle.width
     },
     state => ({
       ...(state.isSelected ? themeStyle["&:selected"] : {})
@@ -44,11 +43,11 @@ export const getSelectStyles = themeStyle => ({
       color: themeStyle.color,
       height: themeStyle.optionHeight,
       minHeight: themeStyle.optionHeight,
-      padding: "0 8px",
-      "&:hover": themeStyle["&:hover"]
+      padding: "0 8px"
     },
     state => ({
-      ...(state.isSelected ? themeStyle["&:selected"] : {})
+      ...(state.isSelected ? themeStyle["&:selected"] : {}),
+      ...(state.isFocused ? themeStyle["&:focus"] : {})
     })
   ),
   menu: getStyles({
@@ -61,6 +60,6 @@ export const getSelectStyles = themeStyle => ({
     color: themeStyle.color,
     "&:hover": themeStyle["&:hover"],
     fontSize: 16,
-    fontWeight: "300"
+    fontWeight: "400"
   })
 });

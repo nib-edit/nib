@@ -29,15 +29,21 @@ const InputWrapper = styled.div`
 const StyledInput = styled.input`
   background-color: ${({ theme }) => theme.input.backgroundColor};
   color: ${({ theme }) => theme.input.color};
-  border: 1px solid #757575;
-  border-radius: 2px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #757575;
   height: ${({ theme }) => theme.input.height};
   width: ${({ theme }) => theme.input.width};
   margin: ${({ theme }) => theme.input.margin};
   padding: ${({ theme }) => theme.input.padding};
   font-size: ${({ theme }) => theme.input.fontSize};
   &:focus {
-    ${({ theme }) => theme.input["&:focus"]};
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid blue;
+    outline: none;
   }
   &::placeholder {
     font-size: ${({ theme }) => theme.input.fontSize};

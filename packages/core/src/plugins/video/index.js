@@ -1,11 +1,11 @@
-import overlays from "./overlays";
+import modals from "./modals";
 import pmPlugin from "./plugin";
 import schema from "./schema";
 import toolbarComponent from "./ToolbarComponent";
 
 export default {
   name: "video",
-  overlays,
+  modals,
   pmPlugin,
   schema,
   toolbarComponent

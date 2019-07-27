@@ -1,6 +1,7 @@
 import ArrowDown from "./ArrowDown";
 import Bold from "./Bold";
 import Cross from "./Cross";
+import ChevronDown from "./ChevronDown";
 import H1 from "./H1";
 import H2 from "./H2";
 import H3 from "./H3";
@@ -26,6 +27,7 @@ import Video from "./Video";
 export default {
   ArrowDown,
   Bold,
+  ChevronDown,
   Cross,
   H1,
   H2,

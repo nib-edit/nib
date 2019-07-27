@@ -1,19 +1,16 @@
 import React from "react";
-import { withTheme } from "emotion-theming";
 
-import { StyledSVG } from "./style";
-
-export default withTheme(({ theme }) => (
-  <StyledSVG width="20px" height="20px" viewBox="0 0 20 20" version="1.1">
+export default ({ fill, ...rest }) => (
+  <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" {...rest}>
     <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g
         id="Desktop-HD"
         transform="translate(-961.000000, -548.000000)"
-        stroke={theme.icon.fill}
+        stroke={fill}
       >
         <polygon
           id="Path-6"
-          fill={theme.icon.fill}
+          fill={fill}
           points="961.5 562.495555 961.5 556.5 967.5 562.495555"
         />
         <path
@@ -22,5 +19,5 @@ export default withTheme(({ theme }) => (
         />
       </g>
     </g>
-  </StyledSVG>
-));
+  </svg>
+);
