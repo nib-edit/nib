@@ -16,8 +16,7 @@
     "packages/embed",
     "packages/schema",
     "packages/ui",
-    "packages/upload",
-    "packages/track"
+    "packages/upload"
   ],
   "repository": {
     "type": "git",
