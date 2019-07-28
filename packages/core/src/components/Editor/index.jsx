@@ -14,13 +14,13 @@ const Editor = ({
   config: propsConfig,
   ...rest
 }) => (
-  <ConfigContextProvider config={propsConfig} licenseKey={licenseKey}>
-    <PMStateProvider>
-      <NibThemeProvider theme={theme} styleConfig={styleConfig}>
+  <NibThemeProvider theme={{ ...theme }} styleConfig={{ ...styleConfig }}>
+    <ConfigContextProvider config={propsConfig} licenseKey={licenseKey}>
+      <PMStateProvider>
         <EditorWrapper {...rest} />
-      </NibThemeProvider>
-    </PMStateProvider>
-  </ConfigContextProvider>
+      </PMStateProvider>
+    </ConfigContextProvider>
+  </NibThemeProvider>
 );
 
 Editor.propTypes = {

@@ -14,9 +14,6 @@ const getVisiblePopups = (pmstate, popups, visiblePopups) => {
   let newVisiblePopups = [...visiblePopups];
   for (let i = 0; i < popups.length; i += 1) {
     const popup = popups[i];
-    const popupVisibleBefore = newVisiblePopups.find(
-      p => p.name === popup.name
-    );
     let popupVisible = false;
 
     // If popup visibility conditions are met add it to newVisiblePopups
@@ -24,17 +21,22 @@ const getVisiblePopups = (pmstate, popups, visiblePopups) => {
       const marker = document.getElementsByClassName(popup.elmClassName);
       if (marker[0]) {
         popupVisible = true;
-        if (!popupVisibleBefore)
-          newVisiblePopups[newVisiblePopups.length] = {
-            marker: marker[0],
-            name: popup.name,
-            PopupComponent: popup.component
-          };
+        let toolbarIndex = newVisiblePopups.findIndex(
+          p => p.name === popup.name
+        );
+        if (toolbarIndex < 0) {
+          toolbarIndex = newVisiblePopups.length;
+        }
+        newVisiblePopups[toolbarIndex] = {
+          marker: marker[0],
+          name: popup.name,
+          PopupComponent: popup.component
+        };
       }
     }
 
     // If popup is no longer visible remove it from newVisiblePopups
-    if (!popupVisible && popupVisibleBefore) {
+    if (!popupVisible && visiblePopups.find(p => p.name === popup.name)) {
       newVisiblePopups = newVisiblePopups.filter(p => p.name !== popup.name);
     }
   }
@@ -63,8 +65,13 @@ class PopupHandler extends PureComponent {
     const { PopupComponent, marker } = this.visiblePopups[
       this.visiblePopups.length - 1
     ];
-
-    return <PopupComponent editorWrapper={editorWrapper} marker={marker} />;
+    return (
+      <PopupComponent
+        pmstate={pmstate}
+        editorWrapper={editorWrapper}
+        marker={marker}
+      />
+    );
   }
 }
 
