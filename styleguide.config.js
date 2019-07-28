@@ -70,7 +70,7 @@ module.exports = {
   ],
   exampleMode: "hide",
   template: {
-    favicon: "/Nib/pen.png"
+    favicon: "/pen.png"
   },
   pagePerSection: true,
   theme: {

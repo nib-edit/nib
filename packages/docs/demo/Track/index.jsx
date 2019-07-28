@@ -15,18 +15,18 @@ const tracker = new NibTrack.EditorPlugin(commits);
  */
 const Track = () => {
   const [trackState, setTrackState] = useState(tracker.getState());
-  const [message, setMessage] = useState("Sample message");
   const [name, setName] = useState("Anonymous user");
+  const [cmd, setCmd] = useState("Anonymous user");
 
   const updateTrackedState = () => {
     setTrackState(tracker.getState());
   };
   const doCommit = () => {
-    tracker.doCommit({ username: name, message });
+    tracker.doCommit({ username: name });
     updateTrackedState();
   };
   const revertCommit = commit => {
-    tracker.revertCommit(commit, { username: name, message });
+    tracker.revertCommit(commit, { username: name });
     updateTrackedState();
   };
   const highlightCommit = commit => {
@@ -36,6 +36,16 @@ const Track = () => {
   const resetHighlight = () => {
     tracker.resetHighlight();
     updateTrackedState();
+  };
+  const onKeyDown = evt => {
+    if (evt.key === "Meta") setCmd(true);
+    else if (evt.key === "s" && cmd) {
+      doCommit();
+      evt.preventDefault();
+    }
+  };
+  const onKeyUp = () => {
+    setCmd(false);
   };
 
   useEffect(() => updateTrackedState(), []);
@@ -49,22 +59,19 @@ const Track = () => {
         placeholder="Enter user name"
         value={name}
       />
-      <Editor
-        config={{
-          plugins: { options: "block inline list" },
-          toolbar: { options: "top", top: { options: "block inline list" } }
-        }}
-        addons={[tracker]}
-        defaultValue={defaultValue}
-        onChange={updateTrackedState}
-      />
-      <div className="nib-track_save_wraper">
-        <input
-          className="nib-track_msg"
-          onChange={evt => setMessage(evt.target.value)}
-          placeholder="Enter save message"
-          value={message}
+      <div onKeyDown={onKeyDown} onKeyUp={onKeyUp}>
+        <Editor
+          config={{
+            plugins: { options: "block inline list" },
+            toolbar: { options: "top", top: { options: "block inline list" } }
+          }}
+          addons={[tracker]}
+          defaultValue={defaultValue}
+          styleConfig={{ editor: () => ({ height: 300 }) }}
+          onChange={updateTrackedState}
         />
+      </div>
+      <div className="nib-track_save_wraper">
         <button
           className="nib-track_save"
           disabled={!trackState.hasUncommittedSteps}
@@ -79,7 +86,6 @@ const Track = () => {
         <tr>
           <th>Id</th>
           <th>User Name</th>
-          <th>Message</th>
           <th>Time</th>
           <th>Revert</th>
         </tr>
@@ -97,7 +103,6 @@ const Track = () => {
           >
             <td>{commit.id}</td>
             <td>{commit.data.username}</td>
-            <td>{commit.data.message}</td>
             <td>{commit.time.toLocaleString()}</td>
             <td>
               <button

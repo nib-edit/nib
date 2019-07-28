@@ -3,7 +3,6 @@
 }
 
 .nib-track_save {
-  margin-left: 10px;
   background-color: #0000e4;
   color: white;
   height: 32px;
@@ -71,6 +70,19 @@
 .nib-highlighted_commit {
   background-color: #ffff5f;
   width: 35%;
+}
+
+.nib-track_table {
+  border-collapse: collapse;
+}
+
+.nib-track_table th,
+.nib-track_table td {
+  border: 1px solid #e0e0e0;
+  width: 8%;
+}
+.nib-track_table td {
+  font-size: 14px;
 }
 
 .nib-track_table {
