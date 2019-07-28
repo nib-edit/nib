@@ -7,39 +7,29 @@ import Icon from "../Icon";
 import Option from "./Option";
 import getSelectStyles from "./style";
 
-const DropdownIndicator = props => {
-  return (
-    <components.DropdownIndicator {...props}>
-      <Icon name="ChevronDown" />
-    </components.DropdownIndicator>
-  );
-};
+const DropdownIndicator = props => (
+  <components.DropdownIndicator {...props}>
+    <Icon name="ChevronDown" />
+  </components.DropdownIndicator>
+);
 
-const Select = props => {
-  const {
-    className,
-    onChange,
-    options,
-    selectedOption,
-    theme: { blockSelect: themeStyle }
-  } = props;
-  return (
-    <ReactSelect
-      className={className}
-      components={{ Option, DropdownIndicator }}
-      onChange={onChange}
-      options={options}
-      styles={getSelectStyles(themeStyle)}
-      value={selectedOption}
-    />
-  );
-};
+const Select = ({ selectedOption, theme, ...rest }) => (
+  <ReactSelect
+    components={{ Option, DropdownIndicator }}
+    styles={getSelectStyles(theme)}
+    value={selectedOption}
+    {...rest}
+  />
+);
 
 Select.propTypes = {
-  onChange: PropTypes.func,
-  options: PropTypes.array,
-  selectedOption: PropTypes.object,
-  theme: PropTypes.object
+  selectedOption: PropTypes.shape({
+    label: PropTypes.string,
+    value: PropTypes.object
+  }).isRequired,
+  theme: PropTypes.shape({
+    select: PropTypes.object
+  }).isRequired
 };
 
 export default withTheme(Select);

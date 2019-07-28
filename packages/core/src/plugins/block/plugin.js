@@ -13,10 +13,8 @@ const getSelectedBlock = state => {
   doc.nodesBetween($from.pos, $to.pos, (node, pos) => {
     const posDepth = state.doc.resolve(pos).depth;
     if (!node.isBlock || posDepth < lowerDepth) return;
-    const {
-      type: { name: blockType },
-      attrs
-    } = node;
+    const { type, attrs } = node;
+    const { name: blockType } = type;
     if (!block) {
       block = { type: blockType, attrs };
     } else if (

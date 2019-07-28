@@ -1,21 +1,27 @@
+import PropTypes from "prop-types";
 import React, { PureComponent } from "react";
-import { ToolbarButton, Icon, Separator } from "nib-ui";
-import { toggleListCmd } from "./commands";
 
-import { formatKeymap } from "../../common/utils/key-format";
+import { ToolbarButton, Icon, Space } from "nib-ui";
+
+import formatKeymap from "../../utils/format-keymap";
+import { PMStateConsumer } from "../../context/pm-state";
 import { KeymapInfo } from "./keymaps";
 import { listPluginKey } from "./plugin";
+import { toggleListCmd } from "./commands";
 
-class ListToolbarComponent extends PureComponent {
+class ToolbarComponent extends PureComponent {
   toggleList = evt => {
     const listType = evt.currentTarget.getAttribute("name");
-    const { view } = this.props.appParams;
-    toggleListCmd(view, listType);
+    const { pmstate } = this.props;
+    const { pmview } = pmstate;
+    toggleListCmd(pmview, listType);
   };
 
   getSelectedListType = () => {
-    const { view: { state } = {} } = this.props.appParams;
-    if (!state) return;
+    const { pmstate } = this.props;
+    const { pmview } = pmstate;
+    if (!pmview) return undefined;
+    const { state } = pmview;
     const pluginState = listPluginKey.getState(state);
     const selectedListType = pluginState && pluginState.selectedListType;
     return selectedListType && selectedListType.name;
@@ -25,6 +31,7 @@ class ListToolbarComponent extends PureComponent {
     const selectedListType = this.getSelectedListType();
     const bulletListActive = selectedListType === "bulletList";
     const orderedListActive = selectedListType === "orderedList";
+
     return (
       <>
         <ToolbarButton
@@ -35,7 +42,7 @@ class ListToolbarComponent extends PureComponent {
         >
           <Icon name="ListBulleted" selected={bulletListActive} />
         </ToolbarButton>
-        <Separator type="toolbar" />
+        <Space />
         <ToolbarButton
           name="orderedList"
           onClick={this.toggleList}
@@ -49,4 +56,13 @@ class ListToolbarComponent extends PureComponent {
   }
 }
 
-export default ListToolbarComponent;
+ToolbarComponent.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  pmstate: PropTypes.object.isRequired
+};
+
+export default props => (
+  <PMStateConsumer>
+    {pmstate => <ToolbarComponent pmstate={pmstate} {...props} />}
+  </PMStateConsumer>
+);

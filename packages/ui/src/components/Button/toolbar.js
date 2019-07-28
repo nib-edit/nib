@@ -3,34 +3,39 @@ import styled from "@emotion/styled";
 
 export default props => <StyledButton {...props} />;
 
-const StyledButton = styled.button`
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
+const StyledButton = styled.button(
+  {
+    alignItems: "center",
+    cursor: "pointer",
+    display: "flex",
+    justifyContent: "center",
 
-  background-color: ${({ theme }) => theme.button.toolbar.backgroundColor};
-  color: ${({ theme }) => theme.button.toolbar.color};
+    border: "none",
+    height: 28,
+    width: 28,
+    margin: "0 2px",
+    transition: "all 0.2s ease",
 
-  border: ${({ theme }) => theme.button.toolbar.border};
-  border-radius: ${({ theme }) => theme.button.toolbar.borderRadius};
-  height: ${({ theme }) => theme.button.toolbar.height};
-  width: ${({ theme }) => theme.button.toolbar.width};
-  margin: ${({ theme }) => theme.button.toolbar.margin};
-  padding: ${({ theme }) => theme.button.toolbar.padding};
+    ":focus": {
+      outline: "none",
+      transform: "scale(1.15)"
+    },
+    ":hover": {
+      transform: "scale(1.15)"
+    },
+    ":active": {
+      transform: "scale(0.95)"
+    },
+    ":disabled": {
+      opacity: "0.5"
+    }
+  },
+  ({ theme: { constants, button } }) => ({
+    backgroundColor: constants.color.background,
+    color: constants.color.text,
+    borderRadius: constants.borderRadius.small,
+    fontSize: constants.fontSize.medium,
 
-  font-size: ${({ theme }) => theme.button.toolbar.fontSize};
-  transition: all 0.2s ease;
-
-  :active {
-    ${({ disabled, theme }) => !disabled && theme.button.toolbar["&:active"]};
-  }
-  :focus {
-    ${({ disabled, theme }) => !disabled && theme.button.toolbar["&:hover"]};
-  }
-  :hover {
-    ${({ disabled, theme }) => !disabled && theme.button.toolbar["&:hover"]};
-  }
-  ${({ selected, theme }) => selected && theme.button.toolbar["&:selected"]};
-  ${({ disabled, theme }) => disabled && theme.button.toolbar["&:disabled"]};
-`;
+    ...button.toolbar({ theme: constants })
+  })
+);

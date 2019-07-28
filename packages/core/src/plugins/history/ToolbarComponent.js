@@ -1,19 +1,23 @@
+import PropTypes from "prop-types";
 import React, { PureComponent } from "react";
 import { undo, redo } from "prosemirror-history";
 
-import { ToolbarButton, Icon, Separator } from "nib-ui";
+import { ToolbarButton, Icon, Space } from "nib-ui";
 
-import { formatKeymap } from "../../common/utils/key-format";
+import formatKeymap from "../../utils/format-keymap";
+import { PMStateConsumer } from "../../context/pm-state";
 import { KeymapInfo } from "./keymaps";
 
-class HistoryToolbarComponent extends PureComponent {
+class ToolbarComponent extends PureComponent {
   undo = () => {
-    const { state, dispatch } = this.props.appParams.view;
+    const { pmstate } = this.props;
+    const { state, dispatch } = pmstate.pmview;
     undo(state, dispatch);
   };
 
   redo = () => {
-    const { state, dispatch } = this.props.appParams.view;
+    const { pmstate } = this.props;
+    const { state, dispatch } = pmstate.pmview;
     redo(state, dispatch);
   };
 
@@ -26,7 +30,7 @@ class HistoryToolbarComponent extends PureComponent {
         >
           <Icon name="Undo" />
         </ToolbarButton>
-        <Separator type="toolbar" />
+        <Space />
         <ToolbarButton
           onClick={this.redo}
           title={formatKeymap(KeymapInfo.redo)}
@@ -38,4 +42,13 @@ class HistoryToolbarComponent extends PureComponent {
   }
 }
 
-export default HistoryToolbarComponent;
+ToolbarComponent.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  pmstate: PropTypes.object.isRequired
+};
+
+export default props => (
+  <PMStateConsumer>
+    {pmstate => <ToolbarComponent pmstate={pmstate} {...props} />}
+  </PMStateConsumer>
+);

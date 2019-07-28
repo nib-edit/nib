@@ -1,38 +1,47 @@
-import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import styled from "@emotion/styled";
+import React, { PureComponent } from "react";
+
 import { ToolbarButton, Icon } from "nib-ui";
 
-class VideoToolbarComponent extends PureComponent {
-  static propTypes = {
-    appParams: PropTypes.shape({
-      view: PropTypes.object
-    }).isRequired
+import { PMStateConsumer } from "../../context/pm-state";
+import Modal from "./modals";
+
+class ToolbarComponent extends PureComponent {
+  state = {
+    showModal: false
   };
 
-  showVideoOverlay = () => {
-    const { appParams } = this.props;
-    const { state, dispatch } = appParams.view;
-    dispatch(state.tr.setMeta("SHOW_VIDEO_OVERLAY", true));
+  showModal = () => {
+    this.setState({ showModal: true });
+  };
+
+  hideModal = () => {
+    this.setState({ showModal: false });
   };
 
   render() {
+    const { showModal } = this.state;
+    const { pmstate } = this.props;
     return (
-      <ToolbarButton onClick={this.showVideoOverlay} title="Video">
-        <IconWrapper
-          style={{ height: 20, width: 20 }}
-          className="video_toolbar_component"
-        >
-          <Icon name="Video" />
-        </IconWrapper>
-      </ToolbarButton>
+      <>
+        <ToolbarButton onClick={this.showModal} title="Video">
+          <span className="video_toolbar_component">
+            <Icon name="Video" />
+          </span>
+        </ToolbarButton>
+        {showModal && <Modal pmstate={pmstate} hideModal={this.hideModal} />}
+      </>
     );
   }
 }
 
-const IconWrapper = styled.span`
-  height: 20px;
-  width: 20px;
-`;
+ToolbarComponent.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  pmstate: PropTypes.object.isRequired
+};
 
-export default VideoToolbarComponent;
+export default props => (
+  <PMStateConsumer>
+    {pmstate => <ToolbarComponent pmstate={pmstate} {...props} />}
+  </PMStateConsumer>
+);

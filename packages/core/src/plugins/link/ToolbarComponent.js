@@ -1,22 +1,28 @@
+import PropTypes from "prop-types";
 import React, { PureComponent } from "react";
 import { ToolbarButton, Icon } from "nib-ui";
 
-import styled from "@emotion/styled";
-import { formatKeymap } from "../../common/utils/key-format";
+import formatKeymap from "../../utils/format-keymap";
 import { KeymapInfo } from "./keymaps";
+import { PMStateConsumer } from "../../context/pm-state";
 import { linkPluginKey } from "./plugin";
 
-class LinkToolbarComponent extends PureComponent {
+class ToolbarComponent extends PureComponent {
   showLinkToolbar = () => {
-    const { view = {} } = this.props.appParams;
-    const { state, dispatch } = view;
-    if (!view.hasFocus) view.focus();
+    const { pmstate } = this.props;
+    const { pmview } = pmstate;
+    if (!pmview) return;
+    if (!pmview.hasFocus) pmview.focus();
+
+    const { state, dispatch } = pmview;
     dispatch(state.tr.setMeta("SHOW_LINK_TOOLBAR", true));
   };
 
   isLinkMarkActive = () => {
-    const { view: { state } = {} } = this.props.appParams;
-    if (!state) return;
+    const { pmstate } = this.props;
+    const { pmview } = pmstate;
+    if (!pmview) return undefined;
+    const { state } = pmview;
     const pluginState = linkPluginKey.getState(state);
     return pluginState && !!pluginState.link;
   };
@@ -29,17 +35,21 @@ class LinkToolbarComponent extends PureComponent {
         disabled={this.isLinkMarkActive()}
         title={formatKeymap(KeymapInfo.link)}
       >
-        <IconWrapper className="nib-link-marker">
+        <span className="nib-link-marker">
           <Icon name="Link" />
-        </IconWrapper>
+        </span>
       </ToolbarButton>
     );
   }
 }
 
-const IconWrapper = styled.span`
-  height: 20px;
-  width: 20px;
-`;
+ToolbarComponent.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  pmstate: PropTypes.object.isRequired
+};
 
-export default LinkToolbarComponent;
+export default props => (
+  <PMStateConsumer>
+    {pmstate => <ToolbarComponent pmstate={pmstate} {...props} />}
+  </PMStateConsumer>
+);

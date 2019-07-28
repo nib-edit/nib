@@ -6,6 +6,7 @@ const getSelectedListType = state => {
   if (node && (node.type === bulletList || node.type === orderedList)) {
     return node.type;
   }
+  return undefined;
 };
 
 export const listPluginKey = new PluginKey("list");

@@ -5,8 +5,8 @@ import styled from "@emotion/styled";
 import Icons from "../../icons";
 
 export default withTheme(({ theme, selected, name, ...rest }) => {
-  let { fill } = theme.icon;
-  if (selected) fill = theme.icon.selectedFill;
+  let fill = theme.constants.color.text;
+  if (selected) fill = theme.constants.color.highlight;
 
   const IconComponent = Icons[name];
   return (
@@ -16,13 +16,9 @@ export default withTheme(({ theme, selected, name, ...rest }) => {
   );
 });
 
-const Wrapper = styled.span`
-  display: flex;
-  transition: all 0.1s ease;
-  :hover {
-    transform: scale(1.15);
-  }
-  :active {
-    transform: scale(0.95);
-  }
-`;
+const Wrapper = styled.span(
+  { display: "flex" },
+  ({ theme: { constants, icon } }) => ({
+    ...icon({ theme: constants })
+  })
+);

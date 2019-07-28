@@ -1,12 +1,17 @@
+/**
+ * TODO:review
+ * improve code in all components
+ */
+
 import React, { PureComponent } from "react";
 import Editor from "nib-core";
 
 import uploadCallback from "../common/uploadCallback";
 
 const theme = {
-  editor: {
+  editor: () => ({
     height: "200px"
-  }
+  })
 };
 
 class TopBar extends PureComponent {
@@ -32,7 +37,7 @@ class TopBar extends PureComponent {
                 options: "top"
               }
             }}
-            theme={theme}
+            styleConfig={theme}
           />
         </div>
       </div>

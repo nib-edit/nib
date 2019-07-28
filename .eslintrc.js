@@ -16,6 +16,7 @@ module.exports = {
   rules: {
     "import/no-unresolved": 0,
     "import/no-extraneous-dependencies": 0,
-    "react/jsx-filename-extension": 0
+    "react/jsx-filename-extension": 0,
+    "jsx-a11y/label-has-for": 0
   }
 };

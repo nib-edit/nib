@@ -25,6 +25,7 @@ const FullFeatured = () => {
             }
           }
         }}
+        autoFocus
         onChange={setContent}
         defaultValue={defaultValue}
       />

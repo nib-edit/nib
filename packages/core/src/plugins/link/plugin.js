@@ -1,5 +1,5 @@
-import { Plugin, PluginKey } from "prosemirror-state";
 import { DecorationSet, Decoration } from "prosemirror-view";
+import { Plugin, PluginKey } from "prosemirror-state";
 
 export const linkPluginKey = new PluginKey("link");
 
@@ -31,26 +31,9 @@ export default new Plugin({
     apply(tr, prev, _, newState) {
       const link = getLink(newState);
 
-      if (tr.getMeta("HIDE_LINK_TOOLBAR")) {
-        return {
-          ...prev,
-          link,
-          showAddLinkToolbar: false,
-          createDecoration: undefined
-        };
-      }
+      let { createDecoration, editDecoration, showEditLinkToolbar } = prev;
 
-      if (tr.getMeta("HIDE_EDIT_LINK_TOOLBAR")) {
-        return {
-          ...prev,
-          link,
-          showEditLinkToolbar: false,
-          editDecoration: undefined
-        };
-      }
-
-      let { createDecoration, editDecoration } = prev;
-      if (tr.getMeta("SHOW_LINK_TOOLBAR")) {
+      if (tr.getMeta("SHOW_LINK_TOOLBAR") === true) {
         const { $from, $to } = newState.selection;
         if ($from.pos === $to.pos) {
           const node = document.createElement("span");
@@ -72,10 +55,9 @@ export default new Plugin({
         };
       }
 
-      const { showEditLinkToolbar } = prev;
       if (
         link &&
-        (tr.getMeta("SHOW_EDIT_LINK_TOOLBAR") ||
+        (tr.getMeta("SHOW_EDIT_LINK_TOOLBAR") === true ||
           showEditLinkToolbar ||
           tr.getMeta("EDITOR_FOCUSED"))
       ) {
@@ -92,6 +74,25 @@ export default new Plugin({
         }
         return { link, editDecoration, showEditLinkToolbar: true };
       }
+
+      if (tr.getMeta("SHOW_LINK_TOOLBAR") === false) {
+        return {
+          ...prev,
+          link,
+          showAddLinkToolbar: false,
+          createDecoration: undefined
+        };
+      }
+
+      if (tr.getMeta("SHOW_EDIT_LINK_TOOLBAR") === false) {
+        return {
+          ...prev,
+          link,
+          showEditLinkToolbar: false,
+          editDecoration: undefined
+        };
+      }
+
       if (!link)
         return {
           ...prev,
@@ -112,18 +113,20 @@ export default new Plugin({
       return linkPluginState.createDecoration || linkPluginState.editDecoration;
     },
     handleDOMEvents: {
-      onBlur(view) {
+      mousedown(view) {
         const { state, dispatch } = view;
-        dispatch(state.tr.setMeta("HIDE_EDIT_LINK_TOOLBAR", true));
+        dispatch(state.tr.setMeta("SHOW_LINK_TOOLBAR", false));
       }
     },
     handleClickOn(view) {
       const { state, dispatch } = view;
-      dispatch(state.tr.setMeta("SHOW_EDIT_LINK_TOOLBAR", true));
+      const link = getLink(state);
+      if (link) dispatch(state.tr.setMeta("SHOW_EDIT_LINK_TOOLBAR", true));
     },
     handleKeyDown(view) {
       const { state, dispatch } = view;
-      dispatch(state.tr.setMeta("SHOW_EDIT_LINK_TOOLBAR", true));
+      const link = getLink(state);
+      if (link) dispatch(state.tr.setMeta("SHOW_EDIT_LINK_TOOLBAR", true));
     }
   }
 });

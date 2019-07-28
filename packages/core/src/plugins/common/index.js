@@ -1,5 +1,4 @@
-import keymaps from "./keymaps";
 import pmPlugin from "./plugin";
 import schema from "./schema";
 
-export default { name: "common", pmPlugin, keymaps, schema };
+export default { name: "common", pmPlugin, schema };

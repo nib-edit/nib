@@ -1,3 +1,7 @@
+/**
+ * TODO:fix linting, review
+ */
+
 import axios from "axios";
 
 const getEmbeddableHTML = url =>
