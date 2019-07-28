@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
 
-import { Modal, Input, PrimaryButton, Space } from "nib-ui";
+import { Modal, Input, PrimaryButton, Space, SpaceSize } from "nib-ui";
 import Embed from "nib-embed";
 
 import { ConfigContext } from "../../context/config";
@@ -28,12 +28,13 @@ class VideoModal extends PureComponent {
   };
 
   insertVideo = () => {
+    const { videoSrc } = this.state;
+    if (!videoSrc) return;
     const { hideModal, pmstate } = this.props;
     const { pmview } = pmstate;
     const { state, dispatch } = pmview;
     const { tr, selection } = state;
     const { $from, $to } = selection;
-    const { videoSrc } = this.state;
     const { embed } = state.schema.nodes;
     dispatch(
       tr.replaceRangeWith($from.pos, $to.pos, embed.create({ html: videoSrc }))
@@ -64,7 +65,7 @@ class VideoModal extends PureComponent {
               />
               <ButtonSection>
                 <PrimaryButton onClick={this.insertVideo}>Insert</PrimaryButton>
-                <Space size="extraLarge" />
+                <Space size={SpaceSize.xl} />
                 <PrimaryButton onClick={hideModal}>Cancel</PrimaryButton>
               </ButtonSection>
             </InnerWrapper>
@@ -93,7 +94,11 @@ const SubTitle = styled.div({}, ({ theme: { constants } }) => ({
   fontSize: constants.fontSize.large
 }));
 
-const StyledInput = styled(Input)({}, () => ({ width: 400 }));
+const StyledInput = styled(Input)({}, () => ({
+  width: "75%",
+  maxWidth: 400,
+  "> input": { width: "100%", margin: "0 auto" }
+}));
 
 const ButtonSection = styled.div({
   display: "flex",
@@ -103,7 +108,8 @@ const ButtonSection = styled.div({
 const VideoWrapper = styled.span(
   {
     height: 280,
-    width: 500,
+    width: "100%",
+    maxWidth: 500,
     marginTop: 20,
     padding: 20,
     "> iframe": {

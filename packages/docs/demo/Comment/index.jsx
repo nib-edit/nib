@@ -10,9 +10,9 @@ import "./styles.css";
 const tracker = new NibTrack.EditorPlugin();
 
 /**
- * @visibleName 8. Track Changes
+ * @visibleName 10. Comment
  */
-const Track = () => {
+const Comment = () => {
   const [error, setError] = useState(false);
   const [trackState, setTrackState] = useState(tracker.getState());
   const [message, setMessage] = useState("");
@@ -108,4 +108,4 @@ const Track = () => {
   );
 };
 
-export default Track;
+export default Comment;

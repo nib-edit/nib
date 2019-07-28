@@ -1,8 +1,5 @@
 ### Installing package
 
-<br />
-<br />
-
 Package can be installed from npm or yarn
 
 ```js static
@@ -10,7 +7,6 @@ npm i nib-core --save
 yarn add nib-core
 ```
 
-<br />
 <br />
 <br />
 
@@ -25,13 +21,10 @@ const MyEditor = () => <Editor />;
 
 <br />
 <br />
-<br />
 
 ### Using nib editor in a non-react application
 
 Nib editor component can be used in non-react code as below:
-
-<br />
 
 HTML:
 

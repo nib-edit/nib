@@ -31,7 +31,17 @@ export default new Plugin({
     apply(tr, prev, _, newState) {
       const link = getLink(newState);
 
-      let { createDecoration, editDecoration, showEditLinkToolbar } = prev;
+      if (tr.getMeta("HIDE_POPUPS")) {
+        return {
+          link,
+          createDecoration: undefined,
+          showAddLinkToolbar: false,
+          editDecoration: undefined,
+          showEditLinkToolbar: false
+        };
+      }
+      let { createDecoration, editDecoration } = prev;
+      const { showEditLinkToolbar } = prev;
 
       if (tr.getMeta("SHOW_LINK_TOOLBAR") === true) {
         const { $from, $to } = newState.selection;
@@ -113,7 +123,7 @@ export default new Plugin({
       return linkPluginState.createDecoration || linkPluginState.editDecoration;
     },
     handleDOMEvents: {
-      mousedown(view) {
+      focus(view) {
         const { state, dispatch } = view;
         dispatch(state.tr.setMeta("SHOW_LINK_TOOLBAR", false));
       }
@@ -122,6 +132,9 @@ export default new Plugin({
       const { state, dispatch } = view;
       const link = getLink(state);
       if (link) dispatch(state.tr.setMeta("SHOW_EDIT_LINK_TOOLBAR", true));
+      else {
+        dispatch(state.tr.setMeta("SHOW_LINK_TOOLBAR", false));
+      }
     },
     handleKeyDown(view) {
       const { state, dispatch } = view;

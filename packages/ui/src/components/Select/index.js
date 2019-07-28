@@ -9,7 +9,7 @@ import getSelectStyles from "./style";
 
 const DropdownIndicator = props => (
   <components.DropdownIndicator {...props}>
-    <Icon name="ChevronDown" />
+    <Icon name="chevronDown" />
   </components.DropdownIndicator>
 );
 

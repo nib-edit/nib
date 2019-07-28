@@ -22,7 +22,7 @@ const Editor = ({ defaultValue, autoFocus, spellCheck, addons, onChange }) => {
   const updateViewListeners = () => {
     dispatcher.dispatch(view);
     addons.forEach(addon => {
-      addon.viewListener(view);
+      addon.viewUpdateCallback(view);
     });
   };
 
@@ -36,7 +36,7 @@ const Editor = ({ defaultValue, autoFocus, spellCheck, addons, onChange }) => {
       dispatchTransaction: tr => {
         updateEditorState(view, tr);
         updateViewListeners();
-        if (onChange && tr.docChanged) onChange(view.state.toJSON());
+        if (onChange) onChange(view.state.toJSON());
       }
     });
     if (autoFocus) {

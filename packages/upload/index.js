@@ -7,7 +7,7 @@ const uploadFile = (file, signedRequest, url) => {
         if (xhr.status === 200) {
           resolve(url);
         } else {
-          reject("Could not upload file.");
+          reject(new Error("Could not upload file."));
         }
       }
     };
@@ -15,8 +15,8 @@ const uploadFile = (file, signedRequest, url) => {
   });
 };
 
-const getSignedRequest = (file, key) => {
-  return new Promise((resolve, reject) => {
+const getSignedRequest = (file, key) =>
+  new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
     xhr.open(
       "GET",
@@ -27,22 +27,22 @@ const getSignedRequest = (file, key) => {
         if (xhr.status === 200) {
           resolve(JSON.parse(xhr.responseText));
         } else {
-          reject("Could not get signed URL.");
+          reject(new Error("Could not get signed URL."));
         }
       }
     };
     xhr.send();
   });
-};
 
-export const uploadImage = (file, key) => {
-  return new Promise((resolve, reject) => {
+const uploadImage = (file, key) =>
+  new Promise((resolve, reject) => {
     if (!file) {
-      return reject("No file selected.");
+      reject(new Error("No file selected."));
     }
     getSignedRequest(file, key).then(req => {
-      const {signedRequest, url} = req;
-      uploadFile(file, signedRequest, url).then(src => resolve({src}));
+      const { signedRequest, url } = req;
+      uploadFile(file, signedRequest, url).then(src => resolve({ src }));
     });
   });
-};
+
+export default { uploadImage };

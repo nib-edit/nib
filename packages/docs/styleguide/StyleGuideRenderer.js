@@ -54,7 +54,7 @@ const styles = ({
     }
   },
   logo: {
-    padding: space[1],
+    padding: "15px",
     margin: 0,
     borderBottom: [[1, color.border, "solid"]]
   },

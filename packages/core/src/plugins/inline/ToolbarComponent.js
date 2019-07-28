@@ -10,10 +10,10 @@ import { inlinePluginKey } from "./plugin";
 import { ConfigContextConsumer } from "../../context/config";
 
 const MarkIcons = {
-  strong: "Bold",
-  em: "Italic",
-  underline: "Underline",
-  strike: "Strike"
+  strong: "bold",
+  em: "italic",
+  underline: "underline",
+  strike: "strike"
 };
 
 class ToolbarComponent extends PureComponent {
@@ -112,7 +112,7 @@ class ToolbarComponent extends PureComponent {
               selected={isSupMarkActive}
               title="Superscript"
             >
-              <Icon name="Sup" selected={isSupMarkActive} />
+              <Icon name="sup" selected={isSupMarkActive} />
             </ToolbarButton>
             <Space />
             <ToolbarButton
@@ -121,7 +121,7 @@ class ToolbarComponent extends PureComponent {
               selected={isSubMarkActive}
               title="Subscript"
             >
-              <Icon name="Sub" selected={isSubMarkActive} />
+              <Icon name="sub" selected={isSubMarkActive} />
             </ToolbarButton>
           </>
         )}

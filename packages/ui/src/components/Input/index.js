@@ -26,7 +26,7 @@ const InputWrapper = styled.div(
   {
     alignItems: "center",
     display: "flex",
-    lineHeight: "1"
+    lineHeight: 1
   },
   input => ({
     ...input.wrapper
@@ -60,7 +60,7 @@ const StyledInput = styled.input(
     },
 
     "&::placeholder": {
-      fontSize: constants.color.medium
+      fontSize: constants.color.lightText
     },
 
     ...input.input({ theme: constants })

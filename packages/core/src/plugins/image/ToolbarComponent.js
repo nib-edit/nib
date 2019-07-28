@@ -24,7 +24,7 @@ class ToolbarComponent extends PureComponent {
     return (
       <>
         <ToolbarButton onClick={this.showModal} title="Image">
-          <Icon name="Image" />
+          <Icon name="image" />
         </ToolbarButton>
         {showModal && (
           <ImageModal pmstate={pmstate} hideModal={this.hideModal} />

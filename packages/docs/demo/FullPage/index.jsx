@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Editor from "nib-core";
 
+import Code from "../../Code";
 import uploadCallback from "../../common/uploadCallback";
 import defaultValue from "./sampleData";
 
@@ -33,7 +34,7 @@ const FullPageEditor = ({ setContent }) => {
 };
 
 /**
- * @visibleName 7. Full Page
+ * @visibleName 8. Full Page
  */
 const FullPage = () => {
   const [fullPageEditorVisible, showFullPageEditor] = useState(false);
@@ -64,7 +65,7 @@ const FullPage = () => {
         Show Editor
       </button>
 
-      <pre>{JSON.stringify(content || defaultValue, null, 4)}</pre>
+      <Code content={content || defaultValue} />
     </div>
   );
 };

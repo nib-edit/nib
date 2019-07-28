@@ -5,12 +5,6 @@ import styled from "@emotion/styled";
 import Icon from "../Icon";
 
 class Modal extends PureComponent {
-  static propTypes = {
-    hideModal: PropTypes.func.isRequired,
-    render: PropTypes.func.isRequired,
-    title: PropTypes.string.isRequired
-  };
-
   componentDidMount() {
     window.addEventListener("keydown", this.handleKeyPress);
   }
@@ -52,7 +46,7 @@ class Modal extends PureComponent {
         >
           <Header>
             <Title>{title}</Title>
-            <StyledIcon name="Cross" onClick={hideModal} />
+            <StyledIcon name="cross" onClick={hideModal} />
           </Header>
           <Main>{render()}</Main>
         </InnerWrapper>
@@ -60,6 +54,12 @@ class Modal extends PureComponent {
     );
   }
 }
+
+Modal.propTypes = {
+  hideModal: PropTypes.func.isRequired,
+  render: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired
+};
 
 const Wrapper = styled.div(
   {
@@ -73,7 +73,7 @@ const Wrapper = styled.div(
     top: "0",
     width: "100%"
   },
-  ({ theme: { constants, modal } }) => ({
+  ({ theme: { constants } }) => ({
     zIndex: 1,
     backgroundColor: constants.color.opaque
   })

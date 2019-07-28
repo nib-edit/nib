@@ -18,6 +18,7 @@ const Inline = ({ editorWrapper, marker }) => {
 
   const closePopup = () => {
     const { state, dispatch } = pmstate.pmview;
+    // todo: here use a specific transaction for inline toolbar
     dispatch(state.tr.setMeta("HIDE_POPUPS", true));
   };
 
@@ -30,10 +31,7 @@ const Inline = ({ editorWrapper, marker }) => {
         <Wrapper onMouseDown={e => e.preventDefault()}>
           {options.map((Option, index) => (
             <Fragment key={`inline-toolbar-option-${Option.name}`}>
-              <Option.toolbarComponent
-                config={toolbar.inline[Option.name]}
-                pmstate={pmstate}
-              />
+              <Option.toolbarComponent config={toolbar.inline[Option.name]} />
               {index < options.length - 1 && <Separator />}
             </Fragment>
           ))}

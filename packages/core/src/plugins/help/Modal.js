@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
 
-import { Space, Modal } from "nib-ui";
+import { Space, SpaceSize, Modal } from "nib-ui";
 
 import getOS from "../../utils/device";
 import { ConfigContext, ConfigContextConsumer } from "../../context/config";
@@ -44,14 +44,14 @@ const formatKey = key => {
 };
 
 const KeymapColumn = ({ keymap }) => (
-  <span>
+  <Column>
     {keymap.map(({ key, label }) => (
       <Option key={`option-key-${key}`}>
         <span>{label}</span>
-        <span>{formatKey(key)}</span>
+        <StyledKey>{formatKey(key)}</StyledKey>
       </Option>
     ))}
-  </span>
+  </Column>
 );
 
 KeymapColumn.propTypes = {
@@ -83,9 +83,9 @@ class HelpModal extends PureComponent {
         render={() => (
           <OptionWrapper>
             <SubTitle>Keyboard Shortcuts</SubTitle>
-            <ColumnWrapper style={{ display: "flex" }}>
+            <ColumnWrapper>
               <KeymapColumn keymap={keymapCol1} />
-              <Space size="medium" />
+              <Space size={SpaceSize.m} />
               <KeymapColumn keymap={keymapCol2} />
             </ColumnWrapper>
           </OptionWrapper>
@@ -114,12 +114,23 @@ const Option = styled.div({
   justifyContent: "space-between"
 });
 
+const StyledKey = styled.span({
+  whiteSpace: "nowrap"
+});
+
 const OptionWrapper = styled.div({ height: "100%", overflow: "scroll" });
 
 const ColumnWrapper = styled.div({
   display: "flex",
-  "> span": {
-    width: "48%"
+  "@media(max-width: 700px)": {
+    flexDirection: "column"
+  }
+});
+
+const Column = styled.span({
+  width: "48%",
+  "@media(max-width: 700px)": {
+    width: "100%"
   }
 });
 

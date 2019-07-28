@@ -37,7 +37,7 @@ class CellMenu extends Component {
 
   toggleMenuVisible = () => {
     const { menuVisible } = this.state;
-    this.setState({ menuVisible });
+    this.setState({ menuVisible: !menuVisible });
   };
 
   render() {
@@ -47,7 +47,7 @@ class CellMenu extends Component {
     const { top, left, menuVisible } = this.state;
     return (
       <Wrapper onMouseDown={e => e.preventDefault()} style={{ top, left }}>
-        <StyledIcon name="ArrowDown" onClick={this.toggleMenuVisible} />
+        <StyledIcon name="arrowDown" onClick={this.toggleMenuVisible} />
         {menuVisible && (
           <MenuDropdown
             pmview={pmview}

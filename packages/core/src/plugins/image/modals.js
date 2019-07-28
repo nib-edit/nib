@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
 
-import { Spinner, Modal, Input, PrimaryButton, Space } from "nib-ui";
-import { uploadImage } from "nib-upload";
+import { Spinner, Modal, Input, PrimaryButton, Space, SpaceSize } from "nib-ui";
+import NibUpload from "nib-upload";
 
 import { ConfigContextConsumer } from "../../context/config";
 
@@ -36,7 +36,7 @@ class ImageModal extends PureComponent {
       (config.plugins &&
         config.plugins.image &&
         config.plugins.image.uploadCallback) ||
-      (licenseKey && uploadImage);
+      (licenseKey && NibUpload.uploadImage);
     if (uploadFn)
       uploadFn(file, licenseKey)
         .then(({ src }) => {
@@ -96,7 +96,7 @@ class ImageModal extends PureComponent {
                 value={imageSrc}
                 onChange={evt => this.updateImageSrc(evt.target.value)}
               />
-              <label htmlFor="fileInput">
+              <StyledLabel htmlFor="fileInput">
                 <FileUploadInput
                   type="file"
                   id="fileInput"
@@ -123,12 +123,12 @@ class ImageModal extends PureComponent {
                   </UploadLabel>
                   {uploading && <StyledSpinner uploading={uploading} />}
                 </UploadSection>
-              </label>
+              </StyledLabel>
               <ButtonSection>
                 <PrimaryButton onClick={this.insertImageInEditor}>
                   Insert
                 </PrimaryButton>
-                <Space size="extraLarge" />
+                <Space size={SpaceSize.xl} />
                 <PrimaryButton onClick={hideModal}>Cancel</PrimaryButton>
               </ButtonSection>
             </InnerWrapper>
@@ -153,13 +153,15 @@ ImageModal.defaultProps = {
 };
 
 const Wrapper = styled.div({}, () => ({
-  padding: "0px 24px 10px"
+  padding: "0px 24px 10px",
+  height: "100%"
 }));
 
 const InnerWrapper = styled.div({
   alignItems: "center",
   display: "flex",
-  flexDirection: "column"
+  flexDirection: "column",
+  height: "95%"
 });
 
 const SubTitle = styled.div({}, ({ theme: { constants } }) => ({
@@ -175,10 +177,11 @@ const UploadSection = styled.span(
 
     position: "relative",
 
-    height: 280,
-    marginTop: 28,
+    height: "75%",
+    width: "35%",
+    minWidth: 200,
+    margin: "28px auto 0 auto",
     padding: 20,
-    width: 280,
 
     backgroundRepeat: "no-repeat",
     backgroundSize: "contain"
@@ -192,13 +195,19 @@ const UploadSection = styled.span(
 );
 
 const UploadLabel = styled.span(
-  { marginTop: 50, textAlign: "center", zIndex: 1, marginBottom: 10 },
+  { marginTop: 20, textAlign: "center", zIndex: 1, marginBottom: 10 },
   ({ theme: { constants }, imageSrc }) => ({
     color: imageSrc ? constants.color.background : constants.color.text
   })
 );
 
-const StyledInput = styled(Input)({}, () => ({ width: 400 }));
+const StyledInput = styled(Input)({}, () => ({
+  width: "75%",
+  maxWidth: 400,
+  "> input": { width: "100%", margin: "0 auto" }
+}));
+
+const StyledLabel = styled.label({}, () => ({ height: "75%", width: "100%" }));
 
 const FileUploadInput = styled.input({ display: "none" });
 
@@ -226,7 +235,12 @@ const ImageWrapper = styled.span({
   alignItems: "center"
 });
 
-const StyledImage = styled.img({ height: "auto", width: "100%" });
+const StyledImage = styled.img({
+  height: "auto",
+  width: "auto",
+  maxHeight: "100%",
+  maxWidth: "100%"
+});
 
 export default props => (
   <ConfigContextConsumer>

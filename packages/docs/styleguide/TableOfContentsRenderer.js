@@ -60,7 +60,7 @@ const styles = ({ color, fontFamily, fontSize }) => ({
 export function TableOfContentsRenderer({ classes, children }) {
   return (
     <div className={classes.wrapper}>
-      <div style={{ margin: "4px" }}>
+      <div style={{ margin: "10px" }}>
         <nav>{children}</nav>
         <nav className={classes.github}>
           <a

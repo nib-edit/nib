@@ -17,7 +17,7 @@ class ToolbarComponent extends PureComponent {
   render() {
     return (
       <ToolbarButton name="table" onClick={this.insertTable} title="Table">
-        <Icon name="Table" />
+        <Icon name="table" />
       </ToolbarButton>
     );
   }

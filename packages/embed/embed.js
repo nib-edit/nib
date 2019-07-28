@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getEmbeddableHTML = url =>
+export default url =>
   new Promise((resolve, reject) => {
     try {
       const parsedUrl = new URL(url);
@@ -28,7 +28,3 @@ const getEmbeddableHTML = url =>
       resolve(`Unable to get embed details ${err.message}`);
     }
   });
-
-export default {
-  getEmbeddableHTML
-};

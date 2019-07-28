@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import Editor from "nib-core";
 
+import Code from "../../Code";
 import uploadCallback from "../../common/uploadCallback";
 import defaultValue from "./sampleData";
 
 /**
- * @visibleName 3. Full Featured
+ * @visibleName 4. Full Featured
  */
 const FullFeatured = () => {
   const [content, setContent] = useState();
@@ -29,7 +30,7 @@ const FullFeatured = () => {
         onChange={setContent}
         defaultValue={defaultValue}
       />
-      <pre>{JSON.stringify(content || defaultValue, null, 4)}</pre>
+      <Code content={content || defaultValue} />
     </div>
   );
 };

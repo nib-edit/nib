@@ -3,7 +3,7 @@ import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
 import { TextSelection } from "prosemirror-state";
 
-import { PrimaryButton, Input, Popup, Space } from "nib-ui";
+import { PrimaryButton, Input, Popup, Space, SpaceSize } from "nib-ui";
 
 import { PMStateConsumer } from "../../../context/pm-state";
 import { linkPluginKey } from "../plugin";
@@ -81,7 +81,7 @@ class EditPopup extends PureComponent {
               defaultValue={link.href}
             />
             <PrimaryButton onClick={this.updateLink}>Update</PrimaryButton>
-            <Space type="large" />
+            <Space size={SpaceSize.l} />
             <PrimaryButton onClick={this.unLink}>Unlink</PrimaryButton>
           </Wrapper>
         )}

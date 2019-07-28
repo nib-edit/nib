@@ -5,8 +5,9 @@ import styled from "@emotion/styled";
 import Icons from "../../icons";
 
 export default withTheme(({ theme, selected, name, ...rest }) => {
-  let fill = theme.constants.color.text;
-  if (selected) fill = theme.constants.color.highlight;
+  const { text, highlight } = theme.constants.color;
+  let fill = text;
+  if (selected) fill = highlight;
 
   const IconComponent = Icons[name];
   return (

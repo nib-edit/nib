@@ -31,7 +31,7 @@ class ToolbarComponent extends PureComponent {
           onClick={this.showModal}
           title={formatKeymap(KeymapInfo.help)}
         >
-          <Icon name="Question" />
+          <Icon name="question" />
         </StyledButton>
         {showModal && <Modal pmstate={pmstate} hideModal={this.hideModal} />}
       </>

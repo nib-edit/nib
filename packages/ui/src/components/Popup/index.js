@@ -5,8 +5,8 @@ import styled from "@emotion/styled";
 const ARROW_HEIGHT = 6;
 const ARROW_MIN_DISTANCE = 10;
 const BLOCK_HEIGHT = 20;
-const POPUP_DISTANCE_FROM_BLOCK = 1;
 const MIN_LEFT = 2;
+const POPUP_DISTANCE_FROM_BLOCK = 1;
 
 const isSamePos = (oldPos, newPos) => {
   if (!oldPos) return false;
@@ -70,25 +70,14 @@ const getPosition = (marker, popupElm, editorWrapper) => {
   };
 };
 
-class Popups extends Component {
+export default class Popup extends Component {
   wrapperRef = React.createRef();
 
   state = { popupPosition: { top: 0 }, arrowPosition: { dir: "TOP" } };
 
-  static propTypes = {
-    className: PropTypes.string,
-    closePopup: PropTypes.func.isRequired,
-    editorWrapper: PropTypes.shape({
-      current: PropTypes.object
-    }).isRequired,
-    marker: PropTypes.object.isRequired,
-    render: PropTypes.func.isRequired
-  };
-
   componentDidMount() {
     window.addEventListener("keydown", this.handleKeyPress);
-    // commenting this out as its caasing weird issue with mouse doen in popups
-    window.addEventListener("mousedown", this.handleWindowMouseDown);
+    window.addEventListener("mousedown", this.handleMouseDown);
     const { marker, editorWrapper } = this.props;
     if (marker) {
       this.setState({
@@ -99,6 +88,7 @@ class Popups extends Component {
 
   componentDidUpdate() {
     const { marker, editorWrapper } = this.props;
+    const { popupPosition } = this.state;
     if (!marker) return;
     const oldPos = this.markerPos;
     const markerDim = marker.getBoundingClientRect();
@@ -108,7 +98,8 @@ class Popups extends Component {
       offsetTop: marker.offsetTop,
       width: markerDim.width
     };
-    if (isSamePos(oldPos, this.markerPos) && this.state.popupPosition) return;
+    if (isSamePos(oldPos, this.markerPos) && popupPosition) return;
+    // eslint-disable-next-line react/no-did-update-set-state
     this.setState({
       ...getPosition(marker, this.wrapperRef.current, editorWrapper.current)
     });
@@ -116,7 +107,7 @@ class Popups extends Component {
 
   componentWillUnmount = () => {
     window.removeEventListener("keydown", this.handleKeyPress);
-    window.removeEventListener("mousedown", this.handleWindowMouseDown);
+    window.removeEventListener("mousedown", this.handleMouseDown);
   };
 
   handleKeyPress = evt => {
@@ -124,47 +115,23 @@ class Popups extends Component {
     if (evt.key === "Escape") closePopup();
   };
 
-  handleWindowMouseDown = evt => {
+  handleMouseDown = evt => {
     const { closePopup, editorWrapper } = this.props;
-    if (editorWrapper && !editorWrapper.current.contains(evt.target))
+    if (
+      evt.button === 0 &&
+      editorWrapper &&
+      !editorWrapper.current.contains(evt.target)
+    )
       closePopup();
   };
 
-  handleMouseDown = () => {
-    this.active = true;
-  };
-
-  handleKeyDown = e => {
-    if (e.key === "Tab") this.active = true;
-  };
-
-  handleFocus = () => {
-    if (this.active) this.active = false;
-  };
-
-  handleBlur = () => {
-    const { closePopup } = this.props;
-    if (this.active) this.active = false;
-    else closePopup();
-  };
-
   render() {
-    const { render, marker, ...rest } = this.props;
+    const { render, marker } = this.props;
     if (!marker) return null;
     const { popupPosition, arrowPosition } = this.state;
 
     return (
-      <Wrapper
-        handleBlur={this.handleBlur}
-        handleFocus={this.handleFocus}
-        handleKeyDown={this.handleKeyDown}
-        handleMouseDown={this.handleMouseDown}
-        ref={this.wrapperRef}
-        style={popupPosition}
-        tabIndex={-1}
-        marker={marker}
-        {...rest}
-      >
+      <Wrapper ref={this.wrapperRef} style={popupPosition} marker={marker}>
         {arrowPosition.dir === "TOP" ? (
           <ArrowTop left={arrowPosition.left} />
         ) : (
@@ -175,6 +142,16 @@ class Popups extends Component {
     );
   }
 }
+
+Popup.propTypes = {
+  closePopup: PropTypes.func.isRequired,
+  editorWrapper: PropTypes.shape({
+    current: PropTypes.object
+  }).isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  marker: PropTypes.object.isRequired,
+  render: PropTypes.func.isRequired
+};
 
 const Wrapper = styled.div(
   { position: "absolute", padding: "4px 4px 6px 4px;" },
@@ -230,5 +207,3 @@ const ArrowBottom = styled.div(
     ...popup.arrowBottom({ theme: constants })
   })
 );
-
-export default Popups;

@@ -28,14 +28,14 @@ class ToolbarComponent extends PureComponent {
           onClick={this.undo}
           title={formatKeymap(KeymapInfo.undo)}
         >
-          <Icon name="Undo" />
+          <Icon name="undo" />
         </ToolbarButton>
         <Space />
         <ToolbarButton
           onClick={this.redo}
           title={formatKeymap(KeymapInfo.redo)}
         >
-          <Icon name="Redo" />
+          <Icon name="redo" />
         </ToolbarButton>
       </>
     );

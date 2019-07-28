@@ -24,4 +24,4 @@ Plugin that adds support for video in the editor.
 
 <br />
 
-Nib editor takes care of finding embeddable URL of videos from Youtube or Vimeo, for other sources URL provided gets embedded as is into an iFrame.
+Currently video can be added only using url, upload support is not available. The editor takes care of finding embed URL of videos from Youtube or Vimeo, for other sources URL provided gets included as is into an iFrame source.

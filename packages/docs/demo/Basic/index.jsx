@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Editor from "nib-core";
 
+import Code from "../../Code";
 import defaultValue from "./sampleData";
 
 /**
@@ -18,7 +19,7 @@ const Basic = () => {
         onChange={setContent}
         defaultValue={defaultValue}
       />
-      <pre>{JSON.stringify(content || defaultValue, null, 4)}</pre>
+      <Code content={content || defaultValue} />
     </div>
   );
 };

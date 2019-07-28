@@ -5,13 +5,11 @@ import { Separator } from "nib-ui";
 
 import getToolbarComponents from "../../../utils/editor/toolbar";
 import { useConfigContext } from "../../../context/config";
-import { usePMStateContext } from "../../../context/pm-state";
 
 const Top = () => {
   const {
     config: { plugins, toolbar }
   } = useConfigContext();
-  const pmstate = usePMStateContext();
 
   const options = getToolbarComponents(plugins.options, toolbar.top.options);
   const formattingOption = options.filter(opt => opt.name !== "help");
@@ -22,16 +20,12 @@ const Top = () => {
       <ToolbarSection>
         {formattingOption.map((Option, index) => (
           <Fragment key={`top-toolbar-option-${Option.name}`}>
-            <Option.toolbarComponent
-              config={toolbar.top[Option.name]}
-              // use this from context to avoid passing down
-              pmstate={pmstate}
-            />
+            <Option.toolbarComponent config={toolbar.top[Option.name]} />
             {index < formattingOption.length - 1 && <Separator />}
           </Fragment>
         ))}
       </ToolbarSection>
-      {HelpOption && <HelpOption.toolbarComponent pmstate={pmstate} />}
+      {HelpOption && <HelpOption.toolbarComponent />}
     </Wrapper>
   );
 };

@@ -7,6 +7,7 @@ import listItem from "./listItem";
 import orderedList from "./orderedList";
 import paragraph from "./paragraph";
 import text from "./text";
+// eslint-disable-next-line camelcase
 import { table, table_row, table_cell, table_header } from "./table";
 
 export default {

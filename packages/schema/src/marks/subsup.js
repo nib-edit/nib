@@ -6,7 +6,7 @@ const subsup = {
     { tag: "sup", attrs: { type: "sup" } }
   ],
   toDOM(mark) {
-    return [mark.attrs.type];
+    return [mark.attrs.type, 0];
   }
 };
 

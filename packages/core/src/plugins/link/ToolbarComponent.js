@@ -36,7 +36,7 @@ class ToolbarComponent extends PureComponent {
         title={formatKeymap(KeymapInfo.link)}
       >
         <span className="nib-link-marker">
-          <Icon name="Link" />
+          <Icon name="link" />
         </span>
       </ToolbarButton>
     );

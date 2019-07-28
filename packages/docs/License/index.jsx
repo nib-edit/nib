@@ -24,15 +24,15 @@ class License extends PureComponent {
           Commercial license of Nib starts at $99 yearly, mail to
           contact@nibedit.com to get it.
           <br />
-          Discount on Nib are considered for early start startups.
+          Discount on Nib are considered for early stage startups.
         </div>
         <h3 style={{ marginTop: 25 }}>Non-Commercial Use: </h3>
         <div>
-          For non-profiltable or personal use, nib license is freely avilable.
+          For non-profiltable or personal use, nib license is freely available.
         </div>
         <ol>
           <li>Unlimited use in web applications.</li>
-          <li>All new releases and upgrades in the duration.</li>
+          <li>All new releases and upgrades.</li>
           <li>Customer support.</li>
         </ol>
         <div>Drop mail to contact@nibedit.com to get it.</div>

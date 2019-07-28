@@ -50,4 +50,5 @@ export default TopBar;
 /**
  * todo:
  * 1. props link to open in new window.
+ * 2. add point mobile frendliness
  */

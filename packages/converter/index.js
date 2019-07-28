@@ -1,8 +1,3 @@
-/**
- * TODO:review
- * fix linting
- */
-
 import { Schema } from "prosemirror-model";
 import { marks, nodes } from "nib-schema";
 
@@ -10,10 +5,10 @@ const getHTMLString = node => {
   const { type, text } = node;
   if (text) {
     let strContent = text;
-    for (let i = 0; i < node.marks.length; i++) {
+    for (let i = 0; i < node.marks.length; i += 1) {
       const mark = node.marks[i];
-      const { type } = mark;
-      const domDetails = type.spec.toDOM(mark);
+      const { type: markType } = mark;
+      const domDetails = markType.spec.toDOM(mark);
       const htmlAttrs = Object.keys(domDetails[1]).reduce(
         (str, key) => `${str}${key}="${domDetails[1][key]}"`,
         ""
@@ -24,7 +19,7 @@ const getHTMLString = node => {
     return strContent;
   }
   let strContent = "";
-  for (let i = 0; i < node.childCount; i++) {
+  for (let i = 0; i < node.childCount; i += 1) {
     const childNode = node.child(i);
     strContent += getHTMLString(childNode);
   }
@@ -40,7 +35,7 @@ const getHTMLString = node => {
   return strContent;
 };
 
-export const convertToHTML = content => {
+const convertToHTML = content => {
   if (JSON.stringify(content) === "{}") return "";
   const schema = new Schema({
     nodes,
@@ -49,3 +44,5 @@ export const convertToHTML = content => {
   const node = schema.nodeFromJSON(content);
   return getHTMLString(node);
 };
+
+export default { convertToHTML };

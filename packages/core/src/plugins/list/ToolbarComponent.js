@@ -40,7 +40,7 @@ class ToolbarComponent extends PureComponent {
           selected={bulletListActive}
           title={formatKeymap(KeymapInfo.bulletList)}
         >
-          <Icon name="ListBulleted" selected={bulletListActive} />
+          <Icon name="listBulleted" selected={bulletListActive} />
         </ToolbarButton>
         <Space />
         <ToolbarButton
@@ -49,7 +49,7 @@ class ToolbarComponent extends PureComponent {
           selected={orderedListActive}
           title={formatKeymap(KeymapInfo.orderedList)}
         >
-          <Icon name="ListNumbered" selected={orderedListActive} />
+          <Icon name="listNumbered" selected={orderedListActive} />
         </ToolbarButton>
       </>
     );

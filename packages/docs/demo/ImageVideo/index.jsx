@@ -1,22 +1,28 @@
 import React, { useState } from "react";
 import Editor from "nib-core";
+import uploadCallback from "../../common/uploadCallback";
 
 import Code from "../../Code";
 import defaultValue from "./sampleData";
 
 /**
- * @visibleName 2. Block inline
+ * @visibleName 3. Image Video
  */
-const BlockInline = () => {
+const ImageVideo = () => {
   const [content, setContent] = useState();
   return (
     <div>
       <Editor
         config={{
-          plugins: { options: "block inline list" },
+          plugins: {
+            options: "block image video",
+            image: {
+              uploadCallback
+            }
+          },
           toolbar: {
             options: "top",
-            top: { options: "block inline list history" }
+            top: { options: "block image video history" }
           }
         }}
         onChange={setContent}
@@ -27,4 +33,4 @@ const BlockInline = () => {
   );
 };
 
-export default BlockInline;
+export default ImageVideo;

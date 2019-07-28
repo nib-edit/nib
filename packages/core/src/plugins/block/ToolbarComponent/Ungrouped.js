@@ -18,7 +18,7 @@ const Ungrouped = ({ options, selectedBlockType, onChange }) => (
             selected={isSelected}
             title={formatKeymap(KeymapInfo[opt.value.tag])}
           >
-            <Icon name={opt.value.tag.toUpperCase()} selected={isSelected} />
+            <Icon name={opt.value.tag} selected={isSelected} />
           </ToolbarButton>
           {index < options.length - 1 && <Space />}
         </Fragment>

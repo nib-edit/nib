@@ -26,7 +26,7 @@ class ToolbarComponent extends PureComponent {
       <>
         <ToolbarButton onClick={this.showModal} title="Video">
           <span className="video_toolbar_component">
-            <Icon name="Video" />
+            <Icon name="video" />
           </span>
         </ToolbarButton>
         {showModal && <Modal pmstate={pmstate} hideModal={this.hideModal} />}

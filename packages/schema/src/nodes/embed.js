@@ -1,4 +1,4 @@
-export const embed = {
+const embed = {
   group: "inline",
   inline: true,
   attrs: {

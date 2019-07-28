@@ -4,51 +4,51 @@ import Editor from "nib-core";
 import NibTrack from "nib-track";
 
 import defaultValue from "./sampleData";
+import commits from "./savedCommits";
 
 import "./styles.css";
 
-const tracker = new NibTrack.EditorPlugin();
+const tracker = new NibTrack.EditorPlugin(commits);
 
 /**
- * @visibleName 8. Track Changes
+ * @visibleName 9. Track Changes
  */
 const Track = () => {
-  const [error, setError] = useState(false);
   const [trackState, setTrackState] = useState(tracker.getState());
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("Sample message");
+  const [name, setName] = useState("Anonymous user");
 
-  const doCommit = () => {
-    if (!message) {
-      setError(true);
-      return;
-    }
-    setError(false);
-    tracker.doCommit(message);
+  const updateTrackedState = () => {
     setTrackState(tracker.getState());
-    setMessage("");
+  };
+  const doCommit = () => {
+    tracker.doCommit({ username: name, message });
+    updateTrackedState();
   };
   const revertCommit = commit => {
-    tracker.revertCommit(commit);
-    setTrackState(tracker.getState());
+    tracker.revertCommit(commit, { username: name, message });
+    updateTrackedState();
   };
   const highlightCommit = commit => {
     tracker.highlightCommit(commit);
-    setTrackState(tracker.getState());
+    updateTrackedState();
   };
-  const updateTrackedState = () => {
-    setError(false);
-    setTrackState(tracker.getState());
+  const resetHighlight = () => {
+    tracker.resetHighlight();
+    updateTrackedState();
   };
 
-  useEffect(() => {
-    tracker.addHighlightListener(updateTrackedState);
-    return () => {
-      tracker.removeHighlightListener(updateTrackedState);
-    };
-  }, []);
+  useEffect(() => updateTrackedState(), []);
 
   return (
     <div>
+      <input
+        style={{ marginBottom: 10 }}
+        className="nib-track_msg"
+        onChange={evt => setName(evt.target.value)}
+        placeholder="Enter user name"
+        value={name}
+      />
       <Editor
         config={{
           plugins: { options: "block inline list" },
@@ -60,7 +60,7 @@ const Track = () => {
       />
       <div className="nib-track_save_wraper">
         <input
-          className={error ? "nib-track_msg_err" : "nib-track_msg"}
+          className="nib-track_msg"
           onChange={evt => setMessage(evt.target.value)}
           placeholder="Enter save message"
           value={message}
@@ -75,35 +75,42 @@ const Track = () => {
         </button>
       </div>
       <div className="nib-track_commits">Changes</div>
-      <ol className="nib-track_commit_list">
+      <table className="nib-track_table">
+        <tr>
+          <th>Id</th>
+          <th>User Name</th>
+          <th>Message</th>
+          <th>Time</th>
+          <th>Revert</th>
+        </tr>
         {trackState.commits.map(commit => (
-          <li
+          <tr
             className={
               trackState.highlightedCommit &&
               trackState.highlightedCommit === commit
                 ? "nib-highlighted_commit"
                 : ""
             }
+            onMouseEnter={() => highlightCommit(commit)}
+            onMouseLeave={resetHighlight}
             key={`${commit.time}`}
           >
-            <span className="nib-track_commits_message">{commit.message}</span>
-            <button
-              className="nib-track_revert_btn"
-              onClick={() => revertCommit(commit)}
-              type="button"
-            >
-              Revert
-            </button>
-            <button
-              className="nib-track_revert_btn"
-              onClick={() => highlightCommit(commit)}
-              type="button"
-            >
-              Highlight
-            </button>
-          </li>
+            <td>{commit.id}</td>
+            <td>{commit.data.username}</td>
+            <td>{commit.data.message}</td>
+            <td>{commit.time.toLocaleString()}</td>
+            <td>
+              <button
+                className="nib-track_revert_btn"
+                onClick={() => revertCommit(commit)}
+                type="button"
+              >
+                Revert
+              </button>
+            </td>
+          </tr>
         ))}
-      </ol>
+      </table>
     </div>
   );
 };

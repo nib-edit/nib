@@ -46,6 +46,12 @@ export default new Plugin({
           class: "nib-selected-marker"
         })
       ]);
+    },
+    handleKeyDown(view, event) {
+      if (event.key === "Escape") {
+        const { state, dispatch } = view;
+        dispatch(state.tr.setMeta("HIDE_POPUPS", true));
+      }
     }
   }
 });
