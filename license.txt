@@ -1,6 +1,6 @@
 This is the repository for Nib's wysiwyg editor.
 
-The library is available under different licences depending on whether it is intended for commercial/government use, or for a personal or non-profit project.
+The library is available under different licenses depending on whether it is intended for commercial/government use, or for a personal or non-profit project.
 
 Read more on licensing alternatives here:
-- https://jpuri.github.io/Nib/#/Licence
+http://www.nibedit.com/index.html#/License

@@ -4739,6 +4739,27 @@ neo-async@^2.5.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.0.tgz#b9d15e4d71c6762908654b5183ed38b753340835"
 
+nib-core@1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/nib-core/-/nib-core-1.1.5.tgz#70dbb40586e2ed6ddbab48a181f7b39f992666bc"
+  dependencies:
+    "@emotion/core" "^10.0.14"
+    "@emotion/styled" "^10.0.14"
+    emotion-theming "^10.0.14"
+    nib-embed "1.0.1"
+    nib-schema "1.0.1"
+    nib-ui "1.1.2"
+    nib-upload "1.0.0"
+    prosemirror-commands "^1.0.7"
+    prosemirror-history "^1.0.3"
+    prosemirror-keymap "^1.0.1"
+    prosemirror-model "^1.6.2"
+    prosemirror-schema-list "^1.0.1"
+    prosemirror-state "^1.2.2"
+    prosemirror-tables "^0.8.1"
+    prosemirror-utils "^0.7.6"
+    prosemirror-view "^1.6.3"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
