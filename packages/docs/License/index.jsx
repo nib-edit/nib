@@ -41,10 +41,12 @@ class License extends PureComponent {
           <li>Customer support.</li>
         </ol>
         <div>
-          <a href="mailto:contact@nibedit.com">Contact</a>
-{' '}
-to get it.
-</div>
+          <a href="mailto:contact@nibedit.com?subject=Nib Free license">
+            Contact
+          </a>
+{" "}
+          to get it.
+        </div>
       </div>
     );
   }
