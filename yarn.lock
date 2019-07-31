@@ -4760,6 +4760,12 @@ nib-core@1.1.5:
     prosemirror-utils "^0.7.6"
     prosemirror-view "^1.6.3"
 
+nib-track@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/nib-track/-/nib-track-1.1.0.tgz#4f36dd5ce1dd03840ddc885a93622ee0e3c810e7"
+  dependencies:
+    prosemirror-transform "^1.0.0"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"

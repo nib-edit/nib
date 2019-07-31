@@ -21,13 +21,8 @@ class License extends PureComponent {
           <li>Customisations in core library.</li>
         </ol>
         <div>
-          Commercial license of Nib starts at $99 yearly,
-{" "}
-          <a href="mailto:contact@nibedit.com?subject=Nib commercial license">
-            Contact
-          </a>
-{" "}
-          to get it.
+          Commercial license of Nib starts at $99 yearly, mail to
+          contact@nibedit.com to get it.
           <br />
           Discount on Nib are considered for early start startups.
         </div>
@@ -40,13 +35,7 @@ class License extends PureComponent {
           <li>All new releases and upgrades in the duration.</li>
           <li>Customer support.</li>
         </ol>
-        <div>
-          <a href="mailto:contact@nibedit.com?subject=Nib Free license">
-            Contact
-          </a>
-{" "}
-          to get it.
-        </div>
+        <div>Drop mail to contact@nibedit.com to get it.</div>
       </div>
     );
   }
