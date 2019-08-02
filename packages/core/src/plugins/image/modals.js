@@ -1,32 +1,28 @@
+import PropTypes from "prop-types";
 import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
-import { Spinner, Modal, Input, LinkButton } from "nib-ui";
+
+import { Spinner, Modal, Input, PrimaryButton, Space } from "nib-ui";
 import { uploadImage } from "nib-upload";
 
-import { AppContext } from "../../common/app-context";
-import { imagePluginKey } from "./plugin";
+import { ConfigContextConsumer } from "../../context/config";
 
-class UploadImage extends PureComponent {
-  static contextType = AppContext;
-
+class ImageModal extends PureComponent {
   state = { uploading: false, imageSrc: "" };
-
-  handleImageInputChange = event => {
-    const { files } = event.target;
-    this.insertImage(files[0]);
-  };
 
   insertImageInEditor = () => {
     const { imageSrc: src } = this.state;
     if (!src) return;
-    const { state, dispatch } = this.props.view;
+    const { pmstate, hideModal } = this.props;
+    const { pmview } = pmstate;
+    const { state, dispatch } = pmview;
     const { $from, $to } = state.selection;
     const { image } = state.schema.nodes;
     dispatch(
       state.tr.replaceRangeWith($from.pos, $to.pos, image.create({ src }))
     );
-    this.hideImageModal();
-    this.props.view.focus();
+    hideModal();
+    pmview.focus();
   };
 
   updateImageSrc = imageSrc => {
@@ -34,8 +30,8 @@ class UploadImage extends PureComponent {
   };
 
   insertImage = file => {
+    const { config, licenseKey } = this.props;
     this.setState({ uploading: true });
-    const { config, licenseKey } = this.context;
     const uploadFn =
       (config.plugins &&
         config.plugins.image &&
@@ -44,27 +40,25 @@ class UploadImage extends PureComponent {
     if (uploadFn)
       uploadFn(file, licenseKey)
         .then(({ src }) => {
-          this.setState({ uploading: false });
           if (!src) this.updateImageSrc("");
           else this.updateImageSrc(src);
         })
         .catch(() => {
           this.updateImageSrc("");
+        })
+        .finally(() => {
+          this.setState({ uploading: false });
         });
   };
 
-  stopDefault = evt => {
-    evt.preventDefault();
-    evt.stopPropagation();
-  };
-
-  // Check if property name is files or items, IE uses 'files' instead of 'items'
+  // Check if property name is files or items
+  // IE uses 'files' instead of 'items'
   onImageDrop = evt => {
     this.stopDefault(evt);
     const { items, files } = evt.dataTransfer;
     const data = items || files;
     const dataIsItems = !!items;
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i += 1) {
       if (
         (!dataIsItems || data[i].kind === "file") &&
         data[i].type.match("^image/")
@@ -75,31 +69,37 @@ class UploadImage extends PureComponent {
     }
   };
 
-  hideImageModal = () => {
-    const { state, dispatch } = this.props.view;
-    dispatch(state.tr.setMeta("HIDE_IMAGE_TOOLBAR", true));
+  handleImageInputChange = event => {
+    const { files } = event.target;
+    this.insertImage(files[0]);
+  };
+
+  stopDefault = evt => {
+    evt.preventDefault();
+    evt.stopPropagation();
   };
 
   render() {
+    const { hideModal } = this.props;
     const { uploading, imageSrc } = this.state;
     return (
       <Modal
-        hideModal={this.hideImageModal}
+        hideModal={hideModal}
         title="Image"
         render={() => (
           <Wrapper>
             <SubTitle>Enter url or upload</SubTitle>
-            <ContentWrapper>
-              <Input
+            <InnerWrapper>
+              <StyledInput
                 placeholder="Url"
                 autoFocus
                 value={imageSrc}
                 onChange={evt => this.updateImageSrc(evt.target.value)}
               />
-              <label htmlFor="file">
+              <label htmlFor="fileInput">
                 <FileUploadInput
                   type="file"
-                  id="file"
+                  id="fileInput"
                   onChange={this.handleImageInputChange}
                 />
                 <UploadSection
@@ -115,26 +115,23 @@ class UploadImage extends PureComponent {
                     </ImageWrapper>
                   )}
                   <UploadLabel imageSrc={imageSrc}>
-                    Drag and Drop the Image 
-{' '}
-<br />
-{' '}
-or
-{' '}
-<br />
-{' '}
-Click to Upload
-</UploadLabel>
-                  <StyledSpinner uploading={uploading} />
+                    Drag and Drop the Image
+                    <br />
+                    or
+                    <br />
+                    Click to Upload
+                  </UploadLabel>
+                  {uploading && <StyledSpinner uploading={uploading} />}
                 </UploadSection>
               </label>
               <ButtonSection>
-                <LinkButton onClick={this.insertImageInEditor}>
+                <PrimaryButton onClick={this.insertImageInEditor}>
                   Insert
-                </LinkButton>
-                <LinkButton onClick={this.hideImageModal}>Cancel</LinkButton>
+                </PrimaryButton>
+                <Space size="extraLarge" />
+                <PrimaryButton onClick={hideModal}>Cancel</PrimaryButton>
               </ButtonSection>
-            </ContentWrapper>
+            </InnerWrapper>
           </Wrapper>
         )}
       />
@@ -142,89 +139,99 @@ Click to Upload
   }
 }
 
-const Wrapper = styled.div`
-  padding: 0px 24px 10px;
-`;
+ImageModal.propTypes = {
+  licenseKey: PropTypes.string,
+  hideModal: PropTypes.func.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  config: PropTypes.object.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  pmstate: PropTypes.object.isRequired
+};
 
-const ContentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
+ImageModal.defaultProps = {
+  licenseKey: undefined
+};
 
-// todo: extract styles like these as re-usable styled
-const SubTitle = styled.div`
-  font-size: 18px;
-`;
+const Wrapper = styled.div({}, () => ({
+  padding: "0px 24px 10px"
+}));
 
-const UploadSection = styled.div`
-  align-items: center;
-  border: ${({ theme, uploading, src }) =>
-    uploading || src
-      ? `1px dashed ${theme.uploadModal.borderActiveColor}`
-      : `1px dashed ${theme.uploadModal.borderColor}`};
-  display: flex;
-  flex-direction: column;
-  height: 280px;
-  width: 280px;
-  margin-top: 28px;
-  justify-content: center;
-  position: relative;
-  padding: 20px;
-  background-repeat: no-repeat;
-  background-size: contain;
-`;
+const InnerWrapper = styled.div({
+  alignItems: "center",
+  display: "flex",
+  flexDirection: "column"
+});
 
-const UploadLabel = styled.span`
-  margin-top: 50px;
-  text-align: center;
-  z-index: 1;
-  margin-bottom: 10px;
-  color: ${({ imageSrc }) => (imageSrc ? "white" : "#212121")};
-`;
+const SubTitle = styled.div({}, ({ theme: { constants } }) => ({
+  fontSize: constants.fontSize.large
+}));
 
-const FileUploadInput = styled.input`
-  display: none;
-`;
-
-const StyledSpinner = styled(Spinner)`
-  z-index: 1;
-  margin-top: 10px;
-  visibility: ${({ uploading }) => (uploading ? "visible" : "hidden")};
-`;
-
-const ButtonSection = styled.div`
-  display: flex;
-  margin-top: 48px;
-  > button:first-of-type {
-    margin-right: 16px;
-  }
-`;
-
-const ImageWrapper = styled.span`
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  height: calc(100% - 40px);
-  width: calc(100% - 40px);
-  margin: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const StyledImage = styled.img`
-  height: auto;
-  width: 100%;
-`;
-
-export default [
+const UploadSection = styled.span(
   {
-    condition: state => {
-      const pluginState = imagePluginKey.getState(state);
-      return pluginState && pluginState.imageToolbarVisible;
-      // return true;
-    },
-    component: UploadImage
-  }
-];
+    alignItems: "center",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+
+    position: "relative",
+
+    height: 280,
+    marginTop: 28,
+    padding: 20,
+    width: 280,
+
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "contain"
+  },
+  ({ theme, uploading, src }) => ({
+    border:
+      uploading || src
+        ? `1px dashed ${theme.constants.color.highlight}`
+        : `1px dashed ${theme.constants.color.text}`
+  })
+);
+
+const UploadLabel = styled.span(
+  { marginTop: 50, textAlign: "center", zIndex: 1, marginBottom: 10 },
+  ({ theme: { constants }, imageSrc }) => ({
+    color: imageSrc ? constants.color.background : constants.color.text
+  })
+);
+
+const StyledInput = styled(Input)({}, () => ({ width: 400 }));
+
+const FileUploadInput = styled.input({ display: "none" });
+
+const StyledSpinner = styled(Spinner)(
+  {
+    zIndex: 1,
+    marginTop: 10
+  },
+  uploading => ({ visibility: uploading ? "visible" : "hidden" })
+);
+
+const ButtonSection = styled.div({ display: "flex", marginTop: 20 });
+
+const ImageWrapper = styled.span({
+  margin: 20,
+  position: "absolute",
+
+  top: 0,
+  left: 0,
+  height: "calc(100% - 40px)",
+  width: "calc(100% - 40px)",
+
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center"
+});
+
+const StyledImage = styled.img({ height: "auto", width: "100%" });
+
+export default props => (
+  <ConfigContextConsumer>
+    {({ config, licenseKey }) => (
+      <ImageModal config={config} licenseKey={licenseKey} {...props} />
+    )}
+  </ConfigContextConsumer>
+);

@@ -1,32 +1,53 @@
+import PropTypes from "prop-types";
 import React, { PureComponent } from "react";
+import styled from "@emotion/styled";
+
 import { ToolbarButton, Icon } from "nib-ui";
 
-import styled from "@emotion/styled";
-import { formatKeymap } from "../../common/utils/key-format";
+import formatKeymap from "../../utils/format-keymap";
+import { PMStateConsumer } from "../../context/pm-state";
 import { KeymapInfo } from "./keymaps";
+import Modal from "./Modal";
 
-class HelpToolbarComponent extends PureComponent {
-  showHelpModal = () => {
-    const { state, dispatch } = this.props.appParams.view;
-    dispatch(state.tr.setMeta("SHOW_HELP_MODAL", true));
+class ToolbarComponent extends PureComponent {
+  state = {
+    showModal: false
+  };
+
+  showModal = () => {
+    this.setState({ showModal: true });
+  };
+
+  hideModal = () => {
+    this.setState({ showModal: false });
   };
 
   render() {
-    const { className } = this.props;
+    const { pmstate } = this.props;
+    const { showModal } = this.state;
     return (
-      <StyledButton
-        className={className}
-        onClick={this.showHelpModal}
-        title={formatKeymap(KeymapInfo.help)}
-      >
-        <Icon name="Question" />
-      </StyledButton>
+      <>
+        <StyledButton
+          onClick={this.showModal}
+          title={formatKeymap(KeymapInfo.help)}
+        >
+          <Icon name="Question" />
+        </StyledButton>
+        {showModal && <Modal pmstate={pmstate} hideModal={this.hideModal} />}
+      </>
     );
   }
 }
 
-const StyledButton = styled(ToolbarButton)`
-  margin-left: 8px;
-`;
+ToolbarComponent.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  pmstate: PropTypes.object.isRequired
+};
 
-export default HelpToolbarComponent;
+const StyledButton = styled(ToolbarButton)({ marginLeft: 8 });
+
+export default props => (
+  <PMStateConsumer>
+    {pmstate => <ToolbarComponent pmstate={pmstate} {...props} />}
+  </PMStateConsumer>
+);

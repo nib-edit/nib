@@ -1,12 +1,16 @@
+import PropTypes from "prop-types";
 import React, { PureComponent } from "react";
+
 import { ToolbarButton, Icon } from "nib-ui";
 
-import { createTable } from "./commands";
+import { PMStateConsumer } from "../../context/pm-state";
+import createTable from "./commands";
 
-class TableToolbarComponent extends PureComponent {
+class ToolbarComponent extends PureComponent {
   insertTable = () => {
-    const { view } = this.props.appParams;
-    const { state, dispatch } = view;
+    const { pmstate } = this.props;
+    const { pmview } = pmstate;
+    const { state, dispatch } = pmview;
     createTable(state, dispatch);
   };
 
@@ -19,4 +23,13 @@ class TableToolbarComponent extends PureComponent {
   }
 }
 
-export default TableToolbarComponent;
+ToolbarComponent.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  pmstate: PropTypes.object.isRequired
+};
+
+export default props => (
+  <PMStateConsumer>
+    {pmstate => <ToolbarComponent pmstate={pmstate} {...props} />}
+  </PMStateConsumer>
+);

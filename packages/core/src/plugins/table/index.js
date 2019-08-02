@@ -1,16 +1,21 @@
 import keymaps from "./keymaps";
-import overlays from "./overlays";
 import pmPlugins from "./plugins";
+import CellMenu from "./popups/CellMenu";
 import schema from "./schema";
-import style from "./style";
+import styles from "./styles";
 import toolbarComponent from "./ToolbarComponent";
 
 export default {
   keymaps,
   name: "table",
-  overlays,
   pmPlugins,
+  popups: [CellMenu],
   schema,
-  style,
+  styles,
   toolbarComponent
 };
+
+// todo: tinymce like table menu
+// todo: menu to re-locate on page resize
+// todo: fix topbar icon colors
+// todo: table menu to close on esc click

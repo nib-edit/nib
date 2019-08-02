@@ -1,10 +1,13 @@
+import PropTypes from "prop-types";
 import React, { Fragment, PureComponent } from "react";
-import { ToolbarButton, Icon, Separator } from "nib-ui";
+import { ToolbarButton, Icon, Space } from "nib-ui";
 import { toggleMark } from "prosemirror-commands";
 
-import { formatKeymap } from "../../common/utils/key-format";
+import { PMStateConsumer } from "../../context/pm-state";
+import formatKeymap from "../../utils/format-keymap";
 import { KeymapInfo } from "./keymaps";
 import { inlinePluginKey } from "./plugin";
+import { ConfigContextConsumer } from "../../context/config";
 
 const MarkIcons = {
   strong: "Bold",
@@ -13,43 +16,49 @@ const MarkIcons = {
   strike: "Strike"
 };
 
-class InlineToolbarComponent extends PureComponent {
+class ToolbarComponent extends PureComponent {
   getActiveMarks = () => {
-    const { view } = this.props.appParams;
-    const { state } = view;
+    const { pmstate } = this.props;
+    const { pmview } = pmstate;
+    const { state } = pmview;
     const pluginState = inlinePluginKey.getState(state);
     return pluginState && pluginState.activeMarks;
   };
 
   isSubsupMarkActive = (activeMarks, type) => {
-    const { marks } = this.props.appParams.view.state.schema;
+    const { pmstate } = this.props;
+    const { pmview } = pmstate;
+    const { state } = pmview;
+    const { marks } = state.schema;
     return activeMarks.find(
       mark => mark.type === marks.subsup && mark.attrs.type === type
     );
   };
 
   toggleMarkofType = evt => {
+    const { pmstate } = this.props;
+    const { pmview } = pmstate;
     const markName = evt.currentTarget.getAttribute("name");
-    const { view } = this.props.appParams;
-    const { state, dispatch } = view;
+    const { state, dispatch } = pmview;
     const markType = state.schema.marks[markName];
     toggleMark(markType)(state, dispatch);
   };
 
-  toggleSupSubMark = (addMark, removeMark) => {
-    const { view } = this.props.appParams;
-    const { state, dispatch } = view;
+  toggleSupSubMark = (addedMark, removedMark) => {
+    const { pmstate } = this.props;
+    const { pmview } = pmstate;
+    const { state, dispatch } = pmview;
     const { schema, selection, tr } = state;
     const { $from, $to } = selection;
     const { subsup } = schema.marks;
-    if (this.isSubsupMarkActive(this.getActiveMarks(), addMark)) {
+    if (this.isSubsupMarkActive(this.getActiveMarks(), addedMark)) {
       dispatch(tr.removeMark($from.pos, $to.pos, state.schema.marks.subsup));
       return;
     }
-    if (this.isSubsupMarkActive(this.getActiveMarks(), removeMark)) {
+    if (this.isSubsupMarkActive(this.getActiveMarks(), removedMark)) {
       tr.removeMark($from.pos, $to.pos, state.schema.marks.subsup);
     }
-    tr.addMark($from.pos, $to.pos, subsup.create({ type: addMark }));
+    tr.addMark($from.pos, $to.pos, subsup.create({ type: addedMark }));
     dispatch(tr);
   };
 
@@ -57,46 +66,44 @@ class InlineToolbarComponent extends PureComponent {
     this.toggleSupSubMark("sup", "sub");
   };
 
-  toggleSubMark = evt => {
+  toggleSubMark = () => {
     this.toggleSupSubMark("sub", "sup");
   };
 
   render() {
-    if (!this.props.appParams.view) return null;
+    const { pmstate, config } = this.props;
+    const { pmview } = pmstate;
+    if (!pmview) return null;
     const activeMarks = this.getActiveMarks();
-    const { marks } = this.props.appParams.view.state.schema;
-    const { options } = this.props.config;
     const isSupMarkActive = this.isSubsupMarkActive(activeMarks, "sup");
     const isSubMarkActive = this.isSubsupMarkActive(activeMarks, "sub");
 
+    const { marks } = pmview.state.schema;
+    const { options } = config;
+
     return (
       <>
-        {["strong", "em", "underline", "strike"].reduce(
-          (result, mark, index) => {
-            if (options.indexOf(mark) >= 0) {
-              const isSelected = marks[mark].isInSet(activeMarks);
-              if (!result.length)
-                result.push(
-                  <Separator key="inlinestyle-separator" type="toolbar" />
-                );
-              result.push(
-                <Fragment key={`inlinestyle-${index}`}>
-                  <ToolbarButton
-                    name={mark}
-                    onClick={this.toggleMarkofType}
-                    selected={isSelected}
-                    title={formatKeymap(KeymapInfo[mark])}
-                  >
-                    <Icon name={MarkIcons[mark]} selected={isSelected} />
-                  </ToolbarButton>
-                  <Separator type="toolbar" />
-                </Fragment>
-              );
-            }
-            return result;
-          },
-          []
-        )}
+        {["strong", "em", "underline", "strike"].reduce((result, mark) => {
+          if (options.indexOf(mark) >= 0) {
+            const isSelected = marks[mark].isInSet(activeMarks);
+            if (!result.length)
+              result.push(<Space key="inlinestyle-separator" />);
+            result.push(
+              <Fragment key={`inlinestyle-${mark}`}>
+                <ToolbarButton
+                  name={mark}
+                  onClick={this.toggleMarkofType}
+                  selected={isSelected}
+                  title={formatKeymap(KeymapInfo[mark])}
+                >
+                  <Icon name={MarkIcons[mark]} selected={isSelected} />
+                </ToolbarButton>
+                <Space />
+              </Fragment>
+            );
+          }
+          return result;
+        }, [])}
         {options.indexOf("subsup") >= 0 && (
           <>
             <ToolbarButton
@@ -107,7 +114,7 @@ class InlineToolbarComponent extends PureComponent {
             >
               <Icon name="Sup" selected={isSupMarkActive} />
             </ToolbarButton>
-            <Separator type="toolbar" />
+            <Space />
             <ToolbarButton
               name="sub"
               onClick={this.toggleSubMark}
@@ -123,4 +130,21 @@ class InlineToolbarComponent extends PureComponent {
   }
 }
 
-export default InlineToolbarComponent;
+ToolbarComponent.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  config: PropTypes.object.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  pmstate: PropTypes.object.isRequired
+};
+
+export default props => (
+  <ConfigContextConsumer>
+    {({ config }) => (
+      <PMStateConsumer>
+        {pmstate => (
+          <ToolbarComponent pmstate={pmstate} config={config} {...props} />
+        )}
+      </PMStateConsumer>
+    )}
+  </ConfigContextConsumer>
+);

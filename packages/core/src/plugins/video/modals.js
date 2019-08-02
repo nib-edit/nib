@@ -1,13 +1,14 @@
+import PropTypes from "prop-types";
 import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
-import { Modal, Input, LinkButton } from "nib-ui";
+
+import { Modal, Input, PrimaryButton, Space } from "nib-ui";
 import Embed from "nib-embed";
 
-import { AppContext } from "../../common/app-context";
-import { videoPluginKey } from "./plugin";
+import { ConfigContext } from "../../context/config";
 
-class InsertVideo extends PureComponent {
-  static contextType = AppContext;
+class VideoModal extends PureComponent {
+  static contextType = ConfigContext;
 
   state = { videoSrc: "" };
 
@@ -22,42 +23,37 @@ class InsertVideo extends PureComponent {
     });
   };
 
+  updateVideoSrc = videoSrc => {
+    this.setState({ videoSrc });
+  };
+
   insertVideo = () => {
-    const { view } = this.props;
-    const { state, dispatch } = view;
-    const {
-      tr,
-      selection: { $from, $to }
-    } = state;
+    const { hideModal, pmstate } = this.props;
+    const { pmview } = pmstate;
+    const { state, dispatch } = pmview;
+    const { tr, selection } = state;
+    const { $from, $to } = selection;
     const { videoSrc } = this.state;
     const { embed } = state.schema.nodes;
     dispatch(
       tr.replaceRangeWith($from.pos, $to.pos, embed.create({ html: videoSrc }))
     );
-    view.focus();
-    this.hideVideoModal();
-  };
-
-  updateVideoSrc = videoSrc => {
-    this.setState({ videoSrc });
-  };
-
-  hideVideoModal = () => {
-    const { state, dispatch } = this.props.view;
-    dispatch(state.tr.setMeta("HIDE_VIDEO_OVERLAY", true));
+    pmview.focus();
+    hideModal();
   };
 
   render() {
+    const { hideModal } = this.props;
     const { videoSrc } = this.state;
     return (
       <Modal
-        hideModal={this.hideVideoModal}
+        hideModal={hideModal}
         title="Video"
         render={() => (
           <Wrapper>
             <SubTitle>Enter url or upload</SubTitle>
-            <ContentWrapper>
-              <Input
+            <InnerWrapper>
+              <StyledInput
                 placeholder="Url"
                 autoFocus
                 onChange={evt => this.addEmbed(evt.target.value)}
@@ -67,10 +63,11 @@ class InsertVideo extends PureComponent {
                 dangerouslySetInnerHTML={{ __html: videoSrc }}
               />
               <ButtonSection>
-                <LinkButton onClick={this.insertVideo}>Insert</LinkButton>
-                <LinkButton onClick={this.hideVideoModal}>Cancel</LinkButton>
+                <PrimaryButton onClick={this.insertVideo}>Insert</PrimaryButton>
+                <Space size="extraLarge" />
+                <PrimaryButton onClick={hideModal}>Cancel</PrimaryButton>
               </ButtonSection>
-            </ContentWrapper>
+            </InnerWrapper>
           </Wrapper>
         )}
       />
@@ -78,51 +75,47 @@ class InsertVideo extends PureComponent {
   }
 }
 
-const Wrapper = styled.div`
-  padding: 0px 24px 10px;
-`;
+VideoModal.propTypes = {
+  hideModal: PropTypes.func.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  pmstate: PropTypes.object.isRequired
+};
 
-const ContentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
+const Wrapper = styled.div({ padding: "0px 24px 10px" });
 
-// todo: extract styles like these as re-usable styled
-const SubTitle = styled.div`
-  font-size: 18px;
-`;
+const InnerWrapper = styled.div({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center"
+});
 
-const ButtonSection = styled.div`
-  display: flex;
-  margin-top: 20px;
-  > button:first-of-type {
-    margin-right: 16px;
-  }
-`;
+const SubTitle = styled.div({}, ({ theme: { constants } }) => ({
+  fontSize: constants.fontSize.large
+}));
 
-const VideoWrapper = styled.span`
-  height: 280px;
-  width: 500px;
-  margin-top: 20px;
-  padding: 20px;
-  border: ${({ theme, videoSrc }) =>
-    videoSrc
-      ? `1px dashed ${theme.uploadModal.borderActiveColor}`
-      : `1px dashed ${theme.uploadModal.borderColor}`};
-  > iframe {
-    width: 100%;
-    height: 280px;
-  }
-`;
+const StyledInput = styled(Input)({}, () => ({ width: 400 }));
 
-export default [
+const ButtonSection = styled.div({
+  display: "flex",
+  marginTop: 20
+});
+
+const VideoWrapper = styled.span(
   {
-    condition: state => {
-      const pluginState = videoPluginKey.getState(state);
-      return pluginState && pluginState.videoOverlayVisible;
-      // return true;
-    },
-    component: InsertVideo
-  }
-];
+    height: 280,
+    width: 500,
+    marginTop: 20,
+    padding: 20,
+    "> iframe": {
+      width: "100%",
+      height: 280
+    }
+  },
+  ({ theme: { constants }, videoSrc }) => ({
+    border: videoSrc
+      ? `1px dashed ${constants.color.highlight}`
+      : `1px dashed ${constants.color.highlight.text}`
+  })
+);
+
+export default VideoModal;

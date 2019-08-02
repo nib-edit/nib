@@ -1,15 +1,16 @@
 import keymaps, { KeymapInfo } from "./keymaps";
-import toolbarComponent from "./ToolbarComponent";
 import pmPlugin from "./plugin";
+import CreatePopup from "./popups/Create";
+import EditPopup from "./popups/Edit";
 import schema from "./schema";
-import overlays from "./overlays";
+import toolbarComponent from "./ToolbarComponent";
 
 export default {
-  name: "link",
-  keymaps,
   KeymapInfo,
-  toolbarComponent,
+  keymaps,
+  name: "link",
   pmPlugin,
+  popups: [CreatePopup, EditPopup],
   schema,
-  overlays
+  toolbarComponent
 };

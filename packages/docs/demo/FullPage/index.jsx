@@ -4,15 +4,15 @@ import Editor from "nib-core";
 import uploadCallback from "../../common/uploadCallback";
 import defaultValue from "./sampleData";
 
-const theme = {
-  wrapper: {
+const styleConfig = {
+  wrapper: () => ({
     height: "100%",
     width: "100%"
-  },
-  editor: {
+  }),
+  editor: () => ({
     height: "calc(100% - 46px)",
     width: "100%"
-  }
+  })
 };
 
 const FullPageEditor = ({ setContent }) => {
@@ -27,7 +27,7 @@ const FullPageEditor = ({ setContent }) => {
       }}
       defaultValue={defaultValue}
       onChange={setContent}
-      theme={theme}
+      styleConfig={styleConfig}
     />
   );
 };

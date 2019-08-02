@@ -6,8 +6,9 @@ import Icon from "../Icon";
 
 class Modal extends PureComponent {
   static propTypes = {
-    hideModal: PropTypes.func,
-    render: PropTypes.func
+    hideModal: PropTypes.func.isRequired,
+    render: PropTypes.func.isRequired,
+    title: PropTypes.string.isRequired
   };
 
   componentDidMount() {
@@ -19,17 +20,20 @@ class Modal extends PureComponent {
   };
 
   handleKeyPress = evt => {
-    if (evt.key === "Escape") this.props.hideModal();
+    const { hideModal } = this.props;
+    if (evt.key === "Escape") hideModal();
   };
 
   handleMouseDown = evt => {
     if (evt.button === 0) {
-      this.props.hideModal();
+      const { hideModal } = this.props;
+      hideModal();
     }
   };
 
   handleTouchStart = evt => {
-    if (evt.targetTouches.length === 1) this.props.hideModal();
+    const { hideModal } = this.props;
+    if (evt.targetTouches.length === 1) hideModal();
   };
 
   stopPropagation = evt => evt.stopPropagation();
@@ -50,63 +54,77 @@ class Modal extends PureComponent {
             <Title>{title}</Title>
             <StyledIcon name="Cross" onClick={hideModal} />
           </Header>
-          <MainSection>{render()}</MainSection>
+          <Main>{render()}</Main>
         </InnerWrapper>
       </Wrapper>
     );
   }
 }
 
-const Wrapper = styled.div`
-  align-items: center;
-  background-color: ${({ theme }) => theme.modal.modalBackgroundColor};
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 10;
-`;
+const Wrapper = styled.div(
+  {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
 
-const InnerWrapper = styled.div`
-  width: 75%;
-  height: 75%;
-  max-height: 750px;
-  max-width: 750px;
-  background-color: ${({ theme }) => theme.modal.backgroundColor};
-  color: ${({ theme }) => theme.modal.color};
-  border-radius: ${({ theme }) => theme.modal.contentBorderRadius};
-  box-shadow: ${({ theme }) => theme.modal.contentBoxShadow};
-  font-size: 16px;
-  border-radius: 2px;
-`;
+    height: "100%",
+    left: "0",
+    position: "fixed",
+    top: "0",
+    width: "100%"
+  },
+  ({ theme: { constants, modal } }) => ({
+    zIndex: 1,
+    backgroundColor: constants.color.opaque
+  })
+);
 
-const Header = styled.div`
-  box-shadow: rgb(235, 236, 240) 0px 1px 0px;
-  padding: 12px 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
+const InnerWrapper = styled.div(
+  {
+    width: "75%",
+    height: "75%",
+    maxHeight: 750,
+    maxWidth: 750
+  },
+  ({ theme: { constants, modal } }) => ({
+    borderRadius: constants.borderRadius.small,
+    boxShadow: constants.boxShadow.medium,
 
-const Title = styled.div`
-  font-size: 20px;
-`;
+    backgroundColor: constants.color.background,
+    color: constants.color.text,
 
-const SubTitle = styled.div`
-  font-size: 18px;
-  padding: 0px 24px 10px;
-`;
+    fontSize: constants.fontSize.large,
 
-const StyledIcon = styled(Icon)`
-  cursor: pointer;
-`;
+    ...modal.wrapper({ theme: constants })
+  })
+);
 
-const MainSection = styled.div`
-  height: calc(100% - 102px);
-  padding: 24px 0;
-`;
+const Header = styled.div(
+  {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "12px 24px"
+  },
+  ({ theme: { constants, modal } }) => ({
+    boxShadow: constants.boxShadow.light,
+
+    ...modal.header({ theme: constants })
+  })
+);
+
+const Title = styled.div({}, ({ theme: { constants, modal } }) => ({
+  fontSize: constants.fontSize.extraLarge,
+  ...modal.title({ theme: constants })
+}));
+
+const StyledIcon = styled(Icon)({ cursor: "pointer" });
+
+const Main = styled.div(
+  { height: "calc(100% - 102px)", padding: "24px 0" },
+  ({ theme: { constants, modal } }) => ({
+    ...modal.main({ theme: constants })
+  })
+);
 
 export default Modal;

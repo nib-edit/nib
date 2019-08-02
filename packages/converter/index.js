@@ -1,3 +1,8 @@
+/**
+ * TODO:review
+ * fix linting
+ */
+
 import { Schema } from "prosemirror-model";
 import { marks, nodes } from "nib-schema";
 

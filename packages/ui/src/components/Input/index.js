@@ -3,10 +3,10 @@ import React from "react";
 import styled from "@emotion/styled";
 
 const Input = props => {
-  const { className, label, name } = props;
+  const { className, label } = props;
   return (
     <InputWrapper className={className}>
-      {label && <label htmlFor={name}>{label}</label>}
+      {label && <span>{label}</span>}
       <StyledInput {...props} />
     </InputWrapper>
   );
@@ -14,38 +14,57 @@ const Input = props => {
 
 Input.propTypes = {
   className: PropTypes.string,
-  label: PropTypes.string,
-  name: PropTypes.string
+  label: PropTypes.string
 };
 
+Input.defaultProps = {
+  className: "",
+  label: ""
+};
+
+const InputWrapper = styled.div(
+  {
+    alignItems: "center",
+    display: "flex",
+    lineHeight: "1"
+  },
+  input => ({
+    ...input.wrapper
+  })
+);
+
+const StyledInput = styled.input(
+  {
+    height: 20,
+    width: 180,
+    margin: "0 12px 0 0",
+    padding: 4,
+
+    borderTop: "none",
+    borderLeft: "none",
+    borderRight: "none"
+  },
+  ({ theme: { constants, input } }) => ({
+    borderBottom: `1px solid ${constants.color.darkBorder}`,
+
+    backgroundColor: constants.color.backgound,
+    color: constants.color.text,
+    fontSize: constants.fontSize.medium,
+
+    "&:focus": {
+      borderTop: "none",
+      borderLeft: "none",
+      borderRight: "none",
+      borderBottom: `1px solid ${constants.color.highlight}`,
+      outline: "none"
+    },
+
+    "&::placeholder": {
+      fontSize: constants.color.medium
+    },
+
+    ...input.input({ theme: constants })
+  })
+);
+
 export default Input;
-
-const InputWrapper = styled.div`
-  align-items: center;
-  display: flex;
-  line-height: 1;
-`;
-
-const StyledInput = styled.input`
-  background-color: ${({ theme }) => theme.input.backgroundColor};
-  color: ${({ theme }) => theme.input.color};
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 1px solid #757575;
-  height: ${({ theme }) => theme.input.height};
-  width: ${({ theme }) => theme.input.width};
-  margin: ${({ theme }) => theme.input.margin};
-  padding: ${({ theme }) => theme.input.padding};
-  font-size: ${({ theme }) => theme.input.fontSize};
-  &:focus {
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 1px solid blue;
-    outline: none;
-  }
-  &::placeholder {
-    font-size: ${({ theme }) => theme.input.fontSize};
-  }
-`;

@@ -14,7 +14,7 @@
     "css-loader": "^3.0.0",
     "nib-track": "1.1.0",
     "nib-converter": "1.0.0",
-    "nib-core": "1.1.5",
+    "nib-core": "1.1.6",
     "nib-ui": "1.1.2",
     "react": "next",
     "react-dom": "next",

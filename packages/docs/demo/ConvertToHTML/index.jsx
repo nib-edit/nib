@@ -28,7 +28,7 @@ const ConvertToHTMLDemo = () => {
       />
       <div style={{ marginTop: 20 }}>HTML String Content:</div>
       <pre style={{ whiteSpace: "inherit" }}>
-        {convertToHTML(content || defaultValue)}
+        {convertToHTML((content || defaultValue).doc)}
       </pre>
     </div>
   );
