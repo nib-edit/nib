@@ -1022,6 +1022,9 @@ h2 {
   font-size: 12px;
   cursor: pointer;
 }
+.docs_btn:focus {
+  outline: none;
+}
 .editor_wrapper {
   position: fixed;
   top: 0;

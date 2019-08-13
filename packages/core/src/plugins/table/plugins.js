@@ -14,7 +14,7 @@ export default [
         return {};
       },
       apply(tr, _2, _3, newState) {
-        const editorFocused = tr.getMeta("EDITOR_FOCUSED");
+        const editorFocused = tr.getMeta("editor-focused");
         if (editorFocused === false) return {};
 
         let decoration;

@@ -1,14 +1,14 @@
 import Plugins from "../../plugins";
 
-export default plugins => {
-  const pluginStyles = plugins
+export default (plugins, addons) => {
+  const pluginArray = plugins
     .trim()
     .split(" ")
-    .map(p => p && Plugins[p].styles)
-    .reduce((styleArray, style) => {
-      if (style) styleArray.push(style);
-      return styleArray;
-    }, []);
+    .map(p => p && Plugins[p]);
+  const styles = [...pluginArray, ...addons].reduce((styleArray, plugin) => {
+    if (plugin.styles) styleArray.push(plugin.styles);
+    return styleArray;
+  }, []);
   return theme =>
-    pluginStyles.reduce((styleStr, styleFn) => styleStr + styleFn(theme), "");
+    styles.reduce((styleStr, styleFn) => styleStr + styleFn(theme), "");
 };

@@ -19,7 +19,7 @@ const Inline = ({ editorWrapper, marker }) => {
   const closePopup = () => {
     const { state, dispatch } = pmstate.pmview;
     // todo: here use a specific transaction for inline toolbar
-    dispatch(state.tr.setMeta("HIDE_POPUPS", true));
+    dispatch(state.tr.setMeta("hide-all-popups", true));
   };
 
   return (
@@ -70,6 +70,6 @@ const StyledPopup = styled(Popup)({ padding: "2px !important" });
 
 export default {
   name: "toolbar",
-  elmClassName: "nib-selected-marker",
+  elmClassName: "nib-selection-focus-marker",
   component: Inline
 };

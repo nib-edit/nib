@@ -1,20 +1,4 @@
-.nib-track_save_wraper {
-  margin-top: 10px;
-}
-
-.nib-track_save {
-  margin-left: 10px;
-  background-color: #0000e4;
-  color: white;
-  height: 32px;
-  border: none;
-  border-radius: 2px;
-  padding: 0 20px;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.nib-track_msg {
+.nib-comment_msg {
   width: 150px;
   height: 26px;
   border-style: solid;
@@ -22,48 +6,18 @@
   border-color: #9e9e9ebf;
 }
 
-.nib-track_msg_err {
-  width: 150px;
-  height: 26px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: red;
-}
-
-.nib-track_save:focus,
-.nib-track_msg:focus,
-.nib-track_revert_btn:focus {
+.nib-comment_msg:focus {
   outline: none;
 }
 
-.nib-track_commit_list {
-  margin: 10px 0 20px;
-  padding: 0 32px;
-  font-size: 14px;
+.nib-highlighted-comment {
+  background-color: #ffff5f !important;
 }
 
-.nib-track_commits_message {
-  width: 125px;
-  display: inline-block;
+.nib-comment {
+  background-color: #ffff5f42;
 }
 
-.nib-track_revert_btn {
-  border: none;
-  text-decoration: underline;
-  cursor: pointer;
-  background: transparent;
-}
-
-.nib-track_save[disabled] {
-  background: #c1c1c1;
-  cursor: not-allowed;
-}
-
-.blame-marker {
-  background-color: #ffff5f;
-}
-
-.nib-highlighted_commit {
-  background-color: #ffff5f;
-  width: 35%;
+.nib-highlighted-comment_comp {
+  background-color: #ffff5f !important;
 }

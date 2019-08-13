@@ -176,3 +176,49 @@ export default [
     ]
   }
 ];
+
+// todo: add logic to merge split commit steps/map to reduced data saved to wire
+
+/**
+ * export default [
+  {
+    id: 0,
+    data: { username: "Harry Potter", message: "Message 1" },
+    time: "2019-08-03T18:00:46.750Z",
+    steps: [{ stepType: "replace", from: 1, to: 23 }],
+    maps: [{ ranges: [1, 0, 22], inverted: false }]
+  },
+  {
+    id: 1,
+    data: { username: "Harry Potter", message: "Message 2" },
+    time: "2019-08-03T18:00:59.465Z",
+    steps: [
+      { stepType: "replace", from: 23, to: 25 },
+      { stepType: "replace", from: 25, to: 27 },
+      { stepType: "replace", from: 27, to: 38 },
+      {
+        stepType: "replace",
+        from: 37,
+        to: 37,
+        slice: { content: [{ type: "text", text: "t" }] }
+      },
+      { stepType: "replace", from: 37, to: 49 }
+    ],
+    maps: [
+      { ranges: [23, 0, 2], inverted: false },
+      { ranges: [25, 0, 2], inverted: false },
+      { ranges: [27, 0, 11], inverted: false },
+      { ranges: [37, 1, 0], inverted: false },
+      { ranges: [37, 0, 12], inverted: false }
+    ]
+  },
+  {
+    id: 2,
+    data: { username: "Harry Potter", message: "Message 3" },
+    time: "2019-08-03T18:01:15.621Z",
+    steps: [{ stepType: "replace", from: 23, to: 47 }],
+    maps: [{ ranges: [23, 0, 24], inverted: false }]
+  }
+];
+
+ */

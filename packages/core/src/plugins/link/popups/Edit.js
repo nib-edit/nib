@@ -60,7 +60,7 @@ class EditPopup extends PureComponent {
     const { pmstate } = this.props;
     const { pmview } = pmstate;
     const { state, dispatch } = pmview;
-    dispatch(state.tr.setMeta("SHOW_EDIT_LINK_TOOLBAR", false));
+    dispatch(state.tr.setMeta("show-edit-link-toolbar", false));
   };
 
   render() {

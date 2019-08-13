@@ -15,7 +15,7 @@ class ToolbarComponent extends PureComponent {
     if (!pmview.hasFocus) pmview.focus();
 
     const { state, dispatch } = pmview;
-    dispatch(state.tr.setMeta("SHOW_LINK_TOOLBAR", true));
+    dispatch(state.tr.setMeta("show-add-link-toolbar", true));
   };
 
   isLinkMarkActive = () => {

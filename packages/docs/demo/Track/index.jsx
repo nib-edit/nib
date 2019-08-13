@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 
 import Editor from "nib-core";
-import NibTrack from "nib-track";
+import TrackPlugin from "nib-track";
 
 import defaultValue from "./sampleData";
 import commits from "./savedCommits";
 
 import "./styles.css";
 
-const tracker = new NibTrack.EditorPlugin(commits);
+const tracker = new TrackPlugin(commits);
 
 /**
  * @visibleName 9. Track Changes
@@ -94,7 +94,7 @@ const Track = () => {
             className={
               trackState.highlightedCommit &&
               trackState.highlightedCommit === commit
-                ? "nib-highlighted_commit"
+                ? "nib-highlighted-commit"
                 : ""
             }
             onMouseEnter={() => highlightCommit(commit)}

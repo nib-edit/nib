@@ -1,5 +1,5 @@
 const showLinkToolbar = () => (state, dispatch) => {
-  dispatch(state.tr.setMeta("SHOW_LINK_TOOLBAR", true));
+  dispatch(state.tr.setMeta("show-add-link-toolbar", true));
 };
 
 export default {

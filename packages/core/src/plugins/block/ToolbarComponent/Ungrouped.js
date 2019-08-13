@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 
 import { ToolbarButton, Icon, Space } from "nib-ui";
-
 import formatKeymap from "../../../utils/format-keymap";
 import { KeymapInfo } from "../keymaps";
 

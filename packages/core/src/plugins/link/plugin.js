@@ -31,7 +31,7 @@ export default new Plugin({
     apply(tr, prev, _, newState) {
       const link = getLink(newState);
 
-      if (tr.getMeta("HIDE_POPUPS")) {
+      if (tr.getMeta("hide-all-popups")) {
         return {
           link,
           createDecoration: undefined,
@@ -40,10 +40,29 @@ export default new Plugin({
           showEditLinkToolbar: false
         };
       }
+
+      if (tr.getMeta("show-add-link-toolbar") === false) {
+        return {
+          ...prev,
+          link,
+          showAddLinkToolbar: false,
+          createDecoration: undefined
+        };
+      }
+
+      if (tr.getMeta("show-edit-link-toolbar") === false) {
+        return {
+          ...prev,
+          link,
+          showEditLinkToolbar: false,
+          editDecoration: undefined
+        };
+      }
+
       let { createDecoration, editDecoration } = prev;
       const { showEditLinkToolbar } = prev;
 
-      if (tr.getMeta("SHOW_LINK_TOOLBAR") === true) {
+      if (tr.getMeta("show-add-link-toolbar") === true) {
         const { $from, $to } = newState.selection;
         if ($from.pos === $to.pos) {
           const node = document.createElement("span");
@@ -67,9 +86,9 @@ export default new Plugin({
 
       if (
         link &&
-        (tr.getMeta("SHOW_EDIT_LINK_TOOLBAR") === true ||
+        (tr.getMeta("show-edit-link-toolbar") === true ||
           showEditLinkToolbar ||
-          tr.getMeta("EDITOR_FOCUSED"))
+          tr.getMeta("editor-focused"))
       ) {
         if (
           !editDecoration ||
@@ -85,30 +104,12 @@ export default new Plugin({
         return { link, editDecoration, showEditLinkToolbar: true };
       }
 
-      if (tr.getMeta("SHOW_LINK_TOOLBAR") === false) {
-        return {
-          ...prev,
-          link,
-          showAddLinkToolbar: false,
-          createDecoration: undefined
-        };
-      }
-
-      if (tr.getMeta("SHOW_EDIT_LINK_TOOLBAR") === false) {
-        return {
-          ...prev,
-          link,
-          showEditLinkToolbar: false,
-          editDecoration: undefined
-        };
-      }
-
       if (!link)
         return {
           ...prev,
           link,
           editDecoration: undefined,
-          showEditLinkToolbar: tr.getMeta("SHOW_EDIT_LINK_TOOLBAR")
+          showEditLinkToolbar: tr.getMeta("show-edit-link-toolbar")
         };
 
       return {
@@ -125,21 +126,21 @@ export default new Plugin({
     handleDOMEvents: {
       focus(view) {
         const { state, dispatch } = view;
-        dispatch(state.tr.setMeta("SHOW_LINK_TOOLBAR", false));
+        dispatch(state.tr.setMeta("show-add-link-toolbar", false));
       }
     },
     handleClickOn(view) {
       const { state, dispatch } = view;
       const link = getLink(state);
-      if (link) dispatch(state.tr.setMeta("SHOW_EDIT_LINK_TOOLBAR", true));
+      if (link) dispatch(state.tr.setMeta("show-edit-link-toolbar", true));
       else {
-        dispatch(state.tr.setMeta("SHOW_LINK_TOOLBAR", false));
+        dispatch(state.tr.setMeta("show-add-link-toolbar", false));
       }
     },
     handleKeyDown(view) {
       const { state, dispatch } = view;
       const link = getLink(state);
-      if (link) dispatch(state.tr.setMeta("SHOW_EDIT_LINK_TOOLBAR", true));
+      if (link) dispatch(state.tr.setMeta("show-edit-link-toolbar", true));
     }
   }
 });

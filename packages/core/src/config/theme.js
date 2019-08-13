@@ -7,6 +7,9 @@ export default {
     lightHighlight: "#2962ff1a",
     highlight: "#2962ff",
 
+    lightTextHighlight: "#ffff5f42",
+    textHighlight: "#ffff5f",
+
     lightText: "#9E9E9E",
     text: "#212121",
 
@@ -32,6 +35,7 @@ export default {
   },
   boxShadow: {
     light: "rgb(235, 236, 240) 0px 1px 0px",
-    medium: `#cdcdcdbf 0px 2px 4px -2px, #cdcdcdbf 0px 0px 1px`
+    medium: `#cdcdcdbf 0px 2px 4px -2px, #cdcdcdbf 0px 0px 1px`,
+    dark: "0px 0px 2px 1px #cdcdcdbf"
   }
 };

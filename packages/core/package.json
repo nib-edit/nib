@@ -1,6 +1,6 @@
 {
   "name": "nib-core",
-  "version": "2.0.0",
+  "version": "2.1.1",
   "description": "Wysiwyg editor",
   "main": "./index.js",
   "repository": {
@@ -22,7 +22,7 @@
     "@emotion/styled": "^10.0.14",
     "emotion-theming": "^10.0.14",
     "nib-schema": "2.0.0",
-    "nib-ui": "2.0.0",
+    "nib-ui": "2.1.1",
     "nib-upload": "2.0.0",
     "nib-embed": "2.0.0",
     "prosemirror-history": "^1.0.3",
@@ -33,7 +33,7 @@
     "prosemirror-state": "^1.2.2",
     "prosemirror-tables": "^0.8.1",
     "prosemirror-utils": "^0.7.6",
-    "prosemirror-view": "^1.6.3"
+    "prosemirror-view": "1.10.0"
   },
   "devDependencies": {
     "prop-types": "^15.6.2",

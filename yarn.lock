@@ -4477,11 +4477,25 @@ neo-async@^2.5.0:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
 
+nib-comment@2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/nib-comment/-/nib-comment-2.1.1.tgz#150657312296523244fca5a4bcc565ae573d4cf0"
+  dependencies:
+    prosemirror-transform "^1.0.0"
+
 nib-schema@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/nib-schema/-/nib-schema-1.0.1.tgz#e4ba89a66aa230c2aa2820a53d2755332c6fee12"
   dependencies:
     prosemirror-tables "^0.8.1"
+
+nib-track@2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/nib-track/-/nib-track-2.1.1.tgz#160704f8726cfdc664e2a3dc81632714a1927b07"
+  dependencies:
+    nib-schema "2.0.0"
+    prosemirror-model "^1.6.2"
+    prosemirror-transform "^1.0.0"
 
 nice-try@^1.0.4:
   version "1.0.5"
@@ -5408,7 +5422,15 @@ prosemirror-utils@^0.7.6:
   version "0.7.7"
   resolved "https://registry.yarnpkg.com/prosemirror-utils/-/prosemirror-utils-0.7.7.tgz#a9bda2468113d34f3721ba15eaa2fd04b81d7dc8"
 
-prosemirror-view@^1.0.0, prosemirror-view@^1.6.3:
+prosemirror-view@1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/prosemirror-view/-/prosemirror-view-1.10.0.tgz#7de5de75f0c90f8b9f09d09ed4467554d59adddb"
+  dependencies:
+    prosemirror-model "^1.1.0"
+    prosemirror-state "^1.0.0"
+    prosemirror-transform "^1.1.0"
+
+prosemirror-view@^1.0.0:
   version "1.9.13"
   resolved "https://registry.yarnpkg.com/prosemirror-view/-/prosemirror-view-1.9.13.tgz#8f146038e776fd0aa6d7811c8b9cb11813b9e319"
   dependencies:

@@ -16,6 +16,7 @@ Some distinguishing features of the editor are:
 - Support to convert prosemirror JSON to HTML
 - Support of theming <a href="#/Demo/Themed" target="_blank">demo</a>
 - Support of tracking changes <a href="#/Demo/Track" target="_blank">demo</a>
+- Support of adding comments <a href="#/Demo/Comment" target="_blank">demo</a>
 
 <br>
 

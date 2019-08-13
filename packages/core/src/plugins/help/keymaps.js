@@ -1,5 +1,7 @@
+// todo: fix the keymap below broken atm
+
 const showHelp = () => (state, dispatch) => {
-  dispatch(state.tr.setMeta("SHOW_HELP_MODAL", true));
+  dispatch(state.tr.setMeta("show-help-modal", true));
 };
 
 export default {
@@ -7,5 +9,5 @@ export default {
 };
 
 export const KeymapInfo = {
-  help: {key: "mod-/", label: "Help"}
+  help: { key: "mod-/", label: "Help" }
 };

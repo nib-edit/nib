@@ -13,10 +13,10 @@ export default new Plugin({
     },
     apply(tr, value) {
       const newValue = { ...value };
-      const editorFocusState = tr.getMeta("EDITOR_FOCUSED");
+      const editorFocusState = tr.getMeta("editor-focused");
       if (editorFocusState !== undefined)
         newValue.editorHasFocus = editorFocusState;
-      newValue.hideInlineToolbar = tr.getMeta("HIDE_POPUPS");
+      newValue.hideInlineToolbar = tr.getMeta("hide-all-popups");
       return newValue;
     }
   },
@@ -25,12 +25,12 @@ export default new Plugin({
     handleDOMEvents: {
       focus: view => {
         const { state, dispatch } = view;
-        dispatch(state.tr.setMeta("EDITOR_FOCUSED", true));
+        dispatch(state.tr.setMeta("editor-focused", true));
         return false;
       },
       blur: view => {
         const { state, dispatch } = view;
-        dispatch(state.tr.setMeta("EDITOR_FOCUSED", false));
+        dispatch(state.tr.setMeta("editor-focused", false));
         return false;
       }
     },
@@ -38,19 +38,21 @@ export default new Plugin({
       const { editorHasFocus, hideInlineToolbar } = commonPluginKey.getState(
         state
       );
-      if (state.selection.empty || !editorHasFocus || hideInlineToolbar)
-        return undefined;
+      if (state.selection.empty || hideInlineToolbar) return undefined;
+      let className;
+      if (editorHasFocus) className = "nib-selection-focus-marker";
+      else className = "nib-selection-blur-marker";
       const { $from, $to } = state.selection;
       return DecorationSet.create(state.doc, [
         Decoration.inline($from.pos, $to.pos, {
-          class: "nib-selected-marker"
+          class: className
         })
       ]);
     },
     handleKeyDown(view, event) {
       if (event.key === "Escape") {
         const { state, dispatch } = view;
-        dispatch(state.tr.setMeta("HIDE_POPUPS", true));
+        dispatch(state.tr.setMeta("hide-all-popups", true));
       }
     }
   }

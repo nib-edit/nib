@@ -41,7 +41,7 @@ class CreatePopup extends PureComponent {
     const { $from, $to } = selection;
     dispatch(
       tr
-        .setMeta("SHOW_LINK_TOOLBAR", false)
+        .setMeta("show-add-link-toolbar", false)
         .insertText(linkText, $from.pos, $to.pos)
         .addMark(
           $from.pos,
@@ -63,7 +63,7 @@ class CreatePopup extends PureComponent {
     const { pmstate } = this.props;
     const { pmview } = pmstate;
     const { state, dispatch } = pmview;
-    dispatch(state.tr.setMeta("SHOW_LINK_TOOLBAR", false));
+    dispatch(state.tr.setMeta("show-add-link-toolbar", false));
   };
 
   render() {

@@ -28,15 +28,21 @@ const prosemirrorStyles = `
   .ProseMirror-hideselection *::selection {
     background: transparent;
   }
+
   .ProseMirror-hideselection *::-moz-selection {
     background: transparent;
   }
+
   .ProseMirror-hideselection {
     caret-color: transparent;
   }
 
   .ProseMirror-selectednode {
     outline: 2px solid #8cf;
+  }
+
+  .nib-selection-blur-marker {
+    background-color: rgb(220,220,220);
   }
 `;
 
@@ -82,6 +88,7 @@ export const StyledEditor = styled(
   ${prosemirrorStyles}
 `;
 
-/** TODO: find a better way in emotion to mix string and object styles,
+/** TODO:
+ * find a better way in emotion to mix string and object styles,
  * this may need getting in touch with team
  */

@@ -1,5 +1,7 @@
+import AddComment from "./AddComment";
 import ArrowDown from "./ArrowDown";
 import Bold from "./Bold";
+import Comment from "./Comment";
 import Cross from "./Cross";
 import ChevronDown from "./ChevronDown";
 import H1 from "./H1";
@@ -25,9 +27,11 @@ import Undo from "./Undo";
 import Video from "./Video";
 
 export default {
+  addComment: AddComment,
   arrowDown: ArrowDown,
   bold: Bold,
   chevronDown: ChevronDown,
+  comment: Comment,
   cross: Cross,
   h1: H1,
   h2: H2,
