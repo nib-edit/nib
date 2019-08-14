@@ -177,8 +177,6 @@ export default [
   }
 ];
 
-// todo: add logic to merge split commit steps/map to reduced data saved to wire
-
 /**
  * export default [
   {

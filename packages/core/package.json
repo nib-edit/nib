@@ -1,6 +1,6 @@
 {
   "name": "nib-core",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Wysiwyg editor",
   "main": "./index.js",
   "repository": {
@@ -21,7 +21,7 @@
     "@emotion/core": "^10.0.14",
     "@emotion/styled": "^10.0.14",
     "emotion-theming": "^10.0.14",
-    "nib-schema": "2.0.0",
+    "nib-schema": "2.1.2",
     "nib-ui": "2.1.1",
     "nib-upload": "2.0.0",
     "nib-embed": "2.0.0",

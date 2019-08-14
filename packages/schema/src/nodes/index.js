@@ -1,6 +1,7 @@
 import bulletList from "./bulletList";
 import doc from "./doc";
 import embed from "./embed";
+import hardBreak from "./hardBreak";
 import heading from "./heading";
 import image from "./image";
 import listItem from "./listItem";
@@ -14,6 +15,7 @@ export default {
   bulletList,
   doc,
   embed,
+  hardBreak,
   heading,
   image,
   listItem,

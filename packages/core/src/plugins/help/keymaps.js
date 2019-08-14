@@ -1,5 +1,3 @@
-// todo: fix the keymap below broken atm
-
 const showHelp = () => (state, dispatch) => {
   dispatch(state.tr.setMeta("show-help-modal", true));
 };

@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/jpuri/Nib/tree/master/packages/upload#Readme.md",
   "dependencies": {
-    "nib-schema": "^2.0.0",
     "prosemirror-model": "^1.0.0"
   },
   "devDependencies": {
