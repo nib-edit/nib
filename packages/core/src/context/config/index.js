@@ -32,8 +32,8 @@ ConfigContextProvider.propTypes = {
   }),
   licenseKey: PropTypes.string,
   children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
+    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.element
   ]).isRequired
 };
 

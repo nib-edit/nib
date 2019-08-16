@@ -69,7 +69,8 @@ class EditPopup extends PureComponent {
     const { editorWrapper, marker } = this.props;
     return (
       <Popup
-        closePopup={this.closePopup}
+        onEscKeyPress={this.closePopup}
+        onClickOutsideEditor={this.closePopup}
         editorWrapper={editorWrapper}
         marker={marker}
         render={() => (

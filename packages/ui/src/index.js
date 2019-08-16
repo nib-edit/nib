@@ -1,3 +1,4 @@
+export { default as Closeable } from "./components/Closeable";
 export { default as ToolbarButton } from "./components/Button/Toolbar";
 export { default as PrimaryButton } from "./components/Button/Primary";
 export { default as Icon } from "./components/Icon";

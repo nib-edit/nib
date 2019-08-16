@@ -2,6 +2,8 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import styled from "@emotion/styled";
 
+import Closeable from "../Closeable";
+
 const ARROW_HEIGHT = 6;
 const ARROW_MIN_DISTANCE = 10;
 const BLOCK_HEIGHT = 20;
@@ -70,24 +72,20 @@ const getPosition = (marker, popupElm, editorWrapper) => {
   };
 };
 
-export default class Popup extends Component {
-  wrapperRef = React.createRef();
-
+class Popup extends Component {
   state = { popupPosition: { top: 0 }, arrowPosition: { dir: "TOP" } };
 
   componentDidMount() {
-    window.addEventListener("keydown", this.handleKeyPress);
-    window.addEventListener("mousedown", this.handleMouseDown);
-    const { marker, editorWrapper } = this.props;
+    const { marker, editorWrapper, wrapperRef } = this.props;
     if (marker) {
       this.setState({
-        ...getPosition(marker, this.wrapperRef.current, editorWrapper.current)
+        ...getPosition(marker, wrapperRef.current, editorWrapper.current)
       });
     }
   }
 
   componentDidUpdate() {
-    const { marker, editorWrapper } = this.props;
+    const { marker, editorWrapper, wrapperRef } = this.props;
     const { popupPosition } = this.state;
     if (!marker) return;
     const oldPos = this.markerPos;
@@ -101,37 +99,17 @@ export default class Popup extends Component {
     if (isSamePos(oldPos, this.markerPos) && popupPosition) return;
     // eslint-disable-next-line react/no-did-update-set-state
     this.setState({
-      ...getPosition(marker, this.wrapperRef.current, editorWrapper.current)
+      ...getPosition(marker, wrapperRef.current, editorWrapper.current)
     });
   }
 
-  componentWillUnmount = () => {
-    window.removeEventListener("keydown", this.handleKeyPress);
-    window.removeEventListener("mousedown", this.handleMouseDown);
-  };
-
-  handleKeyPress = evt => {
-    const { closePopup } = this.props;
-    if (evt.key === "Escape") closePopup();
-  };
-
-  handleMouseDown = evt => {
-    const { closePopup, editorWrapper } = this.props;
-    if (
-      evt.button === 0 &&
-      editorWrapper &&
-      !editorWrapper.current.contains(evt.target)
-    )
-      closePopup();
-  };
-
   render() {
-    const { render, marker } = this.props;
+    const { render, marker, wrapperRef } = this.props;
     if (!marker) return null;
     const { popupPosition, arrowPosition } = this.state;
 
     return (
-      <Wrapper ref={this.wrapperRef} style={popupPosition} marker={marker}>
+      <Wrapper ref={wrapperRef} style={popupPosition} marker={marker}>
         {arrowPosition.dir === "TOP" ? (
           <ArrowTop left={arrowPosition.left} />
         ) : (
@@ -144,7 +122,9 @@ export default class Popup extends Component {
 }
 
 Popup.propTypes = {
-  closePopup: PropTypes.func.isRequired,
+  wrapperRef: PropTypes.shape({
+    current: PropTypes.object
+  }).isRequired,
   editorWrapper: PropTypes.shape({
     current: PropTypes.object
   }).isRequired,
@@ -152,6 +132,8 @@ Popup.propTypes = {
   marker: PropTypes.object.isRequired,
   render: PropTypes.func.isRequired
 };
+
+export default Closeable(Popup);
 
 const Wrapper = styled.div(
   { position: "absolute", padding: "4px 4px 6px 4px;" },

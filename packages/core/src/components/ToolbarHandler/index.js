@@ -11,8 +11,13 @@ const ToolbarHandler = ({ editorWrapper, plugins }) => {
       {plugins.map(
         plugin =>
           plugin.toolbar &&
-          plugin.toolbar.map(Toolbar => (
-            <Toolbar editorWrapper={editorWrapper} pmstate={pmstate} />
+          plugin.toolbar.map((Toolbar, index) => (
+            <Toolbar
+              // eslint-disable-next-line react/no-array-index-key
+              key={`plugin-toolbar-${plugin.name}-${index}`}
+              editorWrapper={editorWrapper}
+              pmstate={pmstate}
+            />
           ))
       )}
     </>

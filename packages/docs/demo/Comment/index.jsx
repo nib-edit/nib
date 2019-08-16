@@ -9,7 +9,7 @@ import comments from "./savedComments";
 import "./styles.css";
 
 const commenter = new CommentPlugin(comments, {
-  userid: 12345,
+  userid: "12345",
   username: "Anonymous user"
 });
 

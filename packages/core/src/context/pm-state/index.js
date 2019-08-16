@@ -37,8 +37,8 @@ export class PMStateProvider extends PureComponent {
 
 PMStateProvider.propTypes = {
   children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
+    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.element
   ]).isRequired
 };
 

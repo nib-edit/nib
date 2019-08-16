@@ -24,8 +24,8 @@ const NibThemeProvider = ({ children, theme, styleConfig }) => {
 
 NibThemeProvider.propTypes = {
   children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
+    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.element
   ]).isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   theme: PropTypes.object,

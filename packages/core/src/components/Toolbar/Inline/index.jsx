@@ -24,7 +24,8 @@ const Inline = ({ editorWrapper, marker }) => {
 
   return (
     <StyledPopup
-      closePopup={closePopup}
+      onEscKeyPress={closePopup}
+      onClickOutsideEditor={closePopup}
       editorWrapper={editorWrapper}
       marker={marker}
       render={() => (

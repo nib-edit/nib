@@ -25,10 +25,12 @@ const getHTMLString = node => {
   }
   if (type.spec.toDOM) {
     const domDetails = type.spec.toDOM(node);
-    const htmlAttrs = Object.keys(domDetails[1]).reduce(
-      (str, key) => `${str} ${key}="${domDetails[1][key]}"`,
-      ""
-    );
+    let htmlAttrs;
+    if (domDetails.length > 1)
+      htmlAttrs = Object.keys(domDetails[1]).reduce(
+        (str, key) => `${str} ${key}="${domDetails[1][key]}"`,
+        ""
+      );
     const htmlTag = domDetails[0];
     strContent = `<${htmlTag}${htmlAttrs}>${strContent}</${htmlTag}>`;
   }

@@ -26,11 +26,11 @@ const Track = () => {
     updateTrackedState();
   };
   const revertCommit = commit => {
-    tracker.revertCommit(commit, { username: name });
+    tracker.revertCommit(commit.id, { username: name });
     updateTrackedState();
   };
   const highlightCommit = commit => {
-    tracker.highlightCommit(commit);
+    tracker.highlightCommit(commit.id);
     updateTrackedState();
   };
   const resetHighlight = () => {
