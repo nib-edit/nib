@@ -7,16 +7,16 @@ export default {
         content: [
           {
             type: "text",
-            text: "Hey I am Harry Potter. I am liking the editor."
+            text: "I am Harry Potter.  I am liking this editor !"
           }
         ]
       },
       { type: "paragraph" },
       {
         type: "paragraph",
-        content: [{ type: "text", text: "This Editor is RAD !!!" }]
+        content: [{ type: "text", text: "This editor is RAD..." }]
       }
     ]
   },
-  selection: { type: "text", anchor: 47, head: 47 }
+  selection: { type: "text", anchor: 71, head: 71 }
 };
