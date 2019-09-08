@@ -27,8 +27,8 @@ export const buildEditorState = (plugins, content) => {
   );
 };
 
-export const updateEditorState = (view, tr) => {
-  const editorState = view.state.apply(tr);
+export const updateEditorState = (view, state, tr) => {
+  const editorState = state.apply(tr);
   view.updateState(editorState);
   return view;
 };

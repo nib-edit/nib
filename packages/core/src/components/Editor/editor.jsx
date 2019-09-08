@@ -27,14 +27,23 @@ const Editor = ({ defaultValue, autoFocus, spellCheck, addons, onChange }) => {
   };
 
   useEffect(() => {
-    const state = buildEditorState(
-      getPluginList(`${plugins.options} history common`).concat(addons),
-      defaultValue
-    );
+    const pluginList = getPluginList(
+      `${plugins.options} history common`
+    ).concat(addons);
+    const state = buildEditorState(pluginList, defaultValue);
     view = new EditorView(editorRef.current, {
       state,
       dispatchTransaction: tr => {
-        updateEditorState(view, tr);
+        const newState = view.state.apply(tr);
+        let transaction = tr;
+        addons.forEach(addon => {
+          if (addon.dispatchTransactionCallback)
+            transaction = addon.dispatchTransactionCallback(
+              newState,
+              transaction
+            );
+        });
+        updateEditorState(view, newState, transaction);
         updateViewListeners();
         if (onChange) onChange(view.state.toJSON());
       }
@@ -42,6 +51,13 @@ const Editor = ({ defaultValue, autoFocus, spellCheck, addons, onChange }) => {
     if (autoFocus) {
       view.focus();
     }
+    addons.forEach(addon => {
+      if (addon.createStateFromDoc)
+        addon.createStateFromDoc(doc => {
+          const editorState = buildEditorState(pluginList, doc);
+          view.updateState(editorState);
+        });
+    });
     updateViewListeners();
     return () => view.destroy();
   }, []);

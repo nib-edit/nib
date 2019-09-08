@@ -50,7 +50,8 @@ module.exports = {
         "packages/docs/demo/Themed/index.jsx",
         "packages/docs/demo/FullPage/index.jsx",
         "packages/docs/demo/Track/index.jsx",
-        "packages/docs/demo/Comment/index.jsx"
+        "packages/docs/demo/Comment/index.jsx",
+        "packages/docs/demo/Collab/index.jsx"
       ]
     },
     {
@@ -114,7 +115,10 @@ module.exports = {
                 "@babel/preset-env",
                 "@babel/react",
                 {
-                  plugins: ["@babel/plugin-proposal-class-properties"]
+                  plugins: [
+                    "@babel/plugin-proposal-class-properties",
+                    ["@babel/transform-runtime"]
+                  ]
                 }
               ]
             }
