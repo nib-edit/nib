@@ -13,7 +13,7 @@ const Collab = () => {
       new CollabPlugin({
         serviceURL: "https://nib-collab.herokuapp.com",
         clientID: Math.floor(Math.random() * 0xffffffff)
-      })
+      }) // https://nib-collab.herokuapp.com
   );
 
   useEffect(() => {

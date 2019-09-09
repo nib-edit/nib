@@ -45,4 +45,5 @@ Props supported by the editor.
 
 ## License
 
-Nib is available under different licenses for commercial and non-commercial purposes [details](http://www.nibedit.com/index.html#/License).
+MIT
+This repository includes code for all basic editor features which are freely available. Advance editor features like nib drive, tracking, comments and collaborative editing are not open source.

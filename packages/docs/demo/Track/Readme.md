@@ -7,3 +7,6 @@ Nib allows to save any relevant information about the change. Changes can be ser
 ```js
 <Track />
 ```
+
+<br />
+This is a licensed feature. Check license details [here](#/License).

@@ -1,6 +1,6 @@
 {
   "name": "nib-schema",
-  "version": "2.1.2",
+  "version": "2.1.6",
   "description": "Schema declaration for Nib editor",
   "main": "./index.js",
   "repository": {
@@ -18,5 +18,6 @@
   "homepage": "https://github.com/jpuri/Nib/tree/master/packages/core#Readme.md",
   "dependencies": {
     "prosemirror-tables": "^0.8.1"
-  }
+  },
+  "license": "MIT"
 }

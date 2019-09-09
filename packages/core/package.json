@@ -1,6 +1,6 @@
 {
   "name": "nib-core",
-  "version": "2.1.4",
+  "version": "2.1.6",
   "description": "Wysiwyg editor",
   "main": "./index.js",
   "repository": {
@@ -21,10 +21,10 @@
     "@emotion/core": "^10.0.14",
     "@emotion/styled": "^10.0.14",
     "emotion-theming": "^10.0.14",
-    "nib-schema": "2.1.2",
-    "nib-ui": "2.1.3",
-    "nib-upload": "2.0.0",
-    "nib-embed": "2.0.0",
+    "nib-schema": "2.1.6",
+    "nib-ui": "2.1.6",
+    "nib-upload": "2.1.6",
+    "nib-embed": "2.1.6",
     "prosemirror-history": "^1.0.3",
     "prosemirror-commands": "^1.0.7",
     "prosemirror-keymap": "^1.0.1",
@@ -40,5 +40,5 @@
     "react": "next",
     "react-dom": "next"
   },
-  "license": "http://www.nibedit.com/index.html#/License"
+  "license": "MIT"
 }

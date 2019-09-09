@@ -5,3 +5,6 @@ Editor with feature to add comments and also other details about the comments. S
 ```js
 <Comment />
 ```
+
+<br />
+This is a licensed feature. Check license details [here](#/License).

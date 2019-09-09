@@ -1,6 +1,6 @@
 {
   "name": "nib-upload",
-  "version": "2.0.0",
+  "version": "2.1.6",
   "description": "Uploading Nib assets to AWS S3",
   "main": "./index.js",
   "repository": {
@@ -24,5 +24,6 @@
     "prop-types": "^15.6.2",
     "react": "next",
     "react-dom": "next"
-  }
+  },
+  "license": "http://www.nibedit.com/index.html#/License"
 }
