@@ -1,5 +1,5 @@
-import { toggleListCmd, splitListItemCmd } from "./commands";
 import { sinkListItem, liftListItem } from "prosemirror-schema-list";
+import { toggleListCmd, splitListItemCmd } from "./commands";
 
 export default {
   "mod-shift-7": (state, dispatch) => {

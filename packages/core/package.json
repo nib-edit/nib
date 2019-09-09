@@ -1,11 +1,11 @@
 {
   "name": "nib-core",
-  "version": "1.0.1",
+  "version": "2.1.6",
   "description": "Wysiwyg editor",
   "main": "./index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jpuri/Nib.git"
+    "url": "https://github.com/nib-edit/Nib.git"
   },
   "keywords": [
     "prosemirror",
@@ -14,15 +14,17 @@
   ],
   "author": {
     "name": "Jyoti Puri",
-    "email": "jyotipuri@gmail.com"
+    "email": "contact@nibedit.com"
   },
   "homepage": "https://github.com/jpuri/Nib/tree/master/packages/core#Readme.md",
   "dependencies": {
     "@emotion/core": "^10.0.14",
     "@emotion/styled": "^10.0.14",
     "emotion-theming": "^10.0.14",
-    "nib-schema": "1.0.0",
-    "nib-ui": "1.0.0",
+    "nib-schema": "2.1.6",
+    "nib-ui": "2.1.6",
+    "nib-upload": "2.1.6",
+    "nib-embed": "2.1.6",
     "prosemirror-history": "^1.0.3",
     "prosemirror-commands": "^1.0.7",
     "prosemirror-keymap": "^1.0.1",
@@ -31,11 +33,12 @@
     "prosemirror-state": "^1.2.2",
     "prosemirror-tables": "^0.8.1",
     "prosemirror-utils": "^0.7.6",
-    "prosemirror-view": "^1.6.3"
+    "prosemirror-view": "1.10.0"
   },
   "devDependencies": {
     "prop-types": "^15.6.2",
     "react": "next",
     "react-dom": "next"
-  }
+  },
+  "license": "MIT"
 }

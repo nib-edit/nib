@@ -1,6 +1,9 @@
+import AddComment from "./AddComment";
 import ArrowDown from "./ArrowDown";
 import Bold from "./Bold";
+import Comment from "./Comment";
 import Cross from "./Cross";
+import ChevronDown from "./ChevronDown";
 import H1 from "./H1";
 import H2 from "./H2";
 import H3 from "./H3";
@@ -21,29 +24,34 @@ import Sup from "./Sup";
 import Table from "./Table";
 import Underline from "./Underline";
 import Undo from "./Undo";
+import Video from "./Video";
 
 export default {
-  ArrowDown,
-  Bold,
-  Cross,
-  H1,
-  H2,
-  H3,
-  H4,
-  H5,
-  H6,
-  Image,
-  Italic,
-  Link,
-  ListBulleted,
-  ListNumbered,
-  P,
-  Question,
-  Redo,
-  Strike,
-  Sub,
-  Sup,
-  Table,
-  Underline,
-  Undo
+  addComment: AddComment,
+  arrowDown: ArrowDown,
+  bold: Bold,
+  chevronDown: ChevronDown,
+  comment: Comment,
+  cross: Cross,
+  h1: H1,
+  h2: H2,
+  h3: H3,
+  h4: H4,
+  h5: H5,
+  h6: H6,
+  image: Image,
+  italic: Italic,
+  link: Link,
+  listBulleted: ListBulleted,
+  listNumbered: ListNumbered,
+  p: P,
+  question: Question,
+  redo: Redo,
+  strike: Strike,
+  sub: Sub,
+  sup: Sup,
+  table: Table,
+  underline: Underline,
+  undo: Undo,
+  video: Video
 };

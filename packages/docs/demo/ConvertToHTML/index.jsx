@@ -1,14 +1,19 @@
 import Editor from "nib-core";
-import React, {useState} from "react";
-import {convertToHTML} from "nib-converter";
+import React, { useState } from "react";
+import NibConverter from "nib-converter";
 
+import Code from "../../Code";
 import uploadCallback from "../../common/uploadCallback";
+import defaultValue from "./sampleData";
+
+import "./styles.css";
 
 /**
- * @visibleName 4. Convert to HTML
+ * @visibleName 5. Convert to HTML
  */
 const ConvertToHTMLDemo = () => {
-  const [content, setContent] = useState({});
+  const [content, setContent] = useState();
+  const htmlStr = NibConverter.convertToHTML((content || defaultValue).doc);
   return (
     <div>
       <Editor
@@ -23,9 +28,14 @@ const ConvertToHTMLDemo = () => {
           }
         }}
         onChange={setContent}
+        defaultValue={defaultValue}
       />
-      <div style={{marginTop: 20}}>HTML String Content:</div>
-      <pre style={{whiteSpace: "inherit"}}>{convertToHTML(content)}</pre>
+      <h3>Generated HTML content</h3>
+      <div
+        className="nib-html_wrapper"
+        dangerouslySetInnerHTML={{ __html: htmlStr }}
+      />
+      <Code content={htmlStr} label="Click to view HTML content" />
     </div>
   );
 };

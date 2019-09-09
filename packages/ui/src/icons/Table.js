@@ -1,23 +1,25 @@
 import React from "react";
-import { withTheme } from "emotion-theming";
 
-import { StyledSVG } from "./style";
-
-export default withTheme(({ theme }) => (
-  <StyledSVG width="16" height="16" viewBox="0 0 16 16">
+export default ({ fill, ...rest }) => (
+  <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" {...rest}>
     <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g
-        id="baseline-border_all-24px"
-        transform="translate(-2.000000, -2.000000)"
+        id="Desktop-HD"
+        transform="translate(-995.000000, -479.000000)"
+        stroke={fill}
       >
         <path
-          d="M2.5,2.5 L2.5,17.5 L17.5,17.5 L17.5,2.5 L2.5,2.5 Z M9.16666667,15.8333333 L4.16666667,15.8333333 L4.16666667,10.8333333 L9.16666667,10.8333333 L9.16666667,15.8333333 Z M9.16666667,9.16666667 L4.16666667,9.16666667 L4.16666667,4.16666667 L9.16666667,4.16666667 L9.16666667,9.16666667 Z M15.8333333,15.8333333 L10.8333333,15.8333333 L10.8333333,10.8333333 L15.8333333,10.8333333 L15.8333333,15.8333333 Z M15.8333333,9.16666667 L10.8333333,9.16666667 L10.8333333,4.16666667 L15.8333333,4.16666667 L15.8333333,9.16666667 Z"
-          id="Shape"
-          fill={theme.icon.fill}
-          fillRule="nonzero"
+          d="M1005,482 L1005,496"
+          id="Line-2-Copy-9"
+          strokeLinecap="square"
         />
-        <polygon id="Path" points="0 0 20 0 20 20 0 20" />
+        <path
+          d="M997.5,489 L1012,489"
+          id="Line-Copy-8"
+          strokeLinecap="square"
+        />
+        <rect id="Rectangle" x="997.5" y="481.5" width="15" height="15" />
       </g>
     </g>
-  </StyledSVG>
-));
+  </svg>
+);

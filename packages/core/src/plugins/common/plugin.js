@@ -1,5 +1,5 @@
-import {Plugin, PluginKey} from "prosemirror-state";
-import {DecorationSet, Decoration} from "prosemirror-view";
+import { DecorationSet, Decoration } from "prosemirror-view";
+import { Plugin, PluginKey } from "prosemirror-state";
 
 export const commonPluginKey = new PluginKey("common");
 
@@ -8,14 +8,15 @@ export default new Plugin({
 
   state: {
     init: () => {
-      return {editorHasFocus: false, hideInlineToolbar: false};
+      // todo: create separate plugin for inline toolbar
+      return { editorHasFocus: false, hideInlineToolbar: false };
     },
     apply(tr, value) {
-      const newValue = {...value};
-      let editorHasFocus = tr.getMeta("EDITOR_FOCUSED");
-      if (editorHasFocus !== undefined)
-        newValue.editorHasFocus = editorHasFocus;
-      newValue.hideInlineToolbar = tr.getMeta("HIDE_OVERLAYS");
+      const newValue = { ...value };
+      const editorFocusState = tr.getMeta("editor-focused");
+      if (editorFocusState !== undefined)
+        newValue.editorHasFocus = editorFocusState;
+      newValue.hideInlineToolbar = tr.getMeta("hide-all-popups");
       return newValue;
     }
   },
@@ -23,27 +24,36 @@ export default new Plugin({
   props: {
     handleDOMEvents: {
       focus: view => {
-        const {state, dispatch} = view;
-        dispatch(state.tr.setMeta("EDITOR_FOCUSED", true));
+        const { state, dispatch } = view;
+        dispatch(state.tr.setMeta("editor-focused", true));
         return false;
       },
       blur: view => {
-        const {state, dispatch} = view;
-        dispatch(state.tr.setMeta("EDITOR_FOCUSED", false));
+        const { state, dispatch } = view;
+        dispatch(state.tr.setMeta("editor-focused", false));
         return false;
       }
     },
     decorations(state) {
-      const {editorHasFocus, hideInlineToolbar} =
-        state && commonPluginKey.getState(state);
-      if (state.selection.empty || !editorHasFocus || hideInlineToolbar) return;
-      const {$from, $to} = state.selection;
+      const { editorHasFocus, hideInlineToolbar } = commonPluginKey.getState(
+        state
+      );
+      if (state.selection.empty || hideInlineToolbar) return undefined;
+      let className;
+      if (editorHasFocus) className = "nib-selection-focus-marker";
+      else className = "nib-selection-blur-marker";
+      const { $from, $to } = state.selection;
       return DecorationSet.create(state.doc, [
         Decoration.inline($from.pos, $to.pos, {
-          class: "nib-selected",
-          style: "position: relative;"
+          class: className
         })
       ]);
+    },
+    handleKeyDown(view, event) {
+      if (event.key === "Escape") {
+        const { state, dispatch } = view;
+        dispatch(state.tr.setMeta("hide-all-popups", true));
+      }
     }
   }
 });

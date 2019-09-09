@@ -1,13 +1,11 @@
-import keymaps, {KeymapInfo} from "./keymaps";
-import modals from "./modals";
-import plugin from "./plugin";
+import keymaps, { KeymapInfo } from "./keymaps";
 import toolbarComponent from "./ToolbarComponent";
+import pmPlugin from "./plugin";
 
 export default {
-  name: "help",
   KeymapInfo,
   keymaps,
-  modals,
-  plugin,
+  pmPlugin,
+  name: "help",
   toolbarComponent
 };

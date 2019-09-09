@@ -1,7 +1,18 @@
-import React, {PureComponent} from "react";
+/**
+ * TODO:review
+ * improve code in all components
+ */
+
+import React, { PureComponent } from "react";
 import Editor from "nib-core";
 
 import uploadCallback from "../common/uploadCallback";
+
+const theme = {
+  editor: () => ({
+    height: "200px"
+  })
+};
 
 class TopBar extends PureComponent {
   render() {
@@ -14,7 +25,7 @@ class TopBar extends PureComponent {
           margin: "32px 0"
         }}
       >
-        <div style={{width: "75%"}}>
+        <div>
           <Editor
             config={{
               plugins: {
@@ -26,6 +37,7 @@ class TopBar extends PureComponent {
                 options: "top"
               }
             }}
+            styleConfig={theme}
           />
         </div>
       </div>
@@ -34,3 +46,9 @@ class TopBar extends PureComponent {
 }
 
 export default TopBar;
+
+/**
+ * todo:
+ * 1. props link to open in new window.
+ * 2. add point mobile frendliness
+ */

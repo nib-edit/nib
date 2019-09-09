@@ -1,17 +1,22 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Editor from "nib-core";
-import Cross from "../../styleguide/cross.svg";
 
+import Code from "../../Code";
 import uploadCallback from "../../common/uploadCallback";
+import defaultValue from "./sampleData";
 
-const theme = {
-  wrapper: {
-    minHeight: "100%",
+const styleConfig = {
+  wrapper: () => ({
+    height: "100%",
     width: "100%"
-  }
+  }),
+  editor: () => ({
+    height: "calc(100% - 46px)",
+    width: "100%"
+  })
 };
 
-const FullPageEditor = ({setContent}) => {
+const FullPageEditor = ({ setContent }) => {
   return (
     <Editor
       config={{
@@ -21,44 +26,46 @@ const FullPageEditor = ({setContent}) => {
           }
         }
       }}
+      defaultValue={defaultValue}
       onChange={setContent}
-      theme={theme}
+      styleConfig={styleConfig}
     />
   );
 };
 
 /**
- * @visibleName 7. Full Page
+ * @visibleName 8. Full Page
  */
 const FullPage = () => {
-  const [fullPageVisible, showFullPage] = useState(false);
-  const [content, setContent] = useState({});
+  const [fullPageEditorVisible, showFullPageEditor] = useState(false);
+  const [content, setContent] = useState();
+
+  const showEditor = () => {
+    document.body.style.overflow = "hidden";
+    showFullPageEditor(true);
+  };
+
+  const hideEditor = () => {
+    document.body.style.overflow = "scroll";
+    showFullPageEditor(false);
+  };
 
   return (
     <div>
-      <button className="docs_btn" onClick={() => showFullPage(true)}>
-        Show Editor
-      </button>
-      {fullPageVisible && (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            zIndex: 10
-          }}
-        >
-          <img
-            src={Cross}
-            className="close-icon"
-            onClick={() => showFullPage(false)}
-          />
+      {fullPageEditorVisible && (
+        <div className="editor_wrapper">
+          {/* <img src={Cross} className="close-icon" onClick={hideEditor} /> */}
+          <button className="docs_btn close-editor" onClick={hideEditor}>
+            Hide Editor
+          </button>
           <FullPageEditor setContent={setContent} />
         </div>
       )}
-      <pre>{JSON.stringify(content, null, 4)}</pre>
+      <button className="docs_btn" onClick={showEditor}>
+        Show Editor
+      </button>
+
+      <Code content={content || defaultValue} />
     </div>
   );
 };

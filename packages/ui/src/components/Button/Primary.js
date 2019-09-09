@@ -3,28 +3,34 @@ import styled from "@emotion/styled";
 
 export default props => <StyledButton {...props} />;
 
-const StyledButton = styled.button`
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
+const StyledButton = styled.button(
+  {
+    alignItems: "center",
+    cursor: "pointer",
+    display: "flex",
+    justifyContent: "center",
 
-  background-color: ${({ theme }) => theme.button.primary.backgroundColor};
-  color: ${({ theme }) => theme.button.primary.color};
+    border: "none",
+    margin: "4px 0",
+    padding: "0 6px",
 
-  border: ${({ theme }) => theme.button.primary.border};
-  border-radius: ${({ theme }) => theme.button.primary.borderRadius};
-  height: ${({ theme }) => theme.button.primary.height};
-  width: ${({ theme }) => theme.button.primary.width};
-  margin: ${({ theme }) => theme.button.primary.margin};
-  padding: ${({ theme }) => theme.button.primary.padding};
+    textDecoration: "underline",
+    transition: "all 0.2s ease"
+  },
+  ({ theme: { constants, button }, disabled }) => ({
+    backgroundColor: constants.color.background,
+    color: constants.color.text,
+    fontSize: constants.fontSize.medium,
 
-  font-size: ${({ theme }) => theme.button.primary.fontSize};
+    ":hover": {
+      color: constants.color.highlight
+    },
+    ":focus": {
+      color: constants.color.highlight,
+      outline: "none"
+    },
 
-  :hover {
-    ${({ disabled, theme }) =>
-      !disabled ? theme.button.primary["&:hover"] : ""};
-  }
-  ${({ selected, theme }) => selected && theme.button.primary["&:selected"]};
-  ${({ disabled, theme }) => disabled && theme.button.primary["&:disabled"]};
-`;
+    ...(disabled ? constants.disabled : {}),
+    ...button.primary({ theme: constants })
+  })
+);

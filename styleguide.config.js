@@ -31,7 +31,8 @@ module.exports = {
         "packages/docs/plugins/Inline/index.jsx",
         "packages/docs/plugins/Link/index.jsx",
         "packages/docs/plugins/List/index.jsx",
-        "packages/docs/plugins/Table/index.jsx"
+        "packages/docs/plugins/Table/index.jsx",
+        "packages/docs/plugins/Video/index.jsx"
       ]
     },
     {
@@ -42,12 +43,20 @@ module.exports = {
       components: [
         "packages/docs/demo/Basic/index.jsx",
         "packages/docs/demo/BlockInline/index.jsx",
+        "packages/docs/demo/ImageVideo/index.jsx",
         "packages/docs/demo/FullFeatured/index.jsx",
         "packages/docs/demo/ConvertToHTML/index.jsx",
         "packages/docs/demo/InlineToolbar/index.jsx",
         "packages/docs/demo/Themed/index.jsx",
-        "packages/docs/demo/FullPage/index.jsx"
+        "packages/docs/demo/FullPage/index.jsx",
+        "packages/docs/demo/Track/index.jsx",
+        "packages/docs/demo/Comment/index.jsx",
+        "packages/docs/demo/Collab/index.jsx"
       ]
+    },
+    {
+      name: "Nib Drive",
+      content: "packages/docs/NibDrive/Readme.md"
     },
     {
       name: "License",
@@ -62,24 +71,22 @@ module.exports = {
   ],
   exampleMode: "hide",
   template: {
-    favicon: "/Nib/pen.png"
+    favicon: "/pen.png"
   },
   pagePerSection: true,
   theme: {
     color: {
       base: "#212121",
-      link: "#880061",
+      link: "#0000e4",
       linkHover: "#90a4ae",
-      sidebarBackground: "#880061"
+      sidebarBackground: "#0000e4"
     },
     fontFamily: {
       base: ['"Roboto"', "sans-serif"],
       monospace: ["Consolas", '"Liberation Mono"', "Menlo", "monospace"]
     }
   },
-  getComponentPathLine() {
-    return;
-  },
+  getComponentPathLine() {},
   styleguideComponents: {
     LogoRenderer: path.join(__dirname, "packages/docs/styleguide/Logo"),
     TableOfContentsRenderer: path.join(
@@ -108,7 +115,10 @@ module.exports = {
                 "@babel/preset-env",
                 "@babel/react",
                 {
-                  plugins: ["@babel/plugin-proposal-class-properties"]
+                  plugins: [
+                    "@babel/plugin-proposal-class-properties",
+                    ["@babel/transform-runtime"]
+                  ]
                 }
               ]
             }
@@ -118,7 +128,7 @@ module.exports = {
           test: /\.css$/,
           use: ["style-loader", "css-loader"]
         },
-        {test: /\.svg$|\.png$/, loader: "url-loader"}
+        { test: /\.svg$|\.png$/, loader: "url-loader" }
       ]
     }
   }

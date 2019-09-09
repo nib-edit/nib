@@ -1,13 +1,15 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Editor from "nib-core";
 
+import Code from "../../Code";
 import uploadCallback from "../../common/uploadCallback";
+import defaultValue from "./sampleData";
 
 /**
- * @visibleName 3. Full Featured
+ * @visibleName 4. Full Featured
  */
 const FullFeatured = () => {
-  const [content, setContent] = useState({});
+  const [content, setContent] = useState();
   return (
     <div>
       <Editor
@@ -16,11 +18,19 @@ const FullFeatured = () => {
             image: {
               uploadCallback
             }
+          },
+          toolbar: {
+            options: "top",
+            top: {
+              block: { grouped: true }
+            }
           }
         }}
+        autoFocus
         onChange={setContent}
+        defaultValue={defaultValue}
       />
-      <pre>{JSON.stringify(content, null, 4)}</pre>
+      <Code content={content || defaultValue} />
     </div>
   );
 };

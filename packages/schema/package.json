@@ -1,11 +1,11 @@
 {
   "name": "nib-schema",
-  "version": "1.0.0",
+  "version": "2.1.6",
   "description": "Schema declaration for Nib editor",
   "main": "./index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jpuri/Nib.git"
+    "url": "https://github.com/nib-edit/Nib.git"
   },
   "keywords": [
     "prosemirror",
@@ -13,10 +13,11 @@
   ],
   "author": {
     "name": "Jyoti Puri",
-    "email": "jyotipuri@gmail.com"
+    "email": "contact@nibedit.com"
   },
   "homepage": "https://github.com/jpuri/Nib/tree/master/packages/core#Readme.md",
   "dependencies": {
     "prosemirror-tables": "^0.8.1"
-  }
+  },
+  "license": "MIT"
 }

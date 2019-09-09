@@ -1,84 +1,76 @@
-import React, {Component, Fragment} from "react";
+import PropTypes from "prop-types";
+import React, { Fragment } from "react";
 import styled from "@emotion/styled";
-import {Overlay, ToolbarSeparator} from "nib-ui";
+import { Popup, Separator } from "nib-ui";
 
-import AppStateWrapper from "../../../common/app-state/AppStateWrapper";
-import {getToolbarOptions} from "../../../common/editor-helpers/toolbar-builder";
-import {AppContext} from "../../../common/app-context";
+import { usePMStateContext } from "../../../context/pm-state";
+import getToolbarComponents from "../../../utils/editor/toolbar";
+import { useConfigContext } from "../../../context/config";
 
-class Inline extends Component {
-  static contextType = AppContext;
+const Inline = ({ editorWrapper, marker }) => {
+  if (!marker) return null;
 
-  closeOverlay = () => {
-    const {view} = this.props.app_params;
-    const {state, dispatch} = view;
-    dispatch(state.tr.setMeta("HIDE_OVERLAYS", true));
+  const {
+    config: { plugins, toolbar }
+  } = useConfigContext();
+  const pmstate = usePMStateContext();
+  const options = getToolbarComponents(plugins.options, toolbar.inline.options);
+
+  const closePopup = () => {
+    const { state, dispatch } = pmstate.pmview;
+    // todo: here use a specific transaction for inline toolbar
+    dispatch(state.tr.setMeta("hide-all-popups", true));
   };
 
-  render() {
-    const {editorWrapper, app_params} = this.props;
-    const {plugins, toolbar} = this.context.config;
-    const options = getToolbarOptions(plugins.options, toolbar.inline.options);
-    const optionSize = options.length;
-    const selMarker = document.getElementsByClassName("nib-selected");
-    return (
-      <div>
-        {selMarker[0] ? (
-          <Overlay
-            closeOverlay={this.closeOverlay}
-            editorWrapper={editorWrapper}
-            marker={selMarker[0]}
-            render={() => (
-              <Wrapper onMouseDown={e => e.preventDefault()}>
-                {options.map((Option, index) => (
-                  <Fragment key={`inline-toolbar-option-${Option.name}`}>
-                    <Option.toolbarComponent
-                      config={toolbar.inline[Option.name]}
-                      app_params={app_params}
-                    />
-                    {index < optionSize - 1 && <ToolbarSeparator />}
-                  </Fragment>
-                ))}
-              </Wrapper>
-            )}
-          />
-        ) : null}
-      </div>
-    );
-  }
-}
+  return (
+    <StyledPopup
+      onEscKeyPress={closePopup}
+      onClickOutsideEditor={closePopup}
+      editorWrapper={editorWrapper}
+      marker={marker}
+      render={() => (
+        <Wrapper onMouseDown={e => e.preventDefault()}>
+          {options.map((Option, index) => (
+            <Fragment key={`inline-toolbar-option-${Option.name}`}>
+              <Option.toolbarComponent config={toolbar.inline[Option.name]} />
+              {index < options.length - 1 && <Separator />}
+            </Fragment>
+          ))}
+        </Wrapper>
+      )}
+    />
+  );
+};
 
-export default props => (
-  <AppStateWrapper
-    render={app_params => <Inline app_params={app_params} {...props} />}
-  />
+Inline.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  marker: PropTypes.object.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  editorWrapper: PropTypes.object.isRequired
+};
+
+const Wrapper = styled.div(
+  {
+    alignItems: "center",
+    display: "flex",
+    position: "relative",
+    border: "none",
+    userSelect: "none"
+  },
+  ({ theme: { constants, toolbar } }) => ({
+    backgroundColor: constants.color.background,
+    color: constants.color.text,
+    fontSize: constants.fontSize.medium,
+    borderRadius: constants.borderRadius.large,
+
+    ...toolbar.top({ theme: constants })
+  })
 );
 
-const Wrapper = styled.div`
-  align-items: center;
-  display: flex;
-  position: relative;
+const StyledPopup = styled(Popup)({ padding: "2px !important" });
 
-  background-color: ${({theme}) => theme.toolbar.inline.backgroundColor};
-  color: ${({theme}) => theme.toolbar.inline.color};
-
-  border-bottom: ${({theme}) => theme.toolbar.inline.borderBottom};
-  border-left: ${({theme}) => theme.toolbar.inline.borderLeft};
-  border-right: ${({theme}) => theme.toolbar.inline.borderRight};
-  border-top: ${({theme}) => theme.toolbar.inline.borderTop};
-
-  border-bottom-left-radius: ${({theme}) =>
-    theme.toolbar.inline.borderBottomLeftRadius};
-  border-bottom-right-radius: ${({theme}) =>
-    theme.toolbar.inline.borderBottomLeftRadius};
-  border-top-left-radius: ${({theme}) =>
-    theme.toolbar.inline.borderTopLeftRadius};
-  border-top-right-radius: ${({theme}) =>
-    theme.toolbar.inline.borderTopLeftRadius};
-
-  padding: ${({theme}) => theme.toolbar.inline.padding};
-
-  font-size: ${({theme}) => theme.toolbar.inline.fontSize};
-  font-style: ${({theme}) => theme.toolbar.inline.fontStyle};
-  font-family: ${({theme}) => theme.toolbar.inline.fontFamily};
-`;
+export default {
+  name: "toolbar",
+  elmClassName: "nib-selection-focus-marker",
+  component: Inline
+};

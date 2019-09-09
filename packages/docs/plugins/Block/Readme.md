@@ -4,7 +4,7 @@ Plugin that adds block support.
 
 ### Toolbar support
 
-Grouped in dropdown
+Grouped in dropdown (default)
 
 ```js
 <BlockPluginDemo />
@@ -13,7 +13,7 @@ Grouped in dropdown
 ```js static
 <Editor
   config={{
-    plugins: {options: "block"},
+    plugins: { options: "block" },
     toolbar: {
       options: "top",
       top: {

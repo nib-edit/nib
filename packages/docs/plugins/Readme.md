@@ -8,3 +8,4 @@ Details of plugins supported by the editor.
 6. [Link](#/Plugins/LinkPlugin)
 7. [List](#/Plugins/ListPlugin)
 8. [Table](#/Plugins/TablePluginDemo)
+9. [Video](#/Plugins/VideoPlugin)

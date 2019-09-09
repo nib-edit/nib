@@ -1,0 +1,22 @@
+{
+  "name": "nib-embed",
+  "version": "2.1.6",
+  "description": "Getting oEmbed from embeddable link",
+  "main": "./index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nib-edit/Nib.git"
+  },
+  "keywords": [
+    "oEmbed"
+  ],
+  "author": {
+    "name": "Jyoti Puri",
+    "email": "contact@nibedit.com"
+  },
+  "homepage": "https://github.com/jpuri/Nib/tree/master/packages/embed#Readme.md",
+  "dependencies": {
+    "axios": "^0.19.0"
+  },
+  "license": "MIT"
+}

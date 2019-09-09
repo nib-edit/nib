@@ -1,15 +1,12 @@
-import { TextSelection } from "prosemirror-state";
-
-const selectAll = () => (state, dispatch) => {
-  const { tr, doc } = state;
-  dispatch(
-    tr.setSelection(
-      new TextSelection(doc.resolve(0), doc.resolve(doc.content.size - 1))
-    )
-  );
-  return true;
+const insertHardBreak = () => (state, dispatch) => {
+  const { hardBreak } = state.schema.nodes;
+  dispatch(state.tr.replaceSelectionWith(hardBreak.create()));
 };
 
 export default {
-  // "Mod-a": (editorState, dispatch) => selectAll()(editorState, dispatch)
+  "shift-Enter": (state, dispatch) => insertHardBreak()(state, dispatch)
+};
+
+export const KeymapInfo = {
+  help: { key: "shift-Enter", label: "Soft newline" }
 };

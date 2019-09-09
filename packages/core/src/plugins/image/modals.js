@@ -1,51 +1,64 @@
-import React, {PureComponent} from "react";
+import PropTypes from "prop-types";
+import React, { PureComponent } from "react";
 import styled from "@emotion/styled";
-import {Spinner, Modal} from "nib-ui";
 
-import {AppContext} from "../../common/app-context";
-import {imagePluginKey} from "./plugin";
+import { Spinner, Modal, Input, PrimaryButton, Space, SpaceSize } from "nib-ui";
+import NibUpload from "nib-upload";
 
-class UploadImage extends PureComponent {
-  static contextType = AppContext;
+import { ConfigContextConsumer } from "../../context/config";
 
-  state = {uploading: false};
+class ImageModal extends PureComponent {
+  state = { uploading: false, imageSrc: "" };
 
-  handleImageInputChange = event => {
-    const {files} = event.target;
-    this.insertImage(files[0]);
+  insertImageInEditor = () => {
+    const { imageSrc: src } = this.state;
+    if (!src) return;
+    const { pmstate, hideModal } = this.props;
+    const { pmview } = pmstate;
+    const { state, dispatch } = pmview;
+    const { $from, $to } = state.selection;
+    const { image } = state.schema.nodes;
+    dispatch(
+      state.tr.replaceRangeWith($from.pos, $to.pos, image.create({ src }))
+    );
+    hideModal();
+    pmview.focus();
+  };
+
+  updateImageSrc = imageSrc => {
+    this.setState({ imageSrc });
   };
 
   insertImage = file => {
-    this.setState({uploading: true});
-    const {uploadCallback} = this.context.config.plugins.image;
-    uploadCallback(file)
-      .then(({src}) => {
-        this.setState({uploading: false});
-        if (!src) return;
-        const {state, dispatch} = this.props.view;
-        const {$from, $to} = state.selection;
-        const {image} = state.schema.nodes;
-        dispatch(
-          state.tr.replaceRangeWith($from.pos, $to.pos, image.create({src}))
-        );
-      })
-      .finally(() => {
-        this.hideImageModal();
-      });
+    const { config, licenseKey } = this.props;
+    this.setState({ uploading: true });
+    const uploadFn =
+      (config.plugins &&
+        config.plugins.image &&
+        config.plugins.image.uploadCallback) ||
+      (licenseKey && NibUpload.uploadImage);
+    if (uploadFn)
+      uploadFn(file, licenseKey)
+        .then(({ src }) => {
+          if (!src) this.updateImageSrc("");
+          else this.updateImageSrc(src);
+        })
+        .catch(() => {
+          this.updateImageSrc("");
+        })
+        .finally(() => {
+          this.setState({ uploading: false });
+        });
   };
 
-  stopDefault = evt => {
-    evt.preventDefault();
-    evt.stopPropagation();
-  };
-
-  // Check if property name is files or items, IE uses 'files' instead of 'items'
+  // Check if property name is files or items
+  // IE uses 'files' instead of 'items'
   onImageDrop = evt => {
     this.stopDefault(evt);
-    const {items, files} = evt.dataTransfer;
-    let data = items || files;
-    let dataIsItems = !!items;
-    for (let i = 0; i < data.length; i++) {
+    const { items, files } = evt.dataTransfer;
+    const data = items || files;
+    const dataIsItems = !!items;
+    for (let i = 0; i < data.length; i += 1) {
       if (
         (!dataIsItems || data[i].kind === "file") &&
         data[i].type.match("^image/")
@@ -56,36 +69,69 @@ class UploadImage extends PureComponent {
     }
   };
 
-  hideImageModal = () => {
-    const {state, dispatch} = this.props.view;
-    dispatch(state.tr.setMeta("HIDE_IMAGE_TOOLBAR", true));
+  handleImageInputChange = event => {
+    const { files } = event.target;
+    this.insertImage(files[0]);
+  };
+
+  stopDefault = evt => {
+    evt.preventDefault();
+    evt.stopPropagation();
   };
 
   render() {
-    const {uploading} = this.state;
+    const { hideModal } = this.props;
+    const { uploading, imageSrc } = this.state;
     return (
       <Modal
-        hideModal={this.hideImageModal}
+        hideModal={hideModal}
+        title="Image"
         render={() => (
-          <Wrapper onClick={this.stopPropagation}>
-            <label htmlFor="file">
-              <FileUploadInput
-                type="file"
-                id="file"
-                onChange={this.handleImageInputChange}
+          <Wrapper>
+            <SubTitle>Enter url or upload</SubTitle>
+            <InnerWrapper>
+              <StyledInput
+                placeholder="Url"
+                autoFocus
+                value={imageSrc}
+                onChange={evt => this.updateImageSrc(evt.target.value)}
               />
-              <UploadSection
-                onDragEnter={this.stopDefault}
-                onDragOver={this.stopDefault}
-                onDrop={this.onImageDrop}
-                uploading={uploading}
-              >
-                <UploadLabel>
-                  Drag and Drop the Image <br /> or <br /> Click to Upload
-                </UploadLabel>
-                <StyledSpinner uploading={uploading} />
-              </UploadSection>
-            </label>
+              <StyledLabel htmlFor="fileInput">
+                <FileUploadInput
+                  type="file"
+                  id="fileInput"
+                  onChange={this.handleImageInputChange}
+                />
+                <UploadSection
+                  onDragEnter={this.stopDefault}
+                  onDragOver={this.stopDefault}
+                  onDrop={this.onImageDrop}
+                  uploading={uploading}
+                  src={imageSrc}
+                >
+                  {imageSrc && (
+                    <ImageWrapper>
+                      <StyledImage src={imageSrc} alt="uploaded" />
+                    </ImageWrapper>
+                  )}
+                  <UploadLabel imageSrc={imageSrc}>
+                    Drag and Drop the Image
+                    <br />
+                    or
+                    <br />
+                    Click to Upload
+                  </UploadLabel>
+                  {uploading && <StyledSpinner uploading={uploading} />}
+                </UploadSection>
+              </StyledLabel>
+              <ButtonSection>
+                <PrimaryButton onClick={this.insertImageInEditor}>
+                  Insert
+                </PrimaryButton>
+                <Space size={SpaceSize.xl} />
+                <PrimaryButton onClick={hideModal}>Cancel</PrimaryButton>
+              </ButtonSection>
+            </InnerWrapper>
           </Wrapper>
         )}
       />
@@ -93,51 +139,113 @@ class UploadImage extends PureComponent {
   }
 }
 
-const Wrapper = styled.div`
-  background-color: white;
-  min-height: 240px;
-  min-width: 300px;
-  padding: 20px;
-`;
+ImageModal.propTypes = {
+  licenseKey: PropTypes.string,
+  hideModal: PropTypes.func.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  config: PropTypes.object.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  pmstate: PropTypes.object.isRequired
+};
 
-const UploadSection = styled.div`
-  align-items: center;
-  background: ${({theme}) => theme.imageUploadModal.backgroundColor};
-  border: 1px dashed
-    ${({theme, uploading}) =>
-      uploading
-        ? theme.imageUploadModal.backgroundColor.borderActiveColor
-        : theme.imageUploadModal.backgroundColor.borderColor};
-  display: flex;
-  flex-direction: column;
-  height: ${({theme}) => theme.imageUploadModal.height};
-  justify-content: center;
-  width: ${({theme}) => theme.imageUploadModal.width};
-  > span {
-    margin-bottom: 10px;
-  }
-`;
+ImageModal.defaultProps = {
+  licenseKey: undefined
+};
 
-const UploadLabel = styled.span`
-  margin-top: 50px;
-  text-align: center;
-`;
+const Wrapper = styled.div({}, () => ({
+  padding: "0px 24px 10px",
+  height: "100%"
+}));
 
-const FileUploadInput = styled.input`
-  display: none;
-`;
+const InnerWrapper = styled.div({
+  alignItems: "center",
+  display: "flex",
+  flexDirection: "column",
+  height: "95%"
+});
 
-const StyledSpinner = styled(Spinner)`
-  margin-top: 10px;
-  visibility: ${({uploading}) => (uploading ? "visible" : "hidden")};
-`;
+const SubTitle = styled.div({}, ({ theme: { constants } }) => ({
+  fontSize: constants.fontSize.large
+}));
 
-export default [
+const UploadSection = styled.span(
   {
-    condition: state => {
-      const pluginState = imagePluginKey.getState(state);
-      return pluginState && pluginState.imageToolbarVisible;
-    },
-    component: UploadImage
-  }
-];
+    alignItems: "center",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+
+    position: "relative",
+
+    height: "75%",
+    width: "35%",
+    minWidth: 200,
+    margin: "28px auto 0 auto",
+    padding: 20,
+
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "contain"
+  },
+  ({ theme, uploading, src }) => ({
+    border:
+      uploading || src
+        ? `1px dashed ${theme.constants.color.highlight}`
+        : `1px dashed ${theme.constants.color.text}`
+  })
+);
+
+const UploadLabel = styled.span(
+  { marginTop: 20, textAlign: "center", zIndex: 1, marginBottom: 10 },
+  ({ theme: { constants }, imageSrc }) => ({
+    color: imageSrc ? constants.color.background : constants.color.text
+  })
+);
+
+const StyledInput = styled(Input)({}, () => ({
+  width: "75%",
+  maxWidth: 400,
+  "> input": { width: "100%", margin: "0 auto" }
+}));
+
+const StyledLabel = styled.label({}, () => ({ height: "75%", width: "100%" }));
+
+const FileUploadInput = styled.input({ display: "none" });
+
+const StyledSpinner = styled(Spinner)(
+  {
+    zIndex: 1,
+    marginTop: 10
+  },
+  uploading => ({ visibility: uploading ? "visible" : "hidden" })
+);
+
+const ButtonSection = styled.div({ display: "flex", marginTop: 20 });
+
+const ImageWrapper = styled.span({
+  margin: 20,
+  position: "absolute",
+
+  top: 0,
+  left: 0,
+  height: "calc(100% - 40px)",
+  width: "calc(100% - 40px)",
+
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center"
+});
+
+const StyledImage = styled.img({
+  height: "auto",
+  width: "auto",
+  maxHeight: "100%",
+  maxWidth: "100%"
+});
+
+export default props => (
+  <ConfigContextConsumer>
+    {({ config, licenseKey }) => (
+      <ImageModal config={config} licenseKey={licenseKey} {...props} />
+    )}
+  </ConfigContextConsumer>
+);

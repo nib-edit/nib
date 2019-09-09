@@ -5,16 +5,19 @@
   "main": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jpuri/Nib.git"
+    "url": "https://github.com/nib-edit/Nib.git"
   },
   "author": "Jyoti Puri",
   "homepage": "https://github.com/jpuri/Nib/tree/master/packages/docs#readme",
   "dependencies": {
     "classnames": "^2.2.6",
     "css-loader": "^3.0.0",
-    "nib-converter": "1.0.0",
-    "nib-core": "1.0.1",
-    "nib-ui": "1.0.0",
+    "nib-track": "2.1.6",
+    "nib-collab-client": "0.0.2",
+    "nib-comment": "2.1.6",
+    "nib-converter": "2.1.6",
+    "nib-core": "2.1.6",
+    "nib-ui": "2.1.6",
     "react": "next",
     "react-dom": "next",
     "style-loader": "^0.23.1",

@@ -8,33 +8,25 @@ const getStyles = (customStyles, stateStyles) => {
   };
 };
 
-export const getSelectStyles = themeStyle => ({
+const getSelectStyle = ({ constants, select }) => ({
   container: getStyles({
+    backgroundColor: constants.color.background,
+    borderRadius: constants.borderRadius,
     display: "inline-block",
-    backgroundColor: themeStyle.backgroundColor,
-    borderRadius: themeStyle.borderRadius,
-    fontSize: themeStyle.fontSize,
-    fontWeight: "600",
-    lineHeight: 1
+    lineHeight: 1,
+    ...select.wrapper
   }),
-  control: getStyles(
-    {
-      backgroundColor: themeStyle.backgroundColor,
-      border: themeStyle.border,
-      borderRadius: themeStyle.borderRadius,
-      boxShadow: "none",
-      height: themeStyle.height,
-      minHeight: themeStyle.height,
-      width: themeStyle.width,
-      "&:hover": themeStyle["&:hover"]
-    },
-    state => ({
-      ...(state.isSelected ? themeStyle["&:selected"] : {})
-    })
-  ),
+  control: getStyles({
+    backgroundColor: constants.color.background,
+    border: "none",
+    borderRadius: constants.borderRadius,
+    boxShadow: "none",
+    height: "28px",
+    minHeight: "28px",
+    width: "112px"
+  }),
   dropdownIndicator: getStyles({
-    padding: "4px",
-    "& svg": {fill: themeStyle.color}
+    padding: "4px"
   }),
   indicatorSeparator: getStyles({
     display: "none"
@@ -43,24 +35,39 @@ export const getSelectStyles = themeStyle => ({
     {
       alignItems: "center",
       display: "flex",
-      color: themeStyle.color,
-      height: themeStyle.optionHeight,
-      minHeight: themeStyle.optionHeight,
+      color: constants.color.text,
+      height: "44px",
+      minHeight: "44px",
       padding: "0 8px",
-      "&:hover": themeStyle["&:hover"]
+      ...select.option
     },
     state => ({
-      ...(state.isSelected ? themeStyle["&:selected"] : {})
+      ...(state.isSelected
+        ? {
+            backgroundColor: constants.color.background,
+            color: constants.color.highlight
+          }
+        : {}),
+      ...(state.isFocused
+        ? {
+            backgroundColor: constants.color.lightHighlight
+          }
+        : {})
     })
   ),
   menu: getStyles({
-    width: themeStyle.dropdownWidth,
-    color: themeStyle.color,
-    backgroundColor: themeStyle.backgroundColor
+    backgroundColor: constants.color.background,
+    color: constants.color.text,
+    width: "188px",
+    ...select.menu
   }),
   singleValue: getStyles({
     overflow: "visible",
-    color: themeStyle.color,
-    "&:hover": themeStyle["&:hover"]
+    color: constants.color.text,
+    fontSize: constants.fontSize.medium,
+    fontWeight: constants.fontWeight.medium,
+    ...select.label
   })
 });
+
+export default getSelectStyle;

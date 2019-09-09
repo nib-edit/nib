@@ -1,19 +1,46 @@
-import React, {PureComponent} from "react";
-import {ToolbarButton, Icons} from "nib-ui";
+import PropTypes from "prop-types";
+import React, { PureComponent } from "react";
+import { ToolbarButton, Icon } from "nib-ui";
 
-class ImageToolbarComponent extends PureComponent {
-  showImageModal = () => {
-    const {state, dispatch} = this.props.app_params.view;
-    dispatch(state.tr.setMeta("SHOW_IMAGE_TOOLBAR", true));
+import ImageModal from "./modals";
+import { PMStateConsumer } from "../../context/pm-state";
+
+class ToolbarComponent extends PureComponent {
+  state = {
+    showModal: false
+  };
+
+  showModal = () => {
+    this.setState({ showModal: true });
+  };
+
+  hideModal = () => {
+    this.setState({ showModal: false });
   };
 
   render() {
+    const { pmstate } = this.props;
+    const { showModal } = this.state;
     return (
-      <ToolbarButton onClick={this.showImageModal} title="Image">
-        <Icons.Image />
-      </ToolbarButton>
+      <>
+        <ToolbarButton onClick={this.showModal} title="Image">
+          <Icon name="image" />
+        </ToolbarButton>
+        {showModal && (
+          <ImageModal pmstate={pmstate} hideModal={this.hideModal} />
+        )}
+      </>
     );
   }
 }
 
-export default ImageToolbarComponent;
+ToolbarComponent.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  pmstate: PropTypes.object.isRequired
+};
+
+export default props => (
+  <PMStateConsumer>
+    {pmstate => <ToolbarComponent pmstate={pmstate} {...props} />}
+  </PMStateConsumer>
+);

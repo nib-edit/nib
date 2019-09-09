@@ -1,33 +1,5 @@
-Editor with all top toolbar options enabled.
+Editor with all top toolbar editing options enabled. <a target="_blank" href="https://github.com/nib-edit/Nib/blob/master/packages/docs/demo/FullFeatured/index.jsx">Code</a>
 
 ```js
 <FullFeatured />
-```
-
-Code:
-
-```js static
-import React, {useState} from "react";
-import Editor from "nib-core";
-
-import uploadCallback from "../../common/uploadCallback";
-
-const FullFeatured = () => {
-  const [content, setContent] = useState({});
-  return (
-    <div>
-      <Editor
-        config={{
-          plugins: {
-            image: {
-              uploadCallback
-            }
-          }
-        }}
-        onChange={setContent}
-      />
-      <pre>{JSON.stringify(content, null, 4)}</pre>
-    </div>
-  );
-};
 ```

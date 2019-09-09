@@ -1,65 +1,94 @@
 import PropTypes from "prop-types";
-import React, {Component} from "react";
-import {EditorView} from "prosemirror-view";
+import React, { useEffect, useState, useRef } from "react";
+import { EditorView } from "prosemirror-view";
 
-import {getPluginStyles} from "../../common/editor-helpers/styles";
-import {getPluginList} from "../../common/editor-helpers/plugin";
-import {
-  buildEditorState,
-  updateEditorState
-} from "../../common/editor-helpers/editor-state";
-import {AppContext} from "../../common/app-context";
+import getPluginStyles from "../../utils/editor/styles";
+import { buildEditorState, updateEditorState } from "../../utils/editor/state";
+import { getPluginList } from "../../utils/editor/plugins";
+import { useConfigContext } from "../../context/config";
+import { usePMStateContext } from "../../context/pm-state";
 
-import {StyledEditor} from "./style";
+import { StyledEditor } from "./styles";
 
-export default class Editor extends Component {
-  constructor(props) {
-    super(props);
-    this.editorRef = React.createRef();
-  }
+const Editor = ({ defaultValue, autoFocus, spellCheck, addons, onChange }) => {
+  const editorRef = useRef(null);
+  const {
+    config: { plugins },
+    dispatcher
+  } = useConfigContext();
+  const pmstate = usePMStateContext();
+  let [view] = useState();
 
-  static contextType = AppContext;
-
-  static propTypes = {
-    config: PropTypes.object,
-    defaultValue: PropTypes.object,
-    onChange: PropTypes.func,
-    updateView: PropTypes.func
+  const updateViewListeners = () => {
+    dispatcher.dispatch(view);
+    addons.forEach(addon => {
+      addon.viewUpdateCallback(view);
+    });
   };
 
-  componentDidMount() {
-    const {plugins} = this.context.config;
-    const {defaultValue, onChange, autofocus} = this.props;
-    var state = buildEditorState(
-      getPluginList(`${plugins.options} history common`),
-      defaultValue
-    );
-    this.view = new EditorView(this.editorRef.current, {
+  useEffect(() => {
+    const pluginList = getPluginList(
+      `${plugins.options} history common`
+    ).concat(addons);
+    const state = buildEditorState(pluginList, defaultValue);
+    view = new EditorView(editorRef.current, {
       state,
       dispatchTransaction: tr => {
-        updateEditorState(this.view, tr);
-        this.context.dispatcher.dispatch(this.view);
-        if (onChange && tr.docChanged) onChange(this.view.state.toJSON().doc);
+        const newState = view.state.apply(tr);
+        let transaction = tr;
+        addons.forEach(addon => {
+          if (addon.dispatchTransactionCallback)
+            transaction = addon.dispatchTransactionCallback(
+              newState,
+              transaction
+            );
+        });
+        updateEditorState(view, newState, transaction);
+        updateViewListeners();
+        if (onChange) onChange(view.state.toJSON());
       }
     });
-    if (autofocus) this.view.focus();
-    this.context.dispatcher.dispatch(this.view);
-  }
+    if (autoFocus) {
+      view.focus();
+    }
+    addons.forEach(addon => {
+      if (addon.createStateFromDoc)
+        addon.createStateFromDoc(doc => {
+          const editorState = buildEditorState(pluginList, doc);
+          view.updateState(editorState);
+        });
+    });
+    updateViewListeners();
+    return () => view.destroy();
+  }, []);
 
-  componentWillUnmount() {
-    this.view.destroy();
-  }
+  return (
+    <StyledEditor
+      // eslint-disable-next-line react/prop-types
+      onClick={() => pmstate.pmview.focus()}
+      pluginStyles={getPluginStyles(plugins.options, addons)}
+      ref={editorRef}
+      spellCheck={spellCheck}
+    />
+  );
+};
 
-  render() {
-    const {spellcheck} = this.props;
-    const {plugins} = this.context.config;
+Editor.propTypes = {
+  autoFocus: PropTypes.bool,
+  // eslint-disable-next-line react/forbid-prop-types
+  defaultValue: PropTypes.object,
+  onChange: PropTypes.func,
+  spellCheck: PropTypes.bool,
+  // eslint-disable-next-line react/forbid-prop-types
+  addons: PropTypes.array
+};
 
-    return (
-      <StyledEditor
-        ref={this.editorRef}
-        spellcheck={spellcheck}
-        pluginStyles={getPluginStyles(plugins.options)}
-      />
-    );
-  }
-}
+Editor.defaultProps = {
+  autoFocus: false,
+  defaultValue: undefined,
+  onChange: () => {},
+  spellCheck: false,
+  addons: []
+};
+
+export default Editor;

@@ -31,17 +31,20 @@ const MyEditor = () => <Editor />;
 
 Props supported by the editor.
 
-| S.No. | Name         | Description                                                                                                                                                                                  |
-| ----- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1     | blockStyles  | Style of variuos blocks used in the editor, [here](https://github.com/jpuri/Nib/blob/master/packages/core/src/components/Editor/blockStyles.js#L1) are the defaults which can be overridden. |
-| 2     | defaultValue | Value to initialize editor content                                                                                                                                                           |
-| 3     | onChange     | Callback which is called when the content of the editor changes                                                                                                                              |
-| 4     | config       | Configuring the plugin toolbar etc in editor, [here](https://github.com/jpuri/Nib/blob/master/packages/core/src/common/config/index.js) are default configurations which can be overridden.  |
-| 5     | spellcheck   | Boolean property to enable default browser spellcheck in the editor.                                                                                                                         |
-| 6     | theme        | Theming of the editor, [here](https://github.com/jpuri/Nib/blob/master/packages/core/src/components/Editor/theme.js) is default theme which can be overridden.                               |
-
-Editor is in initial phase of development and right now api is not stable.
+| S.No. | Name         | Description                                                                                                                                                      |
+| ----- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1     | addons       | array of plugins for adding functionality to core editor                                                                                                         |
+| 2     | autoFocus    | to focus editor by default                                                                                                                                       |
+| 3     | config       | configuring the plugin, toolbar etc in editor, [here](https://github.com/nib-edit/Nib/blob/master/packages/core/src/config/editor.js) are default configurations |
+| 4     | defaultValue | value to initialize editor content                                                                                                                               |
+| 5     | licenseKey   | license key for nib editor                                                                                                                                       |
+| 6     | onChange     | callback which is called on any change in the editor                                                                                                             |
+| 7     | spellCheck   | boolean property to enable default browser spellCheck in the editor                                                                                              |
+| 8     | styleConfig  | used to do more detailed style changes in the editor, [here](https://github.com/nib-edit/Nib/blob/master/packages/core/src/config/styles.js) is the default      |
+| 9     | theme        | theming of the editor, [here](https://github.com/nib-edit/Nib/blob/master/packages/core/src/config/theme.js) is default theme                                    |
 
 ## License
 
-Nib is available under different licenses for commercial and non-commercial purposes [details](http://www.nibedit.com/index.html#/License).
+MIT
+<br/>
+This repository includes code for all basic editor features which are freely available. Advance editor features like nib drive, tracking, comments and collaborative editing are not open source.

@@ -1,9 +1,8 @@
-export const image = {
+const image = {
   group: "inline",
   inline: true,
   attrs: {
-    src: { default: "" },
-    style: { default: { height: "auto", width: "auto" } }
+    src: { default: "" }
   },
   draggable: true,
   parseDOM: [

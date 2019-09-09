@@ -1,13 +1,15 @@
 import keymaps, { KeymapInfo } from "./keymaps";
-import toolbarComponent from "./ToolbarComponent";
-import plugin from "./plugin";
+import pmPlugin from "./plugin";
 import schema from "./schema";
+import styles from "./styles";
+import toolbarComponent from "./ToolbarComponent";
 
 export default {
-  name: "list",
-  keymaps,
   KeymapInfo,
-  toolbarComponent,
-  plugin,
-  schema
+  keymaps,
+  name: "list",
+  pmPlugin,
+  schema,
+  styles,
+  toolbarComponent
 };

@@ -1,81 +1,65 @@
-import React, {Component, Fragment} from "react";
+import React, { Fragment } from "react";
 import styled from "@emotion/styled";
-import {ToolbarSeparator} from "nib-ui";
 
-import AppStateWrapper from "../../../common/app-state/AppStateWrapper";
-import {getToolbarOptions} from "../../../common/editor-helpers/toolbar-builder";
-import {AppContext} from "../../../common/app-context";
+import { Separator } from "nib-ui";
 
-const HelpOption = ({options, app_params}) => {
-  const helpOption = options.filter(opt => opt.name === "help");
-  if (!helpOption.length) return null;
-  const HelpComponent = helpOption[0].toolbarComponent;
-  return <HelpComponent app_params={app_params} />;
+import getToolbarComponents from "../../../utils/editor/toolbar";
+import { useConfigContext } from "../../../context/config";
+
+const Top = () => {
+  const {
+    config: { plugins, toolbar }
+  } = useConfigContext();
+
+  const options = getToolbarComponents(plugins.options, toolbar.top.options);
+  const formattingOption = options.filter(opt => opt.name !== "help");
+  const HelpOption = options.filter(opt => opt.name === "help")[0];
+
+  return (
+    <Wrapper onMouseDown={e => e.preventDefault()}>
+      <ToolbarSection>
+        {formattingOption.map((Option, index) => (
+          <Fragment key={`top-toolbar-option-${Option.name}`}>
+            <Option.toolbarComponent config={toolbar.top[Option.name]} />
+            {index < formattingOption.length - 1 && <Separator />}
+          </Fragment>
+        ))}
+      </ToolbarSection>
+      {HelpOption && <HelpOption.toolbarComponent />}
+    </Wrapper>
+  );
 };
 
-class Top extends Component {
-  static contextType = AppContext;
+const Wrapper = styled.div(
+  {
+    alignItems: "flex-start",
+    display: "flex",
+    flexWrap: "nowrap",
+    justifyContent: "space-between",
 
-  render() {
-    const {plugins, toolbar} = this.context.config;
-    const options = getToolbarOptions(plugins.options, toolbar.top.options);
-    const formattingOption = options.filter(opt => opt.name !== "help");
-    const optionSize = formattingOption.length;
+    position: "relative",
+    padding: 4,
 
-    return (
-      <AppStateWrapper
-        render={app_params => (
-          <Wrapper onMouseDown={e => e.preventDefault()}>
-            <ToolbarSection>
-              {formattingOption.map((Option, index) => (
-                <Fragment key={`top-toolbar-option-${Option.name}`}>
-                  <Option.toolbarComponent
-                    config={toolbar.top[Option.name]}
-                    app_params={app_params}
-                  />
-                  {index < optionSize - 1 && <ToolbarSeparator />}
-                </Fragment>
-              ))}
-            </ToolbarSection>
-            <HelpOption options={options} app_params={app_params} />
-          </Wrapper>
-        )}
-      />
-    );
-  }
-}
+    borderLeft: "none",
+    borderRight: "none",
+    borderTop: "none",
 
-const Wrapper = styled.div`
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 4px;
-  background-color: ${({theme}) => theme.toolbar.top.backgroundColor};
-  color: ${({theme}) => theme.toolbar.top.color};
+    userSelect: "none"
+  },
+  ({ theme: { constants, toolbar } }) => ({
+    backgroundColor: constants.color.background,
+    color: constants.color.text,
+    borderBottom: constants.border.medium,
+    fontSize: constants.fontSize.medium,
 
-  border-bottom: ${({theme}) => theme.toolbar.top.borderBottom};
-  border-left: ${({theme}) => theme.toolbar.top.borderLeft};
-  border-right: ${({theme}) => theme.toolbar.top.borderRight};
-  border-top: ${({theme}) => theme.toolbar.top.borderTop};
+    ...toolbar.top({ theme: constants })
+  })
+);
 
-  border-bottom-left-radius: ${({theme}) =>
-    theme.toolbar.top.borderBottomLeftRadius};
-  border-bottom-right-radius: ${({theme}) =>
-    theme.toolbar.top.borderBottomLeftRadius};
-  border-top-left-radius: ${({theme}) => theme.toolbar.top.borderTopLeftRadius};
-  border-top-right-radius: ${({theme}) =>
-    theme.toolbar.top.borderTopLeftRadius};
-
-  font-size: ${({theme}) => theme.toolbar.top.fontSize};
-  font-style: ${({theme}) => theme.toolbar.top.fontStyle};
-  font-family: ${({theme}) => theme.toolbar.top.fontFamily};
-`;
-
-const ToolbarSection = styled.div`
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-`;
+const ToolbarSection = styled.div({
+  alignItems: "center",
+  display: "flex",
+  flexWrap: "wrap"
+});
 
 export default Top;

@@ -19,7 +19,7 @@ Plugin that adds support for images in the editor.
     },
     toolbar: {
       options: "top",
-      top: {options: "image"}
+      top: { options: "image" }
     }
   }}
 />
@@ -27,4 +27,6 @@ Plugin that adds support for images in the editor.
 
 <br />
 
-`uploadCallback` above is a function that returns a promise which resolves to give and object with an attribute `src` which is used as `src` for the image.
+For users with commercial license of Nib, image upload and save is available from Nib's AWS S3 drive.
+<br /><br />
+Users can provide their own image upload option by providing `uploadCallback` prop. The function should take care of uploading image and it should return a promise which resolves to give an object with an attribute `src` which is used as `src` for the image.
