@@ -34,16 +34,15 @@ const Editor = ({ defaultValue, autoFocus, spellCheck, addons, onChange }) => {
     view = new EditorView(editorRef.current, {
       state,
       dispatchTransaction: tr => {
-        const newState = view.state.apply(tr);
         let transaction = tr;
         addons.forEach(addon => {
           if (addon.dispatchTransactionCallback)
             transaction = addon.dispatchTransactionCallback(
-              newState,
+              view.state,
               transaction
             );
         });
-        updateEditorState(view, newState, transaction);
+        updateEditorState(view, view.state, transaction);
         updateViewListeners();
         if (onChange) onChange(view.state.toJSON());
       }
