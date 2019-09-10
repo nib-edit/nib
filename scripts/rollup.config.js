@@ -27,9 +27,13 @@ const getCopyConf = packageName => ({
 const getConfig = packageName => {
   const copyConf = getCopyConf(packageName);
   if (packageName !== "core") {
-    globals.styled = "@emotion/styled";
+    globals["nib-ui"] = "nib-ui"
+    globals["@emotion/core"] = "@emotion/core";
+    globals["@emotion/styled"] = "@emotion/styled";
     globals["emotion-theming"] = "emotion-theming";
-    external.push("styled");
+    external.push("nib-ui");
+    external.push("@emotion/core");
+    external.push("@emotion/styled");
     external.push("emotion-theming");
     copyConf.targets.push({
       src: `packages/${packageName}/readme.md`,
