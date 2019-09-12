@@ -5,6 +5,9 @@ import GithubImg from "./github.png";
 import "./styles.css";
 
 const styles = ({ color, fontFamily, fontSize }) => ({
+  nav: {
+    margin: 0
+  },
   pre: {
     whiteSpace: "pre-wrap"
   },
@@ -57,11 +60,11 @@ const styles = ({ color, fontFamily, fontSize }) => ({
 export function TableOfContentsRenderer({ classes, children }) {
   return (
     <div className={classes.wrapper}>
-      <div style={{ margin: "12px 0" }}>
+      <div style={{ margin: "10px" }}>
         <nav>{children}</nav>
         <nav className={classes.github}>
           <a
-            href="https://github.com/jpuri/Nib"
+            href="https://github.com/nib-edit"
             target="_blank"
             style={{
               display: "flex",
