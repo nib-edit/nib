@@ -2,7 +2,7 @@ import includePaths from "rollup-plugin-includepaths";
 import babel from "rollup-plugin-babel";
 import nodeResolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
-import {uglify} from "rollup-plugin-uglify";
+import { uglify } from "rollup-plugin-uglify";
 import bundleSize from "rollup-plugin-bundle-size";
 import sourcemaps from "rollup-plugin-sourcemaps";
 import copy from "rollup-plugin-copy";
@@ -27,11 +27,11 @@ const getCopyConf = packageName => ({
 const getConfig = packageName => {
   const copyConf = getCopyConf(packageName);
   if (packageName !== "core") {
-    globals["nib-ui"] = "nib-ui"
+    // globals["nib-ui"] = "nib-ui";
     globals["@emotion/core"] = "@emotion/core";
     globals["@emotion/styled"] = "@emotion/styled";
     globals["emotion-theming"] = "emotion-theming";
-    external.push("nib-ui");
+    // external.push("nib-ui");
     external.push("@emotion/core");
     external.push("@emotion/styled");
     external.push("emotion-theming");

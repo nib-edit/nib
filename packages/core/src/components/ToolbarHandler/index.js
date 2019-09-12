@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 import React from "react";
+import { withTheme } from "emotion-theming";
 
 import { usePMStateContext } from "../../context/pm-state";
 
-const ToolbarHandler = ({ editorWrapper, plugins }) => {
+const ToolbarHandler = ({ editorWrapper, plugins, theme }) => {
   const pmstate = usePMStateContext();
-
   return (
     <>
       {plugins.map(
@@ -17,6 +17,7 @@ const ToolbarHandler = ({ editorWrapper, plugins }) => {
               key={`plugin-toolbar-${plugin.name}-${index}`}
               editorWrapper={editorWrapper}
               pmstate={pmstate}
+              theme={theme}
             />
           ))
       )}
@@ -28,7 +29,13 @@ ToolbarHandler.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   editorWrapper: PropTypes.object.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
-  plugins: PropTypes.array.isRequired
+  plugins: PropTypes.array.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  theme: PropTypes.object
 };
 
-export default ToolbarHandler;
+ToolbarHandler.defaultProps = {
+  theme: {}
+};
+
+export default withTheme(ToolbarHandler);
