@@ -4486,9 +4486,9 @@ neo-async@^2.5.0:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
 
-nib-collab-client@0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/nib-collab-client/-/nib-collab-client-0.0.8.tgz#81c1b9ecc418fbb1407ea0f1cdd4c2d7e5fbffa0"
+nib-collab-client@0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/nib-collab-client/-/nib-collab-client-0.0.9.tgz#3b12367e616619e946a9afab841cc35064f9430d"
   dependencies:
     axios "^0.19.0"
     prosemirror-collab "^1.1.2"
