@@ -13,7 +13,7 @@
     "classnames": "^2.2.6",
     "css-loader": "^3.0.0",
     "nib-track": "2.1.6",
-    "nib-collab-client": "0.0.7",
+    "nib-collab-client": "0.0.8",
     "nib-comment": "2.2.0",
     "nib-converter": "2.1.6",
     "nib-core": "2.1.9",
