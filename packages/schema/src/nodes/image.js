@@ -2,7 +2,8 @@ const image = {
   group: "inline",
   inline: true,
   attrs: {
-    src: { default: "" }
+    src: { default: "" },
+    height: { default: "auto" }
   },
   draggable: true,
   parseDOM: [
@@ -21,7 +22,8 @@ const image = {
     }
   ],
   toDOM(node) {
-    return ["img", node.attrs];
+    const { src, height } = node.attrs;
+    return ["img", { src, style: `height:${height || "auto"};` }];
   }
 };
 
