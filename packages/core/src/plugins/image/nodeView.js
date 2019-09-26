@@ -1,33 +1,104 @@
-// Trial node view to be used for image resize.
+export default class ImageView {
+  constructor(node, view, getPos) {
+    this.node = node;
+    this.view = view;
+    this.getPos = getPos;
 
-// export default class ImageView {
-//   constructor(node) {
-//     this.dom = document.createElement("span");
-//     this.dom.style.position = "relative";
-//     this.dom.style.display = "inline-block";
-//     this.img = document.createElement("img");
-//     this.img.src = node.attrs.src;
-//     this.img.style = node.attrs.style;
-//     this.dom.appendChild(this.img);
-//     this.img.addEventListener("mousedown", e => {
-//       this.img.style.outline = "2px solid #065FD4";
-//       this.div1 = document.createElement("div");
-//       this.div1.style = `height: 10px; width: 10px; position: absolute;left: 0px;top: 0px; background-color: #065FD4;`;
-//       this.dom.appendChild(this.div1);
-//       this.div2 = document.createElement("div");
-//       this.div2.style = `height: 10px; width: 10px; position: absolute;right: 0px;top: 0px; background-color: #065FD4;`;
-//       this.dom.appendChild(this.div2);
-//       this.div3 = document.createElement("div");
-//       this.div3.style = `height: 10px; width: 10px; position: absolute;left: 0px;bottom: 5px; background-color: #065FD4;`;
-//       this.dom.appendChild(this.div3);
-//       this.div4 = document.createElement("div");
-//       this.div4.style = `height: 10px; width: 10px; position: absolute;right: 0px;bottom: 5px; background-color: #065FD4;`;
-//       this.dom.appendChild(this.div4);
-//       e.stopPropagation();
-//     });
-//   }
+    this.dom = document.createElement("div");
+    this.dom.className = "nib-image-outer-wrapper";
 
-//   stopEvent() {
-//     return true;
-//   }
-// }
+    this.imageWrapper = document.createElement("div");
+    this.imageWrapper.className = "nib-image-wrapper";
+    this.dom.appendChild(this.imageWrapper);
+
+    this.img = document.createElement("img");
+    this.img.src = node.attrs.src;
+    this.img.style = `height:${node.attrs.height};`;
+    this.imageWrapper.appendChild(this.img);
+
+    this.resizeHandles = [];
+    this.img.addEventListener("mousedown", this.handleMouseDown);
+    this.img.addEventListener("click", this.handleClick);
+    this.img.addEventListener("blur", this.handleBlur);
+  }
+
+  update = node => {
+    if (node.attrs.height === this.prevHeight) return true;
+    this.prevHeight = node.attrs.height;
+    this.img.style = `height:${node.attrs.height};outline:2px solid #2962ff`;
+    return true;
+  };
+
+  destroy = () => {
+    this.cleanupResizeHandles();
+    this.img.removeEventListener("mousedown", this.handleMouseDown);
+    this.img.removeEventListener("click", this.handleClick);
+    this.img.removeEventListener("blur", this.handleBlur);
+  };
+
+  handleMouseDown = evt => {
+    evt.stopPropagation();
+    [
+      { className: "nib-image-resize-lt", dir: -1 },
+      { className: "nib-image-resize-rt", dir: -1 },
+      { className: "nib-image-resize-lb", dir: 1 },
+      { className: "nib-image-resize-rb", dir: 1 }
+    ].forEach(({ className, dir }) => {
+      const handle = document.createElement("div");
+      handle.className = className;
+      handle.setAttribute("data-dir", dir);
+      this.imageWrapper.appendChild(handle);
+      handle.addEventListener("mousedown", this.handleResizeHandleMouseDown);
+      this.resizeHandles.push(handle);
+    });
+    this.img.style.outline = "2px solid #2962ff";
+    window.addEventListener("mousemove", this.handleResizeHandleMouseMove);
+    window.addEventListener("mouseup", this.handleResizeHandleMouseUp);
+  };
+
+  handleClick = evt => {
+    evt.stopPropagation();
+  };
+
+  handleResizeHandleMouseUp = () => {
+    if (!this.resizing) return;
+    this.resizing = false;
+    this.dir = undefined;
+    this.cleanupResizeHandles();
+  };
+
+  handleResizeHandleMouseDown = evt => {
+    this.resizing = true;
+    this.dir = parseInt(evt.target.getAttribute("data-dir"), 10);
+    this.prevPoint = evt.clientY;
+    evt.preventDefault();
+  };
+
+  handleResizeHandleMouseMove = evt => {
+    if (!this.resizing) return;
+    const { state, dispatch } = this.view;
+
+    const imageRect = this.img.getBoundingClientRect();
+    this.imageHeight = imageRect.height;
+
+    const newHeight =
+      this.imageHeight + (evt.clientY - this.prevPoint) * this.dir;
+    this.prevPoint = evt.clientY;
+    dispatch(
+      state.tr.setNodeMarkup(this.getPos(), undefined, {
+        ...this.node.attrs,
+        height: `${newHeight}px`
+      })
+    );
+  };
+
+  cleanupResizeHandles = () => {
+    this.resizeHandles.forEach(handle => {
+      handle.removeEventListener("mousedown", this.handleResizeHandleMouseDown);
+      this.imageWrapper.removeChild(handle);
+    });
+    window.removeEventListener("mousemove", this.handleResizeHandleMouseMove);
+    this.resizeHandles = [];
+    this.img.style.outline = "none";
+  };
+}
