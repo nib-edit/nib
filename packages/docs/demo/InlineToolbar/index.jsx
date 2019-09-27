@@ -30,7 +30,7 @@ const defaultValue = {
 };
 
 /**
- * @visibleName 6. Inline toolbar
+ * @visibleName 7. Inline toolbar
  */
 const InlineToolbar = () => {
   return (

@@ -34,7 +34,7 @@ const FullPageEditor = ({ setContent }) => {
 };
 
 /**
- * @visibleName 8. Full Page
+ * @visibleName 9. Full Page
  */
 const FullPage = () => {
   const [fullPageEditorVisible, showFullPageEditor] = useState(false);

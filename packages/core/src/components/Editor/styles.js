@@ -37,10 +37,6 @@ const prosemirrorStyles = `
     caret-color: transparent;
   }
 
-  .ProseMirror-selectednode {
-    outline: 2px solid #8cf;
-  }
-
   .nib-selection-blur-marker {
     background-color: rgb(220,220,220);
   }
