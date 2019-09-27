@@ -1,5 +1,10 @@
-import { Schema } from "prosemirror-model";
+import { Schema, DOMParser } from "prosemirror-model";
 import { marks, nodes } from "nib-schema";
+
+const schema = new Schema({
+  nodes,
+  marks
+});
 
 const getHTMLString = node => {
   const { type, text } = node;
@@ -39,12 +44,27 @@ const getHTMLString = node => {
 
 const convertToHTML = content => {
   if (JSON.stringify(content) === "{}") return "";
-  const schema = new Schema({
-    nodes,
-    marks
-  });
   const node = schema.nodeFromJSON(content);
   return getHTMLString(node);
 };
 
-export default { convertToHTML };
+const convertFromHTML = (html = "<p></p>") => {
+  if (!document)
+    throw new Error("Document object is required to convert from html.");
+  const contentWrapper = document.createElement("div");
+  document.body.appendChild(contentWrapper);
+  contentWrapper.innerHTML = html;
+  const parser = DOMParser.fromSchema(schema);
+  const content = parser.parse(contentWrapper);
+  document.body.removeChild(contentWrapper);
+  return {
+    doc: content.toJSON(),
+    selection: {
+      type: "text",
+      anchor: 0,
+      head: 0
+    }
+  };
+};
+
+export default { convertToHTML, convertFromHTML };

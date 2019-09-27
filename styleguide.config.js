@@ -45,6 +45,7 @@ module.exports = {
         "packages/docs/demo/BlockInline/index.jsx",
         "packages/docs/demo/ImageVideo/index.jsx",
         "packages/docs/demo/FullFeatured/index.jsx",
+        "packages/docs/demo/ConvertFromHTML/index.jsx",
         "packages/docs/demo/ConvertToHTML/index.jsx",
         "packages/docs/demo/InlineToolbar/index.jsx",
         "packages/docs/demo/Themed/index.jsx",

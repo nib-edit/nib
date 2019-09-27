@@ -6,19 +6,19 @@ import CollabPlugin from "nib-collab-client";
 const collab = new CollabPlugin({
   serviceURL: "ws://nib-collab.herokuapp.com",
   clientID: Math.floor(Math.random() * 0xffffffff)
-})
+});
 
 /**
- * @visibleName 11. Collaborative Editing
+ * @visibleName 12. Collaborative Editing
  */
 const Collab = () => {
   const [editorState, setEditorState] = useState();
 
   useEffect(() => {
     return () => {
-      collab.stopSyncing()
-    }
-  }, [])
+      collab.stopSyncing();
+    };
+  }, []);
 
   return (
     <div>
