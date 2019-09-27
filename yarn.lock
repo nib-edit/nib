@@ -4501,33 +4501,6 @@ nib-comment@2.2.0:
     nib-ui "2.1.6"
     prosemirror-transform "^1.0.0"
 
-nib-core@2.1.9:
-  version "2.1.9"
-  resolved "https://registry.yarnpkg.com/nib-core/-/nib-core-2.1.9.tgz#e2e046c39acac4f9a35972e7cf1803423fba725a"
-  dependencies:
-    "@emotion/core" "^10.0.14"
-    "@emotion/styled" "^10.0.14"
-    emotion-theming "^10.0.14"
-    nib-embed "2.1.6"
-    nib-schema "2.1.6"
-    nib-ui "2.1.6"
-    nib-upload "2.1.6"
-    prosemirror-commands "^1.0.7"
-    prosemirror-history "^1.0.3"
-    prosemirror-keymap "^1.0.1"
-    prosemirror-model "^1.6.2"
-    prosemirror-schema-list "^1.0.1"
-    prosemirror-state "^1.2.2"
-    prosemirror-tables "^0.8.1"
-    prosemirror-utils "^0.7.6"
-    prosemirror-view "1.10.0"
-
-nib-schema@2.1.6:
-  version "2.1.6"
-  resolved "https://registry.yarnpkg.com/nib-schema/-/nib-schema-2.1.6.tgz#c9abb49878e10fe3a37375ac93a47cbf6315dd55"
-  dependencies:
-    prosemirror-tables "^0.8.1"
-
 nib-track@2.1.6:
   version "2.1.6"
   resolved "https://registry.yarnpkg.com/nib-track/-/nib-track-2.1.6.tgz#ffbeb3df861013fc236021b3cbeba2e139e26a1e"
