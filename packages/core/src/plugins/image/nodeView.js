@@ -6,6 +6,7 @@ export default class ImageView {
 
     this.dom = document.createElement("div");
     this.dom.className = "nib-image-outer-wrapper";
+    this.dom.tabIndex = -1;
 
     this.imageWrapper = document.createElement("div");
     this.imageWrapper.className = "nib-image-wrapper";
@@ -17,9 +18,9 @@ export default class ImageView {
     this.imageWrapper.appendChild(this.img);
 
     this.resizeHandles = [];
-    this.img.addEventListener("mousedown", this.handleMouseDown);
-    this.img.addEventListener("click", this.handleClick);
-    this.img.addEventListener("blur", this.handleBlur);
+    this.dom.addEventListener("click", this.handleClick);
+    this.dom.addEventListener("mousedown", this.handleMouseDown);
+    this.dom.addEventListener("blur", this.cleanupResizeHandles);
   }
 
   update = node => {
@@ -31,9 +32,9 @@ export default class ImageView {
 
   destroy = () => {
     this.cleanupResizeHandles();
-    this.img.removeEventListener("mousedown", this.handleMouseDown);
-    this.img.removeEventListener("click", this.handleClick);
-    this.img.removeEventListener("blur", this.handleBlur);
+    this.dom.removeEventListener("click", this.handleClick);
+    this.dom.removeEventListener("mousedown", this.handleMouseDown);
+    this.dom.removeEventListener("blur", this.cleanupResizeHandles);
   };
 
   handleMouseDown = evt => {
@@ -52,6 +53,7 @@ export default class ImageView {
       this.resizeHandles.push(handle);
     });
     this.img.style.outline = "2px solid #2962ff";
+    window.addEventListener("click", this.cleanupResizeHandles);
     window.addEventListener("mousemove", this.handleResizeHandleMouseMove);
     window.addEventListener("mouseup", this.handleResizeHandleMouseUp);
   };
@@ -68,6 +70,7 @@ export default class ImageView {
   };
 
   handleResizeHandleMouseDown = evt => {
+    if (this.resizing) return;
     this.resizing = true;
     this.dir = parseInt(evt.target.getAttribute("data-dir"), 10);
     this.prevPoint = evt.clientY;

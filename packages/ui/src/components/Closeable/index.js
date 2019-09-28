@@ -26,7 +26,7 @@ const Closeable = WrappedComponent => {
         onClickInsideEditor,
         editorWrapper
       } = this.props;
-      if (evt.button === 0) {
+      if (evt.button === 0 && document.body.contains(evt.target)) {
         if (
           editorWrapper &&
           editorWrapper.current &&

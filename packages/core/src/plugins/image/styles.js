@@ -3,6 +3,9 @@ export default () => `
   .nib-image-outer-wrapper {
     display: flex;
     justofy-content: center;
+    &:focus {
+      outline: none;
+    }
   }
 
   .nib-image-wrapper {
