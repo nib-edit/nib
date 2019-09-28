@@ -1,6 +1,6 @@
 {
   "name": "nib-converter",
-  "version": "2.2.0",
+  "version": "2.2.5",
   "description": "Converter for nib-editor to HTML",
   "main": "./index.js",
   "repository": {
@@ -19,7 +19,7 @@
   "homepage": "https://github.com/jpuri/Nib/tree/master/packages/core#Readme.md",
   "dependencies": {
     "prosemirror-model": "^1.0.0",
-    "nib-schema": "^2.2.0"
+    "nib-schema": "^2.2.5"
   },
   "devDependencies": {
     "prop-types": "^15.6.2",
