@@ -96,12 +96,12 @@ export default class ImageView {
   };
 
   cleanupResizeHandles = () => {
+    this.img.style.outline = "none";
     this.resizeHandles.forEach(handle => {
       handle.removeEventListener("mousedown", this.handleResizeHandleMouseDown);
       this.imageWrapper.removeChild(handle);
     });
     window.removeEventListener("mousemove", this.handleResizeHandleMouseMove);
     this.resizeHandles = [];
-    this.img.style.outline = "none";
   };
 }

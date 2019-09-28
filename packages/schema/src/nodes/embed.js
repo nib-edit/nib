@@ -16,7 +16,7 @@ const embed = {
     }
   ],
   toDOM(node) {
-    return ["span", { "data-nib-embed": node.attrs.html }];
+    return ["div", { "data-nib-embed": node.attrs.html }];
   }
 };
 

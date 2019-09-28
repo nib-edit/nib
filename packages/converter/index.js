@@ -30,6 +30,12 @@ const getHTMLString = node => {
   }
   if (type.spec.toDOM) {
     const domDetails = type.spec.toDOM(node);
+    if (node.type.name === "embed") {
+      strContent = `<p style="display:flex;justify-content:center;">${
+        domDetails[1]["data-nib-embed"]
+      }</p>`;
+      return strContent;
+    }
     let htmlAttrs;
     if (domDetails.length > 1)
       htmlAttrs = Object.keys(domDetails[1]).reduce(
@@ -38,6 +44,9 @@ const getHTMLString = node => {
       );
     const htmlTag = domDetails[0];
     strContent = `<${htmlTag}${htmlAttrs}>${strContent}</${htmlTag}>`;
+    if (node.type.name === "image") {
+      strContent = `<p style="display:flex;justify-content:center;">${strContent}</p>`;
+    }
   }
   return strContent;
 };

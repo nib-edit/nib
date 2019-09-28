@@ -15,7 +15,7 @@ const orderedList = {
     }
   ],
   toDOM(node) {
-    return node.attrs.order == 1
+    return node.attrs.order === 1
       ? olDOM
       : ["ol", { start: node.attrs.order }, 0];
   }
