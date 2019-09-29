@@ -4494,9 +4494,9 @@ nib-collab-client@0.0.9:
     prosemirror-collab "^1.1.2"
     prosemirror-transform "^1.0.0"
 
-nib-comment@2.2.5:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/nib-comment/-/nib-comment-2.2.5.tgz#48421d72971910d1a2d4af6fa0fe1dc16928c512"
+nib-comment@2.2.6:
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/nib-comment/-/nib-comment-2.2.6.tgz#fb608c299ce6201c1a45a0811a11f3365f01837c"
   dependencies:
     nib-ui "2.2.5"
     prosemirror-transform "^1.0.0"
