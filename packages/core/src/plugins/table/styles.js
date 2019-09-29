@@ -8,6 +8,9 @@ const styleFn = ({ constants }) => `
     width: 100%;
     overflow: hidden;
   }
+  .ProseMirror th {
+    background-color: #f5f5f5;
+  }
   .ProseMirror td, .ProseMirror th {
     vertical-align: top;
     box-sizing: border-box;

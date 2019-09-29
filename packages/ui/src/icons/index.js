@@ -1,9 +1,13 @@
 import AddComment from "./AddComment";
+import AddColumn from "./AddColumn";
+import AddRow from "./AddRow";
 import ArrowDown from "./ArrowDown";
 import Bold from "./Bold";
 import Comment from "./Comment";
 import Cross from "./Cross";
 import ChevronDown from "./ChevronDown";
+import DeleteColumn from "./DeleteColumn";
+import DeleteRow from "./DeleteRow";
 import H1 from "./H1";
 import H2 from "./H2";
 import H3 from "./H3";
@@ -22,17 +26,23 @@ import Strike from "./Strike";
 import Sub from "./Sub";
 import Sup from "./Sup";
 import Table from "./Table";
+import Trash from "./Trash";
+import ToggleHeader from "./ToggleHeader";
 import Underline from "./Underline";
 import Undo from "./Undo";
 import Video from "./Video";
 
 export default {
   addComment: AddComment,
+  addColumn: AddColumn,
+  addRow: AddRow,
   arrowDown: ArrowDown,
   bold: Bold,
   chevronDown: ChevronDown,
   comment: Comment,
   cross: Cross,
+  deleteColumn: DeleteColumn,
+  deleteRow: DeleteRow,
   h1: H1,
   h2: H2,
   h3: H3,
@@ -51,6 +61,8 @@ export default {
   sub: Sub,
   sup: Sup,
   table: Table,
+  toggleHeader: ToggleHeader,
+  trash: Trash,
   underline: Underline,
   undo: Undo,
   video: Video

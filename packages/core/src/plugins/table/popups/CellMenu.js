@@ -46,7 +46,7 @@ class CellMenu extends Component {
     const { pmview } = pmstate;
     const { top, left, menuVisible } = this.state;
     return (
-      <Wrapper onMouseDown={e => e.preventDefault()} style={{ top, left }}>
+      <Wrapper style={{ top, left }} onMouseDown={evt => evt.preventDefault()}>
         <StyledIcon name="arrowDown" onClick={this.toggleMenuVisible} />
         {menuVisible && (
           <MenuDropdown
@@ -85,7 +85,8 @@ CellMenu.propTypes = {
 };
 
 export default {
-  elmClassName: "nib-table-cell-marker",
+  name: "cell_menu",
+  getMarker: () => document.getElementsByClassName("nib-table-cell-marker")[0],
   component: props => (
     <PMStateConsumer>
       {pmstate => <CellMenu pmstate={pmstate} {...props} />}

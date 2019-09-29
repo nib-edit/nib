@@ -21,6 +21,7 @@
   margin-top: 20px;
   text-decoration: underline;
   border: none;
+  cursor: pointer;
 }
 .nib-link_btn:focus {
   outline: none;

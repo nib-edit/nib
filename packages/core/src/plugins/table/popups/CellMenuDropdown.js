@@ -15,17 +15,11 @@ export default class MenuDropdown extends Component {
   render() {
     return (
       <MenuWrapper>
-        <MenuOption name="addRowBefore" onClick={this.updateTable}>
-          Add Row Before
-        </MenuOption>
         <MenuOption name="addRowAfter" onClick={this.updateTable}>
-          Add Row After
-        </MenuOption>
-        <MenuOption name="addColumnBefore" onClick={this.updateTable}>
-          Add Column Before
+          Insert Row
         </MenuOption>
         <MenuOption name="addColumnAfter" onClick={this.updateTable}>
-          Add Column After
+          Insert Column
         </MenuOption>
         <MenuOption name="deleteRow" onClick={this.updateTable}>
           Delete Row
@@ -39,7 +33,7 @@ export default class MenuDropdown extends Component {
 }
 
 const MenuWrapper = styled.div(
-  { cursor: "pointer", left: -155, position: "absolute", top: 16 },
+  { cursor: "pointer", left: -105, position: "absolute", top: 16 },
   ({ theme: { constants, table } }) => ({
     border: constants.border.medium,
     backgroundColor: constants.color.background,
@@ -54,7 +48,7 @@ const MenuWrapper = styled.div(
 const MenuOption = styled.div(
   {
     padding: 4,
-    width: 150,
+    width: 100,
     textAlign: "center"
   },
   ({ theme: { constants, table }, lastOption }) => ({

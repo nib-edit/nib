@@ -17,9 +17,9 @@ const getVisiblePopups = (pmstate, popups, visiblePopups) => {
     let popupVisible = false;
 
     // If popup visibility conditions are met add it to newVisiblePopups
-    if (!popup.condition || popup.condition(pmview.state)) {
-      const marker = document.getElementsByClassName(popup.elmClassName);
-      if (marker[0]) {
+    if (!popup.condition || popup.condition(pmview)) {
+      const marker = popup.getMarker(pmview);
+      if (marker) {
         popupVisible = true;
         let toolbarIndex = newVisiblePopups.findIndex(
           p => p.name === popup.name
@@ -28,7 +28,7 @@ const getVisiblePopups = (pmstate, popups, visiblePopups) => {
           toolbarIndex = newVisiblePopups.length;
         }
         newVisiblePopups[toolbarIndex] = {
-          marker: marker[0],
+          marker,
           name: popup.name,
           PopupComponent: popup.component
         };
@@ -65,12 +65,34 @@ class PopupHandler extends PureComponent {
     const { PopupComponent, marker } = this.visiblePopups[
       this.visiblePopups.length - 1
     ];
+
+    const tablePopups = this.visiblePopups.filter(
+      popup => popup.name === "table_menu" || popup.name === "cell_menu"
+    );
+
+    // todo: refactor table popups for a better implementation
+
     return (
-      <PopupComponent
-        pmstate={pmstate}
-        editorWrapper={editorWrapper}
-        marker={marker}
-      />
+      <>
+        <PopupComponent
+          pmstate={pmstate}
+          editorWrapper={editorWrapper}
+          marker={marker}
+        />
+        {tablePopups.map(popup => {
+          const {
+            PopupComponent: TablePopupComponent,
+            marker: tableMarker
+          } = popup;
+          return (
+            <TablePopupComponent
+              pmstate={pmstate}
+              editorWrapper={editorWrapper}
+              marker={tableMarker}
+            />
+          );
+        })}
+      </>
     );
   }
 }

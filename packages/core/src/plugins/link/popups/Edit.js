@@ -103,7 +103,7 @@ EditPopup.propTypes = {
 
 export default {
   name: "edit_link",
-  elmClassName: "nib-edit-link-marker",
+  getMarker: () => document.getElementsByClassName("nib-edit-link-marker")[0],
   component: props => (
     <PMStateConsumer>
       {pmstate => <EditPopup pmstate={pmstate} {...props} />}

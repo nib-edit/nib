@@ -11,12 +11,12 @@ const Grouped = ({ options, selectedBlockType, onChange }) => {
   } else {
     selectedOption = { value: undefined, label: "Other" };
   }
-
   return (
     <Select
       onChange={option => onChange(option.value.blockType)}
       options={options}
       selectedOption={selectedOption}
+      isSearchable={false}
     />
   );
 };

@@ -1037,3 +1037,6 @@ h2 {
 nav ul > li {
   margin: 10px 0 10px 0 !important;
 }
+nav ul {
+  padding-left: 8px !important;
+}
