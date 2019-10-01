@@ -37,11 +37,12 @@ class EditPopup extends PureComponent {
     const { pmview } = pmstate;
     const { state, dispatch } = pmview;
     const { href } = this.state;
+    console.log("***", link.to, state.doc.resolve(link.to));
     dispatch(
       state.tr
         .removeMark(link.from, link.to, state.schema.marks.link)
         .addMark(link.from, link.to, state.schema.marks.link.create({ href }))
-        .setSelection(new TextSelection(state.doc.resolve(link.to)))
+        .setSelection(new TextSelection(state.doc.resolve(link.to - 1)))
     );
     this.closePopup();
   };
