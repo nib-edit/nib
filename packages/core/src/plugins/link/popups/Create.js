@@ -119,8 +119,8 @@ CreatePopup.propTypes = {
 
 export default {
   name: "create_link",
-  elmClassName: "nib-link-marker",
-  condition: state => {
+  getMarker: () => document.getElementsByClassName("nib-link-marker")[0],
+  condition: ({ state }) => {
     const pluginState = linkPluginKey.getState(state);
     return pluginState && pluginState.showAddLinkToolbar;
   },

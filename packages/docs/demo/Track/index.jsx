@@ -67,7 +67,6 @@ const Track = () => {
           }}
           addons={[tracker]}
           defaultValue={defaultValue}
-          styleConfig={{ editor: () => ({ height: 300 }) }}
           onChange={updateTrackedState}
         />
       </div>
@@ -101,7 +100,7 @@ const Track = () => {
             onMouseLeave={resetHighlight}
             key={`${commit.time}`}
           >
-            <td>{commit.id}</td>
+            <td>{commit.id + 1}</td>
             <td>{commit.data.username}</td>
             <td>{commit.time.toLocaleString()}</td>
             <td>

@@ -29,7 +29,7 @@ const styles = ({ color, fontFamily, fontSize }) => ({
   },
   github: {
     fontSize: fontSize.base,
-    paddingLeft: 16,
+    paddingLeft: 8,
     display: "flex",
     alignItems: "center",
     cursor: "pointer",

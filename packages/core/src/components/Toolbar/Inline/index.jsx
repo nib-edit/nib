@@ -71,6 +71,7 @@ const StyledPopup = styled(Popup)({ padding: "2px !important" });
 
 export default {
   name: "toolbar",
-  elmClassName: "nib-selection-focus-marker",
+  getMarker: () =>
+    document.getElementsByClassName("nib-selection-focus-marker")[0],
   component: Inline
 };
