@@ -13,7 +13,8 @@ const MarkIcons = {
   strong: "bold",
   em: "italic",
   underline: "underline",
-  strike: "strike"
+  strike: "strike",
+  code: "code"
 };
 
 class ToolbarComponent extends PureComponent {
@@ -62,6 +63,24 @@ class ToolbarComponent extends PureComponent {
     dispatch(tr);
   };
 
+  toggleCodeMark = () => {
+    const { pmstate } = this.props;
+    const { state, dispatch } = pmstate.pmview;
+    const { schema, selection, tr } = state;
+    const { $from, $to } = selection;
+    const { marks } = schema;
+    const { code } = marks;
+    if ((schema, code.isInSet(this.getActiveMarks()))) {
+      tr.removeMark($from.pos, $to.pos, code);
+    } else {
+      Object.values(marks).forEach(mark => {
+        tr.removeMark($from.pos, $to.pos, mark);
+      });
+      tr.addMark($from.pos, $to.pos, code.create());
+    }
+    dispatch(tr);
+  };
+
   toggleSupMark = () => {
     this.toggleSupSubMark("sup", "sub");
   };
@@ -85,7 +104,7 @@ class ToolbarComponent extends PureComponent {
       <>
         {["strong", "em", "underline", "strike"].reduce((result, mark) => {
           if (options.indexOf(mark) >= 0) {
-            const isSelected = marks[mark].isInSet(activeMarks);
+            const isSelected = !!marks[mark].isInSet(activeMarks);
             if (!result.length)
               result.push(<Space key="inlinestyle-separator" />);
             result.push(
@@ -124,6 +143,16 @@ class ToolbarComponent extends PureComponent {
               <Icon name="sub" selected={isSubMarkActive} />
             </ToolbarButton>
           </>
+        )}
+        {options.indexOf("code") >= 0 && (
+          <ToolbarButton
+            name="code"
+            onClick={this.toggleCodeMark}
+            selected={!!marks.code.isInSet(activeMarks)}
+            title={formatKeymap(KeymapInfo.code)}
+          >
+            <Icon name="code" selected={!!marks.code.isInSet(activeMarks)} />
+          </ToolbarButton>
         )}
       </>
     );
