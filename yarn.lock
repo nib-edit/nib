@@ -4512,11 +4512,44 @@ nib-comment@2.2.6:
     nib-ui "2.2.5"
     prosemirror-transform "^1.0.0"
 
+nib-core@2.2.5:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/nib-core/-/nib-core-2.2.5.tgz#dc62e722d334362d84d5cf8180fc0ee7aa1108a8"
+  dependencies:
+    "@emotion/core" "^10.0.14"
+    "@emotion/styled" "^10.0.14"
+    emotion-theming "^10.0.14"
+    nib-embed "2.1.6"
+    nib-schema "2.2.5"
+    nib-ui "2.2.5"
+    nib-upload "2.1.6"
+    prosemirror-commands "^1.0.7"
+    prosemirror-history "^1.0.3"
+    prosemirror-keymap "^1.0.1"
+    prosemirror-model "^1.6.2"
+    prosemirror-schema-list "^1.0.1"
+    prosemirror-state "^1.2.2"
+    prosemirror-tables "^0.8.1"
+    prosemirror-utils "^0.7.6"
+    prosemirror-view "1.10.0"
+
+nib-schema@2.2.5:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/nib-schema/-/nib-schema-2.2.5.tgz#06082f3221e08093c7e95188b367d1587abd7e2c"
+  dependencies:
+    prosemirror-tables "^0.8.1"
+
 nib-track@2.1.6:
   version "2.1.6"
   resolved "https://registry.yarnpkg.com/nib-track/-/nib-track-2.1.6.tgz#ffbeb3df861013fc236021b3cbeba2e139e26a1e"
   dependencies:
     prosemirror-transform "^1.0.0"
+
+nib-ui@2.2.5:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/nib-ui/-/nib-ui-2.2.5.tgz#bcdda50435657d915d8b2d0e964319b68502742f"
+  dependencies:
+    react-select "^3.0.4"
 
 nice-try@^1.0.4:
   version "1.0.5"
