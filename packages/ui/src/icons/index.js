@@ -3,6 +3,7 @@ import AddColumn from "./AddColumn";
 import AddRow from "./AddRow";
 import ArrowDown from "./ArrowDown";
 import Bold from "./Bold";
+import Code from "./Code";
 import Comment from "./Comment";
 import Cross from "./Cross";
 import ChevronDown from "./ChevronDown";
@@ -38,6 +39,7 @@ export default {
   addRow: AddRow,
   arrowDown: ArrowDown,
   bold: Bold,
+  code: Code,
   chevronDown: ChevronDown,
   comment: Comment,
   cross: Cross,

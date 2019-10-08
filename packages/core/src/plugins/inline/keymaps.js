@@ -12,12 +12,15 @@ export default {
   "mod-u": (state, dispatch) =>
     toggleMarkofType("underline", { level: 2 })(state, dispatch),
   "mod-shift-s": (state, dispatch) =>
-    toggleMarkofType("strike", { level: 2 })(state, dispatch)
+    toggleMarkofType("strike", { level: 2 })(state, dispatch),
+  "mod-shift-m": (state, dispatch) =>
+    toggleMarkofType("code", { level: 2 })(state, dispatch)
 };
 
 export const KeymapInfo = {
   strong: { key: "mod-B", label: "Bold" },
   em: { key: "mod-I", label: "Italic" },
   underline: { key: "mod-U", label: "Underline" },
-  strike: { key: "mod-shift-S", label: "Strikethrough" }
+  strike: { key: "mod-shift-S", label: "Strikethrough" },
+  code: { key: "mod-shift-M", label: "Code" }
 };

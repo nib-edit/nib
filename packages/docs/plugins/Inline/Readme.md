@@ -11,12 +11,12 @@ Plugin that adds support for inline text.
 ```js static
 <Editor
   config={{
-    plugins: {options: "inline"},
+    plugins: { options: "inline" },
     toolbar: {
       options: "top",
       top: {
         options: "inline",
-        inline: {options: "strong em underline strike subsup"}
+        inline: { options: "strong em underline strike subsup code" }
       }
     }
   }}
