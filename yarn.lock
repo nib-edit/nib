@@ -4497,6 +4497,27 @@ neo-async@^2.5.0, neo-async@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
 
+nib-collab-client@0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/nib-collab-client/-/nib-collab-client-0.0.9.tgz#3b12367e616619e946a9afab841cc35064f9430d"
+  dependencies:
+    axios "^0.19.0"
+    prosemirror-collab "^1.1.2"
+    prosemirror-transform "^1.0.0"
+
+nib-comment@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/nib-comment/-/nib-comment-2.3.0.tgz#f082c4736b64a63eaa3c53804daa1a5990eeb294"
+  dependencies:
+    nib-ui "2.3.0"
+    prosemirror-transform "^1.0.0"
+
+nib-track@2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/nib-track/-/nib-track-2.3.1.tgz#ea7b7a7c9e8b9dea6c4a3a7c9a843ee857e4afa0"
+  dependencies:
+    prosemirror-transform "^1.0.0"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
