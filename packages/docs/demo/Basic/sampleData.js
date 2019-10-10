@@ -15,7 +15,7 @@ export default {
   },
   selection: {
     type: "text",
-    anchor: 56,
-    head: 56
+    anchor: 1,
+    head: 1
   }
 };
