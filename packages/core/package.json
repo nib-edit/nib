@@ -1,6 +1,6 @@
 {
   "name": "nib-core",
-  "version": "2.2.6",
+  "version": "2.3.0",
   "description": "Wysiwyg editor",
   "main": "./index.js",
   "repository": {
@@ -22,7 +22,7 @@
     "@emotion/styled": "^10.0.14",
     "emotion-theming": "^10.0.14",
     "nib-schema": "2.2.6",
-    "nib-ui": "2.2.6",
+    "nib-ui": "2.3.0",
     "nib-upload": "2.1.6",
     "nib-embed": "2.1.6",
     "prosemirror-history": "^1.0.3",
