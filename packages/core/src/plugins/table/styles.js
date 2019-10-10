@@ -9,7 +9,7 @@ const styleFn = ({ constants }) => `
     overflow: hidden;
   }
   .ProseMirror th {
-    background-color: #f5f5f5;
+    background-color: ${constants.color.background.secondary};
   }
   .ProseMirror td, .ProseMirror th {
     vertical-align: top;
@@ -21,7 +21,7 @@ const styleFn = ({ constants }) => `
     right: -2px; top: 0; bottom: 0;
     width: 4px;
     z-index: 20;
-    background-color: ${constants.color.highlight};
+    background-color: ${constants.color.highlight.primary};
     pointer-events: none;
   }
   .ProseMirror.resize-cursor {
@@ -38,7 +38,7 @@ const styleFn = ({ constants }) => `
     pointer-events: none;
   }
   .ProseMirror table td, .ProseMirror table th {
-    border: ${constants.border.medium};
+    border: ${constants.border.primary};
   }
 `;
 

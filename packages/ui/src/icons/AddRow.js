@@ -14,14 +14,14 @@ export default ({ fill, ...rest }) => (
       id="Page-1"
       stroke="none"
       strokeWidth="1"
-      fill={fill}
+      fill="none"
       fillRule="evenodd"
       strokeLinecap="square"
     >
       <g
         id="Desktop-HD"
         transform="translate(-1035.000000, -436.000000)"
-        stroke="#212121"
+        stroke={fill}
       >
         <path d="M1038.5,439 L1038.5,453" id="Line-2-Copy-2" />
         <path d="M1052.5,439 L1052.5,453" id="Line-2-Copy-7" />

@@ -6,8 +6,8 @@ import Icons from "../../icons";
 
 export default withTheme(({ theme, selected, name, ...rest }) => {
   const { text, highlight } = theme.constants.color;
-  let fill = text;
-  if (selected) fill = highlight;
+  let fill = text.primary;
+  if (selected) fill = highlight.primary;
 
   const IconComponent = Icons[name];
   return (

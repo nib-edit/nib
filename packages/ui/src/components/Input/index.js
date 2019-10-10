@@ -45,22 +45,22 @@ const StyledInput = styled.input(
     borderRight: "none"
   },
   ({ theme: { constants, input } }) => ({
-    borderBottom: `1px solid ${constants.color.darkBorder}`,
+    borderBottom: `1px solid ${constants.color.border.secondary}`,
 
-    backgroundColor: constants.color.backgound,
-    color: constants.color.text,
+    backgroundColor: constants.color.background.primary,
+    color: constants.color.text.primary,
     fontSize: constants.fontSize.medium,
 
     "&:focus": {
       borderTop: "none",
       borderLeft: "none",
       borderRight: "none",
-      borderBottom: `1px solid ${constants.color.highlight}`,
+      borderBottom: `1px solid ${constants.color.highlight.primary}`,
       outline: "none"
     },
 
     "&::placeholder": {
-      fontSize: constants.color.lightText
+      fontSize: constants.color.text.secondary
     },
 
     ...input.input({ theme: constants })

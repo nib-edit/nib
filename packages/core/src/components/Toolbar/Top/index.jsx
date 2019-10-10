@@ -47,9 +47,9 @@ const Wrapper = styled.div(
     userSelect: "none"
   },
   ({ theme: { constants, toolbar } }) => ({
-    backgroundColor: constants.color.background,
-    color: constants.color.text,
-    borderBottom: constants.border.medium,
+    backgroundColor: constants.color.background.primary,
+    color: constants.color.text.primary,
+    borderBottom: constants.border.primary,
     fontSize: constants.fontSize.medium,
 
     ...toolbar.top({ theme: constants })

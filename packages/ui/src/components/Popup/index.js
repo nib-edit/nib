@@ -140,12 +140,12 @@ const Wrapper = styled.div(
   ({ theme: { constants, popup } }) => ({
     zIndex: 1,
 
-    backgroundColor: constants.color.background,
-    color: constants.color.text,
+    backgroundColor: constants.color.background.primary,
+    color: constants.color.text.primary,
 
-    border: constants.border.medium,
+    border: constants.border.primary,
     borderRadius: constants.borderRadius.small,
-    boxShadow: constants.boxShadow.medium,
+    boxShadow: constants.boxShadow.primary,
 
     ":focus": {
       outline: "none"
@@ -158,9 +158,9 @@ const Wrapper = styled.div(
 const ArrowTop = styled.div(
   { position: "absolute", transform: "rotate(45deg)" },
   ({ theme: { constants, popup }, left = 0 }) => ({
-    background: constants.color.background,
-    borderLeft: constants.border.medium,
-    borderTop: constants.border.medium,
+    background: constants.color.background.primary,
+    borderLeft: constants.border.primary,
+    borderTop: constants.border.primary,
 
     height: 10,
     left: `calc(50% + ${left - ARROW_HEIGHT}px)`,
@@ -179,9 +179,9 @@ const ArrowBottom = styled.div(
     transform: "rotate(45deg)"
   },
   ({ theme: { constants, popup }, left = 0 }) => ({
-    background: constants.color.background,
-    borderRight: constants.border.medium,
-    borderBottom: constants.border.medium,
+    background: constants.color.background.primary,
+    borderRight: constants.border.primary,
+    borderBottom: constants.border.primary,
 
     height: 10,
     left: `calc(50% + ${left - ARROW_HEIGHT}px)`,

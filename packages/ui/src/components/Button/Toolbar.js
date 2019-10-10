@@ -31,8 +31,8 @@ const StyledButton = styled.button(
     }
   },
   ({ theme: { constants, button } }) => ({
-    backgroundColor: constants.color.background,
-    color: constants.color.text,
+    backgroundColor: constants.color.background.primary,
+    color: constants.color.text.primary,
     borderRadius: constants.borderRadius.small,
     fontSize: constants.fontSize.medium,
 

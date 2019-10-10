@@ -32,7 +32,7 @@ Option.propTypes = {
 };
 
 const Keymap = styled.span`
-  color: ${({ theme }) => theme.constants.color.lightText};
+  color: ${({ theme }) => theme.constants.color.text.secondary};
   font-size: ${({ theme }) => theme.constants.fontSize.small};
 `;
 

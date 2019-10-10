@@ -36,21 +36,17 @@ const prosemirrorStyles = `
   .ProseMirror-hideselection {
     caret-color: transparent;
   }
-
-  .nib-selection-blur-marker {
-    background-color: rgb(220,220,220);
-  }
 `;
 
 export const StyledWrapper = styled(
   styled.div({ position: "relative", textAlign: "left" }, ({ theme }) => {
     const { constants, wrapper } = theme;
     return {
-      border: constants.border.medium,
+      border: constants.border.primary,
       borderRadius: constants.borderRadius.small,
 
-      backgroundColor: constants.color.background,
-      color: constants.color.text,
+      backgroundColor: constants.color.background.primary,
+      color: constants.color.text.primary,
 
       fontSize: constants.fontSize.medium,
 
@@ -71,8 +67,8 @@ export const StyledEditor = styled(
       textAlign: "left"
     },
     ({ theme: { constants, editor } }) => ({
-      backgroundColor: constants.color.background,
-      color: constants.color.text,
+      backgroundColor: constants.color.background.primary,
+      color: constants.color.text.primary,
 
       fontSize: constants.fontSize.medium,
 

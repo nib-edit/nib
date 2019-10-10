@@ -6,7 +6,7 @@ const Separator = props => <StyledSeparator {...props} />;
 const StyledSeparator = styled.div(
   { display: "inline-block", height: 24, margin: "0px 4px", width: 1 },
   ({ theme: { constants, separator } }) => ({
-    backgroundColor: constants.color.lightBorder,
+    backgroundColor: constants.color.border.secondary,
     ...separator({ theme: constants })
   })
 );

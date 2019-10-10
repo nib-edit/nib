@@ -111,7 +111,7 @@ class ImageModal extends PureComponent {
                 >
                   {imageSrc && (
                     <ImageWrapper>
-                      <StyledImage src={imageSrc} alt="uploaded" />
+                      <StyledImage src={imageSrc} alt="uploaded_image" />
                     </ImageWrapper>
                   )}
                   <UploadLabel imageSrc={imageSrc}>
@@ -189,15 +189,15 @@ const UploadSection = styled.span(
   ({ theme, uploading, src }) => ({
     border:
       uploading || src
-        ? `1px dashed ${theme.constants.color.highlight}`
-        : `1px dashed ${theme.constants.color.text}`
+        ? `1px dashed ${theme.constants.color.highlight.primary}`
+        : `1px dashed ${theme.constants.color.border.primary}`
   })
 );
 
 const UploadLabel = styled.span(
   { marginTop: 20, textAlign: "center", zIndex: 1, marginBottom: 10 },
   ({ theme: { constants }, imageSrc }) => ({
-    color: imageSrc ? constants.color.background : constants.color.text
+    color: imageSrc ? constants.color.background : constants.color.text.primary
   })
 );
 
