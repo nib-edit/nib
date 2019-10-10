@@ -10,14 +10,14 @@ const getStyles = (customStyles, stateStyles) => {
 
 const getSelectStyle = ({ constants, select }) => ({
   container: getStyles({
-    backgroundColor: constants.color.background,
+    backgroundColor: constants.color.background.primary,
     borderRadius: constants.borderRadius,
     display: "inline-block",
     lineHeight: 1,
     ...select.wrapper
   }),
   control: getStyles({
-    backgroundColor: constants.color.background,
+    backgroundColor: constants.color.background.primary,
     border: "none",
     borderRadius: constants.borderRadius,
     boxShadow: "none",
@@ -35,7 +35,7 @@ const getSelectStyle = ({ constants, select }) => ({
     {
       alignItems: "center",
       display: "flex",
-      color: constants.color.text,
+      color: constants.color.text.primary,
       height: "44px",
       minHeight: "44px",
       padding: "0 8px",
@@ -44,26 +44,26 @@ const getSelectStyle = ({ constants, select }) => ({
     state => ({
       ...(state.isSelected
         ? {
-            backgroundColor: constants.color.background,
-            color: constants.color.highlight
+            backgroundColor: constants.color.background.primary,
+            color: constants.color.highlight.primary
           }
         : {}),
       ...(state.isFocused
         ? {
-            backgroundColor: constants.color.lightHighlight
+            backgroundColor: constants.color.highlight.secondary
           }
         : {})
     })
   ),
   menu: getStyles({
-    backgroundColor: constants.color.background,
-    color: constants.color.text,
+    backgroundColor: constants.color.background.primary,
+    color: constants.color.text.primary,
     width: "188px",
     ...select.menu
   }),
   singleValue: getStyles({
     overflow: "visible",
-    color: constants.color.text,
+    color: constants.color.text.primary,
     fontSize: constants.fontSize.medium,
     fontWeight: constants.fontWeight.medium,
     ...select.label

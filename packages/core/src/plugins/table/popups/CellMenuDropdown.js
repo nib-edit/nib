@@ -35,12 +35,12 @@ export default class MenuDropdown extends Component {
 const MenuWrapper = styled.div(
   { cursor: "pointer", left: -105, position: "absolute", top: 16 },
   ({ theme: { constants, table } }) => ({
-    border: constants.border.medium,
-    backgroundColor: constants.color.background,
-    color: constants.color.text,
+    border: constants.border.primary,
+    backgroundColor: constants.color.background.primary,
+    color: constants.color.text.primary,
     fontSize: constants.fontSize.small,
     borderRadius: constants.borderRadius.small,
-    boxShadow: constants.boxShadow.medium,
+    boxShadow: constants.boxShadow.primary,
     ...table.cellMenu.wrapper({ theme: constants })
   })
 );
@@ -52,9 +52,9 @@ const MenuOption = styled.div(
     textAlign: "center"
   },
   ({ theme: { constants, table }, lastOption }) => ({
-    borderBottom: lastOption ? "" : constants.border.medium,
+    borderBottom: lastOption ? "" : constants.border.primary,
     "&:hover": {
-      backgroundColor: constants.color.lightHighlight
+      backgroundColor: constants.color.highlight.secondary
     },
 
     ...table.cellMenu.option({ theme: constants })

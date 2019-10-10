@@ -88,10 +88,10 @@ const InnerWrapper = styled.div(
   },
   ({ theme: { constants, modal } }) => ({
     borderRadius: constants.borderRadius.small,
-    boxShadow: constants.boxShadow.medium,
+    boxShadow: constants.boxShadow.primary,
 
-    backgroundColor: constants.color.background,
-    color: constants.color.text,
+    backgroundColor: constants.color.background.primary,
+    color: constants.color.text.primary,
 
     fontSize: constants.fontSize.large,
 
@@ -107,7 +107,7 @@ const Header = styled.div(
     padding: "12px 24px"
   },
   ({ theme: { constants, modal } }) => ({
-    boxShadow: constants.boxShadow.light,
+    boxShadow: constants.boxShadow.secondary,
 
     ...modal.header({ theme: constants })
   })

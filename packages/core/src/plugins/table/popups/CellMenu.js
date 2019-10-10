@@ -67,9 +67,9 @@ const StyledIcon = styled(Icon)(
     width: 20
   },
   ({ theme: { constants, table } }) => ({
-    fill: constants.color.lightText,
+    fill: constants.color.text.secondary,
     "&:hover": {
-      fill: constants.color.text
+      fill: constants.color.text.primary
     },
     ...table.cellMenu.icon({ theme: constants })
   })

@@ -6,10 +6,22 @@ import defaultValue from "./sampleData";
 
 const customTheme = {
   color: {
-    highlight: "#757575",
-    lightHighlight: "bdbdbd",
-    text: "#ffffff",
-    background: "#212121"
+    highlight: { secondary: "#424242" },
+    text: { primary: "#e0e0e0", secondary: "#bdbdbd" },
+    background: {
+      primary: "#212121",
+      secondary: "#424242"
+    },
+    border: {
+      primary: "#636363"
+    },
+    blurMarker: "#616161"
+  },
+  border: {
+    primary: "1px solid #636363"
+  },
+  boxShadow: {
+    secondary: "#424242 0px 1px 0px"
   }
 };
 

@@ -18,15 +18,15 @@ const StyledButton = styled.button(
     transition: "all 0.2s ease"
   },
   ({ theme: { constants, button }, disabled }) => ({
-    backgroundColor: constants.color.background,
-    color: constants.color.text,
+    backgroundColor: constants.color.background.primary,
+    color: constants.color.text.primary,
     fontSize: constants.fontSize.medium,
 
     ":hover": {
-      color: constants.color.highlight
+      color: constants.color.highlight.primary
     },
     ":focus": {
-      color: constants.color.highlight,
+      color: constants.color.highlight.primary,
       outline: "none"
     },
 

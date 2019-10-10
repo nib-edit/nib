@@ -1,9 +1,8 @@
-// todo: use theme variables here
-export default () => `
+export default ({ constants }) => `
   .ProseMirror code {
-    background-color: #f5f5f5;
-    border-radius: 2px;
-    border: 1px solid #e0e0e0;
-    color: #212121;
+    background-color: ${constants.color.background.secondary};
+    border-radius: ${constants.borderRadius.small};
+    border: ${constants.border.light};
+    color: ${constants.color.text.secondary};
   }
 `;

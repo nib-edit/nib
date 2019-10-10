@@ -9,6 +9,7 @@ export default (plugins, addons) => {
     if (plugin.styles) styleArray.push(plugin.styles);
     return styleArray;
   }, []);
+  styles.push(Plugins.common.styles);
   return theme =>
     styles.reduce((styleStr, styleFn) => styleStr + styleFn(theme), "");
 };

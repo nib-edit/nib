@@ -21,8 +21,8 @@ const StyledSpinner = styled.div(
     width: 24
   },
   ({ theme: { constants, spinner = {} } }) => ({
-    borderColor: constants.color.border,
-    borderTopColor: constants.color.highlight,
+    borderColor: constants.color.border.primary,
+    borderTopColor: constants.color.highlight.primary,
 
     ...spinner({ theme: constants })
   })

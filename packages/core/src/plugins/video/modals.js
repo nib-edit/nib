@@ -119,8 +119,8 @@ const VideoWrapper = styled.span(
   },
   ({ theme: { constants }, videoSrc }) => ({
     border: videoSrc
-      ? `1px dashed ${constants.color.highlight}`
-      : `1px dashed ${constants.color.highlight.text}`
+      ? `1px dashed ${constants.color.highlight.primary}`
+      : `1px dashed ${constants.color.border.primary}`
   })
 );
 

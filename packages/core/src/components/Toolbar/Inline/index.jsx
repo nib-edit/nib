@@ -58,8 +58,8 @@ const Wrapper = styled.div(
     userSelect: "none"
   },
   ({ theme: { constants, toolbar } }) => ({
-    backgroundColor: constants.color.background,
-    color: constants.color.text,
+    backgroundColor: constants.color.background.primary,
+    color: constants.color.text.primary,
     fontSize: constants.fontSize.medium,
     borderRadius: constants.borderRadius.large,
 

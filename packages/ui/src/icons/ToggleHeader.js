@@ -15,37 +15,37 @@ export default ({ fill, ...rest }) => (
         <path
           d="M1038.5,487 L1038.5,501"
           id="Line-2-Copy-2"
-          stroke="#212121"
+          stroke={fill}
           strokeLinecap="square"
         />
         <path
           d="M1052.5,487 L1052.5,501"
           id="Line-2-Copy-7"
-          stroke="#212121"
+          stroke={fill}
           strokeLinecap="square"
         />
         <path
           d="M1045.5,487 L1045.5,491.5"
           id="Line-2-Copy-8"
-          stroke="#212121"
+          stroke={fill}
           strokeLinecap="square"
         />
         <path
           d="M1039,487 L1052,487"
           id="Line"
-          stroke="#212121"
+          stroke={fill}
           strokeLinecap="square"
         />
         <path
           d="M1039,492 L1052,492"
           id="Line-Copy-7"
-          stroke="#212121"
+          stroke={fill}
           strokeLinecap="square"
         />
         <path
           d="M1039,501 L1052,501"
           id="Line-Copy-6"
-          stroke="#212121"
+          stroke={fill}
           strokeLinecap="square"
         />
         <rect
