@@ -33,7 +33,6 @@ const styles = ({ color, fontFamily, fontSize }) => ({
     display: "flex",
     alignItems: "center",
     cursor: "pointer",
-    marginTop: "20px",
     "&:hover": {
       color: color.linkHover,
       marginTop: "20px",
@@ -64,7 +63,7 @@ export function TableOfContentsRenderer({ classes, children }) {
         <nav>{children}</nav>
         <nav className={classes.github}>
           <a
-            href="https://github.com/nib-edit"
+            href="https://github.com/nib-edit/Nib"
             target="_blank"
             style={{
               display: "flex",

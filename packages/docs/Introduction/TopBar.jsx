@@ -7,10 +7,11 @@ import React, { PureComponent } from "react";
 import Editor from "nib-core";
 
 import uploadCallback from "../common/uploadCallback";
+import data from "./data";
 
 const theme = {
   editor: () => ({
-    height: "200px"
+    height: "440px"
   })
 };
 
@@ -37,7 +38,9 @@ class TopBar extends PureComponent {
                 options: "top"
               }
             }}
+            defaultValue={data}
             styleConfig={theme}
+            // onChange={val => console.log(JSON.stringify(val))}
           />
         </div>
       </div>
