@@ -1,4 +1,7 @@
 node_modules
 build
 styleguide/build
-packages/docs/node_modules
+.DS_Store
+./styleguide
+.env
+packages/advance 
