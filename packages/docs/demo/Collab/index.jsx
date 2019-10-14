@@ -6,7 +6,7 @@ import CollabPlugin from "nib-collab-client";
 
 const user = { id: Math.floor(Math.random() * 0xffffffff), name: 'Anonymous user' }
 const collab = new CollabPlugin({
-  serviceURL: "ws://localhost:3000",
+  serviceURL: "ws://nib-collab.herokuapp.com",
   user
 });
 
