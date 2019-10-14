@@ -40,7 +40,6 @@ class TopBar extends PureComponent {
             }}
             defaultValue={data}
             styleConfig={theme}
-            // onChange={val => console.log(JSON.stringify(val))}
           />
         </div>
       </div>

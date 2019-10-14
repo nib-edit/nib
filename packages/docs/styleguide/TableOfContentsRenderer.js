@@ -35,8 +35,7 @@ const styles = ({ color, fontFamily, fontSize }) => ({
     cursor: "pointer",
     "&:hover": {
       color: color.linkHover,
-      marginTop: "20px",
-      marginLeft: "15px"
+      paddingLeft: 8,
     }
   },
   githubImg: {
