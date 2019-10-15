@@ -4,8 +4,11 @@ import ReactSelect from "react-select";
 
 import CollabPlugin from "nib-collab-client";
 
+import './styles.css'
+
 const user = { id: Math.floor(Math.random() * 0xffffffff), name: 'Anonymous user' }
 const collab = new CollabPlugin({
+  // serviceURL: "ws://localhost:3000",
   serviceURL: "ws://nib-collab.herokuapp.com",
   user
 });
@@ -16,7 +19,7 @@ const collab = new CollabPlugin({
 const Collab = () => {
   const [editorState, setEditorState] = useState();
   const [username, setUsername] = useState("Anonymous user");
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState();
 
   useEffect(() => {
     collab.startSyncing(setUsers)
@@ -25,7 +28,7 @@ const Collab = () => {
     };
   }, []);
 
-  const options = Object.values(users).map(({id, name}) => ({value: id, label: name}))
+  const options = users ? Object.values(users).map(({id, name}) => ({value: id, label: name})) : []
 
   return (
     <div>
@@ -59,11 +62,18 @@ const Collab = () => {
           <ReactSelect value={options.find(({value}) => value === user.id)} options={options} />
         </div>
       </div>
-      <Editor
-        addons={[collab]}
-        defaultValue={editorState}
-        onChange={setEditorState}
-      />
+      <div style={{position: 'relative'}}>
+        {!users && (
+          <div className="nib_message">
+            Connecting to the server...
+          </div>
+        )}
+        <Editor
+          addons={[collab]}
+          defaultValue={editorState}
+          onChange={setEditorState}
+        />
+      </div>
     </div>
   );
 };
