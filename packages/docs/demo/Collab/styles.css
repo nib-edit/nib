@@ -11,3 +11,24 @@
   align-items: center;
   background: white;
 }
+.nib-user-selection {
+  display: inline-block;
+  position: relative;
+  /* animation: blink 0.5s linear infinite; */
+}
+.nib-user-selection::after {
+    content: '';
+    min-width: 1px;
+    height: 100%;
+    background-color: red;
+    display: inline-block;
+    animation: ProseMirror-cursor-blink 1.1s steps(2, start) infinite;
+    /* margin-top: 3px; */
+    position: absolute;
+    right: 0px;
+}
+@keyframes ProseMirror-cursor-blink {
+  to {
+    visibility: hidden;
+  }
+}
