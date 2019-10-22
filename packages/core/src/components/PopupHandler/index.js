@@ -86,6 +86,7 @@ class PopupHandler extends PureComponent {
           } = popup;
           return (
             <TablePopupComponent
+              key={`popup_${popup.name}`}
               pmstate={pmstate}
               editorWrapper={editorWrapper}
               marker={tableMarker}

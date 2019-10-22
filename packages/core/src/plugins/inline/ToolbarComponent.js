@@ -71,12 +71,13 @@ class ToolbarComponent extends PureComponent {
     const { marks } = schema;
     const { code } = marks;
     if ((schema, code.isInSet(this.getActiveMarks()))) {
-      tr.removeMark($from.pos, $to.pos, code);
+      tr.removeMark($from.pos, $to.pos, code).setStoredMarks([]);
     } else {
       Object.values(marks).forEach(mark => {
         tr.removeMark($from.pos, $to.pos, mark);
       });
-      tr.addMark($from.pos, $to.pos, code.create());
+      const codeMark = code.create()
+      tr.addMark($from.pos, $to.pos, codeMark).setStoredMarks([codeMark])
     }
     dispatch(tr);
   };

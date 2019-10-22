@@ -1,6 +1,6 @@
 {
   "name": "nib-core",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "Wysiwyg editor",
   "main": "./index.js",
   "repository": {

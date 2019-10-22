@@ -71,7 +71,7 @@ class TableMenuPopup extends PureComponent {
           <Wrapper onMouseDown={evt => evt.preventDefault()}>
             {Commands.map(({ title, name, icon }) => (
               <ToolbarButton
-                key={name}
+                key={`table_menu_option-${name}`}
                 onClick={this.updateTable}
                 name={name}
                 title={title}
@@ -101,10 +101,11 @@ export default {
     const { state, domAtPos } = pmview;
     const { selection, schema } = state;
     const { table } = schema.nodes;
-    return findParentDomRef(
+    const tableWrapper = findParentDomRef(
       ({ type }) => type === table,
       domAtPos.bind(pmview)
-    )(selection);
+    )(selection)
+    return tableWrapper && tableWrapper.firstChild;
   },
   condition: view => {
     const { state } = view;

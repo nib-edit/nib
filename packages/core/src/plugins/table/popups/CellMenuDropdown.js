@@ -41,6 +41,7 @@ const MenuWrapper = styled.div(
     fontSize: constants.fontSize.small,
     borderRadius: constants.borderRadius.small,
     boxShadow: constants.boxShadow.primary,
+
     ...table.cellMenu.wrapper({ theme: constants })
   })
 );
