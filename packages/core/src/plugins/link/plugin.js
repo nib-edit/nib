@@ -31,13 +31,21 @@ export default new Plugin({
     apply(tr, prev, _, newState) {
       const link = getLink(newState);
 
+      const editorFocusState = tr.getMeta("editor-focused");
+      if (editorFocusState !== undefined) {
+        return {
+          ...prev,
+          editorFocusState
+        };
+      }
+
       if (tr.getMeta("hide-all-popups")) {
         return {
           link,
+          editorFocusState: prev.editorFocusState,
           createDecoration: undefined,
           showAddLinkToolbar: false,
           editDecoration: undefined,
-          showEditLinkToolbar: false
         };
       }
 
@@ -54,13 +62,11 @@ export default new Plugin({
         return {
           ...prev,
           link,
-          showEditLinkToolbar: false,
           editDecoration: undefined
         };
       }
 
       let { createDecoration, editDecoration } = prev;
-      const { showEditLinkToolbar } = prev;
 
       if (tr.getMeta("show-add-link-toolbar") === true) {
         const { $from, $to } = newState.selection;
@@ -79,6 +85,7 @@ export default new Plugin({
         }
         return {
           link,
+          editorFocusState: prev.editorFocusState,
           createDecoration,
           showAddLinkToolbar: true
         };
@@ -86,9 +93,7 @@ export default new Plugin({
 
       if (
         link &&
-        (tr.getMeta("show-edit-link-toolbar") === true ||
-          showEditLinkToolbar ||
-          tr.getMeta("editor-focused"))
+        prev.editorFocusState
       ) {
         if (
           !editDecoration ||
@@ -101,7 +106,7 @@ export default new Plugin({
             })
           ]);
         }
-        return { link, editDecoration, showEditLinkToolbar: true };
+        return { link, editDecoration, editorFocusState: prev.editorFocusState, };
       }
 
       if (!link)
@@ -109,7 +114,6 @@ export default new Plugin({
           ...prev,
           link,
           editDecoration: undefined,
-          showEditLinkToolbar: tr.getMeta("show-edit-link-toolbar")
         };
 
       return {
@@ -129,18 +133,5 @@ export default new Plugin({
         dispatch(state.tr.setMeta("show-add-link-toolbar", false));
       }
     },
-    handleClickOn(view) {
-      const { state, dispatch } = view;
-      const link = getLink(state);
-      if (link) dispatch(state.tr.setMeta("show-edit-link-toolbar", true));
-      else {
-        dispatch(state.tr.setMeta("show-add-link-toolbar", false));
-      }
-    },
-    handleKeyDown(view) {
-      const { state, dispatch } = view;
-      const link = getLink(state);
-      if (link) dispatch(state.tr.setMeta("show-edit-link-toolbar", true));
-    }
   }
 });
