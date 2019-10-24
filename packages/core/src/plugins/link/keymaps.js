@@ -3,9 +3,9 @@ const showLinkToolbar = () => (state, dispatch) => {
 };
 
 export default {
-  "mod-k": (state, dispatch) => showLinkToolbar()(state, dispatch)
+  "Mod-k": (state, dispatch) => showLinkToolbar()(state, dispatch)
 };
 
 export const KeymapInfo = {
-  link: { key: "mod-K", label: "Link" }
+  link: { key: "Mod-K", label: "Link" }
 };

@@ -3,9 +3,9 @@ const showHelp = () => (state, dispatch) => {
 };
 
 export default {
-  "mod-/": (state, dispatch) => showHelp()(state, dispatch)
+  "Mod-/": (state, dispatch) => showHelp()(state, dispatch)
 };
 
 export const KeymapInfo = {
-  help: { key: "mod-/", label: "Help" }
+  help: { key: "Mod-/", label: "Help" }
 };

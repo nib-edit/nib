@@ -11,4 +11,4 @@ Editor with Link option enabled. Click the toolbar option to see link creation p
 
 | S.No. | Keyboard Shortcut | Description                |
 | ----- | ----------------- | -------------------------- |
-| 1     | cmd-k / ctrl-k    | show modal for adding link |
+| 1     | Cmd-k / Ctrl-k    | show modal for adding link |

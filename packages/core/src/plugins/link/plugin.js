@@ -45,7 +45,7 @@ export default new Plugin({
           editorFocusState: prev.editorFocusState,
           createDecoration: undefined,
           showAddLinkToolbar: false,
-          editDecoration: undefined,
+          editDecoration: undefined
         };
       }
 
@@ -91,10 +91,7 @@ export default new Plugin({
         };
       }
 
-      if (
-        link &&
-        prev.editorFocusState
-      ) {
+      if (link && prev.editorFocusState) {
         if (
           !editDecoration ||
           (prev.link &&
@@ -106,14 +103,18 @@ export default new Plugin({
             })
           ]);
         }
-        return { link, editDecoration, editorFocusState: prev.editorFocusState, };
+        return {
+          link,
+          editDecoration,
+          editorFocusState: prev.editorFocusState
+        };
       }
 
       if (!link)
         return {
           ...prev,
           link,
-          editDecoration: undefined,
+          editDecoration: undefined
         };
 
       return {
@@ -132,6 +133,6 @@ export default new Plugin({
         const { state, dispatch } = view;
         dispatch(state.tr.setMeta("show-add-link-toolbar", false));
       }
-    },
+    }
   }
 });

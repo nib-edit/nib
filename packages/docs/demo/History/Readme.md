@@ -11,5 +11,5 @@ Editor with history option enabled. <a target="_blank" href="https://github.com/
 
 | S.No. | Keyboard Shortcut          | Description |
 | ----- | -------------------------- | ----------- |
-| 1     | cmd-z / ctrl-z             | undo        |
-| 2     | cmd-shift-z / ctrl-shift-z | redo        |
+| 1     | Cmd-z / Ctrl-z             | undo        |
+| 2     | Cmd-Shift-z / Ctrl-Shift-z | redo        |
