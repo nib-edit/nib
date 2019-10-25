@@ -4,17 +4,16 @@ import {
   wrapInList
 } from "prosemirror-schema-list";
 
-const liftToRoot = (listType, view) => {
-  let selPos = view.state.selection.$from.depth;
+const liftToRoot = (listType, state, dispatch) => {
+  let selPos = state.selection.$from.depth;
   while (selPos > 1) {
-    liftListItem(listType)(view.state, view.dispatch);
-    selPos = view.state.selection.$from.depth;
+    liftListItem(listType)(state, dispatch);
+    selPos -= 2;
   }
   return true;
 };
 
-export const toggleListCmd = (view, listTypeName) => {
-  const { state, dispatch } = view;
+export const toggleListCmd = listTypeName => (state, dispatch) => {
   const {
     selection: { $anchor },
     schema: { nodes }
@@ -25,10 +24,10 @@ export const toggleListCmd = (view, listTypeName) => {
   const listItemNodeName = listItemNode && listItemNode.type.name;
   if (listItemNodeName === nodes.listItem.name) {
     if (listItemTypeNodeName !== listTypeName) {
-      liftListItem(nodes.listItem)(view.state, view.dispatch);
-      return wrapInList(nodes[listTypeName])(view.state, dispatch);
+      liftListItem(nodes.listItem)(state, dispatch);
+      return wrapInList(nodes[listTypeName])(state, dispatch);
     }
-    return liftToRoot(nodes.listItem, view);
+    return liftToRoot(nodes.listItem, state, dispatch);
   }
   return wrapInList(nodes[listTypeName])(state, dispatch);
 };

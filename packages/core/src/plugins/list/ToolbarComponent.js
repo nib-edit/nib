@@ -14,7 +14,8 @@ class ToolbarComponent extends PureComponent {
     const listType = evt.currentTarget.getAttribute("name");
     const { pmstate } = this.props;
     const { pmview } = pmstate;
-    toggleListCmd(pmview, listType);
+    const { state, dispatch } = pmview;
+    toggleListCmd(listType)(state, dispatch);
   };
 
   getSelectedListType = () => {
