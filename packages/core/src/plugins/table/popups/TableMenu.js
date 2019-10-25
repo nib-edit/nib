@@ -98,16 +98,18 @@ TableMenuPopup.propTypes = {
 export default {
   name: "table_menu",
   getMarker: pmview => {
+    if (!pmview.hasFocus()) return undefined;
     const { state, domAtPos } = pmview;
     const { selection, schema } = state;
     const { table } = schema.nodes;
     const tableWrapper = findParentDomRef(
       ({ type }) => type === table,
       domAtPos.bind(pmview)
-    )(selection)
+    )(selection);
     return tableWrapper && tableWrapper.firstChild;
   },
   condition: view => {
+    if (!view.hasFocus()) return undefined;
     const { state } = view;
     const { schema, selection } = state;
     const { table } = schema.nodes;
