@@ -8,6 +8,29 @@ import comments from "./savedComments";
 
 import "./styles.css";
 
+// const customTheme = {
+//   color: {
+//     highlight: { secondary: "#424242" },
+//     backgroundHighlight: { primary: "#e0e0e0", secondary: "#e0e0e0bf" },
+//     textHighlight: { primary: "#212121" },
+//     text: { primary: "#e0e0e0", secondary: "#bdbdbd" },
+//     background: {
+//       primary: "#212121",
+//       secondary: "#424242"
+//     },
+//     border: {
+//       primary: "#636363"
+//     },
+//     blurMarker: "#616161"
+//   },
+//   border: {
+//     primary: "1px solid #636363"
+//   },
+//   boxShadow: {
+//     secondary: "#424242 0px 1px 0px"
+//   }
+// };
+
 const commenter = new CommentPlugin(comments, {
   userid: "12345",
   username: "Anonymous user"
@@ -69,6 +92,7 @@ const Comment = () => {
           toolbar: { options: "top", top: { options: "block inline list" } }
         }}
         addons={[commenter]}
+        // theme={customTheme}
         defaultValue={defaultValue}
       />
     </div>
