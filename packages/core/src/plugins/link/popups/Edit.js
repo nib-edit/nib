@@ -11,8 +11,9 @@ import { linkPluginKey } from "../plugin";
 class EditPopup extends PureComponent {
   constructor(props) {
     super(props);
+    const link = this.getLink();
     this.state = {
-      href: ""
+      href: link.href
     };
   }
 
@@ -39,11 +40,12 @@ class EditPopup extends PureComponent {
     const { href } = this.state;
     dispatch(
       state.tr
+        .setSelection(TextSelection.create(state.tr.doc, link.to))
         .removeMark(link.from, link.to, state.schema.marks.link)
         .addMark(link.from, link.to, state.schema.marks.link.create({ href }))
-        .setSelection(new TextSelection(state.doc.resolve(link.to - 1)))
     );
     this.closePopup();
+    pmview.focus();
   };
 
   unLink = () => {

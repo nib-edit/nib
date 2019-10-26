@@ -9,12 +9,19 @@ const getLink = state => {
     schema: { marks },
     doc
   } = state;
+  const fromLinkMark = $from.marks().find(mark => mark.type === marks.link);
+  const toLinkMark = $to.marks().find(mark => mark.type === marks.link);
   let link;
   doc.nodesBetween($from.pos, $to.pos, (node, from) => {
     if (node.marks) {
       const linkMark = node.marks.find(mark => mark.type === marks.link);
       if (linkMark) {
-        link = { from, to: from + node.nodeSize, href: linkMark.attrs.href };
+        link = {
+          from,
+          to: from + node.nodeSize,
+          href: linkMark.attrs.href,
+          contained: !fromLinkMark || !toLinkMark || fromLinkMark === toLinkMark
+        };
       }
     }
   });
@@ -91,7 +98,7 @@ export default new Plugin({
         };
       }
 
-      if (link && prev.editorFocusState) {
+      if (link && link.contained && prev.editorFocusState) {
         if (
           !editDecoration ||
           (prev.link &&
