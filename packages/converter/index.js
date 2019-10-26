@@ -43,9 +43,9 @@ const getHTMLString = node => {
         ""
       );
     const htmlTag = domDetails[0];
-    strContent = `<${htmlTag}${htmlAttrs}>${strContent}</${htmlTag}>`;
+    strContent = `<${htmlTag}${htmlAttrs}>${strContent || "<br>"}</${htmlTag}>`;
     if (node.type.name === "image") {
-      strContent = `<p style="display:flex;justify-content:center;">${strContent}</p>`;
+      strContent = `<p style="text-align: center;">${strContent}<br></p>`;
     }
   }
   return strContent;

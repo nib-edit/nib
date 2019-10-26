@@ -58,7 +58,7 @@ const getSelectStyle = ({ constants, select }) => ({
   menu: getStyles({
     backgroundColor: constants.color.background.primary,
     color: constants.color.text.primary,
-    width: "188px",
+    width: "212px",
     ...select.menu
   }),
   singleValue: getStyles({
