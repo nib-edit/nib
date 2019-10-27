@@ -32,18 +32,25 @@ const getPosition = (marker, popupElm, editorWrapper) => {
     : {};
 
   let arrowDir = "TOP";
-  // Finding left offset of popup
   let left = markerDim.left - wrapperDim.left;
   // Center aligning popup on marker element
   left += (markerDim.width - popupWidth) / 2;
 
   let arrowLeft;
   if (left < 3) {
-    arrowLeft = left + ARROW_MIN_DISTANCE;
+    if (left * -1 > popupWidth / 2)
+      arrowLeft = ARROW_MIN_DISTANCE - popupWidth / 2;
+    else arrowLeft = left + ARROW_MIN_DISTANCE;
     left = MIN_LEFT;
+  }
+  if (markerDim.width > wrapperDim.width) {
+    left = `calc(50% - ${popupWidth / 2}px)`;
+    arrowLeft = 0;
   } else if (left + popupWidth > wrapperDim.width) {
-    arrowLeft = left + popupWidth - wrapperDim.width;
-    left = wrapperDim.width - popupWidth;
+    if (left > wrapperDim.width)
+      arrowLeft = popupWidth / 2 - ARROW_MIN_DISTANCE;
+    else arrowLeft = left + popupWidth - wrapperDim.width;
+    left = wrapperDim.width - popupWidth - 4;
     if (left < MIN_LEFT) left = MIN_LEFT;
   }
 

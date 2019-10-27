@@ -24,7 +24,8 @@ export default class ImageView {
   }
 
   update = node => {
-    if (node.attrs.height === this.prevHeight) return true;
+    if (node.attrs.height === this.prevHeight || !this.resizeHandles.length)
+      return true;
     this.prevHeight = node.attrs.height;
     this.img.style = `height:${node.attrs.height};outline:2px solid #2962ff`;
     return true;
@@ -66,7 +67,6 @@ export default class ImageView {
     if (!this.resizing) return;
     this.resizing = false;
     this.dir = undefined;
-    this.cleanupResizeHandles();
   };
 
   handleResizeHandleMouseDown = evt => {

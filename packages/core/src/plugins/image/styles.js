@@ -1,8 +1,7 @@
-// todo: use theme variables here
-export default () => `
+export default ({ constants }) => `
   .nib-image-outer-wrapper {
     display: flex;
-    justofy-content: center;
+    justify-content: center;
     &:focus {
       outline: none;
     }
@@ -15,9 +14,6 @@ export default () => `
     > img {
       width: auto;
     }
-    > img:focus {
-      outline: 2px solid #2962ff;
-    }
   }
 
   .nib-image-resize-lt {
@@ -28,12 +24,12 @@ export default () => `
     left: -5px;
     top: -5px;
 
-    background-color: #2962ff;
+    background-color: ${constants.color.highlight.primary};
     cursor: nwse-resize;
   }
 
   .nib-image-resize-rb {
-    background-color: #2962ff;
+    background-color: ${constants.color.highlight.primary};
     bottom: 0px;
     cursor: nwse-resize;
   
@@ -44,7 +40,7 @@ export default () => `
   }
 
   .nib-image-resize-lb {
-    background-color: #2962ff;
+    background-color: ${constants.color.highlight.primary};
     bottom: 0px;
     cursor: nesw-resize;
   
@@ -55,7 +51,7 @@ export default () => `
   }
 
   .nib-image-resize-rt {
-    background-color: #2962ff;
+    background-color: ${constants.color.highlight.primary};
     cursor: nesw-resize;
 
     height: 10px;
