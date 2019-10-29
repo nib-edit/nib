@@ -1,12 +1,12 @@
 import { sinkListItem, liftListItem } from "prosemirror-schema-list";
 import { toggleListCmd, splitListItemCmd } from "./commands";
 
-export default {
+export default viewProvider => ({
   "Mod-Shift-7": (state, dispatch) => {
-    return toggleListCmd("orderedList")(state, dispatch);
+    return toggleListCmd("orderedList", viewProvider())(state, dispatch);
   },
   "Mod-Shift-8": (state, dispatch) => {
-    return toggleListCmd("bulletList")(state, dispatch);
+    return toggleListCmd("bulletList", viewProvider())(state, dispatch);
   },
   Enter: (state, dispatch) => {
     return splitListItemCmd()(state, dispatch);
@@ -17,7 +17,7 @@ export default {
   "Shift-Tab": (state, dispatch) => {
     return liftListItem(state.schema.nodes.listItem)(state, dispatch);
   }
-};
+});
 
 export const KeymapInfo = {
   orderedList: { key: "Mod-Shift-7", label: "Numbered List" },

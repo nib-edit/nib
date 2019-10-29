@@ -5,7 +5,7 @@ const changeBlockType = (blockTypeName, attrs) => (state, dispatch) => {
   return setBlockType(blockType, attrs)(state, dispatch);
 };
 
-export default {
+export default () => ({
   "Mod-Alt-0": (state, dispatch) =>
     changeBlockType("paragraph")(state, dispatch),
   "Mod-Alt-1": (state, dispatch) =>
@@ -20,7 +20,7 @@ export default {
     changeBlockType("heading", { level: 5 })(state, dispatch),
   "Mod-Alt-6": (state, dispatch) =>
     changeBlockType("heading", { level: 6 })(state, dispatch)
-};
+});
 
 export const KeymapInfo = {
   p: { key: "Mod-Alt-0", label: "Paragraph" },

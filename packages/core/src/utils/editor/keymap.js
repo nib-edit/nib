@@ -38,11 +38,11 @@ const combineKeyMaps = keyMaps => {
   return map;
 };
 
-export default plugins => {
+export default (plugins, viewProvider) => {
   let addedMap = {};
   plugins.forEach(plugin => {
     if (plugin && plugin.keymaps) {
-      addedMap = addKeyMaps(addedMap, plugin.keymaps);
+      addedMap = addKeyMaps(addedMap, plugin.keymaps(viewProvider));
     }
   });
   addedMap = addKeyMaps(addedMap, baseKeymap);

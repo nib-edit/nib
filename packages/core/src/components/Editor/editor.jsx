@@ -18,6 +18,7 @@ const Editor = ({ defaultValue, autoFocus, spellCheck, addons, onChange }) => {
   } = useConfigContext();
   const pmstate = usePMStateContext();
   let [view] = useState();
+  const viewProvider = () => view;
 
   const updateViewListeners = () => {
     dispatcher.dispatch(view);
@@ -30,7 +31,7 @@ const Editor = ({ defaultValue, autoFocus, spellCheck, addons, onChange }) => {
     const pluginList = getPluginList(
       `${plugins.options} history common`
     ).concat(addons);
-    const state = buildEditorState(pluginList, defaultValue);
+    const state = buildEditorState(pluginList, defaultValue, viewProvider);
     view = new EditorView(editorRef.current, {
       state,
       dispatchTransaction: tr => {

@@ -5,7 +5,7 @@ const insertHardBreak = () => (state, dispatch) => {
   dispatch(state.tr.replaceSelectionWith(hardBreak.create()));
 };
 
-export default {
+export default () => ({
   "Shift-Enter": (state, dispatch) => insertHardBreak()(state, dispatch),
   "Mod-a": (state, dispatch) => {
     const textSelection = new TextSelection(
@@ -15,7 +15,7 @@ export default {
     dispatch(state.tr.setSelection(textSelection));
     return true;
   }
-};
+});
 
 export const KeymapInfo = {
   help: { key: "Shift-Enter", label: "Soft newline" }

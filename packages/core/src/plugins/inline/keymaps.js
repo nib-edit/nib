@@ -5,7 +5,7 @@ const toggleMarkofType = (markTypeName, attrs) => (state, dispatch) => {
   return toggleMark(markType, attrs)(state, dispatch);
 };
 
-export default {
+export default () => ({
   "Mod-b": (state, dispatch) => toggleMarkofType("strong")(state, dispatch),
   "Mod-i": (state, dispatch) =>
     toggleMarkofType("em", { level: 1 })(state, dispatch),
@@ -15,7 +15,7 @@ export default {
     toggleMarkofType("strike", { level: 2 })(state, dispatch),
   "Mod-Shift-m": (state, dispatch) =>
     toggleMarkofType("code", { level: 2 })(state, dispatch)
-};
+});
 
 export const KeymapInfo = {
   strong: { key: "Mod-B", label: "Bold" },

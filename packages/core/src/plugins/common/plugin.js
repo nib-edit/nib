@@ -50,10 +50,11 @@ export default new Plugin({
       ]);
     },
     handleKeyDown(view, event) {
+      const { state, dispatch } = view;
       if (event.key === "Escape") {
-        const { state, dispatch } = view;
         dispatch(state.tr.setMeta("hide-all-popups", true));
       }
+      return false;
     }
   }
 });

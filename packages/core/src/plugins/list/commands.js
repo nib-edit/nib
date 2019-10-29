@@ -3,6 +3,7 @@ import {
   splitListItem,
   wrapInList
 } from "prosemirror-schema-list";
+import * as baseCommand from "prosemirror-commands";
 
 const liftToRoot = (listType, state, dispatch) => {
   let selPos = state.selection.$from.depth;
@@ -13,7 +14,14 @@ const liftToRoot = (listType, state, dispatch) => {
   return true;
 };
 
-export const toggleListCmd = listTypeName => (state, dispatch) => {
+const wrapIntoList = (state, dispatch, listType) => {
+  return baseCommand.autoJoin(
+    wrapInList(listType),
+    (before, after) => before.type === after.type && before.type === listType
+  )(state, dispatch);
+};
+
+export const toggleListCmd = (listTypeName, view) => (state, dispatch) => {
   const {
     selection: { $anchor },
     schema: { nodes }
@@ -25,11 +33,11 @@ export const toggleListCmd = listTypeName => (state, dispatch) => {
   if (listItemNodeName === nodes.listItem.name) {
     if (listItemTypeNodeName !== listTypeName) {
       liftListItem(nodes.listItem)(state, dispatch);
-      return wrapInList(nodes[listTypeName])(state, dispatch);
+      return wrapIntoList(view.state, dispatch, nodes[listTypeName]);
     }
     return liftToRoot(nodes.listItem, state, dispatch);
   }
-  return wrapInList(nodes[listTypeName])(state, dispatch);
+  return wrapIntoList(state, dispatch, nodes[listTypeName]);
 };
 
 export const splitListItemCmd = () => (state, dispatch) => {
