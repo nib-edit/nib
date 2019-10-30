@@ -17,7 +17,11 @@ export default {
 
     opaque: "#00000080",
 
-    blurMarker: "rgb(220,220,220)"
+    blurMarker: "rgb(220,220,220)",
+
+    error: {
+      primary: "#ff1744"
+    }
   },
   fontSize: {
     extraLarge: "20px",

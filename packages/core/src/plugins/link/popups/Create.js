@@ -11,14 +11,20 @@ class CreatePopup extends PureComponent {
     super(props);
     this.state = {
       linkText: this.getSelectedText(),
-      href: ""
+      href: "",
+      linkTextRequiredError: false
     };
   }
 
   updateValue = evt => {
-    this.setState({
-      [`${evt.target.name}`]: evt.target.value
-    });
+    const { name, value } = evt.target;
+    const newState = {
+      [`${name}`]: value
+    };
+    if (name === "linkText" && value) {
+      newState.linkTextRequiredError = false;
+    }
+    this.setState(newState);
   };
 
   getSelectedText = () => {
@@ -33,7 +39,11 @@ class CreatePopup extends PureComponent {
 
   addLink = () => {
     const { linkText, href } = this.state;
-    if (!linkText || !linkText.length) return;
+    if (!linkText || !linkText.length) {
+      this.setState({ linkTextRequiredError: true });
+      return;
+    }
+    this.setState({ linkTextRequiredError: false });
     const { pmstate } = this.props;
     const { pmview } = pmstate;
     const { state, dispatch } = pmview;
@@ -67,7 +77,7 @@ class CreatePopup extends PureComponent {
   };
 
   render() {
-    const { linkText, href } = this.state;
+    const { linkText, href, linkTextRequiredError } = this.state;
     const { editorWrapper, marker } = this.props;
     return (
       <Popup
@@ -85,6 +95,7 @@ class CreatePopup extends PureComponent {
                 onChange={this.updateValue}
                 onKeyPress={this.handleKeyDown}
                 value={linkText}
+                error={linkTextRequiredError}
               />
               <Input
                 placeholder="Href"

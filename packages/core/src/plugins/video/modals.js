@@ -10,7 +10,7 @@ import { ConfigContext } from "../../context/config";
 class VideoModal extends PureComponent {
   static contextType = ConfigContext;
 
-  state = { videoSrc: "" };
+  state = { videoSrc: "", srcRequiredError: false };
 
   addEmbed = url => {
     if (!url) this.updateVideoSrc("");
@@ -24,12 +24,19 @@ class VideoModal extends PureComponent {
   };
 
   updateVideoSrc = videoSrc => {
-    this.setState({ videoSrc });
+    const { srcRequiredError } = this.state;
+    this.setState({
+      videoSrc,
+      srcRequiredError: srcRequiredError && !videoSrc
+    });
   };
 
   insertVideo = () => {
     const { videoSrc } = this.state;
-    if (!videoSrc) return;
+    if (!videoSrc) {
+      this.setState({ srcRequiredError: true });
+      return;
+    }
     const { hideModal, pmstate } = this.props;
     const { pmview } = pmstate;
     const { state, dispatch } = pmview;
@@ -45,7 +52,7 @@ class VideoModal extends PureComponent {
 
   render() {
     const { hideModal } = this.props;
-    const { videoSrc } = this.state;
+    const { videoSrc, srcRequiredError } = this.state;
     return (
       <Modal
         hideModal={hideModal}
@@ -58,6 +65,7 @@ class VideoModal extends PureComponent {
                 placeholder="Url"
                 autoFocus
                 onChange={evt => this.addEmbed(evt.target.value)}
+                error={srcRequiredError}
               />
               <VideoWrapper
                 videoSrc={videoSrc}

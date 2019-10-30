@@ -3,11 +3,11 @@ import React from "react";
 import styled from "@emotion/styled";
 
 const Input = props => {
-  const { className, label } = props;
+  const { className, label, ...rest } = props;
   return (
     <InputWrapper className={className}>
       {label && <span>{label}</span>}
-      <StyledInput {...props} />
+      <StyledInput {...rest} />
     </InputWrapper>
   );
 };
@@ -44,8 +44,12 @@ const StyledInput = styled.input(
     borderLeft: "none",
     borderRight: "none"
   },
-  ({ theme: { constants, input } }) => ({
-    borderBottom: `1px solid ${constants.color.border.secondary}`,
+  ({ theme: { constants, input }, error }) => ({
+    borderBottom: `1px solid ${
+      error
+        ? `${constants.color.error.primary} !important`
+        : constants.color.border.secondary
+    }`,
 
     backgroundColor: constants.color.background.primary,
     color: constants.color.text.primary,

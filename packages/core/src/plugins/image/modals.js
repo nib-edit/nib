@@ -8,11 +8,14 @@ import NibUpload from "nib-upload";
 import { ConfigContextConsumer } from "../../context/config";
 
 class ImageModal extends PureComponent {
-  state = { uploading: false, imageSrc: "" };
+  state = { uploading: false, imageSrc: "", srcRequiredError: false };
 
   insertImageInEditor = () => {
     const { imageSrc: src } = this.state;
-    if (!src) return;
+    if (!src) {
+      this.setState({ srcRequiredError: true });
+      return;
+    }
     const { pmstate, hideModal } = this.props;
     const { pmview } = pmstate;
     const { state, dispatch } = pmview;
@@ -26,7 +29,11 @@ class ImageModal extends PureComponent {
   };
 
   updateImageSrc = imageSrc => {
-    this.setState({ imageSrc });
+    const { srcRequiredError } = this.state;
+    this.setState({
+      imageSrc,
+      srcRequiredError: srcRequiredError && !imageSrc
+    });
   };
 
   insertImage = file => {
@@ -81,7 +88,7 @@ class ImageModal extends PureComponent {
 
   render() {
     const { hideModal } = this.props;
-    const { uploading, imageSrc } = this.state;
+    const { uploading, imageSrc, srcRequiredError } = this.state;
     return (
       <Modal
         hideModal={hideModal}
@@ -95,6 +102,7 @@ class ImageModal extends PureComponent {
                 autoFocus
                 value={imageSrc}
                 onChange={evt => this.updateImageSrc(evt.target.value)}
+                error={srcRequiredError}
               />
               <StyledLabel htmlFor="fileInput">
                 <FileUploadInput
