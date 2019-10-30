@@ -36,10 +36,10 @@ const formatKey = key => {
   if (os === "Windows") {
     mod = "^";
   }
-  let formattedKey = key.replace("mod", mod);
+  let formattedKey = key.replace("Mod", mod);
   formattedKey = formattedKey.replace(/-/g, " + ");
-  formattedKey = formattedKey.replace("shift", "⇧");
-  formattedKey = formattedKey.replace("alt", "⌥");
+  formattedKey = formattedKey.replace("Shift", "⇧");
+  formattedKey = formattedKey.replace("Alt", "⌥");
   return formattedKey;
 };
 

@@ -11,8 +11,8 @@ export default keymap => {
   let formattedKeymap = "";
   if (keymap.label) formattedKeymap = `${keymap.label} `;
   formattedKeymap += keymap.key;
-  formattedKeymap = formattedKeymap.replace("mod", mod);
-  formattedKeymap = formattedKeymap.replace("shift", "⇧");
-  formattedKeymap = formattedKeymap.replace("alt", "⌥");
+  formattedKeymap = formattedKeymap.replace("Mod", mod);
+  formattedKeymap = formattedKeymap.replace("Shift", "⇧");
+  formattedKeymap = formattedKeymap.replace("Alt", "⌥");
   return formattedKeymap;
 };
