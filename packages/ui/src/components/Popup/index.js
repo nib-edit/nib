@@ -24,7 +24,7 @@ const isSamePos = (oldPos, newPos) => {
 
 // Note: current left alignment does not take care of padding of section,
 // this can be improved in future.
-const getPosition = (marker, popupElm, editorWrapper) => {
+const getPosition = (marker, popupElm, editorWrapper, isScrolling) => {
   const markerDim = marker.getBoundingClientRect();
   const wrapperDim = editorWrapper.getBoundingClientRect();
   const { width: popupWidth = 0, height: popupHeight = 0 } = popupElm
@@ -60,7 +60,7 @@ const getPosition = (marker, popupElm, editorWrapper) => {
     (markerDim.height || BLOCK_HEIGHT) +
     POPUP_DISTANCE_FROM_BLOCK +
     ARROW_HEIGHT;
-  if (top + popupHeight > wrapperDim.height) {
+  if (!isScrolling && top + popupHeight > wrapperDim.height) {
     const newTop =
       markerDim.y -
       wrapperDim.y -
@@ -74,7 +74,7 @@ const getPosition = (marker, popupElm, editorWrapper) => {
   }
 
   let display = "block";
-  if (top < 0) display = "none";
+  if (top < 0 || top > wrapperDim.height) display = "none";
   return {
     popupPosition: { top, left, display },
     arrowPosition: { left: arrowLeft, dir: arrowDir }
@@ -97,7 +97,8 @@ class Popup extends Component {
     const scrollableSection = editorWrapper.current.children[1];
     scrollableSection.addEventListener("scroll", () => {
       this.setState({
-        ...getPosition(marker, wrapperRef.current, editorWrapper.current)
+        ...getPosition(marker, wrapperRef.current, editorWrapper.current, true),
+        scrolling: true
       });
     });
   }
@@ -117,21 +118,22 @@ class Popup extends Component {
     if (isSamePos(oldPos, this.markerPos) && popupPosition) return;
     // eslint-disable-next-line react/no-did-update-set-state
     this.setState({
-      ...getPosition(marker, wrapperRef.current, editorWrapper.current)
+      ...getPosition(marker, wrapperRef.current, editorWrapper.current),
+      scrolling: false
     });
   }
 
   render() {
-    const { render, marker, wrapperRef, overlapToolbar } = this.props;
+    const { render, marker, wrapperRef } = this.props;
     if (!marker) return null;
-    const { popupPosition, arrowPosition } = this.state;
+    const { popupPosition, arrowPosition, scrolling } = this.state;
 
     return (
       <Wrapper
         ref={wrapperRef}
         style={popupPosition}
         marker={marker}
-        overlapToolbar={overlapToolbar}
+        isScrolling={scrolling}
       >
         {arrowPosition.dir === "TOP" ? (
           <ArrowTop left={arrowPosition.left} />
@@ -160,7 +162,7 @@ export default Closeable(Popup);
 
 const Wrapper = styled.div(
   { position: "absolute", padding: "4px 4px 6px 4px;" },
-  ({ theme: { constants, popup }, overlapToolbar }) => ({
+  ({ theme: { constants, popup }, isScrolling }) => ({
     backgroundColor: constants.color.background.primary,
     color: constants.color.text.primary,
 
@@ -168,7 +170,7 @@ const Wrapper = styled.div(
     borderRadius: constants.borderRadius.small,
     boxShadow: constants.boxShadow.primary,
 
-    zIndex: overlapToolbar ? "2" : "0",
+    zIndex: isScrolling ? "0" : "1",
 
     ":focus": {
       outline: "none"
