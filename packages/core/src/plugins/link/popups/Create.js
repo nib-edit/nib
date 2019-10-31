@@ -85,6 +85,7 @@ class CreatePopup extends PureComponent {
         onClickOutsideEditor={this.closePopup}
         editorWrapper={editorWrapper}
         marker={marker}
+        overlapToolbar
         render={() => (
           <Wrapper>
             <InputWrapper>

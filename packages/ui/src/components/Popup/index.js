@@ -73,14 +73,19 @@ const getPosition = (marker, popupElm, editorWrapper) => {
     }
   }
 
+  let display = "block";
+  if (top < 0) display = "none";
   return {
-    popupPosition: { top, left },
+    popupPosition: { top, left, display },
     arrowPosition: { left: arrowLeft, dir: arrowDir }
   };
 };
 
 class Popup extends Component {
-  state = { popupPosition: { top: 0 }, arrowPosition: { dir: "TOP" } };
+  state = {
+    popupPosition: { top: 0 },
+    arrowPosition: { dir: "TOP" }
+  };
 
   componentDidMount() {
     const { marker, editorWrapper, wrapperRef } = this.props;
@@ -89,6 +94,12 @@ class Popup extends Component {
         ...getPosition(marker, wrapperRef.current, editorWrapper.current)
       });
     }
+    const scrollableSection = editorWrapper.current.children[1];
+    scrollableSection.addEventListener("scroll", () => {
+      this.setState({
+        ...getPosition(marker, wrapperRef.current, editorWrapper.current)
+      });
+    });
   }
 
   componentDidUpdate() {
@@ -111,12 +122,17 @@ class Popup extends Component {
   }
 
   render() {
-    const { render, marker, wrapperRef } = this.props;
+    const { render, marker, wrapperRef, overlapToolbar } = this.props;
     if (!marker) return null;
     const { popupPosition, arrowPosition } = this.state;
 
     return (
-      <Wrapper ref={wrapperRef} style={popupPosition} marker={marker}>
+      <Wrapper
+        ref={wrapperRef}
+        style={popupPosition}
+        marker={marker}
+        overlapToolbar={overlapToolbar}
+      >
         {arrowPosition.dir === "TOP" ? (
           <ArrowTop left={arrowPosition.left} />
         ) : (
@@ -144,15 +160,15 @@ export default Closeable(Popup);
 
 const Wrapper = styled.div(
   { position: "absolute", padding: "4px 4px 6px 4px;" },
-  ({ theme: { constants, popup } }) => ({
-    zIndex: 1,
-
+  ({ theme: { constants, popup }, overlapToolbar }) => ({
     backgroundColor: constants.color.background.primary,
     color: constants.color.text.primary,
 
     border: constants.border.primary,
     borderRadius: constants.borderRadius.small,
     boxShadow: constants.boxShadow.primary,
+
+    zIndex: overlapToolbar ? "2" : "0",
 
     ":focus": {
       outline: "none"
