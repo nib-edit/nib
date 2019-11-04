@@ -10,6 +10,10 @@ module.exports = {
       content: "packages/docs/Introduction/Readme.md"
     },
     {
+      name: "Features",
+      content: "packages/docs/Features/Readme.md"
+    },
+    {
       name: "Setup",
       content: "packages/docs/Setup/Readme.md"
     },
