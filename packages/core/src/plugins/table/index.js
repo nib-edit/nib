@@ -1,6 +1,5 @@
 import keymaps from "./keymaps";
 import pmPlugins from "./plugins";
-import CellMenu from "./popups/CellMenu";
 import TableMenu from "./popups/TableMenu";
 import schema from "./schema";
 import styles from "./styles";
@@ -10,7 +9,7 @@ export default {
   keymaps,
   name: "table",
   pmPlugins,
-  popups: [CellMenu, TableMenu],
+  popups: [TableMenu],
   schema,
   styles,
   toolbarComponent
