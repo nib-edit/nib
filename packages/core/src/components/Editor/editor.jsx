@@ -44,7 +44,13 @@ const Editor = ({ defaultValue, autoFocus, spellCheck, addons, onChange }) => {
 
         updateEditorState(view, editorState);
         updateViewListeners();
-        if (onChange) onChange(view.state.toJSON());
+        const serializableState = view.state.toJSON();
+        addons.forEach(addon => {
+          const { name, getSerializableState } = addon;
+          if (getSerializableState)
+            serializableState[name] = getSerializableState();
+        });
+        if (onChange) onChange(serializableState);
       }
     });
     if (autoFocus) {

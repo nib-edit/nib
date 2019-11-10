@@ -12,11 +12,11 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "css-loader": "^3.0.0",
-    "nib-track": "2.3.2",
+    "nib-track": "2.3.3",
     "nib-collab-client": "0.1.1",
     "nib-comment": "2.3.1",
     "nib-converter": "2.2.6",
-    "nib-core": "2.3.5",
+    "nib-core": "2.3.7",
     "nib-ui": "2.3.1",
     "react": "next",
     "react-dom": "next",

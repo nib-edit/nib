@@ -9,7 +9,7 @@ export default {
 
     text: { primary: "#212121", secondary: "#424242" },
 
-    backgroundHighlight: { primary: "#ffff5f", secondary: "#ffff5f42" },
+    backgroundHighlight: { primary: "#fff9c4", secondary: "#ffeb3b" },
 
     textHighlight: { primary: "#212121" },
 

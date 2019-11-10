@@ -10,6 +10,8 @@ import "./styles.css";
 
 const tracker = new TrackPlugin(commits);
 
+const userid = Math.floor(Math.random() * 0xffffffff);
+
 /**
  * @visibleName 16. Track Changes
  */
@@ -22,11 +24,11 @@ const Track = () => {
     setTrackState(tracker.getState());
   };
   const doCommit = () => {
-    tracker.doCommit({ username: name });
+    tracker.doCommit({ username: name, userid });
     updateTrackedState();
   };
   const revertCommit = commit => {
-    tracker.revertCommit(commit.id, { username: name });
+    tracker.revertCommit(commit.id, { username: name, userid });
     updateTrackedState();
   };
   const highlightCommit = commit => {
