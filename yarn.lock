@@ -4511,9 +4511,9 @@ nib-comment@2.3.1:
     nib-ui "2.3.0"
     prosemirror-transform "^1.0.0"
 
-nib-track@2.3.3:
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/nib-track/-/nib-track-2.3.3.tgz#c9320269b469c1996034963a8055798d1af9e4e8"
+nib-track@2.3.4:
+  version "2.3.4"
+  resolved "https://registry.yarnpkg.com/nib-track/-/nib-track-2.3.4.tgz#61574fb58af64ff49574d692c3cc4ee95d7f73f8"
   dependencies:
     prosemirror-transform "^1.0.0"
 

@@ -12,7 +12,7 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "css-loader": "^3.0.0",
-    "nib-track": "2.3.3",
+    "nib-track": "2.3.4",
     "nib-collab-client": "0.1.1",
     "nib-comment": "2.3.1",
     "nib-converter": "2.2.6",
