@@ -19,7 +19,7 @@ const getHTMLString = node => {
         ""
       );
       const htmlTag = domDetails[0];
-      strContent = `<${htmlTag}${htmlAttrs}>${strContent}</${htmlTag}>`;
+      strContent = `<${htmlTag} ${htmlAttrs}>${strContent}</${htmlTag}>`;
     }
     return strContent;
   }
