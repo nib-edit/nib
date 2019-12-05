@@ -4496,11 +4496,19 @@ neo-async@^2.5.0, neo-async@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
 
-nib-comment@2.3.2:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/nib-comment/-/nib-comment-2.3.2.tgz#e42231318dc060134b0cdd42ac2779e3ff64802a"
+nib-collab-client@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/nib-collab-client/-/nib-collab-client-0.1.1.tgz#94a17d98c11a06c4a2d3823008a5e0b8fa3d82c5"
   dependencies:
-    nib-ui "2.3.1"
+    axios "^0.19.0"
+    prosemirror-collab "^1.1.2"
+    prosemirror-transform "^1.0.0"
+
+nib-comment@2.3.3:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/nib-comment/-/nib-comment-2.3.3.tgz#73ee8787c4a6359ca6af28af39096513edc885fd"
+  dependencies:
+    nib-ui "2.3.2"
     prosemirror-transform "^1.0.0"
 
 nib-converter@2.2.6:
