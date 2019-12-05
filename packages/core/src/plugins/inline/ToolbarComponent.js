@@ -53,13 +53,24 @@ class ToolbarComponent extends PureComponent {
     const { $from, $to } = selection;
     const { subsup } = schema.marks;
     if (this.isSubsupMarkActive(this.getActiveMarks(), addedMark)) {
-      dispatch(tr.removeMark($from.pos, $to.pos, state.schema.marks.subsup));
+      dispatch(
+        tr
+          .removeMark($from.pos, $to.pos, state.schema.marks.subsup)
+          .removeStoredMark(state.schema.marks.subsup)
+      );
       return;
     }
     if (this.isSubsupMarkActive(this.getActiveMarks(), removedMark)) {
-      tr.removeMark($from.pos, $to.pos, state.schema.marks.subsup);
+      tr.removeMark(
+        $from.pos,
+        $to.pos,
+        state.schema.marks.subsup
+      ).removeStoredMark(state.schema.marks.subsup);
     }
-    tr.addMark($from.pos, $to.pos, subsup.create({ type: addedMark }));
+    const subSupMark = subsup.create({
+      type: addedMark
+    });
+    tr.addMark($from.pos, $to.pos, subSupMark).setStoredMarks([subSupMark]);
     dispatch(tr);
   };
 
@@ -76,8 +87,8 @@ class ToolbarComponent extends PureComponent {
       Object.values(marks).forEach(mark => {
         tr.removeMark($from.pos, $to.pos, mark);
       });
-      const codeMark = code.create()
-      tr.addMark($from.pos, $to.pos, codeMark).setStoredMarks([codeMark])
+      const codeMark = code.create();
+      tr.addMark($from.pos, $to.pos, codeMark).setStoredMarks([codeMark]);
     }
     dispatch(tr);
   };
