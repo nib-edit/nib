@@ -43,7 +43,6 @@ class ToolbarComponent extends PureComponent {
         >
           <Icon name="listBulleted" selected={bulletListActive} />
         </ToolbarButton>
-        <Space />
         <ToolbarButton
           name="orderedList"
           onClick={this.toggleList}

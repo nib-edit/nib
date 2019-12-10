@@ -1,7 +1,21 @@
+import PropTypes from "prop-types";
 import React from "react";
 import styled from "@emotion/styled";
 
-export default props => <StyledButton {...props} />;
+const ToolbarButton = ({ forwardRef, ...rest }) => {
+  return <StyledButton ref={forwardRef} {...rest} />;
+};
+
+export default ToolbarButton;
+
+ToolbarButton.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  forwardRef: PropTypes.object
+};
+
+ToolbarButton.defaultProps = {
+  forwardRef: undefined
+};
 
 const StyledButton = styled.button(
   {

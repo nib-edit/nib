@@ -29,16 +29,16 @@ class ToolbarComponent extends PureComponent {
 
   render() {
     return (
-      <ToolbarButton
-        name="link"
-        onClick={this.showLinkToolbar}
-        disabled={this.isLinkMarkActive()}
-        title={formatKeymap(KeymapInfo.link)}
-      >
-        <span className="nib-link-marker">
+      <span className="nib-link-marker">
+        <ToolbarButton
+          name="link"
+          onClick={this.showLinkToolbar}
+          disabled={this.isLinkMarkActive()}
+          title={formatKeymap(KeymapInfo.link)}
+        >
           <Icon name="link" />
-        </span>
-      </ToolbarButton>
+        </ToolbarButton>
+      </span>
     );
   }
 }

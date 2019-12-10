@@ -30,7 +30,6 @@ class ToolbarComponent extends PureComponent {
         >
           <Icon name="undo" />
         </ToolbarButton>
-        <Space />
         <ToolbarButton
           onClick={this.redo}
           title={formatKeymap(KeymapInfo.redo)}
