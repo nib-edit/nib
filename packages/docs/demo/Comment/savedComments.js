@@ -35,7 +35,7 @@ export default [
   {
     id: "8657a4e7-a2e1-4854-9511-030a26e0636a",
     data: {
-      comment: "This test is bit confusing, but I enjoy the reading.",
+      comment: "This text is bit confusing, but I enjoy the reading.",
       userid: "12345",
       username: "Anonymous user"
     },
