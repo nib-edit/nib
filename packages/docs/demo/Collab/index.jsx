@@ -4,9 +4,12 @@ import ReactSelect from "react-select";
 
 import CollabPlugin from "nib-collab-client";
 
-import './styles.css'
+import "./styles.css";
 
-const user = { id: Math.floor(Math.random() * 0xffffffff), name: 'Anonymous user' }
+const user = {
+  id: Math.floor(Math.random() * 0xffffffff),
+  name: "Anonymous user"
+};
 const collab = new CollabPlugin({
   // serviceURL: "ws://localhost:3000",
   serviceURL: "ws://nib-collab.herokuapp.com",
@@ -22,20 +25,22 @@ const Collab = () => {
   const [users, setUsers] = useState();
 
   useEffect(() => {
-    collab.startSyncing(setUsers)
+    collab.startSyncing(setUsers);
     return () => {
       collab.stopSyncing();
     };
   }, []);
 
-  const options = users ? Object.values(users).map(({id, name}) => ({value: id, label: name})) : []
+  const options = users
+    ? Object.values(users).map(({ id, name }) => ({ value: id, label: name }))
+    : [];
 
   return (
     <div>
-      <div style={{ width: 200, marginBottom: 20}}>
+      <div style={{ width: 200, marginBottom: 20 }}>
         <div>
           <span style={{ fontSize: 14, width: 100, display: "inline-block" }}>
-          User Name
+            User Name
           </span>
           <input
             style={{ marginBottom: 10 }}
@@ -50,23 +55,24 @@ const Collab = () => {
           className="docs_btn"
           type="button"
           onClick={() => {
-          collab.updateUserData({ name: username });
-        }}
+            collab.updateUserData({ name: username });
+          }}
         >
-        Update
+          Update
         </button>
-        <div>
+        <div className="select-wrapper">
           <span style={{ fontSize: 14, display: "inline-block" }}>
             Connected Users
           </span>
-          <ReactSelect value={options.find(({value}) => value === user.id)} options={options} />
+          <ReactSelect
+            value={options.find(({ value }) => value === user.id)}
+            options={options}
+          />
         </div>
       </div>
-      <div style={{position: 'relative'}}>
+      <div style={{ position: "relative" }}>
         {!users && (
-          <div className="nib_message">
-            Connecting to the server...
-          </div>
+          <div className="nib_message">Connecting to the server...</div>
         )}
         <Editor
           addons={[collab]}

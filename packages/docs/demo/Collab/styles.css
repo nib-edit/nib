@@ -11,3 +11,6 @@
   align-items: center;
   background: white;
 }
+.select-wrapper > div {
+  z-index: 10;
+}

@@ -36,8 +36,8 @@ export default [
     id: "8657a4e7-a2e1-4854-9511-030a26e0636a",
     data: {
       comment: "This text is bit confusing, but I enjoy the reading.",
-      userid: "12345",
-      username: "Anonymous user"
+      userid: "00000",
+      username: "Test user"
     },
     time: "2019-09-29T14:09:45.374Z",
     start: 588,
@@ -58,8 +58,8 @@ export default [
     id: "3c8f1e41-f29b-4f94-96b2-db3f3a2beade",
     data: {
       comment: "I like this editor sooooooo much.",
-      userid: "12345",
-      username: "Anonymous user"
+      userid: "00000",
+      username: "Test user"
     },
     time: "2019-09-29T14:10:20.098Z",
     start: 2304,
