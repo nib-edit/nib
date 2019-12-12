@@ -4505,10 +4505,10 @@ nib-collab-client@0.1.1:
     prosemirror-collab "^1.1.2"
     prosemirror-transform "^1.0.0"
 
-nib-comment@2.3.4:
-  version "2.3.4"
-  resolved "https://registry.yarnpkg.com/nib-comment/-/nib-comment-2.3.4.tgz#d85de5921a86b16928acd4fd734dab16235c98d7"
-  integrity sha512-r/ZeNpQ6dGAg82H3eIDgrSn6U3xrnNJioXh6DST9766vt2yZJCGtF8TCQc5bOH9ImLyNMwZSpUs87H6TfGMPtg==
+nib-comment@2.3.5:
+  version "2.3.5"
+  resolved "https://registry.yarnpkg.com/nib-comment/-/nib-comment-2.3.5.tgz#e6f7ff13a07d7a5e16beab38f983652650d93a91"
+  integrity sha512-ck0oCRNN2unBnb4+K6r73O17D4A/4nBpOzg5JOj7aXi0BtY5ciJOUplKSClY6Ux2UzIDttO+Ki1sebLRwH8rQw==
   dependencies:
     nib-ui "2.3.2"
     prosemirror-transform "^1.0.0"
