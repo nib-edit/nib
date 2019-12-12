@@ -3,7 +3,8 @@ const image = {
   inline: true,
   attrs: {
     src: { default: "" },
-    height: { default: "auto" }
+    height: { default: "auto" },
+    alt: { default: "" }
   },
   draggable: true,
   parseDOM: [
@@ -16,14 +17,15 @@ const image = {
       getAttrs(domNode) {
         return {
           src: domNode.getAttribute("src"),
-          style: domNode.getAttribute("style")
+          style: domNode.getAttribute("style"),
+          alt: domNode.getAttribute("alt")
         };
       }
     }
   ],
   toDOM(node) {
-    const { src, height } = node.attrs;
-    return ["img", { src, style: `height:${height || "auto"};` }];
+    const { src, height, alt } = node.attrs;
+    return ["img", { src, style: `height:${height || "auto"};`, alt }];
   }
 };
 
