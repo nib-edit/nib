@@ -1,6 +1,6 @@
 {
   "name": "nib-converter",
-  "version": "2.2.7",
+  "version": "2.2.8",
   "description": "Converter for nib-editor to HTML",
   "main": "./index.js",
   "repository": {
