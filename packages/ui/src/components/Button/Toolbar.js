@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-export default props => <StyledButton {...props} />;
+export default props => <StyledButton type="button" {...props} />;
 
 const StyledButton = styled.button(
   {
