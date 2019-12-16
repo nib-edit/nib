@@ -5,18 +5,18 @@ import Code from "../../Code";
 import defaultValue from "./sampleData";
 
 /**
- * @visibleName 5. Link
+ * @visibleName 4. Color
  */
-const Link = () => {
+const Color = () => {
   const [content, setContent] = useState();
   return (
     <div>
       <Editor
         config={{
-          plugins: { options: "link" },
+          plugins: { options: "color" },
           toolbar: {
             options: "top",
-            top: { options: "link" }
+            top: { options: "color" }
           }
         }}
         onChange={setContent}
@@ -27,4 +27,4 @@ const Link = () => {
   );
 };
 
-export default Link;
+export default Color;

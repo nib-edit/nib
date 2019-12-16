@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Fragment, PureComponent } from "react";
-import { Popup, ToolbarButton, Icon, Space } from "nib-ui";
+import { Popup, ToolbarButton, Icon } from "nib-ui";
 
 import styled from "@emotion/styled";
 import { PMStateConsumer } from "../../context/pm-state";
@@ -40,8 +40,16 @@ class ToolbarComponent extends PureComponent {
     const { schema, selection, tr } = state;
     const { $from, $to } = selection;
     const markType = schema.marks[selectedMarkType];
-    const colorMark = markType.create({ color });
-    tr.addMark($from.pos, $to.pos, colorMark).setStoredMarks([colorMark]);
+    const activeColorMarks = this.getActiveColorMarks();
+    if (
+      activeColorMarks[selectedMarkType] &&
+      activeColorMarks[selectedMarkType].attrs.color === color
+    ) {
+      tr.removeMark($from.pos, $to.pos, markType).removeStoredMark(markType);
+    } else {
+      const colorMark = markType.create({ color });
+      tr.addMark($from.pos, $to.pos, colorMark).setStoredMarks([colorMark]);
+    }
     dispatch(tr);
   };
 
@@ -106,6 +114,7 @@ class ToolbarComponent extends PureComponent {
               <ColorsWrapper onClick={this.toggleColorType}>
                 {COLORS.map(color => (
                   <StyledButton
+                    key={`${selectedMarkType}-${color}`}
                     name={color}
                     color={color}
                     selected={

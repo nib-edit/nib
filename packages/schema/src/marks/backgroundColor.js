@@ -5,7 +5,11 @@ const backgroundColor = {
   parseDOM: [
     {
       style: "background-color",
-      getAttrs: value => value
+      getAttrs(color) {
+        return {
+          color
+        };
+      }
     }
   ],
   toDOM(node) {

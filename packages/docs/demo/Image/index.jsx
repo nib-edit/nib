@@ -6,7 +6,7 @@ import Code from "../../Code";
 import defaultValue from "./sampleData";
 
 /**
- * @visibleName 6. Image
+ * @visibleName 7. Image
  */
 const Image = () => {
   const [content, setContent] = useState();
