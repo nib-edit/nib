@@ -4520,9 +4520,10 @@ nib-track@2.3.6:
   dependencies:
     prosemirror-transform "^1.0.0"
 
-nib-ui@2.3.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/nib-ui/-/nib-ui-2.3.1.tgz#897c59b4a1fb369899b26e78f5ebadf33e5ee9b4"
+nib-ui@2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/nib-ui/-/nib-ui-2.3.2.tgz#6ff9a4d7f2807f5b611402d6ea750eec98d6b04d"
+  integrity sha512-2kiPYVCxjOK+/IERHvw2fdMMLVsGqNMazx8vpLDwXbz1kdOM74CUueQBE6f/XYPzr0QdVqytzH4NXmFnMVOcVQ==
   dependencies:
     react-select "^3.0.4"
 

@@ -19,7 +19,7 @@
   "homepage": "https://github.com/jpuri/Nib/tree/master/packages/core#Readme.md",
   "dependencies": {
     "prosemirror-model": "^1.0.0",
-    "nib-schema": "^2.2.7"
+    "nib-schema": "^2.2.8"
   },
   "devDependencies": {
     "prop-types": "^15.6.2",
