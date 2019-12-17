@@ -3,7 +3,7 @@ import React from "react";
 import styled from "@emotion/styled";
 
 const ToolbarButton = ({ forwardRef, ...rest }) => {
-  return <StyledButton ref={forwardRef} {...rest} />;
+  return <StyledButton type="button" ref={forwardRef} {...rest} />;
 };
 
 export default ToolbarButton;
