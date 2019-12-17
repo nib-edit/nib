@@ -5,7 +5,7 @@ import Code from "../../Code";
 import defaultValue from "./sampleData";
 
 /**
- * @visibleName 8. Table
+ * @visibleName 9. Table
  */
 const Table = () => {
   const [content, setContent] = useState();

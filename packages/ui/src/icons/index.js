@@ -3,6 +3,7 @@ import AddColumn from "./AddColumn";
 import AddRow from "./AddRow";
 import ArrowDown from "./ArrowDown";
 import Bold from "./Bold";
+import BackgroundColor from "./BackgroundColor";
 import Code from "./Code";
 import Comment from "./Comment";
 import Cross from "./Cross";
@@ -27,6 +28,7 @@ import Strike from "./Strike";
 import Sub from "./Sub";
 import Sup from "./Sup";
 import Table from "./Table";
+import TextColor from "./TextColor";
 import Trash from "./Trash";
 import ToggleHeader from "./ToggleHeader";
 import Underline from "./Underline";
@@ -38,6 +40,7 @@ export default {
   addColumn: AddColumn,
   addRow: AddRow,
   arrowDown: ArrowDown,
+  backgroundColor: BackgroundColor,
   bold: Bold,
   code: Code,
   chevronDown: ChevronDown,
@@ -63,6 +66,7 @@ export default {
   sub: Sub,
   sup: Sup,
   table: Table,
+  textColor: TextColor,
   toggleHeader: ToggleHeader,
   trash: Trash,
   underline: Underline,

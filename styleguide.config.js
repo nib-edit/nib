@@ -22,6 +22,14 @@ module.exports = {
       content: "packages/docs/Props/Readme.md"
     },
     {
+      name: "Nib Drive",
+      content: "packages/docs/NibDrive/Readme.md"
+    },
+    {
+      name: "License",
+      content: "packages/docs/License/Readme.md"
+    },
+    {
       name: "Demo",
       pagePerSection: true,
       sectionDepth: 1,
@@ -30,6 +38,7 @@ module.exports = {
         "packages/docs/demo/Basic/index.jsx",
         "packages/docs/demo/Block/index.jsx",
         "packages/docs/demo/Inline/index.jsx",
+        "packages/docs/demo/Color/index.jsx",
         "packages/docs/demo/Link/index.jsx",
         "packages/docs/demo/List/index.jsx",
         "packages/docs/demo/Image/index.jsx",
@@ -46,14 +55,6 @@ module.exports = {
         "packages/docs/demo/Comment/index.jsx",
         "packages/docs/demo/Collab/index.jsx"
       ]
-    },
-    {
-      name: "Nib Drive",
-      content: "packages/docs/NibDrive/Readme.md"
-    },
-    {
-      name: "License",
-      content: "packages/docs/License/Readme.md"
     },
     {
       components: [

@@ -117,8 +117,6 @@ class ToolbarComponent extends PureComponent {
         {["strong", "em", "underline", "strike"].reduce((result, mark) => {
           if (options.indexOf(mark) >= 0) {
             const isSelected = !!marks[mark].isInSet(activeMarks);
-            if (!result.length)
-              result.push(<Space key="inlinestyle-separator" />);
             result.push(
               <Fragment key={`inlinestyle-${mark}`}>
                 <ToolbarButton
@@ -129,7 +127,6 @@ class ToolbarComponent extends PureComponent {
                 >
                   <Icon name={MarkIcons[mark]} selected={isSelected} />
                 </ToolbarButton>
-                <Space />
               </Fragment>
             );
           }
@@ -145,7 +142,6 @@ class ToolbarComponent extends PureComponent {
             >
               <Icon name="sup" selected={isSupMarkActive} />
             </ToolbarButton>
-            <Space />
             <ToolbarButton
               name="sub"
               onClick={this.toggleSubMark}

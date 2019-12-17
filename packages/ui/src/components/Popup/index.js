@@ -4,8 +4,6 @@ import styled from "@emotion/styled";
 
 import Closeable from "../Closeable";
 
-const ARROW_HEIGHT = 6;
-const ARROW_MIN_DISTANCE = 10;
 const BLOCK_HEIGHT = 20;
 const MIN_LEFT = 2;
 const POPUP_DISTANCE_FROM_BLOCK = 1;
@@ -31,25 +29,16 @@ const getPosition = (marker, popupElm, editorWrapper, isScrolling) => {
     ? popupElm.getBoundingClientRect()
     : {};
 
-  let arrowDir = "TOP";
   let left = markerDim.left - wrapperDim.left;
   // Center aligning popup on marker element
   left += (markerDim.width - popupWidth) / 2;
 
-  let arrowLeft;
   if (left < 3) {
-    if (left * -1 > popupWidth / 2)
-      arrowLeft = ARROW_MIN_DISTANCE - popupWidth / 2;
-    else arrowLeft = left + ARROW_MIN_DISTANCE;
     left = MIN_LEFT;
   }
   if (markerDim.width > wrapperDim.width) {
     left = `calc(50% - ${popupWidth / 2}px)`;
-    arrowLeft = 0;
   } else if (left + popupWidth > wrapperDim.width) {
-    if (left > wrapperDim.width)
-      arrowLeft = popupWidth / 2 - ARROW_MIN_DISTANCE;
-    else arrowLeft = left + popupWidth - wrapperDim.width;
     left = wrapperDim.width - popupWidth - 4;
     if (left < MIN_LEFT) left = MIN_LEFT;
   }
@@ -59,16 +48,11 @@ const getPosition = (marker, popupElm, editorWrapper, isScrolling) => {
     wrapperDim.y +
     (markerDim.height || BLOCK_HEIGHT) +
     POPUP_DISTANCE_FROM_BLOCK +
-    ARROW_HEIGHT;
+    6;
   if (!isScrolling && top + popupHeight > wrapperDim.height) {
     const newTop =
-      markerDim.y -
-      wrapperDim.y -
-      ARROW_HEIGHT -
-      popupHeight -
-      POPUP_DISTANCE_FROM_BLOCK;
+      markerDim.y - wrapperDim.y - popupHeight - POPUP_DISTANCE_FROM_BLOCK;
     if (newTop > 0) {
-      arrowDir = "BOTTOM";
       top = newTop;
     }
   }
@@ -76,15 +60,13 @@ const getPosition = (marker, popupElm, editorWrapper, isScrolling) => {
   let display = "block";
   if (top < 0 || top > wrapperDim.height) display = "none";
   return {
-    popupPosition: { top, left, display },
-    arrowPosition: { left: arrowLeft, dir: arrowDir }
+    popupPosition: { top, left, display }
   };
 };
 
 class Popup extends Component {
   state = {
-    popupPosition: { top: 0 },
-    arrowPosition: { dir: "TOP" }
+    popupPosition: { top: 0 }
   };
 
   componentDidMount() {
@@ -126,7 +108,7 @@ class Popup extends Component {
   render() {
     const { render, marker, wrapperRef } = this.props;
     if (!marker) return null;
-    const { popupPosition, arrowPosition, scrolling } = this.state;
+    const { popupPosition, scrolling } = this.state;
 
     return (
       <Wrapper
@@ -135,11 +117,6 @@ class Popup extends Component {
         marker={marker}
         isScrolling={scrolling}
       >
-        {arrowPosition.dir === "TOP" ? (
-          <ArrowTop left={arrowPosition.left} />
-        ) : (
-          <ArrowBottom left={arrowPosition.left} />
-        )}
         {render()}
       </Wrapper>
     );
@@ -177,40 +154,5 @@ const Wrapper = styled.div(
     },
 
     ...popup.wrapper({ theme: constants })
-  })
-);
-
-const ArrowTop = styled.div(
-  { position: "absolute", transform: "rotate(45deg)" },
-  ({ theme: { constants, popup }, left = 0 }) => ({
-    background: constants.color.background.primary,
-    borderLeft: constants.border.primary,
-    borderTop: constants.border.primary,
-
-    height: 10,
-    left: `calc(50% + ${left - ARROW_HEIGHT}px)`,
-    top: -6,
-    width: 10,
-
-    ...popup.arrowTop({ theme: constants })
-  })
-);
-
-const ArrowBottom = styled.div(
-  {
-    position: "absolute",
-    bottom: -6,
-    width: 10,
-    transform: "rotate(45deg)"
-  },
-  ({ theme: { constants, popup }, left = 0 }) => ({
-    background: constants.color.background.primary,
-    borderRight: constants.border.primary,
-    borderBottom: constants.border.primary,
-
-    height: 10,
-    left: `calc(50% + ${left - ARROW_HEIGHT}px)`,
-
-    ...popup.arrowBottom({ theme: constants })
   })
 );

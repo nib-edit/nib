@@ -19,7 +19,7 @@ const Wrapper = props => {
   const { addons } = props;
   return (
     <StyledWrapper ref={editorWrapper}>
-      {topToolbarPresent && <TopToolbar />}
+      {topToolbarPresent && <TopToolbar editorWrapper={editorWrapper} />}
       <InnerEditor {...props} />
       {/* todo: better name for handler */}
       <PopupHandler editorWrapper={editorWrapper} />

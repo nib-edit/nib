@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 import styled from "@emotion/styled";
 
@@ -6,7 +7,7 @@ import { Separator } from "nib-ui";
 import getToolbarComponents from "../../../utils/editor/toolbar";
 import { useConfigContext } from "../../../context/config";
 
-const Top = () => {
+const Top = ({ editorWrapper }) => {
   const {
     config: { plugins, toolbar }
   } = useConfigContext();
@@ -20,7 +21,10 @@ const Top = () => {
       <ToolbarSection>
         {formattingOption.map((Option, index) => (
           <Fragment key={`top-toolbar-option-${Option.name}`}>
-            <Option.toolbarComponent config={toolbar.top[Option.name]} />
+            <Option.toolbarComponent
+              config={toolbar.top[Option.name]}
+              editorWrapper={editorWrapper}
+            />
             {index < formattingOption.length - 1 && <Separator />}
           </Fragment>
         ))}
@@ -28,6 +32,11 @@ const Top = () => {
       {HelpOption && <HelpOption.toolbarComponent />}
     </Wrapper>
   );
+};
+
+Top.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  editorWrapper: PropTypes.object.isRequired
 };
 
 const Wrapper = styled.div(

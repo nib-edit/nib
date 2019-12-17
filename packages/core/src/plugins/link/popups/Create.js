@@ -83,6 +83,7 @@ class CreatePopup extends PureComponent {
       <Popup
         onEscKeyPress={this.closePopup}
         onClickOutsideEditor={this.closePopup}
+        onClickInsideEditor={this.closePopup}
         editorWrapper={editorWrapper}
         marker={marker}
         overlapToolbar
