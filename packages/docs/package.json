@@ -12,9 +12,9 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "css-loader": "^3.0.0",
-    "nib-track": "2.3.6",
+    "nib-track": "2.3.7",
     "nib-collab-client": "0.1.1",
-    "nib-comment": "2.3.5",
+    "nib-comment": "2.3.6",
     "nib-converter": "2.4.0",
     "nib-core": "2.4.2",
     "nib-ui": "2.3.3",

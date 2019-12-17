@@ -3,16 +3,16 @@
  * improve code in all components
  */
 
-import React, { PureComponent } from "react";
-import Editor from "nib-core";
+import React, { PureComponent } from 'react';
+import Editor from 'nib-core';
 
-import uploadCallback from "../common/uploadCallback";
-import data from "./data";
+import uploadCallback from '../common/uploadCallback';
+import data from './data';
 
 const theme = {
   editor: () => ({
-    height: "440px"
-  })
+    height: '440px',
+  }),
 };
 
 class TopBar extends PureComponent {
@@ -20,10 +20,10 @@ class TopBar extends PureComponent {
     return (
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          margin: "32px 0"
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          margin: '32px 0',
         }}
       >
         <div>
@@ -31,12 +31,12 @@ class TopBar extends PureComponent {
             config={{
               plugins: {
                 image: {
-                  uploadCallback
-                }
+                  uploadCallback,
+                },
               },
               toolbar: {
-                options: "top"
-              }
+                options: 'top',
+              },
             }}
             defaultValue={data}
             styleConfig={theme}

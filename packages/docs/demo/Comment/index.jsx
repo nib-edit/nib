@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import Editor from "nib-core";
-import CommentPlugin from "nib-comment";
+import Editor from 'nib-core';
+import CommentPlugin from 'nib-comment';
 
-import defaultValue from "./sampleData";
-import comments from "./savedComments";
+import defaultValue from './sampleData';
+import comments from './savedComments';
 
-import "./styles.css";
+import './styles.css';
 
 // const customTheme = {
 //   color: {
@@ -32,22 +32,22 @@ import "./styles.css";
 // };
 
 const commenter = new CommentPlugin(comments, {
-  userid: "12345",
-  username: "Anonymous user"
+  userid: '12345',
+  username: 'Anonymous user',
 });
 
 /**
  * @visibleName 18. Comment
  */
 const Comment = () => {
-  const [userid, setUserid] = useState("12345");
-  const [username, setUsername] = useState("Anonymous user");
+  const [userid, setUserid] = useState('12345');
+  const [username, setUsername] = useState('Anonymous user');
   const [message, showMessage] = useState(false);
 
   return (
     <div>
       <div>
-        <span style={{ fontSize: 14, width: 100, display: "inline-block" }}>
+        <span style={{ fontSize: 14, width: 100, display: 'inline-block' }}>
           User Id
         </span>
         <input
@@ -59,7 +59,7 @@ const Comment = () => {
         />
       </div>
       <div>
-        <span style={{ fontSize: 14, width: 100, display: "inline-block" }}>
+        <span style={{ fontSize: 14, width: 100, display: 'inline-block' }}>
           User Name
         </span>
         <input
@@ -88,8 +88,8 @@ const Comment = () => {
       )}
       <Editor
         config={{
-          plugins: { options: "block inline list" },
-          toolbar: { options: "top", top: { options: "block inline list" } }
+          plugins: { options: 'block inline list' },
+          toolbar: { options: 'top', top: { options: 'block inline list' } },
         }}
         addons={[commenter]}
         // theme={customTheme}

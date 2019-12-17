@@ -5164,27 +5164,20 @@ nib-collab-client@0.1.1:
     prosemirror-collab "^1.1.2"
     prosemirror-transform "^1.0.0"
 
-nib-comment@2.3.5:
-  version "2.3.5"
-  resolved "https://registry.yarnpkg.com/nib-comment/-/nib-comment-2.3.5.tgz#e6f7ff13a07d7a5e16beab38f983652650d93a91"
-  integrity sha512-ck0oCRNN2unBnb4+K6r73O17D4A/4nBpOzg5JOj7aXi0BtY5ciJOUplKSClY6Ux2UzIDttO+Ki1sebLRwH8rQw==
-  dependencies:
-    nib-ui "2.3.2"
-    prosemirror-transform "^1.0.0"
-
-nib-track@2.3.6:
+nib-comment@2.3.6:
   version "2.3.6"
-  resolved "https://registry.yarnpkg.com/nib-track/-/nib-track-2.3.6.tgz#6e2fa77ab2bcc785af42e473d28662bbded03967"
-  integrity sha512-pgA5jF9PkGghntj2e5WIpjTDg0yoCfhHACQkwMGkfj/kvJJz+J4Eeu6ajo1w7qA/sQ3fBVWzXwKSd/0JoEgPLg==
+  resolved "https://registry.yarnpkg.com/nib-comment/-/nib-comment-2.3.6.tgz#b8550621dea58cec10a3bc0a9806c83451deba4d"
+  integrity sha512-PENlzZ2MjMYXNNGQxd+Lu7pPGh5ngy2rJmM+7t8daspDUL0p/N1Vtes1Q7OiAvoUFso/2lEU9hV6cjkreDySIg==
   dependencies:
+    nib-ui "2.3.3"
     prosemirror-transform "^1.0.0"
 
-nib-ui@2.3.2:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/nib-ui/-/nib-ui-2.3.2.tgz#6ff9a4d7f2807f5b611402d6ea750eec98d6b04d"
-  integrity sha512-2kiPYVCxjOK+/IERHvw2fdMMLVsGqNMazx8vpLDwXbz1kdOM74CUueQBE6f/XYPzr0QdVqytzH4NXmFnMVOcVQ==
+nib-track@2.3.7:
+  version "2.3.7"
+  resolved "https://registry.yarnpkg.com/nib-track/-/nib-track-2.3.7.tgz#fffbce56a5f693a8c10775b512d4f60f94182965"
+  integrity sha512-HK10+HMbr3In/Nv2+I+ny3No/ShLn8pzI5tAopikYk5Wev4BF+84Gd4M43S+kyp05ui5JXlKhKleLlJh3g/WGg==
   dependencies:
-    react-select "^3.0.4"
+    prosemirror-transform "^1.0.0"
 
 nice-try@^1.0.4:
   version "1.0.5"
