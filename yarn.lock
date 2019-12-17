@@ -5179,6 +5179,13 @@ nib-track@2.3.7:
   dependencies:
     prosemirror-transform "^1.0.0"
 
+nib-ui@2.3.3:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/nib-ui/-/nib-ui-2.3.3.tgz#2ec333bf8a38b053972f392a7e455113e8d982bb"
+  integrity sha512-LNlxRXNQTFjcFC57Rh3gfTcXy3JWEIKJCQCdpPLQbMQibeW77FaAr8qEkAB8IVY2/edjBzDYP/B178L+4t8rLQ==
+  dependencies:
+    react-select "^3.0.4"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"

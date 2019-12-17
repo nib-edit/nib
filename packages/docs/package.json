@@ -17,7 +17,7 @@
     "nib-comment": "2.3.6",
     "nib-converter": "2.4.0",
     "nib-core": "2.4.2",
-    "nib-ui": "2.3.3",
+    "nib-ui": "2.4.0",
     "react": "next",
     "react-dom": "next",
     "style-loader": "^0.23.1",
