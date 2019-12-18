@@ -36,7 +36,8 @@
 }
 
 .nib-track_commits {
-  margin-top: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .nib-track_commit_list {
@@ -56,6 +57,8 @@
   cursor: pointer;
   background: transparent;
   font-size: 14px;
+  padding: 0;
+  margin-top: 4px;
 }
 
 .nib-track_save[disabled] {
@@ -73,7 +76,27 @@
 
 .nib-track_table th,
 .nib-track_table td {
-  border: 1px solid #e0e0e0;
+  width: 8%;
+  margin-bottom: 10px;
+}
+.nib-track_table td {
+  font-size: 14px;
+}
+.nib-track_table td div div:first-of-type {
+  font-weight: 500;
+}
+.nib-track-space {
+  margin-bottom: 16px;
+}
+.nib-track_table td div div:not(:first-of-type) {
+  margin-left: 14px;
+}
+.nib-track_table {
+  border-collapse: collapse;
+}
+
+.nib-track_table th,
+.nib-track_table td {
   width: 8%;
 }
 .nib-track_table td {
@@ -86,22 +109,18 @@
 
 .nib-track_table th,
 .nib-track_table td {
-  border: 1px solid #e0e0e0;
   width: 8%;
 }
 .nib-track_table td {
   font-size: 14px;
 }
-
-.nib-track_table {
-  border-collapse: collapse;
+.nib-track-wrapper {
+  display: flex;
 }
-
-.nib-track_table th,
-.nib-track_table td {
-  border: 1px solid #e0e0e0;
-  width: 8%;
+.nib-track-wrapper > div:first-of-type {
+  width: 85%;
 }
-.nib-track_table td {
-  font-size: 14px;
+.nib-track-wrapper > div:last-of-type {
+  margin-left: 20px;
+  width: 15%;
 }
