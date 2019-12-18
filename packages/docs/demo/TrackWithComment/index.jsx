@@ -13,7 +13,7 @@ const user = {
   username: 'Anonymous user',
 };
 const tracker = new TrackPlugin(commits);
-const commenter = new CommentPlugin(comments, user, '#f8bbd0');
+const commenter = new CommentPlugin(comments, user, '#f8bbd080');
 
 const formatDate = str => {
   const d = new Date(str);
