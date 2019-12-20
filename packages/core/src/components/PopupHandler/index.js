@@ -1,10 +1,10 @@
-import PropTypes from "prop-types";
-import React, { PureComponent } from "react";
+import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
 
-import getPropertyFromPlugins from "../../utils/editor/pluginProperty";
-import inlineToolbar from "../Toolbar/Inline";
-import { ConfigContextConsumer } from "../../context/config";
-import { PMStateConsumer } from "../../context/pm-state";
+import getPropertyFromPlugins from '../../utils/editor/pluginProperty';
+import inlineToolbar from '../Toolbar/Inline';
+import { ConfigContextConsumer } from '../../context/config';
+import { PMStateConsumer } from '../../context/pm-state';
 
 const getVisiblePopups = (pmstate, popups, visiblePopups) => {
   const { pmview } = pmstate;
@@ -30,7 +30,7 @@ const getVisiblePopups = (pmstate, popups, visiblePopups) => {
         newVisiblePopups[toolbarIndex] = {
           marker,
           name: popup.name,
-          PopupComponent: popup.component
+          PopupComponent: popup.component,
         };
       }
     }
@@ -45,10 +45,15 @@ const getVisiblePopups = (pmstate, popups, visiblePopups) => {
 
 class PopupHandler extends PureComponent {
   componentDidMount() {
-    const { config } = this.props;
+    const { config, addons } = this.props;
     const { plugins, toolbar } = config;
-    this.popups = getPropertyFromPlugins(plugins.options, "popups");
-    if (toolbar.options.indexOf("inline") >= 0) this.popups.push(inlineToolbar);
+    this.popups = getPropertyFromPlugins(plugins.options, 'popups');
+    addons.forEach(addon => {
+      if (addon.popups) {
+        this.popups = [...this.popups, ...addon.popups];
+      }
+    });
+    if (toolbar.options.indexOf('inline') >= 0) this.popups.push(inlineToolbar);
     this.visiblePopup = [];
   }
 
@@ -67,7 +72,7 @@ class PopupHandler extends PureComponent {
     ];
 
     const tablePopups = this.visiblePopups.filter(
-      popup => popup.name === "table_menu" || popup.name === "cell_menu"
+      popup => popup.name === 'table_menu' || popup.name === 'cell_menu'
     );
 
     // todo: refactor table popups for a better implementation
@@ -82,7 +87,7 @@ class PopupHandler extends PureComponent {
         {tablePopups.map(popup => {
           const {
             PopupComponent: TablePopupComponent,
-            marker: tableMarker
+            marker: tableMarker,
           } = popup;
           return (
             <TablePopupComponent
@@ -100,11 +105,17 @@ class PopupHandler extends PureComponent {
 
 PopupHandler.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
+  addons: PropTypes.array,
+  // eslint-disable-next-line react/forbid-prop-types
   editorWrapper: PropTypes.object.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   config: PropTypes.object.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
-  pmstate: PropTypes.object.isRequired
+  pmstate: PropTypes.object.isRequired,
+};
+
+PopupHandler.defaultProps = {
+  addons: [],
 };
 
 export default props => (

@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
-import React, { Component } from "react";
-import styled from "@emotion/styled";
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import styled from '@emotion/styled';
 
-import Closeable from "../Closeable";
+import Closeable from '../Closeable';
 
 const BLOCK_HEIGHT = 20;
 const MIN_LEFT = 2;
@@ -57,30 +57,30 @@ const getPosition = (marker, popupElm, editorWrapper, isScrolling) => {
     }
   }
 
-  let display = "block";
-  if (top < 0 || top > wrapperDim.height) display = "none";
+  let display = 'block';
+  if (top < 0 || top > wrapperDim.height) display = 'none';
   return {
-    popupPosition: { top, left, display }
+    popupPosition: { top, left, display },
   };
 };
 
 class Popup extends Component {
   state = {
-    popupPosition: { top: 0 }
+    popupPosition: { top: 0 },
   };
 
   componentDidMount() {
     const { marker, editorWrapper, wrapperRef } = this.props;
     if (marker) {
       this.setState({
-        ...getPosition(marker, wrapperRef.current, editorWrapper.current)
+        ...getPosition(marker, wrapperRef.current, editorWrapper.current),
       });
     }
     const scrollableSection = editorWrapper.current.children[1];
-    scrollableSection.addEventListener("scroll", () => {
+    scrollableSection.addEventListener('scroll', () => {
       this.setState({
         ...getPosition(marker, wrapperRef.current, editorWrapper.current, true),
-        scrolling: true
+        scrolling: true,
       });
     });
   }
@@ -95,18 +95,18 @@ class Popup extends Component {
       height: markerDim.height,
       left: markerDim.left,
       offsetTop: marker.offsetTop,
-      width: markerDim.width
+      width: markerDim.width,
     };
     if (isSamePos(oldPos, this.markerPos) && popupPosition) return;
     // eslint-disable-next-line react/no-did-update-set-state
     this.setState({
       ...getPosition(marker, wrapperRef.current, editorWrapper.current),
-      scrolling: false
+      scrolling: false,
     });
   }
 
   render() {
-    const { render, marker, wrapperRef } = this.props;
+    const { render, marker, wrapperRef, className } = this.props;
     if (!marker) return null;
     const { popupPosition, scrolling } = this.state;
 
@@ -116,6 +116,7 @@ class Popup extends Component {
         style={popupPosition}
         marker={marker}
         isScrolling={scrolling}
+        className={className}
       >
         {render()}
       </Wrapper>
@@ -125,20 +126,25 @@ class Popup extends Component {
 
 Popup.propTypes = {
   wrapperRef: PropTypes.shape({
-    current: PropTypes.object
+    current: PropTypes.object,
   }).isRequired,
   editorWrapper: PropTypes.shape({
-    current: PropTypes.object
+    current: PropTypes.object,
   }).isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   marker: PropTypes.object.isRequired,
-  render: PropTypes.func.isRequired
+  render: PropTypes.func.isRequired,
+  className: PropTypes.string,
+};
+
+Popup.defaultProps = {
+  className: undefined,
 };
 
 export default Closeable(Popup);
 
 const Wrapper = styled.div(
-  { position: "absolute", padding: "4px 4px 6px 4px;" },
+  { position: 'absolute', padding: '4px 4px 6px 4px;' },
   ({ theme: { constants, popup }, isScrolling }) => ({
     backgroundColor: constants.color.background.primary,
     color: constants.color.text.primary,
@@ -147,12 +153,12 @@ const Wrapper = styled.div(
     borderRadius: constants.borderRadius.small,
     boxShadow: constants.boxShadow.primary,
 
-    zIndex: isScrolling ? "0" : "1",
+    zIndex: isScrolling ? '0' : '1',
 
-    ":focus": {
-      outline: "none"
+    ':focus': {
+      outline: 'none',
     },
 
-    ...popup.wrapper({ theme: constants })
+    ...popup.wrapper({ theme: constants }),
   })
 );
