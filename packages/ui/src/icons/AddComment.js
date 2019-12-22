@@ -35,20 +35,20 @@ export default ({ fill, ...rest }) => (
             points="16.5 11 22 16 11 16"
           />
           <path
-            d="M10,3.5 L10,11"
+            d="M10,3 L10,12"
             id="Line-11"
             stroke={fill}
             strokeWidth="1.5"
             strokeLinecap="square"
-            transform="translate(10.000000, 7.250000) scale(-1, -1) translate(-10.000000, -7.250000) "
+            transform="translate(10.000000, 7.500000) scale(-1, -1) translate(-10.000000, -7.500000) "
           />
           <path
-            d="M10,3.5 L10,11"
+            d="M10,2.5 L10,12.5"
             id="Line-11"
             stroke={fill}
             strokeWidth="1.5"
             strokeLinecap="square"
-            transform="translate(10.000000, 7.250000) scale(-1, -1) rotate(-90.000000) translate(-10.000000, -7.250000) "
+            transform="translate(10.000000, 7.500000) scale(-1, -1) rotate(-90.000000) translate(-10.000000, -7.500000) "
           />
         </g>
       </g>

@@ -22,7 +22,7 @@
     "@emotion/styled": "^10.0.14",
     "emotion-theming": "^10.0.14",
     "nib-schema": "2.4.0",
-    "nib-ui": "2.4.3",
+    "nib-ui": "2.4.4",
     "nib-upload": "2.1.6",
     "nib-embed": "2.1.6",
     "prosemirror-history": "^1.0.3",

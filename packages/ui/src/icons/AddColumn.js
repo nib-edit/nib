@@ -1,56 +1,36 @@
 import React from 'react';
 
 export default ({ fill, ...rest }) => (
-  <svg width="20px" height="21px" viewBox="0 0 20 21" {...rest}>
-    <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-      <g id="Desktop-HD" transform="translate(-288.000000, -633.000000)">
-        <g id="Group-5" transform="translate(288.000000, 633.000000)">
-          <rect
-            id="Rectangle"
-            stroke={fill}
-            fill="#FFFFFF"
-            x="0.5"
-            y="0.5"
-            width="19"
-            height="14"
-            rx="2"
-          />
-          <path
-            d="M19.5,11 L19.5,20"
-            id="Line-10"
-            stroke={fill}
-            strokeLinecap="round"
-          />
-          <path
-            d="M17.2175144,14.5961941 L16.863961,20.6066017"
-            id="Line-10"
-            stroke={fill}
-            strokeLinecap="square"
-            transform="translate(16.596194, 17.474874) rotate(-45.000000) translate(-16.596194, -17.474874) "
-          />
-          <polygon
-            id="Triangle"
-            fill="#FFFFFF"
-            transform="translate(16.500000, 13.500000) scale(-1, 1) rotate(90.000000) translate(-16.500000, -13.500000) "
-            points="16.5 11 22 16 11 16"
-          />
-          <path
-            d="M10,3 L10,12"
-            id="Line-11"
-            stroke={fill}
-            strokeWidth="1.5"
-            strokeLinecap="square"
-            transform="translate(10.000000, 7.500000) scale(-1, -1) translate(-10.000000, -7.500000) "
-          />
-          <path
-            d="M10,2.5 L10,12.5"
-            id="Line-11"
-            stroke={fill}
-            strokeWidth="1.5"
-            strokeLinecap="square"
-            transform="translate(10.000000, 7.500000) scale(-1, -1) rotate(-90.000000) translate(-10.000000, -7.500000) "
-          />
-        </g>
+  <svg
+    width="20px"
+    height="20px"
+    viewBox="0 0 20 20"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    {...rest}
+  >
+    <defs />
+    <g
+      id="Page-1"
+      stroke="none"
+      strokeWidth="1"
+      fill="none"
+      fillRule="evenodd"
+      strokeLinecap="square"
+    >
+      <g
+        id="Desktop-HD"
+        transform="translate(-1071.000000, -436.000000)"
+        stroke={fill}
+      >
+        <path d="M1074.5,439 L1074.5,453" id="Line-2-Copy-2" />
+        <path d="M1088.5,439 L1088.5,453" id="Line-2-Copy-7" />
+        <path d="M1080.5,439 L1080.5,452.5" id="Line-2-Copy-8" />
+        <path d="M1084.5,444.25 L1084.5,447.25" id="Line-2-Copy-8" />
+        <path d="M1075,439 L1088,439" id="Line" />
+        <path d="M1075,445.75 L1080,445.75" id="Line-Copy-7" />
+        <path d="M1083,445.75 L1086,445.75" id="Line-Copy-7" />
+        <path d="M1075,453 L1088,453" id="Line-Copy-6" />
       </g>
     </g>
   </svg>
