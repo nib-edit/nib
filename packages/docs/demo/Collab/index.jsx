@@ -11,8 +11,8 @@ const user = {
   name: 'Anonymous user',
 };
 const collab = new CollabPlugin({
-  serviceURL: 'ws://localhost:3000',
-  // serviceURL: "ws://nib-collab.herokuapp.com",
+  // serviceURL: 'ws://localhost:3000',
+  serviceURL: 'ws://nib-collab.herokuapp.com',
   user,
 });
 
