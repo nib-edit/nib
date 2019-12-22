@@ -1,14 +1,13 @@
-import React from "react";
-import { withTheme } from "emotion-theming";
-import styled from "@emotion/styled";
+import React from 'react';
+import { withTheme } from 'emotion-theming';
+import styled from '@emotion/styled';
 
-import Icons from "../../icons";
+import Icons from '../../icons';
 
 export default withTheme(({ theme, selected, name, ...rest }) => {
   const { text, highlight } = theme.constants.color;
   let fill = text.primary;
   if (selected) fill = highlight.primary;
-
   const IconComponent = Icons[name];
   return (
     <Wrapper>
@@ -18,8 +17,8 @@ export default withTheme(({ theme, selected, name, ...rest }) => {
 });
 
 const Wrapper = styled.span(
-  { display: "flex" },
+  { display: 'flex' },
   ({ theme: { constants, icon } }) => ({
-    ...icon({ theme: constants })
+    ...icon({ theme: constants }),
   })
 );

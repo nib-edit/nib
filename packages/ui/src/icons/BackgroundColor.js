@@ -1,20 +1,20 @@
-import React from "react";
+import React from 'react';
 
 export default ({ fill, selectedColor, ...rest }) => (
   <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" {...rest}>
     <defs>
       <rect
         id="path-bg-color"
-        x="999.787544"
-        y="700.118413"
+        x="1038.54835"
+        y="699.95533"
         width="3"
         height="3"
       />
     </defs>
     <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-      <g id="Desktop-HD" transform="translate(-987.000000, -698.000000)">
+      <g id="Desktop-HD" transform="translate(-1025.000000, -698.000000)">
         <path
-          d="M990,716.5 L1003.40596,716.5"
+          d="M1028,716.5 L1041.40596,716.5"
           id="Line-6"
           stroke={selectedColor || fill}
           strokeWidth="1.5"
@@ -22,49 +22,51 @@ export default ({ fill, selectedColor, ...rest }) => (
           strokeLinecap="round"
         />
         <path
-          d="M990.424621,710 L998.25,702"
+          d="M1029.2426,709.764841 L1036.87192,701.582009"
           id="Line-7"
           stroke={fill}
           strokeLinecap="square"
+          transform="translate(1033.057261, 705.673425) rotate(2.000000) translate(-1033.057261, -705.673425) "
         />
         <path
-          d="M993.424621,713 L1001.25,705"
+          d="M1031.9946,712.726263 L1039.62461,704.544079"
           id="Line-7"
           stroke={fill}
           strokeLinecap="round"
           strokeLinejoin="round"
+          transform="translate(1035.809610, 708.635171) rotate(2.000000) translate(-1035.809610, -708.635171) "
         />
         <path
-          d="M997.147734,700.07649 L1003.08333,705.877535"
+          d="M1036.04427,699.692175 L1041.80902,705.658199"
           id="Line-8"
           stroke={fill}
           strokeWidth="1.5"
           strokeLinecap="square"
-          transform="translate(1000.115530, 702.977012) rotate(-3.000000) translate(-1000.115530, -702.977012) "
+          transform="translate(1038.926647, 702.675187) rotate(-1.000000) translate(-1038.926647, -702.675187) "
         />
         <path d="" id="Path-9" stroke="#979797" />
         <polyline
-          id="Path-11"
+          id="path-bg-color1"
           stroke={fill}
           strokeLinecap="round"
           strokeLinejoin="round"
-          points="990.424621 710 990 713 993.424621 713"
+          transform="translate(1030.115084, 711.212987) rotate(-4.000000) translate(-1030.115084, -711.212987) "
+          points="1028.98706 709.712987 1028.61508 712.712987 1031.61508 712.712987"
         />
         <g
           id="Rectangle"
-          transform="translate(1001.287544, 701.618413) rotate(132.000000) translate(-1001.287544, -701.618413) "
+          transform="translate(1040.048350, 701.455330) rotate(135.500000) translate(-1040.048350, -701.455330) "
           stroke={fill}
         >
           <rect
             strokeLinejoin="square"
             fill={fill}
             fillRule="evenodd"
-            x="1000.28754"
-            y="700.618413"
+            x="1039.04835"
+            y="700.45533"
             width="2"
             height="2"
           />
-          <use xlinkHref="#path-bg-color" />
         </g>
       </g>
     </g>
