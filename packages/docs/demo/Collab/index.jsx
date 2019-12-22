@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
-import Editor from "nib-core";
-import ReactSelect from "react-select";
+import React, { useState, useEffect } from 'react';
+import Editor from 'nib-core';
+import ReactSelect from 'react-select';
 
-import CollabPlugin from "nib-collab-client";
+import CollabPlugin from 'nib-collab-client';
 
-import "./styles.css";
+import './styles.css';
 
 const user = {
   id: Math.floor(Math.random() * 0xffffffff),
-  name: "Anonymous user"
+  name: 'Anonymous user',
 };
 const collab = new CollabPlugin({
-  // serviceURL: "ws://localhost:3000",
-  serviceURL: "ws://nib-collab.herokuapp.com",
-  user
+  serviceURL: 'ws://localhost:3000',
+  // serviceURL: "ws://nib-collab.herokuapp.com",
+  user,
 });
 
 /**
@@ -21,7 +21,7 @@ const collab = new CollabPlugin({
  */
 const Collab = () => {
   const [editorState, setEditorState] = useState();
-  const [username, setUsername] = useState("Anonymous user");
+  const [username, setUsername] = useState('Anonymous user');
   const [users, setUsers] = useState();
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const Collab = () => {
     <div>
       <div style={{ width: 200, marginBottom: 20 }}>
         <div>
-          <span style={{ fontSize: 14, width: 100, display: "inline-block" }}>
+          <span style={{ fontSize: 14, width: 100, display: 'inline-block' }}>
             User Name
           </span>
           <input
@@ -61,7 +61,7 @@ const Collab = () => {
           Update
         </button>
         <div className="select-wrapper">
-          <span style={{ fontSize: 14, display: "inline-block" }}>
+          <span style={{ fontSize: 14, display: 'inline-block' }}>
             Connected Users
           </span>
           <ReactSelect
@@ -70,7 +70,7 @@ const Collab = () => {
           />
         </div>
       </div>
-      <div style={{ position: "relative" }}>
+      <div style={{ position: 'relative' }}>
         {!users && (
           <div className="nib_message">Connecting to the server...</div>
         )}

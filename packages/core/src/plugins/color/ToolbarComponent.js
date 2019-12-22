@@ -1,19 +1,19 @@
-import PropTypes from "prop-types";
-import React, { Fragment, PureComponent } from "react";
-import { Popup, ToolbarButton, Icon } from "nib-ui";
+import PropTypes from 'prop-types';
+import React, { Fragment, PureComponent } from 'react';
+import { Popup, ToolbarButton, Icon } from 'nib-ui';
 
-import styled from "@emotion/styled";
-import { PMStateConsumer } from "../../context/pm-state";
-import { colorPluginKey } from "./plugin";
+import styled from '@emotion/styled';
+import { PMStateConsumer } from '../../context/pm-state';
+import { colorPluginKey } from './plugin';
 
 const COLORS = [
-  "#212121",
-  "#e0e0e0",
-  "#6a1b9a",
-  "#0d47a1",
-  "#1b5e20",
-  "#c62828",
-  "#ffeb3b"
+  '#212121',
+  '#e0e0e0',
+  '#6a1b9a',
+  '#0d47a1',
+  '#1b5e20',
+  '#c62828',
+  '#ffeb3b',
 ];
 
 class ToolbarComponent extends PureComponent {
@@ -32,7 +32,7 @@ class ToolbarComponent extends PureComponent {
   };
 
   toggleColorType = evt => {
-    const color = evt.target.getAttribute("name");
+    const color = evt.target.getAttribute('name');
     const { pmstate } = this.props;
     const { pmview } = pmstate;
     const { selectedMarkType } = this.state;
@@ -51,13 +51,14 @@ class ToolbarComponent extends PureComponent {
       tr.addMark($from.pos, $to.pos, colorMark).setStoredMarks([colorMark]);
     }
     dispatch(tr);
+    this.closeColorSelect();
   };
 
   openColorSelect = evt => {
-    const selectedMarkType = evt.currentTarget.getAttribute("name");
+    const selectedMarkType = evt.currentTarget.getAttribute('name');
     this.setState({
       popupMarker: this[`${selectedMarkType}Ref`],
-      selectedMarkType
+      selectedMarkType,
     });
   };
 
@@ -118,9 +119,9 @@ class ToolbarComponent extends PureComponent {
                     name={color}
                     color={color}
                     selected={
-                      (selectedMarkType === "backgroundColor" &&
+                      (selectedMarkType === 'backgroundColor' &&
                         selectedBackgroundColor === color) ||
-                      (selectedMarkType === "textColor" &&
+                      (selectedMarkType === 'textColor' &&
                         selectedTextColor === color)
                     }
                   />
@@ -138,7 +139,7 @@ ToolbarComponent.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   editorWrapper: PropTypes.object.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
-  pmstate: PropTypes.object.isRequired
+  pmstate: PropTypes.object.isRequired,
 };
 
 const ColorsWrapper = styled.div`
@@ -147,9 +148,9 @@ const ColorsWrapper = styled.div`
 
 const StyledButton = styled(ToolbarButton)`
   background-color: ${({ color }) => color};
-  border: ${({ selected }) => (selected ? "0.5px solid white" : "none")};
+  border: ${({ selected }) => (selected ? '0.5px solid white' : 'none')};
   box-shadow: ${({ color, selected }) =>
-    selected ? `0px 0px 0px 0.5px ${color}` : "none"};
+    selected ? `0px 0px 0px 0.5px ${color}` : 'none'};
   height: 24px;
   margin-right: 4px;
   margin: 2px;
