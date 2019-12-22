@@ -1,6 +1,6 @@
 ### Installing package
 
-Package can be installed from npm or yarn
+Package can be installed using npm or yarn commands
 
 ```js static
 npm i nib-core --save
@@ -13,8 +13,8 @@ yarn add nib-core
 ### Writing editor component
 
 ```js static
-import React from "react";
-import Editor from "nib-core";
+import React from 'react';
+import Editor from 'nib-core';
 
 const MyEditor = () => <Editor />;
 ```
@@ -37,11 +37,11 @@ HTML:
 JAVASCRIPT:
 
 ```js static
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 const MyEditor = () => <Editor />;
-ReactDOM.render(<MyEditor />, document.getElementById("editor"));
+ReactDOM.render(<MyEditor />, document.getElementById('editor'));
 ```
 
 <br />

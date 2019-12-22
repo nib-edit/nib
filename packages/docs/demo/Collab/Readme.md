@@ -1,4 +1,4 @@
-Open this page in 2 different tabs to see it in action. Collab feature is in beta currently.
+This feature allows multipleusers to edit a document simultaneously. Open this editor in 2 different place (or different browser tabs) to see it in action.
 
 <br />
 
