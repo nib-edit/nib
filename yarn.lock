@@ -5155,66 +5155,6 @@ neo-async@^2.5.0, neo-async@^2.6.0, neo-async@^2.6.1:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
-nib-collab-client@0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/nib-collab-client/-/nib-collab-client-0.1.2.tgz#03e2f8e922857dc4667110b35abb4bf5eaa63e67"
-  integrity sha512-849GvdSE8RAmKpYyVknl91iuTAvHrf8rj/Ky+5goO2BzqPomFghCHskpelZTu/eyLM12JgrBTOmbs9ybUs/NaQ==
-  dependencies:
-    axios "^0.19.0"
-    prosemirror-collab "^1.1.2"
-    prosemirror-transform "^1.0.0"
-
-nib-comment@2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/nib-comment/-/nib-comment-2.4.0.tgz#ffaaab7914395b15508f8e31d031c85cfccb2a87"
-  integrity sha512-gI0D6GFn+f3B6PYxDPnAgyGwS6h9uJ61fR1JXMPjDJdtFId1Ray2SOipJ4I9/ZEJcDwTizKmIAAJ+5deS8NQFQ==
-  dependencies:
-    nib-ui "2.4.3"
-    prosemirror-transform "^1.0.0"
-
-nib-core@2.4.4:
-  version "2.4.4"
-  resolved "https://registry.yarnpkg.com/nib-core/-/nib-core-2.4.4.tgz#dc0490c4987967d309f8e22e6ecfc5ef6ba04a1f"
-  integrity sha512-FUc4y0lXVx220Fb+JyQfEK+LfTSbCootebnE63WIZE2kq0aHgXCd87ZFP1sdr/iKfsPomM9VwxAwRcfxe5lGhw==
-  dependencies:
-    "@emotion/core" "^10.0.14"
-    "@emotion/styled" "^10.0.14"
-    emotion-theming "^10.0.14"
-    nib-embed "2.1.6"
-    nib-schema "2.4.0"
-    nib-ui "2.4.1"
-    nib-upload "2.1.6"
-    prosemirror-commands "^1.0.7"
-    prosemirror-history "^1.0.3"
-    prosemirror-keymap "^1.0.1"
-    prosemirror-model "^1.6.2"
-    prosemirror-schema-list "^1.0.1"
-    prosemirror-state "^1.2.2"
-    prosemirror-tables "^0.8.1"
-    prosemirror-utils "^0.7.6"
-    prosemirror-view "1.10.0"
-
-nib-track@2.4.1:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/nib-track/-/nib-track-2.4.1.tgz#34fcadd49fe29987644742e199294e1b01d933b7"
-  integrity sha512-faJTcUJnIqVfmo8xLV0vajtK/rQai3U3DEE8+sqDnlWsB2rA4edXfVda3LZVFPr3t+uNTDAH/8RBiZf/aD50QA==
-  dependencies:
-    prosemirror-transform "^1.0.0"
-
-nib-ui@2.4.1:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/nib-ui/-/nib-ui-2.4.1.tgz#da8400df42b6fe04b20a1f6b9138caa3e0674219"
-  integrity sha512-UYlKM4VfyI41H2zlgaLWeqyEX4SrGE4UmQCfnOh3mSMDaITn6cMI7q7j8w6cld5G+ZVP+iquWU8vwL6oWPWcbw==
-  dependencies:
-    react-select "^3.0.4"
-
-nib-ui@2.4.3:
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/nib-ui/-/nib-ui-2.4.3.tgz#eb28e5992058e4b8c6e84b379d12921815620f26"
-  integrity sha512-5tRNB1K6K2RiQEbvJ7YU8LifF0l+Nh6QEKnq7QSQU6F2suHZ4hLuCNupzBoGtj/SeFBEHXYcgXdUxGmj9XsIrQ==
-  dependencies:
-    react-select "^3.0.4"
-
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
