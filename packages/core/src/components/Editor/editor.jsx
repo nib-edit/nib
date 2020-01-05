@@ -1,20 +1,27 @@
-import PropTypes from "prop-types";
-import React, { useEffect, useState, useRef } from "react";
-import { EditorView } from "prosemirror-view";
+import PropTypes from 'prop-types';
+import React, { useEffect, useState, useRef } from 'react';
+import { EditorView } from 'prosemirror-view';
 
-import getPluginStyles from "../../utils/editor/styles";
-import { buildEditorState, updateEditorState } from "../../utils/editor/state";
-import { getPluginList } from "../../utils/editor/plugins";
-import { useConfigContext } from "../../context/config";
-import { usePMStateContext } from "../../context/pm-state";
+import getPluginStyles from '../../utils/editor/styles';
+import { buildEditorState, updateEditorState } from '../../utils/editor/state';
+import { getPluginList } from '../../utils/editor/plugins';
+import { useConfigContext } from '../../context/config';
+import { usePMStateContext } from '../../context/pm-state';
 
-import { StyledEditor } from "./styles";
+import { StyledEditor } from './styles';
 
-const Editor = ({ defaultValue, autoFocus, spellCheck, addons, onChange }) => {
+const Editor = ({
+  defaultValue,
+  autoFocus,
+  spellCheck,
+  addons,
+  onChange,
+  licenseKey,
+}) => {
   const editorRef = useRef(null);
   const {
     config: { plugins },
-    dispatcher
+    dispatcher,
   } = useConfigContext();
   const pmstate = usePMStateContext();
   let [view] = useState();
@@ -51,7 +58,7 @@ const Editor = ({ defaultValue, autoFocus, spellCheck, addons, onChange }) => {
             serializableState[name] = getSerializableState();
         });
         if (onChange) onChange(serializableState);
-      }
+      },
     });
     if (autoFocus) {
       view.focus();
@@ -64,6 +71,10 @@ const Editor = ({ defaultValue, autoFocus, spellCheck, addons, onChange }) => {
         });
     });
     updateViewListeners();
+    addons.forEach(addon => {
+      if (addon.updateLicenseInfo)
+        addon.updateLicenseInfo(editorRef.current, licenseKey);
+    });
     return () => view.destroy();
   }, []);
 
@@ -85,7 +96,8 @@ Editor.propTypes = {
   onChange: PropTypes.func,
   spellCheck: PropTypes.bool,
   // eslint-disable-next-line react/forbid-prop-types
-  addons: PropTypes.array
+  addons: PropTypes.array,
+  licenseKey: PropTypes.string,
 };
 
 Editor.defaultProps = {
@@ -93,7 +105,8 @@ Editor.defaultProps = {
   defaultValue: undefined,
   onChange: () => {},
   spellCheck: false,
-  addons: []
+  addons: [],
+  licenseKey: undefined,
 };
 
 export default Editor;

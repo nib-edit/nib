@@ -87,7 +87,7 @@ const Track = () => {
           <div className="nib-track_save_wraper">
             <button
               className="nib-track_save"
-              disabled={!trackState.hasUncommittedSteps}
+              disabled={trackState && !trackState.hasUncommittedSteps}
               onClick={doCommit}
               type="button"
             >
@@ -99,35 +99,36 @@ const Track = () => {
           <div className="nib-track_commits">Changes</div>
           <table className="nib-track_table">
             <tbody>
-              {trackState.commits.map((commit, index) => (
-                <tr key={`${commit.time}`}>
-                  <td>
-                    <div
-                      className={
-                        trackState.highlightedCommit &&
-                        trackState.highlightedCommit === commit
-                          ? 'nib-highlighted-commit'
-                          : ''
-                      }
-                      onMouseEnter={() => highlightCommit(commit)}
-                      onMouseLeave={resetHighlight}
-                    >
-                      <div>{`${index + 1}. ${commit.data.username}`}</div>
-                      <div>{formatDate(commit.time)}</div>
-                      <div>
-                        <button
-                          className="nib-track_revert_btn"
-                          onClick={() => revertCommit(commit)}
-                          type="button"
-                        >
-                          Revert
-                        </button>
+              {trackState &&
+                trackState.commits.map((commit, index) => (
+                  <tr key={`${commit.time}`}>
+                    <td>
+                      <div
+                        className={
+                          trackState.highlightedCommit &&
+                          trackState.highlightedCommit === commit
+                            ? 'nib-highlighted-commit'
+                            : ''
+                        }
+                        onMouseEnter={() => highlightCommit(commit)}
+                        onMouseLeave={resetHighlight}
+                      >
+                        <div>{`${index + 1}. ${commit.data.username}`}</div>
+                        <div>{formatDate(commit.time)}</div>
+                        <div>
+                          <button
+                            className="nib-track_revert_btn"
+                            onClick={() => revertCommit(commit)}
+                            type="button"
+                          >
+                            Revert
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                    <div className="nib-track-space" />
-                  </td>
-                </tr>
-              ))}
+                      <div className="nib-track-space" />
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
