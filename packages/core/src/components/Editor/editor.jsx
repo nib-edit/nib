@@ -81,7 +81,6 @@ const Editor = ({
   return (
     <StyledEditor
       // eslint-disable-next-line react/prop-types
-      onClick={() => pmstate.pmview.focus()}
       pluginStyles={getPluginStyles(plugins.options, addons)}
       ref={editorRef}
       spellCheck={spellCheck}
