@@ -5164,10 +5164,10 @@ nib-collab-client@0.2.0:
     prosemirror-collab "^1.1.2"
     prosemirror-transform "^1.0.0"
 
-nib-comment@2.5.1:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/nib-comment/-/nib-comment-2.5.1.tgz#5ffd13ca8e98c6bbdb3f327b552b52c9364bcfe4"
-  integrity sha512-Iad1rNmuOICwiPDnfQLyz4LaPz50boMa8KRM+0Qw789N9A+UNymY1Zm5QSlbbqwhrepiK/EKvkmM4T+MGXivOw==
+nib-comment@2.5.2:
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/nib-comment/-/nib-comment-2.5.2.tgz#c0d41d12a995ed5ad0ee37a6a87bf20e75c84368"
+  integrity sha512-sWJRUiac4kVqfZvmCKl/tD+TGlWRotJPI4+UUie6bhyKXP+Q9klmp5KDC4a6h4muClerU0B6qcf+wN1tczmpPQ==
   dependencies:
     axios "^0.19.0"
     nib-ui "2.4.4"
