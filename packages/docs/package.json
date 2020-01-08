@@ -14,7 +14,7 @@
     "css-loader": "^3.0.0",
     "nib-track": "2.5.1",
     "nib-collab-client": "0.2.0",
-    "nib-comment": "2.5.2",
+    "nib-comment": "2.5.4",
     "nib-converter": "2.4.0",
     "nib-core": "2.5.1",
     "nib-ui": "2.4.4",
