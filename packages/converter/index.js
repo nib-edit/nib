@@ -48,6 +48,12 @@ const getHTMLString = node => {
     if (node.type.name === "image") {
       strContent = `<p style="text-align: center;">${strContent}<br></p>`;
     }
+    if (node.type.name === "hardBreak") {
+      // This special case prevents strContent from producing
+      // markup that treats <br> like an HTML element that should
+      // have an opening and closing tag.
+      strContent = "<br>";
+    }
   }
   return strContent;
 };
