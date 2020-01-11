@@ -5155,10 +5155,10 @@ neo-async@^2.5.0, neo-async@^2.6.0, neo-async@^2.6.1:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
-nib-collab-client@0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/nib-collab-client/-/nib-collab-client-0.2.0.tgz#61f1025108d61176a5934eea8d31365f7a08a455"
-  integrity sha512-hXuSoS9eXNeUkX9duaVI9wLHnBBbhJfcTjeUycI2cmdPrdfl86+Wz84sUhhRyyXubFNbG2MeeeuPk8d3JWbxQQ==
+nib-collab-client@0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/nib-collab-client/-/nib-collab-client-0.2.1.tgz#91a3ce39c584da6f01950dca742f64befe920308"
+  integrity sha512-dGNpL7tOLGEao8QXmATqaRcqckTWdcEIWGXq88qqMEX/HXOXdedj0LX7iPfvEu6ZfSGvn0dfYnbEvf1IlergLQ==
   dependencies:
     axios "^0.19.0"
     prosemirror-collab "^1.1.2"
