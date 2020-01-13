@@ -7,13 +7,18 @@ export default {
       secondary: '#2962ff1a',
     },
 
-    text: { primary: '#212121', secondary: '#424242' },
+    disabled: {
+      primary: '#bdbdbd',
+      secondary: '#bdbdbd80',
+    },
+
+    text: { primary: '#212121', secondary: '#424242', light: '#757575' },
 
     backgroundHighlight: { primary: '#fff9c4', secondary: '#ffeb3b' },
 
     textHighlight: { primary: '#212121' },
 
-    background: { primary: '#FFFFFF', secondary: '#efefef' },
+    background: { primary: '#FFFFFF', secondary: '#efefef', light: '#fcfcfc' },
 
     opaque: '#00000080',
 

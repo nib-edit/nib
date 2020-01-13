@@ -4,7 +4,6 @@ import Editor from 'nib-core';
 import CommentPlugin from 'nib-comment';
 
 import defaultValue from './sampleData';
-import comments from './savedComments';
 
 import './styles.css';
 
@@ -31,7 +30,7 @@ import './styles.css';
 //   }
 // };
 
-const commenter = new CommentPlugin(comments, {
+const commenter = new CommentPlugin({
   userid: '12345',
   username: 'Anonymous user',
 });
