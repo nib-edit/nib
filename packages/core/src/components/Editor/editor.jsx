@@ -72,7 +72,7 @@ const Editor = ({
     addons.forEach(addon => {
       if (addon.updateLicenseInfo)
         addon.updateLicenseInfo(editorRef.current, licenseKey);
-      if (defaultValue[addon.name] && addon.init)
+      if (defaultValue && defaultValue[addon.name] && addon.init)
         addon.init(defaultValue[addon.name]);
     });
     return () => view.destroy();

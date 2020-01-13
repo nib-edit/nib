@@ -5,15 +5,13 @@ import TrackPlugin from 'nib-track';
 import CommentPlugin from 'nib-comment';
 
 import defaultValue from './sampleData';
-import commits from './savedCommits';
-import comments from './savedComments';
 
 const user = {
   userid: '12345',
   username: 'Anonymous user',
 };
-const tracker = new TrackPlugin(commits);
-const commenter = new CommentPlugin(comments, user, '#f8bbd0');
+const tracker = new TrackPlugin();
+const commenter = new CommentPlugin(user, '#f8bbd0');
 
 const formatDate = str => {
   const d = new Date(str);
