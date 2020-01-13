@@ -6,7 +6,6 @@ import getPluginStyles from '../../utils/editor/styles';
 import { buildEditorState, updateEditorState } from '../../utils/editor/state';
 import { getPluginList } from '../../utils/editor/plugins';
 import { useConfigContext } from '../../context/config';
-import { usePMStateContext } from '../../context/pm-state';
 
 import { StyledEditor } from './styles';
 
@@ -23,7 +22,6 @@ const Editor = ({
     config: { plugins },
     dispatcher,
   } = useConfigContext();
-  const pmstate = usePMStateContext();
   let [view] = useState();
   const viewProvider = () => view;
 
@@ -74,6 +72,8 @@ const Editor = ({
     addons.forEach(addon => {
       if (addon.updateLicenseInfo)
         addon.updateLicenseInfo(editorRef.current, licenseKey);
+      if (defaultValue[addon.name] && addon.init)
+        addon.init(defaultValue[addon.name]);
     });
     return () => view.destroy();
   }, []);

@@ -4,11 +4,10 @@ import Editor from 'nib-core';
 import TrackPlugin from 'nib-track';
 
 import defaultValue from './sampleData';
-import commits from './savedCommits';
 
 import './styles.css';
 
-const tracker = new TrackPlugin(commits);
+const tracker = new TrackPlugin();
 
 const userid = Math.floor(Math.random() * 0xffffffff);
 
@@ -25,27 +24,30 @@ const formatDate = str => {
 const Track = () => {
   const [trackState, setTrackState] = useState(tracker.getState());
   const [name, setName] = useState('Anonymous user');
-  const [cmd, setCmd] = useState('Anonymous user');
+  const [cmd, setCmd] = useState(false);
 
-  const updateTrackedState = () => {
-    setTrackState(tracker.getState());
-  };
+  const updateTrackedState = () => setTrackState(tracker.getState());
+
   const doCommit = () => {
     tracker.doCommit({ username: name, userid });
     updateTrackedState();
   };
+
   const revertCommit = commit => {
     tracker.revertCommit(commit.id, { username: name, userid });
     updateTrackedState();
   };
+
   const highlightCommit = commit => {
     tracker.highlightCommit(commit.id);
     updateTrackedState();
   };
+
   const resetHighlight = () => {
     tracker.resetHighlight();
     updateTrackedState();
   };
+
   const onKeyDown = evt => {
     if (evt.key === 'Meta') setCmd(true);
     else if (evt.key === 's' && cmd) {
@@ -53,6 +55,7 @@ const Track = () => {
       evt.preventDefault();
     }
   };
+
   const onKeyUp = () => {
     setCmd(false);
   };

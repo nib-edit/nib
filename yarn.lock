@@ -5173,10 +5173,10 @@ nib-comment@2.5.8:
     nib-ui "2.4.4"
     prosemirror-transform "^1.0.0"
 
-nib-track@2.5.1:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/nib-track/-/nib-track-2.5.1.tgz#ad105a8f97c86de891fcd80759f3199b5984f633"
-  integrity sha512-goRGManc9i2sgrjYE4txee5d7bWjmHT9ENQShZbyVQA/LSUlyEs2kq0YzAA5G6z0+zU9Cr/j8tjcCWnTTun1IQ==
+nib-track@2.5.2:
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/nib-track/-/nib-track-2.5.2.tgz#e73c1482a5ec93a989a1996f1cc34167019c6f10"
+  integrity sha512-569ZBwBOisFJJqhQSZZv+1UFuCMoiQD8jzYEKlXeXbJwtB+swddMVuSJm4Z7uh0lLq2W8DV/hnYawgI9BbZyFw==
   dependencies:
     axios "^0.19.0"
     prosemirror-transform "^1.0.0"
