@@ -5189,6 +5189,13 @@ nib-track@2.5.2:
     axios "^0.19.0"
     prosemirror-transform "^1.0.0"
 
+nib-ui@2.4.4:
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/nib-ui/-/nib-ui-2.4.4.tgz#f5921197bc0b457d1c04977d85341323b53fc43b"
+  integrity sha512-oGf+RN6O+Yq5j5Rqr4fe/qEivZbS5aS2hahBukZgSfnwlw08T/fxCMKH2FMvBfkd8ZLUl8J2PF3Q0AlnKuvldQ==
+  dependencies:
+    react-select "^3.0.4"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
