@@ -1,19 +1,19 @@
-import PropTypes from "prop-types";
-import React, { PureComponent } from "react";
-import styled from "@emotion/styled";
+import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
+import styled from '@emotion/styled';
 
-import { Space, SpaceSize, Modal } from "nib-ui";
+import { Space, SpaceSize, Modal } from 'nib-ui';
 
-import getOS from "../../utils/device";
-import { ConfigContext, ConfigContextConsumer } from "../../context/config";
-import Plugins from "./pluginList";
-import { KeymapInfo } from "./keymaps";
+import getOS from '../../utils/device';
+import { ConfigContext, ConfigContextConsumer } from '../../context/config';
+import Plugins from './pluginList';
+import { KeymapInfo } from './keymaps';
 
 const getPluginList = plugins =>
   plugins
     .trim()
-    .split(" ")
-    .filter(p => p !== "help")
+    .split(' ')
+    .filter(p => p !== 'help')
     .map(key => Plugins[key]);
 
 const getKeymapInfo = plugins => {
@@ -21,25 +21,25 @@ const getKeymapInfo = plugins => {
     .filter(plugin => plugin.KeymapInfo)
     .map(plugin => ({
       name: plugin.name,
-      keymaps: Object.values(plugin.KeymapInfo)
+      keymaps: Object.values(plugin.KeymapInfo),
     }));
   pluginList.push({
-    name: "help",
-    keymaps: Object.values(KeymapInfo)
+    name: 'help',
+    keymaps: Object.values(KeymapInfo),
   });
   return pluginList;
 };
 
 const formatKey = key => {
   const os = getOS();
-  let mod = "⌘";
-  if (os === "Windows") {
-    mod = "^";
+  let mod = '⌘';
+  if (os === 'Windows') {
+    mod = '^';
   }
-  let formattedKey = key.replace("Mod", mod);
-  formattedKey = formattedKey.replace(/-/g, " + ");
-  formattedKey = formattedKey.replace("Shift", "⇧");
-  formattedKey = formattedKey.replace("Alt", "⌥");
+  let formattedKey = key.replace('Mod', mod);
+  formattedKey = formattedKey.replace(/-/g, ' + ');
+  formattedKey = formattedKey.replace('Shift', '⇧');
+  formattedKey = formattedKey.replace('Alt', '⌥');
   return formattedKey;
 };
 
@@ -56,7 +56,7 @@ const KeymapColumn = ({ keymap }) => (
 
 KeymapColumn.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  keymap: PropTypes.array.isRequired
+  keymap: PropTypes.array.isRequired,
 };
 
 class HelpModal extends PureComponent {
@@ -98,40 +98,40 @@ class HelpModal extends PureComponent {
 HelpModal.propTypes = {
   hideModal: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
-  config: PropTypes.object.isRequired
+  config: PropTypes.object.isRequired,
 };
 
 const SubTitle = styled.div(
-  { padding: "0px 0px 10px 20px" },
+  { padding: '0px 0px 10px 20px' },
   ({ theme: { constants } }) => ({
-    fontSize: constants.fontSize.large
+    fontSize: constants.fontSize.large,
   })
 );
 
 const Option = styled.div({
-  padding: "4px 24px",
-  display: "flex",
-  justifyContent: "space-between"
+  padding: '4px 24px',
+  display: 'flex',
+  justifyContent: 'space-between',
 });
 
 const StyledKey = styled.span({
-  whiteSpace: "nowrap"
+  whiteSpace: 'nowrap',
 });
 
-const OptionWrapper = styled.div({ height: "100%", overflow: "scroll" });
+const OptionWrapper = styled.div({ height: '100%', overflow: 'scroll' });
 
 const ColumnWrapper = styled.div({
-  display: "flex",
-  "@media(max-width: 700px)": {
-    flexDirection: "column"
-  }
+  display: 'flex',
+  '@media(max-width: 700px)': {
+    flexDirection: 'column',
+  },
 });
 
 const Column = styled.span({
-  width: "48%",
-  "@media(max-width: 700px)": {
-    width: "100%"
-  }
+  width: '48%',
+  '@media(max-width: 700px)': {
+    width: '100%',
+  },
 });
 
 export default props => (

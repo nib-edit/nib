@@ -2,6 +2,7 @@ import AddComment from './AddComment';
 import AddColumn from './AddColumn';
 import AddRow from './AddRow';
 import ArrowDown from './ArrowDown';
+import Blockquote from './Blockquote';
 import Bold from './Bold';
 import BackgroundColor from './BackgroundColor';
 import Close from './Close';
@@ -42,6 +43,7 @@ export default {
   addColumn: AddColumn,
   addRow: AddRow,
   arrowDown: ArrowDown,
+  blockquote: Blockquote,
   backgroundColor: BackgroundColor,
   bold: Bold,
   close: Close,

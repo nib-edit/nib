@@ -5173,6 +5173,14 @@ nib-comment@2.6.1:
     nib-ui "2.4.4"
     prosemirror-transform "^1.0.0"
 
+nib-converter@2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/nib-converter/-/nib-converter-2.4.0.tgz#edf5e6ae9ef7d355016e5a542e738e0c757d3402"
+  integrity sha512-8f5Y68VEuJ5S2NHM9vyWWF5r9HN9It1NQ2Qr0Lu8PJLlxJyqVeHLwHdKP2ZnzLaYb/dW8pwyuI68OlCwJo/RKg==
+  dependencies:
+    nib-schema "^2.4.0"
+    prosemirror-model "^1.0.0"
+
 nib-track@2.5.2:
   version "2.5.2"
   resolved "https://registry.yarnpkg.com/nib-track/-/nib-track-2.5.2.tgz#e73c1482a5ec93a989a1996f1cc34167019c6f10"
