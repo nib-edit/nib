@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import Editor from "nib-core";
+import React, { useState } from 'react';
+import Editor from 'nib-core';
 
-import Code from "../../Code";
-import defaultValue from "./sampleData";
+import Code from '../../Code';
+import defaultValue from './sampleData';
 
 /**
- * @visibleName 6. List
+ * @visibleName 7. List
  */
 const List = () => {
   const [content, setContent] = useState();
@@ -13,11 +13,11 @@ const List = () => {
     <div>
       <Editor
         config={{
-          plugins: { options: "list" },
+          plugins: { options: 'list' },
           toolbar: {
-            options: "top",
-            top: { options: "list" }
-          }
+            options: 'top',
+            top: { options: 'list' },
+          },
         }}
         onChange={setContent}
         defaultValue={defaultValue}

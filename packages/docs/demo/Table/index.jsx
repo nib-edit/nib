@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import Editor from "nib-core";
+import React, { useState } from 'react';
+import Editor from 'nib-core';
 
-import Code from "../../Code";
-import defaultValue from "./sampleData";
+import Code from '../../Code';
+import defaultValue from './sampleData';
 
 /**
- * @visibleName 9. Table
+ * @visibleName 10. Table
  */
 const Table = () => {
   const [content, setContent] = useState();
@@ -13,11 +13,11 @@ const Table = () => {
     <div>
       <Editor
         config={{
-          plugins: { options: "table" },
+          plugins: { options: 'table' },
           toolbar: {
-            options: "top",
-            top: { options: "table" }
-          }
+            options: 'top',
+            top: { options: 'table' },
+          },
         }}
         onChange={setContent}
         defaultValue={defaultValue}

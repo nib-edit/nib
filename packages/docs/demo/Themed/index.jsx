@@ -1,32 +1,32 @@
-import React, { useState } from "react";
-import Editor from "nib-core";
+import React, { useState } from 'react';
+import Editor from 'nib-core';
 
-import uploadCallback from "../../common/uploadCallback";
-import defaultValue from "./sampleData";
+import uploadCallback from '../../common/uploadCallback';
+import defaultValue from './sampleData';
 
 const customTheme = {
   color: {
-    highlight: { secondary: "#424242" },
-    text: { primary: "#e0e0e0", secondary: "#bdbdbd" },
+    highlight: { secondary: '#424242' },
+    text: { primary: '#e0e0e0', secondary: '#bdbdbd' },
     background: {
-      primary: "#212121",
-      secondary: "#424242"
+      primary: '#212121',
+      secondary: '#424242',
     },
     border: {
-      primary: "#636363"
+      primary: '#636363',
     },
-    blurMarker: "#616161"
+    blurMarker: '#616161',
   },
   border: {
-    primary: "1px solid #636363"
+    primary: '1px solid #636363',
   },
   boxShadow: {
-    secondary: "#424242 0px 1px 0px"
-  }
+    secondary: '#424242 0px 1px 0px',
+  },
 };
 
 /**
- * @visibleName 13. Themed
+ * @visibleName 14. Themed
  */
 const Themed = () => {
   const [content, setContent] = useState();
@@ -36,12 +36,12 @@ const Themed = () => {
         config={{
           plugins: {
             image: {
-              uploadCallback
-            }
+              uploadCallback,
+            },
           },
           toolbar: {
-            options: "top"
-          }
+            options: 'top',
+          },
         }}
         onChange={setContent}
         theme={customTheme}

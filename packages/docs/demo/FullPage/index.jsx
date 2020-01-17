@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import Editor from "nib-core";
+import React, { useState } from 'react';
+import Editor from 'nib-core';
 
-import Code from "../../Code";
-import uploadCallback from "../../common/uploadCallback";
-import defaultValue from "./sampleData";
+import Code from '../../Code';
+import uploadCallback from '../../common/uploadCallback';
+import defaultValue from './sampleData';
 
 const styleConfig = {
   wrapper: () => ({
-    height: "100%",
-    width: "100%"
+    height: '100%',
+    width: '100%',
   }),
   editor: () => ({
-    height: "calc(100% - 46px)",
-    width: "100%"
-  })
+    height: 'calc(100% - 46px)',
+    width: '100%',
+  }),
 };
 
 const FullPageEditor = ({ setContent }) => {
@@ -22,9 +22,9 @@ const FullPageEditor = ({ setContent }) => {
       config={{
         plugins: {
           image: {
-            uploadCallback
-          }
-        }
+            uploadCallback,
+          },
+        },
       }}
       defaultValue={defaultValue}
       onChange={setContent}
@@ -34,19 +34,19 @@ const FullPageEditor = ({ setContent }) => {
 };
 
 /**
- * @visibleName 14. Full Page
+ * @visibleName 15. Full Page
  */
 const FullPage = () => {
   const [fullPageEditorVisible, showFullPageEditor] = useState(false);
   const [content, setContent] = useState();
 
   const showEditor = () => {
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = 'hidden';
     showFullPageEditor(true);
   };
 
   const hideEditor = () => {
-    document.body.style.overflow = "scroll";
+    document.body.style.overflow = 'scroll';
     showFullPageEditor(false);
   };
 

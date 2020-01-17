@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import Editor from "nib-core";
+import React, { useState } from 'react';
+import Editor from 'nib-core';
 
-import Code from "../../Code";
-import defaultValue from "./sampleData";
+import Code from '../../Code';
+import defaultValue from './sampleData';
 
 /**
- * @visibleName 8. Video
+ * @visibleName 9. Video
  */
 const Video = () => {
   const [content, setContent] = useState();
@@ -14,12 +14,12 @@ const Video = () => {
       <Editor
         config={{
           plugins: {
-            options: "video"
+            options: 'video',
           },
           toolbar: {
-            options: "top",
-            top: { options: "video" }
-          }
+            options: 'top',
+            top: { options: 'video' },
+          },
         }}
         onChange={setContent}
         defaultValue={defaultValue}

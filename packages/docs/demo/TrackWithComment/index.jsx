@@ -21,7 +21,7 @@ const formatDate = str => {
 };
 
 /**
- * @visibleName 17. Track + Comment
+ * @visibleName 19. Track + Comment
  */
 const TrackWithComment = () => {
   const [trackState, setTrackState] = useState(tracker.getState());

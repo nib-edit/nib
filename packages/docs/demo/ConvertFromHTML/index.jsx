@@ -1,13 +1,13 @@
-import Editor from "nib-core";
-import React, { useState, useEffect } from "react";
-import NibConverter from "nib-converter";
+import Editor from 'nib-core';
+import React, { useState, useEffect } from 'react';
+import NibConverter from 'nib-converter';
 
-import uploadCallback from "../../common/uploadCallback";
+import uploadCallback from '../../common/uploadCallback';
 
-import "./styles.css";
+import './styles.css';
 
 /**
- * @visibleName 15. Convert from HTML
+ * @visibleName 16. Convert from HTML
  */
 const ConvertFromHTMLDemo = () => {
   const [html, setHTML] = useState();
@@ -36,12 +36,12 @@ const ConvertFromHTMLDemo = () => {
           config={{
             plugins: {
               image: {
-                uploadCallback
-              }
+                uploadCallback,
+              },
             },
             toolbar: {
-              options: "top"
-            }
+              options: 'top',
+            },
           }}
           defaultValue={defaultValue}
         />

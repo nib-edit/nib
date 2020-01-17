@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import Editor from "nib-core";
+import React, { useState } from 'react';
+import Editor from 'nib-core';
 
-import Code from "../../Code";
+import Code from '../../Code';
 
 /**
- * @visibleName 11. Help
+ * @visibleName 12. Help
  */
 const Help = () => {
   const [content, setContent] = useState();
@@ -12,11 +12,11 @@ const Help = () => {
     <div>
       <Editor
         config={{
-          plugins: { options: "block inline help" },
+          plugins: { options: 'block inline help' },
           toolbar: {
-            options: "top",
-            top: { options: "block inline help" }
-          }
+            options: 'top',
+            top: { options: 'block inline help' },
+          },
         }}
         onChange={setContent}
       />

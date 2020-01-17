@@ -1,28 +1,22 @@
 import React, { useState } from 'react';
 import Editor from 'nib-core';
-import uploadCallback from '../../common/uploadCallback';
 
 import Code from '../../Code';
 import defaultValue from './sampleData';
 
 /**
- * @visibleName 8. Image
+ * @visibleName 6. Blockquote
  */
-const Image = () => {
+const Blockquote = () => {
   const [content, setContent] = useState();
   return (
     <div>
       <Editor
         config={{
-          plugins: {
-            options: 'image',
-            image: {
-              uploadCallback,
-            },
-          },
+          plugins: { options: 'blockquote' },
           toolbar: {
             options: 'top',
-            top: { options: 'image' },
+            top: { options: 'blockquote' },
           },
         }}
         onChange={setContent}
@@ -33,4 +27,4 @@ const Image = () => {
   );
 };
 
-export default Image;
+export default Blockquote;

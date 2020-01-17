@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import Editor from "nib-core";
+import React, { useState } from 'react';
+import Editor from 'nib-core';
 
-import Code from "../../Code";
-import defaultValue from "./sampleData";
+import Code from '../../Code';
+import defaultValue from './sampleData';
 
 /**
- * @visibleName 10. History
+ * @visibleName 11. History
  */
 const History = () => {
   const [content, setContent] = useState();
@@ -13,11 +13,11 @@ const History = () => {
     <div>
       <Editor
         config={{
-          plugins: { options: "" },
+          plugins: { options: '' },
           toolbar: {
-            options: "top",
-            top: { options: "history" }
-          }
+            options: 'top',
+            top: { options: 'history' },
+          },
         }}
         onChange={setContent}
         defaultValue={defaultValue}

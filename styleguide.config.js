@@ -40,6 +40,7 @@ module.exports = {
         'packages/docs/demo/Inline/index.jsx',
         'packages/docs/demo/Color/index.jsx',
         'packages/docs/demo/Link/index.jsx',
+        'packages/docs/demo/Blockquote/index.jsx',
         'packages/docs/demo/List/index.jsx',
         'packages/docs/demo/Image/index.jsx',
         'packages/docs/demo/Video/index.jsx',
