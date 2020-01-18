@@ -14,7 +14,6 @@ export const insertParagraphCmd = (state, dispatch) => {
 };
 
 export const liftBlockquoteCmd = (state, dispatch) => {
-  console.log('into liftBlockquoteCmd');
   const { tr } = state;
   const { blockquoteNode } = blockquotePluginKey.getState(state);
   const startPos = tr.doc.resolve(blockquoteNode.start);

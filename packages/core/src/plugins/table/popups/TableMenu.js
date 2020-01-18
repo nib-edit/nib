@@ -1,43 +1,43 @@
-import PropTypes from "prop-types";
-import React, { PureComponent } from "react";
-import styled from "@emotion/styled";
-import { Popup, ToolbarButton, Icon } from "nib-ui";
-import { findParentNode, findParentDomRef } from "prosemirror-utils";
-import * as TableCommands from "prosemirror-tables";
+import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
+import styled from '@emotion/styled';
+import { Popup, ToolbarButton, Icon } from 'nib-ui';
+import { findParentNode, findParentDomRef } from 'prosemirror-utils';
+import * as TableCommands from 'prosemirror-tables';
 
-import { PMStateConsumer } from "../../../context/pm-state";
+import { PMStateConsumer } from '../../../context/pm-state';
 
 const Commands = [
   {
-    title: "Add Row",
-    name: "addRowAfter",
-    icon: "addRow"
+    title: 'Add Row',
+    name: 'addRowAfter',
+    icon: 'addRow',
   },
   {
-    title: "Delete Row",
-    name: "deleteRow",
-    icon: "deleteRow"
+    title: 'Delete Row',
+    name: 'deleteRow',
+    icon: 'deleteRow',
   },
   {
-    title: "Add Column",
-    name: "addColumnAfter",
-    icon: "addColumn"
+    title: 'Add Column',
+    name: 'addColumnAfter',
+    icon: 'addColumn',
   },
   {
-    title: "Delete Column",
-    name: "deleteColumn",
-    icon: "deleteColumn"
+    title: 'Delete Column',
+    name: 'deleteColumn',
+    icon: 'deleteColumn',
   },
+  // {
+  //   title: "Toggle Header",
+  //   name: "toggleHeader",
+  //   icon: "toggleHeader"
+  // },
   {
-    title: "Toggle Header",
-    name: "toggleHeader",
-    icon: "toggleHeader"
+    title: 'Delete Table',
+    name: 'deleteTable',
+    icon: 'trash',
   },
-  {
-    title: "Delete Table",
-    name: "deleteTable",
-    icon: "trash"
-  }
 ];
 
 class TableMenuPopup extends PureComponent {
@@ -51,8 +51,8 @@ class TableMenuPopup extends PureComponent {
     const { pmview } = pmstate;
     const { state, dispatch } = pmview;
     const commandName = evt.currentTarget.name;
-    if (commandName === "toggleHeader") {
-      TableCommands.toggleHeader("row")(state, dispatch);
+    if (commandName === 'toggleHeader') {
+      TableCommands.toggleHeader('row')(state, dispatch);
     } else {
       TableCommands[commandName](state, dispatch);
     }
@@ -92,11 +92,11 @@ TableMenuPopup.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   editorWrapper: PropTypes.object.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
-  marker: PropTypes.object.isRequired
+  marker: PropTypes.object.isRequired,
 };
 
 export default {
-  name: "table_menu",
+  name: 'table_menu',
   getMarker: pmview => {
     if (!pmview.hasFocus()) return undefined;
     const { state, domAtPos } = pmview;
@@ -122,16 +122,16 @@ export default {
         {pmstate => <TableMenuPopup pmstate={pmstate} {...props} />}
       </PMStateConsumer>
     );
-  }
+  },
 };
 
 const Wrapper = styled.div(
   {
-    alignItems: "center",
-    display: "flex"
+    alignItems: 'center',
+    display: 'flex',
   },
   ({ theme: { constants } }) => ({
     borderRadius: constants.borderRadius,
-    fontSize: constants.fontSize.medium
+    fontSize: constants.fontSize.medium,
   })
 );

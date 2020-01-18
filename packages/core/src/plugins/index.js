@@ -9,7 +9,7 @@ import image from './image';
 import inline from './inline';
 import link from './link';
 import list from './list';
-import table from './table';
+// import table from './table';
 
 const Plugins = {
   block,
@@ -23,7 +23,7 @@ const Plugins = {
   inline,
   link,
   list,
-  table,
+  // table,
 };
 
 export default Plugins;

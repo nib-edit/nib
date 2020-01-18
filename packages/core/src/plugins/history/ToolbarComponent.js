@@ -1,12 +1,12 @@
-import PropTypes from "prop-types";
-import React, { PureComponent } from "react";
-import { undo, redo } from "prosemirror-history";
+import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
+import { undo, redo } from 'prosemirror-history';
 
-import { ToolbarButton, Icon, Space } from "nib-ui";
+import { ToolbarButton, Icon } from 'nib-ui';
 
-import formatKeymap from "../../utils/format-keymap";
-import { PMStateConsumer } from "../../context/pm-state";
-import { KeymapInfo } from "./keymaps";
+import formatKeymap from '../../utils/format-keymap';
+import { PMStateConsumer } from '../../context/pm-state';
+import { KeymapInfo } from './keymaps';
 
 class ToolbarComponent extends PureComponent {
   undo = () => {
@@ -43,7 +43,7 @@ class ToolbarComponent extends PureComponent {
 
 ToolbarComponent.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  pmstate: PropTypes.object.isRequired
+  pmstate: PropTypes.object.isRequired,
 };
 
 export default props => (

@@ -1,29 +1,46 @@
-import PropTypes from "prop-types";
-import React, { PureComponent } from "react";
-import { ToolbarButton, Icon } from "nib-ui";
+import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
+import { ToolbarButton, Icon } from 'nib-ui';
 
-import ImageModal from "./modals";
-import { PMStateConsumer } from "../../context/pm-state";
+import formatKeymap from '../../utils/format-keymap';
+import { PMStateConsumer } from '../../context/pm-state';
+import { imagePluginKey } from './plugin';
+import ImageModal from './modals';
+import { KeymapInfo } from './keymaps';
 
 class ToolbarComponent extends PureComponent {
-  state = {
-    showModal: false
-  };
-
   showModal = () => {
-    this.setState({ showModal: true });
+    const { pmstate } = this.props;
+    const { pmview } = pmstate;
+    const { state, dispatch } = pmview;
+    dispatch(state.tr.setMeta('show-image-modal', true));
   };
 
   hideModal = () => {
-    this.setState({ showModal: false });
+    const { pmstate } = this.props;
+    const { pmview } = pmstate;
+    const { state, dispatch } = pmview;
+    dispatch(state.tr.setMeta('show-image-modal', false));
+  };
+
+  checkShowModal = () => {
+    const { pmstate } = this.props;
+    const { pmview } = pmstate;
+    if (!pmview) return false;
+    const { state } = pmview;
+    const imagePluginState = imagePluginKey.getState(state);
+    return imagePluginState.showImageModal;
   };
 
   render() {
     const { pmstate } = this.props;
-    const { showModal } = this.state;
+    const showModal = this.checkShowModal();
     return (
       <>
-        <ToolbarButton onClick={this.showModal} title="Image">
+        <ToolbarButton
+          onClick={this.showModal}
+          title={formatKeymap(KeymapInfo.image)}
+        >
           <Icon name="image" />
         </ToolbarButton>
         {showModal && (
@@ -36,7 +53,7 @@ class ToolbarComponent extends PureComponent {
 
 ToolbarComponent.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  pmstate: PropTypes.object.isRequired
+  pmstate: PropTypes.object.isRequired,
 };
 
 export default props => (

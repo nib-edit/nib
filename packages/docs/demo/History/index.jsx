@@ -5,7 +5,7 @@ import Code from '../../Code';
 import defaultValue from './sampleData';
 
 /**
- * @visibleName 11. History
+ * @visibleName 10. History
  */
 const History = () => {
   const [content, setContent] = useState();

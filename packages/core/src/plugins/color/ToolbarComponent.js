@@ -4,17 +4,8 @@ import { Popup, ToolbarButton, Icon } from 'nib-ui';
 
 import styled from '@emotion/styled';
 import { PMStateConsumer } from '../../context/pm-state';
+import { ConfigContextConsumer } from '../../context/config';
 import { colorPluginKey } from './plugin';
-
-const COLORS = [
-  '#212121',
-  '#e0e0e0',
-  '#6a1b9a',
-  '#0d47a1',
-  '#1b5e20',
-  '#c62828',
-  '#ffeb3b',
-];
 
 class ToolbarComponent extends PureComponent {
   state = { popupMarker: undefined, selectedMarkType: undefined };
@@ -67,7 +58,7 @@ class ToolbarComponent extends PureComponent {
   };
 
   render() {
-    const { pmstate, editorWrapper } = this.props;
+    const { pmstate, editorWrapper, config } = this.props;
     const { pmview } = pmstate;
     if (!pmview) return null;
     const { popupMarker, selectedMarkType } = this.state;
@@ -77,6 +68,7 @@ class ToolbarComponent extends PureComponent {
       activeMarks.textColor && activeMarks.textColor.attrs.color;
     const selectedBackgroundColor =
       activeMarks.backgroundColor && activeMarks.backgroundColor.attrs.color;
+    const { colors } = config.plugins.color;
 
     return (
       <Fragment>
@@ -85,6 +77,7 @@ class ToolbarComponent extends PureComponent {
           name="textColor"
           onClick={this.openColorSelect}
           selected={!!activeMarks.textColor}
+          title="Text Color"
         >
           <Icon
             name="textColor"
@@ -97,6 +90,7 @@ class ToolbarComponent extends PureComponent {
           name="backgroundColor"
           onClick={this.openColorSelect}
           selected={!!activeMarks.backgroundColor}
+          title="Background Color"
         >
           <Icon
             name="backgroundColor"
@@ -113,7 +107,7 @@ class ToolbarComponent extends PureComponent {
             onEscKeyPress={this.closeColorSelect}
             render={() => (
               <ColorsWrapper onClick={this.toggleColorType}>
-                {COLORS.map(color => (
+                {colors.map(color => (
                   <StyledButton
                     key={`${selectedMarkType}-${color}`}
                     name={color}
@@ -140,6 +134,8 @@ ToolbarComponent.propTypes = {
   editorWrapper: PropTypes.object.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   pmstate: PropTypes.object.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  config: PropTypes.object.isRequired,
 };
 
 const ColorsWrapper = styled.div`
@@ -159,7 +155,13 @@ const StyledButton = styled(ToolbarButton)`
 `;
 
 export default props => (
-  <PMStateConsumer>
-    {pmstate => <ToolbarComponent pmstate={pmstate} {...props} />}
-  </PMStateConsumer>
+  <ConfigContextConsumer>
+    {({ config }) => (
+      <PMStateConsumer>
+        {pmstate => (
+          <ToolbarComponent pmstate={pmstate} {...props} config={config} />
+        )}
+      </PMStateConsumer>
+    )}
+  </ConfigContextConsumer>
 );

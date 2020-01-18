@@ -44,7 +44,7 @@ module.exports = {
         'packages/docs/demo/List/index.jsx',
         'packages/docs/demo/Image/index.jsx',
         'packages/docs/demo/Video/index.jsx',
-        'packages/docs/demo/Table/index.jsx',
+        // 'packages/docs/demo/Table/index.jsx',
         'packages/docs/demo/History/index.jsx',
         'packages/docs/demo/Help/index.jsx',
         'packages/docs/demo/InlineToolbar/index.jsx',

@@ -4,7 +4,7 @@ import Editor from 'nib-core';
 import Code from '../../Code';
 
 /**
- * @visibleName 12. Help
+ * @visibleName 11. Help
  */
 const Help = () => {
   const [content, setContent] = useState();

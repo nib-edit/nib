@@ -10,7 +10,7 @@ import image from '../image';
 import inline from '../inline';
 import link from '../link';
 import list from '../list';
-import table from '../table';
+// import table from '../table';
 import video from '../video';
 
 const Plugins = {
@@ -23,7 +23,7 @@ const Plugins = {
   inline,
   link,
   list,
-  table,
+  // table,
   video,
 };
 

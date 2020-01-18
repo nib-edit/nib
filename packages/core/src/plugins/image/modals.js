@@ -1,14 +1,14 @@
-import PropTypes from "prop-types";
-import React, { PureComponent } from "react";
-import styled from "@emotion/styled";
+import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
+import styled from '@emotion/styled';
 
-import { Spinner, Modal, Input, PrimaryButton, Space, SpaceSize } from "nib-ui";
-import NibUpload from "nib-upload";
+import { Spinner, Modal, Input, PrimaryButton, Space, SpaceSize } from 'nib-ui';
+import NibUpload from 'nib-upload';
 
-import { ConfigContextConsumer } from "../../context/config";
+import { ConfigContextConsumer } from '../../context/config';
 
 class ImageModal extends PureComponent {
-  state = { uploading: false, imageSrc: "", srcRequiredError: false };
+  state = { uploading: false, imageSrc: '', srcRequiredError: false };
 
   insertImageInEditor = () => {
     const { imageSrc: src } = this.state;
@@ -32,7 +32,7 @@ class ImageModal extends PureComponent {
     const { srcRequiredError } = this.state;
     this.setState({
       imageSrc,
-      srcRequiredError: srcRequiredError && !imageSrc
+      srcRequiredError: srcRequiredError && !imageSrc,
     });
   };
 
@@ -47,11 +47,11 @@ class ImageModal extends PureComponent {
     if (uploadFn)
       uploadFn(file, licenseKey)
         .then(({ src }) => {
-          if (!src) this.updateImageSrc("");
+          if (!src) this.updateImageSrc('');
           else this.updateImageSrc(src);
         })
         .catch(() => {
-          this.updateImageSrc("");
+          this.updateImageSrc('');
         })
         .finally(() => {
           this.setState({ uploading: false });
@@ -67,8 +67,8 @@ class ImageModal extends PureComponent {
     const dataIsItems = !!items;
     for (let i = 0; i < data.length; i += 1) {
       if (
-        (!dataIsItems || data[i].kind === "file") &&
-        data[i].type.match("^image/")
+        (!dataIsItems || data[i].kind === 'file') &&
+        data[i].type.match('^image/')
       ) {
         const file = dataIsItems ? data[i].getAsFile() : data[i];
         this.insertImage(file);
@@ -111,10 +111,10 @@ class ImageModal extends PureComponent {
                   onChange={this.handleImageInputChange}
                 />
                 <UploadSection
-                  onDragEnter={this.stopDefault}
-                  onDragOver={this.stopDefault}
-                  onDrop={this.onImageDrop}
-                  uploading={uploading}
+                  // onDragEnter={this.stopDefault}
+                  // onDragOver={this.stopDefault}
+                  // onDrop={this.onImageDrop}
+                  // uploading={uploading}
                   src={imageSrc}
                 >
                   {imageSrc && (
@@ -122,13 +122,13 @@ class ImageModal extends PureComponent {
                       <StyledImage src={imageSrc} alt="uploaded_image" />
                     </ImageWrapper>
                   )}
-                  <UploadLabel imageSrc={imageSrc}>
+                  {/* <UploadLabel imageSrc={imageSrc}>
                     Drag and Drop the Image
                     <br />
                     or
                     <br />
                     Click to Upload
-                  </UploadLabel>
+                  </UploadLabel> */}
                   {uploading && <StyledSpinner uploading={uploading} />}
                 </UploadSection>
               </StyledLabel>
@@ -153,101 +153,101 @@ ImageModal.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   config: PropTypes.object.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
-  pmstate: PropTypes.object.isRequired
+  pmstate: PropTypes.object.isRequired,
 };
 
 ImageModal.defaultProps = {
-  licenseKey: undefined
+  licenseKey: undefined,
 };
 
 const Wrapper = styled.div({}, () => ({
-  padding: "0px 24px 10px",
-  height: "100%"
+  padding: '0px 24px 10px',
+  height: '100%',
 }));
 
 const InnerWrapper = styled.div({
-  alignItems: "center",
-  display: "flex",
-  flexDirection: "column",
-  height: "95%"
+  alignItems: 'center',
+  display: 'flex',
+  flexDirection: 'column',
+  height: '95%',
 });
 
 const SubTitle = styled.div({}, ({ theme: { constants } }) => ({
-  fontSize: constants.fontSize.large
+  fontSize: constants.fontSize.large,
 }));
 
 const UploadSection = styled.span(
   {
-    alignItems: "center",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
 
-    position: "relative",
+    position: 'relative',
 
-    height: "75%",
-    width: "35%",
+    height: '75%',
+    width: '35%',
     minWidth: 200,
-    margin: "28px auto 0 auto",
+    margin: '28px auto 0 auto',
     padding: 20,
 
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "contain"
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'contain',
   },
   ({ theme, uploading, src }) => ({
     border:
       uploading || src
         ? `1px dashed ${theme.constants.color.highlight.primary}`
-        : `1px dashed ${theme.constants.color.border.primary}`
+        : `1px dashed ${theme.constants.color.border.primary}`,
   })
 );
 
 const UploadLabel = styled.span(
-  { marginTop: 20, textAlign: "center", zIndex: 1, marginBottom: 10 },
+  { marginTop: 20, textAlign: 'center', zIndex: 1, marginBottom: 10 },
   ({ theme: { constants }, imageSrc }) => ({
-    color: imageSrc ? constants.color.background : constants.color.text.primary
+    color: imageSrc ? constants.color.background : constants.color.text.primary,
   })
 );
 
 const StyledInput = styled(Input)({}, () => ({
-  width: "75%",
+  width: '75%',
   maxWidth: 400,
-  "> input": { width: "100%", margin: "0 auto" }
+  '> input': { width: '100%', margin: '0 auto' },
 }));
 
-const StyledLabel = styled.label({}, () => ({ height: "75%", width: "100%" }));
+const StyledLabel = styled.label({}, () => ({ height: '75%', width: '100%' }));
 
-const FileUploadInput = styled.input({ display: "none" });
+const FileUploadInput = styled.input({ display: 'none' });
 
 const StyledSpinner = styled(Spinner)(
   {
     zIndex: 1,
-    marginTop: 10
+    marginTop: 10,
   },
-  uploading => ({ visibility: uploading ? "visible" : "hidden" })
+  uploading => ({ visibility: uploading ? 'visible' : 'hidden' })
 );
 
-const ButtonSection = styled.div({ display: "flex", marginTop: 20 });
+const ButtonSection = styled.div({ display: 'flex', marginTop: 20 });
 
 const ImageWrapper = styled.span({
   margin: 20,
-  position: "absolute",
+  position: 'absolute',
 
   top: 0,
   left: 0,
-  height: "calc(100% - 40px)",
-  width: "calc(100% - 40px)",
+  height: 'calc(100% - 40px)',
+  width: 'calc(100% - 40px)',
 
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center"
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
 });
 
 const StyledImage = styled.img({
-  height: "auto",
-  width: "auto",
-  maxHeight: "100%",
-  maxWidth: "100%"
+  height: 'auto',
+  width: 'auto',
+  maxHeight: '100%',
+  maxWidth: '100%',
 });
 
 export default props => (

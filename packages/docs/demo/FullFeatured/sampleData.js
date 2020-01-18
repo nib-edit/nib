@@ -1,322 +1,322 @@
 export default {
   doc: {
-    type: "doc",
+    type: 'doc',
     content: [
       {
-        type: "paragraph",
+        type: 'paragraph',
         content: [
           {
-            type: "text",
-            text: "This "
+            type: 'text',
+            text: 'This ',
           },
           {
-            type: "text",
+            type: 'text',
             marks: [
               {
-                type: "em"
+                type: 'em',
               },
               {
-                type: "strong"
-              }
+                type: 'strong',
+              },
             ],
-            text: "editor"
+            text: 'editor',
           },
           {
-            type: "text",
+            type: 'text',
             marks: [
               {
-                type: "em"
-              }
+                type: 'em',
+              },
             ],
-            text: " is super"
+            text: ' is super',
           },
           {
-            type: "text",
-            text: " "
+            type: 'text',
+            text: ' ',
           },
           {
-            type: "text",
+            type: 'text',
             marks: [
               {
-                type: "underline"
-              }
+                type: 'underline',
+              },
             ],
-            text: "cool"
+            text: 'cool',
           },
           {
-            type: "text",
-            text: "...."
-          }
-        ]
+            type: 'text',
+            text: '....',
+          },
+        ],
       },
       {
-        type: "paragraph",
+        type: 'paragraph',
         content: [
           {
-            type: "text",
-            text: "Hey check out "
+            type: 'text',
+            text: 'Hey check out ',
           },
           {
-            type: "text",
+            type: 'text',
             marks: [
               {
-                type: "link",
+                type: 'link',
                 attrs: {
-                  href: "https://github.com/nib-edit"
-                }
-              }
+                  href: 'https://github.com/nib-edit',
+                },
+              },
             ],
-            text: "more"
-          }
-        ]
+            text: 'more',
+          },
+        ],
       },
       {
-        type: "paragraph",
+        type: 'paragraph',
         content: [
           {
-            type: "embed",
+            type: 'embed',
             attrs: {
               html:
-                '<iframe src="https://www.youtube.com/embed/zjk4BQtq4dw" width="640" height="360" frameborder="0" allowfullscreen></iframe>'
-            }
-          }
-        ]
+                '<iframe src="https://www.youtube.com/embed/zjk4BQtq4dw" width="640" height="360" frameborder="0" allowfullscreen></iframe>',
+            },
+          },
+        ],
       },
       {
-        type: "paragraph",
+        type: 'paragraph',
         content: [
           {
-            type: "text",
-            text: "My favourite car"
-          }
-        ]
+            type: 'text',
+            text: 'My favourite car',
+          },
+        ],
       },
       {
-        type: "paragraph",
+        type: 'paragraph',
         content: [
           {
-            type: "image",
+            type: 'image',
             attrs: {
-              src: "https://i.imgur.com/eLSmGAB.jpg",
+              src: 'https://i.imgur.com/eLSmGAB.jpg',
               style: {
-                height: "auto",
-                width: "auto"
-              }
-            }
-          }
-        ]
+                height: 'auto',
+                width: 'auto',
+              },
+            },
+          },
+        ],
       },
       {
-        type: "paragraph"
+        type: 'paragraph',
+      },
+      // {
+      //   type: "table",
+      //   content: [
+      //     {
+      //       type: "table_row",
+      //       content: [
+      //         {
+      //           type: "table_header",
+      //           attrs: {
+      //             colspan: 1,
+      //             rowspan: 1,
+      //             colwidth: [116]
+      //           },
+      //           content: [
+      //             {
+      //               type: "paragraph",
+      //               content: [
+      //                 {
+      //                   type: "text",
+      //                   text: "S.No."
+      //                 }
+      //               ]
+      //             }
+      //           ]
+      //         },
+      //         {
+      //           type: "table_header",
+      //           attrs: {
+      //             colspan: 1,
+      //             rowspan: 1,
+      //             colwidth: [190]
+      //           },
+      //           content: [
+      //             {
+      //               type: "paragraph",
+      //               content: [
+      //                 {
+      //                   type: "text",
+      //                   text: "Name"
+      //                 }
+      //               ]
+      //             }
+      //           ]
+      //         },
+      //         {
+      //           type: "table_header",
+      //           attrs: {
+      //             colspan: 1,
+      //             rowspan: 1,
+      //             colwidth: [64]
+      //           },
+      //           content: [
+      //             {
+      //               type: "paragraph",
+      //               content: [
+      //                 {
+      //                   type: "text",
+      //                   text: "Score"
+      //                 }
+      //               ]
+      //             }
+      //           ]
+      //         }
+      //       ]
+      //     },
+      //     {
+      //       type: "table_row",
+      //       content: [
+      //         {
+      //           type: "table_cell",
+      //           attrs: {
+      //             colspan: 1,
+      //             rowspan: 1,
+      //             colwidth: [116]
+      //           },
+      //           content: [
+      //             {
+      //               type: "paragraph",
+      //               content: [
+      //                 {
+      //                   type: "text",
+      //                   text: "1"
+      //                 }
+      //               ]
+      //             }
+      //           ]
+      //         },
+      //         {
+      //           type: "table_cell",
+      //           attrs: {
+      //             colspan: 1,
+      //             rowspan: 1,
+      //             colwidth: [190]
+      //           },
+      //           content: [
+      //             {
+      //               type: "paragraph",
+      //               content: [
+      //                 {
+      //                   type: "text",
+      //                   text: "Happy"
+      //                 }
+      //               ]
+      //             }
+      //           ]
+      //         },
+      //         {
+      //           type: "table_cell",
+      //           attrs: {
+      //             colspan: 1,
+      //             rowspan: 1,
+      //             colwidth: [64]
+      //           },
+      //           content: [
+      //             {
+      //               type: "paragraph",
+      //               content: [
+      //                 {
+      //                   type: "text",
+      //                   text: "10"
+      //                 }
+      //               ]
+      //             }
+      //           ]
+      //         }
+      //       ]
+      //     },
+      //     {
+      //       type: "table_row",
+      //       content: [
+      //         {
+      //           type: "table_cell",
+      //           attrs: {
+      //             colspan: 1,
+      //             rowspan: 1,
+      //             colwidth: [116]
+      //           },
+      //           content: [
+      //             {
+      //               type: "paragraph",
+      //               content: [
+      //                 {
+      //                   type: "text",
+      //                   text: "2"
+      //                 }
+      //               ]
+      //             }
+      //           ]
+      //         },
+      //         {
+      //           type: "table_cell",
+      //           attrs: {
+      //             colspan: 1,
+      //             rowspan: 1,
+      //             colwidth: [190]
+      //           },
+      //           content: [
+      //             {
+      //               type: "paragraph",
+      //               content: [
+      //                 {
+      //                   type: "text",
+      //                   text: "Sad"
+      //                 }
+      //               ]
+      //             }
+      //           ]
+      //         },
+      //         {
+      //           type: "table_cell",
+      //           attrs: {
+      //             colspan: 1,
+      //             rowspan: 1,
+      //             colwidth: [64]
+      //           },
+      //           content: [
+      //             {
+      //               type: "paragraph",
+      //               content: [
+      //                 {
+      //                   type: "text",
+      //                   text: "0"
+      //                 }
+      //               ]
+      //             }
+      //           ]
+      //         }
+      //       ]
+      //     }
+      //   ]
+      // },
+      {
+        type: 'paragraph',
       },
       {
-        type: "table",
+        type: 'paragraph',
         content: [
           {
-            type: "table_row",
-            content: [
-              {
-                type: "table_header",
-                attrs: {
-                  colspan: 1,
-                  rowspan: 1,
-                  colwidth: [116]
-                },
-                content: [
-                  {
-                    type: "paragraph",
-                    content: [
-                      {
-                        type: "text",
-                        text: "S.No."
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                type: "table_header",
-                attrs: {
-                  colspan: 1,
-                  rowspan: 1,
-                  colwidth: [190]
-                },
-                content: [
-                  {
-                    type: "paragraph",
-                    content: [
-                      {
-                        type: "text",
-                        text: "Name"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                type: "table_header",
-                attrs: {
-                  colspan: 1,
-                  rowspan: 1,
-                  colwidth: [64]
-                },
-                content: [
-                  {
-                    type: "paragraph",
-                    content: [
-                      {
-                        type: "text",
-                        text: "Score"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
+            type: 'text',
+            text: 'I love this editor...',
           },
-          {
-            type: "table_row",
-            content: [
-              {
-                type: "table_cell",
-                attrs: {
-                  colspan: 1,
-                  rowspan: 1,
-                  colwidth: [116]
-                },
-                content: [
-                  {
-                    type: "paragraph",
-                    content: [
-                      {
-                        type: "text",
-                        text: "1"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                type: "table_cell",
-                attrs: {
-                  colspan: 1,
-                  rowspan: 1,
-                  colwidth: [190]
-                },
-                content: [
-                  {
-                    type: "paragraph",
-                    content: [
-                      {
-                        type: "text",
-                        text: "Happy"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                type: "table_cell",
-                attrs: {
-                  colspan: 1,
-                  rowspan: 1,
-                  colwidth: [64]
-                },
-                content: [
-                  {
-                    type: "paragraph",
-                    content: [
-                      {
-                        type: "text",
-                        text: "10"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            type: "table_row",
-            content: [
-              {
-                type: "table_cell",
-                attrs: {
-                  colspan: 1,
-                  rowspan: 1,
-                  colwidth: [116]
-                },
-                content: [
-                  {
-                    type: "paragraph",
-                    content: [
-                      {
-                        type: "text",
-                        text: "2"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                type: "table_cell",
-                attrs: {
-                  colspan: 1,
-                  rowspan: 1,
-                  colwidth: [190]
-                },
-                content: [
-                  {
-                    type: "paragraph",
-                    content: [
-                      {
-                        type: "text",
-                        text: "Sad"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                type: "table_cell",
-                attrs: {
-                  colspan: 1,
-                  rowspan: 1,
-                  colwidth: [64]
-                },
-                content: [
-                  {
-                    type: "paragraph",
-                    content: [
-                      {
-                        type: "text",
-                        text: "0"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
+        ],
       },
-      {
-        type: "paragraph"
-      },
-      {
-        type: "paragraph",
-        content: [
-          {
-            type: "text",
-            text: "I love this editor..."
-          }
-        ]
-      }
-    ]
+    ],
   },
   selection: {
-    type: "text",
+    type: 'text',
     anchor: 1,
-    head: 1
-  }
+    head: 1,
+  },
 };
