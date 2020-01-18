@@ -5,7 +5,6 @@ Some distinguishing features of the editor are:
 - Multiple rich text styling options.
 - Support for images and videos.
 - Support for images resize.
-- Support for tables.
 - Support for inline toolbar.
 - Support for full page mode.
 - Help menu available.
