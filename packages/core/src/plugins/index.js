@@ -2,7 +2,6 @@ import block from './block';
 import blockquote from './blockquote';
 import common from './common';
 import color from './color';
-import video from './video';
 import help from './help';
 import history from './history';
 import image from './image';
@@ -16,7 +15,6 @@ const Plugins = {
   blockquote,
   common,
   color,
-  video,
   help,
   history,
   image,

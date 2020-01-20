@@ -1,4 +1,4 @@
-import Plugins from "../../plugins";
+import Plugins from '../../plugins';
 
 export const getProsemirrorPlugins = plugins => {
   let pluginList = [];
@@ -17,7 +17,8 @@ export const getProsemirrorPlugins = plugins => {
 export const getPluginList = plugins =>
   plugins
     .trim()
-    .split(" ")
+    .split(' ')
     .map(key => Plugins[key]);
 
-export const getPluginArray = plugins => plugins.map(key => Plugins[key]);
+export const getPluginArray = (plugins, addons) =>
+  plugins.map(key => Plugins[key] || addons.find(a => a.name === key));

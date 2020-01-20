@@ -1,6 +1,6 @@
 export default {
   plugins: {
-    options: 'block inline color link blockquote list image video help',
+    options: 'block inline color link blockquote list image help',
     image: {
       uploadCallback: undefined,
     },
@@ -19,8 +19,7 @@ export default {
   toolbar: {
     options: 'top',
     top: {
-      options:
-        'block inline color link blockquote list image video history help',
+      options: 'block inline color link blockquote list image history help',
       block: { options: 'p h1 h2 h3 h4 h5 h6', grouped: true },
       inline: { options: 'strong em underline strike subsup code' },
     },

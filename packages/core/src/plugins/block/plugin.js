@@ -1,13 +1,13 @@
-import { Plugin, PluginKey } from "prosemirror-state";
+import { Plugin, PluginKey } from 'prosemirror-state';
 
-export const blockPluginKey = new PluginKey("block");
+export const blockPluginKey = new PluginKey('block');
 
 const getSelectedBlock = state => {
   let block;
   let multipleBlock = false;
   const {
     doc,
-    selection: { $from, $to }
+    selection: { $from, $to },
   } = state;
   const lowerDepth = ($from.depth < $to.depth ? $from.depth : $to.depth) - 1;
   doc.nodesBetween($from.pos, $to.pos, (node, pos) => {
@@ -19,7 +19,7 @@ const getSelectedBlock = state => {
       block = { type: blockType, attrs };
     } else if (
       blockType !== block.type ||
-      (block.type === "heading" && attrs.level !== block.attrs.level)
+      (block.type === 'heading' && attrs.level !== block.attrs.level)
     ) {
       multipleBlock = true;
     }
@@ -41,6 +41,6 @@ export default new Plugin({
         return { selectedBlock };
       }
       return value;
-    }
-  }
+    },
+  },
 });

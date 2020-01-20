@@ -1,54 +1,118 @@
 export default {
   doc: {
-    type: "doc",
+    type: 'doc',
     content: [
-      { type: "paragraph", content: [{ type: "text", text: "My friends:" }] },
       {
-        type: "bulletList",
+        type: 'paragraph',
         content: [
           {
-            type: "listItem",
-            content: [
-              { type: "paragraph", content: [{ type: "text", text: "tom" }] }
-            ]
+            type: 'text',
+            text: 'My friends:',
           },
-          {
-            type: "listItem",
-            content: [
-              { type: "paragraph", content: [{ type: "text", text: "jerry" }] }
-            ]
-          }
-        ]
+        ],
       },
       {
-        type: "paragraph",
-        content: [{ type: "text", text: "My best friends:" }]
-      },
-      {
-        type: "orderedList",
-        attrs: { order: 1 },
+        type: 'bulletList',
         content: [
           {
-            type: "listItem",
+            type: 'listItem',
             content: [
               {
-                type: "paragraph",
-                content: [{ type: "text", text: "spiderman" }]
-              }
-            ]
+                type: 'paragraph',
+                content: [
+                  {
+                    type: 'text',
+                    text: 'tom',
+                  },
+                ],
+              },
+            ],
           },
           {
-            type: "listItem",
+            type: 'listItem',
             content: [
               {
-                type: "paragraph",
-                content: [{ type: "text", text: "superman" }]
-              }
-            ]
-          }
-        ]
-      }
-    ]
+                type: 'paragraph',
+                content: [
+                  {
+                    type: 'text',
+                    text: 'jerry',
+                  },
+                ],
+              },
+              {
+                type: 'bulletList',
+                content: [
+                  {
+                    type: 'listItem',
+                    content: [
+                      {
+                        type: 'paragraph',
+                        content: [
+                          {
+                            type: 'text',
+                            text: 'and others',
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          {
+            type: 'text',
+            text: 'My best friends:',
+          },
+        ],
+      },
+      {
+        type: 'orderedList',
+        attrs: {
+          order: 1,
+        },
+        content: [
+          {
+            type: 'listItem',
+            content: [
+              {
+                type: 'paragraph',
+                content: [
+                  {
+                    type: 'text',
+                    text: 'spiderman',
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            type: 'listItem',
+            content: [
+              {
+                type: 'paragraph',
+                content: [
+                  {
+                    type: 'text',
+                    text: 'superman',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
   },
-  selection: { type: "text", anchor: 73, head: 73 }
+  selection: {
+    type: 'text',
+    anchor: 42,
+    head: 42,
+  },
 };

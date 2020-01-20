@@ -7,10 +7,12 @@ import uploadCallback from '../../common/uploadCallback';
 import './styles.css';
 
 /**
- * @visibleName 15. Convert from HTML
+ * @visibleName 14. Convert from HTML
  */
 const ConvertFromHTMLDemo = () => {
-  const [html, setHTML] = useState();
+  const [html, setHTML] = useState(
+    '<p style="text-align: center;"><img  src="https://i.imgur.com/jNtUMz9.png" style="height:auto;" alt=""></img></p><p>Hey Nib Editor is rad</p>'
+  );
   const [updateEditor, setUpdateEditor] = useState();
   const defaultValue = NibConverter.convertFromHTML(html);
   useEffect(() => {

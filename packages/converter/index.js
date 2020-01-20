@@ -30,9 +30,11 @@ const getHTMLString = node => {
     return '<br>';
   }
   let strContent = '';
+  let hasImageChild = false;
   for (let i = 0; i < node.childCount; i += 1) {
     const childNode = node.child(i);
     strContent += getHTMLString(childNode);
+    if (childNode.type.name === 'image') hasImageChild = true;
   }
   if (type.spec.toDOM) {
     const domDetails = type.spec.toDOM(node);
@@ -46,12 +48,10 @@ const getHTMLString = node => {
         (str, key) => `${str} ${key}="${domDetails[1][key]}"`,
         htmlAttrs
       );
+    if (htmlAttrs.length) htmlAttrs = ` ${htmlAttrs}`;
+    if (hasImageChild) htmlAttrs = `${htmlAttrs} style="text-align: center;"`;
     const htmlTag = domDetails[0];
-    strContent = `<${htmlTag} ${htmlAttrs}>${strContent ||
-      '<br>'}</${htmlTag}>`;
-    if (node.type.name === 'image') {
-      strContent = `<p style="text-align: center;">${strContent}<br></p>`;
-    }
+    strContent = `<${htmlTag}${htmlAttrs}>${strContent}</${htmlTag}>`;
   }
   return strContent;
 };

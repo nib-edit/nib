@@ -1,26 +1,26 @@
 import React, { useState } from 'react';
 import Editor from 'nib-core';
+import TablePlugin from 'nib-table';
 
 import Code from '../../Code';
 import defaultValue from './sampleData';
 
 /**
- * @visibleName 9. Video
+ * @visibleName 1. Table
  */
-const Video = () => {
+const Table = () => {
   const [content, setContent] = useState();
   return (
     <div>
       <Editor
         config={{
-          plugins: {
-            options: 'video',
-          },
+          plugins: { options: '' },
           toolbar: {
             options: 'top',
-            top: { options: 'video' },
+            top: { options: 'table' },
           },
         }}
+        addons={[TablePlugin]}
         onChange={setContent}
         defaultValue={defaultValue}
       />
@@ -29,4 +29,4 @@ const Video = () => {
   );
 };
 
-export default Video;
+export default Table;

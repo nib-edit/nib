@@ -26,7 +26,7 @@ const customTheme = {
 };
 
 /**
- * @visibleName 13. Themed
+ * @visibleName 12. Themed
  */
 const Themed = () => {
   const [content, setContent] = useState();

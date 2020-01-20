@@ -1,20 +1,25 @@
-import PropTypes from "prop-types";
-import React, { Fragment } from "react";
-import styled from "@emotion/styled";
+import PropTypes from 'prop-types';
+import React, { Fragment } from 'react';
+import styled from '@emotion/styled';
 
-import { Separator } from "nib-ui";
+import { Separator } from 'nib-ui';
 
-import getToolbarComponents from "../../../utils/editor/toolbar";
-import { useConfigContext } from "../../../context/config";
+import getToolbarComponents from '../../../utils/editor/toolbar';
+import { useConfigContext } from '../../../context/config';
+import { PMStateConsumer } from '../../../context/pm-state';
 
-const Top = ({ editorWrapper }) => {
+const Top = ({ editorWrapper, addons, pmstate }) => {
   const {
-    config: { plugins, toolbar }
+    config: { plugins, toolbar },
   } = useConfigContext();
 
-  const options = getToolbarComponents(plugins.options, toolbar.top.options);
-  const formattingOption = options.filter(opt => opt.name !== "help");
-  const HelpOption = options.filter(opt => opt.name === "help")[0];
+  const options = getToolbarComponents(
+    plugins.options,
+    toolbar.top.options,
+    addons
+  );
+  const formattingOption = options.filter(opt => opt.name !== 'help');
+  const HelpOption = options.filter(opt => opt.name === 'help')[0];
 
   return (
     <Wrapper onMouseDown={e => e.preventDefault()}>
@@ -24,6 +29,7 @@ const Top = ({ editorWrapper }) => {
             <Option.toolbarComponent
               config={toolbar.top[Option.name]}
               editorWrapper={editorWrapper}
+              pmstate={pmstate}
             />
             {index < formattingOption.length - 1 && <Separator />}
           </Fragment>
@@ -36,25 +42,33 @@ const Top = ({ editorWrapper }) => {
 
 Top.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  editorWrapper: PropTypes.object.isRequired
+  editorWrapper: PropTypes.object.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  addons: PropTypes.array,
+  // eslint-disable-next-line react/forbid-prop-types
+  pmstate: PropTypes.object.isRequired,
+};
+
+Top.defaultProps = {
+  addons: [],
 };
 
 const Wrapper = styled.div(
   {
-    alignItems: "flex-start",
-    display: "flex",
-    flexWrap: "nowrap",
-    justifyContent: "space-between",
+    alignItems: 'flex-start',
+    display: 'flex',
+    flexWrap: 'nowrap',
+    justifyContent: 'space-between',
 
-    position: "relative",
+    position: 'relative',
     padding: 4,
 
-    borderLeft: "none",
-    borderRight: "none",
-    borderTop: "none",
+    borderLeft: 'none',
+    borderRight: 'none',
+    borderTop: 'none',
 
-    userSelect: "none",
-    zIndex: "1"
+    userSelect: 'none',
+    zIndex: '1',
   },
   ({ theme: { constants, toolbar } }) => ({
     backgroundColor: constants.color.background.primary,
@@ -62,14 +76,18 @@ const Wrapper = styled.div(
     borderBottom: constants.border.primary,
     fontSize: constants.fontSize.medium,
 
-    ...toolbar.top({ theme: constants })
+    ...toolbar.top({ theme: constants }),
   })
 );
 
 const ToolbarSection = styled.div({
-  alignItems: "center",
-  display: "flex",
-  flexWrap: "wrap"
+  alignItems: 'center',
+  display: 'flex',
+  flexWrap: 'wrap',
 });
 
-export default Top;
+export default props => (
+  <PMStateConsumer>
+    {pmstate => <Top pmstate={pmstate} {...props} />}
+  </PMStateConsumer>
+);

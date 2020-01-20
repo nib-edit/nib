@@ -10,11 +10,7 @@ const defaultValue = {
         content: [
           {
             type: 'text',
-            marks: [
-              {
-                type: 'em',
-              },
-            ],
+            marks: [{ type: 'em' }],
             text:
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
           },
@@ -22,15 +18,11 @@ const defaultValue = {
       },
     ],
   },
-  selection: {
-    type: 'text',
-    anchor: 1,
-    head: 1,
-  },
+  selection: { type: 'text', anchor: 207, head: 200 },
 };
 
 /**
- * @visibleName 12. Inline toolbar
+ * @visibleName 11. Inline toolbar
  */
 const InlineToolbar = () => {
   return (
@@ -46,6 +38,7 @@ const InlineToolbar = () => {
             },
           },
         }}
+        autoFocus
         defaultValue={defaultValue}
         styleConfig={{
           wrapper: () => ({
@@ -58,6 +51,9 @@ const InlineToolbar = () => {
           editor: () => ({
             color: '#0000e4',
           }),
+        }}
+        onChange={val => {
+          console.log(JSON.stringify(val));
         }}
       />
     </div>

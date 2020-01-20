@@ -6,3 +6,9 @@ Editor with images option enabled. Click image to resize it. <a target="_blank" 
 
 <br />
 <br />
+
+### Keyboard shortcuts
+
+| S.No. | Keyboard Shortcut | Description  |
+| ----- | ----------------- | ------------ |
+| 1     | Cmd-P             | Insert image |

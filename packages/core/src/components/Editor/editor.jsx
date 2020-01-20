@@ -28,7 +28,7 @@ const Editor = ({
   const updateViewListeners = () => {
     dispatcher.dispatch(view);
     addons.forEach(addon => {
-      addon.viewUpdateCallback(view);
+      if (addon.viewUpdateCallback) addon.viewUpdateCallback(view);
     });
   };
 

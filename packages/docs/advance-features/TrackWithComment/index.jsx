@@ -2,14 +2,16 @@ import React, { useState, useEffect } from 'react';
 
 import Editor from 'nib-core';
 import TrackPlugin from 'nib-track';
+import CommentPlugin from 'nib-comment';
 
 import defaultValue from './sampleData';
 
-import './styles.css';
-
+const user = {
+  userid: '12345',
+  username: 'Anonymous user',
+};
 const tracker = new TrackPlugin();
-
-const userid = Math.floor(Math.random() * 0xffffffff);
+const commenter = new CommentPlugin(user, '#f8bbd0');
 
 const formatDate = str => {
   const d = new Date(str);
@@ -19,35 +21,34 @@ const formatDate = str => {
 };
 
 /**
- * @visibleName 17. Track Changes
+ * @visibleName 6. Track + Comment
  */
-const Track = () => {
+const TrackWithComment = () => {
   const [trackState, setTrackState] = useState(tracker.getState());
-  const [name, setName] = useState('Anonymous user');
-  const [cmd, setCmd] = useState(false);
+  const [userid, setUserid] = useState(user.userid);
+  const [username, setUsername] = useState(user.username);
+  const [message, showMessage] = useState(false);
+  const [cmd, setCmd] = useState(user.username);
 
-  const updateTrackedState = () => setTrackState(tracker.getState());
-
+  const updateTrackedState = () => {
+    setTrackState(tracker.getState());
+  };
   const doCommit = () => {
-    tracker.doCommit({ username: name, userid });
+    tracker.doCommit(user);
     updateTrackedState();
   };
-
   const revertCommit = commit => {
-    tracker.revertCommit(commit.id, { username: name, userid });
+    tracker.revertCommit(commit.id, user);
     updateTrackedState();
   };
-
   const highlightCommit = commit => {
     tracker.highlightCommit(commit.id);
     updateTrackedState();
   };
-
   const resetHighlight = () => {
     tracker.resetHighlight();
     updateTrackedState();
   };
-
   const onKeyDown = evt => {
     if (evt.key === 'Meta') setCmd(true);
     else if (evt.key === 's' && cmd) {
@@ -55,7 +56,6 @@ const Track = () => {
       evt.preventDefault();
     }
   };
-
   const onKeyUp = () => {
     setCmd(false);
   };
@@ -64,13 +64,46 @@ const Track = () => {
 
   return (
     <div>
-      <input
-        style={{ marginBottom: 10 }}
-        className="nib-track_msg"
-        onChange={evt => setName(evt.target.value)}
-        placeholder="Enter user name"
-        value={name}
-      />
+      <div>
+        <span style={{ fontSize: 14, width: 100, display: 'inline-block' }}>
+          User Id
+        </span>
+        <input
+          style={{ marginBottom: 10 }}
+          className="nib-comment_msg"
+          onChange={evt => setUserid(evt.target.value)}
+          placeholder="Enter id"
+          value={userid}
+        />
+      </div>
+      <div>
+        <span style={{ fontSize: 14, width: 100, display: 'inline-block' }}>
+          User Name
+        </span>
+        <input
+          style={{ marginBottom: 10 }}
+          className="nib-comment_msg"
+          onChange={evt => setUsername(evt.target.value)}
+          placeholder="Enter user name"
+          value={username}
+        />
+      </div>
+      <button
+        style={{ marginBottom: 20 }}
+        className="docs_btn"
+        type="button"
+        onClick={() => {
+          commenter.updateData({ userid, username });
+          showMessage(true);
+        }}
+      >
+        Update
+      </button>
+      {message && (
+        <span style={{ fontSize: 14, marginLeft: 10 }}>
+          User details updated.
+        </span>
+      )}
       <div className="nib-track-wrapper">
         <div>
           <div onKeyDown={onKeyDown} onKeyUp={onKeyUp}>
@@ -82,7 +115,7 @@ const Track = () => {
                   top: { options: 'block inline list' },
                 },
               }}
-              addons={[tracker]}
+              addons={[tracker, commenter]}
               defaultValue={defaultValue}
               onChange={updateTrackedState}
             />
@@ -140,4 +173,4 @@ const Track = () => {
   );
 };
 
-export default Track;
+export default TrackWithComment;
