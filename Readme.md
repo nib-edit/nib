@@ -48,8 +48,3 @@ Props supported by the editor.
 MIT
 <br/>
 This repository includes code for all basic editor features which are freely available. Advance editor features like nib drive, tracking, comments and collaborative editing are not open source.
-
----
-
-- fix image upload
-- add liscence checks
