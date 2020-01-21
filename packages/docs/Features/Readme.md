@@ -6,11 +6,11 @@ Some distinguishing features of the editor are:
 - Text and background colors
 - Link
 - Blockquote
-- Ordered and unordered lists
+- Ordered and unordered list
 - Images
 - Inline toolbar
 - Full page mode
-- History
+- Undo redo options
 - Help menu
 - Theming
 - Convert HTML to prosemirror JSON
@@ -20,10 +20,10 @@ Some distinguishing features of the editor are:
 
 Licensed features, [licensing details](#/License):
 
-- Advance images
+- Advance image
 - Access to Nib drive for saving images
-- Tables
+- Table
 - Video
 - Tracking changes
-- Adding comments
+- Comments
 - Collaborative editing

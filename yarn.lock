@@ -5155,21 +5155,55 @@ neo-async@^2.5.0, neo-async@^2.6.0, neo-async@^2.6.1:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
-nib-comment@2.6.1:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/nib-comment/-/nib-comment-2.6.1.tgz#fdd5fd2779a0bf48458bb8be2706986f658c8331"
-  integrity sha512-HxaPpKph2snZqsdjFPBUneHPkvx+QZO11i6R3jbeRTwzTt3hOHWReLbeY1TUlkSBZwGhGRrIrEay56awMIkqoQ==
+nib-advance-image@0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/nib-advance-image/-/nib-advance-image-0.1.0.tgz#334fd78acbbb1e8acdd2fbe13ae558d1c47390fc"
+  integrity sha512-xSFWnmJ3tcYhxYpL/zO2SwlBtigkD3L1T1HYX9doYqy4X9isU6Nt7TpGoMt1QQMnbqESLTeG0KVJxTDmuCbntQ==
   dependencies:
     axios "^0.19.0"
-    nib-ui "2.4.4"
     prosemirror-transform "^1.0.0"
 
-nib-ui@2.4.4:
-  version "2.4.4"
-  resolved "https://registry.yarnpkg.com/nib-ui/-/nib-ui-2.4.4.tgz#f5921197bc0b457d1c04977d85341323b53fc43b"
-  integrity sha512-oGf+RN6O+Yq5j5Rqr4fe/qEivZbS5aS2hahBukZgSfnwlw08T/fxCMKH2FMvBfkd8ZLUl8J2PF3Q0AlnKuvldQ==
+nib-collab-client@0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/nib-collab-client/-/nib-collab-client-0.2.3.tgz#9cc96251d450f1ebac80c0e047d0e16ee3c31061"
+  integrity sha512-VplbWYKU20dtc7kIXxSVvsYStjmZuRFFjG3aj67vP8Yj+OXyC2UsSNO/+hPc9xxN/8+TA5sMufUsIS2AgbTocw==
   dependencies:
-    react-select "^3.0.4"
+    axios "^0.19.0"
+    prosemirror-collab "^1.1.2"
+    prosemirror-transform "^1.0.0"
+
+nib-comment@2.6.2:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/nib-comment/-/nib-comment-2.6.2.tgz#5b981a0a9085cac41b4e747ea00a46cd517c042a"
+  integrity sha512-hdtvFfpC4DOeVa8t8YELetUfGrM5i8yejGebKK6bPdiDHwL3ZLRQYUnEMQ3EjtBJQtPi0Xbnf3yC3Y82gLuRCg==
+  dependencies:
+    axios "^0.19.0"
+    nib-ui "2.4.6"
+    prosemirror-transform "^1.0.0"
+
+nib-table@0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/nib-table/-/nib-table-0.1.0.tgz#38896165be399e7feb32a203e39cfa7a439ac3ba"
+  integrity sha512-ejED77qajzVz1Jlj9VPmvsdbTEanemImJ64M86zBwd14pzptG7gnlQ9Tposx4eccjddX9jKiwjgL+wrD0Je0HA==
+  dependencies:
+    axios "^0.19.0"
+    prosemirror-transform "^1.0.0"
+
+nib-track@2.5.3:
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/nib-track/-/nib-track-2.5.3.tgz#a275c7ff16165cae94229391eee48ebcc7cadac9"
+  integrity sha512-VcyjFEV0Ag4y/bzopT+G5ELE0QiCKFmdPnghN0rdN2AAVAlwWQGr4041EyZCU4G7cQHErDmboCu4MrVot0hd4Q==
+  dependencies:
+    axios "^0.19.0"
+    prosemirror-transform "^1.0.0"
+
+nib-video@0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/nib-video/-/nib-video-0.1.0.tgz#a749b7b5c25675dd86830c62e8894e13abee4884"
+  integrity sha512-m7YTgSky4oBRRJbM2GfPYErGEXaBvhxbKlSGHuAtpiDImfbcSI58inDJ+o3p5u9KezP69mIWaGlHzqVcZUDzHw==
+  dependencies:
+    axios "^0.19.0"
+    prosemirror-transform "^1.0.0"
 
 nice-try@^1.0.4:
   version "1.0.5"

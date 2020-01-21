@@ -3,3 +3,12 @@ Editor with help option enabled. Click `?` icon to the right to see available ke
 ```js
 <Help />
 ```
+
+<br />
+<br />
+
+### Keyboard shortcuts
+
+| S.No. | Keyboard Shortcut | Description    |
+| ----- | ----------------- | -------------- |
+| 1     | Cmd-/             | Open help menu |
