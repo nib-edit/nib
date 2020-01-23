@@ -1,5 +1,4 @@
-import { Schema } from "prosemirror-model";
-import { marks, nodes as nibNodes } from "nib-schema";
+import { Schema } from 'prosemirror-model';
 
 export default plugins => {
   const schema = plugins
@@ -8,22 +7,12 @@ export default plugins => {
       (result, s) => {
         const newResult = result;
         if (s) {
-          newResult.nodes = [...result.nodes, ...(s.nodes || [])];
-          newResult.marks = [...result.marks, ...(s.marks || [])];
+          newResult.nodes = { ...result.nodes, ...(s.nodes || {}) };
+          newResult.marks = { ...result.marks, ...(s.marks || {}) };
         }
         return newResult;
       },
-      { nodes: ["paragraph"], marks: [] }
+      { nodes: [], marks: [] }
     );
-  schema.marks = schema.marks.reduce((result, mark) => {
-    const newResult = result;
-    newResult[mark] = marks[mark];
-    return newResult;
-  }, {});
-  schema.nodes = schema.nodes.reduce((result, node) => {
-    const newResult = result;
-    newResult[node] = nibNodes[node];
-    return newResult;
-  }, {});
   return new Schema(schema);
 };

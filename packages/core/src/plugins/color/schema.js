@@ -1,3 +1,7 @@
+import { marks } from 'nib-schema';
+
+const { backgroundColor, textColor } = marks;
+
 export default {
-  marks: ["textColor", "backgroundColor"]
+  marks: { backgroundColor, textColor },
 };
