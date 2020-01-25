@@ -5155,6 +5155,23 @@ neo-async@^2.5.0, neo-async@^2.6.0, neo-async@^2.6.1:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
+nib-advance-image@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/nib-advance-image/-/nib-advance-image-0.1.1.tgz#127a2a2862db02e7f8e378b7376fbe42e6668841"
+  integrity sha512-gWcncKxHtQHG5/beoiGNsxSAKaeHwk98MpUAHf4YcOQxuLmXMVl/SX4BKrDabqmF0MlDTjS40PFQEpqtqiKUWw==
+  dependencies:
+    axios "^0.19.0"
+    prosemirror-transform "^1.0.0"
+
+nib-collab-client@0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/nib-collab-client/-/nib-collab-client-0.2.3.tgz#9cc96251d450f1ebac80c0e047d0e16ee3c31061"
+  integrity sha512-VplbWYKU20dtc7kIXxSVvsYStjmZuRFFjG3aj67vP8Yj+OXyC2UsSNO/+hPc9xxN/8+TA5sMufUsIS2AgbTocw==
+  dependencies:
+    axios "^0.19.0"
+    prosemirror-collab "^1.1.2"
+    prosemirror-transform "^1.0.0"
+
 nib-comment@2.6.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/nib-comment/-/nib-comment-2.6.2.tgz#5b981a0a9085cac41b4e747ea00a46cd517c042a"
@@ -5162,6 +5179,30 @@ nib-comment@2.6.2:
   dependencies:
     axios "^0.19.0"
     nib-ui "2.4.6"
+    prosemirror-transform "^1.0.0"
+
+nib-table@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/nib-table/-/nib-table-0.1.1.tgz#d41254e4d910e1b05e1115182eeadc6f3f7ac631"
+  integrity sha512-sGRt7MTJzJ81QzliZWvo2OXljiKbAPFP526yuxnAm7n20GmstjZihVLQ1DPcAU1eZw/Dih93j1hocuCMePSgDA==
+  dependencies:
+    axios "^0.19.0"
+    prosemirror-transform "^1.0.0"
+
+nib-track@2.5.3:
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/nib-track/-/nib-track-2.5.3.tgz#a275c7ff16165cae94229391eee48ebcc7cadac9"
+  integrity sha512-VcyjFEV0Ag4y/bzopT+G5ELE0QiCKFmdPnghN0rdN2AAVAlwWQGr4041EyZCU4G7cQHErDmboCu4MrVot0hd4Q==
+  dependencies:
+    axios "^0.19.0"
+    prosemirror-transform "^1.0.0"
+
+nib-video@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/nib-video/-/nib-video-0.1.1.tgz#a38203662295630564235a1a8aaee8b938f846e0"
+  integrity sha512-hYo3Mc5YqVjTKwJxwfe+g1gyw10pcPpToga7YB+FRalob1aS0yZNlO7c+cYvOoFUX4OUtSJdsAx2nGSq79dJjA==
+  dependencies:
+    axios "^0.19.0"
     prosemirror-transform "^1.0.0"
 
 nice-try@^1.0.4:
