@@ -1,4 +1,5 @@
 import { Schema } from 'prosemirror-model';
+import { nodes } from 'nib-schema';
 
 export default plugins => {
   const schema = plugins
@@ -12,7 +13,7 @@ export default plugins => {
         }
         return newResult;
       },
-      { nodes: [], marks: [] }
+      { nodes: { paragraph: nodes.paragraph }, marks: {} }
     );
   return new Schema(schema);
 };

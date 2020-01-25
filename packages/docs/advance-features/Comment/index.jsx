@@ -36,7 +36,7 @@ const commenter = new CommentPlugin({
 });
 
 /**
- * @visibleName 6. Comment
+ * @visibleName 7. Comment
  */
 const Comment = () => {
   const [userid, setUserid] = useState('12345');

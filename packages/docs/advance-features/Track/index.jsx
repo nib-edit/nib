@@ -19,7 +19,7 @@ const formatDate = str => {
 };
 
 /**
- * @visibleName 5. Track Changes
+ * @visibleName 6. Track Changes
  */
 const Track = () => {
   const [trackState, setTrackState] = useState(tracker.getState());
