@@ -17,7 +17,7 @@ const collab = new CollabPlugin({
 });
 
 /**
- * @visibleName 7. Collaborative Editing
+ * @visibleName 8. Collaborative Editing
  */
 const Collab = () => {
   const [editorState, setEditorState] = useState();

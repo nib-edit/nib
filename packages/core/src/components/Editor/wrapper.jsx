@@ -33,6 +33,7 @@ const Wrapper = props => {
           if (data.status === 'FAIL') setLicenseCheckFail(true);
         });
   });
+
   return (
     <StyledWrapper ref={editorWrapper}>
       {licenseCheckFail && (
@@ -73,6 +74,7 @@ const LicenseAlert = styled.div`
   text-align: center;
   font-size: 18px !important;
   line-height: 1.5;
+  z-index: 10;
 `;
 
 export default Wrapper;

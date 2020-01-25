@@ -61,6 +61,7 @@ module.exports = {
         'packages/docs/advance-features/Table/index.jsx',
         'packages/docs/advance-features/AdvanceImage/index.jsx',
         'packages/docs/advance-features/Video/index.jsx',
+        'packages/docs/advance-features/CustomPlugin/index.jsx',
         'packages/docs/advance-features/Track/index.jsx',
         'packages/docs/advance-features/Comment/index.jsx',
         'packages/docs/advance-features/TrackWithComment/index.jsx',

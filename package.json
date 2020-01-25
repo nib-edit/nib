@@ -18,7 +18,9 @@
     "packages/ui",
     "packages/upload",
     "packages/advance/track",
-    "packages/advance/comment",
+    "packages/advance/table",
+    "packages/advance/video",
+    "packages/advance/advance-image",
     "packages/advance/collab/client"
   ],
   "repository": {
