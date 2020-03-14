@@ -1122,9 +1122,9 @@ acorn-jsx@^5.0.0:
   integrity sha512-tMUqwBWfLFbJbizRmEcWSLw6HnFzfdJs2sOJEOwwtVPMoH/0Ay+E703oZz78VSXZiiDcZrQ5XKjPIUQixhmgVw==
 
 acorn@^5.0.0, acorn@^5.0.3, acorn@^5.4.1, acorn@^5.7.1:
-  version "5.7.3"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.7.3.tgz#67aa231bf8812974b85235a96771eb6bd07ea279"
-  integrity sha512-T/zvzYRfbVojPWahDsE5evJdHb3oJoQfFbsrKM7w5Zcs++Tr257tia3BmMP8XYVjp1S9RZXQMh7gao96BlqZOw==
+  version "5.7.4"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.7.4.tgz#3e8d8a9947d0599a1796d10225d7432f4a4acf5e"
+  integrity sha512-1D++VG7BhrtvQpNbBzovKNc1FLGGEE/oGe7b9xJm/RFHMBeUaUGpluV9RLjZa47YFdPcDAenEYuq9pQPcMdLJg==
 
 acorn@^6.0.7, acorn@^6.2.1:
   version "6.4.0"
@@ -5215,29 +5215,6 @@ nib-comment@2.6.2:
     axios "^0.19.0"
     nib-ui "2.4.6"
     prosemirror-transform "^1.0.0"
-
-nib-core@2.5.9:
-  version "2.5.9"
-  resolved "https://registry.yarnpkg.com/nib-core/-/nib-core-2.5.9.tgz#55f25bf7a0ae23f846ac016045270b2a72a5d01b"
-  integrity sha512-qYNJIj9//7pnlzP/h+/BzEWWEiKNriF6GRQisKbVL79hQZq0Bgyubt//YQLmqeyDCU2BHlT7BBr98WaCWFI2Wg==
-  dependencies:
-    "@emotion/core" "^10.0.14"
-    "@emotion/styled" "^10.0.14"
-    axios "^0.19.0"
-    emotion-theming "^10.0.14"
-    nib-embed "2.1.6"
-    nib-schema "2.4.1"
-    nib-ui "2.4.6"
-    nib-upload "2.1.6"
-    prosemirror-commands "^1.0.7"
-    prosemirror-history "^1.0.3"
-    prosemirror-keymap "^1.0.1"
-    prosemirror-model "^1.6.2"
-    prosemirror-schema-list "^1.0.1"
-    prosemirror-state "^1.2.2"
-    prosemirror-tables "^0.8.1"
-    prosemirror-utils "^0.7.6"
-    prosemirror-view "1.10.0"
 
 nib-markdown-converter@0.1.0:
   version "0.1.0"
