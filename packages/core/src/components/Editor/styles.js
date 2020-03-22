@@ -61,7 +61,7 @@ export const StyledEditor = styled(
   styled.div(
     {
       border: "none",
-      overflow: "scroll",
+      overflow: "auto",
       padding: 4,
       position: "relative",
       textAlign: "left"
