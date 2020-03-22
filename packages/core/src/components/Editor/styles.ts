@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
 import BlockPlugin from '../../plugins/block';
+import { EditorStyleType } from '../../config/types';
 
 const prosemirrorStyles = `
   & .ProseMirror {
@@ -39,20 +40,23 @@ const prosemirrorStyles = `
 `;
 
 export const StyledWrapper = styled(
-  styled.div({ position: 'relative', textAlign: 'left' }, ({ theme }: any) => {
-    const { constants, wrapper } = theme;
-    return {
-      border: constants.border.primary,
-      borderRadius: constants.borderRadius.small,
+  styled.div(
+    { position: 'relative', textAlign: 'left' },
+    ({ theme }: { theme: EditorStyleType }) => {
+      const { constants, wrapper } = theme;
+      return {
+        border: constants.border.primary,
+        borderRadius: constants.borderRadius.small,
 
-      backgroundColor: constants.color.background.primary,
-      color: constants.color.text.primary,
+        backgroundColor: constants.color.background.primary,
+        color: constants.color.text.primary,
 
-      fontSize: constants.fontSize.medium,
+        fontSize: constants.fontSize.medium,
 
-      ...wrapper({ theme: constants }),
-    };
-  })
+        ...wrapper({ theme: constants }),
+      };
+    }
+  )
 )`
   ${({ theme }) => BlockPlugin.styles(theme)}
 `;
@@ -66,7 +70,7 @@ export const StyledEditor = styled(
       position: 'relative',
       textAlign: 'left',
     },
-    ({ theme: { constants, editor } }: any) => ({
+    ({ theme: { constants, editor } }: { theme: EditorStyleType }) => ({
       backgroundColor: constants.color.background.primary,
       color: constants.color.text.primary,
 
