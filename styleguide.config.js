@@ -110,8 +110,17 @@ module.exports = {
     ),
   },
   webpackConfig: {
+    resolve: {
+      // Add ".ts" and ".tsx" as resolvable extensions.
+      extensions: ['.ts', '.tsx', '.js', '.json'],
+    },
     module: {
       rules: [
+        {
+          test: /\.tsx?$/,
+          use: 'ts-loader',
+          exclude: /node_modules/,
+        },
         {
           test: /\.jsx?$/,
           exclude: /node_modules/,

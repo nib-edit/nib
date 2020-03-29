@@ -1,12 +1,13 @@
-import includePaths from 'rollup-plugin-includepaths';
 import babel from 'rollup-plugin-babel';
-import nodeResolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-import { uglify } from 'rollup-plugin-uglify';
 import bundleSize from 'rollup-plugin-bundle-size';
-import sourcemaps from 'rollup-plugin-sourcemaps';
+import commonjs from 'rollup-plugin-commonjs';
 import copy from 'rollup-plugin-copy';
+import includePaths from 'rollup-plugin-includepaths';
 import json from '@rollup/plugin-json';
+import nodeResolve from 'rollup-plugin-node-resolve';
+import sourcemaps from 'rollup-plugin-sourcemaps';
+import typescript from 'rollup-plugin-typescript2';
+import { terser } from 'rollup-plugin-terser';
 
 const globals = {
   react: 'React',
@@ -18,8 +19,8 @@ const external = ['react', 'react-dom'];
 const getCopyConf = packageName => ({
   targets: [
     {
-      src: `packages/${packageName}/package.json`,
       dest: `packages/${packageName}/build`,
+      src: `packages/${packageName}/package.json`,
     },
   ],
   verbose: true,
@@ -28,22 +29,22 @@ const getCopyConf = packageName => ({
 const getConfig = packageName => {
   const copyConf = getCopyConf(packageName);
   if (packageName !== 'core') {
-    // globals["nib-ui"] = "nib-ui";
+    // globals['nib-ui'] = 'nib-ui';
     globals['@emotion/core'] = '@emotion/core';
     globals['@emotion/styled'] = '@emotion/styled';
     globals['emotion-theming'] = 'emotion-theming';
-    // external.push("nib-ui");
+    // external.push('nib-ui');
     external.push('@emotion/core');
     external.push('@emotion/styled');
     external.push('emotion-theming');
     copyConf.targets.push({
-      src: `packages/${packageName}/readme.md`,
       dest: `packages/${packageName}/build`,
+      src: `packages/${packageName}/readme.md`,
     });
   } else {
     copyConf.targets.push({
-      src: 'readme.md',
       dest: `packages/${packageName}/build`,
+      src: 'readme.md',
     });
   }
   return {
@@ -57,7 +58,10 @@ const getConfig = packageName => {
     },
     external,
     plugins: [
-      uglify(),
+      typescript({
+        typescript: require('typescript'),
+      }),
+      terser(),
       json(),
       bundleSize(),
       nodeResolve({
@@ -82,7 +86,7 @@ const getConfig = packageName => {
         exclude: 'node_modules/**',
       }),
       includePaths({
-        extensions: ['.js', '.jsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
       }),
       commonjs({
         include: 'node_modules/**',

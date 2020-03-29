@@ -2,7 +2,7 @@
   "name": "nib-core",
   "version": "2.6.0",
   "description": "Wysiwyg editor",
-  "main": "./index.js",
+  "main": "dist/index",
   "repository": {
     "type": "git",
     "url": "https://github.com/nib-edit/Nib.git"

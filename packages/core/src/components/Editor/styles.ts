@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
-import BlockPlugin from "../../plugins/block";
+import BlockPlugin from '../../plugins/block';
 
 const prosemirrorStyles = `
   & .ProseMirror {
@@ -39,7 +39,7 @@ const prosemirrorStyles = `
 `;
 
 export const StyledWrapper = styled(
-  styled.div({ position: "relative", textAlign: "left" }, ({ theme }) => {
+  styled.div({ position: 'relative', textAlign: 'left' }, ({ theme }: any) => {
     const { constants, wrapper } = theme;
     return {
       border: constants.border.primary,
@@ -50,7 +50,7 @@ export const StyledWrapper = styled(
 
       fontSize: constants.fontSize.medium,
 
-      ...wrapper({ theme: constants })
+      ...wrapper({ theme: constants }),
     };
   })
 )`
@@ -60,23 +60,23 @@ export const StyledWrapper = styled(
 export const StyledEditor = styled(
   styled.div(
     {
-      border: "none",
-      overflow: "auto",
+      border: 'none',
+      overflow: 'auto',
       padding: 4,
-      position: "relative",
-      textAlign: "left"
+      position: 'relative',
+      textAlign: 'left',
     },
-    ({ theme: { constants, editor } }) => ({
+    ({ theme: { constants, editor } }: any) => ({
       backgroundColor: constants.color.background.primary,
       color: constants.color.text.primary,
 
       fontSize: constants.fontSize.medium,
 
-      ...editor({ theme: constants })
+      ...editor({ theme: constants }),
     })
   )
 )`
-  ${({ theme, pluginStyles }) => pluginStyles(theme)}
+  ${({ theme, pluginStyles }: any) => pluginStyles(theme)}
   ${prosemirrorStyles}
 `;
 
