@@ -1,15 +1,17 @@
+import { StylesType } from './types';
+
 /**
  * Object to be used as base for style configurations,
  * of different components in editor.
  */
-export default {
+const defaultStyles: StylesType = {
   // Wrapper div enclosing editor and toolbar
   wrapper: () => {},
   // Main editor component
   editor: () => {},
   toolbar: {
     top: () => {},
-    inline: () => {}
+    inline: () => {},
   },
   // Small vertical separator in toolbar
   separator: () => {},
@@ -18,34 +20,36 @@ export default {
     wrapper: () => {},
     label: () => {},
     menu: () => {},
-    option: () => {}
+    option: () => {},
   },
   popup: {
     wrapper: () => {},
     arrowTop: () => {},
-    arrowBottom: () => {}
+    arrowBottom: () => {},
   },
   modal: {
     wrapper: () => {},
     title: () => {},
     header: () => {},
-    main: () => {}
+    main: () => {},
   },
   input: {
     wrapper: () => {},
-    input: () => {}
+    input: () => {},
   },
   icon: () => {},
   button: {
     toolbar: () => {},
-    primary: () => {}
+    primary: () => {},
   },
   table: {
     table: () => {},
     cellMenu: {
       wrapper: () => {},
       icon: () => {},
-      option: () => {}
-    }
-  }
+      option: () => {},
+    },
+  },
 };
+
+export default defaultStyles;

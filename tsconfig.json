@@ -2,8 +2,7 @@
   "compilerOptions": {
     "outDir": "./dist/",
     "sourceMap": true,
-    "noImplicitAny": false,
-    // "module": "CommonJS",
+    "noImplicitAny": true,
     "lib": ["es6", "dom", "es2017"],
     "target": "es5",
     "jsx": "react"
