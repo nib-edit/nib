@@ -20,10 +20,12 @@ Some distinguishing features of the editor are:
 
 Licensed features, [licensing details](#/License):
 
-- Advance image
-- Access to Nib drive for saving images
 - Table
+- Advance image
 - Video
-- Tracking changes
+- Adding custom plugins
+- Markdown converter
+- Track changes
 - Comments
 - Collaborative editing
+- Access to Nib drive for saving images
