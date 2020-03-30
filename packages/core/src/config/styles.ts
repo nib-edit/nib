@@ -1,10 +1,8 @@
-import { StylesType } from './types';
-
 /**
  * Object to be used as base for style configurations,
  * of different components in editor.
  */
-const defaultStyles: StylesType = {
+export default {
   // Wrapper div enclosing editor and toolbar
   wrapper: () => {},
   // Main editor component
@@ -51,5 +49,3 @@ const defaultStyles: StylesType = {
     },
   },
 };
-
-export default defaultStyles;

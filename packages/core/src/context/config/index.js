@@ -1,16 +1,16 @@
-import React, { useContext, useState } from "react";
-import PropTypes from "prop-types";
+import React, { useContext, useState } from 'react';
+import PropTypes from 'prop-types';
 
-import getDispatcher from "./dispatcher";
-import config from "../../config/editor";
-import overrideValue from "../../utils/override-value";
+import getDispatcher from './dispatcher';
+import config from '../../config/editor';
+import overrideValue from '../../utils/override-value';
 
 export const ConfigContext = React.createContext();
 
 export const ConfigContextProvider = ({
   config: newConfig,
   licenseKey,
-  children
+  children,
 }) => {
   const [dispatcher] = useState(getDispatcher());
   const editorConfig = overrideValue(config, newConfig);
@@ -28,22 +28,22 @@ ConfigContextProvider.propTypes = {
   config: PropTypes.shape({
     config: PropTypes.object,
     dispatch: PropTypes.func,
-    licenseKey: PropTypes.string
+    licenseKey: PropTypes.string,
   }),
   licenseKey: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.element),
-    PropTypes.element
-  ]).isRequired
+    PropTypes.element,
+  ]).isRequired,
 };
 
 ConfigContextProvider.defaultProps = {
   config: undefined,
-  licenseKey: ""
+  licenseKey: '',
 };
 
 export const ConfigContextConsumer = ConfigContext.Consumer;
 
 export const useConfigContext = () => ({
-  ...useContext(ConfigContext)
+  ...useContext(ConfigContext),
 });

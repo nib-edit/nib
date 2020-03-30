@@ -1,5 +1,6 @@
-import PropTypes from 'prop-types';
-import React, { useRef, useEffect, useState } from 'react';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
+import { useRef, useEffect, useState } from 'react';
 import axios from 'axios';
 
 import styled from '@emotion/styled';
@@ -10,8 +11,14 @@ import { useConfigContext } from '../../context/config';
 
 import InnerEditor from './editor';
 import { StyledWrapper } from './styles';
+import { Addon } from '../../types/addon';
 
-const Wrapper = props => {
+interface WrapperProps {
+  addons: Addon[];
+  licenseKey: string;
+}
+
+const Wrapper = (props: WrapperProps) => {
   const [licenseCheckFail, setLicenseCheckFail] = useState(false);
   const editorWrapper = useRef(null);
   const {
@@ -23,15 +30,21 @@ const Wrapper = props => {
 
   useEffect(() => {
     const { licenseKey } = props;
-    if (addons)
-      axios
-        .get('https://licencecheck.herokuapp.com/licenceCheck', {
-          licenseKey,
-          plugins: addons.map(a => a.name),
-        })
-        .then(({ data }) => {
-          if (data.status === 'FAIL') setLicenseCheckFail(true);
-        });
+    if (addons) {
+      if (!licenseKey) setLicenseCheckFail(true);
+      else {
+        axios
+          .get('https://licencecheck.herokuapp.com/licenceCheck', {
+            params: {
+              licenseKey,
+              plugins: addons.map(a => a.name),
+            },
+          })
+          .then(({ data }) => {
+            if (data.status === 'FAIL') setLicenseCheckFail(true);
+          });
+      }
+    }
   });
 
   return (
@@ -54,9 +67,8 @@ const Wrapper = props => {
 };
 
 Wrapper.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  addons: PropTypes.array,
-  licenseKey: PropTypes.string,
+  addons: PropTypes.array.isRequired,
+  licenseKey: PropTypes.string.isRequired,
 };
 
 Wrapper.defaultProps = {

@@ -1,23 +1,23 @@
-import PropTypes from "prop-types";
-import React, { PureComponent } from "react";
-import { setBlockType } from "prosemirror-commands";
+import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
+import { setBlockType } from 'prosemirror-commands';
 
-import { PMStateConsumer } from "../../../context/pm-state";
-import { ConfigContextConsumer } from "../../../context/config";
-import { blockPluginKey } from "../plugin";
-import options from "../blockData";
-import Grouped from "./Grouped";
-import Ungrouped from "./Ungrouped";
+import { PMStateConsumer } from '../../../context/pm-state';
+import { ConfigContextConsumer } from '../../../context/config';
+import { blockPluginKey } from '../plugin';
+import options from '../blockData';
+import Grouped from './Grouped';
+import Ungrouped from './Ungrouped';
 
 class ToolbarComponent extends PureComponent {
   changeBlockType = blockType => {
     let attrs;
     let blockName;
-    if (blockType === "paragraph") {
+    if (blockType === 'paragraph') {
       blockName = blockType;
     } else {
-      attrs = { level: blockType.split("-")[1] };
-      blockName = "heading";
+      attrs = { level: blockType.split('-')[1] };
+      blockName = 'heading';
     }
 
     const { pmstate } = this.props;
@@ -55,7 +55,7 @@ class ToolbarComponent extends PureComponent {
       );
     }
 
-    if (grouped) {
+    if (grouped !== false) {
       return (
         <Grouped
           onChange={this.changeBlockType}
@@ -79,7 +79,7 @@ ToolbarComponent.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   config: PropTypes.object.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
-  pmstate: PropTypes.object.isRequired
+  pmstate: PropTypes.object.isRequired,
 };
 
 export default props => (
