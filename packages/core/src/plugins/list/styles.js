@@ -17,6 +17,6 @@ export default () => `
     top: -2px;
     bottom: -2px;
     border: 2px solid #8cf;
-    pointer - events: none;
+    pointer-events: none;
   }
 `;
