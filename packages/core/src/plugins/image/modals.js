@@ -2,13 +2,12 @@ import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import styled from '@emotion/styled';
 
-import { Spinner, Modal, Input, PrimaryButton, Space, SpaceSize } from 'nib-ui';
-import NibUpload from 'nib-upload';
+import { Modal, Input, PrimaryButton, Space, SpaceSize } from 'nib-ui';
 
 import { ConfigContextConsumer } from '../../context/config';
 
 class ImageModal extends PureComponent {
-  state = { uploading: false, imageSrc: '', srcRequiredError: false };
+  state = { imageSrc: '', srcRequiredError: false };
 
   insertImageInEditor = () => {
     const { imageSrc: src } = this.state;
@@ -36,59 +35,9 @@ class ImageModal extends PureComponent {
     });
   };
 
-  insertImage = file => {
-    const { config, licenseKey } = this.props;
-    this.setState({ uploading: true });
-    const uploadFn =
-      (config.plugins &&
-        config.plugins.image &&
-        config.plugins.image.uploadCallback) ||
-      (licenseKey && NibUpload.uploadImage);
-    if (uploadFn)
-      uploadFn(file, licenseKey)
-        .then(({ src }) => {
-          if (!src) this.updateImageSrc('');
-          else this.updateImageSrc(src);
-        })
-        .catch(() => {
-          this.updateImageSrc('');
-        })
-        .finally(() => {
-          this.setState({ uploading: false });
-        });
-  };
-
-  // Check if property name is files or items
-  // IE uses 'files' instead of 'items'
-  onImageDrop = evt => {
-    this.stopDefault(evt);
-    const { items, files } = evt.dataTransfer;
-    const data = items || files;
-    const dataIsItems = !!items;
-    for (let i = 0; i < data.length; i += 1) {
-      if (
-        (!dataIsItems || data[i].kind === 'file') &&
-        data[i].type.match('^image/')
-      ) {
-        const file = dataIsItems ? data[i].getAsFile() : data[i];
-        this.insertImage(file);
-      }
-    }
-  };
-
-  handleImageInputChange = event => {
-    const { files } = event.target;
-    this.insertImage(files[0]);
-  };
-
-  stopDefault = evt => {
-    evt.preventDefault();
-    evt.stopPropagation();
-  };
-
   render() {
     const { hideModal } = this.props;
-    const { uploading, imageSrc, srcRequiredError } = this.state;
+    const { imageSrc, srcRequiredError } = this.state;
     return (
       <Modal
         hideModal={hideModal}
@@ -104,34 +53,11 @@ class ImageModal extends PureComponent {
                 onChange={evt => this.updateImageSrc(evt.target.value)}
                 error={srcRequiredError}
               />
-              <StyledLabel htmlFor="fileInput">
-                <FileUploadInput
-                  type="file"
-                  id="fileInput"
-                  onChange={this.handleImageInputChange}
-                />
-                <UploadSection
-                  // onDragEnter={this.stopDefault}
-                  // onDragOver={this.stopDefault}
-                  // onDrop={this.onImageDrop}
-                  // uploading={uploading}
-                  src={imageSrc}
-                >
-                  {imageSrc && (
-                    <ImageWrapper>
-                      <StyledImage src={imageSrc} alt="uploaded_image" />
-                    </ImageWrapper>
-                  )}
-                  {/* <UploadLabel imageSrc={imageSrc}>
-                    Drag and Drop the Image
-                    <br />
-                    or
-                    <br />
-                    Click to Upload
-                  </UploadLabel> */}
-                  {uploading && <StyledSpinner uploading={uploading} />}
-                </UploadSection>
-              </StyledLabel>
+              <ImageWrapper>
+                {imageSrc && (
+                  <StyledImage src={imageSrc} alt="uploaded_image" />
+                )}
+              </ImageWrapper>
               <ButtonSection>
                 <PrimaryButton onClick={this.insertImageInEditor}>
                   Insert
@@ -176,7 +102,7 @@ const SubTitle = styled.div({}, ({ theme: { constants } }) => ({
   fontSize: constants.fontSize.large,
 }));
 
-const UploadSection = styled.span(
+const ImageWrapper = styled.span(
   {
     alignItems: 'center',
     display: 'flex',
@@ -185,7 +111,7 @@ const UploadSection = styled.span(
 
     position: 'relative',
 
-    height: '75%',
+    height: '55%',
     width: '35%',
     minWidth: 200,
     margin: '28px auto 0 auto',
@@ -194,18 +120,10 @@ const UploadSection = styled.span(
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
   },
-  ({ theme, uploading, src }) => ({
-    border:
-      uploading || src
-        ? `1px dashed ${theme.constants.color.highlight.primary}`
-        : `1px dashed ${theme.constants.color.border.primary}`,
-  })
-);
-
-const UploadLabel = styled.span(
-  { marginTop: 20, textAlign: 'center', zIndex: 1, marginBottom: 10 },
-  ({ theme: { constants }, imageSrc }) => ({
-    color: imageSrc ? constants.color.background : constants.color.text.primary,
+  ({ theme, src }) => ({
+    border: src
+      ? `1px dashed ${theme.constants.color.highlight.primary}`
+      : `1px dashed ${theme.constants.color.border.primary}`,
   })
 );
 
@@ -215,33 +133,7 @@ const StyledInput = styled(Input)({}, () => ({
   '> input': { width: '100%', margin: '0 auto' },
 }));
 
-const StyledLabel = styled.label({}, () => ({ height: '75%', width: '100%' }));
-
-const FileUploadInput = styled.input({ display: 'none' });
-
-const StyledSpinner = styled(Spinner)(
-  {
-    zIndex: 1,
-    marginTop: 10,
-  },
-  uploading => ({ visibility: uploading ? 'visible' : 'hidden' })
-);
-
 const ButtonSection = styled.div({ display: 'flex', marginTop: 20 });
-
-const ImageWrapper = styled.span({
-  margin: 20,
-  position: 'absolute',
-
-  top: 0,
-  left: 0,
-  height: 'calc(100% - 40px)',
-  width: 'calc(100% - 40px)',
-
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-});
 
 const StyledImage = styled.img({
   height: 'auto',

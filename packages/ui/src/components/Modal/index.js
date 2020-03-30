@@ -1,21 +1,21 @@
-import PropTypes from "prop-types";
-import React, { PureComponent } from "react";
-import styled from "@emotion/styled";
+import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
+import styled from '@emotion/styled';
 
-import Icon from "../Icon";
+import Icon from '../Icon';
 
 class Modal extends PureComponent {
   componentDidMount() {
-    window.addEventListener("keydown", this.handleKeyPress);
+    window.addEventListener('keydown', this.handleKeyPress);
   }
 
   componentWillUnmount = () => {
-    window.removeEventListener("keydown", this.handleKeyPress);
+    window.removeEventListener('keydown', this.handleKeyPress);
   };
 
   handleKeyPress = evt => {
     const { hideModal } = this.props;
-    if (evt.key === "Escape") hideModal();
+    if (evt.key === 'Escape') hideModal();
   };
 
   handleMouseDown = evt => {
@@ -58,33 +58,34 @@ class Modal extends PureComponent {
 Modal.propTypes = {
   hideModal: PropTypes.func.isRequired,
   render: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 };
 
 const Wrapper = styled.div(
   {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
 
-    height: "100%",
-    left: "0",
-    position: "fixed",
-    top: "0",
-    width: "100%"
+    height: '100%',
+    left: '0',
+    position: 'fixed',
+    top: '0',
+    userSelect: 'all',
+    width: '100%',
   },
   ({ theme: { constants } }) => ({
     zIndex: 1,
-    backgroundColor: constants.color.opaque
+    backgroundColor: constants.color.opaque,
   })
 );
 
 const InnerWrapper = styled.div(
   {
-    width: "75%",
-    height: "75%",
+    width: '75%',
+    height: '75%',
     maxHeight: 750,
-    maxWidth: 750
+    maxWidth: 750,
   },
   ({ theme: { constants, modal } }) => ({
     borderRadius: constants.borderRadius.small,
@@ -95,35 +96,35 @@ const InnerWrapper = styled.div(
 
     fontSize: constants.fontSize.large,
 
-    ...modal.wrapper({ theme: constants })
+    ...modal.wrapper({ theme: constants }),
   })
 );
 
 const Header = styled.div(
   {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "12px 24px"
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '12px 24px',
   },
   ({ theme: { constants, modal } }) => ({
     boxShadow: constants.boxShadow.secondary,
 
-    ...modal.header({ theme: constants })
+    ...modal.header({ theme: constants }),
   })
 );
 
 const Title = styled.div({}, ({ theme: { constants, modal } }) => ({
   fontSize: constants.fontSize.extraLarge,
-  ...modal.title({ theme: constants })
+  ...modal.title({ theme: constants }),
 }));
 
-const StyledIcon = styled(Icon)({ cursor: "pointer" });
+const StyledIcon = styled(Icon)({ cursor: 'pointer' });
 
 const Main = styled.div(
-  { height: "calc(100% - 102px)", padding: "24px 0" },
+  { height: 'calc(100% - 102px)', padding: '24px 0' },
   ({ theme: { constants, modal } }) => ({
-    ...modal.main({ theme: constants })
+    ...modal.main({ theme: constants }),
   })
 );
 

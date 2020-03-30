@@ -25,7 +25,6 @@
     "nib-embed": "2.1.6",
     "nib-schema": "2.4.1",
     "nib-ui": "2.4.6",
-    "nib-upload": "2.1.6",
     "prosemirror-commands": "^1.0.7",
     "prosemirror-history": "^1.0.3",
     "prosemirror-keymap": "^1.0.1",
