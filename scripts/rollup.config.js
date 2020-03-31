@@ -28,6 +28,7 @@ const getCopyConf = packageName => ({
 
 const getConfig = packageName => {
   const copyConf = getCopyConf(packageName);
+  let inputFileName = 'index.js';
   if (packageName !== 'core') {
     // globals['nib-ui'] = 'nib-ui';
     globals['@emotion/core'] = '@emotion/core';
@@ -42,13 +43,14 @@ const getConfig = packageName => {
       src: `packages/${packageName}/readme.md`,
     });
   } else {
+    inputFileName = 'index.ts';
     copyConf.targets.push({
       dest: `packages/${packageName}/build`,
       src: 'readme.md',
     });
   }
   return {
-    input: `packages/${packageName}/index.js`,
+    input: `packages/${packageName}/${inputFileName}`,
     output: {
       file: `packages/${packageName}/build/index.js`,
       format: 'umd',

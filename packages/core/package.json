@@ -3,6 +3,7 @@
   "version": "2.6.0",
   "description": "Wysiwyg editor",
   "main": "dist/index",
+  "types": "./dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/nib-edit/Nib.git"
