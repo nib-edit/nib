@@ -7,7 +7,7 @@ interface PluginConfig {
 
 type ToolbarType = {
   options?: string;
-  block?: { options?: string; grouped?: false };
+  block?: { options?: string; grouped?: boolean };
   inline?: { options?: string };
 } & {
   [prop: string]: any;

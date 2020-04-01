@@ -19,7 +19,7 @@ export const DefaultConfig: EditorConfig = {
     options: 'top',
     top: {
       options: 'block inline color link blockquote list image history help',
-      block: { options: 'p h1 h2 h3 h4 h5 h6' },
+      block: { options: 'p h1 h2 h3 h4 h5 h6', grouped: true },
       inline: { options: 'strong em underline strike subsup code' },
     },
     inline: {

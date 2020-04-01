@@ -9,7 +9,6 @@ import Close from './Close';
 import Code from './Code';
 import Comment from './Comment';
 import Cross from './Cross';
-import ChevronDown from './ChevronDown';
 import DeleteColumn from './DeleteColumn';
 import DeleteRow from './DeleteRow';
 import H1 from './H1';
@@ -48,7 +47,6 @@ export default {
   bold: Bold,
   close: Close,
   code: Code,
-  chevronDown: ChevronDown,
   comment: Comment,
   cross: Cross,
   deleteColumn: DeleteColumn,

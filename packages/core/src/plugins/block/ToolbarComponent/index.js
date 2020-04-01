@@ -10,7 +10,7 @@ import Grouped from './Grouped';
 import Ungrouped from './Ungrouped';
 
 class ToolbarComponent extends PureComponent {
-  changeBlockType = blockType => {
+  changeBlockType = (blockType) => {
     let attrs;
     let blockName;
     if (blockType === 'paragraph') {
@@ -51,7 +51,7 @@ class ToolbarComponent extends PureComponent {
     let filteredOptions = options;
     if (toolbarOptions) {
       filteredOptions = options.filter(
-        opt => toolbarOptions.indexOf(opt.value.tag) >= 0
+        (opt) => toolbarOptions.indexOf(opt.value.tag) >= 0
       );
     }
 
@@ -82,7 +82,7 @@ ToolbarComponent.propTypes = {
   pmstate: PropTypes.object.isRequired,
 };
 
-export default props => (
+export default (props) => (
   <ConfigContextConsumer>
     {({ config }) => (
       <PMStateConsumer>
