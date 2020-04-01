@@ -19,7 +19,7 @@ interface ToolbarConfig {
   };
 }
 
-export interface EditorConfigType {
+export interface EditorConfig {
   plugins?: PluginConfig;
   toolbar?: ToolbarConfig;
 }
