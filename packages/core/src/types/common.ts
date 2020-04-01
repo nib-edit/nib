@@ -1,3 +1,3 @@
-export type KeyValueType = {
+export interface KeyValueType {
   [key: string]: any;
-};
+}

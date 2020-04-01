@@ -1,3 +1,3 @@
-import { KeyValueType } from './editor-theme';
+import { KeyValueType } from './common';
 
-export type ProsemirrorDoc = KeyValueType;
+export interface ProsemirrorDoc extends KeyValueType {}

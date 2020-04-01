@@ -1,11 +1,11 @@
-// todo: more details to be added to the file
+// todo: more details to be added to this interface
 
 export interface Addon {
-  name: string;
-  init: any;
-  updateLicenseInfo: any;
   createStateFromDoc: any;
-  getSerializableState: any;
-  viewUpdateCallback: any;
   dispatchTransactionCallback: any;
+  getSerializableState: any;
+  init: any;
+  name: string;
+  updateLicenseInfo: any;
+  viewUpdateCallback: any;
 }
