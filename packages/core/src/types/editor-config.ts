@@ -1,11 +1,11 @@
-type PluginConfig = {
+interface PluginConfig {
   options?: string;
   color?: {
     colors: string[];
   };
-};
+}
 
-type ToolbarConfig = {
+interface ToolbarConfig {
   options?: string;
   top?: {
     options?: string;
@@ -17,9 +17,9 @@ type ToolbarConfig = {
     block?: { options?: string };
     inline?: { options?: string };
   };
-};
+}
 
-export type EditorConfigType = {
+export interface EditorConfigType {
   plugins?: PluginConfig;
   toolbar?: ToolbarConfig;
-};
+}

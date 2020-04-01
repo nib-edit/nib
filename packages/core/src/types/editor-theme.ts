@@ -1,10 +1,10 @@
 import { KeyValueType } from './common';
 
-export type ThemeType = {
+export interface ThemeType {
   color: KeyValueType;
   fontSize: KeyValueType;
   fontWeight: KeyValueType;
   borderRadius: KeyValueType;
   border: KeyValueType;
   boxShadow: KeyValueType;
-};
+}
