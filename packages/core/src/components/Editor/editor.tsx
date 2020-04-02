@@ -1,4 +1,3 @@
-import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { useEffect, useState, useRef } from 'react';
 import { EditorView } from 'prosemirror-view';
@@ -14,21 +13,21 @@ import { Transaction } from 'prosemirror-state';
 import { ProsemirrorDoc } from '../../types/prosemirror';
 
 interface EditorProps {
-  addons: Addon[];
-  autoFocus: boolean;
-  defaultValue: ProsemirrorDoc;
-  licenseKey: string;
-  onChange: (doc: ProsemirrorDoc) => void;
-  spellCheck: boolean;
+  addons?: Addon[];
+  autoFocus?: boolean;
+  defaultValue?: ProsemirrorDoc;
+  licenseKey?: string;
+  onChange?: (doc: ProsemirrorDoc) => void;
+  spellCheck?: boolean;
 }
 
 const Editor = ({
+  addons = [],
+  autoFocus = false,
   defaultValue,
-  autoFocus,
-  spellCheck,
-  addons,
-  onChange,
   licenseKey,
+  onChange = () => {},
+  spellCheck = false,
 }: EditorProps) => {
   const editorRef = useRef(null);
   const {
@@ -99,24 +98,6 @@ const Editor = ({
       spellCheck={spellCheck}
     />
   );
-};
-
-Editor.propTypes = {
-  addons: PropTypes.array.isRequired,
-  autoFocus: PropTypes.bool.isRequired,
-  defaultValue: PropTypes.object.isRequired,
-  licenseKey: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  spellCheck: PropTypes.bool.isRequired,
-};
-
-Editor.defaultProps = {
-  addons: [],
-  autoFocus: false,
-  defaultValue: undefined,
-  licenseKey: undefined,
-  onChange: () => {},
-  spellCheck: false,
 };
 
 export default Editor;

@@ -8,14 +8,14 @@ import { PMStateProvider } from '../../context/pm-state';
 import EditorWrapper from './wrapper';
 import { ThemeType } from '../../types/editor-theme';
 import { StyleConfigType } from '../../types/editor-style';
-import { EditorConfigType } from '../../types/editor-config';
+import { EditorConfig } from '../../types/editor-config';
 import { Addon } from '../../types/addon';
 import { ProsemirrorDoc } from '../../types/prosemirror';
 
 interface EditorProps {
   addons?: Addon[];
   autoFocus?: boolean;
-  config?: EditorConfigType;
+  config?: EditorConfig;
   defaultValue?: ProsemirrorDoc;
   licenseKey?: string;
   onChange?: (doc: ProsemirrorDoc) => void;

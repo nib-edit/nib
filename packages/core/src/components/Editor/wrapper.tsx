@@ -1,4 +1,3 @@
-import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { useRef, useEffect, useState } from 'react';
 import axios from 'axios';
@@ -14,13 +13,13 @@ import { StyledWrapper } from './styles';
 import { Addon } from '../../types/addon';
 
 interface WrapperProps {
-  addons: Addon[];
-  licenseKey: string;
+  addons?: Addon[];
+  licenseKey?: string;
 }
 
 const Wrapper = (props: WrapperProps) => {
   const [licenseCheckFail, setLicenseCheckFail] = useState(false);
-  const editorWrapper = useRef(null);
+  const editorWrapper = useRef<HTMLDivElement | null>(null);
   const {
     config: { toolbar },
   } = useConfigContext();
@@ -64,16 +63,6 @@ const Wrapper = (props: WrapperProps) => {
       )}
     </StyledWrapper>
   );
-};
-
-Wrapper.propTypes = {
-  addons: PropTypes.array.isRequired,
-  licenseKey: PropTypes.string.isRequired,
-};
-
-Wrapper.defaultProps = {
-  addons: undefined,
-  licenseKey: undefined,
 };
 
 const LicenseAlert = styled.div`
