@@ -153,7 +153,7 @@ const Wrapper = styled.div(
     borderRadius: constants.borderRadius.small,
     boxShadow: constants.boxShadow.primary,
 
-    zIndex: isScrolling ? '0' : '1',
+    zIndex: isScrolling ? 0 : 1,
 
     ':focus': {
       outline: 'none',

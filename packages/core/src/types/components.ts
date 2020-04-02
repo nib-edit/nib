@@ -1,9 +1,24 @@
-import { ReactElement } from 'react';
+import { ElementType } from 'react';
 import { EditorState } from 'prosemirror-state';
 
 export interface EditorPopup {
   name: string;
-  getMarker: () => HTMLElement | undefined;
+  getMarker: () => Element;
   condition?: ({ state }: { state: EditorState }) => boolean;
-  component: React.ElementType;
+  component: ElementType;
 }
+
+export interface ToolbarOption {
+  name: string;
+  toolbarComponent: ElementType;
+}
+
+// {
+//   KeymapInfo,
+//     keymaps,
+//     name: 'block',
+//       pmPlugin,
+//       schema,
+//       styles,
+//       toolbarComponent,
+// };

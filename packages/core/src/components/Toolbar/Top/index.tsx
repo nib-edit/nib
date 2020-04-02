@@ -1,14 +1,24 @@
-import PropTypes from 'prop-types';
-import React, { Fragment } from 'react';
-import styled from '@emotion/styled';
+import * as React from 'react';
+import { Fragment, MutableRefObject } from 'react';
+import styled, { StyledComponent } from '@emotion/styled';
 
 import { Separator } from 'nib-ui';
 
 import getToolbarComponents from '../../../utils/editor/toolbar';
 import { useConfigContext } from '../../../context/config';
 import { PMStateConsumer } from '../../../context/pm-state';
+import { ProsemirrorEditorState } from '../../../types/prosemirror';
+import { Addon } from '../../../types/addon';
+import { ToolbarOption } from '../../../types/components';
+import { EditorStyleType } from '../../../types/editor-style';
 
-const Top = ({ editorWrapper, addons, pmstate }) => {
+interface TopProps {
+  editorWrapper: MutableRefObject<HTMLDivElement | null>;
+  addons?: Addon[];
+  pmstate: ProsemirrorEditorState;
+}
+
+const Top = ({ editorWrapper, addons = [], pmstate }: TopProps) => {
   const {
     config: { plugins, toolbar },
   } = useConfigContext();
@@ -18,13 +28,17 @@ const Top = ({ editorWrapper, addons, pmstate }) => {
     toolbar.top.options,
     addons
   );
-  const formattingOption = options.filter(opt => opt.name !== 'help');
-  const HelpOption = options.filter(opt => opt.name === 'help')[0];
+  const formattingOption = options.filter(
+    (opt: ToolbarOption) => opt.name !== 'help'
+  );
+  const HelpOption = options.filter(
+    (opt: ToolbarOption) => opt.name === 'help'
+  )[0];
 
   return (
-    <Wrapper onMouseDown={e => e.preventDefault()}>
+    <Wrapper onMouseDown={(e: Event) => e.preventDefault()}>
       <ToolbarSection>
-        {formattingOption.map((Option, index) => (
+        {formattingOption.map((Option: ToolbarOption, index: number) => (
           <Fragment key={`top-toolbar-option-${Option.name}`}>
             <Option.toolbarComponent
               config={toolbar.top[Option.name]}
@@ -40,20 +54,7 @@ const Top = ({ editorWrapper, addons, pmstate }) => {
   );
 };
 
-Top.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  editorWrapper: PropTypes.object.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  addons: PropTypes.array,
-  // eslint-disable-next-line react/forbid-prop-types
-  pmstate: PropTypes.object.isRequired,
-};
-
-Top.defaultProps = {
-  addons: [],
-};
-
-const Wrapper = styled.div(
+const Wrapper: StyledComponent<any, any, any> = styled.div(
   {
     alignItems: 'flex-start',
     display: 'flex',
@@ -68,9 +69,9 @@ const Wrapper = styled.div(
     borderTop: 'none',
 
     userSelect: 'none',
-    zIndex: '1',
+    zIndex: 1,
   },
-  ({ theme: { constants, toolbar } }) => ({
+  ({ theme: { constants, toolbar } }: { theme: EditorStyleType }) => ({
     backgroundColor: constants.color.background.primary,
     color: constants.color.text.primary,
     borderBottom: constants.border.primary,
@@ -86,8 +87,13 @@ const ToolbarSection = styled.div({
   flexWrap: 'wrap',
 });
 
-export default props => (
+interface TopWrapperProps {
+  editorWrapper: MutableRefObject<HTMLDivElement | null>;
+  addons?: Addon[];
+}
+
+export default (props: TopWrapperProps) => (
   <PMStateConsumer>
-    {pmstate => <Top pmstate={pmstate} {...props} />}
+    {(pmstate: ProsemirrorEditorState) => <Top pmstate={pmstate} {...props} />}
   </PMStateConsumer>
 );
