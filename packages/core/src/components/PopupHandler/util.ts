@@ -3,7 +3,7 @@ import { EditorPopup } from '../../types/components';
 import { ProsemirrorEditorState } from '../../types/prosemirror';
 
 export interface VisiblePopup {
-  marker: HTMLElement;
+  marker: Element;
   name: string;
   PopupComponent: React.ElementType;
 }
