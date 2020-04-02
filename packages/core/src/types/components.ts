@@ -8,7 +8,7 @@ export interface EditorPopup {
   component: ElementType;
 }
 
-export interface ToolbarOption {
+export interface EditorPlugin {
   name: string;
   toolbarComponent: ElementType;
 }
