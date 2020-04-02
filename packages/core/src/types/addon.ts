@@ -1,5 +1,6 @@
 // todo: more details to be added to this interface
 
+import { ElementType } from 'react';
 import { EditorPopup } from './components';
 
 export interface Addon {
@@ -11,4 +12,5 @@ export interface Addon {
   updateLicenseInfo?: any;
   viewUpdateCallback?: any;
   popups?: EditorPopup[];
+  toolbar: ElementType[];
 }

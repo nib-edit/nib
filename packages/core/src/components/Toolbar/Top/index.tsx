@@ -9,7 +9,7 @@ import { useConfigContext } from '../../../context/config';
 import { PMStateConsumer } from '../../../context/pm-state';
 import { ProsemirrorEditorState } from '../../../types/prosemirror';
 import { Addon } from '../../../types/addon';
-import { ToolbarOption } from '../../../types/components';
+import { EditorPlugin } from '../../../types/components';
 import { EditorStyleType } from '../../../types/editor-style';
 
 interface TopProps {
@@ -29,16 +29,16 @@ const Top = ({ editorWrapper, addons = [], pmstate }: TopProps) => {
     addons
   );
   const formattingOption = options.filter(
-    (opt: ToolbarOption) => opt.name !== 'help'
+    (opt: EditorPlugin) => opt.name !== 'help'
   );
   const HelpOption = options.filter(
-    (opt: ToolbarOption) => opt.name === 'help'
+    (opt: EditorPlugin) => opt.name === 'help'
   )[0];
 
   return (
     <Wrapper onMouseDown={(e: Event) => e.preventDefault()}>
       <ToolbarSection>
-        {formattingOption.map((Option: ToolbarOption, index: number) => (
+        {formattingOption.map((Option: EditorPlugin, index: number) => (
           <Fragment key={`top-toolbar-option-${Option.name}`}>
             <Option.toolbarComponent
               config={toolbar.top[Option.name]}
