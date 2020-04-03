@@ -16,10 +16,7 @@
     "packages/embed",
     "packages/schema",
     "packages/ui",
-    "packages/upload",
-    "packages/advance/track",
-    "packages/advance/comment",
-    "packages/advance/collab/client"
+    "packages/upload"
   ],
   "repository": {
     "type": "git",

@@ -38,7 +38,7 @@ const Wrapper = (props: WrapperProps) => {
           },
         })
         .then(({ data }) => {
-          if (data.status === 'FAIL') setLicenseCheckFail(true);
+          // if (data.status === 'FAIL') setLicenseCheckFail(true);
         });
     }
   });

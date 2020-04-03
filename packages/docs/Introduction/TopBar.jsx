@@ -33,6 +33,7 @@ class TopBar extends PureComponent {
           <Editor
             config={{
               plugins: {
+                options: 'block inline color link blockquote list help',
                 image: {
                   uploadCallback,
                 },

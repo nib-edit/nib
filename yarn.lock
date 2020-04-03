@@ -5313,14 +5313,6 @@ nib-markdown-converter@0.1.0:
     prosemirror-markdown "1.4.4"
     prosemirror-model "^1.0.0"
 
-nib-table@0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/nib-table/-/nib-table-0.1.1.tgz#d41254e4d910e1b05e1115182eeadc6f3f7ac631"
-  integrity sha512-sGRt7MTJzJ81QzliZWvo2OXljiKbAPFP526yuxnAm7n20GmstjZihVLQ1DPcAU1eZw/Dih93j1hocuCMePSgDA==
-  dependencies:
-    axios "^0.19.0"
-    prosemirror-transform "^1.0.0"
-
 nib-track@2.5.3:
   version "2.5.3"
   resolved "https://registry.yarnpkg.com/nib-track/-/nib-track-2.5.3.tgz#a275c7ff16165cae94229391eee48ebcc7cadac9"
