@@ -158,7 +158,7 @@ export default props => (
   <ConfigContextConsumer>
     {({ config }) => (
       <PMStateConsumer>
-        {pmstate => (
+        {({ pmstate }) => (
           <ToolbarComponent pmstate={pmstate} {...props} config={config} />
         )}
       </PMStateConsumer>

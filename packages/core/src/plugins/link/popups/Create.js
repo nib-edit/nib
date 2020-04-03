@@ -1,27 +1,27 @@
-import PropTypes from "prop-types";
-import React, { PureComponent } from "react";
-import styled from "@emotion/styled";
-import { PrimaryButton, Input, Popup } from "nib-ui";
+import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
+import styled from '@emotion/styled';
+import { PrimaryButton, Input, Popup } from 'nib-ui';
 
-import { linkPluginKey } from "../plugin";
-import { PMStateConsumer } from "../../../context/pm-state";
+import { linkPluginKey } from '../plugin';
+import { PMStateConsumer } from '../../../context/pm-state';
 
 class CreatePopup extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       linkText: this.getSelectedText(),
-      href: "",
-      linkTextRequiredError: false
+      href: '',
+      linkTextRequiredError: false,
     };
   }
 
   updateValue = evt => {
     const { name, value } = evt.target;
     const newState = {
-      [`${name}`]: value
+      [`${name}`]: value,
     };
-    if (name === "linkText" && value) {
+    if (name === 'linkText' && value) {
       newState.linkTextRequiredError = false;
     }
     this.setState(newState);
@@ -30,7 +30,7 @@ class CreatePopup extends PureComponent {
   getSelectedText = () => {
     const { pmstate } = this.props;
     const { pmview } = pmstate;
-    if (!pmview) return "";
+    if (!pmview) return '';
     const { state } = pmview;
     const { selection } = state;
     const { $from, $to } = selection;
@@ -51,7 +51,7 @@ class CreatePopup extends PureComponent {
     const { $from, $to } = selection;
     dispatch(
       tr
-        .setMeta("show-add-link-toolbar", false)
+        .setMeta('show-add-link-toolbar', false)
         .insertText(linkText, $from.pos, $to.pos)
         .addMark(
           $from.pos,
@@ -64,7 +64,7 @@ class CreatePopup extends PureComponent {
   };
 
   handleKeyDown = evt => {
-    if (evt.key === "Enter") {
+    if (evt.key === 'Enter') {
       this.addLink();
     }
   };
@@ -73,7 +73,7 @@ class CreatePopup extends PureComponent {
     const { pmstate } = this.props;
     const { pmview } = pmstate;
     const { state, dispatch } = pmview;
-    dispatch(state.tr.setMeta("show-add-link-toolbar", false));
+    dispatch(state.tr.setMeta('show-add-link-toolbar', false));
   };
 
   render() {
@@ -127,37 +127,37 @@ CreatePopup.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   editorWrapper: PropTypes.object.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
-  marker: PropTypes.object.isRequired
+  marker: PropTypes.object.isRequired,
 };
 
 export default {
-  name: "create_link",
-  getMarker: () => document.getElementsByClassName("nib-link-marker")[0],
+  name: 'create_link',
+  getMarker: () => document.getElementsByClassName('nib-link-marker')[0],
   condition: ({ state }) => {
     const pluginState = linkPluginKey.getState(state);
     return pluginState && pluginState.showAddLinkToolbar;
   },
   component: props => (
     <PMStateConsumer>
-      {pmstate => <CreatePopup pmstate={pmstate} {...props} />}
+      {({ pmstate }) => <CreatePopup pmstate={pmstate} {...props} />}
     </PMStateConsumer>
-  )
+  ),
 };
 
 const Wrapper = styled.div(
   {
-    alignItems: "center",
-    display: "flex",
-    padding: 4
+    alignItems: 'center',
+    display: 'flex',
+    padding: 4,
   },
   ({ theme: { constants } }) => ({
     borderRadius: constants.borderRadius,
-    fontSize: constants.fontSize.medium
+    fontSize: constants.fontSize.medium,
   })
 );
 
 const InputWrapper = styled.div({
-  "> div:first-of-type": {
-    marginBottom: 8
-  }
+  '> div:first-of-type': {
+    marginBottom: 8,
+  },
 });

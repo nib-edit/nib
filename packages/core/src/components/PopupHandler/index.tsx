@@ -39,6 +39,7 @@ class PopupHandler extends PureComponent<PopupHandlerProps> {
 
   render() {
     const { pmstate, editorWrapper } = this.props;
+    if (!pmstate) return null;
 
     this.visiblePopups = getVisiblePopups(
       pmstate,
@@ -92,7 +93,7 @@ export default (props: PopupWrapperProps) => (
   <ConfigContextConsumer>
     {({ config }: { config: EditorConfig }) => (
       <PMStateConsumer>
-        {(pmstate: ProsemirrorEditorState) => (
+        {({ pmstate }: { pmstate: ProsemirrorEditorState }) => (
           <PopupHandler config={config} pmstate={pmstate} {...props} />
         )}
       </PMStateConsumer>

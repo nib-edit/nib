@@ -1,25 +1,25 @@
-import PropTypes from "prop-types";
-import React, { PureComponent } from "react";
-import styled from "@emotion/styled";
-import { TextSelection } from "prosemirror-state";
+import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
+import styled from '@emotion/styled';
+import { TextSelection } from 'prosemirror-state';
 
-import { PrimaryButton, Input, Popup, Space, SpaceSize } from "nib-ui";
+import { PrimaryButton, Input, Popup, Space, SpaceSize } from 'nib-ui';
 
-import { PMStateConsumer } from "../../../context/pm-state";
-import { linkPluginKey } from "../plugin";
+import { PMStateConsumer } from '../../../context/pm-state';
+import { linkPluginKey } from '../plugin';
 
 class EditPopup extends PureComponent {
   constructor(props) {
     super(props);
     const link = this.getLink();
     this.state = {
-      href: link.href
+      href: link.href,
     };
   }
 
   updateHref = evt => {
     this.setState({
-      href: evt.target.value
+      href: evt.target.value,
     });
   };
 
@@ -62,7 +62,7 @@ class EditPopup extends PureComponent {
     const { pmstate } = this.props;
     const { pmview } = pmstate;
     const { state, dispatch } = pmview;
-    dispatch(state.tr.setMeta("show-edit-link-toolbar", false));
+    dispatch(state.tr.setMeta('show-edit-link-toolbar', false));
   };
 
   render() {
@@ -99,28 +99,28 @@ EditPopup.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   editorWrapper: PropTypes.object.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
-  marker: PropTypes.object.isRequired
+  marker: PropTypes.object.isRequired,
 };
 
 export default {
-  name: "edit_link",
-  getMarker: () => document.getElementsByClassName("nib-edit-link-marker")[0],
+  name: 'edit_link',
+  getMarker: () => document.getElementsByClassName('nib-edit-link-marker')[0],
   component: props => (
     <PMStateConsumer>
-      {pmstate => <EditPopup pmstate={pmstate} {...props} />}
+      {({ pmstate }) => <EditPopup pmstate={pmstate} {...props} />}
     </PMStateConsumer>
-  )
+  ),
 };
 
 const Wrapper = styled.div(
   {
-    alignItems: "center",
-    display: "flex",
-    padding: 4
+    alignItems: 'center',
+    display: 'flex',
+    padding: 4,
   },
   ({ theme: { constants } }) => ({
     borderRadius: constants.borderRadius,
-    fontSize: constants.fontSize.medium
+    fontSize: constants.fontSize.medium,
   })
 );
 

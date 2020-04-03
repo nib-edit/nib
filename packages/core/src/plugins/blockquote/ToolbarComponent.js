@@ -50,6 +50,6 @@ ToolbarComponent.propTypes = {
 
 export default props => (
   <PMStateConsumer>
-    {pmstate => <ToolbarComponent pmstate={pmstate} {...props} />}
+    {({ pmstate }) => <ToolbarComponent pmstate={pmstate} {...props} />}
   </PMStateConsumer>
 );
