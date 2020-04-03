@@ -29,7 +29,7 @@ const Editor = ({
   onChange = () => {},
   spellCheck = false,
 }: EditorProps) => {
-  const editorRef = useRef(null);
+  const editorRef = useRef<HTMLDivElement>(null);
   const {
     config: { plugins },
     dispatcher,

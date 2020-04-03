@@ -19,7 +19,7 @@ interface WrapperProps {
 
 const Wrapper = (props: WrapperProps) => {
   const [licenseCheckFail, setLicenseCheckFail] = useState(false);
-  const editorWrapper = useRef<HTMLDivElement | null>(null);
+  const editorWrapper = useRef<HTMLDivElement>(null);
   const {
     config: { toolbar },
   } = useConfigContext();
