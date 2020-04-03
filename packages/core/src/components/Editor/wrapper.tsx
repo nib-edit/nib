@@ -30,19 +30,16 @@ const Wrapper = (props: WrapperProps) => {
   useEffect(() => {
     const { licenseKey } = props;
     if (addons) {
-      if (!licenseKey) setLicenseCheckFail(true);
-      else {
-        axios
-          .get('https://licencecheck.herokuapp.com/licenceCheck', {
-            params: {
-              licenseKey,
-              plugins: addons.map(a => a.name),
-            },
-          })
-          .then(({ data }) => {
-            if (data.status === 'FAIL') setLicenseCheckFail(true);
-          });
-      }
+      axios
+        .get('https://licencecheck.herokuapp.com/licenceCheck', {
+          params: {
+            licenseKey,
+            plugins: addons.map(a => a.name),
+          },
+        })
+        .then(({ data }) => {
+          if (data.status === 'FAIL') setLicenseCheckFail(true);
+        });
     }
   });
 
