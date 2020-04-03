@@ -5,6 +5,9 @@
 
 import React, { PureComponent } from 'react';
 import Editor from 'nib-core';
+import AdvanceImagePlugin from 'nib-advance-image';
+import TablePlugin from 'nib-table';
+import VideoPlugin from 'nib-video';
 
 import uploadCallback from '../common/uploadCallback';
 import data from './data';
@@ -36,10 +39,15 @@ class TopBar extends PureComponent {
               },
               toolbar: {
                 options: 'top',
+                top: {
+                  options:
+                    'block inline color link blockquote list advance-image video table history help',
+                },
               },
             }}
             defaultValue={data}
             styleConfig={theme}
+            addons={[AdvanceImagePlugin, TablePlugin, VideoPlugin]}
           />
         </div>
       </div>

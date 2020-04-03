@@ -2,6 +2,7 @@ import styled, { StyledComponent } from '@emotion/styled';
 
 import BlockPlugin from '../../plugins/block';
 import { EditorStyleType } from '../../types/editor-style';
+import { MutableRefObject, RefObject } from 'react';
 
 const prosemirrorStyles = `
   & .ProseMirror {
@@ -39,6 +40,7 @@ const prosemirrorStyles = `
   }
 `;
 
+// todo: fix use of any below
 export const StyledWrapper: StyledComponent<any, any, any> = styled(
   styled.div(
     { position: 'relative', textAlign: 'left' },
@@ -80,7 +82,13 @@ export const StyledEditor: StyledComponent<any, any, any> = styled(
     })
   )
 )`
-  ${({ theme, pluginStyles }: any) => pluginStyles(theme)}
+  ${({
+    theme,
+    pluginStyles,
+  }: {
+    theme: EditorStyleType;
+    pluginStyles: (theme?: EditorStyleType) => string;
+  }) => pluginStyles(theme)}
   ${prosemirrorStyles}
 `;
 

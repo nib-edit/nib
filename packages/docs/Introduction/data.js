@@ -17,22 +17,202 @@ export default {
       },
       {
         type: 'paragraph',
-        content: [{ type: 'text', text: 'Click image to select it' }],
+        content: [
+          {
+            type: 'embed',
+            attrs: {
+              html:
+                '<iframe src="https://www.youtube.com/embed/p1f7cs4Gv2Y" width="640" height="360" frameborder="0" allowfullscreen></iframe>',
+            },
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [{ type: 'text', text: 'Click image to resize it' }],
       },
       {
         type: 'paragraph',
         content: [
           {
             type: 'image',
-            attrs: {
-              src: 'https://i.imgur.com/2FCfbgg.jpg',
-              height: '358px',
-              alt: '',
-            },
+            attrs: { src: 'https://i.imgur.com/2FCfbgg.jpg', height: '358px' },
           },
-          { type: 'text', text: 'I need these:' },
         ],
       },
+      { type: 'paragraph' },
+      {
+        type: 'table',
+        content: [
+          {
+            type: 'table_row',
+            content: [
+              {
+                type: 'table_header',
+                attrs: { colspan: 1, rowspan: 1, colwidth: [71] },
+                content: [
+                  {
+                    type: 'paragraph',
+                    content: [{ type: 'text', text: 'S.No' }],
+                  },
+                ],
+              },
+              {
+                type: 'table_header',
+                attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                content: [
+                  {
+                    type: 'paragraph',
+                    content: [{ type: 'text', text: 'Name' }],
+                  },
+                ],
+              },
+              {
+                type: 'table_header',
+                attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                content: [
+                  {
+                    type: 'paragraph',
+                    content: [{ type: 'text', text: 'Score' }],
+                  },
+                ],
+              },
+              {
+                type: 'table_header',
+                attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                content: [
+                  {
+                    type: 'paragraph',
+                    content: [{ type: 'text', text: 'Grade' }],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            type: 'table_row',
+            content: [
+              {
+                type: 'table_cell',
+                attrs: { colspan: 1, rowspan: 1, colwidth: [71] },
+                content: [
+                  { type: 'paragraph', content: [{ type: 'text', text: '1' }] },
+                ],
+              },
+              {
+                type: 'table_cell',
+                attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                content: [
+                  {
+                    type: 'paragraph',
+                    content: [{ type: 'text', text: 'Apple' }],
+                  },
+                ],
+              },
+              {
+                type: 'table_cell',
+                attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                content: [
+                  { type: 'paragraph', content: [{ type: 'text', text: '1' }] },
+                ],
+              },
+              {
+                type: 'table_cell',
+                attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                content: [
+                  {
+                    type: 'paragraph',
+                    content: [{ type: 'text', text: 'A+' }],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            type: 'table_row',
+            content: [
+              {
+                type: 'table_cell',
+                attrs: { colspan: 1, rowspan: 1, colwidth: [71] },
+                content: [
+                  { type: 'paragraph', content: [{ type: 'text', text: '2' }] },
+                ],
+              },
+              {
+                type: 'table_cell',
+                attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                content: [
+                  {
+                    type: 'paragraph',
+                    content: [{ type: 'text', text: 'Banana' }],
+                  },
+                ],
+              },
+              {
+                type: 'table_cell',
+                attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                content: [
+                  {
+                    type: 'paragraph',
+                    content: [{ type: 'text', text: '0.9' }],
+                  },
+                ],
+              },
+              {
+                type: 'table_cell',
+                attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                content: [
+                  { type: 'paragraph', content: [{ type: 'text', text: 'A' }] },
+                ],
+              },
+            ],
+          },
+          {
+            type: 'table_row',
+            content: [
+              {
+                type: 'table_cell',
+                attrs: { colspan: 1, rowspan: 1, colwidth: [71] },
+                content: [
+                  { type: 'paragraph', content: [{ type: 'text', text: '3' }] },
+                ],
+              },
+              {
+                type: 'table_cell',
+                attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                content: [
+                  {
+                    type: 'paragraph',
+                    content: [{ type: 'text', text: 'Grapes' }],
+                  },
+                ],
+              },
+              {
+                type: 'table_cell',
+                attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                content: [
+                  {
+                    type: 'paragraph',
+                    content: [{ type: 'text', text: '0.8' }],
+                  },
+                ],
+              },
+              {
+                type: 'table_cell',
+                attrs: { colspan: 1, rowspan: 1, colwidth: null },
+                content: [
+                  {
+                    type: 'paragraph',
+                    content: [{ type: 'text', text: 'B+' }],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      { type: 'paragraph' },
+      { type: 'paragraph', content: [{ type: 'text', text: 'I need these:' }] },
       {
         type: 'bulletList',
         content: [
@@ -61,5 +241,5 @@ export default {
       },
     ],
   },
-  selection: { type: 'text', anchor: 52, head: 52 },
+  selection: { type: 'text', anchor: 182, head: 182 },
 };
