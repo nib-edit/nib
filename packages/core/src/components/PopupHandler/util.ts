@@ -24,7 +24,7 @@ export const getVisiblePopups = (
 
     // If popup visibility conditions are met add it to newVisiblePopups
     if (!popup.condition || popup.condition(pmview)) {
-      const marker = popup.getMarker();
+      const marker = popup.getMarker(pmview);
       if (marker) {
         popupVisible = true;
         let toolbarIndex = newVisiblePopups.findIndex(
