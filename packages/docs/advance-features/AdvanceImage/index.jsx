@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Editor from 'nib-core';
-import advanceImage from 'nib-advance-image';
-import uploadCallback from '../../common/uploadCallback';
+import AdvanceImage from 'nib-advance-image';
 
 import Code from '../../Code';
 import defaultValue from './sampleData';
@@ -9,7 +8,7 @@ import defaultValue from './sampleData';
 /**
  * @visibleName 2. Advance Image
  */
-const AdvanceImage = () => {
+const AdvanceImageComponent = () => {
   const [content, setContent] = useState();
   return (
     <div>
@@ -21,7 +20,7 @@ const AdvanceImage = () => {
             top: { options: 'advance-image' },
           },
         }}
-        addons={[advanceImage]}
+        addons={[AdvanceImage]}
         onChange={setContent}
         defaultValue={defaultValue}
       />
@@ -30,7 +29,7 @@ const AdvanceImage = () => {
   );
 };
 
-export default AdvanceImage;
+export default AdvanceImageComponent;
 
 /** For users with commercial license of Nib, image upload and save is available from Nib's AWS S3 drive.
   < br /> <br />

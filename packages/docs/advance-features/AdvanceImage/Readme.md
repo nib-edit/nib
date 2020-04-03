@@ -2,7 +2,7 @@ Editor with advance images option enabled. Image upload is supported, Nib's driv
 <br />
 
 ```js
-<AdvanceImage />
+<AdvanceImageComponent />
 ```
 
 <br />
