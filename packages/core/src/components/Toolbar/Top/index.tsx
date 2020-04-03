@@ -7,10 +7,10 @@ import { Separator } from 'nib-ui';
 import getToolbarComponents from '../../../utils/editor/toolbar';
 import { useConfigContext } from '../../../context/config';
 import { PMStateConsumer } from '../../../context/pm-state';
-import { ProsemirrorEditorState } from '../../../types/prosemirror';
 import { Addon } from '../../../types/addon';
 import { EditorPlugin } from '../../../types/components';
 import { EditorStyleType } from '../../../types/editor-style';
+import { ProsemirrorEditorState } from '../../../types/prosemirror';
 
 interface TopProps {
   editorWrapper: MutableRefObject<HTMLDivElement | null>;
@@ -19,6 +19,7 @@ interface TopProps {
 }
 
 const Top = ({ editorWrapper, addons = [], pmstate }: TopProps) => {
+  if (!pmstate) return null;
   const {
     config: { plugins, toolbar },
   } = useConfigContext();
@@ -94,6 +95,8 @@ interface TopWrapperProps {
 
 export default (props: TopWrapperProps) => (
   <PMStateConsumer>
-    {(pmstate: ProsemirrorEditorState) => <Top pmstate={pmstate} {...props} />}
+    {({ pmstate }: { pmstate: ProsemirrorEditorState }) => (
+      <Top pmstate={pmstate} {...props} />
+    )}
   </PMStateConsumer>
 );

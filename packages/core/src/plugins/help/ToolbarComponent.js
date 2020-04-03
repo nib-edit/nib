@@ -1,18 +1,18 @@
-import PropTypes from "prop-types";
-import React, { PureComponent } from "react";
-import styled from "@emotion/styled";
+import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
+import styled from '@emotion/styled';
 
-import { ToolbarButton, Icon } from "nib-ui";
+import { ToolbarButton, Icon } from 'nib-ui';
 
-import formatKeymap from "../../utils/format-keymap";
-import { PMStateConsumer } from "../../context/pm-state";
-import { KeymapInfo } from "./keymaps";
-import Modal from "./Modal";
-import { helpPluginKey } from "./plugin";
+import formatKeymap from '../../utils/format-keymap';
+import { PMStateConsumer } from '../../context/pm-state';
+import { KeymapInfo } from './keymaps';
+import Modal from './Modal';
+import { helpPluginKey } from './plugin';
 
 class ToolbarComponent extends PureComponent {
   state = {
-    showModal: false
+    showModal: false,
   };
 
   componentDidUpdate() {
@@ -33,7 +33,7 @@ class ToolbarComponent extends PureComponent {
     const { pmview } = pmstate;
     const { state, dispatch } = pmview;
     this.setState({ showModal: false });
-    dispatch(state.tr.setMeta("show-help-modal", false));
+    dispatch(state.tr.setMeta('show-help-modal', false));
   };
 
   render() {
@@ -55,13 +55,13 @@ class ToolbarComponent extends PureComponent {
 
 ToolbarComponent.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  pmstate: PropTypes.object.isRequired
+  pmstate: PropTypes.object.isRequired,
 };
 
 const StyledButton = styled(ToolbarButton)({ marginLeft: 8 });
 
 export default props => (
   <PMStateConsumer>
-    {pmstate => <ToolbarComponent pmstate={pmstate} {...props} />}
+    {({ pmstate }) => <ToolbarComponent pmstate={pmstate} {...props} />}
   </PMStateConsumer>
 );

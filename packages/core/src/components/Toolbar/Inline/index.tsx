@@ -20,7 +20,8 @@ const Inline = ({ editorWrapper, marker }: InlineProps) => {
   const {
     config: { plugins, toolbar },
   } = useConfigContext();
-  const pmstate = usePMStateContext();
+  const { pmstate } = usePMStateContext();
+  if (!pmstate) return null;
   const options = getToolbarComponents(plugins.options, toolbar.inline.options);
 
   const closePopup = () => {

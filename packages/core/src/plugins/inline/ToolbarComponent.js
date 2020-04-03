@@ -1,20 +1,20 @@
-import PropTypes from "prop-types";
-import React, { Fragment, PureComponent } from "react";
-import { ToolbarButton, Icon, Space } from "nib-ui";
-import { toggleMark } from "prosemirror-commands";
+import PropTypes from 'prop-types';
+import React, { Fragment, PureComponent } from 'react';
+import { ToolbarButton, Icon, Space } from 'nib-ui';
+import { toggleMark } from 'prosemirror-commands';
 
-import { PMStateConsumer } from "../../context/pm-state";
-import formatKeymap from "../../utils/format-keymap";
-import { KeymapInfo } from "./keymaps";
-import { inlinePluginKey } from "./plugin";
-import { ConfigContextConsumer } from "../../context/config";
+import { PMStateConsumer } from '../../context/pm-state';
+import formatKeymap from '../../utils/format-keymap';
+import { KeymapInfo } from './keymaps';
+import { inlinePluginKey } from './plugin';
+import { ConfigContextConsumer } from '../../context/config';
 
 const MarkIcons = {
-  strong: "bold",
-  em: "italic",
-  underline: "underline",
-  strike: "strike",
-  code: "code"
+  strong: 'bold',
+  em: 'italic',
+  underline: 'underline',
+  strike: 'strike',
+  code: 'code',
 };
 
 class ToolbarComponent extends PureComponent {
@@ -39,7 +39,7 @@ class ToolbarComponent extends PureComponent {
   toggleMarkofType = evt => {
     const { pmstate } = this.props;
     const { pmview } = pmstate;
-    const markName = evt.currentTarget.getAttribute("name");
+    const markName = evt.currentTarget.getAttribute('name');
     const { state, dispatch } = pmview;
     const markType = state.schema.marks[markName];
     toggleMark(markType)(state, dispatch);
@@ -68,7 +68,7 @@ class ToolbarComponent extends PureComponent {
       ).removeStoredMark(state.schema.marks.subsup);
     }
     const subSupMark = subsup.create({
-      type: addedMark
+      type: addedMark,
     });
     tr.addMark($from.pos, $to.pos, subSupMark).setStoredMarks([subSupMark]);
     dispatch(tr);
@@ -94,11 +94,11 @@ class ToolbarComponent extends PureComponent {
   };
 
   toggleSupMark = () => {
-    this.toggleSupSubMark("sup", "sub");
+    this.toggleSupSubMark('sup', 'sub');
   };
 
   toggleSubMark = () => {
-    this.toggleSupSubMark("sub", "sup");
+    this.toggleSupSubMark('sub', 'sup');
   };
 
   render() {
@@ -106,15 +106,15 @@ class ToolbarComponent extends PureComponent {
     const { pmview } = pmstate;
     if (!pmview) return null;
     const activeMarks = this.getActiveMarks();
-    const isSupMarkActive = this.isSubsupMarkActive(activeMarks, "sup");
-    const isSubMarkActive = this.isSubsupMarkActive(activeMarks, "sub");
+    const isSupMarkActive = this.isSubsupMarkActive(activeMarks, 'sup');
+    const isSubMarkActive = this.isSubsupMarkActive(activeMarks, 'sub');
 
     const { marks } = pmview.state.schema;
     const { options } = config;
 
     return (
       <>
-        {["strong", "em", "underline", "strike"].reduce((result, mark) => {
+        {['strong', 'em', 'underline', 'strike'].reduce((result, mark) => {
           if (options.indexOf(mark) >= 0) {
             const isSelected = !!marks[mark].isInSet(activeMarks);
             result.push(
@@ -132,7 +132,7 @@ class ToolbarComponent extends PureComponent {
           }
           return result;
         }, [])}
-        {options.indexOf("subsup") >= 0 && (
+        {options.indexOf('subsup') >= 0 && (
           <>
             <ToolbarButton
               name="sup"
@@ -152,7 +152,7 @@ class ToolbarComponent extends PureComponent {
             </ToolbarButton>
           </>
         )}
-        {options.indexOf("code") >= 0 && (
+        {options.indexOf('code') >= 0 && (
           <ToolbarButton
             name="code"
             onClick={this.toggleCodeMark}
@@ -171,14 +171,14 @@ ToolbarComponent.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   config: PropTypes.object.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
-  pmstate: PropTypes.object.isRequired
+  pmstate: PropTypes.object.isRequired,
 };
 
 export default props => (
   <ConfigContextConsumer>
     {({ config }) => (
       <PMStateConsumer>
-        {pmstate => (
+        {({ pmstate }) => (
           <ToolbarComponent pmstate={pmstate} config={config} {...props} />
         )}
       </PMStateConsumer>

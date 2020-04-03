@@ -1,11 +1,11 @@
-import PropTypes from "prop-types";
-import React, { PureComponent } from "react";
-import { ToolbarButton, Icon } from "nib-ui";
+import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
+import { ToolbarButton, Icon } from 'nib-ui';
 
-import formatKeymap from "../../utils/format-keymap";
-import { KeymapInfo } from "./keymaps";
-import { PMStateConsumer } from "../../context/pm-state";
-import { linkPluginKey } from "./plugin";
+import formatKeymap from '../../utils/format-keymap';
+import { KeymapInfo } from './keymaps';
+import { PMStateConsumer } from '../../context/pm-state';
+import { linkPluginKey } from './plugin';
 
 class ToolbarComponent extends PureComponent {
   showLinkToolbar = () => {
@@ -15,7 +15,7 @@ class ToolbarComponent extends PureComponent {
     if (!pmview.hasFocus) pmview.focus();
 
     const { state, dispatch } = pmview;
-    dispatch(state.tr.setMeta("show-add-link-toolbar", true));
+    dispatch(state.tr.setMeta('show-add-link-toolbar', true));
   };
 
   isLinkMarkActive = () => {
@@ -45,11 +45,11 @@ class ToolbarComponent extends PureComponent {
 
 ToolbarComponent.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  pmstate: PropTypes.object.isRequired
+  pmstate: PropTypes.object.isRequired,
 };
 
 export default props => (
   <PMStateConsumer>
-    {pmstate => <ToolbarComponent pmstate={pmstate} {...props} />}
+    {({ pmstate }) => <ToolbarComponent pmstate={pmstate} {...props} />}
   </PMStateConsumer>
 );

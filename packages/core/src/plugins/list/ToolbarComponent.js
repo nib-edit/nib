@@ -1,17 +1,17 @@
-import PropTypes from "prop-types";
-import React, { PureComponent } from "react";
+import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
 
-import { ToolbarButton, Icon, Space } from "nib-ui";
+import { ToolbarButton, Icon, Space } from 'nib-ui';
 
-import formatKeymap from "../../utils/format-keymap";
-import { PMStateConsumer } from "../../context/pm-state";
-import { KeymapInfo } from "./keymaps";
-import { listPluginKey } from "./plugin";
-import { toggleListCmd } from "./commands";
+import formatKeymap from '../../utils/format-keymap';
+import { PMStateConsumer } from '../../context/pm-state';
+import { KeymapInfo } from './keymaps';
+import { listPluginKey } from './plugin';
+import { toggleListCmd } from './commands';
 
 class ToolbarComponent extends PureComponent {
   toggleList = evt => {
-    const listType = evt.currentTarget.getAttribute("name");
+    const listType = evt.currentTarget.getAttribute('name');
     const { pmstate } = this.props;
     const { pmview } = pmstate;
     const { state, dispatch } = pmview;
@@ -30,8 +30,8 @@ class ToolbarComponent extends PureComponent {
 
   render() {
     const selectedListType = this.getSelectedListType();
-    const bulletListActive = selectedListType === "bulletList";
-    const orderedListActive = selectedListType === "orderedList";
+    const bulletListActive = selectedListType === 'bulletList';
+    const orderedListActive = selectedListType === 'orderedList';
 
     return (
       <>
@@ -58,11 +58,11 @@ class ToolbarComponent extends PureComponent {
 
 ToolbarComponent.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  pmstate: PropTypes.object.isRequired
+  pmstate: PropTypes.object.isRequired,
 };
 
 export default props => (
   <PMStateConsumer>
-    {pmstate => <ToolbarComponent pmstate={pmstate} {...props} />}
+    {({ pmstate }) => <ToolbarComponent pmstate={pmstate} {...props} />}
   </PMStateConsumer>
 );

@@ -1,14 +1,20 @@
-import React, { PureComponent, useContext } from "react";
-import PropTypes from "prop-types";
+import * as React from 'react';
+import { PureComponent, useContext } from 'react';
 
-import { ConfigContext } from "../config";
+import { ConfigContext } from '../config';
+import { EditorView } from 'prosemirror-view';
+import { ProsemirrorEditorState } from '../../types/prosemirror';
 
-const PMStateContext = React.createContext();
+const PMStateContext = React.createContext<{
+  pmstate: ProsemirrorEditorState | undefined;
+}>({ pmstate: undefined });
 
 export class PMStateProvider extends PureComponent {
   static contextType = ConfigContext;
 
-  state = { pmstate: {} };
+  state: { pmstate: ProsemirrorEditorState | undefined } = {
+    pmstate: undefined,
+  };
 
   componentDidMount() {
     const { dispatcher } = this.context;
@@ -20,7 +26,7 @@ export class PMStateProvider extends PureComponent {
     dispatcher.removeListener(this.updateView);
   }
 
-  updateView = pmview => {
+  updateView = (pmview: EditorView) => {
     this.setState({ pmstate: { pmview } });
   };
 
@@ -28,22 +34,15 @@ export class PMStateProvider extends PureComponent {
     const { pmstate } = this.state;
     const { children } = this.props;
     return (
-      <PMStateContext.Provider value={pmstate}>
+      <PMStateContext.Provider value={{ pmstate }}>
         {children}
       </PMStateContext.Provider>
     );
   }
 }
 
-PMStateProvider.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.element),
-    PropTypes.element
-  ]).isRequired
-};
-
 export const PMStateConsumer = PMStateContext.Consumer;
 
 export const usePMStateContext = () => ({
-  ...useContext(PMStateContext)
+  ...useContext(PMStateContext),
 });

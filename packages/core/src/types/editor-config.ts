@@ -5,18 +5,18 @@ interface PluginConfig {
   };
 }
 
+type ToolbarType = {
+  options?: string;
+  block?: { options?: string; grouped?: false };
+  inline?: { options?: string };
+} & {
+  [prop: string]: any;
+};
+
 interface ToolbarConfig {
   options?: string;
-  top?: {
-    options?: string;
-    block?: { options?: string; grouped?: boolean };
-    inline?: { options?: string };
-  };
-  inline?: {
-    options?: string;
-    block?: { options?: string };
-    inline?: { options?: string };
-  };
+  top?: ToolbarType;
+  inline?: ToolbarType;
 }
 
 export interface EditorConfig {

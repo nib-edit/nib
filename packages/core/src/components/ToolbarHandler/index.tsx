@@ -17,7 +17,7 @@ const ToolbarHandler = ({
   plugins,
   theme,
 }: PopupHandlerProps) => {
-  const pmstate = usePMStateContext();
+  const { pmstate } = usePMStateContext();
   return (
     <>
       {plugins.map(
