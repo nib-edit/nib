@@ -1,6 +1,6 @@
 {
-  "name": "nib-ui",
-  "version": "2.4.6",
+  "name": "nib-ui-select",
+  "version": "0.0.1",
   "description": "Components for use in Nib",
   "main": "./index.js",
   "repository": {
@@ -8,11 +8,15 @@
     "url": "https://github.com/nib-edit/Nib.git"
   },
   "keywords": [
-    "components",
+    "select",
+    "dropdown",
     "reactjs"
   ],
   "author": "Jyoti Puri",
   "homepage": "https://github.com/jpuri/Nib/tree/master/packages/ui/#Readme.md",
+  "dependencies": {
+    "react-select": "^3.0.4"
+  },
   "devDependencies": {
     "react": "next",
     "react-dom": "next",

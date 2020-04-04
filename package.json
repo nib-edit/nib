@@ -16,6 +16,7 @@
     "packages/embed",
     "packages/schema",
     "packages/ui",
+    "packages/ui-select",
     "packages/upload"
   ],
   "repository": {
@@ -71,5 +72,7 @@
     "build-docs": "npx styleguidist build",
     "build": "rollup -c scripts/rollup.config.js --name"
   },
-  "dependencies": {}
+  "dependencies": {
+    "rollup-plugin-delete": "^1.2.0"
+  }
 }

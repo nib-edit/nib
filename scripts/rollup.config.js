@@ -1,5 +1,5 @@
 import babel from 'rollup-plugin-babel';
-import bundleSize from 'rollup-plugin-bundle-size';
+// import bundleSize from 'rollup-plugin-bundle-size';
 import commonjs from 'rollup-plugin-commonjs';
 import copy from 'rollup-plugin-copy';
 import includePaths from 'rollup-plugin-includepaths';
@@ -8,15 +8,16 @@ import nodeResolve from 'rollup-plugin-node-resolve';
 import sourcemaps from 'rollup-plugin-sourcemaps';
 import typescript from 'rollup-plugin-typescript2';
 import { terser } from 'rollup-plugin-terser';
+import del from 'rollup-plugin-delete';
 
 const globals = {
   react: 'React',
   'react-dom': 'ReactDOM',
 };
 
-const external = ['react', 'react-dom'];
+const external = ['react', 'react-dom', 'prop-types'];
 
-const getCopyConf = packageName => ({
+const getCopyConf = (packageName) => ({
   targets: [
     {
       dest: `packages/${packageName}/build`,
@@ -26,7 +27,7 @@ const getCopyConf = packageName => ({
   verbose: true,
 });
 
-const getConfig = packageName => {
+const getConfig = (packageName) => {
   const copyConf = getCopyConf(packageName);
   let inputFileName = 'index.js';
   if (packageName !== 'core') {
@@ -52,8 +53,8 @@ const getConfig = packageName => {
   return {
     input: `packages/${packageName}/${inputFileName}`,
     output: {
-      file: `packages/${packageName}/build/index.js`,
-      format: 'umd',
+      dir: `packages/${packageName}/build`,
+      format: 'cjs',
       globals,
       name: packageName,
       sourceMap: true,
@@ -65,7 +66,6 @@ const getConfig = packageName => {
       }),
       terser(),
       json(),
-      bundleSize(),
       nodeResolve({
         browser: true,
       }),
@@ -95,10 +95,11 @@ const getConfig = packageName => {
       }),
       copy(copyConf),
       sourcemaps(),
+      del({ targets: `packages/${packageName}/build` }),
     ],
   };
 };
 
-export default args => {
+export default (args) => {
   return getConfig(args.name);
 };
