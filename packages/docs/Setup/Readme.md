@@ -45,3 +45,5 @@ ReactDOM.render(<MyEditor />, document.getElementById('editor'));
 ```
 
 <br />
+
+Props as detailed [here](http://www.nibedit.com/index.html#/Props) can be used to configure / customise editor behaviour.
