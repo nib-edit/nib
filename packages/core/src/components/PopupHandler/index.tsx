@@ -26,8 +26,8 @@ class PopupHandler extends PureComponent<PopupHandlerProps> {
   componentDidMount() {
     const { config, addons = [] } = this.props;
     const { plugins, toolbar } = config;
-    this.popups = getPropertyFromPlugins(plugins!.options, 'popups');
-    addons.forEach(addon => {
+    this.popups = getPropertyFromPlugins(plugins!.options!, 'popups');
+    addons.forEach((addon) => {
       if (addon.popups) {
         this.popups = [...this.popups, ...addon.popups];
       }
@@ -53,7 +53,7 @@ class PopupHandler extends PureComponent<PopupHandlerProps> {
     ];
 
     const tablePopups = this.visiblePopups.filter(
-      popup => popup.name === 'table_menu' || popup.name === 'cell_menu'
+      (popup) => popup.name === 'table_menu' || popup.name === 'cell_menu'
     );
 
     // todo: refactor table popups for a better implementation

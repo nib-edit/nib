@@ -59,7 +59,7 @@ const Editor = ({
             editorState = addon.dispatchTransactionCallback(editorState, tr);
         });
 
-        updateEditorState(view, editorState);
+        updateEditorState(view!, editorState);
         updateViewListeners();
         const serializableState = view!.state.toJSON();
         addons.forEach((addon: Addon) => {

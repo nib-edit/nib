@@ -1,6 +1,9 @@
 import { ElementType } from 'react';
-import { EditorState } from 'prosemirror-state';
+import { EditorState, Plugin } from 'prosemirror-state';
 import { EditorView } from 'prosemirror-view';
+import { Schema } from 'prosemirror-model';
+
+import { ProsemirrorCommand, ProsemirrorViewProvider } from './prosemirror';
 
 export interface EditorPopup {
   name: string;
@@ -9,9 +12,23 @@ export interface EditorPopup {
   component: ElementType;
 }
 
+export interface EditorKeymap {
+  (viewProvider?: ProsemirrorViewProvider): {
+    [key: string]: ProsemirrorCommand;
+  };
+}
+
+export interface EditorKeymapCommand {
+  [key: string]: ProsemirrorCommand;
+}
+
 export interface EditorPlugin {
   name: string;
   toolbarComponent: ElementType;
+  keymaps: EditorKeymap;
+  pmPlugins?: Plugin[];
+  pmPlugin?: Plugin;
+  schema: Schema;
 }
 
 // {

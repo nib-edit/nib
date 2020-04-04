@@ -3,6 +3,13 @@ import { EditorState } from 'prosemirror-state';
 import buildKeymap from './keymap';
 import buildSchema from './schema';
 import { getProsemirrorPlugins } from './plugins';
+import { EditorView } from 'prosemirror-view';
+import {
+  ProsemirrorViewProvider,
+  ProsemirrorDoc,
+} from '../../types/prosemirror';
+import { KeyValueType } from '../../types/common';
+import { EditorPlugin } from '../../types/components';
 
 const defaultContent = {
   doc: {
@@ -16,7 +23,11 @@ const defaultContent = {
   },
 };
 
-export const buildEditorState = (plugins, content, viewProvider) => {
+export const buildEditorState = (
+  plugins: EditorPlugin[],
+  content?: ProsemirrorDoc,
+  viewProvider?: ProsemirrorViewProvider
+) => {
   const editorContent = content || defaultContent;
   return EditorState.fromJSON(
     {
@@ -30,7 +41,7 @@ export const buildEditorState = (plugins, content, viewProvider) => {
   );
 };
 
-export const updateEditorState = (view, state) => {
+export const updateEditorState = (view: EditorView, state: EditorState) => {
   view.updateState(state);
   return view;
 };
