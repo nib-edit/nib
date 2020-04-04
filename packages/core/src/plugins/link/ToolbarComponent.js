@@ -13,9 +13,13 @@ class ToolbarComponent extends PureComponent {
     const { pmview } = pmstate;
     if (!pmview) return;
     if (!pmview.hasFocus) pmview.focus();
-
     const { state, dispatch } = pmview;
-    dispatch(state.tr.setMeta('show-add-link-toolbar', true));
+
+    const pluginState = linkPluginKey.getState(state);
+
+    if (pluginState.showAddLinkToolbar === true)
+      dispatch(state.tr.setMeta('show-add-link-toolbar', false));
+    else dispatch(state.tr.setMeta('show-add-link-toolbar', true));
   };
 
   isLinkMarkActive = () => {
@@ -33,6 +37,7 @@ class ToolbarComponent extends PureComponent {
         <ToolbarButton
           name="link"
           onClick={this.showLinkToolbar}
+          onMouseDown={(evt) => evt.stopPropagation()}
           disabled={this.isLinkMarkActive()}
           title={formatKeymap(KeymapInfo.link)}
         >
@@ -48,7 +53,7 @@ ToolbarComponent.propTypes = {
   pmstate: PropTypes.object.isRequired,
 };
 
-export default props => (
+export default (props) => (
   <PMStateConsumer>
     {({ pmstate }) => <ToolbarComponent pmstate={pmstate} {...props} />}
   </PMStateConsumer>
