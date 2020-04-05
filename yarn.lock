@@ -5308,10 +5308,10 @@ neo-async@^2.5.0, neo-async@^2.6.0, neo-async@^2.6.1:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
-nib-advance-image@0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/nib-advance-image/-/nib-advance-image-0.1.1.tgz#127a2a2862db02e7f8e378b7376fbe42e6668841"
-  integrity sha512-gWcncKxHtQHG5/beoiGNsxSAKaeHwk98MpUAHf4YcOQxuLmXMVl/SX4BKrDabqmF0MlDTjS40PFQEpqtqiKUWw==
+nib-advance-image@0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/nib-advance-image/-/nib-advance-image-0.1.3.tgz#81432c58c068d2ab21346121554c424ea1c383d3"
+  integrity sha512-XGQ+05nb11gSzjP2JDc/GeRhJ23fXy6D60BDnB7ZAKfpsH3kNkJF6549fooGvmuo24qCkNNzSaEFZexaSBP2VA==
   dependencies:
     axios "^0.19.0"
     prosemirror-transform "^1.0.0"
@@ -6445,19 +6445,19 @@ prosemirror-utils@^0.7.6:
   resolved "https://registry.yarnpkg.com/prosemirror-utils/-/prosemirror-utils-0.7.7.tgz#a9bda2468113d34f3721ba15eaa2fd04b81d7dc8"
   integrity sha512-0cSWive9oCOr4nnTlEQ9scr8g8kj126glAigb6cKLB4sq/eSyumVu8Ogqus6KEoLInBy6WONXJbgm/2xJ8MShw==
 
-prosemirror-view@1.10.0:
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/prosemirror-view/-/prosemirror-view-1.10.0.tgz#7de5de75f0c90f8b9f09d09ed4467554d59adddb"
-  integrity sha512-STHw0xHfk+XPMqMLTKykRL1qEMtO+n1GWINBl94IPIq82AmWO1Ors4wVw93HKo/oIadWRrP/7faNJKh1UVLrTg==
+prosemirror-view@^1.0.0:
+  version "1.13.6"
+  resolved "https://registry.yarnpkg.com/prosemirror-view/-/prosemirror-view-1.13.6.tgz#c1a70b50b5094e9c616543149befad404928651b"
+  integrity sha512-6Wg4Lxmbhlw5D3Db3JSxk4zProZdYywx6QX8yiEV+ReRXJz1IqtdXg+QEywQ5tEgrWhTYtpM8WmDhDYRguKNxA==
   dependencies:
     prosemirror-model "^1.1.0"
     prosemirror-state "^1.0.0"
     prosemirror-transform "^1.1.0"
 
-prosemirror-view@^1.0.0:
-  version "1.13.6"
-  resolved "https://registry.yarnpkg.com/prosemirror-view/-/prosemirror-view-1.13.6.tgz#c1a70b50b5094e9c616543149befad404928651b"
-  integrity sha512-6Wg4Lxmbhlw5D3Db3JSxk4zProZdYywx6QX8yiEV+ReRXJz1IqtdXg+QEywQ5tEgrWhTYtpM8WmDhDYRguKNxA==
+prosemirror-view@^1.10.0:
+  version "1.14.6"
+  resolved "https://registry.yarnpkg.com/prosemirror-view/-/prosemirror-view-1.14.6.tgz#fa1e7ed14a38f2cb234f622037a07dbd9d2830de"
+  integrity sha512-0qNSFWVBHPrdQaZtIO3aou/NRsxMGER3IuI3cePHYbk5pf9wSsbMIWWaeHtXqblL+rqtgkLfcw0D2na6+WBgpA==
   dependencies:
     prosemirror-model "^1.1.0"
     prosemirror-state "^1.0.0"

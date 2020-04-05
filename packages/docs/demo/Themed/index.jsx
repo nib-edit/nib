@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Editor from 'nib-core';
 
-import uploadCallback from '../../common/uploadCallback';
 import defaultValue from './sampleData';
 
 const customTheme = {
@@ -34,11 +33,6 @@ const Themed = () => {
     <div>
       <Editor
         config={{
-          plugins: {
-            image: {
-              uploadCallback,
-            },
-          },
           toolbar: {
             options: 'top',
           },

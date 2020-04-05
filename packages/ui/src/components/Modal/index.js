@@ -13,24 +13,24 @@ class Modal extends PureComponent {
     window.removeEventListener('keydown', this.handleKeyPress);
   };
 
-  handleKeyPress = evt => {
+  handleKeyPress = (evt) => {
     const { hideModal } = this.props;
     if (evt.key === 'Escape') hideModal();
   };
 
-  handleMouseDown = evt => {
+  handleMouseDown = (evt) => {
     if (evt.button === 0) {
       const { hideModal } = this.props;
       hideModal();
     }
   };
 
-  handleTouchStart = evt => {
+  handleTouchStart = (evt) => {
     const { hideModal } = this.props;
     if (evt.targetTouches.length === 1) hideModal();
   };
 
-  stopPropagation = evt => evt.stopPropagation();
+  stopPropagation = (evt) => evt.stopPropagation();
 
   render() {
     const { render, title, hideModal } = this.props;
@@ -71,7 +71,6 @@ const Wrapper = styled.div(
     left: '0',
     position: 'fixed',
     top: '0',
-    userSelect: 'all',
     width: '100%',
   },
   ({ theme: { constants } }) => ({

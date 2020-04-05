@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import NibConverter from 'nib-converter';
 
 import Code from '../../Code';
-import uploadCallback from '../../common/uploadCallback';
 import defaultValue from './sampleData';
 
 import './styles.css';
@@ -18,11 +17,6 @@ const ConvertToHTMLDemo = () => {
     <div>
       <Editor
         config={{
-          plugins: {
-            image: {
-              uploadCallback,
-            },
-          },
           toolbar: {
             options: 'top',
           },

@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import Editor from "nib-core";
+import React, { useState } from 'react';
+import Editor from 'nib-core';
 
-import Code from "../../Code";
-import uploadCallback from "../../common/uploadCallback";
-import defaultValue from "./sampleData";
+import Code from '../../Code';
+import defaultValue from './sampleData';
 
 /**
  * @visibleName 4. Full Featured
@@ -14,17 +13,12 @@ const FullFeatured = () => {
     <div>
       <Editor
         config={{
-          plugins: {
-            image: {
-              uploadCallback
-            }
-          },
           toolbar: {
-            options: "top",
+            options: 'top',
             top: {
-              block: { grouped: true }
-            }
-          }
+              block: { grouped: true },
+            },
+          },
         }}
         autoFocus
         onChange={setContent}
