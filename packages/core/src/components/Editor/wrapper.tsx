@@ -34,11 +34,11 @@ const Wrapper = (props: WrapperProps) => {
         .get('https://licencecheck.herokuapp.com/licenceCheck', {
           params: {
             licenseKey,
-            plugins: addons.map(a => a.name),
+            plugins: addons.map((a) => a.name),
           },
         })
         .then(({ data }) => {
-          // if (data.status === 'FAIL') setLicenseCheckFail(true);
+          if (data.status === 'FAIL') setLicenseCheckFail(true);
         });
     }
   });

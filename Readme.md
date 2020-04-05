@@ -6,6 +6,8 @@ Despite various options available for rich text editing in html, it continues to
 
 Making an editor ground up from a framework is still much work, the project aims at building components for rich text editing using prosemirror. These components can be quickly integrated into react or even non-react applications.
 
+![Editor image](https://i.imgur.com/WyM2rzq.png)
+
 ## Setup
 
 Setup of the editor is quite straight forward. It is required to be installed from `npm`.
