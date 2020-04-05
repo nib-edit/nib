@@ -9,9 +9,9 @@ Editor with list option enabled. <a target="_blank" href="https://github.com/nib
 
 ### Keyboard shortcuts
 
-| S.No. | Keyboard Shortcut      | Description  |
-| ----- | ---------------------- | ------------ |
-| 1     | Cmd-Alt-7 / Ctrl-Alt-7 | ordered list |
-| 2     | Cmd-Alt-8 / Ctrl-Alt-8 | bullet list  |
-| 3     | tab                    | indent       |
-| 4     | shift+tab              | outdent      |
+| S.No. | Keyboard Shortcut          | Description  |
+| ----- | -------------------------- | ------------ |
+| 1     | Cmd-Shift-7 / Ctrl-Shift-7 | ordered list |
+| 2     | Cmd-Shift-8 / Ctrl-Shift-8 | bullet list  |
+| 3     | Tab                        | indent       |
+| 4     | Shift-Tab                  | outdent      |

@@ -8,16 +8,14 @@ import { PMStateConsumer } from '../../context/pm-state';
 
 import { KeymapInfo } from './keymaps';
 import { blockquotePluginKey } from './plugin';
-import { liftBlockquoteCmd, wrapInBlockquoteCmd } from './commands';
+import { wrapLiftBlockquote } from './commands';
 
 class ToolbarComponent extends PureComponent {
   wrapInBlockquote = () => {
     const { pmstate } = this.props;
     const { pmview } = pmstate;
     const { state, dispatch } = pmview;
-    const { blockquoteNode } = blockquotePluginKey.getState(state);
-    if (blockquoteNode) liftBlockquoteCmd(state, dispatch);
-    else wrapInBlockquoteCmd(state, dispatch);
+    wrapLiftBlockquote(state, dispatch);
   };
 
   isBlockquoteNodePresent = () => {
@@ -48,7 +46,7 @@ ToolbarComponent.propTypes = {
   pmstate: PropTypes.object.isRequired,
 };
 
-export default props => (
+export default (props) => (
   <PMStateConsumer>
     {({ pmstate }) => <ToolbarComponent pmstate={pmstate} {...props} />}
   </PMStateConsumer>

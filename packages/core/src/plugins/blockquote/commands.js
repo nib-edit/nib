@@ -13,7 +13,7 @@ export const insertParagraphCmd = (state, dispatch) => {
   return false;
 };
 
-export const liftBlockquoteCmd = (state, dispatch) => {
+const liftBlockquoteCmd = (state, dispatch) => {
   const { tr } = state;
   const { blockquoteNode } = blockquotePluginKey.getState(state);
   const startPos = tr.doc.resolve(blockquoteNode.start);
@@ -28,7 +28,7 @@ export const liftBlockquoteCmd = (state, dispatch) => {
   return true;
 };
 
-export const wrapInBlockquoteCmd = (state, dispatch) => {
+const wrapInBlockquoteCmd = (state, dispatch) => {
   const { tr, selection, schema } = state;
   const { nodes } = schema;
   const { blockquote, paragraph } = nodes;
@@ -48,4 +48,10 @@ export const wrapInBlockquoteCmd = (state, dispatch) => {
   }
   dispatch(tr);
   return true;
+};
+
+export const wrapLiftBlockquote = (state, dispatch) => {
+  const { blockquoteNode } = blockquotePluginKey.getState(state);
+  if (blockquoteNode) return liftBlockquoteCmd(state, dispatch);
+  return wrapInBlockquoteCmd(state, dispatch);
 };

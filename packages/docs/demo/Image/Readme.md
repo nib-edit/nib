@@ -11,4 +11,4 @@ Editor with images option enabled. <a target="_blank" href="https://github.com/n
 
 | S.No. | Keyboard Shortcut | Description  |
 | ----- | ----------------- | ------------ |
-| 1     | Cmd-P             | Insert image |
+| 1     | Cmd-p             | Insert image |
