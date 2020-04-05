@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Editor from 'nib-core';
 
 import Code from '../../Code';
-import uploadCallback from '../../common/uploadCallback';
 import defaultValue from './sampleData';
 
 const styleConfig = {
@@ -19,13 +18,6 @@ const styleConfig = {
 const FullPageEditor = ({ setContent }) => {
   return (
     <Editor
-      config={{
-        plugins: {
-          image: {
-            uploadCallback,
-          },
-        },
-      }}
       defaultValue={defaultValue}
       onChange={setContent}
       styleConfig={styleConfig}

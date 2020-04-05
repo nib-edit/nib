@@ -3,7 +3,10 @@ import Editor from 'nib-core';
 import AdvanceImage from 'nib-advance-image';
 
 import Code from '../../Code';
+import uploadCallback from '../../common/uploadCallback';
 import defaultValue from './sampleData';
+
+const imagePlugin = new AdvanceImage(uploadCallback);
 
 /**
  * @visibleName 2. Advance Image
@@ -20,7 +23,7 @@ const AdvanceImageComponent = () => {
             top: { options: 'advance-image' },
           },
         }}
-        addons={[AdvanceImage]}
+        addons={[imagePlugin]}
         onChange={setContent}
         defaultValue={defaultValue}
       />

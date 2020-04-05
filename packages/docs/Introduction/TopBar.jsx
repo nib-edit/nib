@@ -34,9 +34,6 @@ class TopBar extends PureComponent {
             config={{
               plugins: {
                 options: 'block inline color link blockquote list help',
-                image: {
-                  uploadCallback,
-                },
               },
               toolbar: {
                 options: 'top',
@@ -48,7 +45,11 @@ class TopBar extends PureComponent {
             }}
             defaultValue={data}
             styleConfig={theme}
-            addons={[AdvanceImagePlugin, TablePlugin, VideoPlugin]}
+            addons={[
+              new AdvanceImagePlugin(uploadCallback),
+              TablePlugin,
+              VideoPlugin,
+            ]}
           />
         </div>
       </div>
