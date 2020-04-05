@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-const Closeable = WrappedComponent => {
+const Closeable = (WrappedComponent) => {
   class CloseableHOC extends Component {
     wrapperRef = React.createRef();
 
@@ -15,12 +15,12 @@ const Closeable = WrappedComponent => {
       window.removeEventListener('mousedown', this.handleMouseDown);
     };
 
-    handleKeyPress = evt => {
+    handleKeyPress = (evt) => {
       const { onEscKeyPress } = this.props;
       if (evt.key === 'Escape') onEscKeyPress();
     };
 
-    handleMouseDown = evt => {
+    handleMouseDown = (evt) => {
       const {
         onClickOutsideEditor,
         onClickInsideEditor,
@@ -33,14 +33,14 @@ const Closeable = WrappedComponent => {
           !editorWrapper.current.contains(evt.target) &&
           onClickOutsideEditor
         )
-          onClickOutsideEditor();
+          onClickOutsideEditor(evt);
         else if (
           this.wrapperRef &&
           this.wrapperRef.current &&
           !this.wrapperRef.current.contains(evt.target) &&
           onClickInsideEditor
         )
-          onClickInsideEditor();
+          onClickInsideEditor(evt);
       }
     };
 

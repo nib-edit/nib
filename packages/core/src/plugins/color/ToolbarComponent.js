@@ -22,7 +22,7 @@ class ToolbarComponent extends PureComponent {
     return pluginState && pluginState.activeColorMarks;
   };
 
-  toggleColorType = evt => {
+  toggleColorType = (evt) => {
     const color = evt.target.getAttribute('name');
     const { pmstate } = this.props;
     const { pmview } = pmstate;
@@ -45,15 +45,24 @@ class ToolbarComponent extends PureComponent {
     this.closeColorSelect();
   };
 
-  openColorSelect = evt => {
+  openColorSelect = (evt) => {
+    const { selectedMarkType: oldSelectedMarkType } = this.state;
     const selectedMarkType = evt.currentTarget.getAttribute('name');
-    this.setState({
-      popupMarker: this[`${selectedMarkType}Ref`],
-      selectedMarkType,
-    });
+    if (oldSelectedMarkType === selectedMarkType)
+      this.setState({
+        popupMarker: undefined,
+        selectedMarkType: undefined,
+      });
+    else
+      this.setState({
+        popupMarker: this[`${selectedMarkType}Ref`],
+        selectedMarkType,
+      });
   };
 
-  closeColorSelect = () => {
+  closeColorSelect = (evt) => {
+    if (this.textColorRef.current.contains(evt.target)) return;
+    if (this.backgroundColorRef.current.contains(evt.target)) return;
     this.setState({ popupMarker: undefined, selectedMarkType: undefined });
   };
 
@@ -107,7 +116,7 @@ class ToolbarComponent extends PureComponent {
             onEscKeyPress={this.closeColorSelect}
             render={() => (
               <ColorsWrapper onClick={this.toggleColorType}>
-                {colors.map(color => (
+                {colors.map((color) => (
                   <StyledButton
                     key={`${selectedMarkType}-${color}`}
                     name={color}
@@ -154,7 +163,7 @@ const StyledButton = styled(ToolbarButton)`
   width: 24px;
 `;
 
-export default props => (
+export default (props) => (
   <ConfigContextConsumer>
     {({ config }) => (
       <PMStateConsumer>
