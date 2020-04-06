@@ -8,7 +8,6 @@ Making an editor ground up from a framework is still much work, the project aims
 
 Nib not only has good rich text editing capabilities but also addresses complex editing requirements like tracking changes made to a document, adding comments in document, collaborative editing and more...
 
-<br/>
 ![Editor image](https://i.imgur.com/WyM2rzq.png)
 
 ## Setup
@@ -52,4 +51,6 @@ Props supported by the editor.
 
 MIT
 <br/>
-This repository includes code for all basic editor features which are freely available. Advance editor features like nib drive, tables, advance images, video, tracking changes, comments and collaborative editing are not open source, check [licensing](http://www.nibedit.com/index.html#/License).
+This repository includes code for all basic editor features which are freely available.
+
+Advance editor features like nib drive, tables, advance images, video, tracking changes, comments and collaborative editing are not open source, check [licensing](http://www.nibedit.com/index.html#/License).
