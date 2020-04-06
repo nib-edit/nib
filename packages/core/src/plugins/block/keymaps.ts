@@ -1,30 +1,31 @@
 import { setBlockType } from 'prosemirror-commands';
-import { EditorState, Transaction } from 'prosemirror-state';
+import { EditorState } from 'prosemirror-state';
 import { KeyValueType } from '../../types/common';
 import { KeymapInfoMap } from '../../types/application';
+import { ProsemirrorDispatch } from '../../types/prosemirror';
 
 const changeBlockType = (blockTypeName: string, attrs?: KeyValueType) => (
   state: EditorState,
-  dispatch: Transaction
+  dispatch: ProsemirrorDispatch
 ) => {
   const blockType = state.schema.nodes[blockTypeName];
   return setBlockType(blockType, attrs)(state, dispatch);
 };
 
 export default () => ({
-  'Mod-Alt-0': (state: EditorState, dispatch: Transaction) =>
+  'Mod-Alt-0': (state: EditorState, dispatch: ProsemirrorDispatch) =>
     changeBlockType('paragraph')(state, dispatch),
-  'Mod-Alt-1': (state: EditorState, dispatch: Transaction) =>
+  'Mod-Alt-1': (state: EditorState, dispatch: ProsemirrorDispatch) =>
     changeBlockType('heading', { level: 1 })(state, dispatch),
-  'Mod-Alt-2': (state: EditorState, dispatch: Transaction) =>
+  'Mod-Alt-2': (state: EditorState, dispatch: ProsemirrorDispatch) =>
     changeBlockType('heading', { level: 2 })(state, dispatch),
-  'Mod-Alt-3': (state: EditorState, dispatch: Transaction) =>
+  'Mod-Alt-3': (state: EditorState, dispatch: ProsemirrorDispatch) =>
     changeBlockType('heading', { level: 3 })(state, dispatch),
-  'Mod-Alt-4': (state: EditorState, dispatch: Transaction) =>
+  'Mod-Alt-4': (state: EditorState, dispatch: ProsemirrorDispatch) =>
     changeBlockType('heading', { level: 4 })(state, dispatch),
-  'Mod-Alt-5': (state: EditorState, dispatch: Transaction) =>
+  'Mod-Alt-5': (state: EditorState, dispatch: ProsemirrorDispatch) =>
     changeBlockType('heading', { level: 5 })(state, dispatch),
-  'Mod-Alt-6': (state: EditorState, dispatch: Transaction) =>
+  'Mod-Alt-6': (state: EditorState, dispatch: ProsemirrorDispatch) =>
     changeBlockType('heading', { level: 6 })(state, dispatch),
 });
 

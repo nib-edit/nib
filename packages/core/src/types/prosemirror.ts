@@ -9,9 +9,13 @@ export interface ProsemirrorEditorState {
 }
 
 export interface ProsemirrorCommand {
-  (state: EditorState, dispatch: Transaction): boolean | void;
+  (state: EditorState, dispatch: ProsemirrorDispatch): boolean | void;
 }
 
 export interface ProsemirrorViewProvider {
   (): EditorView<any> | undefined;
+}
+
+export interface ProsemirrorDispatch {
+  (tr: Transaction): void;
 }
