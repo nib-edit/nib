@@ -1,12 +1,23 @@
-import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import * as React from 'react';
+import { ElementType, useState } from 'react';
 import styled from '@emotion/styled';
+import { BlockOption } from '../blockData';
 
 const SelectHeight = 28;
 const SelectWidth = 112;
 
-const Grouped = ({ options, selectedBlockType, onChange }) => {
-  const [Select, setSelect] = useState(undefined);
+interface GroupedMenuProps {
+  options: BlockOption[];
+  selectedBlockType: string;
+  onChange: (blockType: string) => void;
+}
+
+const Grouped = ({
+  options,
+  selectedBlockType,
+  onChange,
+}: GroupedMenuProps) => {
+  const [Select, setSelect] = useState<ElementType | undefined>(undefined);
   import('nib-ui-select').then((args) => {
     const { Select: NibUISelect } = args.default;
     setSelect(NibUISelect);
@@ -25,7 +36,7 @@ const Grouped = ({ options, selectedBlockType, onChange }) => {
     <Select
       height={SelectHeight}
       width={SelectWidth}
-      onChange={(option) => onChange(option.value.blockType)}
+      onChange={(option: BlockOption) => onChange(option.value.blockType)}
       options={options}
       selectedOption={selectedOption}
       isSearchable={false}
@@ -37,16 +48,5 @@ const Placeholder = styled.div`
   height: ${SelectHeight}px;
   width: ${SelectWidth}px;
 `;
-
-Grouped.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  options: PropTypes.array.isRequired,
-  selectedBlockType: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
-};
-
-Grouped.defaultProps = {
-  selectedBlockType: undefined,
-};
 
 export default Grouped;

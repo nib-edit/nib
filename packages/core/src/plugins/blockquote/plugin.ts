@@ -1,7 +1,7 @@
-import { Plugin, PluginKey } from 'prosemirror-state';
+import { Plugin, PluginKey, EditorState } from 'prosemirror-state';
 import { findParentNodeOfType } from 'prosemirror-utils';
 
-const getBlockquoteNode = state => {
+const getBlockquoteNode = (state: EditorState) => {
   const { selection, schema } = state;
   const { blockquote } = schema.nodes;
   return findParentNodeOfType(blockquote)(selection);

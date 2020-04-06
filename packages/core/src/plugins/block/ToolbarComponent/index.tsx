@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types';
-import React, { PureComponent } from 'react';
+import * as React from 'react';
 import { setBlockType } from 'prosemirror-commands';
 
 import { PMStateConsumer } from '../../../context/pm-state';
@@ -8,9 +7,16 @@ import { blockPluginKey } from '../plugin';
 import options from '../blockData';
 import Grouped from './Grouped';
 import Ungrouped from './Ungrouped';
+import { ProsemirrorEditorState } from '../../../types/prosemirror';
+import { KeyValueType } from '../../../types/common';
 
-class ToolbarComponent extends PureComponent {
-  changeBlockType = (blockType) => {
+interface ToolbarComponentProps {
+  pmstate: ProsemirrorEditorState;
+  config: { options: string; grouped: boolean };
+}
+
+const ToolbarComponent = (props: ToolbarComponentProps) => {
+  const changeBlockType = (blockType: string) => {
     let attrs;
     let blockName;
     if (blockType === 'paragraph') {
@@ -20,7 +26,7 @@ class ToolbarComponent extends PureComponent {
       blockName = 'heading';
     }
 
-    const { pmstate } = this.props;
+    const { pmstate } = props;
     const { pmview } = pmstate;
     const { state, dispatch } = pmview;
     const nodeType = state.schema.nodes[blockName];
@@ -29,8 +35,8 @@ class ToolbarComponent extends PureComponent {
     pmview.focus();
   };
 
-  getSelectedBlock = () => {
-    const { pmstate } = this.props;
+  const getSelectedBlock = () => {
+    const { pmstate } = props;
     const { pmview } = pmstate;
     if (!pmview) return undefined;
 
@@ -45,50 +51,44 @@ class ToolbarComponent extends PureComponent {
     return undefined;
   };
 
-  render() {
-    const { config } = this.props;
-    const { grouped, options: toolbarOptions } = config;
-    let filteredOptions = options;
-    if (toolbarOptions) {
-      filteredOptions = options.filter(
-        (opt) => toolbarOptions.indexOf(opt.value.tag) >= 0
-      );
-    }
+  const { config } = props;
+  const { grouped, options: toolbarOptions } = config;
+  let filteredOptions = options;
+  if (toolbarOptions) {
+    filteredOptions = options.filter(
+      (opt) => toolbarOptions.indexOf(opt.value.tag) >= 0
+    );
+  }
 
-    if (grouped !== false) {
-      return (
-        <Grouped
-          onChange={this.changeBlockType}
-          selectedBlockType={this.getSelectedBlock()}
-          options={filteredOptions}
-        />
-      );
-    }
-
+  if (grouped !== false) {
     return (
-      <Ungrouped
-        onChange={this.changeBlockType}
-        selectedBlockType={this.getSelectedBlock()}
+      <Grouped
+        onChange={changeBlockType}
+        selectedBlockType={getSelectedBlock()}
         options={filteredOptions}
       />
     );
   }
-}
 
-ToolbarComponent.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  config: PropTypes.object.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  pmstate: PropTypes.object.isRequired,
+  return (
+    <Ungrouped
+      onChange={changeBlockType}
+      selectedBlockType={getSelectedBlock()}
+      options={filteredOptions}
+    />
+  );
 };
 
-export default (props) => (
+export default (props: KeyValueType) => (
   <ConfigContextConsumer>
     {({ config }) => (
       <PMStateConsumer>
-        {({ pmstate }) => (
-          <ToolbarComponent config={config} pmstate={pmstate} {...props} />
-        )}
+        {({ pmstate }) => {
+          if (!pmstate) return null;
+          return (
+            <ToolbarComponent config={config} pmstate={pmstate} {...props} />
+          );
+        }}
       </PMStateConsumer>
     )}
   </ConfigContextConsumer>

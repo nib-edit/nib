@@ -1,13 +1,13 @@
 import Plugins from '../../plugins';
-import { EditorPlugin } from '../../types/components';
 import { Addon } from '../../types/addon';
 import { ThemeType } from '../../types/editor-theme';
+import { PluginKeyType } from '../../types/application';
 
 export default (plugins: string, addons: Addon[]) => {
   const pluginArray = plugins
     .trim()
     .split(' ')
-    .map((p) => p && Plugins[p]);
+    .map((p) => p && Plugins[p as PluginKeyType]);
   const styles = [...pluginArray, ...addons].reduce((styleArray, plugin) => {
     if (plugin.styles) styleArray.push(plugin.styles);
     return styleArray;

@@ -1,4 +1,6 @@
-export default () => `
+import { PluginStyleFunction } from '../../types/application';
+
+const styleFunction: PluginStyleFunction = () => `
   p {
     display: block;
     margin-block-start: 1em;
@@ -60,3 +62,5 @@ export default () => `
     font-weight: bold;
   }
 `;
+
+export default styleFunction;

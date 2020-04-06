@@ -1,9 +1,13 @@
 import { findWrapping, liftTarget } from 'prosemirror-transform';
-import { Selection } from 'prosemirror-state';
+import { Selection, EditorState } from 'prosemirror-state';
 
 import { blockquotePluginKey } from './plugin';
+import { ProsemirrorDispatch } from '../../types/prosemirror';
 
-export const insertParagraphCmd = (state, dispatch) => {
+export const insertParagraphCmd = (
+  state: EditorState,
+  dispatch: ProsemirrorDispatch
+) => {
   const { tr, selection } = state;
   const { blockquoteNode } = blockquotePluginKey.getState(state);
   if (blockquoteNode) {
@@ -13,7 +17,10 @@ export const insertParagraphCmd = (state, dispatch) => {
   return false;
 };
 
-const liftBlockquoteCmd = (state, dispatch) => {
+const liftBlockquoteCmd = (
+  state: EditorState,
+  dispatch: ProsemirrorDispatch
+) => {
   const { tr } = state;
   const { blockquoteNode } = blockquotePluginKey.getState(state);
   const startPos = tr.doc.resolve(blockquoteNode.start);
@@ -24,19 +31,26 @@ const liftBlockquoteCmd = (state, dispatch) => {
       1
   );
   const range = startPos.blockRange(endPos);
-  if (range) dispatch(tr.lift(range, liftTarget(range)).scrollIntoView());
+  if (range) {
+    const listedValue = liftTarget(range);
+    if (listedValue) dispatch(tr.lift(range, listedValue).scrollIntoView());
+  }
   return true;
 };
 
-const wrapInBlockquoteCmd = (state, dispatch) => {
+const wrapInBlockquoteCmd = (
+  state: EditorState,
+  dispatch: ProsemirrorDispatch
+) => {
   const { tr, selection, schema } = state;
   const { nodes } = schema;
   const { blockquote, paragraph } = nodes;
   const { $from, $to } = selection;
   const range = $from.blockRange($to);
-  const wrapping = range && findWrapping(range, blockquote);
-  if (wrapping) tr.wrap(range, wrapping).scrollIntoView();
-  else {
+  if (range) {
+    const wrapping = range && findWrapping(range, blockquote);
+    if (wrapping) tr.wrap(range, wrapping).scrollIntoView();
+  } else {
     tr.replaceRangeWith(
       $to.pos + 1,
       $to.pos + 1,
@@ -50,7 +64,10 @@ const wrapInBlockquoteCmd = (state, dispatch) => {
   return true;
 };
 
-export const wrapLiftBlockquote = (state, dispatch) => {
+export const wrapLiftBlockquote = (
+  state: EditorState,
+  dispatch: ProsemirrorDispatch
+) => {
   const { blockquoteNode } = blockquotePluginKey.getState(state);
   if (blockquoteNode) return liftBlockquoteCmd(state, dispatch);
   return wrapInBlockquoteCmd(state, dispatch);
