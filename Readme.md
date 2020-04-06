@@ -6,13 +6,16 @@ Despite various options available for rich text editing in html, it continues to
 
 Making an editor ground up from a framework is still much work, the project aims at building components for rich text editing using prosemirror. These components can be quickly integrated into react or even non-react applications.
 
+Nib not only has good rich text editing capabilities but also addresses complex editing requirements like tracking changes made to a document, adding comments in document, collaborative editing and more...
+
+<br/>
 ![Editor image](https://i.imgur.com/WyM2rzq.png)
 
 ## Setup
 
 Setup of the editor is quite straight forward. It is required to be installed from `npm`.
 
-### Installing packages:
+#### Installing packages:
 
 Either `npm` or `yarn` commands can be used.
 
@@ -20,7 +23,7 @@ Either `npm` or `yarn` commands can be used.
 npm i nib-core --save
 ```
 
-### Writing editor component:
+#### Writing editor component:
 
 ```
 import React from "react";
@@ -49,4 +52,4 @@ Props supported by the editor.
 
 MIT
 <br/>
-This repository includes code for all basic editor features which are freely available. Advance editor features like nib drive, tables, advance images, video, tracking changes, comments and collaborative editing are not open source.
+This repository includes code for all basic editor features which are freely available. Advance editor features like nib drive, tables, advance images, video, tracking changes, comments and collaborative editing are not open source, check [licensing](http://www.nibedit.com/index.html#/License).
