@@ -1,9 +1,10 @@
-import { Plugin, PluginKey } from 'prosemirror-state';
+import { Plugin, PluginKey, EditorState } from 'prosemirror-state';
+import { KeyValueType } from '../../types/common';
 
 export const blockPluginKey = new PluginKey('block');
 
-const getSelectedBlock = state => {
-  let block;
+const getSelectedBlock = (state: EditorState) => {
+  let block: { type: string; attrs: KeyValueType } | undefined = undefined;
   let multipleBlock = false;
   const {
     doc,
