@@ -5,13 +5,19 @@ import { ToolbarButton, Icon, Space } from 'nib-ui';
 
 import formatKeymap from '../../../utils/format-keymap';
 import { KeymapInfo } from '../keymaps';
-import { BlockMenuProps } from './Grouped';
+import { BlockOption } from '../blockData';
+
+export interface UngroupedMenuProps {
+  options: BlockOption[];
+  selectedBlockType: string;
+  onChange: (blockType: string) => void;
+}
 
 const Ungrouped = ({
   options,
   selectedBlockType,
   onChange,
-}: BlockMenuProps) => (
+}: UngroupedMenuProps) => (
   <>
     {options.map((opt, index) => {
       const isSelected = opt.value.blockType === selectedBlockType;

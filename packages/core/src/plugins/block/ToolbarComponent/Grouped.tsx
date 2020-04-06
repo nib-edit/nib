@@ -6,13 +6,17 @@ import { BlockOption } from '../blockData';
 const SelectHeight = 28;
 const SelectWidth = 112;
 
-export interface BlockMenuProps {
+interface GroupedMenuProps {
   options: BlockOption[];
   selectedBlockType: string;
   onChange: (blockType: string) => void;
 }
 
-const Grouped = ({ options, selectedBlockType, onChange }: BlockMenuProps) => {
+const Grouped = ({
+  options,
+  selectedBlockType,
+  onChange,
+}: GroupedMenuProps) => {
   const [Select, setSelect] = useState<ElementType | undefined>(undefined);
   import('nib-ui-select').then((args) => {
     const { Select: NibUISelect } = args.default;

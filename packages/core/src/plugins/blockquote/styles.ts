@@ -1,5 +1,7 @@
 // todo: styles to be re-thought
-export default () => `
+import { PluginStyleFunction } from '../../types/application';
+
+const styleFunction: PluginStyleFunction = () => `
   .ProseMirror blockquote {
     box-sizing: border-box;
     padding-left: 16px;
@@ -7,3 +9,5 @@ export default () => `
     margin: 1.143rem 0px 0px;
   }
 `;
+
+export default styleFunction;

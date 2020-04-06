@@ -6,12 +6,12 @@ export interface BlockOption {
   value: {
     blockType: string;
     tag: string;
-    keymap: (keymap: KeymapInfoType) => string;
+    keymap: string;
   };
   label: string;
 }
 
-export default [
+const blockData: BlockOption[] = [
   {
     value: {
       blockType: 'paragraph',
@@ -69,3 +69,5 @@ export default [
     label: 'Heading 6',
   },
 ];
+
+export default blockData;
