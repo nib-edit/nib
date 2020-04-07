@@ -23,12 +23,12 @@ export default new Plugin({
 
   props: {
     handleDOMEvents: {
-      focus: view => {
+      focus: (view) => {
         const { state, dispatch } = view;
         dispatch(state.tr.setMeta('editor-focused', true));
         return false;
       },
-      blur: view => {
+      blur: (view) => {
         const { state, dispatch } = view;
         dispatch(state.tr.setMeta('editor-focused', false));
         return false;
@@ -59,6 +59,7 @@ export default new Plugin({
     handleClickOn(view) {
       const { state, dispatch } = view;
       dispatch(state.tr.setMeta('editor-clicked', true));
+      return false;
     },
   },
 });

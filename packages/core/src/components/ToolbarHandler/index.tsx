@@ -21,7 +21,7 @@ const ToolbarHandler = ({
   return (
     <>
       {plugins.map(
-        plugin =>
+        (plugin) =>
           plugin.toolbar &&
           plugin.toolbar.map((Toolbar, index) => (
             <Toolbar

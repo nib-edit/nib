@@ -1,24 +1,24 @@
-import { Plugin, PluginKey } from "prosemirror-state";
+import { Plugin, PluginKey, EditorState } from 'prosemirror-state';
+import { Mark } from 'prosemirror-model';
 
-export const colorPluginKey = new PluginKey("color");
+export const colorPluginKey = new PluginKey('color');
 
-const getActiveColorMarks = state => {
+const getActiveColorMarks = (state: EditorState) => {
   const { selection } = state;
   const { $from, $to } = selection;
-  let activeColorMarks = [];
+  let activeColorMarks: Mark[] = [];
   if (selection.empty) {
     activeColorMarks = [...(state.storedMarks || $to.marks())];
   }
   const { textColor, backgroundColor } = state.schema.marks;
-  state.doc.nodesBetween($from.pos, $to.pos, node => {
+  state.doc.nodesBetween($from.pos, $to.pos, (node) => {
     if (node.marks) {
       activeColorMarks = [...activeColorMarks, ...node.marks];
     }
   });
-  activeColorMarks = activeColorMarks
-    .filter(mark => mark.type === textColor || mark.type === backgroundColor)
+  return activeColorMarks
+    .filter((mark) => mark.type === textColor || mark.type === backgroundColor)
     .reduce((marks, mark) => ({ ...marks, [mark.type.name]: mark }), {});
-  return activeColorMarks;
 };
 
 const colorPlugin = new Plugin({
@@ -43,8 +43,8 @@ const colorPlugin = new Plugin({
         return { activeColorMarks };
       }
       return value;
-    }
-  }
+    },
+  },
 });
 
 export default colorPlugin;
