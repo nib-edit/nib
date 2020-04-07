@@ -1,11 +1,11 @@
-import { IKeyValue } from './common';
-import { IEditorTheme } from './editor-theme';
+import { KeyValue } from './common';
+import { EditorTheme } from './editor-theme';
 
 interface StyleFunction {
-  ({ theme }: { theme: IEditorTheme }): IKeyValue | void;
+  ({ theme }: { theme: EditorTheme }): KeyValue | void;
 }
 
-export interface IEditorStyleConfig {
+export interface EditorStyleConfig {
   wrapper: StyleFunction;
   editor: StyleFunction;
   toolbar: {
@@ -50,6 +50,6 @@ export interface IEditorStyleConfig {
   };
 }
 
-export interface IEditorStyle extends IEditorStyleConfig {
-  constants: IEditorTheme;
+export interface EditorStyle extends EditorStyleConfig {
+  constants: EditorTheme;
 }

@@ -2,18 +2,18 @@ import * as React from 'react';
 import { PureComponent, createContext, useContext } from 'react';
 import { EditorView } from 'prosemirror-view';
 
-import { IProsemirrorEditorState } from '../../types/prosemirror';
+import { ProsemirrorEditorState } from '../../types/prosemirror';
 
 import { ConfigContext } from '../config';
 
 const PMStateContext = createContext<{
-  pmstate: IProsemirrorEditorState | undefined;
+  pmstate: ProsemirrorEditorState | undefined;
 }>({ pmstate: undefined });
 
 export class PMStateProvider extends PureComponent {
   static contextType = ConfigContext;
 
-  state: { pmstate: IProsemirrorEditorState | undefined } = {
+  state: { pmstate: ProsemirrorEditorState | undefined } = {
     pmstate: undefined,
   };
 

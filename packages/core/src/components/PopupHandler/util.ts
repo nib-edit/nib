@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { ElementType } from 'react';
-import { IEditorPopup } from '../../types/components';
-import { IProsemirrorEditorState } from '../../types/prosemirror';
+import { EditorPopup } from '../../types/components';
+import { ProsemirrorEditorState } from '../../types/prosemirror';
 
-export interface IVisiblePopup {
+export interface VisiblePopup {
   marker: Element;
   name: string;
   PopupComponent: ElementType;
 }
 
 export const getVisiblePopups = (
-  pmstate: IProsemirrorEditorState,
-  popups: IEditorPopup[],
-  visiblePopups: IVisiblePopup[]
+  pmstate: ProsemirrorEditorState,
+  popups: EditorPopup[],
+  visiblePopups: VisiblePopup[]
 ) => {
   const { pmview } = pmstate;
 

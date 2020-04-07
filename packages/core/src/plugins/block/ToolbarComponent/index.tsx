@@ -4,18 +4,18 @@ import { setBlockType } from 'prosemirror-commands';
 
 import { PMStateConsumer } from '../../../context/pm-state';
 import { ConfigContextConsumer } from '../../../context/config';
-import { IProsemirrorEditorState } from '../../../types/prosemirror';
+import { ProsemirrorEditorState } from '../../../types/prosemirror';
 import { blockPluginKey } from '../plugin';
 import options from '../blockData';
 import Grouped from './Grouped';
 import Ungrouped from './Ungrouped';
 
-interface IToolbarComponent {
-  pmstate: IProsemirrorEditorState;
+interface ToolbarComponentProps {
+  pmstate: ProsemirrorEditorState;
   config: { options: string; grouped: boolean };
 }
 
-const ToolbarComponent: FunctionComponent<IToolbarComponent> = (props) => {
+const ToolbarComponent: FunctionComponent<ToolbarComponentProps> = (props) => {
   const changeBlockType = (blockType: string) => {
     let attrs;
     let blockName;

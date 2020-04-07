@@ -13,16 +13,16 @@ import { Popup, ToolbarButton, Icon } from 'nib-ui';
 import { ConfigContextConsumer } from '../../context/config';
 import { PMStateConsumer } from '../../context/pm-state';
 import { colorPluginKey } from './plugin';
-import { IProsemirrorEditorState } from '../../types/prosemirror';
-import { IEditorConfig } from '../../types/editor-config';
+import { ProsemirrorEditorState } from '../../types/prosemirror';
+import { EditorConfig } from '../../types/editor-config';
 
-interface IToolbarComponent {
-  pmstate: IProsemirrorEditorState;
-  config: IEditorConfig;
+interface ToolbarComponentProps {
+  pmstate: ProsemirrorEditorState;
+  config: EditorConfig;
   editorWrapper: MutableRefObject<HTMLDivElement>;
 }
 
-const ToolbarComponent: FunctionComponent<IToolbarComponent> = ({
+const ToolbarComponent: FunctionComponent<ToolbarComponentProps> = ({
   pmstate,
   config,
   editorWrapper,

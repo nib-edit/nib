@@ -1,9 +1,9 @@
 import Plugins from '../../plugins';
-import { IAddon } from '../../types/addon';
-import { IEditorTheme } from '../../types/editor-theme';
+import { Addon } from '../../types/addon';
+import { EditorTheme } from '../../types/editor-theme';
 import { PluginKeyType } from '../../types/application';
 
-export default (plugins: string, addons: IAddon[]) => {
+export default (plugins: string, addons: Addon[]) => {
   const pluginArray = plugins
     .trim()
     .split(' ')
@@ -13,9 +13,9 @@ export default (plugins: string, addons: IAddon[]) => {
     return styleArray;
   }, []);
   styles.push(Plugins.common.styles);
-  return (theme: IEditorTheme) =>
+  return (theme: EditorTheme) =>
     styles.reduce(
-      (styleStr: string, styleFn: (theme: IEditorTheme) => string) =>
+      (styleStr: string, styleFn: (theme: EditorTheme) => string) =>
         `${styleStr}${styleFn(theme)}`,
       ''
     );

@@ -5,16 +5,16 @@ import { ThemeProvider } from 'emotion-theming';
 import defaultTheme from '../../config/theme';
 import defaultStyleConfig from '../../config/styles';
 import overrideValue from '../../utils/override-value';
-import { IEditorTheme } from '../../types/editor-theme';
-import { IEditorStyleConfig } from '../../types/editor-style';
+import { EditorTheme } from '../../types/editor-theme';
+import { EditorStyleConfig } from '../../types/editor-style';
 
-interface INibThemeProvider {
+interface NibThemeProviderProps {
   children: ReactChild;
-  theme: IEditorTheme | {};
-  styleConfig: IEditorStyleConfig | {};
+  theme: EditorTheme | {};
+  styleConfig: EditorStyleConfig | {};
 }
 
-const NibThemeProvider: FunctionComponent<INibThemeProvider> = ({
+const NibThemeProvider: FunctionComponent<NibThemeProviderProps> = ({
   children,
   theme,
   styleConfig,

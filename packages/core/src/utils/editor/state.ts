@@ -5,10 +5,10 @@ import buildSchema from './schema';
 import { getProsemirrorPlugins } from './plugins';
 import { EditorView } from 'prosemirror-view';
 import {
-  IProsemirrorViewProvider,
-  IProsemirrorDoc,
+  ProsemirrorViewProvider,
+  ProsemirrorDoc,
 } from '../../types/prosemirror';
-import { IEditorPlugin } from '../../types/components';
+import { EditorPlugin } from '../../types/components';
 
 const defaultContent = {
   doc: {
@@ -23,9 +23,9 @@ const defaultContent = {
 };
 
 export const buildEditorState = (
-  plugins: IEditorPlugin[],
-  content?: IProsemirrorDoc,
-  viewProvider?: IProsemirrorViewProvider
+  plugins: EditorPlugin[],
+  content?: ProsemirrorDoc,
+  viewProvider?: ProsemirrorViewProvider
 ) => {
   const editorContent = content || defaultContent;
   return EditorState.fromJSON(

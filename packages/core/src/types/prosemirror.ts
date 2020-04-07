@@ -1,21 +1,21 @@
-import { IKeyValue } from './common';
+import { KeyValue } from './common';
 import { EditorView } from 'prosemirror-view';
 import { EditorState, Transaction } from 'prosemirror-state';
 
-export interface IProsemirrorDoc extends IKeyValue {}
+export interface ProsemirrorDoc extends KeyValue {}
 
-export interface IProsemirrorEditorState {
+export interface ProsemirrorEditorState {
   pmview: EditorView;
 }
 
-export interface IProsemirrorCommand {
-  (state: EditorState, dispatch: IProsemirrorDispatch): boolean | void;
+export interface ProsemirrorCommand {
+  (state: EditorState, dispatch: ProsemirrorDispatch): boolean | void;
 }
 
-export interface IProsemirrorViewProvider {
+export interface ProsemirrorViewProvider {
   (): EditorView<any> | undefined;
 }
 
-export interface IProsemirrorDispatch {
+export interface ProsemirrorDispatch {
   (tr: Transaction): void;
 }

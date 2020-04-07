@@ -1,4 +1,4 @@
-interface IPluginConfig {
+interface PluginConfig {
   options?: string;
   color?: {
     colors: string[];
@@ -13,13 +13,13 @@ type ToolbarType = {
   [prop: string]: any;
 };
 
-interface IToolbarConfig {
+interface ToolbarConfig {
   options?: string;
   top?: ToolbarType;
   inline?: ToolbarType;
 }
 
-export interface IEditorConfig {
-  plugins?: IPluginConfig;
-  toolbar?: IToolbarConfig;
+export interface EditorConfig {
+  plugins?: PluginConfig;
+  toolbar?: ToolbarConfig;
 }

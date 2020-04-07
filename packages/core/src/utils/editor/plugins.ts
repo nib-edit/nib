@@ -1,11 +1,11 @@
 import { Plugin } from 'prosemirror-state';
 
 import Plugins from '../../plugins';
-import { IEditorPlugin } from '../../types/components';
-import { IAddon } from '../../types/addon';
+import { EditorPlugin } from '../../types/components';
+import { Addon } from '../../types/addon';
 import { PluginKeyType } from '../../types/application';
 
-export const getProsemirrorPlugins = (plugins: IEditorPlugin[]) => {
+export const getProsemirrorPlugins = (plugins: EditorPlugin[]) => {
   let pluginList: Plugin[] = [];
   plugins.forEach((p) => {
     if (p) {
@@ -25,9 +25,8 @@ export const getPluginList = (plugins: string) =>
     .split(' ')
     .map((key) => Plugins[key as PluginKeyType]);
 
-export const getPluginArray = (plugins: string[], addons: IAddon[]) =>
+export const getPluginArray = (plugins: string[], addons: Addon[]) =>
   plugins.map(
     (key) =>
-      Plugins[key as PluginKeyType] ||
-      addons.find((a: IAddon) => a.name === key)
+      Plugins[key as PluginKeyType] || addons.find((a: Addon) => a.name === key)
   );

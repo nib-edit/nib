@@ -3,16 +3,16 @@ import { FunctionComponent, MutableRefObject } from 'react';
 import { withTheme } from 'emotion-theming';
 
 import { usePMStateContext } from '../../context/pm-state';
-import { IEditorTheme } from '../../types/editor-theme';
-import { IAddon } from '../../types/addon';
+import { EditorTheme } from '../../types/editor-theme';
+import { Addon } from '../../types/addon';
 
-interface IPopupHandler {
-  plugins: IAddon[];
-  theme: IEditorTheme;
+interface PopupHandlerProps {
+  plugins: Addon[];
+  theme: EditorTheme;
   editorWrapper: MutableRefObject<HTMLDivElement | null>;
 }
 
-const ToolbarHandler: FunctionComponent<IPopupHandler> = ({
+const ToolbarHandler: FunctionComponent<PopupHandlerProps> = ({
   editorWrapper,
   plugins,
   theme,

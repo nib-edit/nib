@@ -6,27 +6,27 @@ import NibThemeProvider from '../../context/theme';
 import { ConfigContextProvider } from '../../context/config';
 import { PMStateProvider } from '../../context/pm-state';
 
-import { IEditorTheme } from '../../types/editor-theme';
-import { IEditorStyleConfig } from '../../types/editor-style';
-import { IEditorConfig } from '../../types/editor-config';
-import { IAddon } from '../../types/addon';
-import { IProsemirrorDoc } from '../../types/prosemirror';
+import { EditorTheme } from '../../types/editor-theme';
+import { EditorStyleConfig } from '../../types/editor-style';
+import { EditorConfig } from '../../types/editor-config';
+import { Addon } from '../../types/addon';
+import { ProsemirrorDoc } from '../../types/prosemirror';
 
 import EditorWrapper from './wrapper';
 
-interface IEditor {
-  addons?: IAddon[];
+interface EditorProps {
+  addons?: Addon[];
   autoFocus?: boolean;
-  config?: IEditorConfig;
-  defaultValue?: IProsemirrorDoc;
+  config?: EditorConfig;
+  defaultValue?: ProsemirrorDoc;
   licenseKey?: string;
-  onChange?: (doc: IProsemirrorDoc) => void;
+  onChange?: (doc: ProsemirrorDoc) => void;
   spellCheck?: boolean;
-  styleConfig?: IEditorStyleConfig;
-  theme?: IEditorTheme;
+  styleConfig?: EditorStyleConfig;
+  theme?: EditorTheme;
 }
 
-const Editor: FunctionComponent<IEditor> = ({
+const Editor: FunctionComponent<EditorProps> = ({
   licenseKey = '',
   theme,
   styleConfig,

@@ -5,15 +5,15 @@ import { ToolbarButton, Icon, Space } from 'nib-ui';
 
 import formatKeymap from '../../../utils/format-keymap';
 import { KeymapInfo } from '../keymaps';
-import { IBlockOption } from '../blockData';
+import { BlockOption } from '../blockData';
 
-export interface IUngroupedMenu {
-  options: IBlockOption[];
+export interface UngroupedMenuProps {
+  options: BlockOption[];
   selectedBlockType: string;
   onChange: (blockType: string) => void;
 }
 
-const Ungrouped: FunctionComponent<IUngroupedMenu> = ({
+const Ungrouped: FunctionComponent<UngroupedMenuProps> = ({
   options,
   selectedBlockType,
   onChange,

@@ -1,7 +1,7 @@
 import formatKeymap from '../../utils/format-keymap';
 import { KeymapInfo } from './keymaps';
 
-export interface IBlockOption {
+export interface BlockOption {
   value: {
     blockType: string;
     tag: string;
@@ -10,7 +10,7 @@ export interface IBlockOption {
   label: string;
 }
 
-const blockData: IBlockOption[] = [
+const blockData: BlockOption[] = [
   {
     value: {
       blockType: 'paragraph',

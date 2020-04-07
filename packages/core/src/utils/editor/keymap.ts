@@ -2,13 +2,13 @@ import { EditorState } from 'prosemirror-state';
 import { baseKeymap } from 'prosemirror-commands';
 import { keymap } from 'prosemirror-keymap';
 
-import { IEditorKeymapCommand } from '../../types/components';
+import { EditorKeymapCommand } from '../../types/components';
 import {
-  IProsemirrorCommand,
-  IProsemirrorDispatch,
-  IProsemirrorViewProvider,
+  ProsemirrorCommand,
+  ProsemirrorDispatch,
+  ProsemirrorViewProvider,
 } from '../../types/prosemirror';
-import { IEditorPlugin } from '../../types/components';
+import { EditorPlugin } from '../../types/components';
 
 /**
  * Builds an array of keymap.
@@ -16,8 +16,8 @@ import { IEditorPlugin } from '../../types/components';
  * Each sub-array is array for one key handlers, eg all handlers for Enter.
  */
 const addKeyMaps = (
-  oldKeymap: IEditorKeymapCommandList,
-  newKeyMap: IEditorKeymapCommand
+  oldKeymap: EditorKeymapCommandList,
+  newKeyMap: EditorKeymapCommand
 ) => {
   const map = { ...oldKeymap };
   Object.keys(newKeyMap).forEach((key) => {
@@ -34,11 +34,11 @@ const addKeyMaps = (
  * Combine all handlers for one key.
  */
 const combineKeyMaps = (
-  keyMaps: IEditorKeymapCommandList
-): IEditorKeymapCommand => {
-  const map: IEditorKeymapCommand = {};
+  keyMaps: EditorKeymapCommandList
+): EditorKeymapCommand => {
+  const map: EditorKeymapCommand = {};
   Object.keys(keyMaps).forEach((key) => {
-    map[key] = (editorState: EditorState, dispatch: IProsemirrorDispatch) => {
+    map[key] = (editorState: EditorState, dispatch: ProsemirrorDispatch) => {
       let result = false;
       for (let i = 0; i < keyMaps[key].length; i += 1) {
         if (keyMaps[key][i](editorState, dispatch)) {
@@ -52,15 +52,15 @@ const combineKeyMaps = (
   return map;
 };
 
-export interface IEditorKeymapCommandList {
-  [key: string]: IProsemirrorCommand[];
+export interface EditorKeymapCommandList {
+  [key: string]: ProsemirrorCommand[];
 }
 
 export default (
-  plugins: IEditorPlugin[],
-  viewProvider?: IProsemirrorViewProvider
+  plugins: EditorPlugin[],
+  viewProvider?: ProsemirrorViewProvider
 ) => {
-  let addedMap: IEditorKeymapCommandList = {};
+  let addedMap: EditorKeymapCommandList = {};
   plugins.forEach((plugin) => {
     if (plugin && plugin.keymaps) {
       addedMap = addKeyMaps(addedMap, plugin.keymaps(viewProvider));

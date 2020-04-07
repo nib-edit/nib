@@ -7,21 +7,21 @@ import getPluginStyles from '../../utils/editor/styles';
 import { buildEditorState, updateEditorState } from '../../utils/editor/state';
 import { getPluginList } from '../../utils/editor/plugins';
 import { useConfigContext } from '../../context/config';
-import { IProsemirrorDoc } from '../../types/prosemirror';
-import { IAddon } from '../../types/addon';
+import { ProsemirrorDoc } from '../../types/prosemirror';
+import { Addon } from '../../types/addon';
 
 import { StyledEditor } from './styles';
 
-interface IEditor {
-  addons?: IAddon[];
+interface EditorProps {
+  addons?: Addon[];
   autoFocus?: boolean;
-  defaultValue?: IProsemirrorDoc;
+  defaultValue?: ProsemirrorDoc;
   licenseKey?: string;
-  onChange?: (doc: IProsemirrorDoc) => void;
+  onChange?: (doc: ProsemirrorDoc) => void;
   spellCheck?: boolean;
 }
 
-const Editor: FunctionComponent<IEditor> = ({
+const Editor: FunctionComponent<EditorProps> = ({
   addons = [],
   autoFocus = false,
   defaultValue,
@@ -39,7 +39,7 @@ const Editor: FunctionComponent<IEditor> = ({
 
   const updateViewListeners = () => {
     dispatcher.dispatch(view);
-    addons.forEach((addon: IAddon) => {
+    addons.forEach((addon: Addon) => {
       if (addon.viewUpdateCallback) addon.viewUpdateCallback(view);
     });
   };
@@ -54,7 +54,7 @@ const Editor: FunctionComponent<IEditor> = ({
       dispatchTransaction: (tr: Transaction) => {
         let editorState = view!.state.apply(tr);
 
-        addons.forEach((addon: IAddon) => {
+        addons.forEach((addon: Addon) => {
           if (addon.dispatchTransactionCallback)
             editorState = addon.dispatchTransactionCallback(editorState, tr);
         });
@@ -62,7 +62,7 @@ const Editor: FunctionComponent<IEditor> = ({
         updateEditorState(view!, editorState);
         updateViewListeners();
         const serializableState = view!.state.toJSON();
-        addons.forEach((addon: IAddon) => {
+        addons.forEach((addon: Addon) => {
           const { name, getSerializableState } = addon;
           if (getSerializableState)
             serializableState[name] = getSerializableState();
@@ -73,15 +73,15 @@ const Editor: FunctionComponent<IEditor> = ({
     if (autoFocus) {
       view.focus();
     }
-    addons.forEach((addon: IAddon) => {
+    addons.forEach((addon: Addon) => {
       if (addon.createStateFromDoc)
-        addon.createStateFromDoc((doc: IProsemirrorDoc) => {
+        addon.createStateFromDoc((doc: ProsemirrorDoc) => {
           const editorState = buildEditorState(pluginList, doc);
           view!.updateState(editorState);
         });
     });
     updateViewListeners();
-    addons.forEach((addon: IAddon) => {
+    addons.forEach((addon: Addon) => {
       if (addon.updateLicenseInfo)
         addon.updateLicenseInfo(editorRef.current, licenseKey);
       if (defaultValue && defaultValue[addon.name] && addon.init)

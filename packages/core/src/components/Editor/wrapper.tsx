@@ -10,14 +10,14 @@ import { useConfigContext } from '../../context/config';
 
 import InnerEditor from './editor';
 import { StyledWrapper } from './styles';
-import { IAddon } from '../../types/addon';
+import { Addon } from '../../types/addon';
 
-interface IWrapper {
-  addons?: IAddon[];
+interface WrapperProps {
+  addons?: Addon[];
   licenseKey?: string;
 }
 
-const Wrapper: FunctionComponent<IWrapper> = (props) => {
+const Wrapper: FunctionComponent<WrapperProps> = (props) => {
   const [licenseCheckFail, setLicenseCheckFail] = useState(false);
   const editorWrapper = useRef<HTMLDivElement | null>(null);
   const {

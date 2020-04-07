@@ -1,6 +1,6 @@
-import { IPluginStyleFn } from '../../types/application';
+import { PluginStyleFn } from '../../types/application';
 
-const styleFunction: IPluginStyleFn = () => `
+const styleFunction: PluginStyleFn = () => `
   p {
     display: block;
     margin-block-start: 1em;

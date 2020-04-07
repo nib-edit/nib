@@ -1,9 +1,9 @@
 // todo: more details to be added to this interface
 
 import { ElementType } from 'react';
-import { IEditorPopup } from './components';
+import { EditorPopup } from './components';
 
-export interface IAddon {
+export interface Addon {
   createStateFromDoc?: any;
   dispatchTransactionCallback?: any;
   getSerializableState?: any;
@@ -11,6 +11,6 @@ export interface IAddon {
   name: string;
   updateLicenseInfo?: any;
   viewUpdateCallback?: any;
-  popups?: IEditorPopup[];
+  popups?: EditorPopup[];
   toolbar: ElementType[];
 }

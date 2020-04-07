@@ -3,20 +3,20 @@ import { FunctionComponent, createContext, useContext } from 'react';
 
 import { DefaultConfig } from '../../config/editor';
 import overrideValue from '../../utils/override-value';
-import { IEditorConfig } from '../../types/editor-config';
+import { EditorConfig } from '../../types/editor-config';
 import getDispatcher from './dispatcher';
 
 const dispatcher = getDispatcher();
 
 export const ConfigContext = createContext<any | undefined>(undefined);
 
-interface IConfigContextProvider {
-  config?: IEditorConfig;
+interface ConfigContextProviderProps {
+  config?: EditorConfig;
   licenseKey: string;
   children: any;
 }
 
-export const ConfigContextProvider: FunctionComponent<IConfigContextProvider> = ({
+export const ConfigContextProvider: FunctionComponent<ConfigContextProviderProps> = ({
   config: newConfig,
   licenseKey = '',
   children,

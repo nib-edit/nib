@@ -1,7 +1,7 @@
 // todo: styles to be re-thought
-import { IPluginStyleFn } from '../../types/application';
+import { PluginStyleFn } from '../../types/application';
 
-const styleFunction: IPluginStyleFn = () => `
+const styleFunction: PluginStyleFn = () => `
   .ProseMirror blockquote {
     box-sizing: border-box;
     padding-left: 16px;

@@ -5,18 +5,18 @@ import { ToolbarButton, Icon } from 'nib-ui';
 
 import formatKeymap from '../../utils/format-keymap';
 import { PMStateConsumer } from '../../context/pm-state';
-import { IProsemirrorEditorState } from '../../types/prosemirror';
+import { ProsemirrorEditorState } from '../../types/prosemirror';
 
 import { KeymapInfo } from './keymaps';
 import { blockquotePluginKey } from './plugin';
 import { wrapLiftBlockquote } from './commands';
 
-interface IToolbarComponent {
-  pmstate: IProsemirrorEditorState;
+interface ToolbarComponentProps {
+  pmstate: ProsemirrorEditorState;
   config: { options: string; grouped: boolean };
 }
 
-const ToolbarComponent: FunctionComponent<IToolbarComponent> = (props) => {
+const ToolbarComponent: FunctionComponent<ToolbarComponentProps> = (props) => {
   const wrapInBlockquote = () => {
     const { pmstate } = props;
     const { pmview } = pmstate;
