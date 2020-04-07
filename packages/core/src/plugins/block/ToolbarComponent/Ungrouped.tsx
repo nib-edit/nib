@@ -1,23 +1,23 @@
 import * as React from 'react';
-import { Fragment } from 'react';
+import { FunctionComponent, Fragment } from 'react';
 
 import { ToolbarButton, Icon, Space } from 'nib-ui';
 
 import formatKeymap from '../../../utils/format-keymap';
 import { KeymapInfo } from '../keymaps';
-import { BlockOption } from '../blockData';
+import { IBlockOption } from '../blockData';
 
-export interface UngroupedMenuProps {
-  options: BlockOption[];
+export interface IUngroupedMenu {
+  options: IBlockOption[];
   selectedBlockType: string;
   onChange: (blockType: string) => void;
 }
 
-const Ungrouped = ({
+const Ungrouped: FunctionComponent<IUngroupedMenu> = ({
   options,
   selectedBlockType,
   onChange,
-}: UngroupedMenuProps) => (
+}) => (
   <>
     {options.map((opt, index) => {
       const isSelected = opt.value.blockType === selectedBlockType;

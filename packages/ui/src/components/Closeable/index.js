@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 
 const Closeable = (WrappedComponent) => {
   class CloseableHOC extends Component {
-    wrapperRef = React.createRef();
+    wrapperRef = createRef();
 
     componentDidMount() {
       window.addEventListener('keydown', this.handleKeyPress);

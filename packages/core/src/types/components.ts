@@ -3,40 +3,30 @@ import { EditorState, Plugin } from 'prosemirror-state';
 import { EditorView } from 'prosemirror-view';
 import { Schema } from 'prosemirror-model';
 
-import { ProsemirrorCommand, ProsemirrorViewProvider } from './prosemirror';
+import { IProsemirrorCommand, IProsemirrorViewProvider } from './prosemirror';
 
-export interface EditorPopup {
+export interface IEditorPopup {
   name: string;
   getMarker: (pmview?: EditorView) => Element;
   condition?: ({ state }: { state: EditorState }) => boolean;
   component: ElementType;
 }
 
-export interface EditorKeymap {
-  (viewProvider?: ProsemirrorViewProvider): {
-    [key: string]: ProsemirrorCommand;
+export interface IEditorKeymap {
+  (viewProvider?: IProsemirrorViewProvider): {
+    [key: string]: IProsemirrorCommand;
   };
 }
 
-export interface EditorKeymapCommand {
-  [key: string]: ProsemirrorCommand;
+export interface IEditorKeymapCommand {
+  [key: string]: IProsemirrorCommand;
 }
 
-export interface EditorPlugin {
+export interface IEditorPlugin {
   name: string;
   toolbarComponent: ElementType;
-  keymaps: EditorKeymap;
+  keymaps: IEditorKeymap;
   pmPlugins?: Plugin[];
   pmPlugin?: Plugin;
   schema: Schema;
 }
-
-// {
-//   KeymapInfo,
-//     keymaps,
-//     name: 'block',
-//       pmPlugin,
-//       schema,
-//       styles,
-//       toolbarComponent,
-// };

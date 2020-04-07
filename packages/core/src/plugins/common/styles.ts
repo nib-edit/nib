@@ -1,6 +1,6 @@
-import { PluginStyleFunction } from '../../types/application';
+import { IPluginStyleFn } from '../../types/application';
 
-const styleFunction: PluginStyleFunction = ({ constants }) => `
+const styleFunction: IPluginStyleFn = ({ constants }) => `
   .nib-selection-blur-marker {
     background-color: ${constants.color.blurMarker};
   }

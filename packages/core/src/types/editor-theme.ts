@@ -1,10 +1,10 @@
-import { KeyValueObj } from './common';
+import { IKeyValue } from './common';
 
-export interface EditorTheme {
-  color: KeyValueObj;
-  fontSize: KeyValueObj;
-  fontWeight: KeyValueObj;
-  borderRadius: KeyValueObj;
-  border: KeyValueObj;
-  boxShadow: KeyValueObj;
+export interface IEditorTheme {
+  color: IKeyValue;
+  fontSize: IKeyValue;
+  fontWeight: IKeyValue;
+  borderRadius: IKeyValue;
+  border: IKeyValue;
+  boxShadow: IKeyValue;
 }

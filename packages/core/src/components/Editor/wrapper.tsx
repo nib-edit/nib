@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useRef, useEffect, useState } from 'react';
+import { FunctionComponent, useRef, useEffect, useState } from 'react';
 import axios from 'axios';
 
 import styled from '@emotion/styled';
@@ -10,14 +10,14 @@ import { useConfigContext } from '../../context/config';
 
 import InnerEditor from './editor';
 import { StyledWrapper } from './styles';
-import { Addon } from '../../types/addon';
+import { IAddon } from '../../types/addon';
 
-interface WrapperProps {
-  addons?: Addon[];
+interface IWrapper {
+  addons?: IAddon[];
   licenseKey?: string;
 }
 
-const Wrapper = (props: WrapperProps) => {
+const Wrapper: FunctionComponent<IWrapper> = (props) => {
   const [licenseCheckFail, setLicenseCheckFail] = useState(false);
   const editorWrapper = useRef<HTMLDivElement | null>(null);
   const {

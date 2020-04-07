@@ -1,34 +1,34 @@
 import * as React from 'react';
-import { useEffect, useState, useRef } from 'react';
+import { FunctionComponent, useEffect, useState, useRef } from 'react';
 import { EditorView } from 'prosemirror-view';
+import { Transaction } from 'prosemirror-state';
 
 import getPluginStyles from '../../utils/editor/styles';
 import { buildEditorState, updateEditorState } from '../../utils/editor/state';
 import { getPluginList } from '../../utils/editor/plugins';
 import { useConfigContext } from '../../context/config';
+import { IProsemirrorDoc } from '../../types/prosemirror';
+import { IAddon } from '../../types/addon';
 
 import { StyledEditor } from './styles';
-import { Addon } from '../../types/addon';
-import { Transaction } from 'prosemirror-state';
-import { ProsemirrorDoc } from '../../types/prosemirror';
 
-interface EditorProps {
-  addons?: Addon[];
+interface IEditor {
+  addons?: IAddon[];
   autoFocus?: boolean;
-  defaultValue?: ProsemirrorDoc;
+  defaultValue?: IProsemirrorDoc;
   licenseKey?: string;
-  onChange?: (doc: ProsemirrorDoc) => void;
+  onChange?: (doc: IProsemirrorDoc) => void;
   spellCheck?: boolean;
 }
 
-const Editor = ({
+const Editor: FunctionComponent<IEditor> = ({
   addons = [],
   autoFocus = false,
   defaultValue,
   licenseKey,
   onChange = () => {},
   spellCheck = false,
-}: EditorProps) => {
+}) => {
   const editorRef = useRef<HTMLDivElement>(null);
   const {
     config: { plugins },
@@ -39,7 +39,7 @@ const Editor = ({
 
   const updateViewListeners = () => {
     dispatcher.dispatch(view);
-    addons.forEach((addon: Addon) => {
+    addons.forEach((addon: IAddon) => {
       if (addon.viewUpdateCallback) addon.viewUpdateCallback(view);
     });
   };
@@ -54,7 +54,7 @@ const Editor = ({
       dispatchTransaction: (tr: Transaction) => {
         let editorState = view!.state.apply(tr);
 
-        addons.forEach((addon: Addon) => {
+        addons.forEach((addon: IAddon) => {
           if (addon.dispatchTransactionCallback)
             editorState = addon.dispatchTransactionCallback(editorState, tr);
         });
@@ -62,7 +62,7 @@ const Editor = ({
         updateEditorState(view!, editorState);
         updateViewListeners();
         const serializableState = view!.state.toJSON();
-        addons.forEach((addon: Addon) => {
+        addons.forEach((addon: IAddon) => {
           const { name, getSerializableState } = addon;
           if (getSerializableState)
             serializableState[name] = getSerializableState();
@@ -73,15 +73,15 @@ const Editor = ({
     if (autoFocus) {
       view.focus();
     }
-    addons.forEach((addon: Addon) => {
+    addons.forEach((addon: IAddon) => {
       if (addon.createStateFromDoc)
-        addon.createStateFromDoc((doc: ProsemirrorDoc) => {
+        addon.createStateFromDoc((doc: IProsemirrorDoc) => {
           const editorState = buildEditorState(pluginList, doc);
           view!.updateState(editorState);
         });
     });
     updateViewListeners();
-    addons.forEach((addon: Addon) => {
+    addons.forEach((addon: IAddon) => {
       if (addon.updateLicenseInfo)
         addon.updateLicenseInfo(editorRef.current, licenseKey);
       if (defaultValue && defaultValue[addon.name] && addon.init)

@@ -1,3 +1,3 @@
-export interface KeyValueObj {
+export interface IKeyValue {
   [key: string]: any;
 }

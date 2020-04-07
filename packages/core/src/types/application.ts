@@ -1,16 +1,16 @@
-import { EditorStyle } from './editor-style';
+import { IEditorStyle } from './editor-style';
 
-export interface KeymapInfoType {
+export interface IKeymapInfo {
   key: string;
   label?: string;
 }
 
-export interface KeymapInfoMap {
-  [key: string]: KeymapInfoType;
+export interface IKeymapInfoMap {
+  [key: string]: IKeymapInfo;
 }
 
-export interface PluginStyleFunction {
-  (theme: EditorStyle): string;
+export interface IPluginStyleFn {
+  (theme: IEditorStyle): string;
 }
 
 export type PluginKeyType =

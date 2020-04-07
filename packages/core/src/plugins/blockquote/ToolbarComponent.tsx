@@ -1,21 +1,22 @@
 import * as React from 'react';
+import { FunctionComponent } from 'react';
 
 import { ToolbarButton, Icon } from 'nib-ui';
 
 import formatKeymap from '../../utils/format-keymap';
 import { PMStateConsumer } from '../../context/pm-state';
-import { ProsemirrorEditorState } from '../../types/prosemirror';
+import { IProsemirrorEditorState } from '../../types/prosemirror';
 
 import { KeymapInfo } from './keymaps';
 import { blockquotePluginKey } from './plugin';
 import { wrapLiftBlockquote } from './commands';
 
-interface ToolbarComponentProps {
-  pmstate: ProsemirrorEditorState;
+interface IToolbarComponent {
+  pmstate: IProsemirrorEditorState;
   config: { options: string; grouped: boolean };
 }
 
-const ToolbarComponent = (props: ToolbarComponentProps) => {
+const ToolbarComponent: FunctionComponent<IToolbarComponent> = (props) => {
   const wrapInBlockquote = () => {
     const { pmstate } = props;
     const { pmview } = pmstate;
