@@ -10,7 +10,7 @@ import { EditorStyleType } from '../../../types/editor-style';
 import { EditorPlugin } from '../../../types/components';
 
 interface InlineProps {
-  editorWrapper: MutableRefObject<HTMLDivElement | null>;
+  editorWrapper: MutableRefObject<HTMLDivElement>;
   marker: Element;
 }
 

@@ -10,7 +10,7 @@ export interface KeymapInfoMap {
 }
 
 export interface PluginStyleFunction {
-  (theme?: EditorStyleType): string;
+  (theme: EditorStyleType): string;
 }
 
 export type PluginKeyType =
