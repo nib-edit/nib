@@ -8,7 +8,6 @@ import {
   ProsemirrorViewProvider,
   ProsemirrorDoc,
 } from '../../types/prosemirror';
-import { KeyValueType } from '../../types/common';
 import { EditorPlugin } from '../../types/components';
 
 const defaultContent = {

@@ -1,10 +1,10 @@
 import { setBlockType } from 'prosemirror-commands';
 import { EditorState } from 'prosemirror-state';
-import { KeyValueType } from '../../types/common';
+import { KeyValueObj } from '../../types/common';
 import { KeymapInfoMap } from '../../types/application';
 import { ProsemirrorDispatch } from '../../types/prosemirror';
 
-const changeBlockType = (blockTypeName: string, attrs?: KeyValueType) => (
+const changeBlockType = (blockTypeName: string, attrs?: KeyValueObj) => (
   state: EditorState,
   dispatch: ProsemirrorDispatch
 ) => {

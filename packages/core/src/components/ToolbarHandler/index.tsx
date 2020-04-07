@@ -3,12 +3,12 @@ import { MutableRefObject } from 'react';
 import { withTheme } from 'emotion-theming';
 
 import { usePMStateContext } from '../../context/pm-state';
-import { ThemeType } from '../../types/editor-theme';
+import { EditorTheme } from '../../types/editor-theme';
 import { Addon } from '../../types/addon';
 
 interface PopupHandlerProps {
   plugins: Addon[];
-  theme: ThemeType;
+  theme: EditorTheme;
   editorWrapper: MutableRefObject<HTMLDivElement | null>;
 }
 

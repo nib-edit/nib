@@ -1,3 +1,3 @@
-export interface KeyValueType {
+export interface KeyValueObj {
   [key: string]: any;
 }

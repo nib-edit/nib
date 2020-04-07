@@ -1,8 +1,8 @@
-import { KeyValueType } from './common';
+import { KeyValueObj } from './common';
 import { EditorView } from 'prosemirror-view';
 import { EditorState, Transaction } from 'prosemirror-state';
 
-export interface ProsemirrorDoc extends KeyValueType {}
+export interface ProsemirrorDoc extends KeyValueObj {}
 
 export interface ProsemirrorEditorState {
   pmview: EditorView;

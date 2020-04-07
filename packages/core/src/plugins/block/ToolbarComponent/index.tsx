@@ -8,7 +8,7 @@ import options from '../blockData';
 import Grouped from './Grouped';
 import Ungrouped from './Ungrouped';
 import { ProsemirrorEditorState } from '../../../types/prosemirror';
-import { KeyValueType } from '../../../types/common';
+import { KeyValueObj } from '../../../types/common';
 
 interface ToolbarComponentProps {
   pmstate: ProsemirrorEditorState;
@@ -79,7 +79,7 @@ const ToolbarComponent = (props: ToolbarComponentProps) => {
   );
 };
 
-export default (props: KeyValueType) => (
+export default (props: any) => (
   <ConfigContextConsumer>
     {({ config }) => (
       <PMStateConsumer>

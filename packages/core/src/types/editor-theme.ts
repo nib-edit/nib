@@ -1,10 +1,10 @@
-import { KeyValueType } from './common';
+import { KeyValueObj } from './common';
 
-export interface ThemeType {
-  color: KeyValueType;
-  fontSize: KeyValueType;
-  fontWeight: KeyValueType;
-  borderRadius: KeyValueType;
-  border: KeyValueType;
-  boxShadow: KeyValueType;
+export interface EditorTheme {
+  color: KeyValueObj;
+  fontSize: KeyValueObj;
+  fontWeight: KeyValueObj;
+  borderRadius: KeyValueObj;
+  border: KeyValueObj;
+  boxShadow: KeyValueObj;
 }

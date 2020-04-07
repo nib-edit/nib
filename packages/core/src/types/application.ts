@@ -1,4 +1,4 @@
-import { EditorStyleType } from './editor-style';
+import { EditorStyle } from './editor-style';
 
 export interface KeymapInfoType {
   key: string;
@@ -10,7 +10,7 @@ export interface KeymapInfoMap {
 }
 
 export interface PluginStyleFunction {
-  (theme: EditorStyleType): string;
+  (theme: EditorStyle): string;
 }
 
 export type PluginKeyType =

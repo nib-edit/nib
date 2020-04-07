@@ -6,8 +6,8 @@ import { ConfigContextProvider } from '../../context/config';
 import { PMStateProvider } from '../../context/pm-state';
 
 import EditorWrapper from './wrapper';
-import { ThemeType } from '../../types/editor-theme';
-import { StyleConfigType } from '../../types/editor-style';
+import { EditorTheme } from '../../types/editor-theme';
+import { EditorStyleConfig } from '../../types/editor-style';
 import { EditorConfig } from '../../types/editor-config';
 import { Addon } from '../../types/addon';
 import { ProsemirrorDoc } from '../../types/prosemirror';
@@ -20,8 +20,8 @@ interface EditorProps {
   licenseKey?: string;
   onChange?: (doc: ProsemirrorDoc) => void;
   spellCheck?: boolean;
-  styleConfig?: StyleConfigType;
-  theme?: ThemeType;
+  styleConfig?: EditorStyleConfig;
+  theme?: EditorTheme;
 }
 
 const Editor = ({

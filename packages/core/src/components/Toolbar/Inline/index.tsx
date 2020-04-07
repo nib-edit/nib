@@ -6,7 +6,7 @@ import { Popup, Separator } from 'nib-ui';
 import getToolbarComponents from '../../../utils/editor/toolbar';
 import { useConfigContext } from '../../../context/config';
 import { usePMStateContext } from '../../../context/pm-state';
-import { EditorStyleType } from '../../../types/editor-style';
+import { EditorStyle } from '../../../types/editor-style';
 import { EditorPlugin } from '../../../types/components';
 
 interface InlineProps {
@@ -58,7 +58,7 @@ const Wrapper: StyledComponent<any, any, any> = styled.div(
     border: 'none',
     userSelect: 'none',
   },
-  ({ theme: { constants, toolbar } }: { theme: EditorStyleType }) => ({
+  ({ theme: { constants, toolbar } }: { theme: EditorStyle }) => ({
     backgroundColor: constants.color.background.primary,
     color: constants.color.text.primary,
     fontSize: constants.fontSize.medium,

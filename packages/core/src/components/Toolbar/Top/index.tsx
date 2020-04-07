@@ -9,7 +9,7 @@ import { useConfigContext } from '../../../context/config';
 import { PMStateConsumer } from '../../../context/pm-state';
 import { Addon } from '../../../types/addon';
 import { EditorPlugin } from '../../../types/components';
-import { EditorStyleType } from '../../../types/editor-style';
+import { EditorStyle } from '../../../types/editor-style';
 import { ProsemirrorEditorState } from '../../../types/prosemirror';
 
 interface TopProps {
@@ -72,7 +72,7 @@ const Wrapper: StyledComponent<any, any, any> = styled.div(
     userSelect: 'none',
     zIndex: 1,
   },
-  ({ theme: { constants, toolbar } }: { theme: EditorStyleType }) => ({
+  ({ theme: { constants, toolbar } }: { theme: EditorStyle }) => ({
     backgroundColor: constants.color.background.primary,
     color: constants.color.text.primary,
     borderBottom: constants.border.primary,
