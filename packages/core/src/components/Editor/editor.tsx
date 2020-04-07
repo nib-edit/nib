@@ -11,6 +11,7 @@ import { ProsemirrorDoc } from '../../types/prosemirror';
 import { Addon } from '../../types/addon';
 
 import { StyledEditor } from './styles';
+import { EditorPlugin } from '../../types/application';
 
 interface EditorProps {
   addons?: Addon[];
@@ -45,9 +46,10 @@ const Editor: FunctionComponent<EditorProps> = ({
   };
 
   useEffect(() => {
-    const pluginList = getPluginList(
+    let pluginList: Array<EditorPlugin | Addon> = getPluginList(
       `${plugins.options} history common`
-    ).concat(addons);
+    );
+    pluginList = pluginList.concat(addons);
     const state = buildEditorState(pluginList, defaultValue, viewProvider);
     view = new EditorView(editorRef.current!, {
       state,

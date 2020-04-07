@@ -26,7 +26,10 @@ class PopupHandler extends PureComponent<PopupHandlerProps> {
   componentDidMount() {
     const { config, addons = [] } = this.props;
     const { plugins, toolbar } = config;
-    this.popups = getPropertyFromPlugins(plugins!.options!, 'popups');
+    this.popups = getPropertyFromPlugins(
+      plugins!.options!,
+      'popups'
+    ) as EditorPopup[];
     addons.forEach((addon) => {
       if (addon.popups) {
         this.popups = [...this.popups, ...addon.popups];

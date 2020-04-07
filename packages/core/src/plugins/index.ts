@@ -8,8 +8,9 @@ import image from './image';
 import inline from './inline';
 import link from './link';
 import list from './list';
+import { EditorPlugin } from '../types/application';
 
-const Plugins = {
+const Plugins: { [key: string]: EditorPlugin } = {
   block,
   blockquote,
   common,

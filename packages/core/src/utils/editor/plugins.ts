@@ -1,9 +1,8 @@
 import { Plugin } from 'prosemirror-state';
 
 import Plugins from '../../plugins';
-import { EditorPlugin } from '../../types/components';
+import { EditorPlugin } from '../../types/application';
 import { Addon } from '../../types/addon';
-import { PluginKeyType } from '../../types/application';
 
 export const getProsemirrorPlugins = (plugins: EditorPlugin[]) => {
   let pluginList: Plugin[] = [];
@@ -23,10 +22,9 @@ export const getPluginList = (plugins: string) =>
   plugins
     .trim()
     .split(' ')
-    .map((key) => Plugins[key as PluginKeyType]);
+    .map((key) => Plugins[key]);
 
 export const getPluginArray = (plugins: string[], addons: Addon[]) =>
   plugins.map(
-    (key) =>
-      Plugins[key as PluginKeyType] || addons.find((a: Addon) => a.name === key)
+    (key) => Plugins[key] || addons.find((a: Addon) => a.name === key)
   );

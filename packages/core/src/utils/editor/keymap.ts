@@ -2,13 +2,12 @@ import { EditorState } from 'prosemirror-state';
 import { baseKeymap } from 'prosemirror-commands';
 import { keymap } from 'prosemirror-keymap';
 
-import { EditorKeymapCommand } from '../../types/components';
+import { EditorKeymapCommand, EditorPlugin } from '../../types/application';
 import {
   ProsemirrorCommand,
   ProsemirrorDispatch,
   ProsemirrorViewProvider,
 } from '../../types/prosemirror';
-import { EditorPlugin } from '../../types/components';
 
 /**
  * Builds an array of keymap.

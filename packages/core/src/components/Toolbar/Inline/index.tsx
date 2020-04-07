@@ -7,7 +7,7 @@ import getToolbarComponents from '../../../utils/editor/toolbar';
 import { useConfigContext } from '../../../context/config';
 import { usePMStateContext } from '../../../context/pm-state';
 import { EditorStyle } from '../../../types/editor-style';
-import { EditorPlugin } from '../../../types/components';
+import { EditorPlugin } from '../../../types/application';
 
 interface InlineProps {
   editorWrapper: MutableRefObject<HTMLDivElement>;
@@ -38,12 +38,15 @@ const Inline: FunctionComponent<InlineProps> = ({ editorWrapper, marker }) => {
       marker={marker}
       render={() => (
         <Wrapper onMouseDown={(e: Event) => e.preventDefault()}>
-          {options.map((Option: EditorPlugin, index: number) => (
-            <Fragment key={`inline-toolbar-option-${Option.name}`}>
-              <Option.toolbarComponent config={toolbar.inline[Option.name]} />
-              {index < options.length - 1 && <Separator />}
-            </Fragment>
-          ))}
+          {options.map((Option: EditorPlugin, index: number) => {
+            if (!Option.toolbarComponent) return null;
+            return (
+              <Fragment key={`inline-toolbar-option-${Option.name}`}>
+                <Option.toolbarComponent config={toolbar.inline[Option.name]} />
+                {index < options.length - 1 && <Separator />}
+              </Fragment>
+            );
+          })}
         </Wrapper>
       )}
     />

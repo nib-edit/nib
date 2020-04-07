@@ -8,7 +8,7 @@ import {
   ProsemirrorViewProvider,
   ProsemirrorDoc,
 } from '../../types/prosemirror';
-import { EditorPlugin } from '../../types/components';
+import { EditorPlugin } from '../../types/application';
 
 const defaultContent = {
   doc: {
