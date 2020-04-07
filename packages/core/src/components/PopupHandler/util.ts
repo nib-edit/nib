@@ -1,17 +1,18 @@
 import * as React from 'react';
-import { EditorPopup } from '../../types/components';
-import { ProsemirrorEditorState } from '../../types/prosemirror';
+import { ElementType } from 'react';
+import { IEditorPopup } from '../../types/components';
+import { IProsemirrorEditorState } from '../../types/prosemirror';
 
-export interface VisiblePopup {
+export interface IVisiblePopup {
   marker: Element;
   name: string;
-  PopupComponent: React.ElementType;
+  PopupComponent: ElementType;
 }
 
 export const getVisiblePopups = (
-  pmstate: ProsemirrorEditorState,
-  popups: EditorPopup[],
-  visiblePopups: VisiblePopup[]
+  pmstate: IProsemirrorEditorState,
+  popups: IEditorPopup[],
+  visiblePopups: IVisiblePopup[]
 ) => {
   const { pmview } = pmstate;
 
@@ -28,7 +29,7 @@ export const getVisiblePopups = (
       if (marker) {
         popupVisible = true;
         let toolbarIndex = newVisiblePopups.findIndex(
-          p => p.name === popup.name
+          (p) => p.name === popup.name
         );
         if (toolbarIndex < 0) {
           toolbarIndex = newVisiblePopups.length;
@@ -42,8 +43,8 @@ export const getVisiblePopups = (
     }
 
     // If popup is no longer visible remove it from newVisiblePopups
-    if (!popupVisible && visiblePopups.find(p => p.name === popup.name)) {
-      newVisiblePopups = newVisiblePopups.filter(p => p.name !== popup.name);
+    if (!popupVisible && visiblePopups.find((p) => p.name === popup.name)) {
+      newVisiblePopups = newVisiblePopups.filter((p) => p.name !== popup.name);
     }
   }
   return newVisiblePopups;

@@ -1,11 +1,11 @@
 import { getPluginArray } from './plugins';
-import { Addon } from '../../types/addon';
-import { EditorPlugin } from '../../types/components';
+import { IAddon } from '../../types/addon';
+import { IEditorPlugin } from '../../types/components';
 
 export default (
   pluginOption: string,
   toolbarOptions: string,
-  addons: Addon[] = []
+  addons: IAddon[] = []
 ) => {
   const pluginOpt = pluginOption.trim().split(' ');
   const toolbarOpt = toolbarOptions.trim().split(' ');
@@ -17,7 +17,7 @@ export default (
   );
 
   return getPluginArray(supportedOptions, addons).map(
-    (plugin: EditorPlugin) => ({
+    (plugin: IEditorPlugin) => ({
       name: plugin.name,
       toolbarComponent: plugin.toolbarComponent,
     })

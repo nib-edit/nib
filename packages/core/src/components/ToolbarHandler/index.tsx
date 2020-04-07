@@ -1,22 +1,22 @@
 import * as React from 'react';
-import { MutableRefObject } from 'react';
+import { FunctionComponent, MutableRefObject } from 'react';
 import { withTheme } from 'emotion-theming';
 
 import { usePMStateContext } from '../../context/pm-state';
-import { ThemeType } from '../../types/editor-theme';
-import { Addon } from '../../types/addon';
+import { IEditorTheme } from '../../types/editor-theme';
+import { IAddon } from '../../types/addon';
 
-interface PopupHandlerProps {
-  plugins: Addon[];
-  theme: ThemeType;
+interface IPopupHandler {
+  plugins: IAddon[];
+  theme: IEditorTheme;
   editorWrapper: MutableRefObject<HTMLDivElement | null>;
 }
 
-const ToolbarHandler = ({
+const ToolbarHandler: FunctionComponent<IPopupHandler> = ({
   editorWrapper,
   plugins,
   theme,
-}: PopupHandlerProps) => {
+}) => {
   const { pmstate } = usePMStateContext();
   return (
     <>

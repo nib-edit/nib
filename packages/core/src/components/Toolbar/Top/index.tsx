@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Fragment, MutableRefObject } from 'react';
+import { FunctionComponent, Fragment, MutableRefObject } from 'react';
 import styled, { StyledComponent } from '@emotion/styled';
 
 import { Separator } from 'nib-ui';
@@ -7,18 +7,22 @@ import { Separator } from 'nib-ui';
 import getToolbarComponents from '../../../utils/editor/toolbar';
 import { useConfigContext } from '../../../context/config';
 import { PMStateConsumer } from '../../../context/pm-state';
-import { Addon } from '../../../types/addon';
-import { EditorPlugin } from '../../../types/components';
-import { EditorStyleType } from '../../../types/editor-style';
-import { ProsemirrorEditorState } from '../../../types/prosemirror';
+import { IAddon } from '../../../types/addon';
+import { IEditorPlugin } from '../../../types/components';
+import { IEditorStyle } from '../../../types/editor-style';
+import { IProsemirrorEditorState } from '../../../types/prosemirror';
 
-interface TopProps {
+interface ITop {
   editorWrapper: MutableRefObject<HTMLDivElement | null>;
-  addons?: Addon[];
-  pmstate: ProsemirrorEditorState;
+  addons?: IAddon[];
+  pmstate: IProsemirrorEditorState;
 }
 
-const Top = ({ editorWrapper, addons = [], pmstate }: TopProps) => {
+const Top: FunctionComponent<ITop> = ({
+  editorWrapper,
+  addons = [],
+  pmstate,
+}) => {
   if (!pmstate) return null;
   const {
     config: { plugins, toolbar },
@@ -30,16 +34,16 @@ const Top = ({ editorWrapper, addons = [], pmstate }: TopProps) => {
     addons
   );
   const formattingOption = options.filter(
-    (opt: EditorPlugin) => opt.name !== 'help'
+    (opt: IEditorPlugin) => opt.name !== 'help'
   );
   const HelpOption = options.filter(
-    (opt: EditorPlugin) => opt.name === 'help'
+    (opt: IEditorPlugin) => opt.name === 'help'
   )[0];
 
   return (
     <Wrapper onMouseDown={(e: Event) => e.preventDefault()}>
       <ToolbarSection>
-        {formattingOption.map((Option: EditorPlugin, index: number) => (
+        {formattingOption.map((Option: IEditorPlugin, index: number) => (
           <Fragment key={`top-toolbar-option-${Option.name}`}>
             <Option.toolbarComponent
               config={toolbar.top[Option.name]}
@@ -72,7 +76,7 @@ const Wrapper: StyledComponent<any, any, any> = styled.div(
     userSelect: 'none',
     zIndex: 1,
   },
-  ({ theme: { constants, toolbar } }: { theme: EditorStyleType }) => ({
+  ({ theme: { constants, toolbar } }: { theme: IEditorStyle }) => ({
     backgroundColor: constants.color.background.primary,
     color: constants.color.text.primary,
     borderBottom: constants.border.primary,
@@ -88,14 +92,14 @@ const ToolbarSection = styled.div({
   flexWrap: 'wrap',
 });
 
-interface TopWrapperProps {
+interface ITopWrapper {
   editorWrapper: MutableRefObject<HTMLDivElement | null>;
-  addons?: Addon[];
+  addons?: IAddon[];
 }
 
-export default (props: TopWrapperProps) => (
+export default (props: ITopWrapper) => (
   <PMStateConsumer>
-    {({ pmstate }: { pmstate: ProsemirrorEditorState }) => (
+    {({ pmstate }: { pmstate: IProsemirrorEditorState }) => (
       <Top pmstate={pmstate} {...props} />
     )}
   </PMStateConsumer>

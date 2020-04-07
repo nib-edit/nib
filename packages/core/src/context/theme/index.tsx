@@ -1,24 +1,24 @@
 import * as React from 'react';
-import { ReactChild, useState, useEffect } from 'react';
+import { FunctionComponent, ReactChild, useState, useEffect } from 'react';
 import { ThemeProvider } from 'emotion-theming';
 
 import defaultTheme from '../../config/theme';
 import defaultStyleConfig from '../../config/styles';
 import overrideValue from '../../utils/override-value';
-import { ThemeType } from '../../types/editor-theme';
-import { StyleConfigType } from '../../types/editor-style';
+import { IEditorTheme } from '../../types/editor-theme';
+import { IEditorStyleConfig } from '../../types/editor-style';
 
-interface NibThemeProviderProps {
+interface INibThemeProvider {
   children: ReactChild;
-  theme: ThemeType | {};
-  styleConfig: StyleConfigType | {};
+  theme: IEditorTheme | {};
+  styleConfig: IEditorStyleConfig | {};
 }
 
-const NibThemeProvider = ({
+const NibThemeProvider: FunctionComponent<INibThemeProvider> = ({
   children,
   theme,
   styleConfig,
-}: NibThemeProviderProps) => {
+}) => {
   const getTheme = () => {
     const newTheme = overrideValue(defaultStyleConfig, styleConfig);
     newTheme.constants = overrideValue(defaultTheme, theme);

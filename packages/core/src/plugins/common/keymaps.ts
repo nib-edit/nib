@@ -1,18 +1,18 @@
 import { Selection, TextSelection, EditorState } from 'prosemirror-state';
 import {
-  ProsemirrorDispatch,
-  ProsemirrorCommand,
+  IProsemirrorDispatch,
+  IProsemirrorCommand,
 } from '../../types/prosemirror';
 
-const insertHardBreak = (): ProsemirrorCommand => (state, dispatch) => {
+const insertHardBreak = (): IProsemirrorCommand => (state, dispatch) => {
   const { hardBreak } = state.schema.nodes;
   dispatch(state.tr.replaceSelectionWith(hardBreak.create()));
 };
 
 export default () => ({
-  'Shift-Enter': (state: EditorState, dispatch: ProsemirrorDispatch) =>
+  'Shift-Enter': (state: EditorState, dispatch: IProsemirrorDispatch) =>
     insertHardBreak()(state, dispatch),
-  'Mod-a': (state: EditorState, dispatch: ProsemirrorDispatch) => {
+  'Mod-a': (state: EditorState, dispatch: IProsemirrorDispatch) => {
     const textSelection = new TextSelection(
       Selection.atStart(state.doc).$anchor,
       Selection.atEnd(state.doc).$head

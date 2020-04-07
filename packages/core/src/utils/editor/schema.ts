@@ -1,10 +1,10 @@
 import { Schema } from 'prosemirror-model';
 import { nodes } from 'nib-schema';
-import { EditorPlugin } from '../../types/components';
+import { IEditorPlugin } from '../../types/components';
 
-export default (plugins: EditorPlugin[]) => {
+export default (plugins: IEditorPlugin[]) => {
   const schema = plugins
-    .map((p: EditorPlugin) => p && p.schema)
+    .map((p: IEditorPlugin) => p && p.schema)
     .reduce(
       (result, s) => {
         const newResult = result;

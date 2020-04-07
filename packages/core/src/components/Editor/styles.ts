@@ -1,8 +1,7 @@
 import styled, { StyledComponent } from '@emotion/styled';
 
 import BlockPlugin from '../../plugins/block';
-import { EditorStyleType } from '../../types/editor-style';
-import { MutableRefObject, RefObject } from 'react';
+import { IEditorStyle } from '../../types/editor-style';
 
 const prosemirrorStyles = `
   & .ProseMirror {
@@ -44,7 +43,7 @@ const prosemirrorStyles = `
 export const StyledWrapper: StyledComponent<any, any, any> = styled(
   styled.div(
     { position: 'relative', textAlign: 'left' },
-    ({ theme }: { theme: EditorStyleType }) => {
+    ({ theme }: { theme: IEditorStyle }) => {
       const { constants, wrapper } = theme;
       return {
         border: constants.border.primary,
@@ -72,7 +71,8 @@ export const StyledEditor: StyledComponent<any, any, any> = styled(
       position: 'relative',
       textAlign: 'left',
     },
-    ({ theme: { constants, editor } }: { theme: EditorStyleType }) => ({
+    // todo: Fix confusion use of variable theme below
+    ({ theme: { constants, editor } }: { theme: IEditorStyle }) => ({
       backgroundColor: constants.color.background.primary,
       color: constants.color.text.primary,
 
@@ -86,8 +86,8 @@ export const StyledEditor: StyledComponent<any, any, any> = styled(
     theme,
     pluginStyles,
   }: {
-    theme: EditorStyleType;
-    pluginStyles: (theme?: EditorStyleType) => string;
+    theme: IEditorStyle;
+    pluginStyles: (theme?: IEditorStyle) => string;
   }) => pluginStyles(theme)}
   ${prosemirrorStyles}
 `;

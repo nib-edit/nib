@@ -1,11 +1,11 @@
 import { insertParagraphCmd, wrapLiftBlockquote } from './commands';
-import { ProsemirrorDispatch } from '../../types/prosemirror';
+import { IProsemirrorDispatch } from '../../types/prosemirror';
 import { EditorState } from 'prosemirror-state';
 
 export default () => ({
-  Enter: (state: EditorState, dispatch: ProsemirrorDispatch) =>
+  Enter: (state: EditorState, dispatch: IProsemirrorDispatch) =>
     insertParagraphCmd(state, dispatch),
-  "Mod-'": (state: EditorState, dispatch: ProsemirrorDispatch) => {
+  "Mod-'": (state: EditorState, dispatch: IProsemirrorDispatch) => {
     return wrapLiftBlockquote(state, dispatch);
   },
 });

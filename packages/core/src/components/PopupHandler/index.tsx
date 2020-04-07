@@ -1,27 +1,27 @@
 import * as React from 'react';
 import { MutableRefObject, PureComponent } from 'react';
 
-import { VisiblePopup, getVisiblePopups } from './util';
+import { IVisiblePopup, getVisiblePopups } from './util';
 
 import getPropertyFromPlugins from '../../utils/editor/pluginProperty';
 import inlineToolbar from '../Toolbar/Inline';
 import { ConfigContextConsumer } from '../../context/config';
 import { PMStateConsumer } from '../../context/pm-state';
-import { EditorConfig } from '../../types/editor-config';
-import { Addon } from '../../types/addon';
-import { ProsemirrorEditorState } from '../../types/prosemirror';
-import { EditorPopup } from '../../types/components';
+import { IEditorConfig } from '../../types/editor-config';
+import { IAddon } from '../../types/addon';
+import { IProsemirrorEditorState } from '../../types/prosemirror';
+import { IEditorPopup } from '../../types/components';
 
-interface PopupHandlerProps {
-  config: EditorConfig;
-  addons?: Addon[];
-  pmstate: ProsemirrorEditorState;
+interface IPopupHandler {
+  config: IEditorConfig;
+  addons?: IAddon[];
+  pmstate: IProsemirrorEditorState;
   editorWrapper: MutableRefObject<HTMLDivElement | null>;
 }
 
-class PopupHandler extends PureComponent<PopupHandlerProps> {
-  popups: EditorPopup[] = [];
-  visiblePopups: VisiblePopup[] = [];
+class PopupHandler extends PureComponent<IPopupHandler> {
+  popups: IEditorPopup[] = [];
+  visiblePopups: IVisiblePopup[] = [];
 
   componentDidMount() {
     const { config, addons = [] } = this.props;
@@ -65,7 +65,7 @@ class PopupHandler extends PureComponent<PopupHandlerProps> {
           editorWrapper={editorWrapper}
           marker={marker}
         />
-        {tablePopups.map((popup: VisiblePopup) => {
+        {tablePopups.map((popup: IVisiblePopup) => {
           const {
             PopupComponent: TablePopupComponent,
             marker: tableMarker,
@@ -84,16 +84,16 @@ class PopupHandler extends PureComponent<PopupHandlerProps> {
   }
 }
 
-interface PopupWrapperProps {
-  addons?: Addon[];
+interface IPopupWrapper {
+  addons?: IAddon[];
   editorWrapper: MutableRefObject<HTMLDivElement | null>;
 }
 
-export default (props: PopupWrapperProps) => (
+export default (props: IPopupWrapper) => (
   <ConfigContextConsumer>
-    {({ config }: { config: EditorConfig }) => (
+    {({ config }: { config: IEditorConfig }) => (
       <PMStateConsumer>
-        {({ pmstate }: { pmstate: ProsemirrorEditorState }) => (
+        {({ pmstate }: { pmstate: IProsemirrorEditorState }) => (
           <PopupHandler config={config} pmstate={pmstate} {...props} />
         )}
       </PMStateConsumer>

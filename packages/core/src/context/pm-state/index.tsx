@@ -1,18 +1,19 @@
 import * as React from 'react';
-import { PureComponent, useContext } from 'react';
+import { PureComponent, createContext, useContext } from 'react';
+import { EditorView } from 'prosemirror-view';
+
+import { IProsemirrorEditorState } from '../../types/prosemirror';
 
 import { ConfigContext } from '../config';
-import { EditorView } from 'prosemirror-view';
-import { ProsemirrorEditorState } from '../../types/prosemirror';
 
-const PMStateContext = React.createContext<{
-  pmstate: ProsemirrorEditorState | undefined;
+const PMStateContext = createContext<{
+  pmstate: IProsemirrorEditorState | undefined;
 }>({ pmstate: undefined });
 
 export class PMStateProvider extends PureComponent {
   static contextType = ConfigContext;
 
-  state: { pmstate: ProsemirrorEditorState | undefined } = {
+  state: { pmstate: IProsemirrorEditorState | undefined } = {
     pmstate: undefined,
   };
 
@@ -46,3 +47,5 @@ export const PMStateConsumer = PMStateContext.Consumer;
 export const usePMStateContext = () => ({
   ...useContext(PMStateContext),
 });
+
+// todo: evaluate re-wite using hook

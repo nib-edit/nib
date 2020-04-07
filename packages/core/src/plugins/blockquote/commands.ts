@@ -1,13 +1,10 @@
 import { findWrapping, liftTarget } from 'prosemirror-transform';
-import { Selection, EditorState } from 'prosemirror-state';
+import { Selection } from 'prosemirror-state';
 
+import { IProsemirrorCommand } from '../../types/prosemirror';
 import { blockquotePluginKey } from './plugin';
-import { ProsemirrorDispatch } from '../../types/prosemirror';
 
-export const insertParagraphCmd = (
-  state: EditorState,
-  dispatch: ProsemirrorDispatch
-) => {
+export const insertParagraphCmd: IProsemirrorCommand = (state, dispatch) => {
   const { tr, selection } = state;
   const { blockquoteNode } = blockquotePluginKey.getState(state);
   if (blockquoteNode) {
@@ -17,10 +14,7 @@ export const insertParagraphCmd = (
   return false;
 };
 
-const liftBlockquoteCmd = (
-  state: EditorState,
-  dispatch: ProsemirrorDispatch
-) => {
+const liftBlockquoteCmd: IProsemirrorCommand = (state, dispatch) => {
   const { tr } = state;
   const { blockquoteNode } = blockquotePluginKey.getState(state);
   const startPos = tr.doc.resolve(blockquoteNode.start);
@@ -38,10 +32,7 @@ const liftBlockquoteCmd = (
   return true;
 };
 
-const wrapInBlockquoteCmd = (
-  state: EditorState,
-  dispatch: ProsemirrorDispatch
-) => {
+const wrapInBlockquoteCmd: IProsemirrorCommand = (state, dispatch) => {
   const { tr, selection, schema } = state;
   const { nodes } = schema;
   const { blockquote, paragraph } = nodes;
@@ -64,10 +55,7 @@ const wrapInBlockquoteCmd = (
   return true;
 };
 
-export const wrapLiftBlockquote = (
-  state: EditorState,
-  dispatch: ProsemirrorDispatch
-) => {
+export const wrapLiftBlockquote: IProsemirrorCommand = (state, dispatch) => {
   const { blockquoteNode } = blockquotePluginKey.getState(state);
   if (blockquoteNode) return liftBlockquoteCmd(state, dispatch);
   return wrapInBlockquoteCmd(state, dispatch);

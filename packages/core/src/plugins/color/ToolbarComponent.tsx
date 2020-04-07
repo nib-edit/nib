@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { Fragment, MutableRefObject, useState, useRef } from 'react';
+import {
+  FunctionComponent,
+  Fragment,
+  MutableRefObject,
+  useState,
+  useRef,
+} from 'react';
 import styled from '@emotion/styled';
 
 import { Popup, ToolbarButton, Icon } from 'nib-ui';
@@ -7,20 +13,20 @@ import { Popup, ToolbarButton, Icon } from 'nib-ui';
 import { ConfigContextConsumer } from '../../context/config';
 import { PMStateConsumer } from '../../context/pm-state';
 import { colorPluginKey } from './plugin';
-import { ProsemirrorEditorState } from '../../types/prosemirror';
-import { EditorConfig } from '../../types/editor-config';
+import { IProsemirrorEditorState } from '../../types/prosemirror';
+import { IEditorConfig } from '../../types/editor-config';
 
-interface ToolbarComponentProps {
-  pmstate: ProsemirrorEditorState;
-  config: EditorConfig;
+interface IToolbarComponent {
+  pmstate: IProsemirrorEditorState;
+  config: IEditorConfig;
   editorWrapper: MutableRefObject<HTMLDivElement>;
 }
 
-const ToolbarComponent = ({
+const ToolbarComponent: FunctionComponent<IToolbarComponent> = ({
   pmstate,
   config,
   editorWrapper,
-}: ToolbarComponentProps) => {
+}) => {
   const [popupMarker, setPopupMarker] = useState<
     MutableRefObject<HTMLDivElement | undefined>
   >();

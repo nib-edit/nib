@@ -1,20 +1,20 @@
 import * as React from 'react';
-import { Fragment, MutableRefObject } from 'react';
+import { FunctionComponent, Fragment, MutableRefObject } from 'react';
 import styled, { StyledComponent } from '@emotion/styled';
 import { Popup, Separator } from 'nib-ui';
 
 import getToolbarComponents from '../../../utils/editor/toolbar';
 import { useConfigContext } from '../../../context/config';
 import { usePMStateContext } from '../../../context/pm-state';
-import { EditorStyleType } from '../../../types/editor-style';
-import { EditorPlugin } from '../../../types/components';
+import { IEditorStyle } from '../../../types/editor-style';
+import { IEditorPlugin } from '../../../types/components';
 
-interface InlineProps {
+interface IInline {
   editorWrapper: MutableRefObject<HTMLDivElement>;
   marker: Element;
 }
 
-const Inline = ({ editorWrapper, marker }: InlineProps) => {
+const Inline: FunctionComponent<IInline> = ({ editorWrapper, marker }) => {
   if (!marker) return null;
 
   const {
@@ -38,7 +38,7 @@ const Inline = ({ editorWrapper, marker }: InlineProps) => {
       marker={marker}
       render={() => (
         <Wrapper onMouseDown={(e: Event) => e.preventDefault()}>
-          {options.map((Option: EditorPlugin, index: number) => (
+          {options.map((Option: IEditorPlugin, index: number) => (
             <Fragment key={`inline-toolbar-option-${Option.name}`}>
               <Option.toolbarComponent config={toolbar.inline[Option.name]} />
               {index < options.length - 1 && <Separator />}
@@ -58,7 +58,7 @@ const Wrapper: StyledComponent<any, any, any> = styled.div(
     border: 'none',
     userSelect: 'none',
   },
-  ({ theme: { constants, toolbar } }: { theme: EditorStyleType }) => ({
+  ({ theme: { constants, toolbar } }: { theme: IEditorStyle }) => ({
     backgroundColor: constants.color.background.primary,
     color: constants.color.text.primary,
     fontSize: constants.fontSize.medium,

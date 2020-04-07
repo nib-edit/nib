@@ -1,21 +1,21 @@
 import * as React from 'react';
+import { FunctionComponent } from 'react';
 import { setBlockType } from 'prosemirror-commands';
 
 import { PMStateConsumer } from '../../../context/pm-state';
 import { ConfigContextConsumer } from '../../../context/config';
+import { IProsemirrorEditorState } from '../../../types/prosemirror';
 import { blockPluginKey } from '../plugin';
 import options from '../blockData';
 import Grouped from './Grouped';
 import Ungrouped from './Ungrouped';
-import { ProsemirrorEditorState } from '../../../types/prosemirror';
-import { KeyValueType } from '../../../types/common';
 
-interface ToolbarComponentProps {
-  pmstate: ProsemirrorEditorState;
+interface IToolbarComponent {
+  pmstate: IProsemirrorEditorState;
   config: { options: string; grouped: boolean };
 }
 
-const ToolbarComponent = (props: ToolbarComponentProps) => {
+const ToolbarComponent: FunctionComponent<IToolbarComponent> = (props) => {
   const changeBlockType = (blockType: string) => {
     let attrs;
     let blockName;
@@ -79,7 +79,7 @@ const ToolbarComponent = (props: ToolbarComponentProps) => {
   );
 };
 
-export default (props: KeyValueType) => (
+export default (props: any) => (
   <ConfigContextConsumer>
     {({ config }) => (
       <PMStateConsumer>

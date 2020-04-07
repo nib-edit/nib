@@ -1,22 +1,23 @@
 import * as React from 'react';
+import { FunctionComponent } from 'react';
 import { ElementType, useState } from 'react';
 import styled from '@emotion/styled';
-import { BlockOption } from '../blockData';
+import { IBlockOption } from '../blockData';
 
 const SelectHeight = 28;
 const SelectWidth = 112;
 
-interface GroupedMenuProps {
-  options: BlockOption[];
+interface IGroupedMenu {
+  options: IBlockOption[];
   selectedBlockType: string;
   onChange: (blockType: string) => void;
 }
 
-const Grouped = ({
+const Grouped: FunctionComponent<IGroupedMenu> = ({
   options,
   selectedBlockType,
   onChange,
-}: GroupedMenuProps) => {
+}) => {
   const [Select, setSelect] = useState<ElementType | undefined>(undefined);
   import('nib-ui-select').then((args) => {
     const { Select: NibUISelect } = args.default;
@@ -36,7 +37,7 @@ const Grouped = ({
     <Select
       height={SelectHeight}
       width={SelectWidth}
-      onChange={(option: BlockOption) => onChange(option.value.blockType)}
+      onChange={(option: IBlockOption) => onChange(option.value.blockType)}
       options={options}
       selectedOption={selectedOption}
       isSearchable={false}

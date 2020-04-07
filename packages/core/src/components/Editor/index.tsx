@@ -1,36 +1,38 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+import { FunctionComponent } from 'react';
 
 import NibThemeProvider from '../../context/theme';
 import { ConfigContextProvider } from '../../context/config';
 import { PMStateProvider } from '../../context/pm-state';
 
-import EditorWrapper from './wrapper';
-import { ThemeType } from '../../types/editor-theme';
-import { StyleConfigType } from '../../types/editor-style';
-import { EditorConfig } from '../../types/editor-config';
-import { Addon } from '../../types/addon';
-import { ProsemirrorDoc } from '../../types/prosemirror';
+import { IEditorTheme } from '../../types/editor-theme';
+import { IEditorStyleConfig } from '../../types/editor-style';
+import { IEditorConfig } from '../../types/editor-config';
+import { IAddon } from '../../types/addon';
+import { IProsemirrorDoc } from '../../types/prosemirror';
 
-interface EditorProps {
-  addons?: Addon[];
+import EditorWrapper from './wrapper';
+
+interface IEditor {
+  addons?: IAddon[];
   autoFocus?: boolean;
-  config?: EditorConfig;
-  defaultValue?: ProsemirrorDoc;
+  config?: IEditorConfig;
+  defaultValue?: IProsemirrorDoc;
   licenseKey?: string;
-  onChange?: (doc: ProsemirrorDoc) => void;
+  onChange?: (doc: IProsemirrorDoc) => void;
   spellCheck?: boolean;
-  styleConfig?: StyleConfigType;
-  theme?: ThemeType;
+  styleConfig?: IEditorStyleConfig;
+  theme?: IEditorTheme;
 }
 
-const Editor = ({
+const Editor: FunctionComponent<IEditor> = ({
   licenseKey = '',
   theme,
   styleConfig,
   config: propsConfig,
   ...rest
-}: EditorProps) => (
+}) => (
   <NibThemeProvider theme={{ ...theme }} styleConfig={{ ...styleConfig }}>
     <ConfigContextProvider config={propsConfig} licenseKey={licenseKey}>
       <PMStateProvider>
@@ -48,8 +50,8 @@ Editor.propTypes = {
   licenseKey: PropTypes.string,
   onChange: PropTypes.func,
   spellCheck: PropTypes.bool,
-  styleConfig: PropTypes.object,
-  theme: PropTypes.object,
+  styleConfig: PropTypes.any,
+  theme: PropTypes.any,
 };
 
 export default Editor;

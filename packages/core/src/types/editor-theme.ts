@@ -1,10 +1,10 @@
-import { KeyValueType } from './common';
+import { IKeyValue } from './common';
 
-export interface ThemeType {
-  color: KeyValueType;
-  fontSize: KeyValueType;
-  fontWeight: KeyValueType;
-  borderRadius: KeyValueType;
-  border: KeyValueType;
-  boxShadow: KeyValueType;
+export interface IEditorTheme {
+  color: IKeyValue;
+  fontSize: IKeyValue;
+  fontWeight: IKeyValue;
+  borderRadius: IKeyValue;
+  border: IKeyValue;
+  boxShadow: IKeyValue;
 }

@@ -1,6 +1,6 @@
-import { EditorConfig } from '../types/editor-config';
+import { IEditorConfig } from '../types/editor-config';
 
-export const DefaultConfig: EditorConfig = {
+export const DefaultConfig: IEditorConfig = {
   plugins: {
     options: 'block inline color link blockquote list image help',
     color: {

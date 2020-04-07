@@ -1,4 +1,4 @@
-import { KeyValueType } from '../types/common';
+import { IKeyValue } from '../types/common';
 
 /**
  * The function will override values in first object,
@@ -6,7 +6,7 @@ import { KeyValueType } from '../types/common';
  */
 const overrideValue = (obj1: any, obj2: any) => {
   if (obj2 === undefined) return obj1;
-  const result: KeyValueType = {};
+  const result: IKeyValue = {};
   Object.keys(obj1).forEach((key) => {
     if (typeof obj1[key] === 'object') {
       result[key] = overrideValue(obj1[key], obj2[key]);
