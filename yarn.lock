@@ -5361,6 +5361,13 @@ nib-track@2.5.3:
     axios "^0.19.0"
     prosemirror-transform "^1.0.0"
 
+nib-ui@2.4.6:
+  version "2.4.6"
+  resolved "https://registry.yarnpkg.com/nib-ui/-/nib-ui-2.4.6.tgz#17a38fe4ba37a2b707b622a2898d370d9aa7c9ad"
+  integrity sha512-tS82hRQk/OPaDMfmcpg6di5rY7O7aBWMh6HC0QAkY3RzTN3wdHf7f7BEVR5i2FniyZhnhTzmtgFUKt9ysbqUTQ==
+  dependencies:
+    react-select "^3.0.4"
+
 nib-video@0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/nib-video/-/nib-video-0.1.1.tgz#a38203662295630564235a1a8aaee8b938f846e0"
