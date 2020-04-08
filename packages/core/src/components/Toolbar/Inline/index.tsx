@@ -53,7 +53,7 @@ const Inline: FunctionComponent<InlineProps> = ({ editorWrapper, marker }) => {
   );
 };
 
-const Wrapper: StyledComponent<any, any, any> = styled.div(
+const Wrapper = styled.div(
   {
     alignItems: 'center',
     display: 'flex',

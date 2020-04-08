@@ -1,4 +1,4 @@
-import styled, { StyledComponent } from '@emotion/styled';
+import styled from '@emotion/styled';
 
 import BlockPlugin from '../../plugins/block';
 import { EditorStyle } from '../../types/editor-style';
@@ -40,7 +40,7 @@ const prosemirrorStyles = `
 `;
 
 // todo: fix use of any below
-export const StyledWrapper: StyledComponent<any, any, any> = styled(
+export const StyledWrapper = styled(
   styled.div(
     { position: 'relative', textAlign: 'left' },
     ({ theme }: { theme: EditorStyle }) => {
@@ -59,10 +59,10 @@ export const StyledWrapper: StyledComponent<any, any, any> = styled(
     }
   )
 )`
-  ${({ theme }) => BlockPlugin.styles(theme)}
+  ${({ theme }: { theme: EditorStyle }) => BlockPlugin.styles(theme)}
 `;
 
-export const StyledEditor: StyledComponent<any, any, any> = styled(
+export const StyledEditor = styled(
   styled.div(
     {
       border: 'none',

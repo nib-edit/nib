@@ -37,7 +37,7 @@ const Wrapper: FunctionComponent<WrapperProps> = (props) => {
             plugins: addons.map((a) => a.name),
           },
         })
-        .then(({ data }) => {
+        .then(({ data }: { data: { status: string } }) => {
           if (data.status === 'FAIL') setLicenseCheckFail(true);
         });
     }

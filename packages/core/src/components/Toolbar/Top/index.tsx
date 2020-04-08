@@ -64,7 +64,7 @@ const Top: FunctionComponent<TopProps> = ({
   );
 };
 
-const Wrapper: StyledComponent<any, any, any> = styled.div(
+const Wrapper = styled.div(
   {
     alignItems: 'flex-start',
     display: 'flex',

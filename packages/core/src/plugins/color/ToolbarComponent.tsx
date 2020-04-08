@@ -159,9 +159,10 @@ const ColorsWrapper = styled.div`
 `;
 
 const StyledButton = styled(ToolbarButton)`
-  background-color: ${({ color }) => color};
-  border: ${({ selected }) => (selected ? '0.5px solid white' : 'none')};
-  box-shadow: ${({ color, selected }) =>
+  background-color: ${({ color }: { color: string }) => color};
+  border: ${({ selected }: { selected: boolean }) =>
+    selected ? '0.5px solid white' : 'none'};
+  box-shadow: ${({ color, selected }: { color: string; selected: boolean }) =>
     selected ? `0px 0px 0px 0.5px ${color}` : 'none'};
   height: 24px;
   margin-right: 4px;

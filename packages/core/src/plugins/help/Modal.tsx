@@ -63,7 +63,7 @@ const HelpModal: FunctionComponent<HelpModalProps> = (props) => {
   );
 };
 
-const SubTitle: StyledComponent<any, any, any> = styled.div(
+const SubTitle = styled.div(
   { padding: '0px 0px 10px 20px' },
   ({ theme: { constants } }: { theme: EditorStyle }) => ({
     fontSize: constants.fontSize.large,
