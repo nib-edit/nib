@@ -1,7 +1,7 @@
 import { setBlockType } from 'prosemirror-commands';
 import { EditorState } from 'prosemirror-state';
 import { KeyValue } from '../../types/common';
-import { KeymapInfoMap } from '../../types/application';
+import { KeymapDataMap } from '../../types/application';
 import { ProsemirrorDispatch } from '../../types/prosemirror';
 
 const changeBlockType = (blockTypeName: string, attrs?: KeyValue) => (
@@ -29,7 +29,7 @@ export default () => ({
     changeBlockType('heading', { level: 6 })(state, dispatch),
 });
 
-export const KeymapInfo: KeymapInfoMap = {
+export const KeymapInfo: KeymapDataMap = {
   p: { key: 'Mod-Alt-0', label: 'Paragraph' },
   h1: { key: 'Mod-Alt-1', label: 'Heading1' },
   h2: { key: 'Mod-Alt-2', label: 'Heading2' },

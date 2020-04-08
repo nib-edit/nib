@@ -1,11 +1,11 @@
 import getOS from './device';
-import { KeymapInfo } from '../types/application';
+import { KeymapData } from '../types/application';
 
 /**
  * Function returns foratted keymap for display in labels and tooltips.
  */
 
-export default (keymap: KeymapInfo) => {
+export default (keymap: KeymapData) => {
   const os = getOS();
   const mod = os === 'Windows' ? '^' : '⌘';
 

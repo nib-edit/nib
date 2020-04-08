@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import React, { PureComponent } from 'react';
+import * as React from 'react';
+import { PureComponent } from 'react';
 import styled from '@emotion/styled';
 
 import { ToolbarButton, Icon } from 'nib-ui';
@@ -9,8 +9,13 @@ import { PMStateConsumer } from '../../context/pm-state';
 import { KeymapInfo } from './keymaps';
 import Modal from './Modal';
 import { helpPluginKey } from './plugin';
+import { ProsemirrorEditorState } from '../../types/prosemirror';
 
-class ToolbarComponent extends PureComponent {
+interface ToolbarComponentProps {
+  pmstate: ProsemirrorEditorState;
+}
+
+class ToolbarComponent extends PureComponent<ToolbarComponentProps> {
   state = {
     showModal: false,
   };
@@ -53,14 +58,9 @@ class ToolbarComponent extends PureComponent {
   }
 }
 
-ToolbarComponent.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  pmstate: PropTypes.object.isRequired,
-};
-
 const StyledButton = styled(ToolbarButton)({ marginLeft: 8 });
 
-export default props => (
+export default (props: any) => (
   <PMStateConsumer>
     {({ pmstate }) => <ToolbarComponent pmstate={pmstate} {...props} />}
   </PMStateConsumer>
