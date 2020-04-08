@@ -10,20 +10,36 @@ const imagePlugin = new Plugin({
     init: () => {
       return { showImageModal: false };
     },
-    apply(tr, prev) {
+    apply(tr, prev, _, newState) {
+      const { selection, schema } = newState;
       if (tr.getMeta('show-image-modal') === true) {
         return {
+          ...prev,
           showImageModal: true,
         };
       }
 
       if (tr.getMeta('show-image-modal') === false) {
         return {
+          ...prev,
           showImageModal: false,
         };
       }
 
-      return prev;
+      if (
+        selection.$to.nodeBefore &&
+        selection.$to.nodeBefore.type === schema.nodes.image
+      ) {
+        return {
+          ...prev,
+          isImageSelected: true,
+        };
+      }
+
+      return {
+        ...prev,
+        isImageSelected: false,
+      };
     },
   },
   props: {

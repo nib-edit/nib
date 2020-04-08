@@ -27,7 +27,8 @@ const liftBlockquoteCmd: ProsemirrorCommand = (state, dispatch) => {
   const range = startPos.blockRange(endPos);
   if (range) {
     const listedValue = liftTarget(range);
-    if (listedValue) dispatch(tr.lift(range, listedValue).scrollIntoView());
+    if (listedValue !== null && listedValue !== undefined)
+      dispatch(tr.lift(range, listedValue).scrollIntoView());
   }
   return true;
 };

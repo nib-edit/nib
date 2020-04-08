@@ -32,6 +32,15 @@ class ToolbarComponent extends PureComponent {
     return imagePluginState.showImageModal;
   };
 
+  isImageSelected = () => {
+    const { pmstate } = this.props;
+    const { pmview } = pmstate;
+    if (!pmview) return false;
+    const { state } = pmview;
+    const imagePluginState = imagePluginKey.getState(state);
+    return imagePluginState.isImageSelected;
+  };
+
   render() {
     const { pmstate } = this.props;
     const showModal = this.checkShowModal();
@@ -41,7 +50,7 @@ class ToolbarComponent extends PureComponent {
           onClick={this.showModal}
           title={formatKeymap(KeymapInfo.image)}
         >
-          <Icon name="image" />
+          <Icon name="image" selected={this.isImageSelected()} />
         </ToolbarButton>
         {showModal && (
           <ImageModal pmstate={pmstate} hideModal={this.hideModal} />
@@ -56,7 +65,7 @@ ToolbarComponent.propTypes = {
   pmstate: PropTypes.object.isRequired,
 };
 
-export default props => (
+export default (props) => (
   <PMStateConsumer>
     {({ pmstate }) => <ToolbarComponent pmstate={pmstate} {...props} />}
   </PMStateConsumer>
