@@ -1,5 +1,5 @@
 import { getPluginList } from './plugins';
-import { EditorPlugin } from '../../types/components';
+import { EditorPlugin } from '../../types/application';
 import { KeyValue } from '../../types/common';
 
 export default (plugins: string, property: string) =>

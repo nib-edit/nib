@@ -1,6 +1,6 @@
 import { Schema } from 'prosemirror-model';
 import { nodes } from 'nib-schema';
-import { EditorPlugin } from '../../types/components';
+import { EditorPlugin } from '../../types/application';
 
 export default (plugins: EditorPlugin[]) => {
   const schema = plugins

@@ -8,7 +8,7 @@ import getToolbarComponents from '../../../utils/editor/toolbar';
 import { useConfigContext } from '../../../context/config';
 import { PMStateConsumer } from '../../../context/pm-state';
 import { Addon } from '../../../types/addon';
-import { EditorPlugin } from '../../../types/components';
+import { EditorPlugin } from '../../../types/application';
 import { EditorStyle } from '../../../types/editor-style';
 import { ProsemirrorEditorState } from '../../../types/prosemirror';
 
@@ -43,18 +43,23 @@ const Top: FunctionComponent<TopProps> = ({
   return (
     <Wrapper onMouseDown={(e: Event) => e.preventDefault()}>
       <ToolbarSection>
-        {formattingOption.map((Option: EditorPlugin, index: number) => (
-          <Fragment key={`top-toolbar-option-${Option.name}`}>
-            <Option.toolbarComponent
-              config={toolbar.top[Option.name]}
-              editorWrapper={editorWrapper}
-              pmstate={pmstate}
-            />
-            {index < formattingOption.length - 1 && <Separator />}
-          </Fragment>
-        ))}
+        {formattingOption.map((Option: EditorPlugin, index: number) => {
+          if (!Option.toolbarComponent) return null;
+          return (
+            <Fragment key={`top-toolbar-option-${Option.name}`}>
+              <Option.toolbarComponent
+                config={toolbar.top[Option.name]}
+                editorWrapper={editorWrapper}
+                pmstate={pmstate}
+              />
+              {index < formattingOption.length - 1 && <Separator />}
+            </Fragment>
+          );
+        })}
       </ToolbarSection>
-      {HelpOption && <HelpOption.toolbarComponent />}
+      {HelpOption && HelpOption.toolbarComponent && (
+        <HelpOption.toolbarComponent />
+      )}
     </Wrapper>
   );
 };

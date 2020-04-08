@@ -1,6 +1,6 @@
 import { getPluginArray } from './plugins';
 import { Addon } from '../../types/addon';
-import { EditorPlugin } from '../../types/components';
+import { EditorPlugin } from '../../types/application';
 
 export default (
   pluginOption: string,
