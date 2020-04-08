@@ -1,17 +1,17 @@
 import { ElementType } from 'react';
 import { Plugin } from 'prosemirror-state';
-import { Schema, NodeType, MarkType } from 'prosemirror-model';
+import { NodeType, MarkType } from 'prosemirror-model';
 
 import { EditorStyle } from './editor-style';
 import { ProsemirrorCommand, ProsemirrorViewProvider } from './prosemirror';
 
-export interface KeymapInfo {
+export interface KeymapData {
   key: string;
   label?: string;
 }
 
-export interface KeymapInfoMap {
-  [key: string]: KeymapInfo;
+export interface KeymapDataMap {
+  [key: string]: KeymapData;
 }
 
 export interface PluginStyleFn {
@@ -37,6 +37,7 @@ export interface EditorPlugin {
   name: string;
   toolbarComponent?: ElementType;
   keymaps?: EditorKeymap;
+  KeymapInfo?: KeymapDataMap;
   pmPlugins?: Plugin[];
   pmPlugin?: Plugin;
   schema?: PluginSchem;
