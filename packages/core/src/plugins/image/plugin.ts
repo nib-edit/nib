@@ -1,9 +1,9 @@
 import { Plugin, PluginKey } from 'prosemirror-state';
 import ImageView from './nodeView';
 
-const imagePluginKey = new PluginKey('image');
+export const imagePluginKey = new PluginKey('image');
 
-const imagePlugin = new Plugin({
+export default new Plugin({
   key: imagePluginKey,
 
   state: {
@@ -44,12 +44,9 @@ const imagePlugin = new Plugin({
   },
   props: {
     nodeViews: {
-      image(node, view, getPos) {
-        return new ImageView(node, view, getPos);
+      image(node) {
+        return new ImageView(node);
       },
     },
   },
 });
-
-export default imagePlugin;
-export { imagePluginKey };

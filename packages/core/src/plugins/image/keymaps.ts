@@ -1,4 +1,6 @@
-const showImageModal = (state, dispatch) => {
+import { ProsemirrorCommand } from '../../types/prosemirror';
+
+const showImageModal: ProsemirrorCommand = (state, dispatch) => {
   dispatch(state.tr.setMeta('show-image-modal', true));
   return true;
 };
