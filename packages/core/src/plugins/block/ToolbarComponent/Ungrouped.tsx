@@ -26,7 +26,7 @@ const Ungrouped: FunctionComponent<UngroupedMenuProps> = ({
           <ToolbarButton
             name={opt.value.blockType}
             onClick={(evt: MouseEvent) =>
-              onChange((evt.target as HTMLElement).getAttribute('name')!)
+              onChange((evt.currentTarget as HTMLElement).getAttribute('name')!)
             }
             selected={isSelected}
             title={formatKeymap(KeymapInfo[opt.value.tag])}

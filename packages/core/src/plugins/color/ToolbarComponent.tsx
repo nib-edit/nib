@@ -43,7 +43,7 @@ const ToolbarComponent: FunctionComponent<ToolbarComponentProps> = ({
   };
 
   const toggleColorType = (evt: Event) => {
-    const color = (evt.target as HTMLElement).getAttribute('name');
+    const color = (evt.currentTarget as HTMLElement).getAttribute('name');
     const { pmview } = pmstate;
     const { state, dispatch } = pmview;
     const { schema, selection, tr } = state;
@@ -64,7 +64,7 @@ const ToolbarComponent: FunctionComponent<ToolbarComponentProps> = ({
   };
 
   const openColorSelect = (evt: Event) => {
-    const newSelectedMarkType = (evt.target as HTMLElement).getAttribute(
+    const newSelectedMarkType = (evt.currentTarget as HTMLElement).getAttribute(
       'name'
     );
     if (!newSelectedMarkType || selectedMarkType === newSelectedMarkType) {
@@ -79,8 +79,10 @@ const ToolbarComponent: FunctionComponent<ToolbarComponentProps> = ({
   };
 
   const closeColorSelect = (evt: Event) => {
-    if (textColorRef.current!.contains(evt.target as HTMLElement)) return;
-    if (backgroundColorRef.current!.contains(evt.target as HTMLElement)) return;
+    if (textColorRef.current!.contains(evt.currentTarget as HTMLElement))
+      return;
+    if (backgroundColorRef.current!.contains(evt.currentTarget as HTMLElement))
+      return;
     setPopupMarker(undefined);
     setSelectedMarkType(undefined);
   };
