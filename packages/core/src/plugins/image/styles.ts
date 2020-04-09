@@ -1,4 +1,6 @@
-export default ({ constants }) => `
+import { PluginStyleFn } from '../../types/application';
+
+const styleFunction: PluginStyleFn = ({ constants }) => `
   .nib-image-outer-wrapper {
     display: flex;
     justify-content: center;
@@ -61,3 +63,5 @@ export default ({ constants }) => `
     width: 10px;
   }
 `;
+
+export default styleFunction;
