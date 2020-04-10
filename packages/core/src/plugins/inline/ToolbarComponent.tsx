@@ -7,7 +7,6 @@ import { ToolbarButton, Icon } from 'nib-ui';
 
 import formatKeymap from '../../utils/format-keymap';
 import { usePMStateContext } from '../../context/pm-state/index';
-import { useConfigContext } from '../../context/config/index';
 
 import { KeymapInfo } from './keymaps';
 import { inlinePluginKey } from './plugin';
@@ -22,8 +21,7 @@ const MarkIcons = {
   code: 'code'
 };
 
-export default () => {
-  const { config } = useConfigContext();
+export default ({ config }: { config: { options: string } }) => {
   const { pmstate } = usePMStateContext();
   if (!pmstate) return null;
 
@@ -111,7 +109,7 @@ export default () => {
   const isSubMarkActive = isSubsupMarkActive(activeMarks, 'sub');
 
   const { marks } = pmview.state.schema;
-  const { options } = config.toolbar.inline.inline;
+  const { options } = config;
 
   return (
     <>

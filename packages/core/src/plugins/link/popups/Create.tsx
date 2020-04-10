@@ -1,25 +1,41 @@
-import PropTypes from 'prop-types';
-import React, { PureComponent } from 'react';
+import * as React from 'react';
+import { ChangeEvent, MutableRefObject, PureComponent } from 'react';
 import styled from '@emotion/styled';
+import { EditorState } from 'prosemirror-state';
+
 import { PrimaryButton, Input, Popup } from 'nib-ui';
 
-import { linkPluginKey } from '../plugin';
 import { PMStateConsumer } from '../../../context/pm-state';
+import { ProsemirrorEditorState } from '../../../types/prosemirror';
+import { EditorStyle } from '../../../types/editor-style';
+import { linkPluginKey } from '../plugin';
 
-class CreatePopup extends PureComponent {
-  constructor(props) {
+interface CreatePopupProps {
+  pmstate: ProsemirrorEditorState;
+  editorWrapper: MutableRefObject<HTMLDivElement | null>;
+  marker: Element;
+}
+
+interface CreatePopupState {
+  linkText?: string;
+  href?: string;
+  linkTextRequiredError?: boolean;
+}
+
+class CreatePopup extends PureComponent<CreatePopupProps, CreatePopupState> {
+  constructor(props: CreatePopupProps) {
     super(props);
     this.state = {
       linkText: this.getSelectedText(),
       href: '',
-      linkTextRequiredError: false,
+      linkTextRequiredError: false
     };
   }
 
-  updateValue = evt => {
-    const { name, value } = evt.target;
-    const newState = {
-      [`${name}`]: value,
+  updateValue = (evt: ChangeEvent) => {
+    const { name, value } = evt.target as HTMLInputElement;
+    const newState: CreatePopupState = {
+      [`${name}`]: value
     };
     if (name === 'linkText' && value) {
       newState.linkTextRequiredError = false;
@@ -63,7 +79,7 @@ class CreatePopup extends PureComponent {
     this.closePopup();
   };
 
-  handleKeyDown = evt => {
+  handleKeyDown = (evt: KeyboardEvent) => {
     if (evt.key === 'Enter') {
       this.addLink();
     }
@@ -121,43 +137,36 @@ class CreatePopup extends PureComponent {
   }
 }
 
-CreatePopup.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  pmstate: PropTypes.object.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  editorWrapper: PropTypes.object.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  marker: PropTypes.object.isRequired,
-};
-
 export default {
   name: 'create_link',
   getMarker: () => document.getElementsByClassName('nib-link-marker')[0],
-  condition: ({ state }) => {
+  condition: ({ state }: { state: EditorState }) => {
     const pluginState = linkPluginKey.getState(state);
     return pluginState && pluginState.showAddLinkToolbar;
   },
-  component: props => (
+  component: (props: any) => (
     <PMStateConsumer>
-      {({ pmstate }) => <CreatePopup pmstate={pmstate} {...props} />}
+      {({ pmstate }: { pmstate: ProsemirrorEditorState }) => (
+        <CreatePopup pmstate={pmstate} {...props} />
+      )}
     </PMStateConsumer>
-  ),
+  )
 };
 
 const Wrapper = styled.div(
   {
     alignItems: 'center',
     display: 'flex',
-    padding: 4,
+    padding: 4
   },
-  ({ theme: { constants } }) => ({
+  ({ theme: { constants } }: { theme: EditorStyle }) => ({
     borderRadius: constants.borderRadius,
-    fontSize: constants.fontSize.medium,
+    fontSize: constants.fontSize.medium
   })
 );
 
 const InputWrapper = styled.div({
   '> div:first-of-type': {
-    marginBottom: 8,
-  },
+    marginBottom: 8
+  }
 });

@@ -1,20 +1,32 @@
-import { DecorationSet, Decoration } from "prosemirror-view";
-import { Plugin, PluginKey } from "prosemirror-state";
+import { DecorationSet, Decoration } from 'prosemirror-view';
+import { Plugin, PluginKey, EditorState } from 'prosemirror-state';
+import { Mark, Node } from 'prosemirror-model';
 
-export const linkPluginKey = new PluginKey("link");
+export const linkPluginKey = new PluginKey('link');
 
-const getLink = state => {
+interface LinkInfo {
+  from: any;
+  to: any;
+  href: any;
+  contained: any;
+}
+
+const getLink = (state: EditorState): LinkInfo | undefined => {
   const {
     selection: { $from, $to },
     schema: { marks },
     doc
   } = state;
-  const fromLinkMark = $from.marks().find(mark => mark.type === marks.link);
-  const toLinkMark = $to.marks().find(mark => mark.type === marks.link);
+  const fromLinkMark = $from
+    .marks()
+    .find((mark: Mark) => mark.type === marks.link);
+  const toLinkMark = $to.marks().find((mark: Mark) => mark.type === marks.link);
   let link;
-  doc.nodesBetween($from.pos, $to.pos, (node, from) => {
+  doc.nodesBetween($from.pos, $to.pos, (node: Node, from: number) => {
     if (node.marks) {
-      const linkMark = node.marks.find(mark => mark.type === marks.link);
+      const linkMark = node.marks.find(
+        (mark: Mark) => mark.type === marks.link
+      );
       if (linkMark) {
         link = {
           from,
@@ -38,7 +50,7 @@ export default new Plugin({
     apply(tr, prev, _, newState) {
       const link = getLink(newState);
 
-      const editorFocusState = tr.getMeta("editor-focused");
+      const editorFocusState = tr.getMeta('editor-focused');
       if (editorFocusState !== undefined) {
         return {
           ...prev,
@@ -46,7 +58,7 @@ export default new Plugin({
         };
       }
 
-      if (tr.getMeta("hide-all-popups")) {
+      if (tr.getMeta('hide-all-popups')) {
         return {
           link,
           editorFocusState: prev.editorFocusState,
@@ -56,7 +68,7 @@ export default new Plugin({
         };
       }
 
-      if (tr.getMeta("show-add-link-toolbar") === false) {
+      if (tr.getMeta('show-add-link-toolbar') === false) {
         return {
           ...prev,
           link,
@@ -65,7 +77,7 @@ export default new Plugin({
         };
       }
 
-      if (tr.getMeta("show-edit-link-toolbar") === false) {
+      if (tr.getMeta('show-edit-link-toolbar') === false) {
         return {
           ...prev,
           link,
@@ -75,18 +87,18 @@ export default new Plugin({
 
       let { createDecoration, editDecoration } = prev;
 
-      if (tr.getMeta("show-add-link-toolbar") === true) {
+      if (tr.getMeta('show-add-link-toolbar') === true) {
         const { $from, $to } = newState.selection;
         if ($from.pos === $to.pos) {
-          const node = document.createElement("span");
-          node.className = "nib-link-marker";
+          const node = document.createElement('span');
+          node.className = 'nib-link-marker';
           createDecoration = DecorationSet.create(newState.doc, [
             Decoration.widget($from.pos, node)
           ]);
         } else {
           createDecoration = DecorationSet.create(newState.doc, [
             Decoration.inline($from.pos, $to.pos, {
-              class: "nib-link-marker"
+              class: 'nib-link-marker'
             })
           ]);
         }
@@ -106,7 +118,7 @@ export default new Plugin({
         ) {
           editDecoration = DecorationSet.create(newState.doc, [
             Decoration.inline(link.from, link.to, {
-              class: "nib-edit-link-marker"
+              class: 'nib-edit-link-marker'
             })
           ]);
         }
@@ -138,7 +150,8 @@ export default new Plugin({
     handleDOMEvents: {
       focus(view) {
         const { state, dispatch } = view;
-        dispatch(state.tr.setMeta("show-add-link-toolbar", false));
+        dispatch(state.tr.setMeta('show-add-link-toolbar', false));
+        return false;
       }
     }
   }
