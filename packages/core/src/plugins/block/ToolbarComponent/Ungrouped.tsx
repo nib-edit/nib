@@ -16,7 +16,7 @@ export interface UngroupedMenuProps {
 const Ungrouped: FunctionComponent<UngroupedMenuProps> = ({
   options,
   selectedBlockType,
-  onChange,
+  onChange
 }) => (
   <>
     {options.map((opt, index) => {
