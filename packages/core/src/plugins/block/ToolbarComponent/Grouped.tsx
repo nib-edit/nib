@@ -2,6 +2,9 @@ import * as React from 'react';
 import { FunctionComponent } from 'react';
 import { ElementType, useState } from 'react';
 import styled from '@emotion/styled';
+
+import { Tooltip } from 'nib-ui';
+
 import { BlockOption } from '../blockData';
 
 const SelectHeight = 28;
@@ -16,10 +19,10 @@ interface GroupedMenuProps {
 const Grouped: FunctionComponent<GroupedMenuProps> = ({
   options,
   selectedBlockType,
-  onChange,
+  onChange
 }) => {
   const [Select, setSelect] = useState<ElementType | undefined>(undefined);
-  import('nib-ui-select').then((args) => {
+  import('nib-ui-select').then(args => {
     const { Select: NibUISelect } = args.default;
     setSelect(NibUISelect);
   });
@@ -27,21 +30,23 @@ const Grouped: FunctionComponent<GroupedMenuProps> = ({
   let selectedOption;
   if (selectedBlockType) {
     selectedOption = options.find(
-      (opt) => opt.value.blockType === selectedBlockType
+      opt => opt.value.blockType === selectedBlockType
     );
   } else {
     selectedOption = { value: undefined, label: 'Other' };
   }
   if (!Select) return <Placeholder />;
   return (
-    <Select
-      height={SelectHeight}
-      width={SelectWidth}
-      onChange={(option: BlockOption) => onChange(option.value.blockType)}
-      options={options}
-      selectedOption={selectedOption}
-      isSearchable={false}
-    />
+    <Tooltip info="Block type">
+      <Select
+        height={SelectHeight}
+        width={SelectWidth}
+        onChange={(option: BlockOption) => onChange(option.value.blockType)}
+        options={options}
+        selectedOption={selectedOption}
+        isSearchable={false}
+      />
+    </Tooltip>
   );
 };
 
