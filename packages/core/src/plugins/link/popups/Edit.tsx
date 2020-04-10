@@ -1,25 +1,37 @@
-import PropTypes from 'prop-types';
-import React, { PureComponent } from 'react';
+import * as React from 'react';
+import { MutableRefObject, PureComponent, ChangeEvent } from 'react';
 import styled from '@emotion/styled';
 import { TextSelection } from 'prosemirror-state';
 
 import { PrimaryButton, Input, Popup, Space, SpaceSize } from 'nib-ui';
 
 import { PMStateConsumer } from '../../../context/pm-state';
+import { EditorStyle } from '../../../types/editor-style';
+import { ProsemirrorEditorState } from '../../../types/prosemirror';
 import { linkPluginKey } from '../plugin';
 
-class EditPopup extends PureComponent {
-  constructor(props) {
+interface EditPopupProps {
+  pmstate: ProsemirrorEditorState;
+  editorWrapper: MutableRefObject<HTMLDivElement | null>;
+  marker: Element;
+}
+
+interface EditPopupState {
+  href?: string;
+}
+
+class EditPopup extends PureComponent<EditPopupProps, EditPopupState> {
+  constructor(props: EditPopupProps) {
     super(props);
     const link = this.getLink();
     this.state = {
-      href: link.href,
+      href: link.href
     };
   }
 
-  updateHref = evt => {
+  updateHref = (evt: ChangeEvent) => {
     this.setState({
-      href: evt.target.value,
+      href: (evt.target as HTMLInputElement).value
     });
   };
 
@@ -93,34 +105,27 @@ class EditPopup extends PureComponent {
   }
 }
 
-EditPopup.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  pmstate: PropTypes.object.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  editorWrapper: PropTypes.object.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  marker: PropTypes.object.isRequired,
-};
-
 export default {
   name: 'edit_link',
   getMarker: () => document.getElementsByClassName('nib-edit-link-marker')[0],
-  component: props => (
+  component: (props: any) => (
     <PMStateConsumer>
-      {({ pmstate }) => <EditPopup pmstate={pmstate} {...props} />}
+      {({ pmstate }: { pmstate: ProsemirrorEditorState }) => (
+        <EditPopup pmstate={pmstate} {...props} />
+      )}
     </PMStateConsumer>
-  ),
+  )
 };
 
 const Wrapper = styled.div(
   {
     alignItems: 'center',
     display: 'flex',
-    padding: 4,
+    padding: 4
   },
-  ({ theme: { constants } }) => ({
+  ({ theme: { constants } }: { theme: EditorStyle }) => ({
     borderRadius: constants.borderRadius,
-    fontSize: constants.fontSize.medium,
+    fontSize: constants.fontSize.medium
   })
 );
 

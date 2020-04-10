@@ -1,11 +1,12 @@
-import { Plugin, PluginKey } from "prosemirror-state";
+import { Plugin, PluginKey, EditorState } from 'prosemirror-state';
+import { Mark } from 'prosemirror-model';
 
-export const inlinePluginKey = new PluginKey("inline");
+export const inlinePluginKey = new PluginKey('inline');
 
-const getActiveMarks = state => {
+const getActiveMarks = (state: EditorState) => {
   const { selection } = state;
   const { $from, $to } = selection;
-  let activeMarks = [];
+  let activeMarks: Mark[] = [];
   if (selection.empty) {
     activeMarks = [...(state.storedMarks || $to.marks())];
   }

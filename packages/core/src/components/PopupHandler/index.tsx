@@ -30,7 +30,7 @@ class PopupHandler extends PureComponent<PopupHandlerProps> {
       plugins!.options!,
       'popups'
     ) as EditorPopup[];
-    addons.forEach((addon) => {
+    addons.forEach(addon => {
       if (addon.popups) {
         this.popups = [...this.popups, ...addon.popups];
       }
@@ -49,14 +49,13 @@ class PopupHandler extends PureComponent<PopupHandlerProps> {
       this.popups,
       this.visiblePopups
     );
-
     if (!this.visiblePopups.length) return null;
     const { PopupComponent, marker } = this.visiblePopups[
       this.visiblePopups.length - 1
     ];
 
     const tablePopups = this.visiblePopups.filter(
-      (popup) => popup.name === 'table_menu' || popup.name === 'cell_menu'
+      popup => popup.name === 'table_menu' || popup.name === 'cell_menu'
     );
 
     // todo: refactor table popups for a better implementation
@@ -71,7 +70,7 @@ class PopupHandler extends PureComponent<PopupHandlerProps> {
         {tablePopups.map((popup: VisiblePopup) => {
           const {
             PopupComponent: TablePopupComponent,
-            marker: tableMarker,
+            marker: tableMarker
           } = popup;
           return (
             <TablePopupComponent

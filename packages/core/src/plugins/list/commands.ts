@@ -2,10 +2,22 @@ import {
   liftListItem,
   splitListItem,
   wrapInList
-} from "prosemirror-schema-list";
-import * as baseCommand from "prosemirror-commands";
+} from 'prosemirror-schema-list';
+import * as baseCommand from 'prosemirror-commands';
+import { MarkType, Mark } from 'prosemirror-model';
+import { EditorState } from 'prosemirror-state';
 
-const liftToRoot = (listType, state, dispatch) => {
+import {
+  ProsemirrorDispatch,
+  ProsemirrorCommand
+} from '../../types/prosemirror';
+import { EditorView } from 'prosemirror-view';
+
+const liftToRoot = (
+  state: EditorState,
+  dispatch: ProsemirrorDispatch,
+  listType: MarkType
+) => {
   let selPos = state.selection.$from.depth;
   while (selPos > 1) {
     liftListItem(listType)(state, dispatch);
@@ -14,14 +26,22 @@ const liftToRoot = (listType, state, dispatch) => {
   return true;
 };
 
-const wrapIntoList = (state, dispatch, listType) => {
+const wrapIntoList = (
+  state: EditorState,
+  dispatch: ProsemirrorDispatch,
+  listType: MarkType
+) => {
   return baseCommand.autoJoin(
     wrapInList(listType),
-    (before, after) => before.type === after.type && before.type === listType
+    (before: Mark, after: Mark) =>
+      before.type === after.type && before.type === listType
   )(state, dispatch);
 };
 
-export const toggleListCmd = (listTypeName, view) => (state, dispatch) => {
+export const toggleListCmd = (
+  listTypeName: string,
+  view: EditorView
+): ProsemirrorCommand => (state, dispatch) => {
   const {
     selection: { $anchor },
     schema: { nodes }
@@ -35,12 +55,12 @@ export const toggleListCmd = (listTypeName, view) => (state, dispatch) => {
       liftListItem(nodes.listItem)(state, dispatch);
       return wrapIntoList(view.state, dispatch, nodes[listTypeName]);
     }
-    return liftToRoot(nodes.listItem, state, dispatch);
+    return liftToRoot(state, dispatch, nodes.listItem);
   }
   return wrapIntoList(state, dispatch, nodes[listTypeName]);
 };
 
-export const splitListItemCmd = () => (state, dispatch) => {
+export const splitListItemCmd = (): ProsemirrorCommand => (state, dispatch) => {
   const {
     selection: { $anchor },
     schema: { nodes }
