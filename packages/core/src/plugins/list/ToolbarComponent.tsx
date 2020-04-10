@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { PureComponent } from 'react';
 
 import { ToolbarButton, Icon } from 'nib-ui';
 
