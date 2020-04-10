@@ -1,6 +1,6 @@
-import { Plugin, PluginKey } from "prosemirror-state";
+import { Plugin, PluginKey, EditorState } from 'prosemirror-state';
 
-const getSelectedListType = state => {
+const getSelectedListType = (state: EditorState) => {
   const { bulletList, orderedList } = state.schema.nodes;
   const node = state.selection.$from.node(-2);
   if (node && (node.type === bulletList || node.type === orderedList)) {
@@ -9,7 +9,7 @@ const getSelectedListType = state => {
   return undefined;
 };
 
-export const listPluginKey = new PluginKey("list");
+export const listPluginKey = new PluginKey('list');
 
 export default new Plugin({
   key: listPluginKey,
