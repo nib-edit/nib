@@ -1,4 +1,6 @@
-export default ({ constants }) => `
+import { PluginStyleFn } from '../../types/application';
+
+const styleFunction: PluginStyleFn = ({ constants }) => `
   .ProseMirror code {
     background-color: ${constants.color.background.secondary};
     border-radius: ${constants.borderRadius.small};
@@ -6,3 +8,5 @@ export default ({ constants }) => `
     color: ${constants.color.text.secondary};
   }
 `;
+
+export default styleFunction;
