@@ -48,10 +48,14 @@ const Info = styled.div(
     padding: '0 4px',
     whiteSpace: 'nowrap'
   },
-  ({ theme: { constants } }: { theme: EditorStyle }) => ({
-    backgroundColor: constants.color.text.primary,
-    color: constants.color.background.primary
-  })
+  ({ theme }: { theme?: EditorStyle }) => {
+    if (!theme) return;
+    const { constants } = theme;
+    return {
+      backgroundColor: constants.color.text.primary,
+      color: constants.color.background.primary
+    };
+  }
 );
 
 export default Tooltip;
