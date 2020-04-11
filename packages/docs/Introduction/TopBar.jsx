@@ -4,7 +4,6 @@
  */
 
 import React, { PureComponent } from 'react';
-import Editor from 'nib-core';
 import AdvanceImagePlugin from 'nib-advance-image';
 import TablePlugin from 'nib-table';
 import VideoPlugin from 'nib-video';
@@ -12,43 +11,49 @@ import VideoPlugin from 'nib-video';
 import uploadCallback from '../common/uploadCallback';
 import data from './data';
 
+let Editor;
+import('nib-core').then(args => {
+  Editor = args.default;
+});
+
 const theme = {
   editor: () => ({
-    height: '440px',
-  }),
+    height: '440px'
+  })
 };
 
 class TopBar extends PureComponent {
   render() {
+    if (!Editor) return null;
     return (
       <div
         style={{
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          margin: '32px 0',
+          margin: '32px 0'
         }}
       >
         <div>
           <Editor
             config={{
               plugins: {
-                options: 'block inline color link blockquote list help',
+                options: 'block inline color link blockquote list help'
               },
               toolbar: {
                 options: 'top',
                 top: {
                   options:
-                    'block inline color link blockquote list advance-image video table history help',
-                },
-              },
+                    'block inline color link blockquote list advance-image video table history help'
+                }
+              }
             }}
             defaultValue={data}
             styleConfig={theme}
             addons={[
               new AdvanceImagePlugin(uploadCallback),
               TablePlugin,
-              VideoPlugin,
+              VideoPlugin
             ]}
           />
         </div>
