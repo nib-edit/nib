@@ -33,7 +33,11 @@ export default () => {
 
   return (
     <>
-      <ToolbarButton onClick={showModal} title={formatKeymap(KeymapInfo.image)}>
+      <ToolbarButton
+        disabled={isImageSelected()}
+        onClick={showModal}
+        title={formatKeymap(KeymapInfo.image)}
+      >
         <Icon name="image" selected={isImageSelected()} />
       </ToolbarButton>
       {checkShowModal() && <ImageModal hideModal={hideModal} />}

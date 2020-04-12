@@ -4,17 +4,13 @@
  */
 
 import React, { PureComponent } from 'react';
+import Editor from 'nib-core';
 import AdvanceImagePlugin from 'nib-advance-image';
 import TablePlugin from 'nib-table';
 import VideoPlugin from 'nib-video';
 
 import uploadCallback from '../common/uploadCallback';
 import data from './data';
-
-let Editor;
-import('nib-core').then(args => {
-  Editor = args.default;
-});
 
 const theme = {
   editor: () => ({
@@ -24,7 +20,6 @@ const theme = {
 
 class TopBar extends PureComponent {
   render() {
-    if (!Editor) return null;
     return (
       <div
         style={{

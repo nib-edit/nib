@@ -2,8 +2,9 @@ import { PluginStyleFn } from '../../types/application';
 
 const styleFunction: PluginStyleFn = ({ constants }) => `
   .nib-image-outer-wrapper {
-    display: flex;
+    display: inline-flex;
     justify-content: center;
+    width: 100%;
     &:focus {
       outline: none;
     }

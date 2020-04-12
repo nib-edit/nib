@@ -15,38 +15,39 @@ export default new Plugin({
       if (tr.getMeta('show-image-modal') === true) {
         return {
           ...prev,
-          showImageModal: true,
+          showImageModal: true
         };
       }
 
       if (tr.getMeta('show-image-modal') === false) {
         return {
           ...prev,
-          showImageModal: false,
+          showImageModal: false
         };
       }
 
       if (
-        selection.$to.nodeBefore &&
-        selection.$to.nodeBefore.type === schema.nodes.image
+        selection.$to.node() &&
+        selection.$to.node().firstChild &&
+        selection.$to.node().firstChild!.type === schema.nodes.image
       ) {
         return {
           ...prev,
-          isImageSelected: true,
+          isImageSelected: true
         };
       }
 
       return {
         ...prev,
-        isImageSelected: false,
+        isImageSelected: false
       };
-    },
+    }
   },
   props: {
     nodeViews: {
       image(node) {
         return new ImageView(node);
-      },
-    },
-  },
+      }
+    }
+  }
 });
