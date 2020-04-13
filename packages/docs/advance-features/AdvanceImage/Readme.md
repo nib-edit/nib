@@ -5,6 +5,7 @@ Features supported by advance image plugin:
 1. Image upload, Nib's drive can also be used to save images.
 2. Image resize.
 3. Image drag-drop and copy-paste.
+4. Image alignment.
 
 <br />
 

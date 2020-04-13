@@ -1,4 +1,6 @@
 import { Plugin, PluginKey } from 'prosemirror-state';
+import { findSelectedNodeOfType } from 'prosemirror-utils';
+
 import ImageView from './nodeView';
 
 export const imagePluginKey = new PluginKey('image');
@@ -7,35 +9,27 @@ export default new Plugin({
   key: imagePluginKey,
 
   state: {
-    init: () => {
-      return { showImageModal: false };
-    },
+    init: () => ({ showImageModal: false }),
     apply(tr, prev, _, newState) {
       const { selection, schema } = newState;
-      if (tr.getMeta('show-image-modal') === true) {
+      if (tr.getMeta('show-image-modal') === true)
         return {
           ...prev,
           showImageModal: true
         };
-      }
 
-      if (tr.getMeta('show-image-modal') === false) {
+      if (tr.getMeta('show-image-modal') === false)
         return {
           ...prev,
           showImageModal: false
         };
-      }
 
-      if (
-        selection.$to.node() &&
-        selection.$to.node().firstChild &&
-        selection.$to.node().firstChild!.type === schema.nodes.image
-      ) {
+      const { image } = schema.nodes;
+      if (findSelectedNodeOfType(image)(selection))
         return {
           ...prev,
           isImageSelected: true
         };
-      }
 
       return {
         ...prev,

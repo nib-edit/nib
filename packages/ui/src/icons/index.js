@@ -1,6 +1,9 @@
 import AddComment from './AddComment';
 import AddColumn from './AddColumn';
 import AddRow from './AddRow';
+import AlignLeft from './AlignLeft';
+import AlignCenter from './AlignCenter';
+import AlignRight from './AlignRight';
 import ArrowDown from './ArrowDown';
 import Blockquote from './Blockquote';
 import Bold from './Bold';
@@ -41,6 +44,9 @@ export default {
   addComment: AddComment,
   addColumn: AddColumn,
   addRow: AddRow,
+  alignLeft: AlignLeft,
+  alignCenter: AlignCenter,
+  alignRight: AlignRight,
   arrowDown: ArrowDown,
   blockquote: Blockquote,
   backgroundColor: BackgroundColor,
@@ -75,5 +81,5 @@ export default {
   underline: Underline,
   undo: Undo,
   video: Video,
-  viewComment: ViewComment,
+  viewComment: ViewComment
 };

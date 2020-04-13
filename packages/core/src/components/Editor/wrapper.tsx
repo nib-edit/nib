@@ -41,7 +41,7 @@ const Wrapper: FunctionComponent<WrapperProps> = props => {
           if (data.status === 'FAIL') setLicenseCheckFail(true);
         });
     }
-  });
+  }, [props.licenseKey]);
 
   return (
     <StyledWrapper ref={editorWrapper}>
