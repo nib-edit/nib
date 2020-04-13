@@ -5525,6 +5525,13 @@ nib-markdown-converter@0.1.0:
     prosemirror-markdown "1.4.4"
     prosemirror-model "^1.0.0"
 
+nib-schema@2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/nib-schema/-/nib-schema-2.4.1.tgz#565cee9dcf9587197e621f50d9aeaa46df218b51"
+  integrity sha512-0PvfU5JgO4UhNuYFbnNLclQi+OqQqxQxFclIe/oyfJuy0Fi5MZKB1tv1y+q4rPGg9upt3HnEpN0mt9J2cQux5g==
+  dependencies:
+    prosemirror-tables "^0.8.1"
+
 nib-table@0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/nib-table/-/nib-table-0.1.4.tgz#7c6e1d27c8c56b083ab8f4119dc164af4fefff24"
@@ -5548,6 +5555,11 @@ nib-ui@2.4.6:
   integrity sha512-tS82hRQk/OPaDMfmcpg6di5rY7O7aBWMh6HC0QAkY3RzTN3wdHf7f7BEVR5i2FniyZhnhTzmtgFUKt9ysbqUTQ==
   dependencies:
     react-select "^3.0.4"
+
+nib-ui@2.4.7:
+  version "2.4.7"
+  resolved "https://registry.yarnpkg.com/nib-ui/-/nib-ui-2.4.7.tgz#a6d1c1c82d1331a7d0edd96073c5e6aaa843ba44"
+  integrity sha512-9WkW2Z62nUpWHiLhD2Qvr6SRdEUO6Xw5LL+yUkGL4t0/0QD+f9+otzgyEbWVoExqZRmCxTDuiPbLpf2qaQqidw==
 
 nib-video@0.1.2:
   version "0.1.2"
