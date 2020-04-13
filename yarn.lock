@@ -5486,14 +5486,14 @@ neo-async@^2.5.0, neo-async@^2.6.1:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
-nib-advance-image@0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/nib-advance-image/-/nib-advance-image-0.1.6.tgz#d4205a3cd40148c3ab113f9808ea51ff0d7cf5be"
-  integrity sha512-c7g/VP869L/PwsFLtu78nchmUtOXYWA4e8eGT/FgceBvAoJlPeUTV3EW5w9YcHvPnyrMo4X46F/d+uSc0Q5XNA==
+nib-advance-image@0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/nib-advance-image/-/nib-advance-image-0.1.7.tgz#6eb8fd58f06c38824a4776c273246f15b6ed8002"
+  integrity sha512-WIGyMs1rof3+XGMK2a3dOGTrn+RS6YW/iJ4kEVatts5NiHBqySxtKlLAN1rfo+7qE4ebMAqCAityK8Lo9sRDMQ==
   dependencies:
     axios "^0.19.0"
-    nib-schema "2.4.1"
-    nib-ui "2.4.7"
+    nib-schema "2.4.2"
+    nib-ui "2.4.8"
     prosemirror-transform "^1.0.0"
 
 nib-collab-client@0.2.3:
@@ -5524,13 +5524,6 @@ nib-markdown-converter@0.1.0:
     nib-schema "^2.4.1"
     prosemirror-markdown "1.4.4"
     prosemirror-model "^1.0.0"
-
-nib-schema@2.4.1:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/nib-schema/-/nib-schema-2.4.1.tgz#565cee9dcf9587197e621f50d9aeaa46df218b51"
-  integrity sha512-0PvfU5JgO4UhNuYFbnNLclQi+OqQqxQxFclIe/oyfJuy0Fi5MZKB1tv1y+q4rPGg9upt3HnEpN0mt9J2cQux5g==
-  dependencies:
-    prosemirror-tables "^0.8.1"
 
 nib-table@0.1.4:
   version "0.1.4"
