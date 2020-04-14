@@ -62,7 +62,7 @@ export default (props: ImageModalProps) => {
               }
               error={srcRequiredError}
             />
-            <ImageWrapper>
+            <ImageWrapper src={imageSrc}>
               {imageSrc && <StyledImage src={imageSrc} alt="uploaded_image" />}
             </ImageWrapper>
             <ButtonSection>
@@ -81,20 +81,20 @@ export default (props: ImageModalProps) => {
 
 const Wrapper = styled.div({}, () => ({
   padding: '0px 24px 10px',
-  height: '100%',
+  height: '100%'
 }));
 
 const InnerWrapper = styled.div({
   alignItems: 'center',
   display: 'flex',
   flexDirection: 'column',
-  height: '95%',
+  height: '95%'
 });
 
 const SubTitle = styled.div(
   {},
   ({ theme: { constants } }: { theme: EditorStyle }) => ({
-    fontSize: constants.fontSize.large,
+    fontSize: constants.fontSize.large
   })
 );
 
@@ -114,19 +114,19 @@ const ImageWrapper = styled.span(
     padding: 20,
 
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'contain',
+    backgroundSize: 'contain'
   },
   ({ theme, src }: { theme: EditorStyle; src: string }) => ({
     border: src
       ? `1px dashed ${theme.constants.color.highlight.primary}`
-      : `1px dashed ${theme.constants.color.border.primary}`,
+      : `1px dashed ${theme.constants.color.border.primary}`
   })
 );
 
 const StyledInput = styled(Input)({}, () => ({
   width: '75%',
   maxWidth: 400,
-  '> input': { width: '100%', margin: '0 auto' },
+  '> input': { width: '100%', margin: '0 auto' }
 }));
 
 const ButtonSection = styled.div({ display: 'flex', marginTop: 20 });
@@ -135,5 +135,5 @@ const StyledImage = styled.img({
   height: 'auto',
   width: 'auto',
   maxHeight: '100%',
-  maxWidth: '100%',
+  maxWidth: '100%'
 });

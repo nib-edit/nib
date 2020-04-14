@@ -1,32 +1,18 @@
 import * as React from 'react';
-import {
-  FunctionComponent,
-  Fragment,
-  MutableRefObject,
-  useState,
-  useRef,
-} from 'react';
+import { Fragment, MutableRefObject, useState, useRef } from 'react';
 import styled from '@emotion/styled';
 
 import { Popup, ToolbarButton, Icon } from 'nib-ui';
 
-import { ConfigContextConsumer } from '../../context/config';
-import { PMStateConsumer } from '../../context/pm-state';
 import { colorPluginKey } from './plugin';
-import { ProsemirrorEditorState } from '../../types/prosemirror';
-import { EditorConfig } from '../../types/editor-config';
+import { usePMStateContext } from '../../context/pm-state/index';
+import { useConfigContext } from '../../context/config/index';
 
 interface ToolbarComponentProps {
-  pmstate: ProsemirrorEditorState;
-  config: EditorConfig;
   editorWrapper: MutableRefObject<HTMLDivElement>;
 }
 
-const ToolbarComponent: FunctionComponent<ToolbarComponentProps> = ({
-  pmstate,
-  config,
-  editorWrapper,
-}) => {
+export default ({ editorWrapper }: ToolbarComponentProps) => {
   const [popupMarker, setPopupMarker] = useState<
     MutableRefObject<HTMLDivElement | undefined>
   >();
@@ -35,8 +21,14 @@ const ToolbarComponent: FunctionComponent<ToolbarComponentProps> = ({
   const textColorRef = useRef<HTMLDivElement>();
   const backgroundColorRef = useRef<HTMLDivElement>();
 
+  const { config } = useConfigContext();
+  const { pmstate } = usePMStateContext();
+  if (!pmstate) return null;
+
+  const { pmview } = pmstate;
+  if (!pmview) return null;
+
   const getActiveColorMarks = () => {
-    const { pmview } = pmstate;
     const { state } = pmview;
     const pluginState = colorPluginKey.getState(state);
     return pluginState && pluginState.activeColorMarks;
@@ -44,7 +36,6 @@ const ToolbarComponent: FunctionComponent<ToolbarComponentProps> = ({
 
   const toggleColorType = (evt: Event) => {
     const color = (evt.currentTarget as HTMLElement).getAttribute('name');
-    const { pmview } = pmstate;
     const { state, dispatch } = pmview;
     const { schema, selection, tr } = state;
     const { $from, $to } = selection;
@@ -87,8 +78,6 @@ const ToolbarComponent: FunctionComponent<ToolbarComponentProps> = ({
     setSelectedMarkType(undefined);
   };
 
-  const { pmview } = pmstate;
-  if (!pmview) return null;
   const marker = popupMarker && popupMarker.current;
   const activeMarks = getActiveColorMarks();
   const selectedTextColor =
@@ -160,7 +149,10 @@ const ColorsWrapper = styled.div`
   display: flex;
 `;
 
-const StyledButton = styled(ToolbarButton)`
+const StyledButton = styled(ToolbarButton)<{
+  color: string;
+  selected: boolean;
+}>`
   background-color: ${({ color }: { color: string }) => color};
   border: ${({ selected }: { selected: boolean }) =>
     selected ? '0.5px solid white' : 'none'};
@@ -172,15 +164,3 @@ const StyledButton = styled(ToolbarButton)`
   padding: 0;
   width: 24px;
 `;
-
-export default (props: any) => (
-  <ConfigContextConsumer>
-    {({ config }) => (
-      <PMStateConsumer>
-        {({ pmstate }) => (
-          <ToolbarComponent pmstate={pmstate} {...props} config={config} />
-        )}
-      </PMStateConsumer>
-    )}
-  </ConfigContextConsumer>
-);

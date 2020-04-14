@@ -153,17 +153,15 @@ export default {
   )
 };
 
-const Wrapper = styled.div(
-  {
-    alignItems: 'center',
-    display: 'flex',
-    padding: 4
-  },
-  ({ theme: { constants } }: { theme: EditorStyle }) => ({
-    borderRadius: constants.borderRadius,
-    fontSize: constants.fontSize.medium
-  })
-);
+const Wrapper = styled.div`
+  align-items: center;
+  display: flex;
+  padding: 4;
+  ${({ theme: { constants } }: { theme: EditorStyle }) => `
+    border-radius: ${constants.borderRadius};
+    font-size: ${constants.fontSize.medium};
+  `}
+`;
 
 const InputWrapper = styled.div({
   '> div:first-of-type': {

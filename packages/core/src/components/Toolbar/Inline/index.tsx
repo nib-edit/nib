@@ -1,6 +1,11 @@
 import * as React from 'react';
-import { FunctionComponent, Fragment, MutableRefObject } from 'react';
-import styled, { StyledComponent } from '@emotion/styled';
+import {
+  FunctionComponent,
+  Fragment,
+  MouseEvent,
+  MutableRefObject
+} from 'react';
+import styled from '@emotion/styled';
 import { Popup, Separator } from 'nib-ui';
 
 import getToolbarComponents from '../../../utils/editor/toolbar';
@@ -18,7 +23,7 @@ const Inline: FunctionComponent<InlineProps> = ({ editorWrapper, marker }) => {
   if (!marker) return null;
 
   const {
-    config: { plugins, toolbar },
+    config: { plugins, toolbar }
   } = useConfigContext();
   const { pmstate } = usePMStateContext();
   if (!pmstate) return null;
@@ -37,7 +42,7 @@ const Inline: FunctionComponent<InlineProps> = ({ editorWrapper, marker }) => {
       editorWrapper={editorWrapper}
       marker={marker}
       render={() => (
-        <Wrapper onMouseDown={(e: Event) => e.preventDefault()}>
+        <Wrapper onMouseDown={(e: MouseEvent) => e.preventDefault()}>
           {options.map((Option: EditorPlugin, index: number) => {
             if (!Option.toolbarComponent) return null;
             return (
@@ -59,7 +64,7 @@ const Wrapper = styled.div(
     display: 'flex',
     position: 'relative',
     border: 'none',
-    userSelect: 'none',
+    userSelect: 'none'
   },
   ({ theme: { constants, toolbar } }: { theme: EditorStyle }) => ({
     backgroundColor: constants.color.background.primary,
@@ -67,7 +72,7 @@ const Wrapper = styled.div(
     fontSize: constants.fontSize.medium,
     borderRadius: constants.borderRadius.large,
 
-    ...toolbar.inline({ theme: constants }),
+    ...toolbar.inline({ theme: constants })
   })
 );
 
@@ -77,5 +82,5 @@ export default {
   name: 'toolbar',
   getMarker: () =>
     document.getElementsByClassName('nib-selection-focus-marker')[0],
-  component: Inline,
+  component: Inline
 };

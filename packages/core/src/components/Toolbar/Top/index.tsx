@@ -1,6 +1,11 @@
 import * as React from 'react';
-import { FunctionComponent, Fragment, MutableRefObject } from 'react';
-import styled, { StyledComponent } from '@emotion/styled';
+import {
+  FunctionComponent,
+  Fragment,
+  MouseEvent,
+  MutableRefObject
+} from 'react';
+import styled from '@emotion/styled';
 
 import { Separator } from 'nib-ui';
 
@@ -21,11 +26,11 @@ interface TopProps {
 const Top: FunctionComponent<TopProps> = ({
   editorWrapper,
   addons = [],
-  pmstate,
+  pmstate
 }) => {
   if (!pmstate) return null;
   const {
-    config: { plugins, toolbar },
+    config: { plugins, toolbar }
   } = useConfigContext();
 
   const options = getToolbarComponents(
@@ -41,7 +46,7 @@ const Top: FunctionComponent<TopProps> = ({
   )[0];
 
   return (
-    <Wrapper onMouseDown={(e: Event) => e.preventDefault()}>
+    <Wrapper onMouseDown={(e: MouseEvent) => e.preventDefault()}>
       <ToolbarSection>
         {formattingOption.map((Option: EditorPlugin, index: number) => {
           if (!Option.toolbarComponent) return null;
@@ -79,7 +84,7 @@ const Wrapper = styled.div(
     borderTop: 'none',
 
     userSelect: 'none',
-    zIndex: 1,
+    zIndex: 1
   },
   ({ theme: { constants, toolbar } }: { theme: EditorStyle }) => ({
     backgroundColor: constants.color.background.primary,
@@ -87,14 +92,14 @@ const Wrapper = styled.div(
     borderBottom: constants.border.primary,
     fontSize: constants.fontSize.medium,
 
-    ...toolbar.top({ theme: constants }),
+    ...toolbar.top({ theme: constants })
   })
 );
 
 const ToolbarSection = styled.div({
   alignItems: 'center',
   display: 'flex',
-  flexWrap: 'wrap',
+  flexWrap: 'wrap'
 });
 
 interface TopWrapperProps {
