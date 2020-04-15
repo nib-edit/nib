@@ -35,10 +35,28 @@ const getConfig = (packageName) => {
     globals['@emotion/core'] = '@emotion/core';
     globals['@emotion/styled'] = '@emotion/styled';
     globals['emotion-theming'] = 'emotion-theming';
+    globals['prosemirror-commands'] = 'prosemirror-commands';
+    globals['prosemirror-history'] = 'prosemirror-history';
+    globals['prosemirror-keymap'] = 'prosemirror-keymap';
+    globals['prosemirror-model'] = 'prosemirror-model';
+    globals['prosemirror-schema-list'] = 'prosemirror-schema-list';
+    globals['prosemirror-state'] = 'prosemirror-state';
+    globals['prosemirror-utils'] = 'prosemirror-utils';
+    globals['prosemirror-view'] = 'prosemirror-view';
+    globals['prosemirror-tables'] = 'prosemirror-tables';
     // external.push('nib-ui');
     external.push('@emotion/core');
     external.push('@emotion/styled');
     external.push('emotion-theming');
+    external.push('prosemirror-commands');
+    external.push('prosemirror-history');
+    external.push('prosemirror-keymap');
+    external.push('prosemirror-model');
+    external.push('prosemirror-schema-list');
+    external.push('prosemirror-state');
+    external.push('prosemirror-utils');
+    external.push('prosemirror-view');
+    external.push('prosemirror-tables');
     copyConf.targets.push({
       dest: `packages/${packageName}/build`,
       src: `packages/${packageName}/readme.md`,

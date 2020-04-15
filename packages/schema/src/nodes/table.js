@@ -1,9 +1,9 @@
-import { tableNodes } from "prosemirror-tables";
+import { tableNodes } from 'prosemirror-tables';
 
 // eslint-disable-next-line camelcase
 const table_nodes = tableNodes({
-  tableGroup: "block",
-  cellContent: "block+"
+  tableGroup: 'block',
+  cellContent: 'block+',
 });
 
 // eslint-disable-next-line camelcase

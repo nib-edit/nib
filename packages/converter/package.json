@@ -18,13 +18,8 @@
   },
   "homepage": "https://github.com/jpuri/Nib/tree/master/packages/core#Readme.md",
   "dependencies": {
-    "prosemirror-model": "^1.0.0",
-    "nib-schema": "^2.4.2"
-  },
-  "devDependencies": {
-    "prop-types": "^15.6.2",
-    "react": "next",
-    "react-dom": "next"
+    "nib-schema": "^2.4.2",
+    "prosemirror-model": "^1.0.0"
   },
   "license": "MIT"
 }

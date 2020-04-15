@@ -28,12 +28,12 @@ const Editor: FunctionComponent<EditorProps> = ({
   defaultValue,
   licenseKey,
   onChange = () => {},
-  spellCheck = false,
+  spellCheck = false
 }) => {
   const editorRef = useRef<HTMLDivElement>(null);
   const {
     config: { plugins },
-    dispatcher,
+    dispatcher
   } = useConfigContext();
   let [view] = useState<EditorView>();
   const viewProvider = () => view;
@@ -70,7 +70,7 @@ const Editor: FunctionComponent<EditorProps> = ({
             serializableState[name] = getSerializableState();
         });
         if (onChange) onChange(serializableState);
-      },
+      }
     });
     if (autoFocus) {
       view.focus();
