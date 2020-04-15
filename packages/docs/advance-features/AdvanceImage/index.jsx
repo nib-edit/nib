@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Editor from 'nib-core';
-import AdvanceImage from 'nib-advance-image';
 
+import AdvanceImage from 'nib-advance-image';
 import Code from '../../Code';
 import uploadCallback from '../../common/uploadCallback';
 import defaultValue from './sampleData';
@@ -20,8 +20,8 @@ const AdvanceImageComponent = () => {
           plugins: { options: '' },
           toolbar: {
             options: 'top',
-            top: { options: 'advance-image' },
-          },
+            top: { options: 'advance-image' }
+          }
         }}
         addons={[imagePlugin]}
         onChange={setContent}
