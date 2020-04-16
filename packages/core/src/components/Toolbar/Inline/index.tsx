@@ -3,7 +3,9 @@ import {
   FunctionComponent,
   Fragment,
   MouseEvent,
-  MutableRefObject
+  MutableRefObject,
+  useEffect,
+  useState,
 } from 'react';
 import styled from '@emotion/styled';
 import { Popup, Separator } from 'nib-ui';
@@ -22,8 +24,10 @@ interface InlineProps {
 const Inline: FunctionComponent<InlineProps> = ({ editorWrapper, marker }) => {
   if (!marker) return null;
 
+  const [changeCounter, setChangeCounter] = useState(0);
+
   const {
-    config: { plugins, toolbar }
+    config: { plugins, toolbar },
   } = useConfigContext();
   const { pmstate } = usePMStateContext();
   if (!pmstate) return null;
@@ -35,12 +39,17 @@ const Inline: FunctionComponent<InlineProps> = ({ editorWrapper, marker }) => {
     dispatch(state.tr.setMeta('hide-all-popups', true));
   };
 
+  useEffect(() => {
+    setChangeCounter(changeCounter + 1);
+  }, [pmstate]);
+
   return (
     <StyledPopup
       onEscKeyPress={closePopup}
       onClickOutsideEditor={closePopup}
       editorWrapper={editorWrapper}
       marker={marker}
+      changeCounter={changeCounter}
       render={() => (
         <Wrapper onMouseDown={(e: MouseEvent) => e.preventDefault()}>
           {options.map((Option: EditorPlugin, index: number) => {
@@ -64,7 +73,7 @@ const Wrapper = styled.div(
     display: 'flex',
     position: 'relative',
     border: 'none',
-    userSelect: 'none'
+    userSelect: 'none',
   },
   ({ theme: { constants, toolbar } }: { theme: EditorStyle }) => ({
     backgroundColor: constants.color.background.primary,
@@ -72,7 +81,7 @@ const Wrapper = styled.div(
     fontSize: constants.fontSize.medium,
     borderRadius: constants.borderRadius.large,
 
-    ...toolbar.inline({ theme: constants })
+    ...toolbar.inline({ theme: constants }),
   })
 );
 
@@ -82,5 +91,5 @@ export default {
   name: 'toolbar',
   getMarker: () =>
     document.getElementsByClassName('nib-selection-focus-marker')[0],
-  component: Inline
+  component: Inline,
 };

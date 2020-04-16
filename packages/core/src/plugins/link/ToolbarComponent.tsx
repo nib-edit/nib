@@ -41,7 +41,7 @@ export default () => {
         disabled={isLinkMarkActive()}
         title={formatKeymap(KeymapInfo.link)}
       >
-        <Icon name="link" />
+        <Icon name="link" selected={isLinkMarkActive()} />
       </ToolbarButton>
     </span>
   );

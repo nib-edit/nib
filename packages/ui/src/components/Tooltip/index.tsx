@@ -10,7 +10,7 @@ const Tooltip = ({ info, children }: any) => {
   const [hovered, setHovered] = useState(false);
   const [timeoutObj, setTimeoutObj] = useState<number>();
 
-  const handleMouseEnter = () => {
+  const showTooltip = () => {
     const timeout = setTimeout(() => {
       setHovered(true);
       setTimeout(() => {
@@ -20,13 +20,17 @@ const Tooltip = ({ info, children }: any) => {
     setTimeoutObj(timeout as any);
   };
 
-  const handleMouseLeave = () => {
+  const hideTooltip = () => {
     clearTimeout(timeoutObj);
     setHovered(false);
   };
 
   return (
-    <Wrapper onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <Wrapper
+      onMouseEnter={showTooltip}
+      onMouseLeave={hideTooltip}
+      onClick={hideTooltip}
+    >
       {children}
       {hovered && <Info>{info}</Info>}
     </Wrapper>
@@ -46,14 +50,14 @@ const Info = styled.div(
     borderRadius: 1,
     fontSize: 12,
     padding: '0 4px',
-    whiteSpace: 'nowrap'
+    whiteSpace: 'nowrap',
   },
   ({ theme }: { theme?: EditorStyle }) => {
     if (!theme) return;
     const { constants } = theme;
     return {
       backgroundColor: constants.color.text.primary,
-      color: constants.color.background.primary
+      color: constants.color.background.primary,
     };
   }
 );

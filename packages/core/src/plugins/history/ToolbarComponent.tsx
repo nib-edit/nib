@@ -1,28 +1,26 @@
 import * as React from 'react';
-import { FunctionComponent } from 'react';
 import { undo, redo } from 'prosemirror-history';
 
 import { ToolbarButton, Icon } from 'nib-ui';
 
 import formatKeymap from '../../utils/format-keymap';
-import { PMStateConsumer } from '../../context/pm-state';
-import { ProsemirrorEditorState } from '../../types/prosemirror';
+import { usePMStateContext } from '../../context/pm-state/index';
+
 import { KeymapInfo } from './keymaps';
 
-interface ToolbarComponentProps {
-  pmstate: ProsemirrorEditorState;
-}
+export default () => {
+  const { pmstate } = usePMStateContext();
+  if (!pmstate) return null;
+  const { pmview } = pmstate;
+  if (!pmview) return null;
 
-const ToolbarComponent: FunctionComponent<ToolbarComponentProps> = ({
-  pmstate,
-}) => {
   const undoState = () => {
-    const { state, dispatch } = pmstate.pmview;
+    const { state, dispatch } = pmview;
     undo(state, dispatch);
   };
 
   const redoState = () => {
-    const { state, dispatch } = pmstate.pmview;
+    const { state, dispatch } = pmview;
     redo(state, dispatch);
   };
 
@@ -37,9 +35,3 @@ const ToolbarComponent: FunctionComponent<ToolbarComponentProps> = ({
     </>
   );
 };
-
-export default (props: any) => (
-  <PMStateConsumer>
-    {({ pmstate }) => <ToolbarComponent pmstate={pmstate} {...props} />}
-  </PMStateConsumer>
-);

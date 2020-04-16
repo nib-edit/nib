@@ -17,12 +17,12 @@ export default ToolbarButton;
 ToolbarButton.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   forwardRef: PropTypes.object,
-  title: PropTypes.string
+  title: PropTypes.string,
 };
 
 ToolbarButton.defaultProps = {
   forwardRef: undefined,
-  title: undefined
+  title: undefined,
 };
 
 const StyledButton = styled.button(
@@ -40,17 +40,17 @@ const StyledButton = styled.button(
 
     ':focus': {
       outline: 'none',
-      transform: 'scale(1.15)'
+      transform: 'scale(1.15)',
     },
-    ':hover': {
-      transform: 'scale(1.15)'
+    ':hover:not(:disabled)': {
+      transform: 'scale(1.15)',
     },
     ':active': {
-      transform: 'scale(0.95)'
+      transform: 'scale(0.95)',
     },
     ':disabled': {
-      opacity: '0.5'
-    }
+      opacity: '0.5',
+    },
   },
   ({ theme: { constants, button } }) => ({
     backgroundColor: constants.color.background.primary,
@@ -58,6 +58,6 @@ const StyledButton = styled.button(
     borderRadius: constants.borderRadius.small,
     fontSize: constants.fontSize.medium,
 
-    ...button.toolbar({ theme: constants })
+    ...button.toolbar({ theme: constants }),
   })
 );

@@ -1,21 +1,23 @@
 import * as React from 'react';
-import { FunctionComponent } from 'react';
 import { setBlockType } from 'prosemirror-commands';
 
-import { PMStateConsumer } from '../../../context/pm-state';
-import { ConfigContextConsumer } from '../../../context/config';
-import { ProsemirrorEditorState } from '../../../types/prosemirror';
-import { blockPluginKey } from '../plugin';
-import options from '../blockData';
+import { usePMStateContext } from '../../../context/pm-state/index';
+
 import Grouped from './Grouped';
 import Ungrouped from './Ungrouped';
+import options from '../blockData';
+import { blockPluginKey } from '../plugin';
 
 interface ToolbarComponentProps {
-  pmstate: ProsemirrorEditorState;
   config: { options: string; grouped: boolean };
 }
 
-const ToolbarComponent: FunctionComponent<ToolbarComponentProps> = (props) => {
+export default (props: ToolbarComponentProps) => {
+  const { pmstate } = usePMStateContext();
+  if (!pmstate) return null;
+  const { pmview } = pmstate;
+  if (!pmview) return null;
+
   const changeBlockType = (blockType: string) => {
     let attrs;
     let blockName;
@@ -26,8 +28,6 @@ const ToolbarComponent: FunctionComponent<ToolbarComponentProps> = (props) => {
       blockName = 'heading';
     }
 
-    const { pmstate } = props;
-    const { pmview } = pmstate;
     const { state, dispatch } = pmview;
     const nodeType = state.schema.nodes[blockName];
 
@@ -36,10 +36,6 @@ const ToolbarComponent: FunctionComponent<ToolbarComponentProps> = (props) => {
   };
 
   const getSelectedBlock = () => {
-    const { pmstate } = props;
-    const { pmview } = pmstate;
-    if (!pmview) return undefined;
-
     const { state } = pmview;
     const pluginState = blockPluginKey.getState(state);
     const selectedBlock = pluginState && pluginState.selectedBlock;
@@ -78,18 +74,3 @@ const ToolbarComponent: FunctionComponent<ToolbarComponentProps> = (props) => {
     />
   );
 };
-
-export default (props: any) => (
-  <ConfigContextConsumer>
-    {({ config }) => (
-      <PMStateConsumer>
-        {({ pmstate }) => {
-          if (!pmstate) return null;
-          return (
-            <ToolbarComponent config={config} pmstate={pmstate} {...props} />
-          );
-        }}
-      </PMStateConsumer>
-    )}
-  </ConfigContextConsumer>
-);

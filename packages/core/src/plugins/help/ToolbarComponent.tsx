@@ -42,7 +42,6 @@ class ToolbarComponent extends PureComponent<ToolbarComponentProps> {
   };
 
   render() {
-    const { pmstate } = this.props;
     const { showModal } = this.state;
     return (
       <>
@@ -52,7 +51,7 @@ class ToolbarComponent extends PureComponent<ToolbarComponentProps> {
         >
           <Icon name="question" />
         </StyledButton>
-        {showModal && <Modal pmstate={pmstate} hideModal={this.hideModal} />}
+        {showModal && <Modal hideModal={this.hideModal} />}
       </>
     );
   }
@@ -62,6 +61,8 @@ const StyledButton = styled(ToolbarButton)({ marginLeft: 8 });
 
 export default (props: any) => (
   <PMStateConsumer>
-    {({ pmstate }) => <ToolbarComponent pmstate={pmstate} {...props} />}
+    {({ pmstate }: { pmstate: ProsemirrorEditorState }) => (
+      <ToolbarComponent pmstate={pmstate} {...props} />
+    )}
   </PMStateConsumer>
 );

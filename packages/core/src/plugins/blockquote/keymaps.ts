@@ -11,5 +11,5 @@ export default () => ({
 });
 
 export const KeymapInfo = {
-  insertBlockquote: { key: "Mod-'", label: 'Insert Blockquote' },
+  insertBlockquote: { key: "Mod-'", label: 'Blockquote' },
 };

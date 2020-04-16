@@ -85,8 +85,8 @@ class Popup extends Component {
     });
   }
 
-  componentDidUpdate() {
-    const { marker, editorWrapper, wrapperRef } = this.props;
+  componentDidUpdate(prevProps) {
+    const { changeCounter, marker, editorWrapper, wrapperRef } = this.props;
     const { popupPosition } = this.state;
     if (!marker) return;
     const oldPos = this.markerPos;
@@ -97,7 +97,12 @@ class Popup extends Component {
       offsetTop: marker.offsetTop,
       width: markerDim.width,
     };
-    if (isSamePos(oldPos, this.markerPos) && popupPosition) return;
+    if (
+      isSamePos(oldPos, this.markerPos) &&
+      popupPosition &&
+      prevProps.changeCounter === changeCounter
+    )
+      return;
     // eslint-disable-next-line react/no-did-update-set-state
     this.setState({
       ...getPosition(marker, wrapperRef.current, editorWrapper.current),
@@ -135,6 +140,7 @@ Popup.propTypes = {
   marker: PropTypes.object.isRequired,
   render: PropTypes.func.isRequired,
   className: PropTypes.string,
+  changeCounter: PropTypes.number,
 };
 
 Popup.defaultProps = {

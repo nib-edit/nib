@@ -5,8 +5,8 @@ import styled from '@emotion/styled';
 import { Popup, ToolbarButton, Icon } from 'nib-ui';
 
 import { colorPluginKey } from './plugin';
-import { usePMStateContext } from '../../context/pm-state/index';
 import { useConfigContext } from '../../context/config/index';
+import { usePMStateContext } from '../../context/pm-state/index';
 
 interface ToolbarComponentProps {
   editorWrapper: MutableRefObject<HTMLDivElement>;

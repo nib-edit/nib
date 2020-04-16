@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { FunctionComponent } from 'react';
-import styled, { StyledComponent } from '@emotion/styled';
+import styled from '@emotion/styled';
 
 import { Space, SpaceSize, Modal } from 'nib-ui';
 
-import { ConfigContextConsumer, useConfigContext } from '../../context/config';
+import { useConfigContext } from '../../context/config';
 import { EditorStyle } from '../../types/editor-style';
 import { KeymapData } from '../../types/application';
 
@@ -29,7 +29,7 @@ interface HelpModalProps {
   hideModal: any;
 }
 
-const HelpModal: FunctionComponent<HelpModalProps> = (props) => {
+export default (props: HelpModalProps) => {
   const { hideModal } = props;
   const {
     config: { plugins },
@@ -95,9 +95,3 @@ const Column = styled.span({
     width: '100%',
   },
 });
-
-export default (props: any) => (
-  <ConfigContextConsumer>
-    {({ config }) => <HelpModal config={config} {...props} />}
-  </ConfigContextConsumer>
-);

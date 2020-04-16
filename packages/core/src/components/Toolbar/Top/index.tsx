@@ -3,34 +3,32 @@ import {
   FunctionComponent,
   Fragment,
   MouseEvent,
-  MutableRefObject
+  MutableRefObject,
 } from 'react';
 import styled from '@emotion/styled';
 
 import { Separator } from 'nib-ui';
 
 import getToolbarComponents from '../../../utils/editor/toolbar';
-import { useConfigContext } from '../../../context/config';
-import { PMStateConsumer } from '../../../context/pm-state';
 import { Addon } from '../../../types/addon';
 import { EditorPlugin } from '../../../types/application';
 import { EditorStyle } from '../../../types/editor-style';
-import { ProsemirrorEditorState } from '../../../types/prosemirror';
+import { useConfigContext } from '../../../context/config';
+import { usePMStateContext } from '../../../context/pm-state/index';
 
 interface TopProps {
   editorWrapper: MutableRefObject<HTMLDivElement | null>;
   addons?: Addon[];
-  pmstate: ProsemirrorEditorState;
 }
 
-const Top: FunctionComponent<TopProps> = ({
-  editorWrapper,
-  addons = [],
-  pmstate
-}) => {
+export default ({ editorWrapper, addons = [] }: TopProps) => {
+  const { pmstate } = usePMStateContext();
   if (!pmstate) return null;
+  const { pmview } = pmstate;
+  if (!pmview) return null;
+
   const {
-    config: { plugins, toolbar }
+    config: { plugins, toolbar },
   } = useConfigContext();
 
   const options = getToolbarComponents(
@@ -84,7 +82,7 @@ const Wrapper = styled.div(
     borderTop: 'none',
 
     userSelect: 'none',
-    zIndex: 1
+    zIndex: 1,
   },
   ({ theme: { constants, toolbar } }: { theme: EditorStyle }) => ({
     backgroundColor: constants.color.background.primary,
@@ -92,25 +90,17 @@ const Wrapper = styled.div(
     borderBottom: constants.border.primary,
     fontSize: constants.fontSize.medium,
 
-    ...toolbar.top({ theme: constants })
+    ...toolbar.top({ theme: constants }),
   })
 );
 
 const ToolbarSection = styled.div({
   alignItems: 'center',
   display: 'flex',
-  flexWrap: 'wrap'
+  flexWrap: 'wrap',
 });
 
 interface TopWrapperProps {
   editorWrapper: MutableRefObject<HTMLDivElement | null>;
   addons?: Addon[];
 }
-
-export default (props: TopWrapperProps) => (
-  <PMStateConsumer>
-    {({ pmstate }: { pmstate: ProsemirrorEditorState }) => (
-      <Top pmstate={pmstate} {...props} />
-    )}
-  </PMStateConsumer>
-);

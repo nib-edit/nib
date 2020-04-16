@@ -10,5 +10,5 @@ export default () => ({
 });
 
 export const KeymapInfo = {
-  image: { key: 'Mod-P', label: 'Insert Image' },
+  image: { key: 'Mod-P', label: 'Image' },
 };

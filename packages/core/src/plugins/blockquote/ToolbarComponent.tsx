@@ -1,33 +1,26 @@
 import * as React from 'react';
-import { FunctionComponent } from 'react';
 
 import { ToolbarButton, Icon } from 'nib-ui';
 
 import formatKeymap from '../../utils/format-keymap';
-import { PMStateConsumer } from '../../context/pm-state';
-import { ProsemirrorEditorState } from '../../types/prosemirror';
+import { usePMStateContext } from '../../context/pm-state/index';
 
-import { KeymapInfo } from './keymaps';
 import { blockquotePluginKey } from './plugin';
+import { KeymapInfo } from './keymaps';
 import { wrapLiftBlockquote } from './commands';
 
-interface ToolbarComponentProps {
-  pmstate: ProsemirrorEditorState;
-  config: { options: string; grouped: boolean };
-}
+export default () => {
+  const { pmstate } = usePMStateContext();
+  if (!pmstate) return null;
+  const { pmview } = pmstate;
+  if (!pmview) return null;
 
-const ToolbarComponent: FunctionComponent<ToolbarComponentProps> = (props) => {
   const wrapInBlockquote = () => {
-    const { pmstate } = props;
-    const { pmview } = pmstate;
     const { state, dispatch } = pmview;
     wrapLiftBlockquote(state, dispatch);
   };
 
   const isBlockquoteNodePresent = () => {
-    const { pmstate } = props;
-    const { pmview } = pmstate;
-    if (!pmview) return false;
     const { state } = pmview;
     const { blockquoteNode } = blockquotePluginKey.getState(state);
     return !!blockquoteNode;
@@ -44,9 +37,3 @@ const ToolbarComponent: FunctionComponent<ToolbarComponentProps> = (props) => {
     </ToolbarButton>
   );
 };
-
-export default (props: any) => (
-  <PMStateConsumer>
-    {({ pmstate }) => <ToolbarComponent pmstate={pmstate} {...props} />}
-  </PMStateConsumer>
-);
