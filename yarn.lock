@@ -2943,9 +2943,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.390:
-  version "1.3.411"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.411.tgz#203a24482ac39b039cca0090f9ec05d79074f76d"
-  integrity sha512-TDDfkuSYEbknN0kRPSAD8WzB452pJ6EmIxGbI9yQHkDxUNbD6Educ10DxyA9r/DuLL4z255IO1OZIw+eFK6XUw==
+  version "1.3.412"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.412.tgz#da0475c653b48e5935f300aa9c875377bf8ddcf9"
+  integrity sha512-4bVdSeJScR8fT7ERveLWbxemY5uXEHVseqMRyORosiKcTUSGtVwBkV8uLjXCqoFLeImA57Z9hbz3TOid01U4Hw==
 
 elliptic@^6.0.0:
   version "6.5.2"
@@ -5522,14 +5522,12 @@ nib-markdown-converter@0.1.0:
     prosemirror-markdown "1.4.4"
     prosemirror-model "^1.0.0"
 
-nib-table@0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/nib-table/-/nib-table-0.1.4.tgz#7c6e1d27c8c56b083ab8f4119dc164af4fefff24"
-  integrity sha512-sPUq1EYrZNMjVb3OVzqieQT0nAt3DB1+NZ4gn2qhrdi539QEVsJOCqhkacf59YoBV52byjOhTmVZDIUGYsJ/rg==
+nib-table@0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/nib-table/-/nib-table-0.1.6.tgz#5cf73ae8e85e33f9e2f821caec73242d0db7086f"
+  integrity sha512-g8xg6DQpE3DwtH+U3FPJB3usKvwYBAv6yY/x76eraBWlz0KxlGG+54Y0ZOQGkM3dAdXlqnQAq26gdpTlXGgLmg==
   dependencies:
     axios "^0.19.0"
-    nib-ui "2.4.7"
-    prosemirror-transform "^1.0.0"
 
 nib-track@2.5.3:
   version "2.5.3"
@@ -5546,19 +5544,12 @@ nib-ui@2.4.6:
   dependencies:
     react-select "^3.0.4"
 
-nib-ui@2.4.7:
-  version "2.4.7"
-  resolved "https://registry.yarnpkg.com/nib-ui/-/nib-ui-2.4.7.tgz#a6d1c1c82d1331a7d0edd96073c5e6aaa843ba44"
-  integrity sha512-9WkW2Z62nUpWHiLhD2Qvr6SRdEUO6Xw5LL+yUkGL4t0/0QD+f9+otzgyEbWVoExqZRmCxTDuiPbLpf2qaQqidw==
-
-nib-video@0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/nib-video/-/nib-video-0.1.2.tgz#479773b8add2e69446b975b5b468daef4833fd76"
-  integrity sha512-rB3gLSHYZCJZyys2eQGbIsK6xeL4xXR59OyYNEF5JXw+K1yhkXbBp2uvbzUe9y+0TApZ56RN8YntY9qisqNAqg==
+nib-video@0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/nib-video/-/nib-video-0.1.3.tgz#3d3eb28f903b9e7809b197fce16f46e89098a593"
+  integrity sha512-rmIG9M1PzaOfzz9UCGVD6OROSoHFO+bGh6e2oUGUoCY+McdrblVdle5/cUgGSYF0Ic1HgmdlDqJ1EsHJNyNY7g==
   dependencies:
     axios "^0.19.0"
-    nib-ui "2.4.7"
-    prosemirror-transform "^1.0.0"
 
 nice-try@^1.0.4:
   version "1.0.5"
