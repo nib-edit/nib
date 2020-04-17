@@ -64,9 +64,17 @@ module.exports = {
         'packages/docs/advance-features/CustomPlugin/index.jsx',
         'packages/docs/advance-features/MarkdownConverter/index.jsx',
         'packages/docs/advance-features/Track/index.jsx',
-        'packages/docs/advance-features/Comment/index.jsx',
-        'packages/docs/advance-features/TrackWithComment/index.jsx',
-        'packages/docs/advance-features/Collab/index.jsx',
+      ],
+    },
+    {
+      name: 'Beta Features',
+      pagePerSection: true,
+      sectionDepth: 1,
+      content: 'packages/docs/beta-features/Readme.md',
+      components: [
+        'packages/docs/beta-features/Comment/index.jsx',
+        'packages/docs/beta-features/TrackWithComment/index.jsx',
+        'packages/docs/beta-features/Collab/index.jsx',
       ],
     },
     {

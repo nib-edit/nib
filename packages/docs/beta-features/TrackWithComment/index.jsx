@@ -13,7 +13,7 @@ const user = {
 const tracker = new TrackPlugin();
 const commenter = new CommentPlugin(user, '#f8bbd0');
 
-const formatDate = str => {
+const formatDate = (str) => {
   const d = new Date(str);
   if (!d) return '';
   return `${d.getMonth() +
@@ -21,7 +21,7 @@ const formatDate = str => {
 };
 
 /**
- * @visibleName 8. Track + Comment
+ * @visibleName 2. Track + Comment
  */
 const TrackWithComment = () => {
   const [trackState, setTrackState] = useState(tracker.getState());
@@ -37,11 +37,11 @@ const TrackWithComment = () => {
     tracker.doCommit(user);
     updateTrackedState();
   };
-  const revertCommit = commit => {
+  const revertCommit = (commit) => {
     tracker.revertCommit(commit.id, user);
     updateTrackedState();
   };
-  const highlightCommit = commit => {
+  const highlightCommit = (commit) => {
     tracker.highlightCommit(commit.id);
     updateTrackedState();
   };
@@ -49,7 +49,7 @@ const TrackWithComment = () => {
     tracker.resetHighlight();
     updateTrackedState();
   };
-  const onKeyDown = evt => {
+  const onKeyDown = (evt) => {
     if (evt.key === 'Meta') setCmd(true);
     else if (evt.key === 's' && cmd) {
       doCommit();
@@ -71,7 +71,7 @@ const TrackWithComment = () => {
         <input
           style={{ marginBottom: 10 }}
           className="nib-comment_msg"
-          onChange={evt => setUserid(evt.target.value)}
+          onChange={(evt) => setUserid(evt.target.value)}
           placeholder="Enter id"
           value={userid}
         />
@@ -83,7 +83,7 @@ const TrackWithComment = () => {
         <input
           style={{ marginBottom: 10 }}
           className="nib-comment_msg"
-          onChange={evt => setUsername(evt.target.value)}
+          onChange={(evt) => setUsername(evt.target.value)}
           placeholder="Enter user name"
           value={username}
         />

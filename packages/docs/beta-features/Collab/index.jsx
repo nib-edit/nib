@@ -17,7 +17,7 @@ const collab = new CollabPlugin({
 });
 
 /**
- * @visibleName 9. Collaborative Editing
+ * @visibleName 3. Collaborative Editing
  */
 const Collab = () => {
   const [editorState, setEditorState] = useState();
@@ -45,7 +45,7 @@ const Collab = () => {
           <input
             style={{ marginBottom: 10 }}
             className="nib-comment_msg"
-            onChange={evt => setUsername(evt.target.value)}
+            onChange={(evt) => setUsername(evt.target.value)}
             placeholder="Enter user name"
             value={username}
           />

@@ -36,7 +36,7 @@ const commenter = new CommentPlugin({
 });
 
 /**
- * @visibleName 7. Comment
+ * @visibleName 1. Comment
  */
 const Comment = () => {
   const [userid, setUserid] = useState('12345');
@@ -52,7 +52,7 @@ const Comment = () => {
         <input
           style={{ marginBottom: 10 }}
           className="nib-comment_msg"
-          onChange={evt => setUserid(evt.target.value)}
+          onChange={(evt) => setUserid(evt.target.value)}
           placeholder="Enter id"
           value={userid}
         />
@@ -64,7 +64,7 @@ const Comment = () => {
         <input
           style={{ marginBottom: 10 }}
           className="nib-comment_msg"
-          onChange={evt => setUsername(evt.target.value)}
+          onChange={(evt) => setUsername(evt.target.value)}
           placeholder="Enter user name"
           value={username}
         />
