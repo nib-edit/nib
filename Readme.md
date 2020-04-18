@@ -31,7 +31,7 @@ import Editor from "nib-core";
 const MyEditor = () => <Editor />;
 ```
 
-Please note that the lib does not works with server side rendering.
+Please note that the lib does not work server side.
 
 ## Props
 
@@ -56,3 +56,7 @@ MIT
 This repository includes code for all basic editor features which are freely available.
 
 Advance editor features like nib drive, tables, advance images, video, tracking changes, comments and collaborative editing are not open source, check [licensing](http://www.nibedit.com/index.html#/License).
+
+## Contact
+
+For details or queries drop mail to contact@nibedit.com.
