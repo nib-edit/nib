@@ -5511,29 +5511,6 @@ nib-comment@2.6.2:
     nib-ui "2.4.6"
     prosemirror-transform "^1.0.0"
 
-nib-core@2.6.2:
-  version "2.6.2"
-  resolved "https://registry.yarnpkg.com/nib-core/-/nib-core-2.6.2.tgz#ff0b6d4d0cdd35682d43ce0235a3b6f6c1668395"
-  integrity sha512-Z1dNPKLn4Nv/TsDwmChk4CecO41RDQ8N39PktKWukfIbcZURz+BPpN539xJWxSmNS3IfKuKahr3+0zIj2wy5JA==
-  dependencies:
-    "@emotion/core" "^10.0.14"
-    "@emotion/styled" "^10.0.14"
-    axios "^0.19.0"
-    emotion-theming "^10.0.14"
-    nib-embed "2.1.6"
-    nib-schema "2.4.2"
-    nib-ui "2.4.8"
-    nib-ui-select "0.0.1"
-    prosemirror-commands "^1.0.7"
-    prosemirror-history "^1.0.3"
-    prosemirror-keymap "^1.0.1"
-    prosemirror-model "^1.6.2"
-    prosemirror-schema-list "^1.0.1"
-    prosemirror-state "^1.2.2"
-    prosemirror-tables "^0.8.1"
-    prosemirror-utils "^0.7.6"
-    prosemirror-view "^1.10.0"
-
 nib-markdown-converter@0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/nib-markdown-converter/-/nib-markdown-converter-0.1.0.tgz#7060229bd3c428adada63a656807c60985766e19"
@@ -5567,10 +5544,10 @@ nib-ui@2.4.6:
   dependencies:
     react-select "^3.0.4"
 
-nib-video@0.1.3:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/nib-video/-/nib-video-0.1.3.tgz#3d3eb28f903b9e7809b197fce16f46e89098a593"
-  integrity sha512-rmIG9M1PzaOfzz9UCGVD6OROSoHFO+bGh6e2oUGUoCY+McdrblVdle5/cUgGSYF0Ic1HgmdlDqJ1EsHJNyNY7g==
+nib-video@0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/nib-video/-/nib-video-0.1.6.tgz#062ed62dce4044ac7107c64f51438ccb74786cb7"
+  integrity sha512-OHvSg3lHr0ga+OtMcw9PmAHHb2EyEZbnqvumizf7xFb9lOUYukG4y9tDkmBfP2FIB/xxJZScjYQ40QJ4H0+0iw==
   dependencies:
     axios "^0.19.0"
 

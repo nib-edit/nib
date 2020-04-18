@@ -31,7 +31,7 @@ const getConfig = (packageName) => {
   const copyConf = getCopyConf(packageName);
   let inputFileName = 'index.js';
   if (packageName !== 'core') {
-    // globals['nib-ui'] = 'nib-ui';
+    globals['nib-ui'] = 'nib-ui';
     globals['@emotion/core'] = '@emotion/core';
     globals['@emotion/styled'] = '@emotion/styled';
     globals['emotion-theming'] = 'emotion-theming';
@@ -44,7 +44,7 @@ const getConfig = (packageName) => {
     globals['prosemirror-utils'] = 'prosemirror-utils';
     globals['prosemirror-view'] = 'prosemirror-view';
     globals['prosemirror-tables'] = 'prosemirror-tables';
-    // external.push('nib-ui');
+    external.push('nib-ui');
     external.push('@emotion/core');
     external.push('@emotion/styled');
     external.push('emotion-theming');
