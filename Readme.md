@@ -31,6 +31,8 @@ import Editor from "nib-core";
 const MyEditor = () => <Editor />;
 ```
 
+Please note that the lib does not works with server side rendering.
+
 ## Props
 
 Props supported by the editor.

@@ -8,7 +8,7 @@ import { colorPluginKey } from './plugin';
 import { useConfigContext } from '../../context/config/index';
 import { usePMStateContext } from '../../context/pm-state/index';
 
-interface ToolbarComponentProps {
+export interface ToolbarComponentProps {
   editorWrapper: MutableRefObject<HTMLDivElement>;
 }
 

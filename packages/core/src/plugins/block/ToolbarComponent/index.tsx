@@ -8,7 +8,7 @@ import Ungrouped from './Ungrouped';
 import options from '../blockData';
 import { blockPluginKey } from '../plugin';
 
-interface ToolbarComponentProps {
+export interface ToolbarComponentProps {
   config: { options: string; grouped: boolean };
 }
 

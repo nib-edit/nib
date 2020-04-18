@@ -11,7 +11,7 @@ import Modal from './Modal';
 import { helpPluginKey } from './plugin';
 import { ProsemirrorEditorState } from '../../types/prosemirror';
 
-interface ToolbarComponentProps {
+export interface ToolbarComponentProps {
   pmstate: ProsemirrorEditorState;
 }
 
