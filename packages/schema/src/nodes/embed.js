@@ -1,23 +1,22 @@
 const embed = {
-  group: "inline",
-  inline: true,
+  group: 'block',
   attrs: {
-    html: { default: "" }
+    html: { default: '' },
   },
   draggable: true,
   parseDOM: [
     {
-      tag: "span[data-nib-embed]",
+      tag: 'span[data-nib-embed]',
       getAttrs(domNode) {
         return {
-          html: domNode.getAttribute("data-nib-embed")
+          html: domNode.getAttribute('data-nib-embed'),
         };
-      }
-    }
+      },
+    },
   ],
   toDOM(node) {
-    return ["div", { "data-nib-embed": node.attrs.html }];
-  }
+    return ['div', { 'data-nib-embed': node.attrs.html }];
+  },
 };
 
 export default embed;
