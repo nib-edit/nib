@@ -39,6 +39,8 @@ import Underline from './Underline';
 import Undo from './Undo';
 import Video from './Video';
 import ViewComment from './ViewComment';
+import WrapLeft from './WrapLeft';
+import WrapRight from './WrapRight';
 
 export default {
   addComment: AddComment,
@@ -81,5 +83,7 @@ export default {
   underline: Underline,
   undo: Undo,
   video: Video,
-  viewComment: ViewComment
+  viewComment: ViewComment,
+  wrapLeft: WrapLeft,
+  wrapRight: WrapRight,
 };
