@@ -6,7 +6,7 @@ const embed = {
   draggable: true,
   parseDOM: [
     {
-      tag: 'span[data-nib-embed]',
+      tag: 'div[data-nib-embed]',
       getAttrs(domNode) {
         return {
           html: domNode.getAttribute('data-nib-embed'),

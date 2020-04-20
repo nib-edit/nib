@@ -20,8 +20,8 @@ const AdvanceImageComponent = () => {
           plugins: { options: '' },
           toolbar: {
             options: 'top',
-            top: { options: 'advance-image' }
-          }
+            top: { options: 'advance-image' },
+          },
         }}
         addons={[imagePlugin]}
         onChange={setContent}

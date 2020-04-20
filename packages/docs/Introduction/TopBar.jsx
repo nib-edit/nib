@@ -14,8 +14,8 @@ import data from './data';
 
 const theme = {
   editor: () => ({
-    height: '440px'
-  })
+    height: '440px',
+  }),
 };
 
 class TopBar extends PureComponent {
@@ -26,29 +26,29 @@ class TopBar extends PureComponent {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          margin: '32px 0'
+          margin: '32px 0',
         }}
       >
         <div>
           <Editor
             config={{
               plugins: {
-                options: 'block inline color link blockquote list help'
+                options: 'block inline color link blockquote list help',
               },
               toolbar: {
                 options: 'top',
                 top: {
                   options:
-                    'block inline color link blockquote list advance-image video table history help'
-                }
-              }
+                    'block inline color link blockquote list advance-image video table history help',
+                },
+              },
             }}
             defaultValue={data}
             styleConfig={theme}
             addons={[
               new AdvanceImagePlugin(uploadCallback),
               TablePlugin,
-              VideoPlugin
+              VideoPlugin,
             ]}
           />
         </div>

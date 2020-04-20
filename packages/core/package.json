@@ -24,7 +24,7 @@
     "axios": "^0.19.0",
     "emotion-theming": "^10.0.14",
     "nib-embed": "2.1.6",
-    "nib-schema": "2.4.2",
+    "nib-schema": "2.4.3",
     "nib-ui": "2.4.8",
     "nib-ui-select": "0.0.1",
     "prosemirror-commands": "^1.0.7",

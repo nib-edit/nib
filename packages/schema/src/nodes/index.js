@@ -5,6 +5,7 @@ import embed from './embed';
 import hardBreak from './hardBreak';
 import heading from './heading';
 import image from './image';
+import advanceImage from './advanceImage';
 import listItem from './listItem';
 import orderedList from './orderedList';
 import paragraph from './paragraph';
@@ -20,6 +21,7 @@ export default {
   hardBreak,
   heading,
   image,
+  advanceImage,
   listItem,
   orderedList,
   paragraph,

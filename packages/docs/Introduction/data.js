@@ -16,24 +16,24 @@ export default {
         ],
       },
       {
-        type: 'embed',
-        attrs: {
-          html:
-            '<iframe src="https://www.youtube.com/embed/p1f7cs4Gv2Y" width="640" height="360" frameborder="0" allowfullscreen></iframe>',
-        },
+        type: 'paragraph',
+        content: [
+          {
+            type: 'embed',
+            attrs: {
+              html:
+                '<iframe src="https://www.youtube.com/embed/p1f7cs4Gv2Y" width="640" height="360" frameborder="0" allowfullscreen></iframe>',
+            },
+          },
+        ],
       },
       {
         type: 'paragraph',
         content: [{ type: 'text', text: 'Click image to resize it' }],
       },
       {
-        type: 'paragraph',
-        content: [
-          {
-            type: 'image',
-            attrs: { src: 'https://i.imgur.com/2FCfbgg.jpg', height: '358px' },
-          },
-        ],
+        type: 'advanceImage',
+        attrs: { src: 'https://i.imgur.com/2FCfbgg.jpg', height: '358px' },
       },
       { type: 'paragraph' },
       {
