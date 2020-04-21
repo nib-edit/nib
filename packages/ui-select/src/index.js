@@ -26,7 +26,7 @@ Select.propTypes = {
   selectedOption: PropTypes.shape({
     label: PropTypes.string,
     value: PropTypes.object,
-  }).isRequired,
+  }),
   theme: PropTypes.shape({
     select: PropTypes.object,
   }).isRequired,
@@ -37,6 +37,7 @@ Select.propTypes = {
 Select.defaultProps = {
   height: undefined,
   width: undefined,
+  selectedOption: undefined,
 };
 
 export default withTheme(Select);
