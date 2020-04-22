@@ -1,67 +1,58 @@
 import * as React from 'react';
-import { ChangeEvent, MutableRefObject, PureComponent } from 'react';
+import {
+  ChangeEvent,
+  FunctionComponent,
+  MutableRefObject,
+  useState,
+} from 'react';
 import styled from '@emotion/styled';
 import { EditorState } from 'prosemirror-state';
 
 import { PrimaryButton, Input, Popup } from 'nib-ui';
 
-import { PMStateConsumer } from '../../../context/pm-state';
-import { ProsemirrorEditorState } from '../../../types/prosemirror';
 import { EditorStyle } from '../../../types/editor-style';
+import { usePMStateContext } from '../../../context/pm-state/index';
 import { linkPluginKey } from '../plugin';
 
 interface CreatePopupProps {
-  pmstate: ProsemirrorEditorState;
   editorWrapper: MutableRefObject<HTMLDivElement | null>;
   marker: Element;
 }
 
-interface CreatePopupState {
-  linkText?: string;
-  href?: string;
-  linkTextRequiredError?: boolean;
-}
+const CreatePopup: FunctionComponent<CreatePopupProps> = ({
+  editorWrapper,
+  marker,
+}) => {
+  const { pmstate } = usePMStateContext();
+  if (!pmstate) return null;
+  const { pmview } = pmstate;
+  if (!pmview) return null;
 
-class CreatePopup extends PureComponent<CreatePopupProps, CreatePopupState> {
-  constructor(props: CreatePopupProps) {
-    super(props);
-    this.state = {
-      linkText: this.getSelectedText(),
-      href: '',
-      linkTextRequiredError: false
-    };
-  }
-
-  updateValue = (evt: ChangeEvent) => {
-    const { name, value } = evt.target as HTMLInputElement;
-    const newState: CreatePopupState = {
-      [`${name}`]: value
-    };
-    if (name === 'linkText' && value) {
-      newState.linkTextRequiredError = false;
-    }
-    this.setState(newState);
-  };
-
-  getSelectedText = () => {
-    const { pmstate } = this.props;
-    const { pmview } = pmstate;
-    if (!pmview) return '';
+  const getSelectedText = () => {
     const { state } = pmview;
     const { selection } = state;
     const { $from, $to } = selection;
     return state.doc.textBetween($from.pos, $to.pos);
   };
 
-  addLink = () => {
-    const { linkText, href } = this.state;
+  const [linkText, setLinkText] = useState(getSelectedText());
+  const [href, setHref] = useState('');
+  const [linkTextRequiredError, setLinkTextRequiredError] = useState(false);
+
+  const updateLinkText = (evt: ChangeEvent) => {
+    const { name, value } = evt.target as HTMLInputElement;
+    setLinkText(value);
+    if (value) {
+      setLinkTextRequiredError(false);
+    }
+  };
+
+  const addLink = () => {
     if (!linkText || !linkText.length) {
-      this.setState({ linkTextRequiredError: true });
+      setLinkTextRequiredError(true);
       return;
     }
-    this.setState({ linkTextRequiredError: false });
-    const { pmstate } = this.props;
-    const { pmview } = pmstate;
+    setLinkTextRequiredError(false);
     const { state, dispatch } = pmview;
     const { tr, selection } = state;
     const { $from, $to } = selection;
@@ -76,66 +67,59 @@ class CreatePopup extends PureComponent<CreatePopupProps, CreatePopupState> {
         )
     );
     pmview.focus();
-    this.closePopup();
+    closePopup();
   };
 
-  handleKeyDown = (evt: KeyboardEvent) => {
+  const handleKeyDown = (evt: KeyboardEvent) => {
     if (evt.key === 'Enter') {
-      this.addLink();
+      addLink();
     }
   };
 
-  closePopup = () => {
-    const { pmstate } = this.props;
-    const { pmview } = pmstate;
+  const closePopup = () => {
     const { state, dispatch } = pmview;
     dispatch(state.tr.setMeta('show-add-link-toolbar', false));
   };
 
-  render() {
-    const { linkText, href, linkTextRequiredError } = this.state;
-    const { editorWrapper, marker } = this.props;
-    return (
-      <Popup
-        onEscKeyPress={this.closePopup}
-        onClickOutsideEditor={this.closePopup}
-        onClickInsideEditor={this.closePopup}
-        editorWrapper={editorWrapper}
-        marker={marker}
-        overlapToolbar
-        render={() => (
-          <Wrapper>
-            <InputWrapper>
-              <Input
-                autoFocus
-                placeholder="Text"
-                name="linkText"
-                onChange={this.updateValue}
-                onKeyPress={this.handleKeyDown}
-                value={linkText}
-                error={linkTextRequiredError}
-              />
-              <Input
-                placeholder="Href"
-                name="href"
-                onChange={this.updateValue}
-                onKeyPress={this.handleKeyDown}
-                value={href}
-              />
-            </InputWrapper>
-            <PrimaryButton
-              onKeyPress={this.handleKeyDown}
-              onClick={this.addLink}
-            >
-              Add
-            </PrimaryButton>
-            <PrimaryButton onClick={this.closePopup}>Cancel</PrimaryButton>
-          </Wrapper>
-        )}
-      />
-    );
-  }
-}
+  return (
+    <Popup
+      onEscKeyPress={closePopup}
+      onClickOutsideEditor={closePopup}
+      onClickInsideEditor={closePopup}
+      editorWrapper={editorWrapper}
+      marker={marker}
+      overlapToolbar
+      render={() => (
+        <Wrapper>
+          <InputWrapper>
+            <Input
+              autoFocus
+              placeholder="Text"
+              name="linkText"
+              onChange={updateLinkText}
+              onKeyPress={handleKeyDown}
+              value={linkText}
+              error={linkTextRequiredError}
+            />
+            <Input
+              placeholder="Href"
+              name="href"
+              onChange={(evt: ChangeEvent) =>
+                setHref((evt.target as HTMLInputElement).value)
+              }
+              onKeyPress={handleKeyDown}
+              value={href}
+            />
+          </InputWrapper>
+          <PrimaryButton onKeyPress={handleKeyDown} onClick={addLink}>
+            Add
+          </PrimaryButton>
+          <PrimaryButton onClick={closePopup}>Cancel</PrimaryButton>
+        </Wrapper>
+      )}
+    />
+  );
+};
 
 export default {
   name: 'create_link',
@@ -144,13 +128,7 @@ export default {
     const pluginState = linkPluginKey.getState(state);
     return pluginState && pluginState.showAddLinkToolbar;
   },
-  component: (props: any) => (
-    <PMStateConsumer>
-      {({ pmstate }: { pmstate: ProsemirrorEditorState }) => (
-        <CreatePopup pmstate={pmstate} {...props} />
-      )}
-    </PMStateConsumer>
-  )
+  component: CreatePopup,
 };
 
 const Wrapper = styled.div`
@@ -165,6 +143,6 @@ const Wrapper = styled.div`
 
 const InputWrapper = styled.div({
   '> div:first-of-type': {
-    marginBottom: 8
-  }
+    marginBottom: 8,
+  },
 });

@@ -56,7 +56,10 @@ const Inline: FunctionComponent<InlineProps> = ({ editorWrapper, marker }) => {
             if (!Option.toolbarComponent) return null;
             return (
               <Fragment key={`inline-toolbar-option-${Option.name}`}>
-                <Option.toolbarComponent config={toolbar.inline[Option.name]} />
+                <Option.toolbarComponent
+                  config={toolbar.inline[Option.name]}
+                  pmstate={pmstate}
+                />
                 {index < options.length - 1 && <Separator />}
               </Fragment>
             );

@@ -12,7 +12,7 @@ export interface VisiblePopup {
 export const getVisiblePopups = (
   pmstate: ProsemirrorEditorState,
   popups: EditorPopup[],
-  visiblePopups: VisiblePopup[]
+  visiblePopups: VisiblePopup[] = []
 ) => {
   const { pmview } = pmstate;
 
@@ -29,7 +29,7 @@ export const getVisiblePopups = (
       if (marker) {
         popupVisible = true;
         let toolbarIndex = newVisiblePopups.findIndex(
-          p => p.name === popup.name
+          (p) => p.name === popup.name
         );
         if (toolbarIndex < 0) {
           toolbarIndex = newVisiblePopups.length;
@@ -37,14 +37,14 @@ export const getVisiblePopups = (
         newVisiblePopups[toolbarIndex] = {
           marker,
           name: popup.name,
-          PopupComponent: popup.component
+          PopupComponent: popup.component,
         };
       }
     }
 
     // If popup is no longer visible remove it from newVisiblePopups
-    if (!popupVisible && visiblePopups.find(p => p.name === popup.name)) {
-      newVisiblePopups = newVisiblePopups.filter(p => p.name !== popup.name);
+    if (!popupVisible && visiblePopups.find((p) => p.name === popup.name)) {
+      newVisiblePopups = newVisiblePopups.filter((p) => p.name !== popup.name);
     }
   }
   return newVisiblePopups;
