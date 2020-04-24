@@ -6,6 +6,7 @@ const advanceImage = {
     alt: { default: '' },
     alignment: { default: '' },
     wrap: { default: '' },
+    link: { default: { href: '' } },
   },
   draggable: true,
   parseDOM: [
@@ -22,12 +23,13 @@ const advanceImage = {
           alt: domNode.getAttribute('alt'),
           alignment: domNode.getAttribute('data-alignment'),
           wrap: domNode.getAttribute('data-wrap'),
+          link: { href: domNode.getAttribute('data-href') },
         };
       },
     },
   ],
   toDOM(node) {
-    const { src, height, alt, alignment, wrap } = node.attrs;
+    const { src, height, alt, alignment, wrap, link } = node.attrs;
     return [
       'img',
       {
@@ -36,6 +38,7 @@ const advanceImage = {
         alt,
         'data-alignment': alignment,
         'data-wrap': wrap,
+        'data-link': link,
       },
     ];
   },
