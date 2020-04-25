@@ -7,6 +7,7 @@ import { usePMStateContext } from '../../context/pm-state/index';
 import ImageModal from './modals';
 import { KeymapInfo } from './keymaps';
 import { imagePluginKey } from './plugin';
+import { isImageSelected } from './utils';
 
 export default () => {
   const { pmstate } = usePMStateContext();
@@ -28,17 +29,16 @@ export default () => {
   const checkShowModal = () =>
     imagePluginKey.getState(pmview.state).showImageModal;
 
-  const isImageSelected = () =>
-    imagePluginKey.getState(pmview.state).isImageSelected;
+  const imageSelected = isImageSelected(pmview.state);
 
   return (
     <>
       <ToolbarButton
-        disabled={isImageSelected()}
+        disabled={imageSelected}
         onClick={showModal}
         title={formatKeymap(KeymapInfo.image)}
       >
-        <Icon name="image" selected={isImageSelected()} />
+        <Icon name="image" selected={imageSelected} />
       </ToolbarButton>
       {checkShowModal() && <ImageModal hideModal={hideModal} />}
     </>

@@ -7,6 +7,7 @@ import { usePMStateContext } from '../../context/pm-state/index';
 
 import { KeymapInfo } from './keymaps';
 import { linkPluginKey } from './plugin';
+import { isLinkMarkActive } from './utils';
 
 export default () => {
   const { pmstate } = usePMStateContext();
@@ -26,11 +27,7 @@ export default () => {
     else dispatch(state.tr.setMeta('show-add-link-toolbar', true));
   };
 
-  const isLinkMarkActive = () => {
-    const { state } = pmview;
-    const pluginState = linkPluginKey.getState(state);
-    return pluginState && !!pluginState.link;
-  };
+  const linkMarkActive = isLinkMarkActive(pmview.state);
 
   return (
     <span className="nib-link-marker">
@@ -38,10 +35,10 @@ export default () => {
         name="link"
         onClick={showLinkToolbar}
         onMouseDown={(evt: Event) => evt.stopPropagation()}
-        disabled={isLinkMarkActive()}
+        disabled={linkMarkActive}
         title={formatKeymap(KeymapInfo.link)}
       >
-        <Icon name="link" selected={isLinkMarkActive()} />
+        <Icon name="link" selected={linkMarkActive} />
       </ToolbarButton>
     </span>
   );
