@@ -17,11 +17,11 @@ interface WrapperProps {
   licenseKey?: string;
 }
 
-const Wrapper: FunctionComponent<WrapperProps> = props => {
+const Wrapper: FunctionComponent<WrapperProps> = (props) => {
   const [licenseCheckFail, setLicenseCheckFail] = useState(false);
   const editorWrapper = useRef<HTMLDivElement | null>(null);
   const {
-    config: { toolbar }
+    config: { toolbar },
   } = useConfigContext();
 
   const topToolbarPresent = toolbar.options.indexOf('top') >= 0;
@@ -34,8 +34,8 @@ const Wrapper: FunctionComponent<WrapperProps> = props => {
         .get('https://licencecheck.herokuapp.com/licenceCheck', {
           params: {
             licenseKey,
-            plugins: addons.map(a => a.name)
-          }
+            plugins: addons.map((a) => a.name),
+          },
         })
         .then(({ data }: { data: { status: string } }) => {
           if (data.status === 'FAIL') setLicenseCheckFail(true);

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { MutableRefObject, useEffect, useState } from 'react';
+import { withTheme } from 'emotion-theming';
 
 import getPropertyFromPlugins from '../../utils/editor/pluginProperty';
 import { Addon } from '../../types/addon';
@@ -15,7 +16,7 @@ interface PopupHandlerProps {
   editorWrapper: MutableRefObject<HTMLDivElement | null>;
 }
 
-export default ({ addons = [], editorWrapper }: PopupHandlerProps) => {
+const PopupHandler = ({ addons = [], editorWrapper }: PopupHandlerProps) => {
   const { pmstate } = usePMStateContext();
   if (!pmstate) return null;
   const { pmview } = pmstate;
@@ -80,3 +81,5 @@ export default ({ addons = [], editorWrapper }: PopupHandlerProps) => {
     </>
   );
 };
+
+export default withTheme(PopupHandler);

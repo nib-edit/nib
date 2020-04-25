@@ -1,11 +1,7 @@
 import * as React from 'react';
-import {
-  FunctionComponent,
-  Fragment,
-  MouseEvent,
-  MutableRefObject,
-} from 'react';
+import { Fragment, MouseEvent, MutableRefObject } from 'react';
 import styled from '@emotion/styled';
+import { withTheme } from 'emotion-theming';
 
 import { Separator } from 'nib-ui';
 
@@ -15,13 +11,15 @@ import { EditorPlugin } from '../../../types/application';
 import { EditorStyle } from '../../../types/editor-style';
 import { useConfigContext } from '../../../context/config';
 import { usePMStateContext } from '../../../context/pm-state/index';
+import { EditorTheme } from '../../../types/editor-theme';
 
 interface TopProps {
   editorWrapper: MutableRefObject<HTMLDivElement | null>;
   addons?: Addon[];
+  theme: EditorTheme;
 }
 
-export default ({ editorWrapper, addons = [] }: TopProps) => {
+const TopToolbar = ({ editorWrapper, addons = [], theme }: TopProps) => {
   const { pmstate } = usePMStateContext();
   if (!pmstate) return null;
   const { pmview } = pmstate;
@@ -54,6 +52,7 @@ export default ({ editorWrapper, addons = [] }: TopProps) => {
                 config={toolbar.top[Option.name]}
                 editorWrapper={editorWrapper}
                 pmstate={pmstate}
+                theme={theme}
               />
               {index < formattingOption.length - 1 && <Separator />}
             </Fragment>
@@ -90,7 +89,7 @@ const Wrapper = styled.div(
     borderBottom: constants.border.primary,
     fontSize: constants.fontSize.medium,
 
-    ...toolbar.top({ theme: constants }),
+    ...toolbar!.top!({ theme: constants }),
   })
 );
 
@@ -100,7 +99,4 @@ const ToolbarSection = styled.div({
   flexWrap: 'wrap',
 });
 
-interface TopWrapperProps {
-  editorWrapper: MutableRefObject<HTMLDivElement | null>;
-  addons?: Addon[];
-}
+export default withTheme(TopToolbar);

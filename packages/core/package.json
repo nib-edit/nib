@@ -1,6 +1,6 @@
 {
   "name": "nib-core",
-  "version": "2.6.4",
+  "version": "2.6.6",
   "description": "Wysiwyg editor",
   "main": "index",
   "types": "index.d.ts",
@@ -35,7 +35,7 @@
     "prosemirror-state": "^1.0.0",
     "prosemirror-utils": "^0.7.6",
     "prosemirror-view": "^1.10.0",
-    "prosemirror-tables": "^0.8.1"
+    "prosemirror-tables": "^0.7.9"
   },
   "devDependencies": {
     "prop-types": "^15.6.2",

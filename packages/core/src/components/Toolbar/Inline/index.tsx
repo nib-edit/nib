@@ -9,19 +9,26 @@ import {
 } from 'react';
 import styled from '@emotion/styled';
 import { Popup, Separator } from 'nib-ui';
+import { withTheme } from 'emotion-theming';
 
 import getToolbarComponents from '../../../utils/editor/toolbar';
 import { useConfigContext } from '../../../context/config';
 import { usePMStateContext } from '../../../context/pm-state';
 import { EditorStyle } from '../../../types/editor-style';
 import { EditorPlugin } from '../../../types/application';
+import { EditorTheme } from '../../../types/editor-theme';
 
 interface InlineProps {
   editorWrapper: MutableRefObject<HTMLDivElement>;
   marker: Element;
+  theme: EditorTheme;
 }
 
-const Inline: FunctionComponent<InlineProps> = ({ editorWrapper, marker }) => {
+const Inline: FunctionComponent<InlineProps> = ({
+  editorWrapper,
+  marker,
+  theme,
+}) => {
   if (!marker) return null;
 
   const [changeCounter, setChangeCounter] = useState(0);
@@ -59,6 +66,7 @@ const Inline: FunctionComponent<InlineProps> = ({ editorWrapper, marker }) => {
                 <Option.toolbarComponent
                   config={toolbar.inline[Option.name]}
                   pmstate={pmstate}
+                  theme={theme}
                 />
                 {index < options.length - 1 && <Separator />}
               </Fragment>
@@ -84,7 +92,7 @@ const Wrapper = styled.div(
     fontSize: constants.fontSize.medium,
     borderRadius: constants.borderRadius.large,
 
-    ...toolbar.inline({ theme: constants }),
+    ...toolbar!.inline!({ theme: constants }),
   })
 );
 
@@ -94,5 +102,5 @@ export default {
   name: 'toolbar',
   getMarker: () =>
     document.getElementsByClassName('nib-selection-focus-marker')[0],
-  component: Inline,
+  component: withTheme(Inline),
 };

@@ -54,7 +54,7 @@ export const StyledWrapper = styled(
 
         fontSize: constants.fontSize.medium,
 
-        ...wrapper({ theme: constants }),
+        ...wrapper!({ theme: constants }),
       };
     }
   )
@@ -78,7 +78,7 @@ export const StyledEditor = styled(
 
       fontSize: constants.fontSize.medium,
 
-      ...editor({ theme: constants }),
+      ...editor!({ theme: constants }),
     })
   )
 )`
