@@ -14,7 +14,7 @@ import { EditorStyle } from '../../../types/editor-style';
 import { usePMStateContext } from '../../../context/pm-state/index';
 import { linkPluginKey } from '../plugin';
 
-interface EditPopupProps {
+export interface EditPopupProps {
   editorWrapper: MutableRefObject<HTMLDivElement | null>;
   marker: Element;
 }

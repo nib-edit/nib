@@ -1,6 +1,6 @@
 {
   "name": "nib-core",
-  "version": "2.6.3",
+  "version": "2.6.4",
   "description": "Wysiwyg editor",
   "main": "index",
   "types": "index.d.ts",
@@ -24,8 +24,8 @@
     "axios": "^0.19.0",
     "emotion-theming": "^10.0.14",
     "nib-embed": "2.1.6",
-    "nib-schema": "2.4.3",
-    "nib-ui": "2.4.8",
+    "nib-schema": "2.4.4",
+    "nib-ui": "2.4.9",
     "nib-ui-select": "0.0.1",
     "prosemirror-commands": "^1.0.7",
     "prosemirror-history": "^1.0.3",
