@@ -1,6 +1,6 @@
 {
   "name": "nib-core",
-  "version": "2.6.8",
+  "version": "2.6.9",
   "description": "Wysiwyg editor",
   "main": "index",
   "types": "index.d.ts",
