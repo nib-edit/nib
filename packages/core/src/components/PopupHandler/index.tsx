@@ -5,6 +5,7 @@ import { withTheme } from 'emotion-theming';
 import getPropertyFromPlugins from '../../utils/editor/pluginProperty';
 import { Addon } from '../../types/addon';
 import { EditorPopup } from '../../types/components';
+import { EditorTheme } from '../../types/editor-theme';
 import { VisiblePopup, getVisiblePopups } from './util';
 import { useConfigContext } from '../../context/config/index';
 import { usePMStateContext } from '../../context/pm-state/index';
@@ -14,9 +15,14 @@ import inlineToolbar from '../Toolbar/Inline';
 interface PopupHandlerProps {
   addons?: Addon[];
   editorWrapper: MutableRefObject<HTMLDivElement | null>;
+  theme: EditorTheme;
 }
 
-const PopupHandler = ({ addons = [], editorWrapper }: PopupHandlerProps) => {
+const PopupHandler = ({
+  addons = [],
+  editorWrapper,
+  theme,
+}: PopupHandlerProps) => {
   const { pmstate } = usePMStateContext();
   if (!pmstate) return null;
   const { pmview } = pmstate;
@@ -63,6 +69,7 @@ const PopupHandler = ({ addons = [], editorWrapper }: PopupHandlerProps) => {
         pmstate={pmstate}
         editorWrapper={editorWrapper}
         marker={marker}
+        theme={theme}
       />
       {tablePopups.map((popup: VisiblePopup) => {
         const {
@@ -75,6 +82,7 @@ const PopupHandler = ({ addons = [], editorWrapper }: PopupHandlerProps) => {
             pmstate={pmstate}
             editorWrapper={editorWrapper}
             marker={tableMarker}
+            theme={theme}
           />
         );
       })}
