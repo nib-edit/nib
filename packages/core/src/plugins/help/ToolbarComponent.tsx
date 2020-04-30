@@ -10,8 +10,9 @@ import { usePMStateContext } from '../../context/pm-state/index';
 import Modal from './Modal';
 import { KeymapInfo } from './keymaps';
 import { helpPluginKey } from './plugin';
+import { Addon } from '../../types/addon';
 
-export default () => {
+export default ({ addons }: { addons: Addon[] }) => {
   const { pmstate } = usePMStateContext();
   if (!pmstate) return null;
   const { pmview } = pmstate;
@@ -40,7 +41,7 @@ export default () => {
       >
         <Icon name="question" />
       </StyledButton>
-      {showModal && <Modal hideModal={hideModal} />}
+      {showModal && <Modal hideModal={hideModal} addons={addons} />}
     </>
   );
 };

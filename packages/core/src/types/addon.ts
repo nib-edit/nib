@@ -6,6 +6,7 @@ import { ProsemirrorDoc } from 'nib-core/src/types/prosemirror';
 import { EditorState, Transaction } from 'prosemirror-state';
 import { KeyValue } from 'nib-core/src/types/common';
 import { EditorView } from 'prosemirror-view';
+import { KeymapDataMap } from './application';
 
 export interface Addon {
   createStateFromDoc?: (fn: (doc: ProsemirrorDoc) => void) => void;
@@ -20,4 +21,5 @@ export interface Addon {
   viewUpdateCallback?: (view: EditorView) => void;
   popups?: EditorPopup[];
   toolbar: ElementType[];
+  KeymapInfo?: KeymapDataMap;
 }

@@ -2,6 +2,7 @@ import getOS from '../../utils/device';
 import Plugins from './pluginList';
 import { KeymapInfo } from './keymaps';
 import { EditorPlugin } from '../../types/application';
+import { Addon } from '../../types/addon';
 
 export const getPluginList = (plugins: string): EditorPlugin[] =>
   plugins
@@ -10,13 +11,21 @@ export const getPluginList = (plugins: string): EditorPlugin[] =>
     .filter((p) => p !== 'help')
     .map((key) => Plugins[key]);
 
-export const getKeymapInfo = (plugins: string) => {
+export const getKeymapInfo = (plugins: string, addons?: Addon[]) => {
   const pluginList = getPluginList(plugins)
     .filter((plugin) => plugin.KeymapInfo)
     .map((plugin) => ({
       name: plugin.name,
       keymaps: plugin.KeymapInfo && Object.values(plugin.KeymapInfo),
     }));
+  addons &&
+    addons.forEach(({ name, KeymapInfo }) => {
+      if (KeymapInfo)
+        pluginList.push({
+          name,
+          keymaps: Object.values(KeymapInfo),
+        });
+    });
   pluginList.push({
     name: 'help',
     keymaps: Object.values(KeymapInfo),

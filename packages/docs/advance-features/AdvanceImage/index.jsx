@@ -16,11 +16,12 @@ const AdvanceImageComponent = () => {
   return (
     <div>
       <Editor
+        licenseKey="c1ba076f-6793-45d4-a66d-02d4204b6297"
         config={{
-          plugins: { options: '' },
+          plugins: { options: 'help' },
           toolbar: {
             options: 'top',
-            top: { options: 'advance-image' },
+            top: { options: 'advance-image help' },
           },
         }}
         addons={[imagePlugin]}
