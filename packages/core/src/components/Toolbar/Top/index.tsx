@@ -60,7 +60,7 @@ const TopToolbar = ({ editorWrapper, addons = [], theme }: TopProps) => {
         })}
       </ToolbarSection>
       {HelpOption && HelpOption.toolbarComponent && (
-        <HelpOption.toolbarComponent />
+        <HelpOption.toolbarComponent addons={addons} />
       )}
     </Wrapper>
   );

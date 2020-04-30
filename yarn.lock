@@ -5517,20 +5517,19 @@ nib-markdown-converter@0.1.1:
     prosemirror-markdown "1.4.4"
     prosemirror-model "^1.0.0"
 
-nib-table@0.1.7:
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/nib-table/-/nib-table-0.1.7.tgz#bc6f31b5f426fa85ab5dd474db9896e3b9b9af1c"
-  integrity sha512-ZnXfLdkwpuMOe9/Hyo7IVLf1HxGZ4ThN/da67sP17Fg7XEaMueLhTsZoAH2eKESRvJ7/NbmDvRABHR3LXKfBVw==
+nib-table@0.1.8:
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/nib-table/-/nib-table-0.1.8.tgz#d12eaa16886009995c36481a5a03e1eced2b9051"
+  integrity sha512-lPhoytKK5ITJMSGL2C6NlzerwcfVZP15nAUp5/VXjeMLxJfOK8tWwtbXGvbLVl35GzrZ2TaKFy/ZBmeefXsafg==
   dependencies:
     axios "^0.19.0"
 
-nib-track@2.5.3:
-  version "2.5.3"
-  resolved "https://registry.yarnpkg.com/nib-track/-/nib-track-2.5.3.tgz#a275c7ff16165cae94229391eee48ebcc7cadac9"
-  integrity sha512-VcyjFEV0Ag4y/bzopT+G5ELE0QiCKFmdPnghN0rdN2AAVAlwWQGr4041EyZCU4G7cQHErDmboCu4MrVot0hd4Q==
+nib-track@2.5.4:
+  version "2.5.4"
+  resolved "https://registry.yarnpkg.com/nib-track/-/nib-track-2.5.4.tgz#10b6ec1ab0a62f1f4678d468fb58199cc49bb11c"
+  integrity sha512-XhbIxFPH6C9i4b9faygKSbV10PQy3d6Zimyh2CRB3vaSS0JMSIptz37rQq+Likag7fsOTHH1uILi7goj4OVf1Q==
   dependencies:
     axios "^0.19.0"
-    prosemirror-transform "^1.0.0"
 
 nib-ui@2.4.6:
   version "2.4.6"

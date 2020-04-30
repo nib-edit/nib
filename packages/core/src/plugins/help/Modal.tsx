@@ -9,6 +9,7 @@ import { EditorStyle } from '../../types/editor-style';
 import { KeymapData } from '../../types/application';
 
 import { formatKey, getKeymapInfo } from './utils';
+import { Addon } from '../../types/addon';
 
 interface KeymapColumnProps {
   keymap: KeymapData[];
@@ -27,14 +28,15 @@ const KeymapColumn: FunctionComponent<KeymapColumnProps> = ({ keymap }) => (
 
 interface HelpModalProps {
   hideModal: any;
+  addons: Addon[];
 }
 
 export default (props: HelpModalProps) => {
-  const { hideModal } = props;
+  const { hideModal, addons } = props;
   const {
     config: { plugins },
   } = useConfigContext();
-  const pluginKeymaps = getKeymapInfo(plugins.options);
+  const pluginKeymaps = getKeymapInfo(plugins.options, addons);
 
   const keyMaps = pluginKeymaps.reduce((keys, keymap) => {
     if (keymap.keymaps) return [...keys, ...keymap.keymaps];
