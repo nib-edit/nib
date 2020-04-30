@@ -22,9 +22,11 @@ export default () => {
 
     const pluginState = linkPluginKey.getState(state);
 
-    if (pluginState.showAddLinkToolbar === true)
+    if (pluginState.showAddLinkToolbar === true) {
       dispatch(state.tr.setMeta('show-add-link-toolbar', false));
-    else dispatch(state.tr.setMeta('show-add-link-toolbar', true));
+    } else {
+      dispatch(state.tr.setMeta('show-add-link-toolbar', true));
+    }
   };
 
   const linkMarkActive = isLinkMarkActive(pmview.state);
@@ -34,7 +36,10 @@ export default () => {
       <ToolbarButton
         name="link"
         onClick={showLinkToolbar}
-        onMouseDown={(evt: Event) => evt.stopPropagation()}
+        onMouseDown={(evt: Event) => {
+          evt.stopPropagation();
+          evt.preventDefault();
+        }}
         disabled={linkMarkActive}
         title={formatKeymap(KeymapInfo.link)}
       >
