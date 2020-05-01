@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import { EditorStyle } from '../../../../core/src/types/editor-style';
 
 const Tooltip = ({ info, children }: any) => {
-  if (!info) return null;
+  if (!info) return children;
 
   const [hovered, setHovered] = useState(false);
   const [timeoutObj, setTimeoutObj] = useState<number>();
