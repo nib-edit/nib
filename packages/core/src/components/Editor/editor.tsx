@@ -98,6 +98,7 @@ const Editor: FunctionComponent<EditorProps> = ({
       pluginStyles={getPluginStyles(plugins.options, addons)}
       ref={editorRef}
       spellCheck={spellCheck}
+      onClick={() => view && view.focus()}
     />
   );
 };
