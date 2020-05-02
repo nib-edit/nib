@@ -70,10 +70,8 @@ export default ({ editorWrapper }: ToolbarComponentProps) => {
   };
 
   const closeColorSelect = (evt: Event) => {
-    if (textColorRef.current!.contains(evt.currentTarget as HTMLElement))
-      return;
-    if (backgroundColorRef.current!.contains(evt.currentTarget as HTMLElement))
-      return;
+    if (textColorRef.current!.contains(evt.target as any)) return;
+    if (backgroundColorRef.current!.contains(evt.target as any)) return;
     setPopupMarker(undefined);
     setSelectedMarkType(undefined);
   };
