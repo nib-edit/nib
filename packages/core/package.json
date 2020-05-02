@@ -11,7 +11,9 @@
   "keywords": [
     "prosemirror",
     "reactjs",
-    "wysiwyg"
+    "wysiwyg",
+    "text editor",
+    "editor"
   ],
   "author": {
     "name": "Jyoti Puri",
