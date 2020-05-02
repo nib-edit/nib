@@ -22,6 +22,12 @@ export const getPluginList = (plugins: string) =>
   plugins
     .trim()
     .split(' ')
+    .reduce((pluginList, plugin) => {
+      if (pluginList && pluginList.indexOf(plugin) < 0) {
+        pluginList.push(plugin);
+      }
+      return pluginList;
+    }, [] as string[])
     .map((key) => Plugins[key]);
 
 export const getPluginArray = (plugins: string[], addons: Addon[]) =>
