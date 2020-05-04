@@ -1,6 +1,6 @@
 // todo: more details to be added to this interface
 
-import { ElementType } from 'react';
+import { ElementType, ReactElement } from 'react';
 import { EditorPopup } from './components';
 import { ProsemirrorDoc } from 'nib-core/src/types/prosemirror';
 import { EditorState, Transaction } from 'prosemirror-state';
@@ -20,6 +20,7 @@ export interface Addon {
   updateLicenseInfo?: (editorRef: HTMLDivElement, licenseKey?: string) => void;
   viewUpdateCallback?: (view: EditorView) => void;
   popups?: EditorPopup[];
+  portals?: ReactElement[];
   toolbar: ElementType[];
   KeymapInfo?: KeymapDataMap;
 }

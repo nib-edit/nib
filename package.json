@@ -17,7 +17,8 @@
     "packages/schema",
     "packages/ui",
     "packages/ui-select",
-    "packages/upload"
+    "packages/upload",
+    "packages/advance/table"
   ],
   "repository": {
     "type": "git",

@@ -11,6 +11,7 @@ import { useConfigContext } from '../../context/config';
 import InnerEditor from './editor';
 import { StyledWrapper } from './styles';
 import { Addon } from '../../types/addon';
+import PortalHandler from '../PortalHandler/index';
 
 interface WrapperProps {
   addons?: Addon[];
@@ -54,6 +55,7 @@ const Wrapper: FunctionComponent<WrapperProps> = (props) => {
       <InnerEditor {...props} />
       {/* todo: better name for handler */}
       <PopupHandler editorWrapper={editorWrapper} addons={addons} />
+      <PortalHandler addons={addons} />
       {/* currently ToolbarHandler is used for addon toolbars only but its use can be extended */}
       {addons && (
         <ToolbarHandler editorWrapper={editorWrapper} plugins={addons} />
