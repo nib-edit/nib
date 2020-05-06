@@ -18,7 +18,7 @@
     "packages/ui",
     "packages/ui-select",
     "packages/upload",
-    "packages/advance/table"
+    "packages/advance/advance-image"
   ],
   "repository": {
     "type": "git",

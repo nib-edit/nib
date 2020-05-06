@@ -5395,13 +5395,6 @@ neo-async@^2.5.0, neo-async@^2.6.1:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
-nib-advance-image@0.1.19:
-  version "0.1.19"
-  resolved "https://registry.yarnpkg.com/nib-advance-image/-/nib-advance-image-0.1.19.tgz#abbb6d67e73ea3487e1628d9b7061290a2831f03"
-  integrity sha512-GbSedFby1fiXnG0wH58O/o1devpNcct0QLPuxfucKINvjhGD+gikoSTBZTDbGjsD8aS8AwOc5mukc+ydd5gPrg==
-  dependencies:
-    axios "^0.19.0"
-
 nib-collab-client@0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/nib-collab-client/-/nib-collab-client-0.2.3.tgz#9cc96251d450f1ebac80c0e047d0e16ee3c31061"
