@@ -16,8 +16,5 @@
     "email": "contact@nibedit.com"
   },
   "homepage": "https://github.com/jpuri/Nib/tree/master/packages/core#Readme.md",
-  "dependencies": {
-    "prosemirror-tables": "^1.0.0"
-  },
   "license": "MIT"
 }

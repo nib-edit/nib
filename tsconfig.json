@@ -2,6 +2,7 @@
   "compilerOptions": {
     "outDir": "./dist/",
     "module": "ESNext",
+    "declaration": true,
     "sourceMap": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
