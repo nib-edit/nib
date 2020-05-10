@@ -41,6 +41,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
+  z-index: 1;
 `;
 
 const Info = styled.div(
