@@ -2010,14 +2010,14 @@ caniuse-api@^1.5.2:
     lodash.uniq "^4.5.0"
 
 caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
-  version "1.0.30001052"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30001052.tgz#ce94a7f012e96359943181c13b01fb0c761b03b3"
-  integrity sha512-RZtuPhp70kkpC8HT/fcWj55Vbp9eXo7TmPT/go0KnkWceS6MV0j+sGTwLmqN/uIuPRhQRn9MxBlKt/RMdsOIHg==
+  version "1.0.30001054"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30001054.tgz#6d155448f66ae59b6dc9d648366863c2378b0033"
+  integrity sha512-U+hWQdiwgJP2+28+dPVeF9Q33kBuRNL50Zwum5u1m0IJXlxhoHXGZWv65yO0KcfHQwbhXwE4cFQTehGnX9z5kg==
 
 caniuse-lite@^1.0.30001043:
-  version "1.0.30001052"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001052.tgz#33a5ddd13783cfe2c8a6a846ab983387d4edff75"
-  integrity sha512-b2/oWZwkpWzEB1+Azr2Z4FcpdDkH+9R4dn+bkwk/6eH9mRSrnZjhA6v32+zsV+TSqC0pp2Rxush2yUVTJ0dJTQ==
+  version "1.0.30001054"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001054.tgz#7e82fc42d927980b0ce1426c4813df12381e1a75"
+  integrity sha512-jiKlTI6Ur8Kjfj8z0muGrV6FscpRvefcQVPSuMuXnvRCfExU7zlVLNjmOz1TnurWgUrAY7MMmjyy+uTgIl1XHw==
 
 ccount@^1.0.0:
   version "1.0.5"
@@ -2916,9 +2916,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.413:
-  version "1.3.429"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.429.tgz#0d1ef6710ba84de3710615280c1f6f79c8205b47"
-  integrity sha512-YW8rXMJx33FalISp0uP0+AkvBx9gfzzQ4NotblGga6Z8ZX00bg2e5FNWV8fyDD/VN3WLhEtjFXNwzdJrdaAHEQ==
+  version "1.3.432"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.432.tgz#3bf7b191978ff2e8bc3caf811bb52b1e9f9eab25"
+  integrity sha512-/GdNhXyLP5Yl2322CUX/+Xi8NhdHBqL6lD9VJVKjH6CjoPGakvwZ5CpKgj/oOlbzuWWjOvMjDw1bBuAIRCNTlw==
 
 elliptic@^6.0.0, elliptic@^6.5.2:
   version "6.5.2"
@@ -2979,9 +2979,9 @@ enhanced-resolve@^4.0.0, enhanced-resolve@^4.1.0:
     tapable "^1.0.0"
 
 entities@~2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/entities/-/entities-2.0.0.tgz#68d6084cab1b079767540d80e56a39b423e4abf4"
-  integrity sha512-D9f7V0JSRwIxlRI2mjMqufDrRDnx8p+eEOz7aUM9SuvF8gsBzra0/6tbjl1m8eQHrZlYj6PxqE00hZ1SAIKPLw==
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/entities/-/entities-2.0.2.tgz#ac74db0bba8d33808bbf36809c3a5c3683531436"
+  integrity sha512-dmD3AvJQBUjKpcNkoqr+x+IF0SdRtPz9Vk0uTy4yWqga9ibB6s4v++QFWNohjiUGoMlF552ZvNyXDxz5iW0qmw==
 
 errno@^0.1.3, errno@~0.1.7:
   version "0.1.7"
@@ -5395,6 +5395,13 @@ neo-async@^2.5.0, neo-async@^2.6.1:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
+nib-advance-image@0.1.21:
+  version "0.1.21"
+  resolved "https://registry.yarnpkg.com/nib-advance-image/-/nib-advance-image-0.1.21.tgz#32514707664e2915efc6203167f821f42152c4e1"
+  integrity sha512-LDkhooisnLF51d+8lX6hVhAsLHYN2+yRSUK4whMxGoHxgM3BfjV5R3gROw4+6xxGmtKP0gy0HPHS+VH10l9Dgg==
+  dependencies:
+    axios "^0.19.0"
+
 nib-collab-client@0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/nib-collab-client/-/nib-collab-client-0.2.3.tgz#9cc96251d450f1ebac80c0e047d0e16ee3c31061"
@@ -5413,29 +5420,6 @@ nib-comment@2.6.2:
     nib-ui "2.4.6"
     prosemirror-transform "^1.0.0"
 
-nib-core@2.7.2:
-  version "2.7.2"
-  resolved "https://registry.yarnpkg.com/nib-core/-/nib-core-2.7.2.tgz#425f49efd45eb0b2c0a5a22af74d1a7587fdf055"
-  integrity sha512-UeXSH9h9Foq8zh9TRMshgLweYK1hnQtmtjsDm8q75W1V9+o0nU9GTf3P+h0RopsBMoWye0Dps5c8NSwlI4LgDw==
-  dependencies:
-    "@emotion/core" "^10.0.14"
-    "@emotion/styled" "^10.0.14"
-    axios "^0.19.0"
-    emotion-theming "^10.0.14"
-    nib-embed "2.1.6"
-    nib-schema "2.4.5"
-    nib-ui "2.4.10"
-    nib-ui-select "0.0.1"
-    prosemirror-commands "^1.0.7"
-    prosemirror-history "^1.0.3"
-    prosemirror-keymap "^1.0.1"
-    prosemirror-model "^1.6.2"
-    prosemirror-schema-list "^1.0.1"
-    prosemirror-state "^1.0.0"
-    prosemirror-tables "^1.0.0"
-    prosemirror-utils "^0.7.6"
-    prosemirror-view "^1.10.0"
-
 nib-markdown-converter@0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/nib-markdown-converter/-/nib-markdown-converter-0.1.1.tgz#aacac78c3ccb20d0f14d9792a8a051993f4cc689"
@@ -5447,10 +5431,10 @@ nib-markdown-converter@0.1.1:
     prosemirror-markdown "1.4.4"
     prosemirror-model "^1.0.0"
 
-nib-table@0.1.8:
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/nib-table/-/nib-table-0.1.8.tgz#d12eaa16886009995c36481a5a03e1eced2b9051"
-  integrity sha512-lPhoytKK5ITJMSGL2C6NlzerwcfVZP15nAUp5/VXjeMLxJfOK8tWwtbXGvbLVl35GzrZ2TaKFy/ZBmeefXsafg==
+nib-table@0.1.11:
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/nib-table/-/nib-table-0.1.12.tgz#7285e5b828c449f0bb3c34467d5410e5932256bf"
+  integrity sha512-LlxpWpoZYI3Dl1WBQ9B7Ok2C6Ncs7abmmBNino21uXP3ZO0bH2hrYdGbZJUcWtoG7RAXZOEBdXPk/rFiQU16xw==
   dependencies:
     axios "^0.19.0"
 
@@ -6482,7 +6466,7 @@ prosemirror-history@^1.0.3:
     prosemirror-transform "^1.0.0"
     rope-sequence "^1.3.0"
 
-prosemirror-keymap@^1.0.0, prosemirror-keymap@^1.0.1, prosemirror-keymap@^1.1.2:
+prosemirror-keymap@^1.0.0, prosemirror-keymap@^1.0.1:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/prosemirror-keymap/-/prosemirror-keymap-1.1.3.tgz#be22d6108df2521608e9216a87b1a810f0ed361e"
   integrity sha512-PRA4NzkUMzV/NFf5pyQ6tmlIHiW/qjQ1kGWUlV2rF/dvlOxtpGpTEjIMhWgLuMf+HiDEFnUEP7uhYXu+t+491g==
@@ -6498,7 +6482,7 @@ prosemirror-markdown@1.4.4:
     markdown-it "^10.0.0"
     prosemirror-model "^1.0.0"
 
-prosemirror-model@^1.0.0, prosemirror-model@^1.1.0, prosemirror-model@^1.6.2, prosemirror-model@^1.8.1:
+prosemirror-model@^1.0.0, prosemirror-model@^1.1.0, prosemirror-model@^1.6.2:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/prosemirror-model/-/prosemirror-model-1.9.1.tgz#8c08cf556f593c5f015548d2c1a6825661df087f"
   integrity sha512-Qblh8pm1c7Ll64sYLauwwzjimo/tFg1zW3Q3IWhKRhvfOEgRKqa6dC5pRrAa+XHOIjBFEYrqbi52J5bqA2dV8Q==
@@ -6513,7 +6497,7 @@ prosemirror-schema-list@^1.0.1:
     prosemirror-model "^1.0.0"
     prosemirror-transform "^1.0.0"
 
-prosemirror-state@^1.0.0, prosemirror-state@^1.2.2, prosemirror-state@^1.3.1:
+prosemirror-state@^1.0.0, prosemirror-state@^1.2.2:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/prosemirror-state/-/prosemirror-state-1.3.3.tgz#b2862866b14dec2b3ae1ab18229f2bd337651a2c"
   integrity sha512-PLXh2VJsIgvlgSTH6I2Yg6vk1CzPDp21DFreVpQtDMY2S6WaMmrQgDTLRcsrD8X38v8Yc873H7+ogdGzyIPn+w==
@@ -6532,38 +6516,22 @@ prosemirror-tables@^0.9.1:
     prosemirror-transform "^1.0.0"
     prosemirror-view "^1.0.0"
 
-prosemirror-tables@^1.0.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/prosemirror-tables/-/prosemirror-tables-1.1.0.tgz#e7fc65e57a44759b0b999d8c71294f79e5a4d54b"
-  integrity sha512-E00+KSbDw65966GdiLBpqTNxIextw0RavlGmvdv/dyYbN9OTD0gzaoCU1S8MAbz4GLKmY9Y/g4nSiC1IL1ThQg==
-  dependencies:
-    prosemirror-keymap "^1.1.2"
-    prosemirror-model "^1.8.1"
-    prosemirror-state "^1.3.1"
-    prosemirror-transform "^1.2.1"
-    prosemirror-view "^1.13.3"
-
-prosemirror-transform@^1.0.0, prosemirror-transform@^1.1.0, prosemirror-transform@^1.2.1:
+prosemirror-transform@^1.0.0, prosemirror-transform@^1.1.0:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/prosemirror-transform/-/prosemirror-transform-1.2.5.tgz#7a3e2c61fcdbaf1d0844a2a3bc34fc3524e9809c"
   integrity sha512-eqeIaxWtUfOnpA1ERrXCuSIMzqIJtL9Qrs5uJMCjY5RMSaH5o4pc390SAjn/IDPeIlw6auh0hCCXs3wRvGnQug==
   dependencies:
     prosemirror-model "^1.0.0"
 
-prosemirror-utils@^0.7.6:
-  version "0.7.7"
-  resolved "https://registry.yarnpkg.com/prosemirror-utils/-/prosemirror-utils-0.7.7.tgz#a9bda2468113d34f3721ba15eaa2fd04b81d7dc8"
-  integrity sha512-0cSWive9oCOr4nnTlEQ9scr8g8kj126glAigb6cKLB4sq/eSyumVu8Ogqus6KEoLInBy6WONXJbgm/2xJ8MShw==
-
 prosemirror-utils@^0.9.6:
   version "0.9.6"
   resolved "https://registry.yarnpkg.com/prosemirror-utils/-/prosemirror-utils-0.9.6.tgz#3d97bd85897e3b535555867dc95a51399116a973"
   integrity sha512-UC+j9hQQ1POYfMc5p7UFxBTptRiGPR7Kkmbl3jVvU8VgQbkI89tR/GK+3QYC8n+VvBZrtAoCrJItNhWSxX3slA==
 
-prosemirror-view@^1.0.0, prosemirror-view@^1.10.0, prosemirror-view@^1.13.3:
-  version "1.14.8"
-  resolved "https://registry.yarnpkg.com/prosemirror-view/-/prosemirror-view-1.14.8.tgz#bde5a226d8ac686b7c1f9a37481beaaea180d263"
-  integrity sha512-1+vtafWt5BMxtLjiXTuUfzRZ+Hbz3s5keWjh5Q0Se6wq7UL2JTOBX44L4d2Eha3Ftc3Loj9ND2JxkL7kUUNMYg==
+prosemirror-view@^1.0.0, prosemirror-view@^1.10.0:
+  version "1.14.9"
+  resolved "https://registry.yarnpkg.com/prosemirror-view/-/prosemirror-view-1.14.9.tgz#9efb96f362caaa0c25f0676f226202f48b500fb4"
+  integrity sha512-b2aMFJR9mHyKc0Zvk3lNS7Fw12LqQXIiEJj1oAMjr/cEJpPIbGNpb2z7+c0fyGA/41F+fnEyKSZiTwpgno37iw==
   dependencies:
     prosemirror-model "^1.1.0"
     prosemirror-state "^1.0.0"
@@ -6766,13 +6734,13 @@ react-docgen@3.0.0-beta12:
     recast "^0.13.0"
 
 react-dom@next:
-  version "0.0.0-d7382b6c4"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-0.0.0-d7382b6c4.tgz#45ed7e6aa7dce26f9993b3a276536374f697ce1f"
-  integrity sha512-MUThsXBPQgF3d93BPjMjlsCmJvK14YmJ3ZzRUwUhtp2eDSAfsvcNxL9soS79X466RoOBVCe7DnoNJodT7to2DQ==
+  version "0.0.0-33c3af284"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-0.0.0-33c3af284.tgz#e1b7377afcf2d2217aca6f0149383f9a5ba16cfd"
+  integrity sha512-Q1RsmVA+7c8yg8WNATbGWZCIobkO9CyFByqGuwu0qGYq0/vkT0n3Pr7cPdEmTqVZA26/sGEzGZRZL4zZSSCTyg==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
-    scheduler "0.0.0-d7382b6c4"
+    scheduler "0.0.0-33c3af284"
 
 react-error-overlay@^4.0.1:
   version "4.0.1"
@@ -6895,9 +6863,9 @@ react-styleguidist@^7.3.10:
     webpack-merge "^4.1.3"
 
 react-transition-group@^4.3.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.0.tgz#59f1e6ec384a11e245fa6f2ade8e104d752ac87c"
-  integrity sha512-c7wuNGJlHItwt6+HS0e9r53ZD5ARJDJSRYBv0APmfQqSCSokdrgJm07IO0ZKwjTVkIQKOlSTO3F06A3JqUSl7Q==
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.1.tgz#63868f9325a38ea5ee9535d828327f85773345c9"
+  integrity sha512-Djqr7OQ2aPUiYurhPalTrVy9ddmFCCzwhqQmtN+J3+3DzLO209Fdr70QrN8Z3DsglWql6iY1lDWAfpFiBtuKGw==
   dependencies:
     "@babel/runtime" "^7.5.5"
     dom-helpers "^5.0.1"
@@ -6905,9 +6873,9 @@ react-transition-group@^4.3.0:
     prop-types "^15.6.2"
 
 react@next:
-  version "0.0.0-d7382b6c4"
-  resolved "https://registry.yarnpkg.com/react/-/react-0.0.0-d7382b6c4.tgz#332f23a767144a7be261ff92b5537238d79a2d40"
-  integrity sha512-cA0aW/k5CPPk1abKbQ9xZzbKxcvbYA2KxI8eopQifvW8+r9l0zS3m/2pXPauEJ6UmJw2ASr0WH7qjleOegCi/g==
+  version "0.0.0-33c3af284"
+  resolved "https://registry.yarnpkg.com/react/-/react-0.0.0-33c3af284.tgz#bf79dade651f719634af073b4f9c7d9a999ffe3c"
+  integrity sha512-HYGqVlL5eQRta3MkAllgkbtAQYRPM6xcE1LrpKWb1atlyUJRkrSmJPW9Y65oM7Cm/hYbxwpgGermMYZDJFS+GQ==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
@@ -7435,10 +7403,10 @@ sax@~1.2.1:
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
   integrity sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==
 
-scheduler@0.0.0-d7382b6c4:
-  version "0.0.0-d7382b6c4"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.0.0-d7382b6c4.tgz#e95e54348672c0ad9cdc705ffd1b1622d598fc81"
-  integrity sha512-eBGEL2GmEpiwg1kHT4Yt/j5n/1V/RzQxlBvvkDIr8bQpIl7eSgvvSn4xLwfpKOtvQOMUlO7hyb8JQUrNzSeeeQ==
+scheduler@0.0.0-33c3af284:
+  version "0.0.0-33c3af284"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.0.0-33c3af284.tgz#8fdc7b60035617b2484fc02cd385c9f687b28ec4"
+  integrity sha512-yAG/Dzeda171IERTTP7t+MAfzWA0NRHxRcA9wN2KUHHvQKyWbw9cjz5FbZ0Nt4Vm+x8Xv8KfT4yvWIB/f3913w==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
