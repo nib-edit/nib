@@ -1,3 +1,4 @@
+import Add from './Add';
 import AddComment from './AddComment';
 import AddColumn from './AddColumn';
 import AddRow from './AddRow';
@@ -28,6 +29,7 @@ import ListBulleted from './ListBulleted';
 import ListNumbered from './ListNumbered';
 import Question from './Question';
 import Redo from './Redo';
+import SmallCircle from './SmallCircle';
 import Strike from './Strike';
 import Sub from './Sub';
 import Sup from './Sup';
@@ -43,6 +45,7 @@ import WrapLeft from './WrapLeft';
 import WrapRight from './WrapRight';
 
 export default {
+  add: Add,
   addComment: AddComment,
   addColumn: AddColumn,
   addRow: AddRow,
@@ -73,6 +76,7 @@ export default {
   p: P,
   question: Question,
   redo: Redo,
+  smallCircle: SmallCircle,
   strike: Strike,
   sub: Sub,
   sup: Sup,
