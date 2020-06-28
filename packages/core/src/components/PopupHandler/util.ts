@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { ElementType } from 'react';
+import { MutableRefObject, ElementType } from 'react';
 import { EditorPopup } from '../../types/components';
 import { ProsemirrorEditorState } from '../../types/prosemirror';
 
@@ -12,6 +11,7 @@ export interface VisiblePopup {
 export const getVisiblePopups = (
   pmstate: ProsemirrorEditorState,
   popups: EditorPopup[],
+  editorWrapper: MutableRefObject<HTMLDivElement | null>,
   visiblePopups: VisiblePopup[] = []
 ) => {
   const { pmview } = pmstate;
@@ -25,7 +25,7 @@ export const getVisiblePopups = (
 
     // If popup visibility conditions are met add it to newVisiblePopups
     if (!popup.condition || popup.condition(pmview)) {
-      const marker = popup.getMarker(pmview);
+      const marker = popup.getMarker(editorWrapper, pmview);
       if (marker) {
         popupVisible = true;
         let toolbarIndex = newVisiblePopups.findIndex(

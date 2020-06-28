@@ -100,7 +100,10 @@ const StyledPopup = styled(Popup)({ padding: '2px !important' });
 
 export default {
   name: 'toolbar',
-  getMarker: () =>
-    document.getElementsByClassName('nib-selection-focus-marker')[0],
+  getMarker: (editorWrapper: MutableRefObject<HTMLDivElement | null>) =>
+    editorWrapper.current &&
+    editorWrapper.current.getElementsByClassName(
+      'nib-selection-focus-marker'
+    )[0],
   component: withTheme(Inline),
 };

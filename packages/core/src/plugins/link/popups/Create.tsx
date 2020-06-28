@@ -93,7 +93,7 @@ const CreatePopup: FunctionComponent<CreatePopupProps> = ({
         <Wrapper>
           <InputWrapper>
             <Input
-              autoFocus
+              // autoFocus
               placeholder="Text"
               name="linkText"
               onChange={updateLinkText}
@@ -123,7 +123,9 @@ const CreatePopup: FunctionComponent<CreatePopupProps> = ({
 
 export default {
   name: 'create_link',
-  getMarker: () => document.getElementsByClassName('nib-link-marker')[0],
+  getMarker: (editorWrapper: MutableRefObject<HTMLDivElement | null>) =>
+    editorWrapper.current &&
+    editorWrapper.current.getElementsByClassName('nib-link-marker')[0],
   condition: ({ state }: { state: EditorState }) => {
     const pluginState = linkPluginKey.getState(state);
     return pluginState && pluginState.showAddLinkToolbar;

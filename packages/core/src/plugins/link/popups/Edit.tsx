@@ -92,7 +92,9 @@ const EditPopup: FunctionComponent<EditPopupProps> = ({
 
 export default {
   name: 'edit_link',
-  getMarker: () => document.getElementsByClassName('nib-edit-link-marker')[0],
+  getMarker: (editorWrapper: MutableRefObject<HTMLDivElement | null>) =>
+    editorWrapper.current &&
+    editorWrapper.current.getElementsByClassName('nib-edit-link-marker')[0],
   component: EditPopup,
 };
 

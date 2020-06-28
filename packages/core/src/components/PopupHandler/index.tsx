@@ -46,11 +46,13 @@ const PopupHandler = ({
   })();
 
   const [visiblePopups, setVisiblePopups] = useState<VisiblePopup[]>(
-    getVisiblePopups(pmstate, popups, [])
+    getVisiblePopups(pmstate, popups, editorWrapper, [])
   );
 
   useEffect(() => {
-    setVisiblePopups(getVisiblePopups(pmstate, popups, visiblePopups || []));
+    setVisiblePopups(
+      getVisiblePopups(pmstate, popups, editorWrapper, visiblePopups || [])
+    );
   }, [pmstate]);
 
   if (!visiblePopups.length) return null;
