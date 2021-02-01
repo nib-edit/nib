@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import Editor from 'nib-core';
-import MarkdownConverterClass from 'nib-markdown-converter';
+import React, { useEffect, useState } from "react";
+import Editor from "nib-core";
+import MarkdownConverterClass from "nib-markdown-converter";
 
-import Code from '../../Code';
+import Code from "../../Code";
 
 const MarkdownConverter = new MarkdownConverterClass({
-  licenseKey: 'demo-page',
+  licenseKey: "demo-page",
 });
 
 /**
- * @visibleName 5. Markdown Converter
+ * @visibleName 6. Markdown Converter
  */
 const MarkdownConverterComponent = () => {
   const [input, setInput] = useState(`# heading 1
@@ -25,8 +25,8 @@ const MarkdownConverterComponent = () => {
 1. ordered list item 1
 
 2. ordered list item 2`);
-  const [markdown, setMarkdown] = useState('');
-  const updateMarkdown = content => {
+  const [markdown, setMarkdown] = useState("");
+  const updateMarkdown = (content) => {
     setMarkdown(MarkdownConverter.convertToMarkdown(content.doc));
   };
   const [updateEditor, setUpdateEditor] = useState();
@@ -42,7 +42,7 @@ const MarkdownConverterComponent = () => {
         placeholder="Enter HTML"
         className="nib-html_textarea"
         value={input}
-        onChange={evt => setInput(evt.target.value)}
+        onChange={(evt) => setInput(evt.target.value)}
       />
       <button
         className="docs_btn nib-html_btn"
@@ -54,12 +54,12 @@ const MarkdownConverterComponent = () => {
       {!updateEditor && (
         <Editor
           config={{
-            plugins: { options: 'block inline link blockquote list image' },
+            plugins: { options: "block inline link blockquote list image" },
             toolbar: {
-              options: 'top',
+              options: "top",
               top: {
-                options: 'block inline link blockquote list image',
-                inline: { options: 'strong em strike code' },
+                options: "block inline link blockquote list image",
+                inline: { options: "strong em strike code" },
               },
             },
           }}
@@ -67,7 +67,7 @@ const MarkdownConverterComponent = () => {
           onChange={updateMarkdown}
           defaultValue={{
             doc: defaultValue.toJSON(),
-            selection: { type: 'text', anchor: 0, head: 0 },
+            selection: { type: "text", anchor: 0, head: 0 },
           }}
         />
       )}

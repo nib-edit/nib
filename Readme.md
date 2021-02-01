@@ -49,6 +49,29 @@ Props supported by the editor.
 | 8     | styleConfig  | used to do more detailed style changes in the editor, [here](https://github.com/nib-edit/Nib/blob/master/packages/core/src/config/styles.js) is the default      |
 | 9     | theme        | theming of the editor, [here](https://github.com/nib-edit/Nib/blob/master/packages/core/src/config/theme.js) is default theme                                    |
 
+## Features
+
+1. Support for almost all browsers and devices
+2. Multiple rich text styling options like bold, italic, underline, strike, subscript, superscript, text color, filll color, etc
+3. Support for different block types paragraph, h1 - h6, blockquote etc
+4. Support for hyperlinks
+5. Support for nested ordered and unordered lists
+6. Support for images with options like wrapping, aligning, re-sizing or linking images
+7. Support for inline mode with floating toolbar
+8. Support for customized display - full page, word like display, etc
+9. Allow undo and redo changes.
+10. Help menu that display supported formatting options and their keyboard shortcuts
+11. Changing look and feel of editor using different themes
+12. Convert prosemirror JSON to and from markdown
+13. Convert prosemirror JSON to and from HTML
+14. Source code editing
+15. Table with advance options like add/remove column/row, resize columns, etc
+16. Support for displaying video from sources like Youtube or Vimeo
+17. Flexibility to add custom plugin
+18. Track changes make of document along with any metadata saved about the change like username, timestamp, etc
+19. Adding / editing comments to document
+20. Collaborative editing with multiple users on same document
+
 ## License
 
 GNU GENERAL PUBLIC LICENSE.

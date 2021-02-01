@@ -17,7 +17,9 @@
     "packages/schema",
     "packages/ui",
     "packages/ui-select",
-    "packages/upload"
+    "packages/upload",
+    "packages/sourceedit",
+    "packages/video"
   ],
   "repository": {
     "type": "git",

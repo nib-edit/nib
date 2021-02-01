@@ -1,17 +1,18 @@
-import * as React from 'react';
-import { FunctionComponent, useRef, useEffect, useState } from 'react';
-import axios from 'axios';
+import * as React from "react";
+import { FunctionComponent, useRef, useEffect, useState } from "react";
 
-import styled from '@emotion/styled';
-import PopupHandler from '../PopupHandler';
-import ToolbarHandler from '../ToolbarHandler';
-import TopToolbar from '../Toolbar/Top';
-import { useConfigContext } from '../../context/config';
+import styled from "@emotion/styled";
+import PopupHandler from "../PopupHandler";
+import ToolbarHandler from "../ToolbarHandler";
+import TopToolbar from "../Toolbar/Top";
+import { useConfigContext } from "../../context/config";
 
-import InnerEditor from './editor';
-import { StyledWrapper } from './styles';
-import { Addon } from '../../types/addon';
-import PortalHandler from '../PortalHandler/index';
+import InnerEditor from "./editor";
+import { StyledWrapper } from "./styles";
+import { Addon } from "../../types/addon";
+import PortalHandler from "../PortalHandler/index";
+
+const axios = require("axios").default;
 
 interface WrapperProps {
   addons?: Addon[];
@@ -25,21 +26,22 @@ const Wrapper: FunctionComponent<WrapperProps> = (props) => {
     config: { toolbar },
   } = useConfigContext();
 
-  const topToolbarPresent = toolbar.options.indexOf('top') >= 0;
+  const topToolbarPresent = toolbar.options.indexOf("top") >= 0;
   const { addons } = props;
 
   useEffect(() => {
     const { licenseKey } = props;
-    if (addons) {
+    const licensedAddons = addons?.filter((a) => a.name !== "video");
+    if (licensedAddons && licensedAddons.length) {
       axios
-        .get('https://licencecheck.herokuapp.com/licenceCheck', {
+        .get("https://licencecheck.herokuapp.com/licenceCheck", {
           params: {
             licenseKey,
-            plugins: addons.map((a) => a.name),
+            plugins: licensedAddons.map((a) => a.name),
           },
         })
         .then(({ data }: { data: { status: string } }) => {
-          if (data.status === 'FAIL') setLicenseCheckFail(true);
+          if (data.status === "FAIL") setLicenseCheckFail(true);
         });
     }
   }, [props.licenseKey]);
