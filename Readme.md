@@ -51,11 +51,7 @@ Props supported by the editor.
 
 ## License
 
-MIT
-<br/>
-This repository includes code for all basic editor features which are freely available.
-
-Advance editor features like nib drive, tables, advance images, video, tracking changes, comments and collaborative editing are not open source, check [licensing](http://www.nibedit.com/index.html#/License).
+GNU GENERAL PUBLIC LICENSE.
 
 ## Contact
 
