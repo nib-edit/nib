@@ -1,21 +1,21 @@
-import PropTypes from 'prop-types';
-import React, { PureComponent } from 'react';
-import styled from '@emotion/styled';
+import PropTypes from "prop-types";
+import React, { PureComponent } from "react";
+import styled from "@emotion/styled";
 
-import Icon from '../Icon';
+import Icon from "../Icon";
 
 class Modal extends PureComponent {
   componentDidMount() {
-    window.addEventListener('keydown', this.handleKeyPress);
+    window.addEventListener("keydown", this.handleKeyPress);
   }
 
   componentWillUnmount = () => {
-    window.removeEventListener('keydown', this.handleKeyPress);
+    window.removeEventListener("keydown", this.handleKeyPress);
   };
 
   handleKeyPress = (evt) => {
     const { hideModal } = this.props;
-    if (evt.key === 'Escape') hideModal();
+    if (evt.key === "Escape") hideModal();
   };
 
   handleMouseDown = (evt) => {
@@ -33,9 +33,10 @@ class Modal extends PureComponent {
   stopPropagation = (evt) => evt.stopPropagation();
 
   render() {
-    const { render, title, hideModal } = this.props;
+    const { render, title, hideModal, className } = this.props;
     return (
       <Wrapper
+        className={className}
         onMouseDown={this.handleMouseDown}
         onTouchStart={this.handleTouchStart}
       >
@@ -63,26 +64,26 @@ Modal.propTypes = {
 
 const Wrapper = styled.div(
   {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
 
-    height: '100%',
-    left: '0',
-    position: 'fixed',
-    top: '0',
-    width: '100%',
+    height: "100%",
+    left: "0",
+    position: "fixed",
+    top: "0",
+    width: "100%",
   },
   ({ theme: { constants } }) => ({
-    zIndex: 1,
+    zIndex: 2,
     backgroundColor: constants.color.opaque,
   })
 );
 
 const InnerWrapper = styled.div(
   {
-    width: '75%',
-    height: '75%',
+    width: "75%",
+    height: "75%",
     maxHeight: 750,
     maxWidth: 750,
   },
@@ -101,10 +102,10 @@ const InnerWrapper = styled.div(
 
 const Header = styled.div(
   {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '12px 24px',
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "12px 24px",
   },
   ({ theme: { constants, modal } }) => ({
     boxShadow: constants.boxShadow.secondary,
@@ -118,10 +119,10 @@ const Title = styled.div({}, ({ theme: { constants, modal } }) => ({
   ...modal.title({ theme: constants }),
 }));
 
-const StyledIcon = styled(Icon)({ cursor: 'pointer' });
+const StyledIcon = styled(Icon)({ cursor: "pointer" });
 
 const Main = styled.div(
-  { height: 'calc(100% - 102px)', padding: '24px 0' },
+  { height: "calc(100% - 102px)", padding: "24px 0" },
   ({ theme: { constants, modal } }) => ({
     ...modal.main({ theme: constants }),
   })

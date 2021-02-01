@@ -1,15 +1,15 @@
-import * as React from 'react';
-import { FunctionComponent } from 'react';
-import styled from '@emotion/styled';
+import * as React from "react";
+import { FunctionComponent } from "react";
+import styled from "@emotion/styled";
 
-import { Space, SpaceSize, Modal } from 'nib-ui';
+import { Space, SpaceSize, Modal } from "nib-ui";
 
-import { useConfigContext } from '../../context/config';
-import { EditorStyle } from '../../types/editor-style';
-import { KeymapData } from '../../types/application';
+import { useConfigContext } from "../../context/config";
+import { EditorStyle } from "../../types/editor-style";
+import { KeymapData } from "../../types/application";
 
-import { formatKey, getKeymapInfo } from './utils';
-import { Addon } from '../../types/addon';
+import { formatKey, getKeymapInfo } from "./utils";
+import { Addon } from "../../types/addon";
 
 interface KeymapColumnProps {
   keymap: KeymapData[];
@@ -29,10 +29,11 @@ const KeymapColumn: FunctionComponent<KeymapColumnProps> = ({ keymap }) => (
 interface HelpModalProps {
   hideModal: any;
   addons: Addon[];
+  className: string;
 }
 
 export default (props: HelpModalProps) => {
-  const { hideModal, addons } = props;
+  const { hideModal, addons, className } = props;
   const {
     config: { plugins },
   } = useConfigContext();
@@ -51,6 +52,7 @@ export default (props: HelpModalProps) => {
     <Modal
       title="Help"
       hideModal={hideModal}
+      className={className}
       render={() => (
         <OptionWrapper>
           <SubTitle>Keyboard Shortcuts</SubTitle>
@@ -66,34 +68,34 @@ export default (props: HelpModalProps) => {
 };
 
 const SubTitle = styled.div(
-  { padding: '0px 0px 10px 20px' },
+  { padding: "0px 0px 10px 20px" },
   ({ theme: { constants } }: { theme: EditorStyle }) => ({
     fontSize: constants.fontSize.large,
   })
 );
 
 const Option = styled.div({
-  padding: '4px 24px',
-  display: 'flex',
-  justifyContent: 'space-between',
+  padding: "4px 24px",
+  display: "flex",
+  justifyContent: "space-between",
 });
 
 const StyledKey = styled.span({
-  whiteSpace: 'nowrap',
+  whiteSpace: "nowrap",
 });
 
-const OptionWrapper = styled.div({ height: '100%', overflow: 'scroll' });
+const OptionWrapper = styled.div({ height: "100%", overflow: "scroll" });
 
 const ColumnWrapper = styled.div({
-  display: 'flex',
-  '@media(max-width: 700px)': {
-    flexDirection: 'column',
+  display: "flex",
+  "@media(max-width: 700px)": {
+    flexDirection: "column",
   },
 });
 
 const Column = styled.span({
-  width: '48%',
-  '@media(max-width: 700px)': {
-    width: '100%',
+  width: "48%",
+  "@media(max-width: 700px)": {
+    width: "100%",
   },
 });

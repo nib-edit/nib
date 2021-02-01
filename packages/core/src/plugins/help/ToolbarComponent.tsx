@@ -1,16 +1,16 @@
-import * as React from 'react';
-import { useEffect, useState } from 'react';
-import styled from '@emotion/styled';
+import * as React from "react";
+import { useEffect, useState } from "react";
+import styled from "@emotion/styled";
 
-import { ToolbarButton, Icon } from 'nib-ui';
+import { ToolbarButton, Icon } from "nib-ui";
 
-import formatKeymap from '../../utils/format-keymap';
-import { usePMStateContext } from '../../context/pm-state/index';
+import formatKeymap from "../../utils/format-keymap";
+import { usePMStateContext } from "../../context/pm-state/index";
 
-import Modal from './Modal';
-import { KeymapInfo } from './keymaps';
-import { helpPluginKey } from './plugin';
-import { Addon } from '../../types/addon';
+import Modal from "./Modal";
+import { KeymapInfo } from "./keymaps";
+import { helpPluginKey } from "./plugin";
+import { Addon } from "../../types/addon";
 
 export default ({ addons }: { addons: Addon[] }) => {
   const { pmstate } = usePMStateContext();
@@ -30,7 +30,7 @@ export default ({ addons }: { addons: Addon[] }) => {
   const hideModal = () => {
     const { state, dispatch } = pmview;
     setShowModal(false);
-    dispatch(state.tr.setMeta('show-help-modal', false));
+    dispatch(state.tr.setMeta("show-help-modal", false));
   };
 
   return (
@@ -41,9 +41,11 @@ export default ({ addons }: { addons: Addon[] }) => {
       >
         <Icon name="question" />
       </StyledButton>
-      {showModal && <Modal hideModal={hideModal} addons={addons} />}
+      {showModal && <HelpModal hideModal={hideModal} addons={addons} />}
     </>
   );
 };
+
+const HelpModal = styled(Modal)({ userSelect: "text" });
 
 const StyledButton = styled(ToolbarButton)({ marginLeft: 8 });
