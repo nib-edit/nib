@@ -18,7 +18,16 @@
     "packages/ui",
     "packages/ui-select",
     "packages/upload",
+<<<<<<< HEAD
+<<<<<<< HEAD
     "packages/sourceedit",
+=======
+>>>>>>> cce2f5f... Open sourcing video plugin code
+=======
+=======
+    "packages/sourceedit",
+>>>>>>> a604dde... Adding feature for source code editing
+>>>>>>> 6ecb29c... Adding feature for source code editing
     "packages/video"
   ],
   "repository": {
@@ -75,5 +84,8 @@
     "start": "npx styleguidist server",
     "build-docs": "npx styleguidist build",
     "build": "rollup -c scripts/rollup.config.js --name"
+  },
+  "dependencies": {
+    "dts-generator": "^3.0.0"
   }
 }
