@@ -5646,13 +5646,6 @@ nib-ui@2.4.6:
   dependencies:
     react-select "^3.0.4"
 
-nib-video@0.1.16:
-  version "0.1.16"
-  resolved "https://registry.yarnpkg.com/nib-video/-/nib-video-0.1.16.tgz#c814fbbcbf5d097ed9e4067882d3879c67cdc142"
-  integrity sha512-yrS1NEOgvDAGZB3fHntbvGm9rSv9xLacVH9vFDidZEkyO4ynKyiSYbVkavCalpsSkKPcUIgMdyKCZ42AXUTtTA==
-  dependencies:
-    axios "^0.19.0"
-
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"

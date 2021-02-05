@@ -1,0 +1,16 @@
+{
+  "name": "nib-sourceedit",
+  "version": "0.0.1",
+  "description": "Source code editing support in Nib editor",
+  "main": "./index.js",
+  "keywords": [
+    "wysiwyg",
+    "editor",
+    "source code editing"
+  ],
+  "author": {
+    "name": "Jyoti Puri",
+    "email": "contact@nibedit.com"
+  },
+  "license": "MIT"
+}

@@ -29,7 +29,7 @@ const KeymapColumn: FunctionComponent<KeymapColumnProps> = ({ keymap }) => (
 interface HelpModalProps {
   hideModal: any;
   addons: Addon[];
-  className: string;
+  className?: string;
 }
 
 export default (props: HelpModalProps) => {

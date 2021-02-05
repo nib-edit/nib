@@ -1,6 +1,6 @@
-import axios from "axios";
+const axios = require("axios").default;
 
-const getEmbeddableHTML = url =>
+const getEmbeddableHTML = (url) =>
   new Promise((resolve, reject) => {
     try {
       const parsedUrl = new URL(url);
@@ -8,10 +8,10 @@ const getEmbeddableHTML = url =>
       if (host.includes("vimeo.com")) {
         axios
           .get(`https://vimeo.com/api/oembed.json?url=${url}`)
-          .then(response => {
+          .then((response) => {
             resolve(response.data.html);
           })
-          .catch(err => {
+          .catch((err) => {
             reject(new Error(`Unable to get embed details ${err.message}`));
           });
         return;
@@ -30,5 +30,5 @@ const getEmbeddableHTML = url =>
   });
 
 export default {
-  getEmbeddableHTML
+  getEmbeddableHTML,
 };

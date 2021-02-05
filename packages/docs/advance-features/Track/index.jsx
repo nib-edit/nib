@@ -1,29 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-import Editor from 'nib-core';
-import TrackPlugin from 'nib-track';
+import Editor from "nib-core";
+import TrackPlugin from "nib-track";
 
-import defaultValue from './sampleData';
+import defaultValue from "./sampleData";
 
-import './styles.css';
+import "./styles.css";
 
 const tracker = new TrackPlugin();
 
 const userid = Math.floor(Math.random() * 0xffffffff);
 
-const formatDate = str => {
+const formatDate = (str) => {
   const d = new Date(str);
-  if (!d) return '';
+  if (!d) return "";
   return `${d.getMonth() +
     1}-${d.getDate()}-${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
 };
 
 /**
- * @visibleName 6. Track Changes
+ * @visibleName 7. Track Changes
  */
 const Track = () => {
   const [trackState, setTrackState] = useState(tracker.getState());
-  const [name, setName] = useState('Anonymous user');
+  const [name, setName] = useState("Anonymous user");
   const [cmd, setCmd] = useState(false);
 
   const updateTrackedState = () => setTrackState(tracker.getState());
@@ -33,12 +33,12 @@ const Track = () => {
     updateTrackedState();
   };
 
-  const revertCommit = commit => {
+  const revertCommit = (commit) => {
     tracker.revertCommit(commit.id, { username: name, userid });
     updateTrackedState();
   };
 
-  const highlightCommit = commit => {
+  const highlightCommit = (commit) => {
     tracker.highlightCommit(commit.id);
     updateTrackedState();
   };
@@ -48,9 +48,9 @@ const Track = () => {
     updateTrackedState();
   };
 
-  const onKeyDown = evt => {
-    if (evt.key === 'Meta') setCmd(true);
-    else if (evt.key === 's' && cmd) {
+  const onKeyDown = (evt) => {
+    if (evt.key === "Meta") setCmd(true);
+    else if (evt.key === "s" && cmd) {
       doCommit();
       evt.preventDefault();
     }
@@ -67,7 +67,7 @@ const Track = () => {
       <input
         style={{ marginBottom: 10 }}
         className="nib-track_msg"
-        onChange={evt => setName(evt.target.value)}
+        onChange={(evt) => setName(evt.target.value)}
         placeholder="Enter user name"
         value={name}
       />
@@ -75,11 +75,12 @@ const Track = () => {
         <div>
           <div onKeyDown={onKeyDown} onKeyUp={onKeyUp}>
             <Editor
+              licenseKey="c1ba076f-6793-45d4-a66d-02d4204b6297"
               config={{
-                plugins: { options: 'block inline list' },
+                plugins: { options: "block inline list image" },
                 toolbar: {
-                  options: 'top',
-                  top: { options: 'block inline list' },
+                  options: "top",
+                  top: { options: "block inline list image" },
                 },
               }}
               addons={[tracker]}
@@ -110,8 +111,8 @@ const Track = () => {
                         className={
                           trackState.highlightedCommit &&
                           trackState.highlightedCommit === commit
-                            ? 'nib-highlighted-commit'
-                            : ''
+                            ? "nib-highlighted-commit"
+                            : ""
                         }
                         onMouseEnter={() => highlightCommit(commit)}
                         onMouseLeave={resetHighlight}

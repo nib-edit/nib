@@ -3,18 +3,19 @@
  * improve code in all components
  */
 
-import React, { PureComponent } from 'react';
-import Editor from 'nib-core';
-import AdvanceImagePlugin from 'nib-advance-image';
-import TablePlugin from 'nib-table';
-import VideoPlugin from 'nib-video';
+import React, { PureComponent } from "react";
+import Editor from "nib-core";
+import AdvanceImagePlugin from "nib-advance-image";
+import TablePlugin from "nib-table";
+import VideoPlugin from "nib-video";
+import SourceEditPlugin from "nib-sourceedit";
 
-import uploadCallback from '../common/uploadCallback';
-import data from './data';
+import uploadCallback from "../common/uploadCallback";
+import data from "./data";
 
 const theme = {
   editor: () => ({
-    height: '440px',
+    height: "440px",
   }),
 };
 
@@ -23,10 +24,10 @@ class TopBar extends PureComponent {
     return (
       <div
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          margin: '32px 0',
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          margin: "32px 0",
         }}
       >
         <div>
@@ -34,13 +35,13 @@ class TopBar extends PureComponent {
             licenseKey="c1ba076f-6793-45d4-a66d-02d4204b6297"
             config={{
               plugins: {
-                options: 'block inline color link blockquote list history help',
+                options: "block inline color link blockquote list history help",
               },
               toolbar: {
-                options: 'top',
+                options: "top",
                 top: {
                   options:
-                    'block inline color link blockquote list advance-image video table history help',
+                    "block inline color link blockquote list advance-image video table sourceedit history help",
                 },
               },
             }}
@@ -50,6 +51,7 @@ class TopBar extends PureComponent {
               new AdvanceImagePlugin(uploadCallback),
               TablePlugin,
               VideoPlugin,
+              SourceEditPlugin,
             ]}
           />
         </div>

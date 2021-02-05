@@ -1,0 +1,16 @@
+{
+  "name": "nib-video",
+  "version": "0.1.17",
+  "description": "Video Support in Nib editor",
+  "main": "./index.js",
+  "keywords": [
+    "wysiwyg",
+    "editor",
+    "table"
+  ],
+  "author": {
+    "name": "Jyoti Puri",
+    "email": "contact@nibedit.com"
+  },
+  "license": "https://github.com/nib-edit/Nib/blob/master/license.txt"
+}
