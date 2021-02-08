@@ -31,7 +31,9 @@ const Wrapper: FunctionComponent<WrapperProps> = (props) => {
 
   useEffect(() => {
     const { licenseKey } = props;
-    const licensedAddons = addons?.filter((a) => a.name !== "video");
+    const licensedAddons = addons?.filter(
+      (a) => a.name !== "video" && a.name !== "table"
+    );
     if (licensedAddons && licensedAddons.length) {
       axios
         .get("https://licencecheck.herokuapp.com/licenceCheck", {

@@ -1,0 +1,16 @@
+{
+  "name": "nib-table",
+  "version": "0.1.17",
+  "description": "Table Support in Nib editor",
+  "main": "./index.js",
+  "keywords": [
+    "wysiwyg",
+    "editor",
+    "table"
+  ],
+  "author": {
+    "name": "Jyoti Puri",
+    "email": "contact@nibedit.com"
+  },
+  "license": "http://www.nibedit.com/index.html#/License"
+}
