@@ -26,7 +26,7 @@
     "axios": "^0.21.1",
     "emotion-theming": "^10.0.14",
     "nib-embed": "2.1.6",
-    "nib-schema": "2.4.6",
+    "nib-schema": "2.4.7",
     "nib-ui": "2.4.13",
     "nib-ui-select": "0.0.1",
     "prosemirror-transform": "1.2.6",

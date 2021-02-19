@@ -1,22 +1,22 @@
-import { EditorState } from 'prosemirror-state';
+import { EditorState } from "prosemirror-state";
 
-import buildKeymap from './keymap';
-import buildSchema from './schema';
-import { getProsemirrorPlugins } from './plugins';
-import { EditorView } from 'prosemirror-view';
+import buildKeymap from "./keymap";
+import buildSchema from "./schema";
+import { getProsemirrorPlugins } from "./plugins";
+import { EditorView } from "prosemirror-view";
 import {
   ProsemirrorViewProvider,
   ProsemirrorDoc,
-} from '../../types/prosemirror';
-import { EditorPlugin } from '../../types/application';
+} from "../../types/prosemirror";
+import { EditorPlugin } from "../../types/application";
 
 const defaultContent = {
   doc: {
-    type: 'doc',
-    content: [{ type: 'paragraph' }],
+    type: "doc",
+    content: [{ type: "paragraph" }],
   },
   selection: {
-    type: 'text',
+    type: "text",
     anchor: 1,
     head: 1,
   },

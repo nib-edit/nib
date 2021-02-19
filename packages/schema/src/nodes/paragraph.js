@@ -6,7 +6,7 @@ const paragraph = {
   parseDOM: [{ tag: "p" }],
   toDOM() {
     return pDOM;
-  }
+  },
 };
 
 export default paragraph;

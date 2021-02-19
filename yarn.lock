@@ -5622,30 +5622,6 @@ nib-comment@2.6.2:
     nib-ui "2.4.6"
     prosemirror-transform "^1.0.0"
 
-nib-core@2.7.11:
-  version "2.7.11"
-  resolved "https://registry.yarnpkg.com/nib-core/-/nib-core-2.7.11.tgz#b22970f02a50f7805baa783aea34aa7544dd2542"
-  integrity sha512-vSlImxAsyk3y31UsEVp8NUV6YvTurdkqMYpOSqvhzPx+H1DV1fq+p8WbxR53Io3Cd8rKV9IIdKTNxJi0zZLmnA==
-  dependencies:
-    "@emotion/core" "^10.0.14"
-    "@emotion/styled" "^10.0.14"
-    axios "^0.19.0"
-    emotion-theming "^10.0.14"
-    nib-embed "2.1.6"
-    nib-schema "2.4.6"
-    nib-ui "2.4.12"
-    nib-ui-select "0.0.1"
-    prosemirror-commands "^1.1.4"
-    prosemirror-history "^1.1.3"
-    prosemirror-keymap "^1.1.4"
-    prosemirror-model "^1.10.0"
-    prosemirror-schema-list "^1.1.2"
-    prosemirror-state "^1.3.3"
-    prosemirror-tables "^1.1.0"
-    prosemirror-transform "1.2.6"
-    prosemirror-utils "^0.9.6"
-    prosemirror-view "^1.14.13"
-
 nib-markdown-converter@0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/nib-markdown-converter/-/nib-markdown-converter-0.1.1.tgz#aacac78c3ccb20d0f14d9792a8a051993f4cc689"
@@ -5663,11 +5639,6 @@ nib-track@2.5.4:
   integrity sha512-XhbIxFPH6C9i4b9faygKSbV10PQy3d6Zimyh2CRB3vaSS0JMSIptz37rQq+Likag7fsOTHH1uILi7goj4OVf1Q==
   dependencies:
     axios "^0.19.0"
-
-nib-ui@2.4.12:
-  version "2.4.12"
-  resolved "https://registry.yarnpkg.com/nib-ui/-/nib-ui-2.4.12.tgz#ff35435db6d18ddeb79152fa7a976282287780f9"
-  integrity sha512-6ofKDALKTFbOeXLdT0SRG1nkl3GVgUaHOQB9Ih+OuTwL+NXed6/gjM70bnV7drdWc18o8oG0HILKJHKQQfrxXg==
 
 nib-ui@2.4.6:
   version "2.4.6"
