@@ -39,6 +39,7 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "@rollup/plugin-json": "4.0.1",
+    "@svgr/rollup": "^5.5.0",
     "@types/prosemirror-model": "^1.7.2",
     "@types/prosemirror-view": "^1.11.4",
     "@types/react": "^16.9.29",

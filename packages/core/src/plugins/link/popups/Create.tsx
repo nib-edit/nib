@@ -1,18 +1,18 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   ChangeEvent,
   FunctionComponent,
   MutableRefObject,
   useState,
-} from 'react';
-import styled from '@emotion/styled';
-import { EditorState } from 'prosemirror-state';
+} from "react";
+import styled from "@emotion/styled";
+import { EditorState } from "prosemirror-state";
 
-import { PrimaryButton, Input, Popup } from 'nib-ui';
+import { ToolbarButton, Input, Popup, Icon } from "nib-ui";
 
-import { EditorStyle } from '../../../types/editor-style';
-import { usePMStateContext } from '../../../context/pm-state/index';
-import { linkPluginKey } from '../plugin';
+import { EditorStyle } from "../../../types/editor-style";
+import { usePMStateContext } from "../../../context/pm-state/index";
+import { linkPluginKey } from "../plugin";
 
 interface CreatePopupProps {
   editorWrapper: MutableRefObject<HTMLDivElement | null>;
@@ -36,7 +36,7 @@ const CreatePopup: FunctionComponent<CreatePopupProps> = ({
   };
 
   const [linkText, setLinkText] = useState(getSelectedText());
-  const [href, setHref] = useState('');
+  const [href, setHref] = useState("");
   const [linkTextRequiredError, setLinkTextRequiredError] = useState(false);
 
   const updateLinkText = (evt: ChangeEvent) => {
@@ -58,7 +58,7 @@ const CreatePopup: FunctionComponent<CreatePopupProps> = ({
     const { $from, $to } = selection;
     dispatch(
       tr
-        .setMeta('show-add-link-toolbar', false)
+        .setMeta("show-add-link-toolbar", false)
         .insertText(linkText, $from.pos, $to.pos)
         .addMark(
           $from.pos,
@@ -71,14 +71,14 @@ const CreatePopup: FunctionComponent<CreatePopupProps> = ({
   };
 
   const handleKeyDown = (evt: KeyboardEvent) => {
-    if (evt.key === 'Enter') {
+    if (evt.key === "Enter") {
       addLink();
     }
   };
 
   const closePopup = () => {
     const { state, dispatch } = pmview;
-    dispatch(state.tr.setMeta('show-add-link-toolbar', false));
+    dispatch(state.tr.setMeta("show-add-link-toolbar", false));
   };
 
   return (
@@ -111,10 +111,12 @@ const CreatePopup: FunctionComponent<CreatePopupProps> = ({
               value={href}
             />
           </InputWrapper>
-          <PrimaryButton onKeyPress={handleKeyDown} onClick={addLink}>
-            Add
-          </PrimaryButton>
-          <PrimaryButton onClick={closePopup}>Cancel</PrimaryButton>
+          <ToolbarButton onKeyPress={handleKeyDown} onClick={addLink}>
+            <Icon name="check" />
+          </ToolbarButton>
+          <ToolbarButton onClick={closePopup}>
+            <Icon name="closeNew" />
+          </ToolbarButton>
         </Wrapper>
       )}
     />
@@ -122,10 +124,10 @@ const CreatePopup: FunctionComponent<CreatePopupProps> = ({
 };
 
 export default {
-  name: 'create_link',
+  name: "create_link",
   getMarker: (editorWrapper: MutableRefObject<HTMLDivElement | null>) =>
     editorWrapper.current &&
-    editorWrapper.current.getElementsByClassName('nib-link-marker')[0],
+    editorWrapper.current.getElementsByClassName("nib-link-marker")[0],
   condition: ({ state }: { state: EditorState }) => {
     const pluginState = linkPluginKey.getState(state);
     return pluginState && pluginState.showAddLinkToolbar;
@@ -144,7 +146,7 @@ const Wrapper = styled.div`
 `;
 
 const InputWrapper = styled.div({
-  '> div:first-of-type': {
+  "> div:first-of-type": {
     marginBottom: 8,
   },
 });

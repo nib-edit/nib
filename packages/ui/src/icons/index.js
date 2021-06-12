@@ -44,6 +44,9 @@ import Video from "./Video";
 import ViewComment from "./ViewComment";
 import WrapLeft from "./WrapLeft";
 import WrapRight from "./WrapRight";
+import Check from "./svg/check.svg";
+import CloseNew from "./svg/close.svg";
+import LinkOff from "./svg/link_off.svg";
 
 export default {
   add: Add,
@@ -92,4 +95,7 @@ export default {
   viewComment: ViewComment,
   wrapLeft: WrapLeft,
   wrapRight: WrapRight,
+  closeNew: CloseNew,
+  check: Check,
+  linkOff: LinkOff,
 };
