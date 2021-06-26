@@ -1,18 +1,18 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   ChangeEvent,
   FunctionComponent,
   MutableRefObject,
   useState,
-} from 'react';
-import styled from '@emotion/styled';
-import { TextSelection } from 'prosemirror-state';
+} from "react";
+import styled from "@emotion/styled";
+import { TextSelection } from "prosemirror-state";
 
-import { PrimaryButton, Input, Popup, Space, SpaceSize } from 'nib-ui';
+import { ToolbarButton, Input, Popup, Icon } from "nib-ui";
 
-import { EditorStyle } from '../../../types/editor-style';
-import { usePMStateContext } from '../../../context/pm-state/index';
-import { linkPluginKey } from '../plugin';
+import { EditorStyle } from "../../../types/editor-style";
+import { usePMStateContext } from "../../../context/pm-state/index";
+import { linkPluginKey } from "../plugin";
 
 export interface EditPopupProps {
   editorWrapper: MutableRefObject<HTMLDivElement | null>;
@@ -62,7 +62,7 @@ const EditPopup: FunctionComponent<EditPopupProps> = ({
 
   const closePopup = () => {
     const { state, dispatch } = pmview;
-    dispatch(state.tr.setMeta('show-edit-link-toolbar', false));
+    dispatch(state.tr.setMeta("show-edit-link-toolbar", false));
   };
 
   return (
@@ -81,9 +81,12 @@ const EditPopup: FunctionComponent<EditPopupProps> = ({
             }
             defaultValue={link.href}
           />
-          <PrimaryButton onClick={updateLink}>Update</PrimaryButton>
-          <Space size={SpaceSize.l} />
-          <PrimaryButton onClick={unLink}>Unlink</PrimaryButton>
+          <ToolbarButton onClick={updateLink}>
+            <Icon name="check" />
+          </ToolbarButton>
+          <ToolbarButton onClick={unLink}>
+            <Icon name="linkOff" />
+          </ToolbarButton>
         </Wrapper>
       )}
     />
@@ -91,10 +94,10 @@ const EditPopup: FunctionComponent<EditPopupProps> = ({
 };
 
 export default {
-  name: 'edit_link',
+  name: "edit_link",
   getMarker: (editorWrapper: MutableRefObject<HTMLDivElement | null>) =>
     editorWrapper.current &&
-    editorWrapper.current.getElementsByClassName('nib-edit-link-marker')[0],
+    editorWrapper.current.getElementsByClassName("nib-edit-link-marker")[0],
   component: EditPopup,
 };
 

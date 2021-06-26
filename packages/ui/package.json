@@ -14,10 +14,11 @@
   "author": "Jyoti Puri",
   "homepage": "https://github.com/jpuri/Nib/tree/master/packages/ui/#Readme.md",
   "devDependencies": {
-    "react": "next",
-    "react-dom": "next",
+    "@svgr/webpack": "^5.5.0",
     "emotion-theming": "^10.0.14",
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.6.2",
+    "react": "next",
+    "react-dom": "next"
   },
   "license": "MIT"
 }
