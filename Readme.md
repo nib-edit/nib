@@ -78,4 +78,4 @@ GNU GENERAL PUBLIC LICENSE.
 
 ## Contact
 
-For details or queries drop mail to contact@nibedit.com.
+For details or queries drop mail to jyotipuri@gmail.com.
