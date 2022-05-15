@@ -1,7 +1,0 @@
-node_modules
-build
-styleguide/build
-.DS_Store
-./styleguide
-.env
-packages/advance 
