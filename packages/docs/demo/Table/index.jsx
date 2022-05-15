@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import Editor from 'nib-core';
-import TablePlugin from 'nib-table';
+import React, { useState } from "react";
+import Editor from "nib-core";
+import TablePlugin from "nib-table";
 
-import Code from '../../Code';
-import defaultValue from './sampleData';
+import Code from "../../Code";
+import defaultValue from "./sampleData";
 
 /**
- * @visibleName 1. Table
+ * @visibleName 16. Table
  */
 const Table = () => {
   const [content, setContent] = useState();
@@ -15,10 +15,10 @@ const Table = () => {
       <Editor
         licenseKey="c1ba076f-6793-45d4-a66d-02d4204b6297"
         config={{
-          plugins: { options: 'help' },
+          plugins: { options: "help" },
           toolbar: {
-            options: 'top',
-            top: { options: 'table help' },
+            options: "top",
+            top: { options: "table help" },
           },
         }}
         addons={[TablePlugin]}

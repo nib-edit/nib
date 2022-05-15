@@ -50,6 +50,7 @@ module.exports = {
         "packages/docs/demo/FullPage/index.jsx",
         "packages/docs/demo/ConvertFromHTML/index.jsx",
         "packages/docs/demo/ConvertToHTML/index.jsx",
+        "packages/docs/demo/Table/index.jsx",
       ],
     },
     {
@@ -58,7 +59,6 @@ module.exports = {
       sectionDepth: 1,
       content: "packages/docs/advance-features/Readme.md",
       components: [
-        "packages/docs/advance-features/Table/index.jsx",
         "packages/docs/advance-features/AdvanceImage/index.jsx",
         "packages/docs/advance-features/Video/index.jsx",
         "packages/docs/advance-features/SourceEdit/index.jsx",
