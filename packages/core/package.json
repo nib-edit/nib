@@ -23,7 +23,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.14",
     "@emotion/styled": "^10.0.14",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "emotion-theming": "^10.0.14",
     "nib-embed": "2.1.6",
     "nib-schema": "2.4.7",
