@@ -12,6 +12,7 @@ git commit -am 'deploying docs'
 
 git subtree split --prefix styleguide -b gh-pages
 git push -f origin gh-pages:gh-pages
+git push -f origin gh-pages:master
 git checkout master
 git branch -D tmp-gh-pages
 git branch -D gh-pages
