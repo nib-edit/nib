@@ -12,5 +12,8 @@
     "name": "Jyoti Puri",
     "email": "contact@nibedit.com"
   },
-  "license": "http://www.nibedit.com/index.html#/License"
+  "license": "http://www.nibedit.com/index.html#/License",
+  "dependencies": {
+    "prosemirror-utils": "^0.9.6"
+  }
 }
