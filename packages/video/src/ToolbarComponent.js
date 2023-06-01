@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types';
-import React, { PureComponent } from 'react';
-import { ThemeProvider } from 'emotion-theming';
+import PropTypes from "prop-types";
+import React, { PureComponent } from "react";
+import { ThemeProvider } from "@emotion/react";
 
-import { ToolbarButton, Icon } from 'nib-ui';
+import { ToolbarButton, Icon } from "nib-ui";
 
-import { videoPluginKey } from './plugin';
-import Modal from './modals';
+import { videoPluginKey } from "./plugin";
+import Modal from "./modals";
 
 class ToolbarComponent extends PureComponent {
   state = {

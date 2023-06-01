@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { FunctionComponent, MutableRefObject } from 'react';
-import { withTheme } from 'emotion-theming';
+import * as React from "react";
+import { FunctionComponent, MutableRefObject } from "react";
+import { withTheme } from "@emotion/react";
 
-import { EditorTheme } from '../../types/editor-theme';
-import { Addon } from '../../types/addon';
-import { usePMStateContext } from '../../context/pm-state/index';
+import { EditorTheme } from "../../types/editor-theme";
+import { Addon } from "../../types/addon";
+import { usePMStateContext } from "../../context/pm-state/index";
 
 interface PopupHandlerProps {
   plugins: Addon[];

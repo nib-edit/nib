@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { keyframes } from "@emotion/core";
+import { keyframes } from "@emotion/react";
 
-const Spinner = props => <StyledSpinner {...props} />;
+const Spinner = (props) => <StyledSpinner {...props} />;
 
 const Spin = keyframes`
   0% { transform: rotate(0deg); }
@@ -18,13 +18,13 @@ const StyledSpinner = styled.div(
     borderWidth: 4,
 
     height: 24,
-    width: 24
+    width: 24,
   },
   ({ theme: { constants, spinner = {} } }) => ({
     borderColor: constants.color.border.primary,
     borderTopColor: constants.color.highlight.primary,
 
-    ...spinner({ theme: constants })
+    ...spinner({ theme: constants }),
   })
 );
 

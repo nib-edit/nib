@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import ReactSelect, { components } from 'react-select';
-import { withTheme } from 'emotion-theming';
+import PropTypes from "prop-types";
+import React from "react";
+import ReactSelect, { components } from "react-select";
+import { withTheme } from "@emotion/react";
 
-import ChevronDown from './ChevronDown';
-import Option from './Option';
-import getSelectStyles from './style';
+import ChevronDown from "./ChevronDown";
+import Option from "./Option";
+import getSelectStyles from "./style";
 
 const DropdownIndicator = (props) => (
   <components.DropdownIndicator {...props}>

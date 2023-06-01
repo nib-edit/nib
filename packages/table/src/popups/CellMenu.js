@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
-import styled from '@emotion/styled';
-import { ThemeProvider } from 'emotion-theming';
+import PropTypes from "prop-types";
+import React, { Component } from "react";
+import styled from "@emotion/styled";
+import { ThemeProvider } from "@emotion/react";
 
-import { Icon } from 'nib-ui';
+import { Icon } from "nib-ui";
 
-import MenuDropdown from './CellMenuDropdown';
+import MenuDropdown from "./CellMenuDropdown";
 
 class CellMenu extends Component {
   state = {
@@ -64,7 +64,7 @@ class CellMenu extends Component {
   }
 }
 
-const Wrapper = styled.div({ position: 'absolute', zIndex: 10 });
+const Wrapper = styled.div({ position: "absolute", zIndex: 10 });
 
 const StyledIcon = styled(Icon)(
   {
@@ -73,7 +73,7 @@ const StyledIcon = styled(Icon)(
   },
   ({ theme: { constants, table } }) => ({
     fill: constants.color.text.secondary,
-    '&:hover': {
+    "&:hover": {
       fill: constants.color.highlight.primary,
     },
     ...table.cellMenu.icon({ theme: constants }),
@@ -92,7 +92,7 @@ CellMenu.propTypes = {
 };
 
 export default {
-  name: 'cell_menu',
-  getMarker: () => document.getElementsByClassName('nib-table-cell-marker')[0],
+  name: "cell_menu",
+  getMarker: () => document.getElementsByClassName("nib-table-cell-marker")[0],
   component: CellMenu,
 };

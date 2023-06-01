@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   FunctionComponent,
   Fragment,
@@ -6,17 +6,17 @@ import {
   MutableRefObject,
   useEffect,
   useState,
-} from 'react';
-import styled from '@emotion/styled';
-import { Popup, Separator } from 'nib-ui';
-import { withTheme } from 'emotion-theming';
+} from "react";
+import styled from "@emotion/styled";
+import { Popup, Separator } from "nib-ui";
+import { withTheme } from "@emotion/react";
 
-import getToolbarComponents from '../../../utils/editor/toolbar';
-import { useConfigContext } from '../../../context/config';
-import { usePMStateContext } from '../../../context/pm-state';
-import { EditorStyle } from '../../../types/editor-style';
-import { EditorPlugin } from '../../../types/application';
-import { EditorTheme } from '../../../types/editor-theme';
+import getToolbarComponents from "../../../utils/editor/toolbar";
+import { useConfigContext } from "../../../context/config";
+import { usePMStateContext } from "../../../context/pm-state";
+import { EditorStyle } from "../../../types/editor-style";
+import { EditorPlugin } from "../../../types/application";
+import { EditorTheme } from "../../../types/editor-theme";
 
 interface InlineProps {
   editorWrapper: MutableRefObject<HTMLDivElement>;
@@ -43,7 +43,7 @@ const Inline: FunctionComponent<InlineProps> = ({
   const closePopup = () => {
     const { state, dispatch } = pmstate.pmview;
     // todo: here use a specific transaction for inline toolbar
-    dispatch(state.tr.setMeta('hide-all-popups', true));
+    dispatch(state.tr.setMeta("hide-all-popups", true));
   };
 
   useEffect(() => {
@@ -80,11 +80,11 @@ const Inline: FunctionComponent<InlineProps> = ({
 
 const Wrapper = styled.div(
   {
-    alignItems: 'center',
-    display: 'flex',
-    position: 'relative',
-    border: 'none',
-    userSelect: 'none',
+    alignItems: "center",
+    display: "flex",
+    position: "relative",
+    border: "none",
+    userSelect: "none",
   },
   ({ theme: { constants, toolbar } }: { theme: EditorStyle }) => ({
     backgroundColor: constants.color.background.primary,
@@ -96,14 +96,14 @@ const Wrapper = styled.div(
   })
 );
 
-const StyledPopup = styled(Popup)({ padding: '2px !important' });
+const StyledPopup = styled(Popup)({ padding: "2px !important" });
 
 export default {
-  name: 'toolbar',
+  name: "toolbar",
   getMarker: (editorWrapper: MutableRefObject<HTMLDivElement | null>) =>
     editorWrapper.current &&
     editorWrapper.current.getElementsByClassName(
-      'nib-selection-focus-marker'
+      "nib-selection-focus-marker"
     )[0],
   component: withTheme(Inline),
 };

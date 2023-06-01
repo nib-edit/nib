@@ -1,17 +1,17 @@
-import * as React from 'react';
-import { Fragment, MouseEvent, MutableRefObject } from 'react';
-import styled from '@emotion/styled';
-import { withTheme } from 'emotion-theming';
+import * as React from "react";
+import { Fragment, MouseEvent, MutableRefObject } from "react";
+import styled from "@emotion/styled";
+import { withTheme } from "@emotion/react";
 
-import { Separator } from 'nib-ui';
+import { Separator } from "nib-ui";
 
-import getToolbarComponents from '../../../utils/editor/toolbar';
-import { Addon } from '../../../types/addon';
-import { EditorPlugin } from '../../../types/application';
-import { EditorStyle } from '../../../types/editor-style';
-import { useConfigContext } from '../../../context/config';
-import { usePMStateContext } from '../../../context/pm-state/index';
-import { EditorTheme } from '../../../types/editor-theme';
+import getToolbarComponents from "../../../utils/editor/toolbar";
+import { Addon } from "../../../types/addon";
+import { EditorPlugin } from "../../../types/application";
+import { EditorStyle } from "../../../types/editor-style";
+import { useConfigContext } from "../../../context/config";
+import { usePMStateContext } from "../../../context/pm-state/index";
+import { EditorTheme } from "../../../types/editor-theme";
 
 interface TopProps {
   editorWrapper: MutableRefObject<HTMLDivElement | null>;
@@ -35,10 +35,10 @@ const TopToolbar = ({ editorWrapper, addons = [], theme }: TopProps) => {
     addons
   );
   const formattingOption = options.filter(
-    (opt: EditorPlugin) => opt.name !== 'help'
+    (opt: EditorPlugin) => opt.name !== "help"
   );
   const HelpOption = options.filter(
-    (opt: EditorPlugin) => opt.name === 'help'
+    (opt: EditorPlugin) => opt.name === "help"
   )[0];
 
   return (
@@ -68,19 +68,19 @@ const TopToolbar = ({ editorWrapper, addons = [], theme }: TopProps) => {
 
 const Wrapper = styled.div(
   {
-    alignItems: 'flex-start',
-    display: 'flex',
-    flexWrap: 'nowrap',
-    justifyContent: 'space-between',
+    alignItems: "flex-start",
+    display: "flex",
+    flexWrap: "nowrap",
+    justifyContent: "space-between",
 
-    position: 'relative',
+    position: "relative",
     padding: 4,
 
-    borderLeft: 'none',
-    borderRight: 'none',
-    borderTop: 'none',
+    borderLeft: "none",
+    borderRight: "none",
+    borderTop: "none",
 
-    userSelect: 'none',
+    userSelect: "none",
   },
   ({ theme: { constants, toolbar } }: { theme: EditorStyle }) => ({
     backgroundColor: constants.color.background.primary,
@@ -93,9 +93,9 @@ const Wrapper = styled.div(
 );
 
 const ToolbarSection = styled.div({
-  alignItems: 'center',
-  display: 'flex',
-  flexWrap: 'wrap',
+  alignItems: "center",
+  display: "flex",
+  flexWrap: "wrap",
 });
 
 export default withTheme(TopToolbar);

@@ -21,10 +21,9 @@
   },
   "homepage": "https://github.com/jpuri/Nib/tree/master/packages/core#Readme.md",
   "dependencies": {
-    "@emotion/core": "^10.0.14",
-    "@emotion/styled": "^10.0.14",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
     "axios": "^1.4.0",
-    "emotion-theming": "^10.0.14",
     "nib-embed": "2.1.6",
     "nib-schema": "2.4.7",
     "nib-ui": "2.4.13",

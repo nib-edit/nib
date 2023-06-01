@@ -1,16 +1,16 @@
-import * as React from 'react';
-import { MutableRefObject, useEffect, useState } from 'react';
-import { withTheme } from 'emotion-theming';
+import * as React from "react";
+import { MutableRefObject, useEffect, useState } from "react";
+import { withTheme } from "@emotion/react";
 
-import getPropertyFromPlugins from '../../utils/editor/pluginProperty';
-import { Addon } from '../../types/addon';
-import { EditorPopup } from '../../types/components';
-import { EditorTheme } from '../../types/editor-theme';
-import { VisiblePopup, getVisiblePopups } from './util';
-import { useConfigContext } from '../../context/config/index';
-import { usePMStateContext } from '../../context/pm-state/index';
+import getPropertyFromPlugins from "../../utils/editor/pluginProperty";
+import { Addon } from "../../types/addon";
+import { EditorPopup } from "../../types/components";
+import { EditorTheme } from "../../types/editor-theme";
+import { VisiblePopup, getVisiblePopups } from "./util";
+import { useConfigContext } from "../../context/config/index";
+import { usePMStateContext } from "../../context/pm-state/index";
 
-import inlineToolbar from '../Toolbar/Inline';
+import inlineToolbar from "../Toolbar/Inline";
 
 interface PopupHandlerProps {
   addons?: Addon[];
@@ -34,14 +34,14 @@ const PopupHandler = ({
     const { plugins, toolbar } = config;
     let newPopups = getPropertyFromPlugins(
       plugins!.options!,
-      'popups'
+      "popups"
     ) as EditorPopup[];
     addons.forEach((addon) => {
       if (addon.popups) {
         newPopups = [...newPopups, ...addon.popups];
       }
     });
-    if (toolbar!.options!.indexOf('inline') >= 0) newPopups.push(inlineToolbar);
+    if (toolbar!.options!.indexOf("inline") >= 0) newPopups.push(inlineToolbar);
     return newPopups;
   })();
 
@@ -60,7 +60,7 @@ const PopupHandler = ({
   const { PopupComponent, marker } = visiblePopups[visiblePopups.length - 1];
 
   const tablePopups = visiblePopups.filter(
-    (popup) => popup.name === 'table_menu' || popup.name === 'cell_menu'
+    (popup) => popup.name === "table_menu" || popup.name === "cell_menu"
   );
 
   // todo: refactor table popups for a better implementation
