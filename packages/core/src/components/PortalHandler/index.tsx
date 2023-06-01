@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { withTheme } from 'emotion-theming';
+import * as React from "react";
+import { withTheme } from "@emotion/react";
 
-import { Addon } from '../../types/addon';
-import { EditorTheme } from '../../types/editor-theme';
-import { usePMStateContext } from '../../context/pm-state/index';
+import { Addon } from "../../types/addon";
+import { EditorTheme } from "../../types/editor-theme";
+import { usePMStateContext } from "../../context/pm-state/index";
 
 interface PortalHandlerProps {
   addons?: Addon[];

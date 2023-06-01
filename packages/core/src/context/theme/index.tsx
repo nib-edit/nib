@@ -1,12 +1,12 @@
-import * as React from 'react';
-import { FunctionComponent, ReactChild, useState, useEffect } from 'react';
-import { ThemeProvider } from 'emotion-theming';
+import * as React from "react";
+import { FunctionComponent, ReactChild, useState, useEffect } from "react";
+import { ThemeProvider } from "@emotion/react";
 
-import defaultTheme from '../../config/theme';
-import defaultStyleConfig from '../../config/styles';
-import overrideValue from '../../utils/override-value';
-import { EditorTheme } from '../../types/editor-theme';
-import { EditorStyleConfig } from '../../types/editor-style';
+import defaultTheme from "../../config/theme";
+import defaultStyleConfig from "../../config/styles";
+import overrideValue from "../../utils/override-value";
+import { EditorTheme } from "../../types/editor-theme";
+import { EditorStyleConfig } from "../../types/editor-style";
 
 interface NibThemeProviderProps {
   children: ReactChild;

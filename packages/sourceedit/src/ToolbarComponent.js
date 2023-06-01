@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React, { PureComponent } from "react";
-import { ThemeProvider } from "emotion-theming";
+import { ThemeProvider } from "@emotion/react";
 
 import { ToolbarButton, Icon } from "nib-ui";
 

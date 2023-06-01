@@ -34,9 +34,8 @@ const getConfig = (packageName) => {
   if (packageName !== "core") {
     globals["nib-ui"] = "nib-ui";
     globals["nib-schema"] = "nib-schema";
-    globals["@emotion/core"] = "@emotion/core";
+    globals["@emotion/react"] = "@emotion/react";
     globals["@emotion/styled"] = "@emotion/styled";
-    globals["emotion-theming"] = "emotion-theming";
     globals["prosemirror-commands"] = "prosemirror-commands";
     globals["prosemirror-history"] = "prosemirror-history";
     globals["prosemirror-keymap"] = "prosemirror-keymap";
@@ -48,9 +47,8 @@ const getConfig = (packageName) => {
     globals["prosemirror-tables"] = "prosemirror-tables";
     external.push("nib-ui");
     external.push("nib-schema");
-    external.push("@emotion/core");
+    external.push("@emotion/react");
     external.push("@emotion/styled");
-    external.push("emotion-theming");
     external.push("prosemirror-commands");
     external.push("prosemirror-history");
     external.push("prosemirror-keymap");

@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import { Popup, ToolbarButton, Icon } from "nib-ui";
 import { findParentNode, findParentDomRef } from "prosemirror-utils";
 import * as TableCommands from "prosemirror-tables";
-import { ThemeProvider } from "emotion-theming";
+import { ThemeProvider } from "@emotion/react";
 
 const Commands = [
   {

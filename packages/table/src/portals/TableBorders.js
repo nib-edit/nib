@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, { PureComponent } from "react";
 import ReactDOM from "react-dom";
 import styled from "@emotion/styled";
-import { ThemeProvider } from "emotion-theming";
+import { ThemeProvider } from "@emotion/react";
 import {
   addColumnAt,
   selectColumn,
